@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Presentación · Estrategia Digital (5 slides)</title>
+  <style>
+    :root{
+      --bg0:#070A12;
+      --glass: rgba(255,255,255,.08);
+      --glass2: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --stroke: rgba(255,255,255,.14);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(111,76,255,.35), transparent 60%),
+                  radial-gradient(900px 700px at 90% 20%, rgba(14,233,255,.20), transparent 55%),
+                  radial-gradient(900px 700px at 60% 95%, rgba(255,92,163,.18), transparent 60%),
+                  linear-gradient(180deg, #050711, #070A12 60%, #050711);
+      overflow: hidden;
+    }
+
+    /* Animated background “aurora” */
+    .aurora{
+      position: fixed;
+      inset: -30vmax;
+      background:
+        conic-gradient(from 120deg,
+          rgba(111,76,255,.00),
+          rgba(111,76,255,.22),
+          rgba(14,233,255,.18),
+          rgba(255,92,163,.14),
+          rgba(111,76,255,.00));
+      filter: blur(50px) saturate(1.2);
+      opacity: .9;
+      animation: spin 18s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg); } }
+
+    /* Subtle grain */
+    .grain{
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity: .22;
+      pointer-events: none;
+    }
+
+    .deck{
+      height: 100%;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      padding: clamp(16px, 3vw, 34px);
+    }
+
+    .frame{
+      width: min(1180px, 100%);
+      height: min(680px, calc(100vh - 96px));
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .progress{
+      position:absolute;
+      left:0; top:0;
+      height: 4px;
+      width: 100%;
+      background: rgba(255,255,255,.10);
+      z-index: 50;
+    }
+    .progress > span{
+      display:block;
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, rgba(14,233,255,.85), rgba(111,76,255,.85), rgba(255,92,163,.85));
+      transform-origin: left center;
+      transform: scaleX(1);
+      transition: transform 700ms var(--ease);
+    }
+
+    .slides{
+      height: 100%;
+      display: flex;
+      transition: transform 900ms var(--ease);
+      will-change: transform;
+    }
+
+    .slide{
+      flex: 0 0 100%;
+      height: 100%;
+      padding: clamp(22px, 4vw, 48px);
+      display: grid;
+      gap: clamp(18px, 3vw, 34px);
+      align-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Layout variants */
+    .two-col{
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+    }
+    .center{
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+    }
+
+    /* Slide chrome */
+    .tag{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+      width: fit-content;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(90deg, rgba(14,233,255,.95), rgba(111,76,255,.95), rgba(255,92,163,.95));
+      box-shadow: 0 0 22px rgba(14,233,255,.35);
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(34px, 4.2vw, 60px);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+    }
+    h2{
+      margin: 0;
+      font-size: clamp(26px, 3.1vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    p{
+      margin: 0;
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .kpis{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+    }
+    .kpi{
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 10px 26px rgba(0,0,0,.22);
+    }
+    .kpi strong{
+      display:block;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .kpi span{
+      display:block;
+      margin-top: 4px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .bullets{
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .bullet{
+      display:flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      transition: transform 220ms var(--ease), background 220ms var(--ease);
+    }
+    .bullet:hover{ transform: translateY(-2px); background: rgba(255,255,255,.07); }
+    .bullet i{
+      width: 28px; height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(14,233,255,.35), rgba(111,76,255,.30), rgba(255,92,163,.20));
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      flex: 0 0 auto;
+    }
+    .bullet b{ display:block; font-size: 15px; color: rgba(255,255,255,.9); }
+    .bullet em{ display:block; margin-top: 2px; font-style: normal; font-size: 13px; color: var(--muted); }
+
+    /* “Image” cards */
+    .img-card{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 16px 46px rgba(0,0,0,.38);
+      overflow: hidden;
+      position: relative;
+      transform: translateY(6px);
+      animation: floaty 6.5s var(--ease) infinite;
+    }
+    @keyframes floaty{
+      0%,100% { transform: translateY(6px); }
+      50%     { transform: translateY(-6px); }
+    }
+    .img-card header{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.78);
+      font-size: 13px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.00));
+    }
+    .img-card header .mini{
+      display:flex; gap: 6px; align-items:center;
+    }
+    .img-card header .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+
+    .svg-wrap{
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display:block;
+    }
+    .svg-wrap svg{ width: 100%; height: 100%; display:block; }
+
+    /* Slide intro animation */
+    .slide .anim{
+      opacity: 0;
+      transform: translateY(10px);
+      animation: enter 700ms var(--ease) forwards;
+    }
+    .slide .anim.d1{ animation-delay: 70ms; }
+    .slide .anim.d2{ animation-delay: 140ms; }
+    .slide .anim.d3{ animation-delay: 210ms; }
+    .slide .anim.d4{ animation-delay: 280ms; }
+
+    @keyframes enter{
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    /* Controls */
+    .controls{
+      position:absolute;
+      inset: auto 18px 18px 18px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 60;
+      pointer-events: none;
+    }
+    .btns, .dots{
+      display:flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+    button{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.88);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      cursor: pointer;
+      transition: transform 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease);
+      backdrop-filter: blur(10px);
+    }
+    button:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); }
+    button:active{ transform: translateY(0); }
+    button:disabled{
+      opacity:.45; cursor:not-allowed;
+      transform:none;
+    }
+
+    .dots button{
+      width: 11px; height: 11px;
+      padding: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+    }
+    .dots button[aria-current="true"]{
+      width: 30px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(14,233,255,.70), rgba(111,76,255,.70), rgba(255,92,163,.70));
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .hint{
+      position:absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 60;
+      font-size: 12.5px;
+      color: rgba(255,255,255,.66);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      padding: 8px 12px;
+      backdrop-filter: blur(12px);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .two-col{ grid-template-columns: 1fr; }
+      .img-card{ max-width: 520px; margin-inline: auto; }
+      .kpis{ grid-template-columns: 1fr; }
+      .hint{ display:none; }
+      .controls{ inset: auto 12px 12px 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="aurora"></div>
+  <div class="grain"></div>
+
+  <main class="deck" aria-label="Presentación: Estrategia Digital">
+    <section class="frame" role="region" aria-roledescription="carousel" aria-label="Slides">
+      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+      <div class="hint" aria-hidden="true">← → / Espacio · Click en puntos</div>
+
+      <div class="slides" id="slides">
+        <!-- Slide 1: Portada -->
+        <article class="slide center" data-title="Portada">
+          <div class="tag anim d1"><span class="dot"></span> Estrategia digital · 2026</div>
+          <h1 class="anim d2">De la presencia online<br/>al crecimiento medible</h1>
+          <p class="anim d3">
+            Una hoja de ruta en 3 pilares: <b>cliente</b>, <b>datos</b> y <b>operación</b>.
+            Enfocada en valor, no en “features”.
+          </p>
+
+          <div class="kpis anim d4" aria-label="KPIs ejemplo">
+            <div class="kpi"><strong>+15–25%</strong><span>Conversión omnicanal</span></div>
+            <div class="kpi"><strong>-10–18%</strong><span>Coste de servicio (autoservicio + IA)</span></div>
+            <div class="kpi"><strong>2–4x</strong><span>Velocidad de entrega (product teams)</span></div>
+          </div>
+        </article>
+
+        <!-- Slide 2: Pilar 1 -->
+        <article class="slide two-col" data-title="Cliente">
+          <div>
+            <div class="tag anim d1"><span class="dot"></span> Pilar 1 · Experiencia & crecimiento</div>
+            <h2 class="anim d2">Diseñar journeys que convierten</h2>
+            <p class="anim d3">
+              Moverse de campañas aisladas a un <b>motor de adquisición, activación y retención</b>:
+              personalización, contenido dinámico, y optimización continua.
+            </p>
+
+            <div class="bullets anim d4">
+              <div class="bullet">
+                <i></i>
+                <div><b>Value proposition por segmento</b><em>Mensajes y ofertas adaptados a intención y contexto.</em></div>
+              </div>
+              <div class="bullet">
+                <i></i>
+                <div><b>Optimización por experimentación</b><em>A/B + multivariante + aprendizaje semanal.</em></div>
+              </div>
+              <div class="bullet">
+                <i></i>
+                <div><b>Funnel end-to-end</b><em>De tráfico a repetición: SEO, CRM, paid, app/web.</em></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="img-card anim d2" aria-label="Imagen: funnel y customer journey">
+            <header>
+              <div class="mini"><span class="dot"></span><span>Mapa de Journey</span></div>
+              <span class="pill">Experiencia</span>
+            </header>
+            <div class="svg-wrap">
+              <!-- Inline SVG illustration -->
+              <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de funnel y journey">
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="rgba(14,233,255,.85)"/>
+                    <stop offset="0.5" stop-color="rgba(111,76,255,.80)"/>
+                    <stop offset="1" stop-color="rgba(255,92,163,.70)"/>
+                  </linearGradient>
+                  <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="18"/>
+                  </filter>
+                </defs>
+
+                <rect width="800" height="600" fill="rgba(255,255,255,.02)"/>
+                <circle cx="180" cy="140" r="90" fill="url(#g1)" opacity=".35" filter="url(#blur)"/>
+                <circle cx="620" cy="190" r="120" fill="url(#g1)" opacity=".22" filter="url(#blur)"/>
+
+                <!-- Funnel -->
+                <g transform="translate(80,110)">
+                  <path d="M40,0 H520 L410,160 H150 Z" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+                  <path d="M150,160 H410 L345,250 H215 Z" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.16)" stroke-width="2"/>
+                  <path d="M215,250 H345 L312,310 H248 Z" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+                  <circle cx="560" cy="35" r="10" fill="rgba(14,233,255,.9)"/>
+                  <circle cx="560" cy="195" r="10" fill="rgba(111,76,255,.9)"/>
+                  <circle cx="560" cy="285" r="10" fill="rgba(255,92,163,.9)"/>
+                  <text x="575" y="40" font-size="16" fill="rgba(255,255,255,.78)">Awareness</text>
+                  <text x="575" y="200" font-size="16" fill="rgba(255,255,255,.78)">Consideración</text>
+                  <text x="575" y="290" font-size="16" fill="rgba(255,255,255,.78)">Conversión</text>
+                </g>
+
+                <!-- Journey nodes -->
+                <g transform="translate(120,420)">
+                  <path d="M0,40 C110,-40 210,120 320,40 C430,-40 520,120 640,40"
+                        fill="none" stroke="rgba(255,255,255,.20)" stroke-width="3" stroke-dasharray="8 10"/>
+                  <g fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.22)" stroke-width="2">
+                    <circle cx="20" cy="40" r="16"/><circle cx="180" cy="40" r="16"/>
+                    <circle cx="340" cy="40" r="16"/><circle cx="500" cy="40" r="16"/>
+                    <circle cx="660" cy="40" r="16"/>
+                  </g>
+                  <g fill="rgba(255,255,255,.75)" font-size="14">
+                    <text x="0" y="85">Descubre</text>
+                    <text x="150" y="85">Explora</text>
+                    <text x="305" y="85">Decide</text>
+                    <text x="470" y="85">Compra</text>
+                    <text x="640" y="85">Repite</text>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3: Pilar 2 -->
+        <article class="slide two-col" data-title="Datos">
+          <div>
+            <div class="tag anim d1"><span class="dot"></span> Pilar 2 · Datos & medición</div>
+            <h2 class="anim d2">Convertir datos en decisiones</h2>
+            <p class="anim d3">
+              Unificar señales (web/app/CRM/tienda) para habilitar <b>atribución pragmática</b>,
+              <b>segmentación útil</b> y <b>modelos predictivos</b> que priorizan inversión.
+            </p>
+
+            <div class="bullets anim d4">
+              <div class="bullet">
+                <i></i>
+                <div><b>North Star Metric + KPIs</b><em>Una métrica guía y 6–10 indicadores accionables.</em></div>
+              </div>
+              <div class="bullet">
+                <i></i>
+                <div><b>Customer 360 “lightweight”</b><em>Integración incremental: valor rápido, deuda bajo control.</em></div>
+              </div>
+              <div class="bullet">
+                <i></i>
+                <div><b>Analytics productizado</b><em>Dashboards como producto: ownership, SLOs, roadmap.</em></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="img-card anim d2" aria-label="Imagen: data pipeline y métricas">
+            <header>
+              <div class="mini"><span class="dot"></span><span>Arquitectura de datos</span></div>
+              <span class="pill">Medición</span>
+            </header>
+            <div class="svg-wrap">
+              <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de pipeline de datos y métricas">
+                <defs>
+                  <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="rgba(14,233,255,.75)"/>
+                    <stop offset=".55" stop-color="rgba(111,76,255,.70)"/>
+                    <stop offset="1" stop-color="rgba(255,92,163,.60)"/>
+                  </linearGradient>
+                  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="14"/>
+                  </filter>
+                </defs>
+
+                <rect width="800" height="600" fill="rgba(255,255,255,.02)"/>
+                <circle cx="160" cy="460" r="120" fill="url(#g2)" opacity=".22" filter="url(#soft)"/>
+                <circle cx="640" cy="120" r="120" fill="url(#g2)" opacity=".22" filter="url(#soft)"/>
+
+                <!-- Sources -->
+                <g transform="translate(70,120)" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.18)" stroke-width="2">
+                  <rect x="0" y="0" width="170" height="70" rx="16"/>
+                  <rect x="0" y="95" width="170" height="70" rx="16"/>
+                  <rect x="0" y="190" width="170" height="70" rx="16"/>
+                </g>
+                <g transform="translate(95,165)" fill="rgba(255,255,255,.78)" font-size="16">
+                  <text x="0" y="-18">Fuentes</text>
+                  <text x="0" y="0">Web/App</text>
+                  <text x="0" y="95">CRM</text>
+                  <text x="0" y="190">Tienda</text>
+                </g>
+
+                <!-- Pipeline -->
+                <g transform="translate(290,140)" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.16)" stroke-width="2">
+                  <rect x="0" y="0" width="210" height="90" rx="18"/>
+                  <rect x="0" y="130" width="210" height="90" rx="18"/>
+                </g>
+                <g transform="translate(315,195)" fill="rgba(255,255,255,.78)" font-size="16">
+                  <text x="0" y="-30">Plataforma</text>
+                  <text x="0" y="0">Integración</text>
+                  <text x="0" y="130">Modelos</text>
+                </g>
+
+                <!-- Outputs -->
+                <g transform="translate(560,160)" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.18)" stroke-width="2">
+                  <rect x="0" y="0" width="180" height="80" rx="18"/>
+                  <rect x="0" y="120" width="180" height="80" rx="18"/>
+                </g>
+                <g transform="translate(585,215)" fill="rgba(255,255,255,.78)" font-size="16">
+                  <text x="0" y="-30">Salida</text>
+                  <text x="0" y="0">Insights</text>
+                  <text x="0" y="120">Acción</text>
+                </g>
+
+                <!-- Arrows -->
+                <g stroke="url(#g2)" stroke-width="4" fill="none" stroke-linecap="round">
+                  <path d="M240,155 C260,155 270,165 290,185"/>
+                  <path d="M240,250 C260,250 270,245 290,225"/>
+                  <path d="M240,345 C260,345 270,315 290,270"/>
+                  <path d="M500,205 C520,205 540,205 560,200"/>
+                  <path d="M500,335 C520,335 540,320 560,300"/>
+                </g>
+
+                <!-- Metrics mini chart -->
+                <g transform="translate(250,420)">
+                  <rect x="0" y="0" width="500" height="140" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+                  <g transform="translate(28,24)" stroke="rgba(255,255,255,.22)" stroke-width="1">
+                    <line x1="0" y1="90" x2="440" y2="90"/>
+                    <line x1="0" y1="60" x2="440" y2="60" opacity=".55"/>
+                    <line x1="0" y1="30" x2="440" y2="30" opacity=".35"/>
+                  </g>
+                  <g transform="translate(28,28)" fill="url(#g2)">
+                    <rect x="10" y="54" width="40" height="60" rx="10"/>
+                    <rect x="70" y="34" width="40" height="80" rx="10"/>
+                    <rect x="130" y="24" width="40" height="90" rx="10"/>
+                    <rect x="190" y="44" width="40" height="70" rx="10"/>
+                    <rect x="250" y="18" width="40" height="96" rx="10"/>
+                  </g>
+                  <text x="28" y="24" fill="rgba(255,255,255,.72)" font-size="14">Métricas: conversión · LTV · churn</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 4: Pilar 3 -->
+        <article class="slide two-col" data-title="Operación">
+          <div>
+            <div class="tag anim d1"><span class="dot"></span> Pilar 3 · Operación & tecnología</div>
+            <h2 class="anim d2">Operar como una organización producto</h2>
+            <p class="anim d3">
+              Escalar la entrega con <b>equipos cross-funcionales</b>, plataforma común, y
+              <b>automatización/GenAI</b> para reducir fricción operativa y mejorar time-to-market.
+            </p>
+
+            <div class="bullets anim d4">
+              <div class="bullet">
+                <i></i>
+                <div><b>Roadmap por outcomes</b><em>Prioridad por valor: impacto, esfuerzo, riesgo.</em></div>
+              </div>
+              <div class="bullet">
+                <i></i>
+                <div><b>Arquitectura componible</b><em>API-first, modularidad, reutilización.</em></div>
+              </div>
+              <div class="bullet">
+                <i></i>
+                <div><b>IA en el flujo de trabajo</b><em>Asistentes, autoservicio, generación de contenido y soporte.</em></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="img-card anim d2" aria-label="Imagen: operating model y producto">
+            <header>
+              <div class="mini"><span class="dot"></span><span>Operating Model</span></div>
+              <span class="pill">Delivery</span>
+            </header>
+            <div class="svg-wrap">
+              <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de operating model y equipos producto">
+                <defs>
+                  <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="rgba(14,233,255,.70)"/>
+                    <stop offset=".55" stop-color="rgba(111,76,255,.70)"/>
+                    <stop offset="1" stop-color="rgba(255,92,163,.60)"/>
+                  </linearGradient>
+                </defs>
+                <rect width="800" height="600" fill="rgba(255,255,255,.02)"/>
+
+                <!-- Platform layer -->
+                <g transform="translate(90,390)">
+                  <rect x="0" y="0" width="620" height="130" rx="22" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+                  <text x="28" y="38" fill="rgba(255,255,255,.78)" font-size="16">Plataforma común</text>
+                  <g transform="translate(28,58)" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.14)" stroke-width="2">
+                    <rect x="0" y="0" width="170" height="52" rx="16"/>
+                    <rect x="190" y="0" width="170" height="52" rx="16"/>
+                    <rect x="380" y="0" width="170" height="52" rx="16"/>
+                  </g>
+                  <g transform="translate(46,92)" fill="rgba(255,255,255,.75)" font-size="14">
+                    <text x="0" y="0">Design System</text>
+                    <text x="190" y="0">CI/CD + QA</text>
+                    <text x="380" y="0">Data & IA</text>
+                  </g>
+                </g>
+
+                <!-- Product teams -->
+                <g transform="translate(120,120)">
+                  <rect x="0" y="0" width="560" height="230" rx="26" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+                  <text x="28" y="44" fill="rgba(255,255,255,.78)" font-size="16">Equipos producto (cross-funcionales)</text>
+
+                  <g transform="translate(28,70)" stroke="rgba(255,255,255,.16)" stroke-width="2" fill="rgba(255,255,255,.07)">
+                    <rect x="0" y="0" width="160" height="68" rx="18"/>
+                    <rect x="190" y="0" width="160" height="68" rx="18"/>
+                    <rect x="380" y="0" width="160" height="68" rx="18"/>
+
+                    <rect x="0" y="90" width="160" height="68" rx="18"/>
+                    <rect x="190" y="90" width="160" height="68" rx="18"/>
+                    <rect x="380" y="90" width="160" height="68" rx="18"/>
+                  </g>
+
+                  <g transform="translate(48,112)" fill="rgba(255,255,255,.78)" font-size="14">
+                    <text x="0" y="0">Adquisición</text>
+                    <text x="190" y="0">Checkout</text>
+                    <text x="380" y="0">CRM</text>
+                    <text x="0" y="90">Atención</text>
+                    <text x="190" y="90">Catálogo</text>
+                    <text x="380" y="90">Partners</text>
+                  </g>
+
+                  <!-- connectors -->
+                  <g stroke="url(#g3)" stroke-width="4" fill="none" stroke-linecap="round">
+                    <path d="M110,210 C110,280 150,300 180,390"/>
+                    <path d="M300,210 C300,290 310,310 320,390"/>
+                    <path d="M490,210 C490,280 490,310 500,390"/>
+                  </g>
+                </g>
+
+                <!-- Highlight -->
+                <circle cx="710" cy="120" r="55" fill="url(#g3)" opacity=".25"/>
+                <text x="650" y="210" fill="rgba(255,255,255,.70)" font-size="14">Time-to-market</text>
+                <text x="650" y="232" fill="rgba(255,255,255,.70)" font-size="14">↓ fricción</text>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 5: Conclusión -->
+        <article class="slide center" data-title="Conclusión">
+          <div class="tag anim d1"><span class="dot"></span> Conclusión</div>
+          <h2 class="anim d2">Plan 90 días: foco, ritmo y valor</h2>
+          <p class="anim d3">
+            Empieza pequeño, mide pronto y escala lo que funciona.
+            Prioriza iniciativas que conecten <b>impacto en negocio</b> con <b>capacidad operativa</b>.
+          </p>
+
+          <div class="bullets anim d4" style="max-width: 920px; width: 100%;">
+            <div class="bullet">
+              <i></i>
+              <div><b>Semana 1–2: diagnóstico rápido</b><em>North Star, fricciones del journey, mapa de datos y capacidades.</em></div>
+            </div>
+            <div class="bullet">
+              <i></i>
+              <div><b>Semana 3–6: quick wins</b><em>Experimentos de conversión, mejora de CRM, medición mínima viable.</em></div>
+            </div>
+            <div class="bullet">
+              <i></i>
+              <div><b>Semana 7–12: escalar</b><em>Operating model producto, backlog por outcomes, automatización/IA.</em></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="controls" aria-label="Controles de navegación">
+        <div class="btns">
+          <button id="prevBtn" type="button" aria-label="Anterior">← Anterior</button>
+          <button id="nextBtn" type="button" aria-label="Siguiente">Siguiente →</button>
+        </div>
+        <div class="dots" id="dots" aria-label="Indicadores de slide"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const slidesEl = document.getElementById("slides");
+      const progressBar = document.getElementById("progressBar");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const dotsEl = document.getElementById("dots");
+
+      const slideCount = slidesEl.children.length;
+      let idx = 0;
+
+      // Build dots
+      const dots = [];
+      for (let i = 0; i < slideCount; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.title = `Ir al slide ${i + 1}`;
+        b.setAttribute("aria-label", `Ir al slide ${i + 1}`);
+        b.addEventListener("click", () => goTo(i));
+        dotsEl.appendChild(b);
+        dots.push(b);
+      }
+
+      function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+      function goTo(n){
+        idx = clamp(n, 0, slideCount - 1);
+        slidesEl.style.transform = `translateX(${-idx * 100}%)`;
+        // progress: scaleX( (idx+1)/count )
+        progressBar.style.transform = `scaleX(${(idx + 1) / slideCount})`;
+
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === slideCount - 1;
+
+        dots.forEach((d, i) => d.setAttribute("aria-current", i === idx ? "true" : "false"));
+
+        // Restart per-slide intro animations (reflow trick)
+        const current = slidesEl.children[idx];
+        current.querySelectorAll(".anim").forEach(el => {
+          el.style.animation = "none";
+          // force reflow
+          void el.offsetHeight;
+          el.style.animation = "";
+        });
+
+        // Update document title with current slide label (nice for screen readers)
+        const label = current.getAttribute("data-title") || `Slide ${idx + 1}`;
+        document.title = `Estrategia Digital · ${label}`;
+      }
+
+      prevBtn.addEventListener("click", () => goTo(idx - 1));
+      nextBtn.addEventListener("click", () => goTo(idx + 1));
+
+      // Keyboard controls
+      window.addEventListener("keydown", (e) => {
+        const k = e.key;
+        if (k === "ArrowRight" || k === " " || k === "PageDown") { e.preventDefault(); goTo(idx + 1); }
+        if (k === "ArrowLeft"  || k === "PageUp") { e.preventDefault(); goTo(idx - 1); }
+        if (k === "Home") { e.preventDefault(); goTo(0); }
+        if (k === "End")  { e.preventDefault(); goTo(slideCount - 1); }
+      }, { passive: false });
+
+      // Swipe (simple)
+      let startX = null;
+      slidesEl.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, {passive:true});
+      slidesEl.addEventListener("touchend", (e) => {
+        if (startX == null) return;
+        const endX = e.changedTouches[0].clientX;
+        const dx = endX - startX;
+        if (Math.abs(dx) > 40) goTo(idx + (dx < 0 ? 1 : -1));
+        startX = null;
+      });
+
+      goTo(0);
+    })();
+  </script>
+</body>
+</html>
