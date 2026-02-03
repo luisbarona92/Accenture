@@ -1,0 +1,1406 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Viajes a medida por los Nuevos Tigres Asiáticos (ASEAN-6): Singapur, Tailandia, Vietnam, Malasia, Indonesia y Filipinas. Itinerarios boutique, guías locales y atención en español." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <title>Tigres Asiáticos | Viajes a medida por ASEAN-6</title>
+
+  <style>
+    /* ========== RESET (lightweight) ========== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(120, 209, 255, .7);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    /* ========== THEME ========== */
+    :root {
+      --bg0: #070a12;
+      --bg1: #0b1220;
+      --card: rgba(255, 255, 255, .08);
+      --card2: rgba(255, 255, 255, .10);
+      --stroke: rgba(255, 255, 255, .14);
+      --stroke2: rgba(255, 255, 255, .22);
+      --txt: rgba(255, 255, 255, .92);
+      --muted: rgba(255, 255, 255, .68);
+      --muted2: rgba(255, 255, 255, .52);
+
+      --accent: #7ee7ff;
+      --accent2: #a78bfa;
+      --accent3: #22c55e;
+      --warn: #fb7185;
+
+      --shadow: 0 18px 60px rgba(0, 0, 0, .35);
+      --shadow2: 0 10px 30px rgba(0, 0, 0, .28);
+
+      --r-xl: 24px;
+      --r-lg: 18px;
+      --r-md: 14px;
+
+      --max: 1160px;
+    }
+
+    body {
+      color: var(--txt);
+      /* Traveler style background: Dark map with gradient overlay */
+      background-color: var(--bg0);
+      background-image:
+        linear-gradient(180deg, rgba(7, 10, 18, 0.85), rgba(11, 18, 32, 0.92)),
+        url('bg_travel.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      overflow-x: hidden;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none !important;
+      }
+
+      .shine::after {
+        animation: none !important;
+      }
+    }
+
+    /* ========== LAYOUT ========== */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .two {
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+    }
+
+    .three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .six {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (max-width: 980px) {
+      .two {
+        grid-template-columns: 1fr;
+      }
+
+      .three {
+        grid-template-columns: 1fr;
+      }
+
+      .six {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .six {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7, 10, 18, .78), rgba(7, 10, 18, .35));
+      border-bottom: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: conic-gradient(from 210deg, rgba(126, 231, 255, .95), rgba(167, 139, 250, .95), rgba(34, 197, 94, .9), rgba(126, 231, 255, .95));
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .50), transparent 60%);
+      transform: rotate(25deg);
+      opacity: .7;
+    }
+
+    .brand b {
+      letter-spacing: .2px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted2);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, .08);
+      color: var(--txt);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .06);
+      color: var(--txt);
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .20);
+      transition: transform .12s ease, background .2s ease, border .2s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, .10);
+      border-color: rgba(255, 255, 255, .22);
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      border: none;
+      background: linear-gradient(135deg, rgba(126, 231, 255, .95), rgba(167, 139, 250, .85));
+      color: rgba(9, 10, 14, .92);
+      box-shadow: 0 18px 45px rgba(126, 231, 255, .14);
+      font-weight: 700;
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-1px) scale(1.01);
+    }
+
+    .btn.ghost {
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .hamb {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamb {
+        display: inline-flex;
+      }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 48px 0 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .06);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, .95);
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, .18);
+    }
+
+    h1 {
+      font-size: clamp(34px, 4.3vw, 56px);
+      line-height: 1.04;
+      margin: 16px 0 10px;
+      letter-spacing: -0.6px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.55;
+      margin: 0 0 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .trust {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .trust span {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, .10);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    /* Hero card */
+    .hero-card {
+      border-radius: var(--r-xl);
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .06));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine::after {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -50%;
+      width: 80%;
+      height: 220%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent);
+      transform: rotate(18deg);
+      animation: sweep 4.8s ease-in-out infinite;
+      opacity: .65;
+      pointer-events: none;
+    }
+
+    @keyframes sweep {
+      0% {
+        transform: translateX(-30%) rotate(18deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: .75;
+      }
+
+      55% {
+        transform: translateX(170%) rotate(18deg);
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .mini-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(0, 0, 0, .18);
+      padding: 10px 12px;
+      color: var(--txt);
+      transition: border .2s ease, transform .12s ease;
+    }
+
+    .field:focus {
+      border-color: rgba(126, 231, 255, .55);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .form-note {
+      color: var(--muted2);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    /* ========== SECTION TITLES ========== */
+    .kicker {
+      color: rgba(126, 231, 255, .82);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .h2 {
+      font-size: clamp(24px, 2.6vw, 36px);
+      margin: 10px 0 10px;
+      letter-spacing: -0.4px;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin: 0 0 18px;
+      line-height: 1.6;
+    }
+
+    /* ========== CARDS ========== */
+    .card {
+      border-radius: var(--r-lg);
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .06);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .18s ease, background .22s ease, border .22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, .085);
+      border-color: rgba(255, 255, 255, .20);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(0, 0, 0, .14);
+    }
+
+    .tag .t {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(126, 231, 255, .92);
+      box-shadow: 0 0 0 5px rgba(126, 231, 255, .12);
+    }
+
+    .card h3 {
+      margin: 12px 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* ========== DESTINATION ICONS ========== */
+    .flag {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(126, 231, 255, .25), rgba(167, 139, 250, .25));
+      border: 1px solid rgba(255, 255, 255, .14);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
+      font-size: 18px;
+    }
+
+    /* ========== ITINERARIES ========== */
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 18px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .06);
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform .12s ease, background .2s ease, border .2s ease, color .2s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .10);
+      border-color: rgba(255, 255, 255, .22);
+      color: var(--txt);
+    }
+
+    .chip.active {
+      background: linear-gradient(135deg, rgba(126, 231, 255, .90), rgba(167, 139, 250, .78));
+      color: rgba(9, 10, 14, .92);
+      border: none;
+      font-weight: 700;
+    }
+
+    .it-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 240px;
+    }
+
+    .it-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    .meta span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(0, 0, 0, .10);
+    }
+
+    .price {
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      background: linear-gradient(135deg, rgba(34, 197, 94, .95), rgba(126, 231, 255, .85));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .it-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .num {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: rgba(9, 10, 14, .92);
+      background: linear-gradient(135deg, rgba(126, 231, 255, .95), rgba(167, 139, 250, .85));
+      box-shadow: 0 18px 45px rgba(126, 231, 255, .10);
+      flex: 0 0 auto;
+    }
+
+    .step p {
+      margin: 6px 0 0;
+    }
+
+    /* ========== FAQ ========== */
+    details {
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .05);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .88);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .chev {
+      opacity: .75;
+      transition: transform .18s ease;
+    }
+
+    details[open] .chev {
+      transform: rotate(180deg);
+    }
+
+    details p {
+      color: var(--muted);
+      margin: 10px 0 0;
+      line-height: 1.6;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(0, 0, 0, .12);
+      padding: 30px 0;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .links a:hover {
+      background: rgba(255, 255, 255, .08);
+      color: var(--txt);
+    }
+
+    /* ========== REVEAL ANIMATION ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== MOBILE MENU ========== */
+    .drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      backdrop-filter: blur(8px);
+      z-index: 80;
+      padding: 18px;
+    }
+
+    .drawer.open {
+      display: block;
+    }
+
+    .drawer-card {
+      max-width: 520px;
+      margin: 0 auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(15, 18, 30, .92);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    .drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 6px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .drawer-links {
+      display: grid;
+      gap: 8px;
+      padding: 12px 6px 6px;
+    }
+
+    .drawer-links a {
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .05);
+      color: rgba(255, 255, 255, .86);
+    }
+
+    .drawer-links a:hover {
+      background: rgba(255, 255, 255, .09);
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Inicio Tigres Asiáticos Travel">
+        <span class="logo" aria-hidden="true"></span>
+        <span>
+          <b>Tigres Asiáticos Travel</b>
+          <small>Viajes a medida por ASEAN-6</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#destinos">Destinos</a>
+        <a href="#itinerarios">Itinerarios</a>
+        <a href="#metodo">Cómo funciona</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn ghost hamb" id="openMenu" aria-label="Abrir menú">☰</button>
+        <a class="btn" href="#itinerarios">Ver ideas</a>
+        <a class="btn primary" href="#contacto">Diseñar mi viaje</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menú">
+    <div class="drawer-card">
+      <div class="drawer-top">
+        <div class="brand">
+          <span class="logo" aria-hidden="true" style="width:32px;height:32px;border-radius:12px;"></span>
+          <b>Menú</b>
+        </div>
+        <button class="btn" id="closeMenu" aria-label="Cerrar menú">Cerrar</button>
+      </div>
+      <div class="drawer-links">
+        <a href="#destinos" data-close>Destinos</a>
+        <a href="#itinerarios" data-close>Itinerarios</a>
+        <a href="#metodo" data-close>Cómo funciona</a>
+        <a href="#opiniones" data-close>Opiniones</a>
+        <a href="#faq" data-close>FAQ</a>
+        <a href="#contacto" data-close class="btn primary" style="justify-content:center; padding:12px 14px;">Diseñar mi
+          viaje</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main id="top" class="wrap hero">
+    <div class="grid two">
+      <div class="reveal">
+        <div class="pill">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Especialistas en los <b>“nuevos tigres asiáticos”</b>: Singapur, Tailandia, Vietnam, Malasia, Indonesia
+            y Filipinas.</span>
+        </div>
+
+        <h1>Viajes a medida por el Sudeste Asiático que está “despegando”.</h1>
+        <p class="lead">
+          Diseñamos itinerarios boutique con guías locales, logística impecable y experiencias que encajan con tu
+          estilo:
+          gastronomía, naturaleza, islas, cultura urbana y rutas multi-país.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contacto">Hablar con un especialista</a>
+          <a class="btn" href="#itinerarios">Ver ideas de viaje</a>
+        </div>
+
+        <div class="trust" aria-label="Sellos de confianza">
+          <span>✅ Atención en español</span>
+          <span>🧭 Itinerario 100% personalizado</span>
+          <span>📍 Guías y partners locales</span>
+          <span>🔒 Pago seguro y documentación</span>
+        </div>
+      </div>
+
+      <aside class="hero-card shine reveal" aria-label="Formulario rápido">
+        <div class="tag"><span class="t" aria-hidden="true"></span>Respuesta en 24h laborables</div>
+        <h3 style="margin:12px 0 6px;">Cuéntanos tu idea (1 minuto)</h3>
+        <p style="color:var(--muted); margin:0 0 10px; line-height:1.55; font-size:14px;">
+          Te devolvemos una propuesta con ruta, tiempos, categoría hotelera y estimación de coste.
+        </p>
+
+        <form class="mini-form" id="quickForm">
+          <div class="row">
+            <input class="field" name="nombre" placeholder="Nombre" autocomplete="name" required />
+            <input class="field" name="email" type="email" placeholder="Email" autocomplete="email" required />
+          </div>
+          <div class="row">
+            <select class="field" name="destino" required>
+              <option value="" selected disabled>Destino principal</option>
+              <option>Singapur</option>
+              <option>Tailandia</option>
+              <option>Vietnam</option>
+              <option>Malasia</option>
+              <option>Indonesia</option>
+              <option>Filipinas</option>
+              <option>Multi-país</option>
+            </select>
+            <select class="field" name="estilo" required>
+              <option value="" selected disabled>Estilo</option>
+              <option>Equilibrado</option>
+              <option>Lujo tranquilo</option>
+              <option>Aventura soft</option>
+              <option>Food & cities</option>
+              <option>Islas & relax</option>
+            </select>
+          </div>
+          <button class="btn primary" type="submit">Quiero una propuesta</button>
+          <div class="form-note">
+            * Este formulario es demo. Puedes conectarlo a tu CRM o enviarlo por email/WhatsApp desde el backend.
+          </div>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <!-- DESTINOS -->
+  <section id="destinos" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">Destinos ASEAN-6</div>
+        <div class="h2">Los “nuevos tigres asiáticos”, en versión viaje</div>
+        <p class="sub">Seis países, seis estilos. Combínalos como piezas Lego: ciudad + cultura + naturaleza + islas.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card reveal">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="flag" aria-hidden="true">🇸🇬</div>
+            <div>
+              <div class="tag"><span class="t"></span>Hub urbano</div>
+              <h3>Singapur</h3>
+            </div>
+          </div>
+          <p>Arquitectura, rooftops, hawker centres y una logística perfecta para empezar o cerrar una ruta multi-país.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="flag" aria-hidden="true">🇹🇭</div>
+            <div>
+              <div class="tag"><span class="t"></span>Primer viaje ideal</div>
+              <h3>Tailandia</h3>
+            </div>
+          </div>
+          <p>Bangkok + norte cultural + playas. Mucha variedad, excelente relación calidad-precio y ritmo fácil.</p>
+        </article>
+
+        <article class="card reveal">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="flag" aria-hidden="true">🇻🇳</div>
+            <div>
+              <div class="tag"><span class="t"></span>Cultura & paisajes</div>
+              <h3>Vietnam</h3>
+            </div>
+          </div>
+          <p>Ciudades con energía, arrozales, bahías y gastronomía top. Perfecto para un viaje con contenido.</p>
+        </article>
+
+        <article class="card reveal">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="flag" aria-hidden="true">🇲🇾</div>
+            <div>
+              <div class="tag"><span class="t"></span>Mix multicultural</div>
+              <h3>Malasia</h3>
+            </div>
+          </div>
+          <p>Kuala Lumpur, Penang foodie y selva. Muy buen puente entre ciudad y naturaleza (Borneo opcional).</p>
+        </article>
+
+        <article class="card reveal">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="flag" aria-hidden="true">🇮🇩</div>
+            <div>
+              <div class="tag"><span class="t"></span>Islas infinitas</div>
+              <h3>Indonesia</h3>
+            </div>
+          </div>
+          <p>Bali bien hecha (sin cliché), Java cultural, Komodo y snorkel. Ideal para combinar relax y exploración.</p>
+        </article>
+
+        <article class="card reveal">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="flag" aria-hidden="true">🇵🇭</div>
+            <div>
+              <div class="tag"><span class="t"></span>Playas & mar</div>
+              <h3>Filipinas</h3>
+            </div>
+          </div>
+          <p>Island hopping, lagunas, buceo y resorts. Requiere buena logística: ahí es donde más aportamos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARIOS -->
+  <section id="itinerarios" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">Ideas (personalizables)</div>
+        <div class="h2">Itinerarios de inspiración, creados para ajustarse a ti</div>
+        <p class="sub">
+          Úsalos como punto de partida: fechas, ritmo, hoteles y experiencias se diseñan a medida.
+          Las cifras son orientativas (temporada, antelación y nivel de hotel cambian mucho el precio).
+        </p>
+      </div>
+
+      <div class="filters reveal" role="tablist" aria-label="Filtros de itinerarios">
+        <button class="chip active" data-filter="all" role="tab" aria-selected="true">Todo</button>
+        <button class="chip" data-filter="singapur" role="tab">Singapur</button>
+        <button class="chip" data-filter="tailandia" role="tab">Tailandia</button>
+        <button class="chip" data-filter="vietnam" role="tab">Vietnam</button>
+        <button class="chip" data-filter="malasia" role="tab">Malasia</button>
+        <button class="chip" data-filter="indonesia" role="tab">Indonesia</button>
+        <button class="chip" data-filter="filipinas" role="tab">Filipinas</button>
+        <button class="chip" data-filter="multi" role="tab">Multi-país</button>
+      </div>
+
+      <div class="grid three" id="itGrid">
+        <!-- Card 1 -->
+        <article class="card it-card reveal" data-tags="vietnam">
+          <div class="it-head">
+            <div>
+              <div class="tag"><span class="t"></span>Cultura + naturaleza</div>
+              <h3>Vietnam esencial (12 días)</h3>
+              <div class="meta">
+                <span>Hanói</span><span>Ninh Binh</span><span>Ha Long</span><span>Hoi An</span><span>Saigón</span>
+              </div>
+            </div>
+            <div class="price">desde 2.150€</div>
+          </div>
+          <p>Ritmo equilibrado, experiencias locales y buenos hoteles boutique. Perfecto para primera vez en Vietnam.
+          </p>
+          <div class="it-actions">
+            <button class="btn" data-open="contacto" data-preset="Vietnam esencial (12 días)">Quiero esta ruta</button>
+            <button class="btn" data-open="contacto"
+              data-preset="Vietnam esencial (12 días) + upgrade hotel">Upgrade</button>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card it-card reveal" data-tags="tailandia">
+          <div class="it-head">
+            <div>
+              <div class="tag"><span class="t"></span>Primer viaje</div>
+              <h3>Tailandia clásica sin prisas (11 días)</h3>
+              <div class="meta">
+                <span>Bangkok</span><span>Ayutthaya</span><span>Chiang Mai</span><span>Krabi</span>
+              </div>
+            </div>
+            <div class="price">desde 1.980€</div>
+          </div>
+          <p>Templos, mercados, cocina y 3 noches de playa. Con guía privado en días clave.</p>
+          <div class="it-actions">
+            <button class="btn" data-open="contacto" data-preset="Tailandia clásica sin prisas (11 días)">Quiero esta
+              ruta</button>
+            <a class="btn" href="#faq">Dudas típicas</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card it-card reveal" data-tags="indonesia">
+          <div class="it-head">
+            <div>
+              <div class="tag"><span class="t"></span>Islas & calma</div>
+              <h3>Bali bien hecha (10 días)</h3>
+              <div class="meta">
+                <span>Ubud</span><span>Sidemen</span><span>Nusa Dua</span><span>Templos</span>
+              </div>
+            </div>
+            <div class="price">desde 2.250€</div>
+          </div>
+          <p>Ruta pensada para evitar saturación: experiencias auténticas, villas tranquilas y buen ritmo.</p>
+          <div class="it-actions">
+            <button class="btn" data-open="contacto" data-preset="Bali bien hecha (10 días)">Quiero esta ruta</button>
+            <button class="btn" data-open="contacto" data-preset="Bali + Komodo (14 días)">Añadir Komodo</button>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card it-card reveal" data-tags="multi">
+          <div class="it-head">
+            <div>
+              <div class="tag"><span class="t"></span>Multi-país</div>
+              <h3>Singapur + Malasia foodie (9 días)</h3>
+              <div class="meta">
+                <span>Singapur</span><span>Kuala Lumpur</span><span>Penang</span><span>Malaca</span>
+              </div>
+            </div>
+            <div class="price">desde 2.090€</div>
+          </div>
+          <p>Una ruta urbana y gastronómica, ideal como “capítulo 1” antes de terminar en islas (Bali/Filipinas).</p>
+          <div class="it-actions">
+            <button class="btn" data-open="contacto" data-preset="Singapur + Malasia foodie (9 días)">Quiero esta
+              ruta</button>
+            <button class="btn" data-open="contacto" data-preset="Singapur + Malasia + playa (12 días)">Añadir
+              playa</button>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card it-card reveal" data-tags="filipinas">
+          <div class="it-head">
+            <div>
+              <div class="tag"><span class="t"></span>Mar & buceo</div>
+              <h3>Filipinas island hopping (13 días)</h3>
+              <div class="meta">
+                <span>El Nido</span><span>Coron</span><span>Cebu</span><span>Resort</span>
+              </div>
+            </div>
+            <div class="price">desde 2.780€</div>
+          </div>
+          <p>Perfecto si priorizas lagunas, snorkel y resorts. Incluye conexiones internas optimizadas.</p>
+          <div class="it-actions">
+            <button class="btn" data-open="contacto" data-preset="Filipinas island hopping (13 días)">Quiero esta
+              ruta</button>
+            <button class="btn" data-open="contacto" data-preset="Filipinas (13 días) + buceo">Añadir buceo</button>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card it-card reveal" data-tags="vietnam multi">
+          <div class="it-head">
+            <div>
+              <div class="tag"><span class="t"></span>Multi-país</div>
+              <h3>Vietnam + Tailandia (16 días)</h3>
+              <div class="meta">
+                <span>Hanói</span><span>Hoi An</span><span>Bangkok</span><span>Chiang Mai</span><span>Playa</span>
+              </div>
+            </div>
+            <div class="price">desde 3.350€</div>
+          </div>
+          <p>Dos países, un relato coherente: cultura + gastronomía + naturaleza + final relax.</p>
+          <div class="it-actions">
+            <button class="btn" data-open="contacto" data-preset="Vietnam + Tailandia (16 días)">Quiero esta
+              ruta</button>
+            <a class="btn" href="#metodo">Ver método</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">Proceso</div>
+        <div class="h2">Cómo lo hacemos (sin fricción)</div>
+        <p class="sub">El objetivo: que tú decidas el “qué” y nosotros resolvamos el “cómo” con precisión.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card step reveal">
+          <div class="num">1</div>
+          <div>
+            <h3>Brief de 15 minutos</h3>
+            <p>Fechas, ritmo, intereses y categoría hotelera. Si ya tienes vuelos, optimizamos alrededor de eso.</p>
+          </div>
+        </div>
+        <div class="card step reveal">
+          <div class="num">2</div>
+          <div>
+            <h3>Propuesta en 48–72h</h3>
+            <p>Ruta, tiempos, hoteles sugeridos, experiencias y estimación de coste por escenarios (base / confort /
+              premium).</p>
+          </div>
+        </div>
+        <div class="card step reveal">
+          <div class="num">3</div>
+          <div>
+            <h3>Reservas + soporte</h3>
+            <p>Reservamos, documentamos y te acompañamos antes y durante el viaje (incidencias, cambios,
+              recomendaciones).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIONES -->
+  <section id="opiniones" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">Prueba social</div>
+        <div class="h2">Opiniones que hablan de ejecución</div>
+        <p class="sub">La diferencia no es “tener destinos”; es clavar la logística y el diseño del ritmo.</p>
+      </div>
+
+      <div class="grid three">
+        <article class="card reveal">
+          <div class="tag"><span class="t"></span>Ruta multi-país</div>
+          <h3>“Cero fricción, todo encajó”</h3>
+          <p>“Conexiones internas, traslados y hoteles: impecable. El ritmo era exactamente lo que queríamos.”</p>
+          <p style="margin-top:10px; color:rgba(255,255,255,.78); font-size:13px;">— Marta, viaje Singapur + Malasia +
+            Bali</p>
+        </article>
+        <article class="card reveal">
+          <div class="tag"><span class="t"></span>Primera vez</div>
+          <h3>“Nos ahorraron errores típicos”</h3>
+          <p>“Nos propusieron días clave con guía y otros libres. Experiencias auténticas sin ir corriendo.”</p>
+          <p style="margin-top:10px; color:rgba(255,255,255,.78); font-size:13px;">— Diego, Tailandia 11 días</p>
+        </article>
+        <article class="card reveal">
+          <div class="tag"><span class="t"></span>Islas</div>
+          <h3>“Filipinas bien planificada es otra cosa”</h3>
+          <p>“Con las combinaciones de vuelos/barcos es fácil liarla. Aquí estaba todo pensado.”</p>
+          <p style="margin-top:10px; color:rgba(255,255,255,.78); font-size:13px;">— Laura, Filipinas 13 días</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <div class="wrap">
+      <div class="grid two">
+        <div class="reveal">
+          <div class="kicker">Contacto</div>
+          <div class="h2">Diseñemos tu viaje</div>
+          <p class="sub">
+            Si ya tienes idea de fechas y destinos, genial. Si no, también: te guiamos con preguntas simples
+            para aterrizar una ruta realista (y bonita).
+          </p>
+
+          <div class="card" style="margin-top:16px;">
+            <div class="tag"><span class="t"></span>Transparencia</div>
+            <p style="margin-top:10px;">
+              No “encajamos” un paquete: construimos tu viaje desde cero. Por eso verás precios orientativos
+              y una propuesta final tras entender tu contexto.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" style="padding:18px;">
+          <form id="leadForm" class="mini-form" aria-label="Formulario de contacto">
+            <div class="row">
+              <input class="field" name="nombre" placeholder="Nombre y apellidos" autocomplete="name" required />
+              <input class="field" name="email" type="email" placeholder="Email" autocomplete="email" required />
+            </div>
+            <div class="row">
+              <input class="field" name="whatsapp" placeholder="WhatsApp (opcional)" autocomplete="tel" />
+              <select class="field" name="pais" required>
+                <option value="" selected disabled>País principal</option>
+                <option>Singapur</option>
+                <option>Tailandia</option>
+                <option>Vietnam</option>
+                <option>Malasia</option>
+                <option>Indonesia</option>
+                <option>Filipinas</option>
+                <option>Multi-país</option>
+              </select>
+            </div>
+            <div class="row">
+              <input class="field" name="fechas" placeholder="Fechas aproximadas (ej. mayo 2026)" required />
+              <select class="field" name="presupuesto" required>
+                <option value="" selected disabled>Presupuesto por persona</option>
+                <option>1.500€ – 2.500€</option>
+                <option>2.500€ – 4.000€</option>
+                <option>4.000€ – 6.000€</option>
+                <option>6.000€+</option>
+              </select>
+            </div>
+            <textarea class="field" name="preferencias" rows="4"
+              placeholder="Preferencias: ritmo, tipo de hotel, experiencias, restricciones, etc." required></textarea>
+
+            <button class="btn primary" type="submit">Enviar y recibir propuesta</button>
+
+            <div class="form-note">
+              Demo sin backend. Conecta este formulario a tu API/CRM, o reemplaza el submit por un enlace a WhatsApp.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">FAQ</div>
+        <div class="h2">Preguntas frecuentes</div>
+        <p class="sub">Las dudas que más se repiten cuando alguien quiere hacer un “multi-país” bien pensado.</p>
+      </div>
+
+      <div class="grid" style="gap:12px;">
+        <details class="reveal">
+          <summary>¿Cuál es el mejor primer destino si no he estado nunca? <span class="chev">⌄</span></summary>
+          <p>
+            Normalmente Tailandia o Vietnam (gran variedad y logística sencilla). Si buscas algo más urbano y “premium”,
+            empieza por Singapur y combina después con playas.
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Qué diferencia un viaje a medida de un circuito? <span class="chev">⌄</span></summary>
+          <p>
+            Ritmo, coherencia y ajustes finos: menos cambios innecesarios de hotel, mejores conexiones internas
+            y días con guía solo cuando aporta valor (no por defecto).
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Necesito visados o vacunas? <span class="chev">⌄</span></summary>
+          <p>
+            Depende del pasaporte, país y duración. Te indicaremos requisitos actualizados y cómo gestionarlos
+            en la fase de documentación.
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>¿Cómo se controla el presupuesto sin perder calidad? <span class="chev">⌄</span></summary>
+          <p>
+            Ajustando 3 palancas: categoría hotelera, vuelos internos/horarios y número de “experiencias premium”.
+            Diseñamos 2–3 escenarios para que elijas con claridad.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <b style="color:rgba(255,255,255,.84);">Tigres Asiáticos Travel</b>
+        <div style="margin-top:6px;">© <span id="y"></span> · Web demo para turismo especializado ASEAN-6</div>
+      </div>
+      <div class="links" aria-label="Enlaces legales">
+        <a href="#" onclick="alert('Demo: enlaza aquí tu Aviso Legal'); return false;">Aviso legal</a>
+        <a href="#" onclick="alert('Demo: enlaza aquí tu Política de privacidad'); return false;">Privacidad</a>
+        <a href="#" onclick="alert('Demo: enlaza aquí tu Política de cookies'); return false;">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Helpers
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+    // ===== Smooth scroll for internal anchors
+    $$('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ===== Reveal on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) en.target.classList.add('in');
+      });
+    }, { threshold: 0.14 });
+
+    $$('.reveal').forEach(el => obs.observe(el));
+
+    // ===== Itinerary filters
+    const chips = $$('.chip');
+    const cards = $$('#itGrid .it-card');
+
+    function setActiveChip(target) {
+      chips.forEach(c => c.classList.remove('active'));
+      target.classList.add('active');
+      chips.forEach(c => c.setAttribute('aria-selected', c === target ? 'true' : 'false'));
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const f = chip.dataset.filter;
+        setActiveChip(chip);
+
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || '').split(/\s+/).filter(Boolean);
+          const show = (f === 'all') || tags.includes(f);
+          card.style.display = show ? 'flex' : 'none';
+        });
+      });
+    });
+
+    // ===== Prefill contact form from itinerary CTA
+    $$('[data-open="contacto"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = btn.dataset.preset || '';
+        const prefs = $('#leadForm textarea[name="preferencias"]');
+        if (prefs && preset) {
+          const base = prefs.value.trim();
+          prefs.value = base ? (base + "\n\nRuta de interés: " + preset) : ("Ruta de interés: " + preset);
+        }
+        document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        $('#leadForm input[name="nombre"]').focus({ preventScroll: true });
+      });
+    });
+
+    // ===== Mobile menu
+    const drawer = $('#drawer');
+    $('#openMenu').addEventListener('click', () => drawer.classList.add('open'));
+    $('#closeMenu').addEventListener('click', () => drawer.classList.remove('open'));
+    drawer.addEventListener('click', (e) => {
+      if (e.target === drawer) drawer.classList.remove('open');
+    });
+    $$('[data-close]').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+    // ===== Form demo submits
+    function fakeSubmit(form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        alert("Demo: aquí enviarías esto a tu backend/CRM.\n\n" + JSON.stringify(data, null, 2));
+        form.reset();
+      });
+    }
+    fakeSubmit($('#quickForm'));
+    fakeSubmit($('#leadForm'));
+
+    // ===== Footer year
+    $('#y').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
