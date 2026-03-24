@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  MAS Orange · Canal Integrador · Weekly PMO Dashboard        ║
+  ║  PLANTILLA REUTILIZABLE — actualizar DATA_CONFIG para        ║
+  ║  reflejar un nuevo PMO. El resto del layout se adapta solo.  ║
+  ╚══════════════════════════════════════════════════════════════╝
+  INSTRUCCIONES DE ACTUALIZACIÓN:
+  1. Modifica el bloque DATA_CONFIG con los nuevos datos del PPT
+  2. Actualiza el número de sesión y fecha en META
+  3. Los arrays de integradores y tareas se actualizan en DATA_CONFIG
+  4. No toques el CSS ni el JS de renderizado — solo los datos
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canal Integrador · Weekly PMO #15 · MasOrange</title>
+<style>
+/* ══════════════════════════════════ BASE */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --or:#FF6600;--or-lt:#FF8A3D;--or-bg:#FFF3EB;--or-dk:#CC4400;
+  --bg:#F4F5F7;--card:#FFFFFF;
+  --ink:#111827;--ink2:#374151;--ink3:#6B7280;--ink4:#9CA3AF;
+  --line:#E5E7EB;--line2:#D1D5DB;
+  --green:#059669;--green-bg:#ECFDF5;
+  --amber:#D97706;--amber-bg:#FFFBEB;
+  --red:#DC2626;--red-bg:#FEF2F2;
+  --blue:#1D6FB8;--blue-bg:#EFF6FF;
+  --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 8px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.1);
+  --r:10px;--font:'Segoe UI',system-ui,-apple-system,sans-serif
+}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--or)}
+
+/* ══════════════════════════════════ TOPBAR */
+.topbar{
+  height:60px;background:#0F1117;
+  display:flex;align-items:center;padding:0 28px;gap:20px;
+  position:sticky;top:0;z-index:500;
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+/* LOGO SVG del proyecto */
+.proj-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
+.proj-logo-mark{
+  width:34px;height:34px;flex-shrink:0;
+  background:var(--or);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden
+}
+/* Símbolo del logo: red de nodos (canal integrador) */
+.proj-logo-mark svg{width:22px;height:22px}
+.proj-logo-text{line-height:1.2}
+.plt-top{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.2px}
+.plt-bot{font-size:10px;color:rgba(255,255,255,.4);font-weight:400;letter-spacing:.2px}
+
+.topbar-sep{width:1px;height:28px;background:rgba(255,255,255,.1);flex-shrink:0}
+
+.topbar-nav{display:flex;gap:2px;flex:1;justify-content:center}
+.tnav{
+  padding:7px 14px;border-radius:6px;
+  font-size:12.5px;font-weight:500;
+  color:rgba(255,255,255,.45);
+  background:transparent;border:none;cursor:pointer;
+  transition:color .15s,background .15s;white-space:nowrap
+}
+.tnav:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06)}
+.tnav.on{background:var(--or);color:#fff;font-weight:600}
+
+.topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.pmo-badge{
+  font-size:11px;font-weight:700;letter-spacing:.4px;
+  padding:4px 12px;border-radius:99px;
+  border:1px solid rgba(255,102,0,.5);
+  color:var(--or);background:rgba(255,102,0,.1)
+}
+.date-lbl{font-size:11px;color:rgba(255,255,255,.3)}
+
+/* ══════════════════════════════════ SECCIONES */
+.sec{display:none;padding:26px 28px 56px;max-width:1440px;margin:0 auto}
+.sec.on{display:block;animation:up .25s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════ SECTION HEADER */
+.sh{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sh-slide{display:none}
+.sh-title{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px}
+
+/* ══════════════════════════════════ CARDS */
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:clip}
+/* clip preserva border-radius sin crear contexto de apilamiento que rompe sticky */
+.card-h{
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:12px
+}
+.card-title{font-size:13px;font-weight:600;color:var(--ink)}
+.card-sub{font-size:12px;color:var(--ink3)}
+.card-b{padding:18px}
+
+/* ══════════════════════════════════ KPI ROW */
+.krow{display:flex;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.kcard{
+  flex:1;min-width:150px;
+  background:var(--card);border-radius:var(--r);
+  padding:18px 20px;box-shadow:var(--shadow);
+  border-top:3px solid var(--line2);
+  transition:box-shadow .2s,transform .2s
+}
+.kcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.kcard.k-or{border-top-color:var(--or)}
+.kcard.k-gr{border-top-color:var(--green)}
+.kcard.k-am{border-top-color:var(--amber)}
+.kcard.k-rd{border-top-color:var(--red)}
+.kcard.k-bl{border-top-color:var(--blue)}
+.k-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);margin-bottom:8px}
+.k-num{font-size:38px;font-weight:800;line-height:1;letter-spacing:-1.5px}
+.kcard.k-or .k-num{color:var(--or)}
+.kcard.k-gr .k-num{color:var(--green)}
+.kcard.k-am .k-num{color:var(--amber)}
+.kcard.k-rd .k-num{color:var(--red)}
+.kcard.k-bl .k-num{color:var(--blue)}
+.k-sub{font-size:11.5px;color:var(--ink3);margin-top:5px;line-height:1.4}
+.k-delta{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:11px;font-weight:600;margin-top:6px;
+  padding:2px 8px;border-radius:99px
+}
+.kd-up{background:var(--green-bg);color:var(--green)}
+.kd-dn{background:var(--red-bg);color:var(--red)}
+
+/* ══════════════════════════════════ PORTADA */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:40px 20px
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--or-bg);border:1px solid rgba(255,102,0,.25);color:var(--or-dk);
+  font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  padding:6px 18px;border-radius:99px;margin-bottom:24px
+}
+.hero-badge b{width:6px;height:6px;background:var(--or);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-logo{margin-bottom:24px}
+.hero h1{
+  font-size:clamp(26px,3.8vw,50px);font-weight:800;line-height:1.15;
+  letter-spacing:-.8px;color:var(--ink);max-width:780px;margin-bottom:8px
+}
+.hero h1 em{color:var(--or);font-style:normal}
+.hero-sub{font-size:14px;color:var(--ink3);margin-bottom:40px;max-width:480px;line-height:1.6}
+
+/* KPI grid portada 3+3 */
+.hero-kgrid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;width:100%;max-width:860px;margin-bottom:40px
+}
+.hk{
+  background:var(--card);border-radius:12px;padding:20px 16px;
+  box-shadow:var(--shadow-lg);text-align:center;
+  transition:transform .2s,box-shadow .2s;cursor:default
+}
+.hk:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.13)}
+.hk-num{font-size:44px;font-weight:800;line-height:1;letter-spacing:-2px}
+.hk-num.c-or{color:var(--or)}
+.hk-num.c-gr{color:var(--green)}
+.hk-num.c-am{color:var(--amber)}
+.hk-num.c-bl{color:var(--blue)}
+.hk-lbl{font-size:11px;color:var(--ink3);margin-top:5px;font-weight:500;line-height:1.4}
+.hk-line{width:24px;height:2px;margin:8px auto 0;border-radius:2px}
+.hl-or{background:var(--or)}
+.hl-gr{background:var(--green)}
+.hl-am{background:var(--amber)}
+.hl-bl{background:var(--blue)}
+
+/* Agenda nav portada */
+.hero-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:680px;width:100%}
+.hnav-item{
+  background:var(--card);border:1.5px solid var(--line);border-radius:10px;
+  padding:14px 18px;display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;text-align:left
+}
+.hnav-item:hover{border-color:var(--or);box-shadow:0 4px 20px rgba(255,102,0,.12);transform:translateY(-1px)}
+.hnav-n{
+  width:32px;height:32px;border-radius:8px;background:var(--or);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0
+}
+.hnav-t{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.4;flex:1}
+.hnav-arr{color:var(--or);font-size:16px;opacity:.6;flex-shrink:0}
+
+/* ══════════════════════════════════ FUNNEL CAPTACIÓN — visual horizontal */
+.funnel-vis{padding:20px 20px 4px;display:flex;flex-direction:column;gap:0}
+.fv-row{
+  display:grid;grid-template-columns:120px 1fr 100px;
+  align-items:center;gap:0;
+  cursor:default;
+  border-bottom:1px solid var(--line);
+  transition:background .15s;
+}
+.fv-row:last-child{border-bottom:none}
+.fv-row:hover{background:var(--or-bg)}
+
+.fv-label{
+  padding:14px 14px 14px 18px;
+  font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;
+  line-height:1.3
+}
+.fv-label b{display:block;font-size:13px;font-weight:700;color:var(--ink);text-transform:none;letter-spacing:0;margin-bottom:2px}
+
+.fv-bar-col{padding:14px 10px}
+.fv-bar-track{position:relative;height:28px;background:#F3F4F6;border-radius:6px;overflow:hidden}
+.fv-bar-fill{
+  height:100%;border-radius:6px;
+  display:flex;align-items:center;justify-content:flex-end;padding-right:10px;
+  transition:width 1.2s cubic-bezier(.16,1,.3,1);min-width:36px
+}
+.fv-bar-fill span{font-size:11px;font-weight:700;color:rgba(255,255,255,.95);white-space:nowrap}
+/* pool text oscuro porque fondo es gris claro */
+.fb-pool span{color:var(--ink3)}
+
+.fv-num-col{
+  padding:14px 18px 14px 10px;text-align:right;
+}
+.fv-num{font-size:28px;font-weight:800;letter-spacing:-1px;line-height:1}
+.fv-pct{font-size:10.5px;font-weight:600;margin-top:2px}
+
+/* colores por etapa — paleta única naranja, intensidad creciente */
+.fb-pool{background:#E5E7EB}
+.fb-h1  {background:#FDBA74}
+.fb-h2  {background:#FB923C}
+.fb-h3  {background:#F97316}
+.fb-h4  {background:#059669}
+/* números: todos en tinta oscura, solo el valor en naranja */
+.fc-pool{color:var(--ink3)}
+.fc-h1{color:#C2410C}
+.fc-h2{color:#C2410C}
+.fc-h3{color:#9A3412}
+.fc-h4{color:#065F46}
+
+/* connector arrow */
+.fv-arrow{text-align:center;color:var(--line2);font-size:12px;padding:2px 0;letter-spacing:2px;font-weight:300}
+
+/* ══════════════════════════════════ GRUPOS ESTADO */
+.int-toolbar{
+  display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap
+}
+.int-search{
+  flex:1;min-width:160px;
+  padding:9px 14px;border:1.5px solid var(--line2);border-radius:8px;
+  font-size:13px;background:var(--card);color:var(--ink);outline:none;
+  transition:border-color .2s
+}
+.int-search:focus{border-color:var(--or)}
+.int-search::placeholder{color:var(--ink4)}
+
+.filt-btn{
+  padding:8px 14px;border-radius:8px;border:1.5px solid var(--line2);
+  background:var(--card);color:var(--ink2);font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .18s;white-space:nowrap;display:flex;align-items:center;gap:6px
+}
+.filt-btn:hover{border-color:var(--or);color:var(--or)}
+.filt-btn.on{border-color:var(--or);background:var(--or);color:#fff}
+.filt-dot{width:7px;height:7px;border-radius:50%}
+.fd-gr{background:var(--green)}.fd-am{background:var(--amber)}.fd-rd{background:var(--red)}.fd-gy{background:#9CA3AF}
+
+/* Tabla integradores */
+.int-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+.int-table th{
+  padding:9px 14px;text-align:left;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);background:var(--bg);border-bottom:2px solid var(--line);
+  white-space:nowrap
+}
+.int-table tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.int-table tbody tr:last-child td{border-bottom:none}
+.int-table tbody tr{transition:background .12s}
+.int-table tbody tr.hidden{display:none}
+.int-table tbody tr:hover td{background:var(--or-bg)}
+.int-table tbody tr:hover td:first-child{border-left:3px solid var(--or)}
+td:first-child{border-left:3px solid transparent;transition:border-color .12s}
+
+.int-name{font-size:13px;font-weight:700;color:var(--ink)}
+
+/* status pills */
+.sp{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;white-space:nowrap}
+.sp::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.sp-gr{background:var(--green-bg);color:var(--green)}
+.sp-or{background:var(--or-bg);color:var(--or-dk)}
+.sp-am{background:var(--amber-bg);color:var(--amber)}
+.sp-rd{background:var(--red-bg);color:var(--red)}
+.sp-gy{background:#F3F4F6;color:#6B7280}
+
+/* modelo tag */
+.mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.3px}
+.mt-e2e{background:var(--green-bg);color:var(--green);border:1px solid rgba(5,150,105,.2)}
+.mt-lg {background:var(--blue-bg); color:var(--blue); border:1px solid rgba(29,111,184,.2)}
+
+/* ══════════════════════════════════ FUNNEL VENTAS */
+.vfunnel{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:22px;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.vf-stage{
+  padding:22px 18px;text-align:center;position:relative;
+  border-right:1px solid rgba(255,255,255,.15);
+  cursor:default;transition:filter .2s
+}
+.vf-stage:last-child{border-right:none}
+.vf-stage:hover{filter:brightness(1.05)}
+.vf-s0{background:#4B5563}
+.vf-s1{background:#1D6FB8}
+.vf-s2{background:var(--amber)}
+.vf-s3{background:var(--green)}
+.vf-icon{font-size:13px;opacity:.7;margin-bottom:8px}
+.vf-num{font-size:42px;font-weight:800;color:#fff;line-height:1;letter-spacing:-2px}
+.vf-lbl{font-size:11px;color:rgba(255,255,255,.75);margin-top:5px;line-height:1.4;font-weight:500}
+.vf-pct{
+  display:inline-block;margin-top:10px;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;
+  background:rgba(255,255,255,.18);color:rgba(255,255,255,.9)
+}
+/* Chevron pseudo-arrows */
+.vf-stage::after{
+  content:'';position:absolute;right:-14px;top:50%;transform:translateY(-50%);
+  width:0;height:0;z-index:2;
+  border-top:24px solid transparent;
+  border-bottom:24px solid transparent
+}
+.vf-s0::after{border-left:14px solid #4B5563}
+.vf-s1::after{border-left:14px solid #1D6FB8}
+.vf-s2::after{border-left:14px solid var(--amber)}
+.vf-stage:last-child::after{display:none}
+
+/* ══════════════════════════════════ TABLA VENTAS */
+.vtbl{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+.vtbl th{
+  padding:9px 14px;text-align:left;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);background:var(--bg);border-bottom:2px solid var(--line);white-space:nowrap
+}
+.vtbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.vtbl tr:last-child td{border-bottom:none}
+.vtbl tbody tr{transition:background .12s}
+.vtbl tbody tr:hover td{background:var(--or-bg)}
+.vtbl tbody tr:hover td:first-child{border-left:3px solid var(--or)}
+.vtbl td:first-child{border-left:3px solid transparent;transition:border-color .12s}
+.n{text-align:center;font-weight:700;font-size:15px}
+.n-or{color:var(--or)}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}
+
+/* EOP cards */
+.eop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
+.eop-card{border-radius:8px;padding:18px;background:var(--bg);border:1px solid var(--line)}
+.eop-month{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);margin-bottom:12px}
+.eop-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.eop-lbl{font-size:12px;color:var(--ink2)}
+.eop-val{font-size:20px;font-weight:800}
+.ev-or{color:var(--or)}.ev-gr{color:var(--green)}.ev-am{color:var(--amber)}
+.eop-bar{height:5px;background:var(--line2);border-radius:99px;overflow:hidden;margin-top:10px}
+.eop-fill{height:100%;border-radius:99px;transition:width 1s ease}
+
+/* ══════════════════════════════════ SESIONES */
+.slist{display:flex;flex-direction:column}
+.srow{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 16px;border-bottom:1px solid var(--line);
+  transition:background .12s
+}
+.srow:last-child{border-bottom:none}
+.srow:hover{background:var(--bg)}
+.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sd-gr{background:var(--green)}.sd-or{background:var(--or)}.sd-am{background:var(--amber)}
+.sname{flex:1;font-size:13px;font-weight:600}
+.sdate{font-size:11px;font-weight:600;color:var(--ink3);background:var(--bg);padding:2px 7px;border-radius:5px}
+.spill{font-size:10px;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap}
+.pill-ok{background:var(--green-bg);color:var(--green)}
+.pill-hoy{background:var(--or-bg);color:var(--or-dk)}
+.pill-prx{background:var(--blue-bg);color:var(--blue)}
+
+/* grupos integradores lateral */
+.grp-sec{margin-bottom:14px}
+.grp-head{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  padding:8px 14px;border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between
+}
+.gh-gr{background:var(--green-bg);color:var(--green)}
+.gh-am{background:var(--amber-bg);color:var(--amber)}
+.gh-rd{background:var(--red-bg);color:var(--red)}
+.gh-gy{background:#F3F4F6;color:#6B7280}
+.tags-wrap{display:flex;flex-wrap:wrap;gap:5px;padding:2px 0}
+.tag{
+  font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;cursor:default;
+  transition:transform .12s,box-shadow .12s
+}
+.tag:hover{transform:scale(1.04);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.tg-gr{background:var(--green-bg);color:var(--green)}
+.tg-or{background:var(--or-bg);color:var(--or-dk)}
+.tg-am{background:var(--amber-bg);color:var(--amber)}
+.tg-rd{background:var(--red-bg);color:var(--red)}
+.tg-bl{background:var(--blue-bg);color:var(--blue)}
+.tg-gy{background:#F3F4F6;color:#6B7280}
+
+/* ══════════════════════════════════ ALERT BOXES */
+.alert{border-radius:8px;padding:14px 16px;border-left:3px solid;margin-top:2px}
+.al-rd{background:var(--red-bg);border-color:var(--red)}
+.al-am{background:var(--amber-bg);border-color:var(--amber)}
+.al-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.alt-rd{color:var(--red)}.alt-am{color:var(--amber)}
+.al-body{font-size:12px;color:var(--ink2);line-height:1.6}
+
+/* ══════════════════════════════════ TAREAS */
+.ttbl{width:100%;border-collapse:collapse;font-size:13px}
+.ttbl th{
+  padding:9px 16px;text-align:left;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);background:var(--bg);border-bottom:2px solid var(--line)
+}
+.ttbl td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.ttbl tr:last-child td{border-bottom:none}
+.ttbl tbody tr{transition:background .12s}
+.ttbl tbody tr:hover td{background:var(--or-bg)}
+.ttbl tbody tr:hover td:first-child{border-left:3px solid var(--or)}
+.ttbl td:first-child{border-left:3px solid transparent;transition:border-color .12s}
+.task-t{font-size:13px;font-weight:600;color:var(--ink);line-height:1.5}
+.task-s{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.dbadge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.db-red{background:var(--red-bg);color:var(--red)}
+.db-am{background:var(--amber-bg);color:var(--amber)}
+.db-bl{background:var(--blue-bg);color:var(--blue)}
+
+/* sumario equipos */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.team-card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.team-h{
+  padding:12px 16px;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:space-between
+}
+.th-bl{background:var(--blue-bg);color:var(--blue)}
+.th-or{background:var(--or-bg);color:var(--or-dk)}
+.th-am{background:var(--amber-bg);color:var(--amber)}
+.team-b{padding:14px 16px;font-size:12.5px;color:var(--ink2);line-height:1.7}
+
+/* ══════════════════════════════════ GRID HELPERS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g60{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}
+@media(max-width:1000px){.g2,.g60{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .hero-kgrid{grid-template-columns:repeat(2,1fr)}
+  .hero-nav{grid-template-columns:1fr}
+  .vfunnel{grid-template-columns:repeat(2,1fr)}
+  .eop-grid,.team-grid{grid-template-columns:1fr}
+  .sec{padding:20px 16px 44px}
+  .vf-stage::after{display:none}
+}
+
+/* ══════════════════════════════════ CONTADORES */
+.cnt{display:inline}
+
+/* ══════════════════════════════════ HERO DUAL KPI */
+.hero-dual{
+  display:flex;align-items:stretch;gap:0;
+  width:100%;max-width:860px;margin-bottom:36px;
+  background:var(--card);border-radius:14px;
+  box-shadow:var(--shadow-lg);overflow:hidden
+}
+.hero-domain{flex:1;padding:22px 20px}
+.hd-label{
+  display:flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--or);margin-bottom:16px;padding-bottom:12px;
+  border-bottom:1px solid var(--line)
+}
+.hero-domain:last-child .hd-label{color:var(--blue)}
+.hd-kpis{display:flex;gap:6px}
+.hero-domain .hk{
+  flex:1;background:var(--bg);border-radius:8px;
+  padding:14px 12px;text-align:center;border-bottom:none;
+  box-shadow:none
+}
+.hero-domain .hk .hk-num{font-size:36px;letter-spacing:-1.5px}
+.hero-domain .hk .hk-lbl{font-size:10.5px}
+.hero-domain-sep{
+  width:1px;background:var(--line);margin:16px 0;flex-shrink:0
+}
+
+/* Funnel desglose inline */
+.fv-breakdown{
+  display:flex;gap:6px;padding:6px 18px 14px 152px;flex-wrap:wrap
+}
+.fvb-item{
+  display:flex;align-items:center;gap:5px;
+  background:var(--bg);border-radius:6px;
+  padding:4px 10px;font-size:11px;font-weight:600;color:var(--ink2);
+  border:1px solid var(--line)
+}
+.fvb-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.fvb-n{font-weight:800;font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ TOP BAR ════════════════ -->
+<header class="topbar">
+
+  <!-- Logo del proyecto -->
+  <a class="proj-logo" href="#" onclick="show('s0');return false">
+    <div class="proj-logo-mark">
+      <!-- Icono: red/nodos = Canal Integrador -->
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="4"  r="2.5" fill="rgba(255,255,255,.95)"/>
+        <circle cx="4"  cy="16" r="2.5" fill="rgba(255,255,255,.95)"/>
+        <circle cx="18" cy="16" r="2.5" fill="rgba(255,255,255,.95)"/>
+        <line x1="11" y1="4"  x2="4"  y2="16" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="4"  x2="18" y2="16" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4"  y1="16" x2="18" y2="16" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="11" cy="11" r="2" fill="rgba(255,255,255,.55)"/>
+        <line x1="11" y1="4"  x2="11" y2="9"  stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="4"  y1="16" x2="9.5" y2="12" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="18" y1="16" x2="12.5" y2="12" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="proj-logo-text">
+      <div class="plt-top">Canal Integrador</div>
+      <div class="plt-bot">MasOrange · B2B SME</div>
+    </div>
+  </a>
+
+  <div class="topbar-sep"></div>
+
+  <nav class="topbar-nav">
+    <button class="tnav on"  onclick="show('s0')">Resumen</button>
+    <button class="tnav"     onclick="show('s1')">01 · Captación</button>
+    <button class="tnav"     onclick="show('s2')">02 · Integradores</button>
+    <button class="tnav"     onclick="show('s3')">03 · Funnel Ventas</button>
+    <button class="tnav"     onclick="show('s4')">04 · Tareas</button>
+  </nav>
+
+  <div class="topbar-right">
+    <span class="pmo-badge">PMO #15</span>
+    <span class="date-lbl">19 mar 2026</span>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S0 · PORTADA
+══════════════════════════════════════════════════════ -->
+<section id="s0" class="sec on">
+<div class="hero">
+
+  <div class="hero-badge"><b></b> Weekly PMO · Sesión #15 · 19 Marzo 2026</div>
+
+  <!-- Logo grande portada -->
+  <div class="hero-logo">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="16" fill="#FF6600"/>
+      <circle cx="32" cy="12" r="6" fill="rgba(255,255,255,.95)"/>
+      <circle cx="12" cy="48" r="6" fill="rgba(255,255,255,.95)"/>
+      <circle cx="52" cy="48" r="6" fill="rgba(255,255,255,.95)"/>
+      <line x1="32" y1="12" x2="12" y2="48" stroke="rgba(255,255,255,.75)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="32" y1="12" x2="52" y2="48" stroke="rgba(255,255,255,.75)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="12" y1="48" x2="52" y2="48" stroke="rgba(255,255,255,.75)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="5" fill="rgba(255,255,255,.6)"/>
+    </svg>
+  </div>
+
+  <h1>Proyecto <em>Canal Integrador</em><br>B2B SME</h1>
+  <p class="hero-sub">Seguimiento semanal · Accenture &amp; MasOrange</p>
+
+  <!-- KPIs divididos en dos ámbitos -->
+  <div class="hero-dual">
+
+    <!-- CAPTACIÓN -->
+    <div class="hero-domain">
+      <div class="hd-label">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+        Captación
+      </div>
+      <div class="hd-kpis">
+        <div class="hk">
+          <div class="hk-num c-or cnt" data-t="35">0</div>
+          <div class="hk-lbl">Captados</div>
+          <div class="hk-line hl-or"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-gr cnt" data-t="23">0</div>
+          <div class="hk-lbl">Activados</div>
+          <div class="hk-line hl-gr"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-am cnt" data-t="19">0</div>
+          <div class="hk-lbl">Alta participación</div>
+          <div class="hk-line hl-am"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-domain-sep"></div>
+
+    <!-- VENTAS -->
+    <div class="hero-domain">
+      <div class="hd-label" style="color:var(--blue)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 9L6 3L10 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Ventas
+      </div>
+      <div class="hd-kpis">
+        <div class="hk">
+          <div class="hk-num c-bl cnt" data-t="50">0</div>
+          <div class="hk-lbl">Leads en curso</div>
+          <div class="hk-line hl-bl"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-am cnt" data-t="9">0</div>
+          <div class="hk-lbl">Ofertas en curso</div>
+          <div class="hk-line hl-am"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-gr cnt" data-t="6">0</div>
+          <div class="hk-lbl">Ventas activadas</div>
+          <div class="hk-line hl-gr"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navegación agenda -->
+  <div class="hero-nav">
+    <div class="hnav-item" onclick="show('s1')">
+      <div class="hnav-n">1</div>
+      <div class="hnav-t">Estado de captación · Funnel de integradores</div>
+      <div class="hnav-arr">›</div>
+    </div>
+    <div class="hnav-item" onclick="show('s2')">
+      <div class="hnav-n">2</div>
+      <div class="hnav-t">Detalle de los 35 integradores captados</div>
+      <div class="hnav-arr">›</div>
+    </div>
+    <div class="hnav-item" onclick="show('s3')">
+      <div class="hnav-n">3</div>
+      <div class="hnav-t">Funnel de ventas · 50 oportunidades</div>
+      <div class="hnav-arr">›</div>
+    </div>
+    <div class="hnav-item" onclick="show('s4')">
+      <div class="hnav-n">4</div>
+      <div class="hnav-t">Otras tareas en curso</div>
+      <div class="hnav-arr">›</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S1 · CAPTACIÓN
+══════════════════════════════════════════════════════ -->
+<section id="s1" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 3</span>
+    <h2 class="sh-title">Estado de captación de integradores</h2>
+  </div>
+
+  <!-- KPIs -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">Fishing Pool</div>
+      <div class="k-num cnt" data-t="5124">0</div>
+      <div class="k-sub">Total integradores en BBDD atacable</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Hito 1 · Contacto</div>
+      <div class="k-num cnt" data-t="836">0</div>
+      <div class="k-sub">16% del fishing pool</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Hito 2 · Interés</div>
+      <div class="k-num cnt" data-t="72">0</div>
+      <div class="k-sub">Sesión informativa 1:1</div>
+    </div>
+    <div class="kcard k-or">
+      <div class="k-lbl">Hito 3 · Captados</div>
+      <div class="k-num cnt" data-t="47">0</div>
+      <div class="k-sub">KO presencial</div>
+    </div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Hito 4 · Activados</div>
+      <div class="k-num cnt" data-t="23">0</div>
+      <div class="k-sub">Contrato + modelo colaboración</div>
+      <span class="k-delta kd-up">↑ +7 esta semana</span>
+    </div>
+  </div>
+
+  <div class="g60">
+
+    <!-- FUNNEL VISUAL -->
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Funnel de captación</span>
+        <span class="card-sub">De 5.124 → 23 activados</span>
+      </div>
+
+      <div class="funnel-vis">
+
+        <!-- Pool -->
+        <div class="fv-row">
+          <div class="fv-label"><b>Fishing Pool</b>Total BBDD atacable</div>
+          <div class="fv-bar-col">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-pool" style="width:100%"><span>100%</span></div>
+            </div>
+          </div>
+          <div class="fv-num-col">
+            <div class="fv-num fc-pool cnt" data-t="5124">0</div>
+            <div class="fv-pct fc-pool"></div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H1 -->
+        <div class="fv-row">
+          <div class="fv-label"><b>H1 · Contacto</b>1er contacto exitoso</div>
+          <div class="fv-bar-col">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h1" style="width:16%"><span>16%</span></div>
+            </div>
+          </div>
+          <div class="fv-num-col">
+            <div class="fv-num fc-h1 cnt" data-t="836">0</div>
+            <div class="fv-pct fc-h1">16% pool</div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H2 -->
+        <div class="fv-row">
+          <div class="fv-label"><b>H2 · Interés</b>Sesión online 1:1</div>
+          <div class="fv-bar-col">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h2" style="width:9%"><span>9%</span></div>
+            </div>
+          </div>
+          <div class="fv-num-col">
+            <div class="fv-num fc-h2 cnt" data-t="72">0</div>
+            <div class="fv-pct fc-h2">9% de H1</div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H3 con desglose -->
+        <div class="fv-row" style="align-items:flex-start">
+          <div class="fv-label" style="padding-top:14px"><b>H3 · Captados</b>KO presencial</div>
+          <div class="fv-bar-col" style="padding-top:14px">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h3" style="width:65%"><span>65%</span></div>
+            </div>
+            <!-- desglose de los 47 -->
+            <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">23</span> activados</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--amber)"></div><span class="fvb-n" style="color:var(--amber)">4</span> on hold</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">8</span> pdte. agendar</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--red)"></div><span class="fvb-n" style="color:var(--red)">8</span> churn</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--ink3)"></div><span class="fvb-n" style="color:var(--ink3)">4</span> otros</div>
+            </div>
+          </div>
+          <div class="fv-num-col" style="padding-top:14px">
+            <div class="fv-num fc-h3 cnt" data-t="47">0</div>
+            <div class="fv-pct fc-h3">65% de H2</div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H4 con desglose -->
+        <div class="fv-row" style="align-items:flex-start">
+          <div class="fv-label" style="padding-top:14px"><b>H4 · Activados</b>Contrato + modelo</div>
+          <div class="fv-bar-col" style="padding-top:14px">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h4" style="width:49%"><span>49%</span></div>
+            </div>
+            <!-- desglose de los 23 -->
+            <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">4</span> contratos firmados</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:#34D399"></div><span class="fvb-n" style="color:#059669">19</span> en proceso de firma</div>
+            </div>
+          </div>
+          <div class="fv-num-col" style="padding-top:14px">
+            <div class="fv-num fc-h4 cnt" data-t="23">0</div>
+            <div class="fv-pct fc-h4">49% de H3</div>
+          </div>
+        </div>
+
+      </div><!-- /funnel-vis -->
+
+      <!-- Alertas churn -->
+      <div style="padding:0 18px 18px;display:flex;gap:10px">
+        <div class="alert al-rd" style="flex:1">
+          <div class="al-title alt-rd">19 rechazos post-sesión online</div>
+          <div class="al-body">Integradores que declinaron continuar tras la sesión 1:1</div>
+        </div>
+        <div class="alert al-am" style="flex:1">
+          <div class="al-title alt-am">8 en churn</div>
+          <div class="al-body">Monkinet · Jufima · Landm · SGR · Loomis · Q2B · Tec. Estratégica · Twistic</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR: grupos -->
+    <div style="display:flex;flex-direction:column;gap:14px">
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--green)">Contratos firmados</span>
+          <span style="font-size:22px;font-weight:800;color:var(--green)">4</span>
+        </div>
+        <div style="padding:12px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-gr">Cover Net</span><span class="tag tg-gr">Maxen</span>
+            <span class="tag tg-gr">Deiteco</span><span class="tag tg-gr">Elpis Informática</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--green)">En proceso de firma</span>
+          <span style="font-size:22px;font-weight:800;color:var(--green)">19</span>
+        </div>
+        <div style="padding:10px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-gr">Mariskalnet</span><span class="tag tg-gr">Ocvistas</span>
+            <span class="tag tg-gr">Dataqu</span><span class="tag tg-gr">Ox-one</span>
+            <span class="tag tg-gr">Cobitratel</span><span class="tag tg-gr">Duo IT</span>
+            <span class="tag tg-gr">Infornet</span><span class="tag tg-gr">Sictemas</span>
+            <span class="tag tg-gr">Fedesoft</span><span class="tag tg-gr">Audinfor</span>
+            <span class="tag tg-gr">Dosys</span><span class="tag tg-gr">Sisytec</span>
+            <span class="tag tg-gr">Solventus</span><span class="tag tg-gr">Durnia</span>
+            <span class="tag tg-gr">Paper Labs</span><span class="tag tg-gr">Microsip</span>
+            <span class="tag tg-gr">Binfor Sol.</span><span class="tag tg-gr">GNUO</span>
+            <span class="tag tg-gr">Brain Hardware</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--amber)">On Hold</span>
+          <span style="font-size:22px;font-weight:800;color:var(--amber)">4</span>
+        </div>
+        <div style="padding:10px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-am">A4I</span><span class="tag tg-am">Next Mobility</span>
+            <span class="tag tg-am">Redem</span><span class="tag tg-am">Dirbapont</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--blue)">Pendiente agendar KO</span>
+          <span style="font-size:22px;font-weight:800;color:var(--blue)">8</span>
+        </div>
+        <div style="padding:10px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-bl">NaimiTech</span><span class="tag tg-bl">Ache Informática</span>
+            <span class="tag tg-bl">Omnia Sol</span><span class="tag tg-bl">Sur Computers</span>
+            <span class="tag tg-bl">Amiritmo</span><span class="tag tg-bl">Digital HM</span>
+            <span class="tag tg-bl">Lisot</span><span class="tag tg-bl">ITSoft</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /g60 -->
+
+  <!-- SESIONES -->
+  <div class="g2" style="margin-top:18px">
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Sesiones realizadas esta semana</span>
+        <span class="sp sp-gr">7 completadas</span>
+      </div>
+      <div class="slist">
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">ISC Tech</span><span class="sdate">16.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Maicrosoft</span><span class="sdate">17.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Aideea</span><span class="sdate">17.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Lisot</span><span class="sdate">17.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Digital HM</span><span class="sdate">18.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Itsoft</span><span class="sdate">18.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Brain Hardware</span><span class="sdate">18.03</span><span class="spill pill-ok">Completada</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Próximas sesiones</span>
+        <span class="sp sp-or">9 agendadas</span>
+      </div>
+      <div class="slist">
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">SYC Almería</span><span class="sdate">19.03</span><span class="spill pill-hoy">Hoy</span></div>
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Group Sertec</span><span class="sdate">19.03</span><span class="spill pill-hoy">Hoy</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Tecicom</span><span class="sdate">23.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">ISC Tech (negocio)</span><span class="sdate">24.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Aideea (negocio)</span><span class="sdate">24.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">PC Services</span><span class="sdate">25.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Maicrosoft (negocio)</span><span class="sdate">14.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Inforware</span><span class="sdate">24.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Evolur</span><span class="sdate">24.04</span><span class="spill pill-prx">Agendada</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S2 · DETALLE INTEGRADORES
+══════════════════════════════════════════════════════ -->
+<section id="s2" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 4</span>
+    <h2 class="sh-title">Detalle de los 35 integradores captados</h2>
+  </div>
+
+  <!-- Toolbar filtros -->
+  <div class="int-toolbar">
+    <input class="int-search" id="intSearch" type="text" placeholder="Buscar integrador..." oninput="searchInt()">
+    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(35)</span></button>
+    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (11)</button>
+    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (13)</button>
+    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (4)</button>
+    <button class="filt-btn"   onclick="filt('churn',this)"><span class="filt-dot fd-rd"></span>Riesgo churn (7)</button>
+  </div>
+
+  <!-- Tabla desplegada completa, sin scroll interno -->
+  <!-- overflow-x:clip: no crea scroll container (como hace auto), por eso no rompe position:sticky en th -->
+  <div style="overflow-x:clip">
+  <table class="int-table" id="intTable">
+    <thead>
+      <tr id="int-thead">
+        <th style="width:18%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Integrador</th>
+        <th style="width:10%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Modelo</th>
+        <th style="width:14%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Estado</th>
+        <th style="position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Observaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ══════ VERDE · Leads compartidos, alta participación (11) ══════ -->
+      <tr class="grp-sep" data-gh="verde">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--green-bg);border-top:2px solid rgba(5,150,105,.2);border-bottom:1px solid rgba(5,150,105,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--green)">Leads compartidos · alta participación</span>
+          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">11 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="verde"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="verde" data-n="maxen">        <td><div class="int-name">Maxen</div></td>        <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Varios leads en curso y sin bloqueantes identificados. Visitas comerciales semana 23.03.</td></tr>
+      <tr data-g="verde" data-n="covernet">      <td><div class="int-name">Covernet</div></td>      <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Realizando ampliación pendiente PYME, a la espera de nuevos leads.</td></tr>
+      <tr data-g="verde" data-n="cobitratel">    <td><div class="int-name">Cobitratel</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada; pendiente recibir nuevos leads.</td></tr>
+      <tr data-g="verde" data-n="paper labs">    <td><div class="int-name">Paper Labs</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 lead interesante compartido, en cartera MasOrange con riesgo de fuga.</td></tr>
+      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente cerrar visita a cliente y nuevo lead pequeño compartido.</td></tr>
+      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Lead grande recibido y preparando oferta con VVDD.</td></tr>
+      <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita el 17.03, en proceso firma de contrato + envío de leads.</td></tr>
+      <tr data-g="verde" data-n="dataqu">        <td><div class="int-name">Dataqu</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con lead antes de SS y preparando webinar para abril.</td></tr>
+      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Informática</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td><span class="sp sp-gr">Firmado</span></td><td style="font-size:12.5px;color:var(--ink2)">Contrato firmado, pendiente recibir leads.</td></tr>
+      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente lead de asociación de discapacitados, respuesta antes de SS.</td></tr>
+      <tr data-g="verde" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Campaña de servicios MasOrange a clientes Kit Digital lanzada esta semana.</td></tr>
+
+      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (13) ══════ -->
+      <tr class="grp-sep" data-gh="posible">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--amber-bg);border-top:2px solid rgba(217,119,6,.2);border-bottom:1px solid rgba(217,119,6,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--amber)">Posibles leads · aún no recibidos · participación moderada</span>
+          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">13 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="posible"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="posible" data-n="gnuo">         <td><div class="int-name">GNUO</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Muy interesado, proceso compartido, pendiente recepción de leads.</td></tr>
+      <tr data-g="posible" data-n="audinfor">     <td><div class="int-name">Audinfor</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Han identificado 4–5 leads potenciales, pendiente recepción.</td></tr>
+      <tr data-g="posible" data-n="mariskalnet">  <td><div class="int-name">Mariskalnet</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Leads no recibidos, pendiente respuesta integrador.</td></tr>
+      <tr data-g="posible" data-n="amiritmo">     <td><div class="int-name">Amiritmo</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">En firma</span></td>  <td style="font-size:12.5px;color:var(--ink2)">En proceso firma de contrato, quiere analizarlo y empezar a colaborar.</td></tr>
+      <tr data-g="posible" data-n="microsip">     <td><div class="int-name">Microsip</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Evaluando internamente compartir un lead grande (Becton Dickinson).</td></tr>
+      <tr data-g="posible" data-n="durnia">       <td><div class="int-name">Durnia</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Está analizando el modelo de colaboración.</td></tr>
+      <tr data-g="posible" data-n="binfor soluciones"><td><div class="int-name">Binfor Sol.</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td><span class="sp sp-am">En firma</span></td><td style="font-size:12.5px;color:var(--ink2)">Muy interesado, pendiente contrato firmado.</td></tr>
+      <tr data-g="posible" data-n="dosys">        <td><div class="int-name">Dosys</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Solicitó precios de productos, a la espera de leads.</td></tr>
+      <tr data-g="posible" data-n="redem">        <td><div class="int-name">Redem</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 10.03.</td></tr>
+      <tr data-g="posible" data-n="sur computers"><td><div class="int-name">Sur Computers</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Nos pidieron portfolio de licencias con precios. Pendiente recontacto.</td></tr>
+      <tr data-g="posible" data-n="lisot">        <td><div class="int-name">Lisot</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 17.03.</td></tr>
+      <tr data-g="posible" data-n="digital hm">   <td><div class="int-name">Digital HM</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 18.03.</td></tr>
+      <tr data-g="posible" data-n="itsoft">       <td><div class="int-name">ITSoft</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 18.03.</td></tr>
+
+      <!-- ══════ GRIS · Hold (4) ══════ -->
+      <tr class="grp-sep" data-gh="hold">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:#F3F4F6;border-top:2px solid rgba(107,114,128,.2);border-bottom:1px solid rgba(107,114,128,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#9CA3AF;display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6B7280">Hold</span>
+          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">4 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="hold"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="hold" data-n="dirbapont">    <td><div class="int-name">Dirbapont</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · mar</span></td> <td style="font-size:12.5px;color:var(--ink2)">Hold hasta finales de marzo por carga de trabajo.</td></tr>
+      <tr data-g="hold" data-n="sictemas">     <td><div class="int-name">Sictemas</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · abr</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 15-abril por reestructuración interna. Contrato firmado enviado.</td></tr>
+      <tr data-g="hold" data-n="fedesoft">     <td><div class="int-name">Fedesoft</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · abr</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta abril por problemas personales.</td></tr>
+      <tr data-g="hold" data-n="brain hardware"><td><div class="int-name">Brain Hardware</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · may</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo.</td></tr>
+
+      <!-- ══════ ROJO · Riesgo churn, baja participación (7) ══════ -->
+      <tr class="grp-sep" data-gh="churn">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--red-bg);border-top:2px solid rgba(220,38,38,.2);border-bottom:1px solid rgba(220,38,38,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--red)">Riesgo churn · baja participación</span>
+          <span style="font-size:11px;font-weight:600;color:var(--red);opacity:.55;margin-left:auto">7 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="churn"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="churn" data-n="infornet">          <td><div class="int-name">Infornet</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Sin respuesta a emails y llamadas.</td></tr>
+      <tr data-g="churn" data-n="naimitech">         <td><div class="int-name">NaimiTech</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn; quiere modelo bidireccional pero no contesta.</td></tr>
+      <tr data-g="churn" data-n="ache informatica">  <td><div class="int-name">Ache Infor.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="omnia soluciones">  <td><div class="int-name">Omnia Sol.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="a4i">               <td><div class="int-name">A4I</div></td>               <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="next mobility">     <td><div class="int-name">Next Mobility</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="solventus software"><td><div class="int-name">Solventus Soft.</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+
+    </tbody>
+  </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S3 · FUNNEL VENTAS
+══════════════════════════════════════════════════════ -->
+<section id="s3" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 5</span>
+    <h2 class="sh-title">Funnel de ventas · 50 oportunidades identificadas</h2>
+  </div>
+
+  <!-- KPI row -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">Total oportunidades</div>
+      <div class="k-num cnt" data-t="50">0</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Leads en curso</div>
+      <div class="k-num cnt" data-t="14">0</div>
+      <div class="k-sub">28% de oportunidades</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Ofertas en curso</div>
+      <div class="k-num cnt" data-t="9">0</div>
+      <div class="k-sub">64% de leads</div>
+    </div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Ventas activadas</div>
+      <div class="k-num cnt" data-t="6">0</div>
+      <div class="k-sub">12% de oportunidades</div>
+      <span class="k-delta kd-up">↑ Meta en curso</span>
+    </div>
+  </div>
+
+  <!-- Tabla detalle -->
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-h">
+      <span class="card-title">Estado por integrador</span>
+      <span class="card-sub">10 integradores con oportunidades activas</span>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="vtbl">
+      <thead>
+        <tr>
+          <th>Integrador</th>
+          <th>Modelo</th>
+          <th style="text-align:center">Oport.</th>
+          <th style="text-align:center">Ofertas</th>
+          <th style="text-align:center">Ventas</th>
+          <th>Situación</th>
+          <th>Próximo paso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">19</td><td class="n n-or">6</td><td class="n n-gr">1</td><td style="font-size:12px;color:var(--ink2)">2 ofertas en formalización · 1 en prep. · 3 para visita 23.03</td><td style="font-size:12px">Avanzar ofertas y visitas</td></tr>
+        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">8</td><td class="n n-or">1</td><td class="n n-gr">4</td><td style="font-size:12px;color:var(--ink2)">1 oferta ampliación PYME en curso</td><td style="font-size:12px">Activar ampliaciones</td></tr>
+        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">6</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 visita pendiente · 1 nuevo lead pequeño</td><td style="font-size:12px">Confirmar visita y avanzar</td></tr>
+        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">2 leads priorizados · preparando webinar + sesión</td><td style="font-size:12px">Definir formato webinar</td></tr>
+        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-or">1</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 oferta en curso</td><td style="font-size:12px">Envío al integrador</td></tr>
+        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">—</td><td class="n n-gr">1</td><td style="font-size:12px;color:var(--ink2)">1 lead KO por no respuesta cliente</td><td style="font-size:12px">Envío nuevos leads</td></tr>
+        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">2 leads potenciales · 1 pendiente oferta propia</td><td style="font-size:12px">Avanzar 3 leads</td></tr>
+        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">2 leads potenciales identificados</td><td style="font-size:12px">Avanzar leads</td></tr>
+        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 lead en curso pendiente integrador–cliente</td><td style="font-size:12px">Avanzar ofertas</td></tr>
+        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-or">1</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 oferta en curso</td><td style="font-size:12px">Envío al integrador</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- EOP -->
+  <div class="card">
+    <div class="card-h">
+      <span class="card-title">Clientes EoP · Objetivo vs. Real acumulado</span>
+    </div>
+    <div class="eop-grid">
+      <div class="eop-card">
+        <div class="eop-month">Enero 2026</div>
+        <div class="eop-row"><span class="eop-lbl">Objetivo</span><span class="eop-val ev-or">5</span></div>
+        <div class="eop-row"><span class="eop-lbl">Real</span><span class="eop-val ev-gr">4</span></div>
+        <div class="eop-bar"><div class="eop-fill" style="width:80%;background:var(--or)"></div></div>
+        <div style="font-size:11px;color:var(--ink3);margin-top:6px;text-align:right">80%</div>
+      </div>
+      <div class="eop-card">
+        <div class="eop-month">Febrero 2026</div>
+        <div class="eop-row"><span class="eop-lbl">Objetivo</span><span class="eop-val ev-or">15</span></div>
+        <div class="eop-row"><span class="eop-lbl">Real</span><span class="eop-val ev-gr">4</span></div>
+        <div class="eop-bar"><div class="eop-fill" style="width:27%;background:var(--red)"></div></div>
+        <div style="font-size:11px;color:var(--red);margin-top:6px;text-align:right;font-weight:600">27% · Gap –11</div>
+      </div>
+      <div class="eop-card">
+        <div class="eop-month">Marzo 2026 <span style="font-size:10px;font-weight:400;color:var(--or)">(en curso)</span></div>
+        <div class="eop-row"><span class="eop-lbl">Objetivo</span><span class="eop-val ev-or">39</span></div>
+        <div class="eop-row"><span class="eop-lbl">Real</span><span class="eop-val ev-gr">6</span></div>
+        <div class="eop-row"><span class="eop-lbl">Esperados adicionales</span><span class="eop-val ev-am">+10</span></div>
+        <div class="eop-bar"><div class="eop-fill" style="width:41%;background:var(--amber)"></div></div>
+        <div style="font-size:11px;color:var(--amber);margin-top:6px;text-align:right;font-weight:600">~41% si cierran 10 adicionales</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S4 · TAREAS
+══════════════════════════════════════════════════════ -->
+<section id="s4" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 6</span>
+    <h2 class="sh-title">Otras tareas en curso · Mantener momentum</h2>
+  </div>
+
+  <!-- KPI row -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">Total tareas activas</div>
+      <div class="k-num">8</div>
+    </div>
+    <div class="kcard k-rd">
+      <div class="k-lbl">Urgentes / Vencidas</div>
+      <div class="k-num" style="color:var(--red)">3</div>
+      <div class="k-sub">Fecha ≤ 19.03</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Esta semana</div>
+      <div class="k-num">3</div>
+      <div class="k-sub">Sem. 16.03</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Próxima semana</div>
+      <div class="k-num">2</div>
+      <div class="k-sub">Sem. 23.03</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <span class="card-title">Tareas en curso por equipo</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span class="dbadge db-red">Urgente</span>
+        <span class="dbadge db-am">Esta semana</span>
+        <span class="dbadge db-bl">Próxima semana</span>
+      </div>
+    </div>
+    <table class="ttbl">
+      <thead>
+        <tr>
+          <th style="width:45%">Tarea</th>
+          <th style="width:20%">Equipo</th>
+          <th style="width:15%;text-align:center">Fecha tentativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="task-t">Contrato integradores sin validación de cláusula de protección de cartera</div></td>
+          <td><div class="task-s">Legal</div></td>
+          <td style="text-align:center"><span class="dbadge db-red">11.03 ⚠</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Revisar preimpresos VVDD — alternativa al 1471 para flujo e2e</div></td>
+          <td><div class="task-s">BOC</div></td>
+          <td style="text-align:center"><span class="dbadge db-red">19.03 ⚠</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Alinear decisiones finales del modelo operativo para envío a integradores e2e</div></td>
+          <td><div class="task-s">Equipo ACN</div></td>
+          <td style="text-align:center"><span class="dbadge db-red">19.03 ⚠</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Pintar flujo de provisión AS IS PYME y 1471 para integradores e2e</div></td>
+          <td><div class="task-s">ACN + BOC</div></td>
+          <td style="text-align:center"><span class="dbadge db-am">Sem. 16.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Definir autorización canal integrador para recogida de pedido en PdV</div></td>
+          <td><div class="task-s">Canal Int. + Legal</div></td>
+          <td style="text-align:center"><span class="dbadge db-am">Sem. 16.03</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="task-t">Lista de exclusión de comunicaciones comerciales — LeadGen</div>
+            <div class="task-s">Pendiente respuesta legal · Propuesta: Bea Saavedra</div>
+          </td>
+          <td><div class="task-s">ACN + Legal</div></td>
+          <td style="text-align:center"><span class="dbadge db-am">Sem. 16.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Automatizar flujo de pagos LeadGen para asegurar escalado</div></td>
+          <td><div class="task-s">Estrategia (Natalia)</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Automatizar flujo e2e completo</div></td>
+          <td><div class="task-s">Equipo ACN</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Resumen por equipo -->
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-h th-rd" style="background:var(--red-bg);color:var(--red)">Legal <span class="dbadge db-red" style="font-size:10px">2 urgentes</span></div>
+      <div class="team-b">
+        · Validar cláusula protección de cartera<br>
+        · Aprobar lista exclusión comunicaciones LeadGen
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-h th-or">Equipo ACN <span class="dbadge db-am" style="font-size:10px">4 tareas</span></div>
+      <div class="team-b">
+        · Modelo operativo final (19.03)<br>
+        · Flujo provisión AS IS + 1471 (sem. 16.03)<br>
+        · Lista exclusión (sem. 16.03)<br>
+        · Automatizar flujo e2e (sem. 23.03)
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-h th-bl">BOC + Estrategia <span class="dbadge db-bl" style="font-size:10px">2 tareas</span></div>
+      <div class="team-b">
+        · BOC: Preimpresos VVDD alt. 1471 (19.03)<br>
+        · Natalia: Automatizar pagos LeadGen (sem. 23.03)
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════════════ JS ════════════════ -->
+<script>
+// ── Navegación
+function show(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tnav').forEach(t=>t.classList.remove('on'));
+  const secs=['s0','s1','s2','s3','s4'];
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tnav')[secs.indexOf(id)].classList.add('on');
+  startCounters(document.getElementById(id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Contadores animados
+function countUp(el,target,dur=850){
+  const start=performance.now();
+  (function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*e).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step);
+  })(performance.now());
+}
+function startCounters(container){
+  container.querySelectorAll('.cnt[data-t]').forEach(el=>{
+    countUp(el,parseInt(el.dataset.t));
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>startCounters(document.getElementById('s0')));
+
+// ── Filtro integradores — por nombre y/o grupo
+let curFilt='all';
+
+function applyFilter(){
+  const q=document.getElementById('intSearch').value.trim().toLowerCase();
+  const groups={alta:false,hold:false,churn:false};
+
+  // Primero recorremos filas de datos para ver qué grupos tienen filas visibles
+  document.querySelectorAll('#intTable tbody tr[data-g]').forEach(r=>{
+    const n=(r.dataset.n||'').toLowerCase();
+    const g=r.dataset.g||'';
+    const matchQ=!q||n.includes(q);
+    const matchG=curFilt==='all'||g===curFilt;
+    const visible=matchQ&&matchG;
+    r.style.display=visible?'':'none';
+    if(visible) groups[g]=true;
+  });
+
+  // Mostramos u ocultamos separadores y espaciadores de grupo según si su grupo tiene filas visibles
+  document.querySelectorAll('#intTable tbody tr.grp-sep, #intTable tbody tr.grp-gap').forEach(r=>{
+    const gh=r.dataset.gh;
+    r.style.display=groups[gh]?'':'none';
+  });
+}
+
+function searchInt(){ applyFilter(); }
+
+function filt(g,btn){
+  curFilt=g;
+  document.querySelectorAll('.filt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  // Limpiamos búsqueda al cambiar grupo para evitar confusión
+  document.getElementById('intSearch').value='';
+  applyFilter();
+}
+
+// ── Animar barras del funnel al entrar en S1
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.fv-bar-fill').forEach(b=>{
+        const w=b.style.width;b.style.width='0';
+        requestAnimationFrame(()=>{b.style.transition='width 1.1s cubic-bezier(.16,1,.3,1)';b.style.width=w});
+      });
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.funnel-vis').forEach(f=>obs.observe(f));
+</script>
+</body>
+</html>

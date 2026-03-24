@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  MAS Orange · Canal Integrador · Weekly PMO Dashboard        ║
+  ║  PLANTILLA REUTILIZABLE — actualizar DATA_CONFIG para        ║
+  ║  reflejar un nuevo PMO. El resto del layout se adapta solo.  ║
+  ╚══════════════════════════════════════════════════════════════╝
+  INSTRUCCIONES DE ACTUALIZACIÓN:
+  1. Modifica el bloque DATA_CONFIG con los nuevos datos del PPT
+  2. Actualiza el número de sesión y fecha en META
+  3. Los arrays de integradores y tareas se actualizan en DATA_CONFIG
+  4. No toques el CSS ni el JS de renderizado — solo los datos
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canal Integrador · Weekly PMO · MasOrange</title>
+<style>
+/* ══════════════════════════════════ BASE */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --or:#FF6600;--or-lt:#FF8A3D;--or-bg:#FFF3EB;--or-dk:#CC4400;
+  --bg:#F4F5F7;--card:#FFFFFF;
+  --ink:#111827;--ink2:#374151;--ink3:#6B7280;--ink4:#9CA3AF;
+  --line:#E5E7EB;--line2:#D1D5DB;
+  --green:#059669;--green-bg:#ECFDF5;
+  --amber:#D97706;--amber-bg:#FFFBEB;
+  --red:#DC2626;--red-bg:#FEF2F2;
+  --blue:#1D6FB8;--blue-bg:#EFF6FF;
+  --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 4px 8px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.1);
+  --r:10px;--font:'Segoe UI',system-ui,-apple-system,sans-serif
+}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--or)}
+
+/* ══════════════════════════════════ TOPBAR */
+.topbar{
+  height:60px;background:#0F1117;
+  display:flex;align-items:center;padding:0 28px;gap:20px;
+  position:sticky;top:0;z-index:500;
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+/* LOGO SVG del proyecto */
+.proj-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
+.proj-logo-mark{
+  width:34px;height:34px;flex-shrink:0;
+  background:var(--or);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden
+}
+/* Símbolo del logo: red de nodos (canal integrador) */
+.proj-logo-mark svg{width:22px;height:22px}
+.proj-logo-text{line-height:1.2}
+.plt-top{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.2px}
+.plt-bot{font-size:10px;color:rgba(255,255,255,.4);font-weight:400;letter-spacing:.2px}
+
+.topbar-sep{width:1px;height:28px;background:rgba(255,255,255,.1);flex-shrink:0}
+
+.topbar-nav{display:flex;gap:2px;flex:1;justify-content:center}
+.tnav{
+  padding:7px 14px;border-radius:6px;
+  font-size:12.5px;font-weight:500;
+  color:rgba(255,255,255,.45);
+  background:transparent;border:none;cursor:pointer;
+  transition:color .15s,background .15s;white-space:nowrap
+}
+.tnav:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06)}
+.tnav.on{background:var(--or);color:#fff;font-weight:600}
+
+.topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.pmo-badge{
+  font-size:11px;font-weight:700;letter-spacing:.4px;
+  padding:4px 12px;border-radius:99px;
+  border:1px solid rgba(255,102,0,.5);
+  color:var(--or);background:rgba(255,102,0,.1)
+}
+.date-lbl{font-size:11px;color:rgba(255,255,255,.3)}
+
+/* ══════════════════════════════════ SECCIONES */
+.sec{display:none;padding:26px 28px 56px;max-width:1440px;margin:0 auto}
+.sec.on{display:block;animation:up .25s ease both}
+
+/* ══════════════════════════════════ S5 · LEADS */
+.leads-wrap{display:flex;gap:20px;align-items:flex-start}
+.leads-main{flex:1;min-width:0}
+.leads-ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.leads-search{
+  padding:7px 12px;border:1.5px solid var(--line2);border-radius:7px;
+  font:inherit;font-size:13px;color:var(--ink);background:var(--card);
+  width:210px;outline:none;transition:border-color .15s}
+.leads-search:focus{border-color:var(--or)}
+.chip{
+  padding:5px 13px;border-radius:99px;font-size:12px;font-weight:500;
+  border:1.5px solid var(--line2);background:var(--card);color:var(--ink3);
+  cursor:pointer;transition:all .15s;white-space:nowrap;user-select:none}
+.chip:hover{border-color:var(--or);color:var(--or)}
+.chip.on{background:var(--or);border-color:var(--or);color:#fff}
+.chip.ch-gr.on{background:var(--green);border-color:var(--green);color:#fff}
+.chip.ch-rd.on{background:var(--red);border-color:var(--red);color:#fff}
+.chip.ch-am.on{background:var(--amber);border-color:var(--amber);color:#fff}
+.chip.ch-bl.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.chip.ch-int.on{background:#6366F1;border-color:#6366F1;color:#fff}
+.leads-count{font-size:12px;color:var(--ink3);margin-left:auto;font-weight:500}
+.lead-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:13px}
+.lead-card{
+  background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:15px;cursor:pointer;border:2px solid transparent;
+  transition:box-shadow .15s,border-color .15s,transform .15s;
+  display:flex;flex-direction:column;gap:8px}
+.lead-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:rgba(255,102,0,.3)}
+.lead-card.sel{border-color:var(--or);box-shadow:0 0 0 3px rgba(255,102,0,.12)}
+.lead-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.lead-card-name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;flex:1}
+.lead-card-id{font-size:10px;color:var(--ink4);flex-shrink:0;background:var(--bg);padding:2px 5px;border-radius:4px}
+.lead-card-mid{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.int-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.2px}
+.st-pill{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:99px;letter-spacing:.1px}
+.st-venta{background:var(--green-bg);color:var(--green)}
+.st-encurso{background:var(--blue-bg);color:var(--blue)}
+.st-ko{background:var(--red-bg);color:var(--red)}
+.st-pendiente{background:#F3F4F6;color:var(--ink3)}
+.lead-card-step{font-size:11.5px;color:var(--ink3);line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lead-card-bot{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding-top:8px;border-top:1px solid var(--line);margin-top:auto}
+.lead-card-comercial{font-size:11px;color:var(--ink4)}
+.lead-card-venta{font-size:12px;font-weight:700;color:var(--green)}
+/* Detail panel */
+.leads-panel{
+  width:380px;flex-shrink:0;background:var(--card);border-radius:var(--r);
+  box-shadow:var(--shadow-lg);position:sticky;top:80px;
+  max-height:calc(100vh - 100px);overflow-y:auto;display:none}
+.leads-panel.open{display:block;animation:up .2s ease both}
+.panel-hdr{
+  padding:16px 18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+  position:sticky;top:0;background:var(--card);z-index:2}
+.panel-title{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+.panel-close{
+  width:28px;height:28px;border-radius:6px;border:none;
+  background:var(--bg);color:var(--ink3);cursor:pointer;
+  font-size:14px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background .15s}
+.panel-close:hover{background:var(--line2)}
+.panel-body{padding:18px}
+.panel-row{margin-bottom:14px}
+.panel-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink4);margin-bottom:4px}
+.panel-val{font-size:13px;color:var(--ink);line-height:1.5}
+.panel-divider{height:1px;background:var(--line);margin:14px 0}
+.panel-venta-box{background:var(--green-bg);border:1px solid #A7F3D0;border-radius:8px;padding:12px 16px;margin-bottom:14px}
+.panel-venta-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--green);margin-bottom:4px}
+.panel-venta-val{font-size:24px;font-weight:800;color:var(--green)}
+.leads-empty{text-align:center;color:var(--ink3);padding:48px 0;font-size:14px}
+/* Privacy mode */
+.btn-privacy{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:600;
+  border:1.5px solid var(--line2);background:var(--card);color:var(--ink3);
+  cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.btn-privacy:hover{border-color:var(--ink);color:var(--ink)}
+.btn-privacy.on{background:#1F2937;border-color:#1F2937;color:#fff}
+#s5.s5-private .s5-sensitive{display:none!important}
+#s5.s5-private .int-badge{opacity:0;pointer-events:none}
+#s5.s5-private .lead-card-id{display:none!important}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════════ SECTION HEADER */
+.sh{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sh-slide{display:none}
+.sh-title{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px}
+
+/* ══════════════════════════════════ CARDS */
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:clip}
+/* clip preserva border-radius sin crear contexto de apilamiento que rompe sticky */
+.card-h{
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:12px
+}
+.card-title{font-size:13px;font-weight:600;color:var(--ink)}
+.card-sub{font-size:12px;color:var(--ink3)}
+.card-b{padding:18px}
+
+/* ══════════════════════════════════ KPI ROW */
+.krow{display:flex;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.kcard{
+  flex:1;min-width:150px;
+  background:var(--card);border-radius:var(--r);
+  padding:18px 20px;box-shadow:var(--shadow);
+  border-top:3px solid var(--line2);
+  transition:box-shadow .2s,transform .2s
+}
+.kcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.kcard.k-or{border-top-color:var(--or)}
+.kcard.k-gr{border-top-color:var(--green)}
+.kcard.k-am{border-top-color:var(--amber)}
+.kcard.k-rd{border-top-color:var(--red)}
+.kcard.k-bl{border-top-color:var(--blue)}
+.k-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);margin-bottom:8px}
+.k-num{font-size:38px;font-weight:800;line-height:1;letter-spacing:-1.5px}
+.kcard.k-or .k-num{color:var(--or)}
+.kcard.k-gr .k-num{color:var(--green)}
+.kcard.k-am .k-num{color:var(--amber)}
+.kcard.k-rd .k-num{color:var(--red)}
+.kcard.k-bl .k-num{color:var(--blue)}
+.k-sub{font-size:11.5px;color:var(--ink3);margin-top:5px;line-height:1.4}
+.k-delta{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:11px;font-weight:600;margin-top:6px;
+  padding:2px 8px;border-radius:99px
+}
+.kd-up{background:var(--green-bg);color:var(--green)}
+.kd-dn{background:var(--red-bg);color:var(--red)}
+
+/* ══════════════════════════════════ PORTADA */
+.hero{
+  min-height:calc(100vh - 60px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:40px 20px
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--or-bg);border:1px solid rgba(255,102,0,.25);color:var(--or-dk);
+  font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  padding:6px 18px;border-radius:99px;margin-bottom:24px
+}
+.hero-badge b{width:6px;height:6px;background:var(--or);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-logo{margin-bottom:24px}
+.hero h1{
+  font-size:clamp(26px,3.8vw,50px);font-weight:800;line-height:1.15;
+  letter-spacing:-.8px;color:var(--ink);max-width:780px;margin-bottom:8px
+}
+.hero h1 em{color:var(--or);font-style:normal}
+.hero-sub{font-size:14px;color:var(--ink3);margin-bottom:40px;max-width:480px;line-height:1.6}
+
+/* KPI grid portada 3+3 */
+.hero-kgrid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;width:100%;max-width:860px;margin-bottom:40px
+}
+.hk{
+  background:var(--card);border-radius:12px;padding:20px 16px;
+  box-shadow:var(--shadow-lg);text-align:center;
+  transition:transform .2s,box-shadow .2s;cursor:default
+}
+.hk:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.13)}
+.hk-num{font-size:44px;font-weight:800;line-height:1;letter-spacing:-2px}
+.hk-num.c-or{color:var(--or)}
+.hk-num.c-gr{color:var(--green)}
+.hk-num.c-am{color:var(--amber)}
+.hk-num.c-bl{color:var(--blue)}
+.hk-lbl{font-size:11px;color:var(--ink3);margin-top:5px;font-weight:500;line-height:1.4}
+.hk-line{width:24px;height:2px;margin:8px auto 0;border-radius:2px}
+.hl-or{background:var(--or)}
+.hl-gr{background:var(--green)}
+.hl-am{background:var(--amber)}
+.hl-bl{background:var(--blue)}
+
+/* Agenda nav portada */
+.hero-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:680px;width:100%}
+.hnav-item{
+  background:var(--card);border:1.5px solid var(--line);border-radius:10px;
+  padding:14px 18px;display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;text-align:left
+}
+.hnav-item:hover{border-color:var(--or);box-shadow:0 4px 20px rgba(255,102,0,.12);transform:translateY(-1px)}
+.hnav-n{
+  width:32px;height:32px;border-radius:8px;background:var(--or);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;flex-shrink:0
+}
+.hnav-t{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.4;flex:1}
+.hnav-arr{color:var(--or);font-size:16px;opacity:.6;flex-shrink:0}
+
+/* ══════════════════════════════════ FUNNEL CAPTACIÓN — visual horizontal */
+.funnel-vis{padding:20px 20px 4px;display:flex;flex-direction:column;gap:0}
+.fv-row{
+  display:grid;grid-template-columns:120px 1fr 100px;
+  align-items:center;gap:0;
+  cursor:default;
+  border-bottom:1px solid var(--line);
+  transition:background .15s;
+}
+.fv-row:last-child{border-bottom:none}
+.fv-row:hover{background:var(--or-bg)}
+
+.fv-label{
+  padding:14px 14px 14px 18px;
+  font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;
+  line-height:1.3
+}
+.fv-label b{display:block;font-size:13px;font-weight:700;color:var(--ink);text-transform:none;letter-spacing:0;margin-bottom:2px}
+
+.fv-bar-col{padding:14px 10px}
+.fv-bar-track{position:relative;height:28px;background:#F3F4F6;border-radius:6px;overflow:hidden}
+.fv-bar-fill{
+  height:100%;border-radius:6px;
+  display:flex;align-items:center;justify-content:flex-end;padding-right:10px;
+  transition:width 1.2s cubic-bezier(.16,1,.3,1);min-width:36px
+}
+.fv-bar-fill span{font-size:11px;font-weight:700;color:rgba(255,255,255,.95);white-space:nowrap}
+/* pool text oscuro porque fondo es gris claro */
+.fb-pool span{color:var(--ink3)}
+
+.fv-num-col{
+  padding:14px 18px 14px 10px;text-align:right;
+}
+.fv-num{font-size:28px;font-weight:800;letter-spacing:-1px;line-height:1}
+.fv-pct{font-size:10.5px;font-weight:600;margin-top:2px}
+
+/* colores por etapa — paleta única naranja, intensidad creciente */
+.fb-pool{background:#E5E7EB}
+.fb-h1  {background:#FDBA74}
+.fb-h2  {background:#FB923C}
+.fb-h3  {background:#F97316}
+.fb-h4  {background:#059669}
+/* números: todos en tinta oscura, solo el valor en naranja */
+.fc-pool{color:var(--ink3)}
+.fc-h1{color:#C2410C}
+.fc-h2{color:#C2410C}
+.fc-h3{color:#9A3412}
+.fc-h4{color:#065F46}
+
+/* connector arrow */
+.fv-arrow{text-align:center;color:var(--line2);font-size:12px;padding:2px 0;letter-spacing:2px;font-weight:300}
+
+/* ══════════════════════════════════ GRUPOS ESTADO */
+.int-toolbar{
+  display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap
+}
+.int-search{
+  flex:1;min-width:160px;
+  padding:9px 14px;border:1.5px solid var(--line2);border-radius:8px;
+  font-size:13px;background:var(--card);color:var(--ink);outline:none;
+  transition:border-color .2s
+}
+.int-search:focus{border-color:var(--or)}
+.int-search::placeholder{color:var(--ink4)}
+
+.filt-btn{
+  padding:8px 14px;border-radius:8px;border:1.5px solid var(--line2);
+  background:var(--card);color:var(--ink2);font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .18s;white-space:nowrap;display:flex;align-items:center;gap:6px
+}
+.filt-btn:hover{border-color:var(--or);color:var(--or)}
+.filt-btn.on{border-color:var(--or);background:var(--or);color:#fff}
+.filt-dot{width:7px;height:7px;border-radius:50%}
+.fd-gr{background:var(--green)}.fd-am{background:var(--amber)}.fd-rd{background:var(--red)}.fd-gy{background:#9CA3AF}
+
+/* Tabla integradores */
+.int-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+.int-table th{
+  padding:9px 14px;text-align:left;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);background:var(--bg);border-bottom:2px solid var(--line);
+  white-space:nowrap
+}
+.int-table tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.int-table tbody tr:last-child td{border-bottom:none}
+.int-table tbody tr{transition:background .12s}
+.int-table tbody tr.hidden{display:none}
+.int-table tbody tr:hover td{background:var(--or-bg)}
+.int-table tbody tr:hover td:first-child{border-left:3px solid var(--or)}
+td:first-child{border-left:3px solid transparent;transition:border-color .12s}
+
+.int-name{font-size:13px;font-weight:700;color:var(--ink)}
+
+/* status pills */
+.sp{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;white-space:nowrap}
+.sp::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.sp-gr{background:var(--green-bg);color:var(--green)}
+.sp-or{background:var(--or-bg);color:var(--or-dk)}
+.sp-am{background:var(--amber-bg);color:var(--amber)}
+.sp-rd{background:var(--red-bg);color:var(--red)}
+.sp-gy{background:#F3F4F6;color:#6B7280}
+
+/* modelo tag */
+.mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.3px}
+.mt-e2e{background:var(--green-bg);color:var(--green);border:1px solid rgba(5,150,105,.2)}
+.mt-lg {background:var(--blue-bg); color:var(--blue); border:1px solid rgba(29,111,184,.2)}
+
+/* ══════════════════════════════════ FUNNEL VENTAS */
+.vfunnel{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:22px;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.vf-stage{
+  padding:22px 18px;text-align:center;position:relative;
+  border-right:1px solid rgba(255,255,255,.15);
+  cursor:default;transition:filter .2s
+}
+.vf-stage:last-child{border-right:none}
+.vf-stage:hover{filter:brightness(1.05)}
+.vf-s0{background:#4B5563}
+.vf-s1{background:#1D6FB8}
+.vf-s2{background:var(--amber)}
+.vf-s3{background:var(--green)}
+.vf-icon{font-size:13px;opacity:.7;margin-bottom:8px}
+.vf-num{font-size:42px;font-weight:800;color:#fff;line-height:1;letter-spacing:-2px}
+.vf-lbl{font-size:11px;color:rgba(255,255,255,.75);margin-top:5px;line-height:1.4;font-weight:500}
+.vf-pct{
+  display:inline-block;margin-top:10px;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;
+  background:rgba(255,255,255,.18);color:rgba(255,255,255,.9)
+}
+/* Chevron pseudo-arrows */
+.vf-stage::after{
+  content:'';position:absolute;right:-14px;top:50%;transform:translateY(-50%);
+  width:0;height:0;z-index:2;
+  border-top:24px solid transparent;
+  border-bottom:24px solid transparent
+}
+.vf-s0::after{border-left:14px solid #4B5563}
+.vf-s1::after{border-left:14px solid #1D6FB8}
+.vf-s2::after{border-left:14px solid var(--amber)}
+.vf-stage:last-child::after{display:none}
+
+/* ══════════════════════════════════ TABLA VENTAS */
+.vtbl{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+.vtbl th{
+  padding:9px 14px;text-align:left;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);background:var(--bg);border-bottom:2px solid var(--line);white-space:nowrap
+}
+.vtbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.vtbl tr:last-child td{border-bottom:none}
+.vtbl tbody tr{transition:background .12s}
+.vtbl tbody tr:hover td{background:var(--or-bg)}
+.vtbl tbody tr:hover td:first-child{border-left:3px solid var(--or)}
+.vtbl td:first-child{border-left:3px solid transparent;transition:border-color .12s}
+.n{text-align:center;font-weight:700;font-size:15px}
+.n-or{color:var(--or)}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}
+
+/* EOP cards */
+.eop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
+.eop-card{border-radius:8px;padding:18px;background:var(--bg);border:1px solid var(--line)}
+.eop-month{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);margin-bottom:12px}
+.eop-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.eop-lbl{font-size:12px;color:var(--ink2)}
+.eop-val{font-size:20px;font-weight:800}
+.ev-or{color:var(--or)}.ev-gr{color:var(--green)}.ev-am{color:var(--amber)}
+.eop-bar{height:5px;background:var(--line2);border-radius:99px;overflow:hidden;margin-top:10px}
+.eop-fill{height:100%;border-radius:99px;transition:width 1s ease}
+
+/* ══════════════════════════════════ SESIONES */
+.slist{display:flex;flex-direction:column}
+.srow{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 16px;border-bottom:1px solid var(--line);
+  transition:background .12s
+}
+.srow:last-child{border-bottom:none}
+.srow:hover{background:var(--bg)}
+.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sd-gr{background:var(--green)}.sd-or{background:var(--or)}.sd-am{background:var(--amber)}
+.sname{flex:1;font-size:13px;font-weight:600}
+.sdate{font-size:11px;font-weight:600;color:var(--ink3);background:var(--bg);padding:2px 7px;border-radius:5px}
+.spill{font-size:10px;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap}
+.pill-ok{background:var(--green-bg);color:var(--green)}
+.pill-hoy{background:var(--or-bg);color:var(--or-dk)}
+.pill-prx{background:var(--blue-bg);color:var(--blue)}
+
+/* grupos integradores lateral */
+.grp-sec{margin-bottom:14px}
+.grp-head{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  padding:8px 14px;border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between
+}
+.gh-gr{background:var(--green-bg);color:var(--green)}
+.gh-am{background:var(--amber-bg);color:var(--amber)}
+.gh-rd{background:var(--red-bg);color:var(--red)}
+.gh-gy{background:#F3F4F6;color:#6B7280}
+.tags-wrap{display:flex;flex-wrap:wrap;gap:5px;padding:2px 0}
+.tag{
+  font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;cursor:default;
+  transition:transform .12s,box-shadow .12s
+}
+.tag:hover{transform:scale(1.04);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.tg-gr{background:var(--green-bg);color:var(--green)}
+.tg-or{background:var(--or-bg);color:var(--or-dk)}
+.tg-am{background:var(--amber-bg);color:var(--amber)}
+.tg-rd{background:var(--red-bg);color:var(--red)}
+.tg-bl{background:var(--blue-bg);color:var(--blue)}
+.tg-gy{background:#F3F4F6;color:#6B7280}
+
+/* ══════════════════════════════════ ALERT BOXES */
+.alert{border-radius:8px;padding:14px 16px;border-left:3px solid;margin-top:2px}
+.al-rd{background:var(--red-bg);border-color:var(--red)}
+.al-am{background:var(--amber-bg);border-color:var(--amber)}
+.al-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.alt-rd{color:var(--red)}.alt-am{color:var(--amber)}
+.al-body{font-size:12px;color:var(--ink2);line-height:1.6}
+
+/* ══════════════════════════════════ TAREAS */
+.ttbl{width:100%;border-collapse:collapse;font-size:13px}
+.ttbl th{
+  padding:9px 16px;text-align:left;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);background:var(--bg);border-bottom:2px solid var(--line)
+}
+.ttbl td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.ttbl tr:last-child td{border-bottom:none}
+.ttbl tbody tr{transition:background .12s}
+.ttbl tbody tr:hover td{background:var(--or-bg)}
+.ttbl tbody tr:hover td:first-child{border-left:3px solid var(--or)}
+.ttbl td:first-child{border-left:3px solid transparent;transition:border-color .12s}
+.task-t{font-size:13px;font-weight:600;color:var(--ink);line-height:1.5}
+.task-s{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.dbadge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.db-red{background:var(--red-bg);color:var(--red)}
+.db-am{background:var(--amber-bg);color:var(--amber)}
+.db-bl{background:var(--blue-bg);color:var(--blue)}
+
+/* sumario equipos */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.team-card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.team-h{
+  padding:12px 16px;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:space-between
+}
+.th-bl{background:var(--blue-bg);color:var(--blue)}
+.th-or{background:var(--or-bg);color:var(--or-dk)}
+.th-am{background:var(--amber-bg);color:var(--amber)}
+.team-b{padding:14px 16px;font-size:12.5px;color:var(--ink2);line-height:1.7}
+
+/* ══════════════════════════════════ GRID HELPERS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g60{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}
+@media(max-width:1000px){.g2,.g60{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .hero-kgrid{grid-template-columns:repeat(2,1fr)}
+  .hero-nav{grid-template-columns:1fr}
+  .vfunnel{grid-template-columns:repeat(2,1fr)}
+  .eop-grid,.team-grid{grid-template-columns:1fr}
+  .sec{padding:20px 16px 44px}
+  .vf-stage::after{display:none}
+}
+
+/* ══════════════════════════════════ CONTADORES */
+.cnt{display:inline}
+
+/* ══════════════════════════════════ HERO DUAL KPI */
+.hero-dual{
+  display:flex;align-items:stretch;gap:0;
+  width:100%;max-width:860px;margin-bottom:36px;
+  background:var(--card);border-radius:14px;
+  box-shadow:var(--shadow-lg);overflow:hidden
+}
+.hero-domain{flex:1;padding:22px 20px}
+.hd-label{
+  display:flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--or);margin-bottom:16px;padding-bottom:12px;
+  border-bottom:1px solid var(--line)
+}
+.hero-domain:last-child .hd-label{color:var(--blue)}
+.hd-kpis{display:flex;gap:6px}
+.hero-domain .hk{
+  flex:1;background:var(--bg);border-radius:8px;
+  padding:14px 12px;text-align:center;border-bottom:none;
+  box-shadow:none
+}
+.hero-domain .hk .hk-num{font-size:36px;letter-spacing:-1.5px}
+.hero-domain .hk .hk-lbl{font-size:10.5px}
+.hero-domain-sep{
+  width:1px;background:var(--line);margin:16px 0;flex-shrink:0
+}
+
+/* Funnel desglose inline */
+.fv-breakdown{
+  display:flex;gap:6px;padding:6px 18px 14px 152px;flex-wrap:wrap
+}
+.fvb-item{
+  display:flex;align-items:center;gap:5px;
+  background:var(--bg);border-radius:6px;
+  padding:4px 10px;font-size:11px;font-weight:600;color:var(--ink2);
+  border:1px solid var(--line)
+}
+.fvb-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.fvb-n{font-weight:800;font-size:13px}
+
+/* ══════════════════════════════════ S6 · Plan de Visitas */
+.s6-toprow{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.s6-fbtns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.s6-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--line2);font-size:12.5px;font-weight:600;cursor:pointer;background:var(--card);color:var(--ink2);transition:all .2s ease;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.s6-btn:hover{border-color:var(--or);color:var(--or);transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,102,0,.15)}
+.s6-btn:active{transform:translateY(0);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.s6-stats-strip{display:flex;gap:12px;margin-bottom:20px}
+.s6-stat{background:linear-gradient(135deg,#FFFFFF 0%,#F9FAFB 100%);border:2px solid var(--line);border-radius:12px;padding:14px 18px;flex:1;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:all .2s ease}
+.s6-stat:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1);border-color:var(--or-lt)}
+.s6-stat-n{font-size:28px;font-weight:800;color:var(--or);line-height:1;text-shadow:0 1px 2px rgba(255,102,0,.1)}
+.s6-stat-l{font-size:11px;color:var(--ink3);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.s6-body{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+.s6-map-card{background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFB 100%);border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);padding:20px;border:2px solid var(--line)}
+.s6-legend{display:flex;gap:16px;margin-bottom:14px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--line)}
+.s6-leg{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink2);font-weight:500}
+.s6-leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+#mapSpain{width:100%;height:auto;display:block;border-radius:10px}
+.s6-map-dot{cursor:pointer;transition:all .2s ease;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
+.s6-map-dot:hover{opacity:1!important;transform:scale(1.15);filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
+.s6-panel{display:flex;flex-direction:column;gap:12px}
+.s6-zones-card{background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFB 100%);border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);padding:16px;max-height:calc(100vh - 280px);overflow-y:auto;border:2px solid var(--line)}
+.s6-zone-block{margin-bottom:12px}
+.s6-zone-hdr{display:flex;align-items:center;gap:8px;padding:8px 6px;cursor:pointer;user-select:none;border-bottom:2px solid var(--line);transition:all .2s ease;border-radius:6px}
+.s6-zone-hdr:hover{background:var(--or-bg);border-bottom-color:var(--or-lt)}
+.s6-zone-name{font-weight:700;font-size:13px;flex:1;color:var(--ink)}
+.s6-zone-cnt{font-size:11px;color:var(--or);background:var(--or-bg);border-radius:99px;padding:3px 9px;font-weight:700}
+.s6-zone-arr{font-size:11px;color:var(--ink3);transition:transform .25s ease}
+.s6-zone-arr.open{transform:rotate(90deg);color:var(--or)}
+.s6-co-list{display:flex;flex-direction:column;gap:4px;padding-top:8px}
+.s6-co{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:all .2s ease;border:2px solid transparent}
+.s6-co:hover{background:var(--bg);transform:translateX(4px);border-color:var(--line2)}
+.s6-co.sel{background:var(--or-bg);border-color:var(--or-lt);box-shadow:0 2px 6px rgba(255,102,0,.15)}
+.s6-co-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.s6-co-name{font-size:12px;flex:1;line-height:1.4;font-weight:500}
+.s6-co.sel .s6-co-name{font-weight:700;color:var(--or-dk)}
+.s6-co-badge{font-size:10.5px;padding:3px 8px;border-radius:6px;font-weight:700;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.s6-co-badge.ba{background:var(--green-bg);color:var(--green);border:1px solid rgba(5,150,105,.2)}
+.s6-co-badge.bb{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(217,119,6,.2)}
+.s6-co-badge.bc{background:#F3F4F6;color:var(--ink3);border:1px solid var(--line2)}
+.s6-plan-card{background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFB 100%);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.1),0 1px 6px rgba(0,0,0,.06);padding:24px;margin-top:20px;border:2px solid var(--line)}
+.s6-plan-ttl{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;color:var(--ink);border-bottom:2px solid var(--line);padding-bottom:12px}
+.s6-plan-sub{font-size:12px;font-weight:500;color:var(--ink3)}
+.s6-plan-empty{color:var(--ink4);font-size:13px;text-align:center;padding:40px 20px;background:var(--bg);border-radius:12px;border:2px dashed var(--line2)}
+.s6-routes{display:flex;flex-wrap:wrap;gap:18px}
+.s6-route{min-width:220px;flex:1;background:var(--card);padding:14px;border-radius:12px;border:2px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.s6-route-hdr{display:flex;align-items:center;gap:9px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.s6-route-zone{font-size:13px;font-weight:700;color:var(--ink)}
+.s6-route-cnt{font-size:11px;color:var(--or);background:var(--or-bg);border-radius:99px;padding:3px 9px;font-weight:700}
+.s6-route-tags{display:flex;flex-wrap:wrap;gap:6px}
+.s6-rtag{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;font-size:11.5px;font-weight:600;border:2px solid transparent;cursor:pointer;transition:all .2s ease;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.s6-rtag:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(0,0,0,.15)}
+.s6-rtag.ta{color:var(--green);background:var(--green-bg);border-color:rgba(5,150,105,.3)}
+.s6-rtag.tb{color:var(--amber);background:var(--amber-bg);border-color:rgba(217,119,6,.3)}
+.s6-rtag.tc{color:var(--ink3);background:#F3F4F6;border-color:var(--line2)}
+.s6-rtag-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.s6-cluster-lbl{font-size:11px;color:var(--ink3);margin:8px 0 6px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+/* Tooltip */
+#s6Tip{position:fixed;pointer-events:none;z-index:9999;background:linear-gradient(135deg,#1F2937 0%,#111827 100%);color:#fff;border-radius:12px;padding:14px 18px;font-size:12.5px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.3);max-width:260px;display:none;border:2px solid rgba(255,255,255,.1)}
+.s6tip-name{font-weight:700;font-size:14px;margin-bottom:5px;color:#FF8A3D}
+.s6tip-city{color:rgba(255,255,255,.85);font-size:12px}
+.s6tip-prio{font-size:11.5px;margin-top:4px;padding:3px 8px;background:rgba(255,255,255,.15);border-radius:6px;display:inline-block;margin-top:6px}
+.s6tip-nota{font-size:11px;color:rgba(255,255,255,.65);margin-top:8px;border-top:2px solid rgba(255,255,255,.15);padding-top:8px}
+.s6tip-action{font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ TOP BAR ════════════════ -->
+<header class="topbar">
+
+  <!-- Logo del proyecto -->
+  <a class="proj-logo" href="#" onclick="show('s0');return false">
+    <div class="proj-logo-mark">
+      <!-- Icono: red/nodos = Canal Integrador -->
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="4"  r="2.5" fill="rgba(255,255,255,.95)"/>
+        <circle cx="4"  cy="16" r="2.5" fill="rgba(255,255,255,.95)"/>
+        <circle cx="18" cy="16" r="2.5" fill="rgba(255,255,255,.95)"/>
+        <line x1="11" y1="4"  x2="4"  y2="16" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="4"  x2="18" y2="16" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4"  y1="16" x2="18" y2="16" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="11" cy="11" r="2" fill="rgba(255,255,255,.55)"/>
+        <line x1="11" y1="4"  x2="11" y2="9"  stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="4"  y1="16" x2="9.5" y2="12" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="18" y1="16" x2="12.5" y2="12" stroke="rgba(255,255,255,.5)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="proj-logo-text">
+      <div class="plt-top">Canal Integrador</div>
+      <div class="plt-bot">MasOrange · B2B SME</div>
+    </div>
+  </a>
+
+  <div class="topbar-sep"></div>
+
+  <nav class="topbar-nav">
+    <button class="tnav on"  onclick="show('s0')">Resumen</button>
+    <button class="tnav"     onclick="show('s1')">01 · Captación</button>
+    <button class="tnav"     onclick="show('s2')">02 · Integradores</button>
+    <button class="tnav"     onclick="show('s3')">03 · Funnel Ventas</button>
+    <button class="tnav"     onclick="show('s4')">04 · Tareas</button>
+    <button class="tnav"     onclick="show('s5')">05 · Detalle Leads</button>
+    <button class="tnav"     onclick="show('s6')">06 · Plan Visitas</button>
+  </nav>
+
+  <div class="topbar-right">
+    <span class="date-lbl">20 mar 2026</span>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S0 · PORTADA
+══════════════════════════════════════════════════════ -->
+<section id="s0" class="sec on">
+<div class="hero">
+
+  <div class="hero-badge"><b></b> Weekly PMO · 20 Marzo 2026</div>
+
+  <!-- Logo grande portada -->
+  <div class="hero-logo">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="16" fill="#FF6600"/>
+      <circle cx="32" cy="12" r="6" fill="rgba(255,255,255,.95)"/>
+      <circle cx="12" cy="48" r="6" fill="rgba(255,255,255,.95)"/>
+      <circle cx="52" cy="48" r="6" fill="rgba(255,255,255,.95)"/>
+      <line x1="32" y1="12" x2="12" y2="48" stroke="rgba(255,255,255,.75)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="32" y1="12" x2="52" y2="48" stroke="rgba(255,255,255,.75)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="12" y1="48" x2="52" y2="48" stroke="rgba(255,255,255,.75)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="5" fill="rgba(255,255,255,.6)"/>
+    </svg>
+  </div>
+
+  <h1>Proyecto <em>Canal Integrador</em><br>B2B SME</h1>
+  <p class="hero-sub">Seguimiento semanal · Accenture &amp; MasOrange</p>
+
+  <!-- KPIs divididos en dos ámbitos -->
+  <div class="hero-dual">
+
+    <!-- CAPTACIÓN -->
+    <div class="hero-domain">
+      <div class="hd-label">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
+        Captación
+      </div>
+      <div class="hd-kpis">
+        <div class="hk">
+          <div class="hk-num c-or cnt" data-t="35">0</div>
+          <div class="hk-lbl">Captados</div>
+          <div class="hk-line hl-or"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-gr cnt" data-t="23">0</div>
+          <div class="hk-lbl">Activados</div>
+          <div class="hk-line hl-gr"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-am cnt" data-t="19">0</div>
+          <div class="hk-lbl">Alta participación</div>
+          <div class="hk-line hl-am"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-domain-sep"></div>
+
+    <!-- VENTAS -->
+    <div class="hero-domain">
+      <div class="hd-label" style="color:var(--blue)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 9L6 3L10 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Ventas
+      </div>
+      <div class="hd-kpis">
+        <div class="hk">
+          <div class="hk-num c-bl cnt" data-t="52">0</div>
+          <div class="hk-lbl">Leads en curso</div>
+          <div class="hk-line hl-bl"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-am cnt" data-t="9">0</div>
+          <div class="hk-lbl">Ofertas en curso</div>
+          <div class="hk-line hl-am"></div>
+        </div>
+        <div class="hk">
+          <div class="hk-num c-gr cnt" data-t="6">0</div>
+          <div class="hk-lbl">Ventas activadas</div>
+          <div class="hk-line hl-gr"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navegación agenda -->
+  <div class="hero-nav">
+    <div class="hnav-item" onclick="show('s1')">
+      <div class="hnav-n">1</div>
+      <div class="hnav-t">Estado de captación · Funnel de integradores</div>
+      <div class="hnav-arr">›</div>
+    </div>
+    <div class="hnav-item" onclick="show('s2')">
+      <div class="hnav-n">2</div>
+      <div class="hnav-t">Detalle de los 35 integradores captados</div>
+      <div class="hnav-arr">›</div>
+    </div>
+    <div class="hnav-item" onclick="show('s3')">
+      <div class="hnav-n">3</div>
+      <div class="hnav-t">Funnel de ventas · 52 oportunidades</div>
+      <div class="hnav-arr">›</div>
+    </div>
+    <div class="hnav-item" onclick="show('s4')">
+      <div class="hnav-n">4</div>
+      <div class="hnav-t">Otras tareas en curso</div>
+      <div class="hnav-arr">›</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S1 · CAPTACIÓN
+══════════════════════════════════════════════════════ -->
+<section id="s1" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 3</span>
+    <h2 class="sh-title">Estado de captación de integradores</h2>
+  </div>
+
+  <!-- KPIs -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">Fishing Pool</div>
+      <div class="k-num cnt" data-t="5124">0</div>
+      <div class="k-sub">Total integradores en BBDD atacable</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Hito 1 · Contacto</div>
+      <div class="k-num cnt" data-t="837">0</div>
+      <div class="k-sub">16% del fishing pool</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Hito 2 · Interés</div>
+      <div class="k-num cnt" data-t="70">0</div>
+      <div class="k-sub">Sesión informativa 1:1</div>
+    </div>
+    <div class="kcard k-or">
+      <div class="k-lbl">Hito 3 · Captados</div>
+      <div class="k-num cnt" data-t="47">0</div>
+      <div class="k-sub">KO presencial</div>
+    </div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Hito 4 · Activados</div>
+      <div class="k-num cnt" data-t="23">0</div>
+      <div class="k-sub">Contrato + modelo colaboración</div>
+      <span class="k-delta kd-up">↑ +7 esta semana</span>
+    </div>
+  </div>
+
+  <div class="g60">
+
+    <!-- FUNNEL VISUAL -->
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Funnel de captación</span>
+        <span class="card-sub">De 5.124 → 23 activados</span>
+      </div>
+
+      <div class="funnel-vis">
+
+        <!-- Pool -->
+        <div class="fv-row">
+          <div class="fv-label"><b>Fishing Pool</b>Total BBDD atacable</div>
+          <div class="fv-bar-col">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-pool" style="width:100%"><span>100%</span></div>
+            </div>
+          </div>
+          <div class="fv-num-col">
+            <div class="fv-num fc-pool cnt" data-t="5124">0</div>
+            <div class="fv-pct fc-pool"></div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H1 -->
+        <div class="fv-row">
+          <div class="fv-label"><b>H1 · Contacto</b>1er contacto exitoso</div>
+          <div class="fv-bar-col">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h1" style="width:16%"><span>16%</span></div>
+            </div>
+          </div>
+          <div class="fv-num-col">
+            <div class="fv-num fc-h1 cnt" data-t="837">0</div>
+            <div class="fv-pct fc-h1">16% pool</div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H2 -->
+        <div class="fv-row">
+          <div class="fv-label"><b>H2 · Interés</b>Sesión online 1:1</div>
+          <div class="fv-bar-col">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h2" style="width:9%"><span>9%</span></div>
+            </div>
+          </div>
+          <div class="fv-num-col">
+            <div class="fv-num fc-h2 cnt" data-t="70">0</div>
+            <div class="fv-pct fc-h2">9% de H1</div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H3 con desglose -->
+        <div class="fv-row" style="align-items:flex-start">
+          <div class="fv-label" style="padding-top:14px"><b>H3 · Captados</b>KO presencial</div>
+          <div class="fv-bar-col" style="padding-top:14px">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h3" style="width:65%"><span>65%</span></div>
+            </div>
+            <!-- desglose de los 47 -->
+            <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">23</span> activados</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--amber)"></div><span class="fvb-n" style="color:var(--amber)">4</span> on hold</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">8</span> pdte. agendar</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--red)"></div><span class="fvb-n" style="color:var(--red)">8</span> churn</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--ink3)"></div><span class="fvb-n" style="color:var(--ink3)">4</span> otros</div>
+            </div>
+          </div>
+          <div class="fv-num-col" style="padding-top:14px">
+            <div class="fv-num fc-h3 cnt" data-t="47">0</div>
+            <div class="fv-pct fc-h3">65% de H2</div>
+          </div>
+        </div>
+
+        <div class="fv-arrow">▼</div>
+
+        <!-- H4 con desglose -->
+        <div class="fv-row" style="align-items:flex-start">
+          <div class="fv-label" style="padding-top:14px"><b>H4 · Activados</b>Contrato + modelo</div>
+          <div class="fv-bar-col" style="padding-top:14px">
+            <div class="fv-bar-track">
+              <div class="fv-bar-fill fb-h4" style="width:49%"><span>49%</span></div>
+            </div>
+            <!-- desglose de los 23 -->
+            <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">6</span> contratos firmados</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:#34D399"></div><span class="fvb-n" style="color:#059669">17</span> en proceso de firma</div>
+            </div>
+          </div>
+          <div class="fv-num-col" style="padding-top:14px">
+            <div class="fv-num fc-h4 cnt" data-t="23">0</div>
+            <div class="fv-pct fc-h4">49% de H3</div>
+          </div>
+        </div>
+
+      </div><!-- /funnel-vis -->
+
+      <!-- Alertas churn -->
+      <div style="padding:0 18px 18px;display:flex;gap:10px">
+        <div class="alert al-rd" style="flex:1">
+          <div class="al-title alt-rd">19 rechazos post-sesión online</div>
+          <div class="al-body">Integradores que declinaron continuar tras la sesión 1:1</div>
+        </div>
+        <div class="alert al-am" style="flex:1">
+          <div class="al-title alt-am">8 en churn</div>
+          <div class="al-body">Monkinet · Jufima · Landm · SGR · Loomis · Q2B · Tec. Estratégica · Twistic</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR: grupos -->
+    <div style="display:flex;flex-direction:column;gap:14px">
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--green)">Contratos firmados</span>
+          <span style="font-size:22px;font-weight:800;color:var(--green)">6</span>
+        </div>
+        <div style="padding:12px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-gr">Cover Net</span><span class="tag tg-gr">Maxen</span>
+            <span class="tag tg-gr">Deiteco</span><span class="tag tg-gr">Elpis Informática</span>
+            <span class="tag tg-gr" title="Inicio 15-abril">Sictemas *</span>
+            <span class="tag tg-gr">Paper Labs</span>
+          </div>
+          <div style="font-size:10.5px;color:var(--ink3);margin-top:6px">* Inicio colaboración 15-abril</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--green)">En proceso de firma</span>
+          <span style="font-size:22px;font-weight:800;color:var(--green)">17</span>
+        </div>
+        <div style="padding:10px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-gr">Mariskalnet</span><span class="tag tg-gr">Ocvistas</span>
+            <span class="tag tg-gr">Dataqu</span><span class="tag tg-gr">Ox-one</span>
+            <span class="tag tg-gr">Cobitratel</span><span class="tag tg-gr">Duo IT</span>
+            <span class="tag tg-gr">Infornet</span><span class="tag tg-gr">Fedesoft</span>
+            <span class="tag tg-gr">Audinfor</span><span class="tag tg-gr">Dosys</span>
+            <span class="tag tg-gr">Sisytec</span><span class="tag tg-gr">Solventus Software</span>
+            <span class="tag tg-gr">Durnia</span><span class="tag tg-gr">Microsip</span>
+            <span class="tag tg-gr">Binfor Sol.</span><span class="tag tg-gr">GNUO</span>
+            <span class="tag tg-gr">Brain Hardware</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--amber)">On Hold</span>
+          <span style="font-size:22px;font-weight:800;color:var(--amber)">4</span>
+        </div>
+        <div style="padding:10px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-am">A4I</span><span class="tag tg-am">Next Mobility</span>
+            <span class="tag tg-am">Redem</span><span class="tag tg-am">Dirbapont</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <span class="card-title" style="color:var(--blue)">Pendiente agendar KO</span>
+          <span style="font-size:22px;font-weight:800;color:var(--blue)">8</span>
+        </div>
+        <div style="padding:10px 14px">
+          <div class="tags-wrap">
+            <span class="tag tg-bl">NaimiTech</span><span class="tag tg-bl">Ache Informática</span>
+            <span class="tag tg-bl">Omnia Sol</span><span class="tag tg-bl">Sur Computers</span>
+            <span class="tag tg-bl">Amiritmo</span><span class="tag tg-bl">Digital HM</span>
+            <span class="tag tg-bl">Lisot</span><span class="tag tg-bl">ITSoft</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /g60 -->
+
+  <!-- SESIONES -->
+  <div class="g2" style="margin-top:18px">
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Sesiones realizadas esta semana</span>
+        <span class="sp sp-gr">7 completadas</span>
+      </div>
+      <div class="slist">
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">ISC Tech</span><span class="sdate">16.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Maicrosoft</span><span class="sdate">17.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Aideea</span><span class="sdate">17.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Lisot</span><span class="sdate">17.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Digital HM</span><span class="sdate">18.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Itsoft</span><span class="sdate">18.03</span><span class="spill pill-ok">Completada</span></div>
+        <div class="srow"><div class="sdot sd-gr"></div><span class="sname">Brain Hardware</span><span class="sdate">18.03</span><span class="spill pill-ok">Completada</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h">
+        <span class="card-title">Próximas sesiones</span>
+        <span class="sp sp-or">9 agendadas</span>
+      </div>
+      <div class="slist">
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">SYC Almería</span><span class="sdate">20.03</span><span class="spill pill-hoy">Hoy</span></div>
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Group Sertec</span><span class="sdate">20.03</span><span class="spill pill-hoy">Hoy</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Tecicom</span><span class="sdate">23.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">ISC Tech (negocio)</span><span class="sdate">24.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Aideea (negocio)</span><span class="sdate">24.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">PC Services</span><span class="sdate">25.03</span><span class="spill pill-prx">Próxima</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Maicrosoft (negocio)</span><span class="sdate">14.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Inforware</span><span class="sdate">24.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Evolur</span><span class="sdate">24.04</span><span class="spill pill-prx">Agendada</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S2 · DETALLE INTEGRADORES
+══════════════════════════════════════════════════════ -->
+<section id="s2" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 4</span>
+    <h2 class="sh-title">Detalle de los 35 integradores captados</h2>
+  </div>
+
+  <!-- Toolbar filtros -->
+  <div class="int-toolbar">
+    <input class="int-search" id="intSearch" type="text" placeholder="Buscar integrador..." oninput="searchInt()">
+    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(35)</span></button>
+    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (11)</button>
+    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (13)</button>
+    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (4)</button>
+    <button class="filt-btn"   onclick="filt('churn',this)"><span class="filt-dot fd-rd"></span>Riesgo churn (7)</button>
+  </div>
+
+  <!-- Tabla desplegada completa, sin scroll interno -->
+  <!-- overflow-x:clip: no crea scroll container (como hace auto), por eso no rompe position:sticky en th -->
+  <div style="overflow-x:clip">
+  <table class="int-table" id="intTable">
+    <thead>
+      <tr id="int-thead">
+        <th style="width:18%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Integrador</th>
+        <th style="width:10%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Modelo</th>
+        <th style="width:14%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Estado</th>
+        <th style="position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Observaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ══════ VERDE · Leads compartidos, alta participación (11) ══════ -->
+      <tr class="grp-sep" data-gh="verde">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--green-bg);border-top:2px solid rgba(5,150,105,.2);border-bottom:1px solid rgba(5,150,105,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--green)">Leads compartidos · alta participación</span>
+          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">11 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="verde"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="verde" data-n="maxen">        <td><div class="int-name">Maxen</div></td>        <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Varios leads en curso y sin bloqueantes identificados. Visitas comerciales semana 23.03.</td></tr>
+      <tr data-g="verde" data-n="covernet">      <td><div class="int-name">Covernet</div></td>      <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Realizando ampliación pendiente PYME, a la espera de nuevos leads.</td></tr>
+      <tr data-g="verde" data-n="cobitratel">    <td><div class="int-name">Cobitratel</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada; pendiente recibir nuevos leads.</td></tr>
+      <tr data-g="verde" data-n="paper labs">    <td><div class="int-name">Paper Labs</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 lead interesante compartido, en cartera MasOrange con riesgo de fuga.</td></tr>
+      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente cerrar visita a cliente y nuevo lead pequeño compartido.</td></tr>
+      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Lead grande recibido y preparando oferta con VVDD.</td></tr>
+      <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita el 17.03, en proceso firma de contrato + envío de leads.</td></tr>
+      <tr data-g="verde" data-n="dataqu">        <td><div class="int-name">Dataqu</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con lead antes de SS y preparando webinar para abril.</td></tr>
+      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Informática</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td><span class="sp sp-gr">Firmado</span></td><td style="font-size:12.5px;color:var(--ink2)">Contrato firmado, pendiente recibir leads.</td></tr>
+      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente lead de asociación de discapacitados, respuesta antes de SS.</td></tr>
+      <tr data-g="verde" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Campaña de servicios MasOrange a clientes Kit Digital lanzada esta semana.</td></tr>
+
+      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (13) ══════ -->
+      <tr class="grp-sep" data-gh="posible">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--amber-bg);border-top:2px solid rgba(217,119,6,.2);border-bottom:1px solid rgba(217,119,6,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--amber)">Posibles leads · aún no recibidos · participación moderada</span>
+          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">13 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="posible"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="posible" data-n="gnuo">          <td><div class="int-name">GNUO</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Muy interesado, proceso compartido y pendiente recepción de leads.</td></tr>
+      <tr data-g="posible" data-n="audinfor">      <td><div class="int-name">Audinfor</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Han identificado 4/5 leads potenciales, pendiente recepción.</td></tr>
+      <tr data-g="posible" data-n="mariskalnet">   <td><div class="int-name">Mariskalnet</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Leads no recibidos, pendiente respuesta integrador.</td></tr>
+      <tr data-g="posible" data-n="amiritmo">      <td><div class="int-name">Amiritmo</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">En firma</span></td>  <td style="font-size:12.5px;color:var(--ink2)">En proceso firma de contrato, quiere analizarlo y empezar a colaborar.</td></tr>
+      <tr data-g="posible" data-n="microsip">      <td><div class="int-name">Microsip</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Evaluando internamente compartir un lead grande (Becton Dickinson).</td></tr>
+      <tr data-g="posible" data-n="durnia">        <td><div class="int-name">Durnia</div></td>        <td><span class="mod-tag mt-lg">Partner Aut.</span></td><td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Está analizando el modelo de colaboración.</td></tr>
+      <tr data-g="posible" data-n="binfor soluciones"><td><div class="int-name">Binfor Sol.</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">En firma</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Muy interesado, pendiente contrato firmado.</td></tr>
+      <tr data-g="posible" data-n="dosys">         <td><div class="int-name">Dosys</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Solicitó precios de productos, a la espera de leads.</td></tr>
+      <tr data-g="posible" data-n="redem">        <td><div class="int-name">Redem</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 10.03.</td></tr>
+      <tr data-g="posible" data-n="sur computers"><td><div class="int-name">Sur Computers</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Nos pidieron portfolio de licencias con precios. Pendiente recontacto.</td></tr>
+      <tr data-g="posible" data-n="lisot">        <td><div class="int-name">Lisot</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 17.03.</td></tr>
+      <tr data-g="posible" data-n="digital hm">   <td><div class="int-name">Digital HM</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 18.03.</td></tr>
+      <tr data-g="posible" data-n="itsoft">       <td><div class="int-name">ITSoft</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-am">Posible</span></td>   <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta para reunión con VVDD. 1:1 el 18.03.</td></tr>
+
+      <!-- ══════ GRIS · Hold (4) ══════ -->
+      <tr class="grp-sep" data-gh="hold">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:#F3F4F6;border-top:2px solid rgba(107,114,128,.2);border-bottom:1px solid rgba(107,114,128,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#9CA3AF;display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6B7280">Hold</span>
+          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">4 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="hold"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="hold" data-n="dirbapont">    <td><div class="int-name">Dirbapont</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · mar</span></td> <td style="font-size:12.5px;color:var(--ink2)">Hold hasta finales de marzo por carga de trabajo.</td></tr>
+      <tr data-g="hold" data-n="sictemas">     <td><div class="int-name">Sictemas</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · abr</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 15-abril por reestructuración interna. Contrato firmado enviado.</td></tr>
+      <tr data-g="hold" data-n="fedesoft">     <td><div class="int-name">Fedesoft</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · abr</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta abril por problemas personales.</td></tr>
+      <tr data-g="hold" data-n="brain hardware"><td><div class="int-name">Brain Hardware</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold · may</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo.</td></tr>
+
+      <!-- ══════ ROJO · Riesgo churn, baja participación (7) ══════ -->
+      <tr class="grp-sep" data-gh="churn">
+        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--red-bg);border-top:2px solid rgba(220,38,38,.2);border-bottom:1px solid rgba(220,38,38,.15);display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--red)">Riesgo churn · baja participación</span>
+          <span style="font-size:11px;font-weight:600;color:var(--red);opacity:.55;margin-left:auto">7 integradores</span>
+        </div></td>
+      </tr>
+      <tr class="grp-gap" data-gh="churn"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="churn" data-n="infornet">          <td><div class="int-name">Infornet</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente respuesta.</td></tr>
+      <tr data-g="churn" data-n="naimitech">         <td><div class="int-name">NaimiTech</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn; quiere modelo bidireccional pero no contesta.</td></tr>
+      <tr data-g="churn" data-n="ache informatica">  <td><div class="int-name">Ache Infor.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="omnia soluciones">  <td><div class="int-name">Omnia Sol.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="a4i">               <td><div class="int-name">A4I</div></td>               <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="next mobility">     <td><div class="int-name">Next Mobility</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+      <tr data-g="churn" data-n="solventus software"><td><div class="int-name">Solventus Soft.</div></td><td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-rd">Churn</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por no respuesta a email y llamadas.</td></tr>
+
+    </tbody>
+  </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S3 · FUNNEL VENTAS
+══════════════════════════════════════════════════════ -->
+<section id="s3" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 5</span>
+    <h2 class="sh-title">Funnel de ventas · 52 oportunidades identificadas</h2>
+  </div>
+
+  <!-- KPI row -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">Total oportunidades</div>
+      <div class="k-num cnt" data-t="52">0</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Leads en curso</div>
+      <div class="k-num cnt" data-t="14">0</div>
+      <div class="k-sub">27% de oportunidades</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Ofertas en curso</div>
+      <div class="k-num cnt" data-t="9">0</div>
+      <div class="k-sub">64% de leads</div>
+    </div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Ventas activadas</div>
+      <div class="k-num cnt" data-t="6">0</div>
+      <div class="k-sub">12% de oportunidades</div>
+      <span class="k-delta kd-up">↑ Meta en curso</span>
+    </div>
+  </div>
+
+  <!-- Tabla detalle -->
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-h">
+      <span class="card-title">Estado por integrador</span>
+      <span class="card-sub">11 integradores con oportunidades activas</span>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="vtbl">
+      <thead>
+        <tr>
+          <th>Integrador</th>
+          <th>Modelo</th>
+          <th style="text-align:center">Oport.</th>
+          <th style="text-align:center">Ofertas</th>
+          <th style="text-align:center">Ventas</th>
+          <th>Situación</th>
+          <th>Próximo paso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">19</td><td class="n n-or">6</td><td class="n n-gr">1</td><td style="font-size:12px;color:var(--ink2)">2 ofertas en formalización · 1 en prep. · 3 para visita 23.03</td><td style="font-size:12px">Avanzar ofertas y visitas</td></tr>
+        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">8</td><td class="n n-or">1</td><td class="n n-gr">4</td><td style="font-size:12px;color:var(--ink2)">1 oferta ampliación PYME en curso</td><td style="font-size:12px">Activar ampliaciones</td></tr>
+        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">6</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 visita pendiente · 1 nuevo lead pequeño</td><td style="font-size:12px">Confirmar visita y avanzar</td></tr>
+        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">2 leads priorizados · preparando webinar + sesión</td><td style="font-size:12px">Definir formato webinar</td></tr>
+        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-or">1</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 oferta en curso</td><td style="font-size:12px">Envío al integrador</td></tr>
+        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">—</td><td class="n n-gr">1</td><td style="font-size:12px;color:var(--ink2)">1 lead KO por no respuesta cliente</td><td style="font-size:12px">Envío nuevos leads</td></tr>
+        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">2 leads potenciales · 1 pendiente oferta propia</td><td style="font-size:12px">Avanzar 3 leads</td></tr>
+        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">2 leads potenciales identificados</td><td style="font-size:12px">Avanzar leads</td></tr>
+        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 lead en curso pendiente integrador–cliente</td><td style="font-size:12px">Avanzar ofertas</td></tr>
+        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-or">1</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">1 oferta en curso</td><td style="font-size:12px">Envío al integrador</td></tr>
+        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">—</td><td class="n n-gy">—</td><td style="font-size:12px;color:var(--ink2)">Estado de leads por integrador</td><td style="font-size:12px">Pendiente recibir lead</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- EOP -->
+  <div class="card">
+    <div class="card-h">
+      <span class="card-title">Clientes EoP · Objetivo vs. Real acumulado</span>
+    </div>
+    <div class="eop-grid">
+      <div class="eop-card">
+        <div class="eop-month">Enero 2026</div>
+        <div class="eop-row"><span class="eop-lbl">Objetivo</span><span class="eop-val ev-or">5</span></div>
+        <div class="eop-row"><span class="eop-lbl">Real</span><span class="eop-val ev-gr">4</span></div>
+        <div class="eop-bar"><div class="eop-fill" style="width:80%;background:var(--or)"></div></div>
+        <div style="font-size:11px;color:var(--ink3);margin-top:6px;text-align:right">80%</div>
+      </div>
+      <div class="eop-card">
+        <div class="eop-month">Febrero 2026</div>
+        <div class="eop-row"><span class="eop-lbl">Objetivo</span><span class="eop-val ev-or">15</span></div>
+        <div class="eop-row"><span class="eop-lbl">Real</span><span class="eop-val ev-gr">4</span></div>
+        <div class="eop-bar"><div class="eop-fill" style="width:27%;background:var(--red)"></div></div>
+        <div style="font-size:11px;color:var(--red);margin-top:6px;text-align:right;font-weight:600">27% · Gap –11</div>
+      </div>
+      <div class="eop-card">
+        <div class="eop-month">Marzo 2026 <span style="font-size:10px;font-weight:400;color:var(--or)">(en curso)</span></div>
+        <div class="eop-row"><span class="eop-lbl">Objetivo</span><span class="eop-val ev-or">39</span></div>
+        <div class="eop-row"><span class="eop-lbl">Real</span><span class="eop-val ev-gr">6</span></div>
+        <div class="eop-row"><span class="eop-lbl">Esperados adicionales</span><span class="eop-val ev-am">+10</span></div>
+        <div class="eop-bar"><div class="eop-fill" style="width:41%;background:var(--amber)"></div></div>
+        <div style="font-size:11px;color:var(--amber);margin-top:6px;text-align:right;font-weight:600">~41% si cierran 10 adicionales</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     S4 · TAREAS
+══════════════════════════════════════════════════════ -->
+<section id="s4" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Slide 6</span>
+    <h2 class="sh-title">Otras tareas en curso · Mantener momentum</h2>
+  </div>
+
+  <!-- KPI row -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">Total tareas activas</div>
+      <div class="k-num">9</div>
+    </div>
+    <div class="kcard k-rd">
+      <div class="k-lbl">Retrasadas</div>
+      <div class="k-num" style="color:var(--red)">3</div>
+      <div class="k-sub">Fecha ≤ Sem. 16.03</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">En curso</div>
+      <div class="k-num">6</div>
+      <div class="k-sub">Sem. 23.03</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Puntual</div>
+      <div class="k-num">1</div>
+      <div class="k-sub">23.03 (modelo op.)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <span class="card-title">Tareas en curso por equipo</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span class="dbadge db-red">Urgente</span>
+        <span class="dbadge db-am">Esta semana</span>
+        <span class="dbadge db-bl">Próxima semana</span>
+      </div>
+    </div>
+    <table class="ttbl">
+      <thead>
+        <tr>
+          <th style="width:45%">Tarea</th>
+          <th style="width:20%">Equipo</th>
+          <th style="width:15%;text-align:center">Fecha tentativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="task-t">Contrato integradores sin validación de cláusula de protección de cartera</div></td>
+          <td><div class="task-s">Legal</div></td>
+          <td style="text-align:center"><span class="dbadge db-red">11.03 ⚠</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Revisar preimpresos VVDD — alternativa al 1471 para flujo e2e</div></td>
+          <td><div class="task-s">BOC</div></td>
+          <td style="text-align:center"><span class="dbadge db-red">Sem. 16.03 ⚠</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Establecer pago de dispositivos HW distinto a comisiones Telco por su impacto en margen</div></td>
+          <td><div class="task-s">Equipo Natalia</div></td>
+          <td style="text-align:center"><span class="dbadge db-red">Sem. 16.03 ⚠</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Alinear decisiones finales del modelo operativo para envío a integradores e2e</div></td>
+          <td><div class="task-s">Equipo ACN</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">23.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Pintar flujo de provisión AS IS PYME y 1471 para integradores e2e</div></td>
+          <td><div class="task-s">ACN + BOC</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Definir autorización canal integrador para recogida de pedido en PdV</div></td>
+          <td><div class="task-s">Canal Int. + Legal</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="task-t">Lista de exclusión de comunicaciones comerciales — LeadGen</div>
+            <div class="task-s">Pendiente juntarnos con Capañas</div>
+          </td>
+          <td><div class="task-s">Bea Saavedra</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Automatizar el flujo de pagos LeadGen para asegurar escalado — Propuesta offline</div></td>
+          <td><div class="task-s">Estrategia (Natalia)</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+        <tr>
+          <td><div class="task-t">Automatizar flujo e2e</div></td>
+          <td><div class="task-s">Equipo ACN</div></td>
+          <td style="text-align:center"><span class="dbadge db-bl">Sem. 23.03</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Resumen por equipo -->
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-h th-rd" style="background:var(--red-bg);color:var(--red)">Legal <span class="dbadge db-red" style="font-size:10px">1 urgente</span></div>
+      <div class="team-b">
+        · Validar cláusula protección de cartera (11.03 ⚠)<br>
+        · Autorización recogida pedido PdV (sem. 23.03)
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-h th-or">Equipo ACN <span class="dbadge db-am" style="font-size:10px">3 tareas</span></div>
+      <div class="team-b">
+        · Modelo operativo final (23.03)<br>
+        · Flujo provisión AS IS + 1471 (sem. 23.03)<br>
+        · Automatizar flujo e2e (sem. 23.03)
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-h th-rd" style="background:var(--red-bg);color:var(--red)">BOC + Natalia <span class="dbadge db-red" style="font-size:10px">2 retrasadas</span></div>
+      <div class="team-b">
+        · BOC: Preimpresos VVDD alt. 1471 (sem. 16.03 ⚠)<br>
+        · Natalia: Pago HW distinto comisiones (sem. 16.03 ⚠)<br>
+        · Natalia: Automatizar pagos LeadGen (sem. 23.03)
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-h th-bl">Bea Saavedra <span class="dbadge db-bl" style="font-size:10px">1 tarea</span></div>
+      <div class="team-b">
+        · Lista exclusión LeadGen — pendiente Capañas (sem. 23.03)
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════ S5 · DETALLE LEADS ═══════════════════════════ -->
+<section class="sec" id="s5">
+  <div class="sh">
+    <div>
+      <div class="sh-title">Detalle Leads</div>
+      <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">52 leads potenciales · Fuente: Partners_BBDD_v1.xlsx · Actualizado PMO #15</div>
+    </div>
+    <button class="btn-privacy" id="btnPrivacy" onclick="togglePrivacy()" title="Ocultar datos sensibles al compartir pantalla con un integrador">🔒 Modo privado</button>
+  </div>
+
+  <!-- KPI row -->
+  <div class="krow s5-sensitive">
+    <div class="kcard k-or">
+      <div class="k-lbl">Leads potenciales</div>
+      <div class="k-num cnt" data-t="52">52</div>
+      <div class="k-sub">Total identificados</div>
+    </div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Ventas realizadas</div>
+      <div class="k-num cnt" data-t="6">6</div>
+      <div class="k-sub">Contratos firmados</div>
+      <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+        <span style="font-size:11px;color:var(--green);font-weight:600;background:var(--green-bg);padding:3px 8px;border-radius:5px">∑ 1.960,59 €</span>
+        <span style="font-size:11px;color:var(--ink3);background:var(--bg);padding:3px 8px;border-radius:5px">x̄ 326,77 €/mes</span>
+      </div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">En curso</div>
+      <div class="k-num cnt" data-t="14">14</div>
+      <div class="k-sub">Oferta en proceso</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Pendiente</div>
+      <div class="k-num cnt" data-t="26">26</div>
+      <div class="k-sub">Sin oferta activa</div>
+    </div>
+    <div class="kcard k-rd">
+      <div class="k-lbl">KO</div>
+      <div class="k-num cnt" data-t="6">6</div>
+      <div class="k-sub">Descartados</div>
+    </div>
+  </div>
+
+  <!-- Filtros por estado -->
+  <div class="leads-ctrl" id="leadsCtrl">
+    <input class="leads-search" id="leadsSearch" placeholder="🔍 Buscar lead o empresa…" oninput="filterLeads()">
+    <div class="chip on" id="lchAll"    onclick="setEstFilt('all',this)">Todos</div>
+    <div class="chip ch-gr"             onclick="setEstFilt('Venta realizada',this)">✓ Venta</div>
+    <div class="chip ch-bl"             onclick="setEstFilt('En curso',this)">◉ En curso</div>
+    <div class="chip ch-am"             onclick="setEstFilt('Pendiente',this)">⏳ Pendiente</div>
+    <div class="chip ch-rd"             onclick="setEstFilt('KO',this)">✕ KO</div>
+    <span class="leads-count" id="leadsCount">51 leads</span>
+  </div>
+
+  <!-- Filtros por integrador -->
+  <div class="s5-sensitive" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="leadsIntChips"></div>
+
+  <!-- Grid + panel lateral -->
+  <div class="leads-wrap">
+    <div class="leads-main">
+      <div class="lead-grid" id="leadGrid"></div>
+    </div>
+    <div class="leads-panel" id="leadsPanel">
+      <div class="panel-hdr">
+        <div class="panel-title" id="panelTitle">–</div>
+        <button class="panel-close" onclick="closePanel()">✕</button>
+      </div>
+      <div class="panel-body" id="panelBody"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ S6 · PLAN DE VISITAS ════════════════ -->
+<section class="sec" id="s6">
+  <div class="s6-toprow">
+    <div>
+      <h1 class="sec-title">Plan de Visitas</h1>
+      <p class="sec-sub">34 empresas mapeadas · Selecciona para construir tu ruta óptima</p>
+    </div>
+    <div class="s6-fbtns">
+      <button class="s6-btn" onclick="s6SelA()">Solo prioritarios A</button>
+      <button class="s6-btn" onclick="s6SelAB()">✓ Verde + Naranja</button>
+      <button class="s6-btn" onclick="s6Clear()" style="color:var(--red)">✕ Limpiar</button>
+    </div>
+  </div>
+
+  <div class="s6-stats-strip">
+    <div class="s6-stat"><div class="s6-stat-n">34</div><div class="s6-stat-l">Empresas</div></div>
+    <div class="s6-stat"><div class="s6-stat-n" id="s6SelN">0</div><div class="s6-stat-l">Seleccionadas</div></div>
+    <div class="s6-stat"><div class="s6-stat-n" id="s6ZonesN">—</div><div class="s6-stat-l">Zonas</div></div>
+    <div class="s6-stat"><div class="s6-stat-n" id="s6DaysN">—</div><div class="s6-stat-l">Días est.</div></div>
+  </div>
+
+  <div class="s6-body">
+    <!-- ── Mapa -->
+    <div class="s6-map-card">
+      <div class="s6-legend">
+        <span class="s6-leg"><span class="s6-leg-dot" style="background:#059669"></span>Presencial prioritario (A)</span>
+        <span class="s6-leg"><span class="s6-leg-dot" style="background:#D97706"></span>En ruta (B)</span>
+        <span class="s6-leg"><span class="s6-leg-dot" style="background:#9CA3AF"></span>Remoto primero (C)</span>
+        <span class="s6-leg" style="margin-left:auto;color:var(--ink4);font-style:italic">Haz click para seleccionar</span>
+      </div>
+      <svg id="mapSpain" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Fondo -->
+        <rect width="700" height="520" fill="#F8FAFC"/>
+        <!-- Contorno España peninsular -->
+        <path d="M 97,45
+          C 72,55 50,75 31,94
+          C 35,112 48,125 57,132
+          C 52,143 48,158 50,175
+          C 52,195 57,228 60,250
+          C 85,280 112,302 137,324
+          L 130,360 L 118,400
+          C 116,410 118,418 120,422
+          C 145,448 170,470 203,488
+          C 235,500 275,506 300,503
+          C 330,498 348,472 364,448
+          C 400,415 432,378 445,355
+          C 447,330 450,310 450,290
+          C 477,255 503,222 526,196
+          C 555,168 585,140 616,121
+          C 605,112 580,106 558,102
+          L 501,100
+          C 468,96 438,94 390,99
+          C 379,101 373,91 374,70
+          C 357,72 340,73 329,74
+          C 313,70 297,63 288,62
+          C 263,59 233,58 201,58
+          C 168,56 133,50 97,45 Z"
+          fill="#EFF3F8" stroke="#CBD5E1" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Mallorca -->
+        <ellipse cx="607" cy="284" rx="18" ry="11" fill="#EFF3F8" stroke="#CBD5E1" stroke-width="1"/>
+        <!-- Ibiza -->
+        <ellipse cx="581" cy="308" rx="9" ry="6" fill="#EFF3F8" stroke="#CBD5E1" stroke-width="1"/>
+        <!-- Etiquetas de zona -->
+        <text x="282" y="225" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">MADRID</text>
+        <text x="558" y="162" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">CATALUÑA</text>
+        <text x="225" y="452" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">ANDALUCÍA</text>
+        <text x="262" y="74" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">NORTE</text>
+        <text x="67" y="111" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">GALICIA</text>
+        <text x="455" y="328" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">C.VAL</text>
+        <text x="430" y="148" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">ARAGÓN</text>
+        <text x="158" y="298" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">EXTREM.</text>
+        <!-- Dots inyectados por JS -->
+        <g id="s6MapDots"></g>
+      </svg>
+    </div>
+
+    <!-- ── Panel lateral -->
+    <div class="s6-panel">
+      <div class="s6-zones-card" id="s6ZonesList"></div>
+    </div>
+  </div>
+
+  <!-- ── Plan de rutas -->
+  <div class="s6-plan-card" id="s6PlanCard" style="margin-top:16px">
+    <div class="s6-plan-ttl">
+      Ruta optimizada
+      <span class="s6-plan-sub" id="s6PlanSub">Selecciona empresas para ver el plan</span>
+    </div>
+    <div id="s6PlanContent">
+      <div class="s6-plan-empty">Selecciona empresas en el mapa o en la lista para construir tu plan de visitas</div>
+    </div>
+  </div>
+</section>
+
+<!-- Tooltip flotante -->
+<div id="s6Tip"></div>
+
+<!-- ════════════════ JS ════════════════ -->
+<script>
+// ── Navegación
+function show(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tnav').forEach(t=>t.classList.remove('on'));
+  const secs=['s0','s1','s2','s3','s4','s5','s6'];
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tnav')[secs.indexOf(id)].classList.add('on');
+  startCounters(document.getElementById(id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Contadores animados
+function countUp(el,target,dur=850){
+  const start=performance.now();
+  (function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*e).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step);
+  })(performance.now());
+}
+function startCounters(container){
+  container.querySelectorAll('.cnt[data-t]').forEach(el=>{
+    countUp(el,parseInt(el.dataset.t));
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>startCounters(document.getElementById('s0')));
+
+// ── Filtro integradores — por nombre y/o grupo
+let curFilt='all';
+
+function applyFilter(){
+  const q=document.getElementById('intSearch').value.trim().toLowerCase();
+  const groups={verde:false,posible:false,hold:false,churn:false};
+
+  // Primero recorremos filas de datos para ver qué grupos tienen filas visibles
+  document.querySelectorAll('#intTable tbody tr[data-g]').forEach(r=>{
+    const n=(r.dataset.n||'').toLowerCase();
+    const g=r.dataset.g||'';
+    const matchQ=!q||n.includes(q);
+    const matchG=curFilt==='all'||g===curFilt;
+    const visible=matchQ&&matchG;
+    r.style.display=visible?'':'none';
+    if(visible) groups[g]=true;
+  });
+
+  // Mostramos u ocultamos separadores y espaciadores de grupo según si su grupo tiene filas visibles
+  document.querySelectorAll('#intTable tbody tr.grp-sep, #intTable tbody tr.grp-gap').forEach(r=>{
+    const gh=r.dataset.gh;
+    r.style.display=groups[gh]?'':'none';
+  });
+}
+
+function searchInt(){ applyFilter(); }
+
+function filt(g,btn){
+  curFilt=g;
+  document.querySelectorAll('.filt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  // Limpiamos búsqueda al cambiar grupo para evitar confusión
+  document.getElementById('intSearch').value='';
+  applyFilter();
+}
+
+// ── Animar barras del funnel al entrar en S1
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.fv-bar-fill').forEach(b=>{
+        const w=b.style.width;b.style.width='0';
+        requestAnimationFrame(()=>{b.style.transition='width 1.1s cubic-bezier(.16,1,.3,1)';b.style.width=w});
+      });
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.funnel-vis').forEach(f=>obs.observe(f));
+
+// ══════════════════════════════════════════════════════════════
+// S5 · DETALLE LEADS
+// ──────────────────────────────────────────────────────────────
+// DATOS: actualizar este array cuando el usuario suba un nuevo Excel.
+// Columnas fuente: Partners_BBDD_v1.xlsx → hoja "Leads"
+// Última actualización: PMO #15 (2026-03-20)
+// ══════════════════════════════════════════════════════════════
+const LEADS = [
+  // ── COBITRATEL (3)
+  {id:26,nombre:'Conchi',cif:'',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46065,comercial:'Nazaret',estado:'KO',segmento:'',sigPasoEq:'Pendiente Nazaret',fecSigPasoEq:46071,sigPasoComercial:'Pendiente reagendar reunión (inicialmente esperada para viernes 27.02)',fecSigPasoComercial:46084,venta:null,productos:''},
+  {id:30,nombre:'Adrián',cif:'',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46072,comercial:'Sergio Mena',estado:'KO',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'Cliente no interesado en oferta con descuento',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:35,nombre:'Fernando Pedroviejo (Autoescuela San Cristobal)',cif:'A19120385',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46083,comercial:'Álvaro',estado:'Venta realizada',segmento:'',sigPasoEq:'Seguimiento con Álvaro',fecSigPasoEq:46090,sigPasoComercial:'35 móvil, 5 conecta, centralita, 2 dispositivos, etc. Oferta presentada +9K anual. En revisión por cliente.',fecSigPasoComercial:46090,venta:756,productos:'35 líneas móviles, 5 Conecta Pyme 1Gb + IP fija + Fibra Oro, 1 Fibra Big con centralita y grabación'},
+  // ── COVERNET (8)
+  {id:14,nombre:'Grupo Calillo',cif:'B85380186',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Activación en curso',fecSigPasoEq:46065,sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:176.59,productos:'4 líneas móviles, 1 FBB, 3 dispositivos, 3 terminales, Sin Centralita'},
+  {id:15,nombre:'AREXPRESS',cif:'B86054921',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Activación bloqueada por fraude — Desbloqueo urgente',fecSigPasoEq:46065,sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:243,productos:'5 líneas móviles, 1 FBB, 3 dispositivos, 3 terminales, Con Centralita'},
+  {id:16,nombre:'RAIL 28',cif:'B87253795',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'PYME',sigPasoEq:'Ampliación PYME',fecSigPasoEq:46091,sigPasoComercial:'Pendiente bloqueo operativo por proceso ampliaciones.',fecSigPasoComercial:'',venta:304,productos:'9 líneas móviles, 1 FBB, Con Centralita'},
+  {id:17,nombre:'VPLATAS ASESORES FISCALES',cif:'B83768366',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'En curso',segmento:'PYME',sigPasoEq:'Seguimiento dudas a resolver',fecSigPasoEq:46098,sigPasoComercial:'Pendiente respuesta dudas por Didac',fecSigPasoComercial:46098,venta:null,productos:''},
+  {id:36,nombre:'AREXPRESS (ampliación)',cif:'B86054921',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Ampliación SoHo',fecSigPasoEq:46091,sigPasoComercial:'Ampliación hecha, pendiente cliente',fecSigPasoComercial:46091,venta:120,productos:''},
+  {id:38,nombre:'URBEQUIPO, S.L.',cif:'B81990764',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46091,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46094,venta:null,productos:''},
+  {id:39,nombre:'COVER SPI, S.L.',cif:'B81846792',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46091,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46094,venta:null,productos:''},
+  {id:40,nombre:'COVER NET, S.L.',cif:'B82483280',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46091,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46094,venta:null,productos:''},
+  // ── DATAQU (4)
+  {id:20,nombre:'Asociación Apromar',cif:'G78295748 / E36115814',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez para descuento especial para socios.',fecSigPasoEq:46097,sigPasoComercial:'Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez.',fecSigPasoComercial:46097,venta:null,productos:''},
+  {id:21,nombre:'Schreiber Foods',cif:'B82690082',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Sesión presencial en +O el 13.02',fecSigPasoEq:46066,sigPasoComercial:'Sesión presencial en +O el 13.02',fecSigPasoComercial:46066,venta:null,productos:''},
+  {id:22,nombre:'Armadora Pereira',cif:'A36630028',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente reactivación por reestructuración interna.',fecSigPasoEq:46070,sigPasoComercial:'Pendiente reorganización interna y ajuste de cuotas de pesca para activación de lead.',fecSigPasoComercial:46136,venta:null,productos:''},
+  {id:23,nombre:'Grupo Adarsa',cif:'Múltiples CIFs [TBD]',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento. Habla 18.03 con ellos para organizar sesión online',fecSigPasoEq:46099,sigPasoComercial:'Pendiente fecha por Dataqu para visita presencial (semana 16.03)',fecSigPasoComercial:46097,venta:null,productos:''},
+  // ── DUOIT (3)
+  {id:24,nombre:'Lead 1',cif:'B95601795',integrador:'DuoIT',modelo:'Tier 1',fecGen:46058,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'Pendiente enviar oferta a Angel (Jonathan)',fecSigPasoEq:46073,sigPasoComercial:'Asegurar aplicación máximo descuento sobre oferta — Jonathan hace PT (15/20%). Pendiente oferta a 24 meses.',fecSigPasoComercial:46070,venta:null,productos:''},
+  {id:45,nombre:'Clínica Dental Ortiz-Vigón',cif:'B95027165',integrador:'DuoIT',modelo:'Tier 1',fecGen:46090,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Lead recibido, seguimiento (cliente Euskaltel 2 clínicas)',fecSigPasoEq:46100,sigPasoComercial:'Preparando oferta',fecSigPasoComercial:46100,venta:null,productos:''},
+  {id:46,nombre:'Lead 3',cif:'',integrador:'DuoIT',modelo:'Tier 1',fecGen:46090,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Angel esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
+  // ── LISOT (1)
+  {id:52,nombre:'Cliente de Argentona',cif:'',integrador:'Lisot',modelo:'Tier 1',fecGen:46099,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento — cliente elaborado la lista de requerimientos.',fecSigPasoEq:46107,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46107,venta:null,productos:''},
+  // ── MARISKALNET (3)
+  {id:47,nombre:'Lead 1',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:48,nombre:'Lead 2',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Emilio esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
+  {id:49,nombre:'Lead 3',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Emilio esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
+  // ── MAXEN (19)
+  {id:1,nombre:'Autocars Barrera',cif:'B60416302',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Venta realizada',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:361,productos:'9 líneas móviles, 3 FBB, Con Centralita'},
+  {id:2,nombre:'Lead 10',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:3,nombre:'Lead 11',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:4,nombre:'Lead 12',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:5,nombre:'Lead 13',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:6,nombre:'Lead 14',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:7,nombre:'Lead 15',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:8,nombre:'Lead 16',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:9,nombre:'Lead 17',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:10,nombre:'Lead 18',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:11,nombre:'Lead 19',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:13,nombre:'RUT PERFIL',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46009,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46069,sigPasoComercial:'Nueva oferta con centralita enviada a cliente 20.02. Pendiente re-contacto.',fecSigPasoComercial:46081,venta:null,productos:''},
+  {id:18,nombre:'Florflex (vecino RUTPERFIL)',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46054,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente respuesta cliente (Rut). Ligado a la oferta RUTPERFIL.',fecSigPasoComercial:46069,venta:null,productos:''},
+  {id:19,nombre:'KEIM ECOPAINT IBERICA SL',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46062,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente re-contacto con cliente semana 23.02',fecSigPasoComercial:46081,venta:null,productos:''},
+  {id:31,nombre:'Wecolors',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46070,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente reagendar visita comercial (inicialmente planeada para 24.02)',fecSigPasoComercial:46083,venta:null,productos:''},
+  {id:32,nombre:'Expansiva',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento. Posible M2M (SIM para alarmas). Preparando oferta.',fecSigPasoEq:46104,sigPasoComercial:'Oferta preparada. Visita el 23.03',fecSigPasoComercial:46104,venta:null,productos:''},
+  {id:33,nombre:'Llorens vial',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46104,sigPasoComercial:'Oferta preparada. Visita el 23.03',fecSigPasoComercial:46104,venta:null,productos:''},
+  {id:34,nombre:'Plantas VADA',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46104,sigPasoComercial:'Preparando oferta presencial (Conecta Empresa + líneas móviles)',fecSigPasoComercial:46104,venta:null,productos:''},
+  {id:44,nombre:'Pleplants',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46090,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Oferta preparada. Visita el 23.03',fecSigPasoComercial:46104,venta:null,productos:''},
+  // ── OX-ONE (6)
+  {id:12,nombre:'Magnetron',cif:'A28325785',integrador:'Ox-One',modelo:'Tier 1',fecGen:46374,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'Alta complejidad técnica',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:25,nombre:'Lead 1',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46062,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'Mail con precio licencias Google compartido con Gonzalo por Jonathan el 18.02. Pendiente respuesta.',fecSigPasoEq:46071,sigPasoComercial:'Gestión con GGCC: 27 licencias Business Plus Google + centralita Cisco (fin permanencia 01.03). Pendiente feedback.',fecSigPasoComercial:46087,venta:null,productos:''},
+  {id:27,nombre:'Lead 2',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46023,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente recibir lead (despacho abogados)',fecSigPasoEq:46066,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46066,venta:null,productos:''},
+  {id:28,nombre:'Lead 3',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46023,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente recibir lead',fecSigPasoEq:46066,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46066,venta:null,productos:''},
+  {id:29,nombre:'Duino Inversiones SL',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46070,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46090,sigPasoComercial:'Oferta enviada 18.02: 11 líneas móviles + 2 fibras 1GB + backup. Visita comercial pendiente de agendar.',fecSigPasoComercial:46090,venta:null,productos:''},
+  {id:51,nombre:'NSK',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46098,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46099,sigPasoComercial:'Jonathan prepara número rápido y llama a Gonzalo.',fecSigPasoComercial:46099,venta:null,productos:''},
+  // ── PAPERLABS (1)
+  {id:50,nombre:'Lead 1 (5 CIFs)',cif:'Múltiples CIFs [5]',integrador:'Paperlabs',modelo:'Tier 1',fecGen:46098,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Lead recibido, seguimiento',fecSigPasoEq:46098,sigPasoComercial:'Jonathan llama a Carlos para entender situación y preparar oferta.',fecSigPasoComercial:46099,venta:null,productos:''},
+  // ── SICTEMAS (3)
+  {id:41,nombre:'Lead 1',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Movido a abril.',fecSigPasoEq:46113,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46113,venta:null,productos:''},
+  {id:42,nombre:'Lead 2',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Movido a abril.',fecSigPasoEq:46113,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46113,venta:null,productos:''},
+  {id:43,nombre:'Lead 3',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead (líneas propias)',fecSigPasoEq:46143,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46143,venta:null,productos:''},
+  // ── SISYTEC (1)
+  {id:37,nombre:'Lead 1',cif:'',integrador:'Sisytec',modelo:'Tier 1',fecGen:46084,comercial:'Sergio Mena',estado:'En curso',segmento:'',sigPasoEq:'Pendiente integrador',fecSigPasoEq:46106,sigPasoComercial:'Posible cliente con Movistar que necesita línea adicional para VPN. Información enviada a integrador. Pendiente feedback.',fecSigPasoComercial:46106,venta:null,productos:''}
+];
+
+// ── Colores por integrador
+const INT_CLR = {
+  'Cobitratel':  {bg:'#FFF3EB',fg:'#CC4400'},
+  'Covernet':    {bg:'#EFF6FF',fg:'#1D6FB8'},
+  'Dataqu':      {bg:'#F0FDF4',fg:'#047857'},
+  'DuoIT':       {bg:'#F5F3FF',fg:'#7C3AED'},
+  'Mariskalnet': {bg:'#FFFBEB',fg:'#B45309'},
+  'Maxen':       {bg:'#ECFDF5',fg:'#059669'},
+  'Ox-One':      {bg:'#FEF2F2',fg:'#DC2626'},
+  'Paperlabs':   {bg:'#FDF4FF',fg:'#9333EA'},
+  'Sictemas':    {bg:'#F0F9FF',fg:'#0369A1'},
+  'Sisytec':     {bg:'#F9FAFB',fg:'#4B5563'},
+  'Lisot':       {bg:'#FFF7ED',fg:'#C2410C'},
+};
+
+// ── Helpers
+function excelDate(n){
+  if(!n||isNaN(+n)) return n||'–';
+  const d=new Date((+n-25569)*86400000);
+  return d.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'});
+}
+function stClass(e){
+  if(e==='Venta realizada') return 'st-venta';
+  if(e==='En curso')        return 'st-encurso';
+  if(e==='KO')              return 'st-ko';
+  return 'st-pendiente';
+}
+function stLabel(e){
+  if(e==='Venta realizada') return '✓ Venta';
+  if(e==='En curso')        return '◉ En curso';
+  if(e==='KO')              return '✕ KO';
+  return '⏳ Pendiente';
+}
+function intBadgeHtml(integrador){
+  const c=INT_CLR[integrador]||{bg:'#F3F4F6',fg:'#6B7280'};
+  return `<span class="int-badge" style="background:${c.bg};color:${c.fg}">${integrador}</span>`;
+}
+
+// ── Estado filtro activo
+let curEstFilt='all';
+let curIntFilt='all';
+let selLeadId=null;
+
+// ── Construir chips de integrador
+function buildIntChips(){
+  const ints=[...new Set(LEADS.map(l=>l.integrador))].sort();
+  const container=document.getElementById('leadsIntChips');
+  if(!container) return;
+  let html='<div class="chip ch-int on" id="ichAll" onclick="setIntFilt(\'all\',this)">Todos los integradores</div>';
+  ints.forEach(i=>{
+    const c=INT_CLR[i]||{};
+    html+=`<div class="chip ch-int" onclick="setIntFilt('${i}',this)">${i}</div>`;
+  });
+  container.innerHTML=html;
+}
+
+// ── Filtros
+function setEstFilt(v,el){
+  curEstFilt=v;
+  document.querySelectorAll('#leadsCtrl .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  filterLeads();
+}
+function setIntFilt(v,el){
+  curIntFilt=v;
+  document.querySelectorAll('#leadsIntChips .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  filterLeads();
+}
+
+// ── Renderizar grid
+function filterLeads(){
+  const q=(document.getElementById('leadsSearch')||{}).value||'';
+  const ql=q.trim().toLowerCase();
+  const visible=LEADS.filter(l=>{
+    const matchEst=curEstFilt==='all'||l.estado===curEstFilt;
+    const matchInt=curIntFilt==='all'||l.integrador===curIntFilt;
+    const matchQ=!ql||l.nombre.toLowerCase().includes(ql)||l.integrador.toLowerCase().includes(ql)||(l.cif||'').toLowerCase().includes(ql);
+    return matchEst&&matchInt&&matchQ;
+  });
+  renderGrid(visible);
+  const cnt=document.getElementById('leadsCount');
+  if(cnt) cnt.textContent=visible.length===LEADS.length?`${LEADS.length} leads`:`${visible.length} de ${LEADS.length} leads`;
+}
+
+function renderGrid(list){
+  const grid=document.getElementById('leadGrid');
+  if(!grid) return;
+  if(!list.length){
+    grid.innerHTML='<div class="leads-empty">No se encontraron leads con los filtros seleccionados.</div>';
+    return;
+  }
+  grid.innerHTML=list.map(l=>{
+    const step=l.sigPasoComercial||l.sigPasoEq||'';
+    const isSel=l.id===selLeadId;
+    return `<div class="lead-card${isSel?' sel':''}" onclick="openPanel(${l.id})">
+      <div class="lead-card-top">
+        <div class="lead-card-name">${l.nombre}</div>
+        <div class="lead-card-id">#${l.id}</div>
+      </div>
+      <div class="lead-card-mid">
+        ${intBadgeHtml(l.integrador)}
+        <span class="st-pill ${stClass(l.estado)}">${stLabel(l.estado)}</span>
+        ${l.modelo?`<span style="font-size:10px;color:var(--ink4)">${l.modelo}</span>`:''}
+      </div>
+      ${step?`<div class="lead-card-step">${step}</div>`:''}
+      <div class="lead-card-bot">
+        <span class="lead-card-comercial">👤 ${l.comercial||'–'}</span>
+        ${l.venta!=null?`<span class="lead-card-venta">${l.venta.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})} €</span>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Panel detalle
+function openPanel(id){
+  const l=LEADS.find(x=>x.id===id);
+  if(!l) return;
+  selLeadId=id;
+  // Actualizar selección en grid
+  document.querySelectorAll('.lead-card').forEach(c=>c.classList.remove('sel'));
+  const cards=document.querySelectorAll('.lead-card');
+  cards.forEach(c=>{if(c.onclick&&c.onclick.toString().includes(`(${id})`)) c.classList.add('sel');});
+  filterLeads(); // re-render to update sel class
+
+  const panel=document.getElementById('leadsPanel');
+  const title=document.getElementById('panelTitle');
+  const body=document.getElementById('panelBody');
+  if(!panel) return;
+
+  title.textContent=l.nombre;
+
+  const row=(lbl,val)=>val&&val!=='–'&&val!=='N/A'&&val!==''?
+    `<div class="panel-row"><div class="panel-lbl">${lbl}</div><div class="panel-val">${val}</div></div>`:'';
+
+  const intC=INT_CLR[l.integrador]||{bg:'#F3F4F6',fg:'#6B7280'};
+  const stC=stClass(l.estado);
+
+  let html='';
+  // Estado + integrador badges
+  html+=`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+    <span class="st-pill ${stC}" style="font-size:12px;padding:4px 12px">${stLabel(l.estado)}</span>
+    <span class="int-badge" style="background:${intC.bg};color:${intC.fg};font-size:11px;padding:4px 10px">${l.integrador}</span>
+    ${l.modelo?`<span style="font-size:11px;color:var(--ink3);background:var(--bg);padding:4px 10px;border-radius:4px">${l.modelo}</span>`:''}
+  </div>`;
+
+  // Venta
+  if(l.venta!=null){
+    html+=`<div class="panel-venta-box">
+      <div class="panel-venta-lbl">Venta realizada</div>
+      <div class="panel-venta-val">${l.venta.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})} €/mes</div>
+    </div>`;
+  }
+
+  html+=row('ID Lead',`#${l.id}`);
+  html+=row('Nombre',l.nombre);
+  html+=row('CIF',l.cif);
+  html+=row('Segmento',l.segmento);
+  html+=row('Comercial asignado',l.comercial);
+  html+=row('Fecha generación lead',excelDate(l.fecGen));
+  if(l.productos) {
+    html+=`<div class="panel-divider"></div>`;
+    html+=row('Productos contratados',l.productos);
+  }
+  html+=`<div class="panel-divider"></div>`;
+  if(l.sigPasoEq){
+    html+=`<div class="panel-row"><div class="panel-lbl">Siguiente paso · Equipo gestión</div><div class="panel-val">${l.sigPasoEq}</div></div>`;
+    if(l.fecSigPasoEq) html+=row('Fecha equipo',excelDate(l.fecSigPasoEq));
+  }
+  if(l.sigPasoComercial){
+    html+=`<div class="panel-row"><div class="panel-lbl">Siguiente paso · Comercial</div><div class="panel-val">${l.sigPasoComercial}</div></div>`;
+    if(l.fecSigPasoComercial) html+=row('Fecha comercial',excelDate(l.fecSigPasoComercial));
+  }
+
+  body.innerHTML=html;
+  panel.classList.add('open');
+  panel.scrollTop=0;
+}
+
+function closePanel(){
+  selLeadId=null;
+  const panel=document.getElementById('leadsPanel');
+  if(panel) panel.classList.remove('open');
+  document.querySelectorAll('.lead-card').forEach(c=>c.classList.remove('sel'));
+}
+
+// ── Inicializar S5 cuando se entra
+function initLeads(){
+  buildIntChips();
+  filterLeads();
+}
+
+// ── Modo privado (ocultar datos sensibles al hablar con integradores)
+let s5Private=false;
+function togglePrivacy(){
+  s5Private=!s5Private;
+  const sec=document.getElementById('s5');
+  const btn=document.getElementById('btnPrivacy');
+  if(s5Private){
+    sec.classList.add('s5-private');
+    btn.classList.add('on');
+    btn.textContent='🔓 Ver todo';
+    btn.title='Mostrar todos los datos';
+  } else {
+    sec.classList.remove('s5-private');
+    btn.classList.remove('on');
+    btn.textContent='🔒 Modo privado';
+    btn.title='Ocultar datos sensibles al compartir pantalla con un integrador';
+  }
+}
+
+// Extender show() para inicializar S5/S6 al entrar
+(function(){
+  const origFn=window.show;
+  window.show=function(id){
+    origFn(id);
+    if(id==='s5') initLeads();
+    if(id==='s6') s6Init();
+  };
+})();
+
+// ══════════════════════════════════════════
+// S6 · Plan de Visitas
+// Coords: x=(lon+9.5)/14*660+20  y=(44.2-lat)/8.4*480+20
+// ══════════════════════════════════════════
+const VISITAS=[
+  // Madrid y alrededores
+  {id:'binfor',     nombre:'Binfor Solutions',           zona:'Madrid',       ciudad:'Alcorcón',              provincia:'Madrid',     cluster:'Madrid Sur',       prioridad:'A', x:287, y:240, nota:'Añade densidad en el cinturón sur de Madrid.'},
+  {id:'brain',      nombre:'Brain Hardware, S.L.',        zona:'Madrid',       ciudad:'Fuenlabrada',           provincia:'Madrid',     cluster:'Madrid Sur',       prioridad:'A', x:291, y:246, nota:'Junto a Deiteco y Binfor en el cinturón sur.'},
+  {id:'nextmob',    nombre:'Next Mobility',                zona:'Madrid',       ciudad:'Las Rozas de Madrid',   provincia:'Madrid',     cluster:'Madrid Oeste',     prioridad:'A', x:284, y:231, nota:'Completa jornada densa junto a Pozuelo.'},
+  {id:'deiteco',    nombre:'Deiteco',                      zona:'Madrid',       ciudad:'Fuenlabrada',           provincia:'Madrid',     cluster:'Madrid Sur',       prioridad:'A', x:296, y:250, nota:'Muy eficiente junto a Brain Hardware y Binfor.'},
+  {id:'covernet',   nombre:'Covernet',                     zona:'Madrid',       ciudad:'Pozuelo de Alarcón',    provincia:'Madrid',     cluster:'Madrid Oeste',     prioridad:'A', x:286, y:235, nota:'Agrupar con OX-ONE y Next Mobility.'},
+  {id:'oxone',      nombre:'OX-ONE NETWORKS SL',           zona:'Madrid',       ciudad:'Pozuelo de Alarcón',    provincia:'Madrid',     cluster:'Madrid Oeste',     prioridad:'A', x:292, y:239, nota:'Muy rentable en la misma jornada que Covernet.'},
+  {id:'cobitratel', nombre:'Cobitratel',                   zona:'Madrid',       ciudad:'Azuqueca de Henares',   provincia:'Guadalajara',cluster:'Corredor Henares', prioridad:'C', x:315, y:228, nota:'Priorizar Azuqueca por cercanía al corredor Madrid-Henares.'},
+  {id:'naimitech',  nombre:'NaimiTech, S.L.',              zona:'Madrid',       ciudad:'Illescas',              provincia:'Toledo',     cluster:'Toledo/Madrid Sur', prioridad:'C', x:286, y:255, nota:'Buen candidato si confirma interés desde Madrid Sur.'},
+  // Cataluña
+  {id:'lisot',      nombre:'Lisot',                        zona:'Cataluña',     ciudad:'Barcelona',             provincia:'Barcelona',  cluster:'Barcelona',        prioridad:'A', x:568, y:182, nota:'Refuerza la lógica de hacer una jornada en Barcelona capital.'},
+  {id:'ocvistas',   nombre:'Ocvistas',                     zona:'Cataluña',     ciudad:'Barcelona',             provincia:'Barcelona',  cluster:'Barcelona',        prioridad:'A', x:573, y:187, nota:'Suma densidad en Barcelona capital junto a Lisot.'},
+  {id:'maxen',      nombre:'Maxen',                        zona:'Cataluña',     ciudad:'Cabrera de Mar',        provincia:'Barcelona',  cluster:'Barcelona Norte',   prioridad:'B', x:590, y:172, nota:'Encaja en ruta Barcelona–Tarragona.'},
+  {id:'elpis',      nombre:'Elpis Informática, S.L.',      zona:'Cataluña',     ciudad:'Tarragona',             provincia:'Tarragona',  cluster:'Tarragona',        prioridad:'B', x:526, y:197, nota:'Buen cierre de la ruta de Cataluña.'},
+  {id:'amiritmo',   nombre:'Amiritmo',                     zona:'Cataluña',     ciudad:'Cervelló',              provincia:'Barcelona',  cluster:'Barcelona Sur',    prioridad:'C', x:560, y:189, nota:'Validar interlocutor comercial antes de visitar.'},
+  // Andalucía
+  {id:'a4i',        nombre:'A4I',                          zona:'Andalucía',    ciudad:'El Puerto de Santa María',provincia:'Cádiz',    cluster:'Bahía de Cádiz',   prioridad:'B', x:174, y:455, nota:'Buen punto de arranque de la ruta andaluza occidental.'},
+  {id:'fedesoft',   nombre:'Fedesoft',                     zona:'Andalucía',    ciudad:'Puente Genil',          provincia:'Córdoba',    cluster:'Andalucía Centro', prioridad:'B', x:243, y:410, nota:'Confirmar dirección exacta antes de visitar.'},
+  {id:'sictemas',   nombre:'Sictemas',                     zona:'Andalucía',    ciudad:'Málaga',                provincia:'Málaga',     cluster:'Andalucía Oriental',prioridad:'B', x:258, y:449, nota:'Encaja con Sur Computers en el eje Málaga–Mijas.'},
+  {id:'omnia',      nombre:'Omnia Soluciones',              zona:'Andalucía',    ciudad:'Sevilla',               provincia:'Sevilla',    cluster:'Andalucía Occidental',prioridad:'B',x:185, y:410, nota:'Abrir la ruta andaluza con Sevilla y continuar hacia Cádiz.'},
+  {id:'surcomp',    nombre:'Sur Computers, S.L.',          zona:'Andalucía',    ciudad:'Mijas Costa',           provincia:'Málaga',     cluster:'Costa del Sol',    prioridad:'C', x:249, y:460, nota:'Visita final si Málaga genera tracción suficiente.'},
+  // Norte
+  {id:'infornet',   nombre:'Infornet',                     zona:'Norte',        ciudad:'Gijón',                 provincia:'Asturias',   cluster:'Asturias',         prioridad:'B', x:201, y:65,  nota:'Corredor norte Gijón–Santander–Bilbao.'},
+  {id:'duoit',      nombre:'DuoIT',                        zona:'Norte',        ciudad:'Bilbao',                provincia:'Bizkaia',    cluster:'País Vasco',       prioridad:'B', x:329, y:80,  nota:'Combinar con DOSYS en la ruta norte.'},
+  {id:'ache',       nombre:'Ache Informática SLL',          zona:'Norte',        ciudad:'Santander',             provincia:'Cantabria',  cluster:'Cantabria',        prioridad:'B', x:286, y:68,  nota:'Sumar en la parada de Santander junto con DurnIA.'},
+  {id:'dosys',      nombre:'DOSYS',                        zona:'Norte',        ciudad:'Donostia-San Sebastián', provincia:'Gipuzkoa',  cluster:'País Vasco',       prioridad:'B', x:373, y:76,  nota:'Muy buena combinación con Bilbao en cierre de ruta norte.'},
+  {id:'durnia',     nombre:'DurnIA',                       zona:'Norte',        ciudad:'Santander',             provincia:'Cantabria',  cluster:'Cantabria',        prioridad:'C', x:292, y:73,  nota:'También tienen presencia en Madrid; validar antes de visitar.'},
+  // Galicia
+  {id:'paperlabs',  nombre:'Paperlabs',                    zona:'Galicia',      ciudad:'Santiago de Compostela',provincia:'A Coruña',   cluster:'Galicia',          prioridad:'B', x:72,  y:100, nota:'Aprovechar junto con Dirbapont para dar masa crítica a Galicia.'},
+  {id:'dirbapont',  nombre:'DIRBAPONT SLU',                zona:'Galicia',      ciudad:'Pontevedra',            provincia:'Pontevedra', cluster:'Galicia',          prioridad:'B', x:62,  y:126, nota:'Combinar con Santiago en jornada compacta.'},
+  // C. Valenciana
+  {id:'solventus',  nombre:'Solventus Software, S.L.',     zona:'C. Valenciana',ciudad:'Alicante',              provincia:'Alicante',   cluster:'Alicante',         prioridad:'B', x:444, y:356, nota:'Muy lógico agrupar con Visualsoft en la misma jornada.'},
+  {id:'visualsoft', nombre:'Visualsoft',                   zona:'C. Valenciana',ciudad:'Sant Joan d\'Alacant',  provincia:'Alicante',   cluster:'Alicante',         prioridad:'B', x:450, y:351, nota:'Ideal junto con Solventus; misma zona de Alicante.'},
+  {id:'dataqu',     nombre:'Dataqu',                       zona:'C. Valenciana',ciudad:'Valencia',              provincia:'Valencia',   cluster:'Valencia',         prioridad:'C', x:449, y:291, nota:'Validar dirección antes de agendar; puede ser Madrid.'},
+  {id:'sisytec',    nombre:'Sisytec',                      zona:'C. Valenciana',ciudad:'Espinardo (Murcia)',     provincia:'Murcia',     cluster:'Murcia',           prioridad:'C', x:414, y:376, nota:'Usar la oficina comercial de Espinardo; confirmar.'},
+  // Aragón / Meseta Norte
+  {id:'audinfor',   nombre:'Audinfor',                     zona:'Aragón',       ciudad:'Zaragoza',              provincia:'Zaragoza',   cluster:'Aragón',           prioridad:'B', x:425, y:166, nota:'También tienen oficina en Madrid.'},
+  {id:'digitalhm',  nombre:'Digital Hand Made, S.L.',      zona:'Aragón',       ciudad:'Zaragoza',              provincia:'Zaragoza',   cluster:'Aragón',           prioridad:'B', x:430, y:171, nota:'Muy eficiente en el mismo bloque que Audinfor.'},
+  {id:'mariskalnet',nombre:'Mariskalnet Informática',      zona:'Aragón',       ciudad:'Medina del Campo',      provincia:'Valladolid', cluster:'Castilla y León',  prioridad:'C', x:236, y:186, nota:'Parada táctica si se activa ruta Zaragoza–Meseta Norte.'},
+  // Extremadura
+  {id:'gnuo',       nombre:'GNUO Consultores',             zona:'Extremadura',  ciudad:'Badajoz',               provincia:'Badajoz',    cluster:'Extremadura Sur',  prioridad:'C', x:148, y:325, nota:'Presencial solo si responde al primer contacto; zona aislada.'},
+  {id:'microsip',   nombre:'Micro Sip',                    zona:'Extremadura',  ciudad:'Navalmoral de la Mata', provincia:'Cáceres',    cluster:'Extremadura Norte',prioridad:'C', x:208, y:267, nota:'Usar dirección comercial/tienda; domicilio social distinto.'},
+];
+
+const S6_SEL=new Set();
+let s6Inited=false;
+
+function s6Init(){
+  if(s6Inited) return;
+  s6Inited=true;
+  s6BuildZoneList();
+  s6BuildDots();
+  s6UpdateStats();
+}
+
+// ── Construye lista de zonas en el panel lateral
+function s6BuildZoneList(){
+  const byZona={};
+  VISITAS.forEach(v=>{if(!byZona[v.zona])byZona[v.zona]=[];byZona[v.zona].push(v);});
+  const wrap=document.getElementById('s6ZonesList');
+  if(!wrap)return;
+  wrap.innerHTML='';
+  Object.entries(byZona).forEach(([zona,list])=>{
+    const selC=list.filter(v=>S6_SEL.has(v.id)).length;
+    const zid='s6z_'+zona.replace(/\W/g,'_');
+    const block=document.createElement('div');
+    block.className='s6-zone-block';
+    block.innerHTML=`
+      <div class="s6-zone-hdr" onclick="s6ToggleZone('${zid}',this)">
+        <span class="s6-zone-name">${zona}</span>
+        <span class="s6-zone-cnt" id="cnt_${zid}">${selC}/${list.length}</span>
+        <span class="s6-zone-arr open">▶</span>
+      </div>
+      <div class="s6-co-list" id="${zid}">
+        ${list.map(v=>`<div class="s6-co${S6_SEL.has(v.id)?' sel':''}" data-id="${v.id}" onclick="s6ToggleCo('${v.id}')">
+          <span class="s6-co-dot" style="background:${v.prioridad==='A'?'#059669':v.prioridad==='B'?'#D97706':'#9CA3AF'}"></span>
+          <span class="s6-co-name">${v.nombre}</span>
+          <span class="s6-co-badge b${v.prioridad.toLowerCase()}">${v.prioridad}</span>
+        </div>`).join('')}
+      </div>`;
+    wrap.appendChild(block);
+  });
+}
+
+function s6ToggleZone(zid,hdr){
+  const list=document.getElementById(zid);
+  const arr=hdr.querySelector('.s6-zone-arr');
+  const open=arr.classList.contains('open');
+  list.style.display=open?'none':'flex';
+  arr.classList.toggle('open',!open);
+}
+
+function s6ToggleCo(id){
+  S6_SEL.has(id)?S6_SEL.delete(id):S6_SEL.add(id);
+  s6Refresh();
+}
+
+function s6Refresh(){
+  s6BuildZoneList();
+  s6BuildDots();
+  s6UpdateStats();
+  s6UpdatePlan();
+}
+
+// ── Dibuja los dots en el SVG
+function s6BuildDots(){
+  const g=document.getElementById('s6MapDots');
+  if(!g)return;
+  g.innerHTML='';
+  const svgNS='http://www.w3.org/2000/svg';
+  VISITAS.forEach(v=>{
+    const sel=S6_SEL.has(v.id);
+    const col=v.prioridad==='A'?'#059669':v.prioridad==='B'?'#D97706':'#9CA3AF';
+    const op=!sel&&v.prioridad==='C'?0.3:1;
+    const grp=document.createElementNS(svgNS,'g');
+    grp.setAttribute('class','s6-map-dot');
+    grp.style.opacity=op;
+    grp.style.cursor='pointer';
+    if(sel){
+      const ring=document.createElementNS(svgNS,'circle');
+      ring.setAttribute('cx',v.x);ring.setAttribute('cy',v.y);ring.setAttribute('r',11);
+      ring.setAttribute('fill','none');ring.setAttribute('stroke',col);ring.setAttribute('stroke-width','2');ring.setAttribute('opacity','0.35');
+      grp.appendChild(ring);
+    }
+    const c=document.createElementNS(svgNS,'circle');
+    c.setAttribute('cx',v.x);c.setAttribute('cy',v.y);c.setAttribute('r',sel?7:5);
+    c.setAttribute('fill',col);c.setAttribute('stroke',sel?'#fff':'rgba(255,255,255,0.6)');c.setAttribute('stroke-width',sel?'1.5':'0.8');
+    grp.appendChild(c);
+    grp.addEventListener('click',()=>s6ToggleCo(v.id));
+    grp.addEventListener('mouseenter',e=>s6ShowTip(e,v));
+    grp.addEventListener('mouseleave',s6HideTip);
+    grp.addEventListener('mousemove',s6MoveTip);
+    g.appendChild(grp);
+  });
+}
+
+// ── Tooltip
+function s6ShowTip(e,v){
+  const t=document.getElementById('s6Tip');
+  if(!t)return;
+  const col=v.prioridad==='A'?'#34D399':v.prioridad==='B'?'#FCD34D':'#9CA3AF';
+  const lbl=v.prioridad==='A'?'Presencial prioritario':v.prioridad==='B'?'Presencial en ruta':'Remoto primero';
+  t.innerHTML=`<div class="s6tip-name">${v.nombre}</div>
+    <div class="s6tip-city">📍 ${v.ciudad}, ${v.provincia}</div>
+    <div class="s6tip-prio" style="color:${col}">${lbl} · Grupo ${v.prioridad}</div>
+    <div class="s6tip-nota">${v.nota}</div>
+    <div class="s6tip-action">${S6_SEL.has(v.id)?'Clic para deseleccionar':'Clic para añadir al plan'}</div>`;
+  t.style.display='block';
+  s6MoveTip(e);
+}
+function s6HideTip(){const t=document.getElementById('s6Tip');if(t)t.style.display='none';}
+function s6MoveTip(e){
+  const t=document.getElementById('s6Tip');
+  if(!t||t.style.display==='none')return;
+  const x=e.clientX+16,y=e.clientY-10;
+  t.style.left=(x+t.offsetWidth>window.innerWidth?e.clientX-t.offsetWidth-16:x)+'px';
+  t.style.top=(y+t.offsetHeight>window.innerHeight?e.clientY-t.offsetHeight:y)+'px';
+}
+
+// ── Stats
+function s6UpdateStats(){
+  const sel=[...S6_SEL];
+  document.getElementById('s6SelN').textContent=sel.length||0;
+  if(sel.length===0){
+    document.getElementById('s6ZonesN').textContent='—';
+    document.getElementById('s6DaysN').textContent='—';
+    s6UpdatePlan();return;
+  }
+  const zonas=new Set(VISITAS.filter(v=>S6_SEL.has(v.id)).map(v=>v.zona));
+  document.getElementById('s6ZonesN').textContent=zonas.size;
+  // ~2-3 empresas/día en ruta
+  const dias=Math.ceil(sel.length/2.5);
+  document.getElementById('s6DaysN').textContent='~'+dias;
+  s6UpdatePlan();
+}
+
+// ── Plan de rutas
+function s6UpdatePlan(){
+  const content=document.getElementById('s6PlanContent');
+  const sub=document.getElementById('s6PlanSub');
+  if(!content)return;
+  const selected=VISITAS.filter(v=>S6_SEL.has(v.id));
+  if(selected.length===0){
+    content.innerHTML='<div class="s6-plan-empty">Selecciona empresas para ver el plan de rutas optimizado</div>';
+    if(sub)sub.textContent='Selecciona empresas en el mapa o en la lista para construir tu plan';
+    return;
+  }
+  // Agrupar por zona → cluster
+  const byZona={};
+  selected.forEach(v=>{
+    if(!byZona[v.zona])byZona[v.zona]={};
+    if(!byZona[v.zona][v.cluster])byZona[v.zona][v.cluster]=[];
+    byZona[v.zona][v.cluster].push(v);
+  });
+  let html='<div class="s6-routes">';
+  Object.entries(byZona).forEach(([zona,clusters])=>{
+    const total=Object.values(clusters).flat().length;
+    html+=`<div class="s6-route">
+      <div class="s6-route-hdr">
+        <span class="s6-route-zone">${zona}</span>
+        <span class="s6-route-cnt">${total} empresa${total!==1?'s':''}</span>
+      </div>`;
+    Object.entries(clusters).forEach(([cl,cos])=>{
+      if(Object.keys(clusters).length>1)html+=`<div class="s6-cluster-lbl">${cl}</div>`;
+      html+='<div class="s6-route-tags">';
+      cos.forEach(c=>{html+=`<span class="s6-rtag t${c.prioridad.toLowerCase()}"><span class="s6-rtag-dot"></span>${c.nombre}</span>`;});
+      html+='</div>';
+    });
+    html+='</div>';
+  });
+  html+='</div>';
+  content.innerHTML=html;
+  const nZ=Object.keys(byZona).length;
+  if(sub)sub.textContent=`${selected.length} empresa${selected.length!==1?'s':''}  en ${nZ} zona${nZ!==1?'s':''}`;
+}
+
+// ── Botones de selección masiva
+function s6SelA(){S6_SEL.clear();VISITAS.filter(v=>v.prioridad==='A').forEach(v=>S6_SEL.add(v.id));s6Refresh();}
+function s6SelAB(){S6_SEL.clear();VISITAS.filter(v=>v.prioridad!=='C').forEach(v=>S6_SEL.add(v.id));s6Refresh();}
+function s6Clear(){S6_SEL.clear();s6Refresh();}
+</script>
+</body>
+</html>
