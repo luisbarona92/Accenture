@@ -168,6 +168,23 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 #s5.s5-private .s5-sensitive{display:none!important}
 #s5.s5-private .int-badge{opacity:0;pointer-events:none}
 #s5.s5-private .lead-card-id{display:none!important}
+/* Estado interactivo */
+.estado-selector{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;padding:12px;background:var(--bg);border-radius:8px;border:2px solid var(--line)}
+.estado-selector-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);width:100%;margin-bottom:6px}
+.estado-btn{padding:6px 12px;border-radius:6px;font-size:11.5px;font-weight:600;border:2px solid var(--line2);background:var(--card);color:var(--ink2);cursor:pointer;transition:all .2s}
+.estado-btn:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.estado-btn.active{border-color:var(--or);background:var(--or-bg);color:var(--or);font-weight:700}
+.estado-btn.st-gr{border-color:#A7F3D0;background:var(--green-bg);color:var(--green)}
+.estado-btn.st-bl{border-color:#BFDBFE;background:var(--blue-bg);color:var(--blue)}
+.estado-btn.st-am{border-color:#FED7AA;background:var(--amber-bg);color:var(--amber)}
+.estado-btn.st-rd{border-color:#FECACA;background:var(--red-bg);color:var(--red)}
+/* Marcador de cambio */
+.lead-card.changed{border-color:#8B5CF6;box-shadow:0 0 0 3px rgba(139,92,246,.12);position:relative}
+.lead-card.changed::before{content:'EDITADO';position:absolute;top:-8px;right:8px;background:#8B5CF6;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:.5px}
+.change-badge{display:inline-block;background:#8B5CF6;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:.5px;margin-left:8px}
+.export-changes-btn{padding:8px 16px;border-radius:8px;border:2px solid #8B5CF6;background:#8B5CF6;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;margin-top:12px}
+.export-changes-btn:hover{background:#7C3AED;border-color:#7C3AED;transform:translateY(-1px);box-shadow:0 4px 12px rgba(139,92,246,.3)}
+.export-changes-btn:disabled{opacity:.5;cursor:not-allowed}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* ══════════════════════════════════ SECTION HEADER */
@@ -1428,10 +1445,13 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section class="sec" id="s5">
   <div class="sh">
     <div>
-      <div class="sh-title">Detalle Leads</div>
+      <div class="sh-title">Detalle Leads <span id="changesCounter" class="change-badge" style="display:none">0 cambios</span></div>
       <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">52 leads potenciales · Fuente: Partners_BBDD_v1.xlsx · Actualizado PMO #15</div>
     </div>
-    <button class="btn-privacy" id="btnPrivacy" onclick="togglePrivacy()" title="Ocultar datos sensibles al compartir pantalla con un integrador">🔒 Modo privado</button>
+    <div style="display:flex;gap:8px">
+      <button class="export-changes-btn" id="btnExportChanges" onclick="exportChanges()" disabled title="Exportar cambios realizados">📋 Exportar cambios</button>
+      <button class="btn-privacy" id="btnPrivacy" onclick="togglePrivacy()" title="Ocultar datos sensibles al compartir pantalla con un integrador">🔒 Modo privado</button>
+    </div>
   </div>
 
   <!-- KPI row -->
@@ -1479,7 +1499,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   </div>
 
   <!-- Filtros por integrador -->
-  <div class="s5-sensitive" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="leadsIntChips"></div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="leadsIntChips"></div>
 
   <!-- Grid + panel lateral -->
   <div class="leads-wrap">
@@ -1789,6 +1809,8 @@ function intBadgeHtml(integrador){
 let curEstFilt='all';
 let curIntFilt='all';
 let selLeadId=null;
+// ── Registro de cambios realizados
+let leadChanges={};
 
 // ── Construir chips de integrador
 function buildIntChips(){
@@ -1842,14 +1864,16 @@ function renderGrid(list){
   grid.innerHTML=list.map(l=>{
     const step=l.sigPasoComercial||l.sigPasoEq||'';
     const isSel=l.id===selLeadId;
-    return `<div class="lead-card${isSel?' sel':''}" onclick="openPanel(${l.id})">
+    const isChanged=leadChanges[l.id]!==undefined;
+    const displayEstado=leadChanges[l.id]?.nuevoEstado || l.estado;
+    return `<div class="lead-card${isSel?' sel':''}${isChanged?' changed':''}" onclick="openPanel(${l.id})">
       <div class="lead-card-top">
         <div class="lead-card-name">${l.nombre}</div>
         <div class="lead-card-id">#${l.id}</div>
       </div>
       <div class="lead-card-mid">
         ${intBadgeHtml(l.integrador)}
-        <span class="st-pill ${stClass(l.estado)}">${stLabel(l.estado)}</span>
+        <span class="st-pill ${stClass(displayEstado)}">${stLabel(displayEstado)}</span>
         ${l.modelo?`<span style="font-size:10px;color:var(--ink4)">${l.modelo}</span>`:''}
       </div>
       ${step?`<div class="lead-card-step">${step}</div>`:''}
@@ -1891,6 +1915,19 @@ function openPanel(id){
     <span class="st-pill ${stC}" style="font-size:12px;padding:4px 12px">${stLabel(l.estado)}</span>
     <span class="int-badge" style="background:${intC.bg};color:${intC.fg};font-size:11px;padding:4px 10px">${l.integrador}</span>
     ${l.modelo?`<span style="font-size:11px;color:var(--ink3);background:var(--bg);padding:4px 10px;border-radius:4px">${l.modelo}</span>`:''}
+  </div>`;
+
+  // Selector interactivo de estado
+  const estados=['Venta realizada','En curso','Pendiente','KO'];
+  const currentEstado=leadChanges[id]?.nuevoEstado || l.estado;
+  const isChanged=leadChanges[id]!==undefined;
+  html+=`<div class="estado-selector">
+    <div class="estado-selector-lbl">Cambiar estado del lead ${isChanged?'<span class="change-badge">MODIFICADO</span>':''}</div>
+    ${estados.map(est=>{
+      const btnClass=stClass(est).replace('st-','estado-btn st-');
+      const active=currentEstado===est?' active':'';
+      return `<button class="estado-btn ${btnClass}${active}" onclick="changeLeadEstado(${id},'${est}')">${stLabel(est)}</button>`;
+    }).join('')}
   </div>`;
 
   // Venta
@@ -1937,6 +1974,91 @@ function closePanel(){
 function initLeads(){
   buildIntChips();
   filterLeads();
+}
+
+// ── Cambiar estado de un lead
+function changeLeadEstado(id,nuevoEstado){
+  const lead=LEADS.find(l=>l.id===id);
+  if(!lead) return;
+
+  // Si el nuevo estado es igual al original, eliminar del registro de cambios
+  if(nuevoEstado===lead.estado){
+    delete leadChanges[id];
+  } else {
+    // Registrar el cambio
+    leadChanges[id]={
+      id:id,
+      nombre:lead.nombre,
+      integrador:lead.integrador,
+      estadoOriginal:lead.estado,
+      nuevoEstado:nuevoEstado,
+      timestamp:new Date().toISOString()
+    };
+  }
+
+  // Actualizar contador de cambios
+  updateChangesCounter();
+
+  // Re-renderizar el grid para mostrar el marcador de cambio
+  filterLeads();
+
+  // Re-abrir el panel para actualizar el selector
+  openPanel(id);
+}
+
+// ── Actualizar contador de cambios
+function updateChangesCounter(){
+  const count=Object.keys(leadChanges).length;
+  const counter=document.getElementById('changesCounter');
+  const btn=document.getElementById('btnExportChanges');
+
+  if(count>0){
+    counter.style.display='inline-block';
+    counter.textContent=`${count} cambio${count>1?'s':''}`;
+    btn.disabled=false;
+  } else {
+    counter.style.display='none';
+    btn.disabled=true;
+  }
+}
+
+// ── Exportar cambios a la consola y al portapapeles
+function exportChanges(){
+  const count=Object.keys(leadChanges).length;
+  if(count===0){
+    alert('No hay cambios para exportar');
+    return;
+  }
+
+  // Crear reporte de cambios
+  let report='═══════════════════════════════════════════════════\n';
+  report+='  CAMBIOS REALIZADOS EN DETALLE LEADS\n';
+  report+=`  Total de leads modificados: ${count}\n`;
+  report+=`  Fecha de exportación: ${new Date().toLocaleString('es-ES')}\n`;
+  report+='═══════════════════════════════════════════════════\n\n';
+
+  Object.values(leadChanges).forEach((change,idx)=>{
+    report+=`${idx+1}. Lead #${change.id} - ${change.nombre}\n`;
+    report+=`   Integrador: ${change.integrador}\n`;
+    report+=`   Estado original: ${change.estadoOriginal}\n`;
+    report+=`   Nuevo estado: ${change.nuevoEstado}\n`;
+    report+=`   Modificado: ${new Date(change.timestamp).toLocaleString('es-ES')}\n\n`;
+  });
+
+  report+='═══════════════════════════════════════════════════\n';
+  report+='JSON de cambios (copiar para procesamiento):\n';
+  report+=JSON.stringify(leadChanges,null,2);
+
+  // Copiar al portapapeles
+  navigator.clipboard.writeText(report).then(()=>{
+    alert(`✅ Cambios exportados\n\n${count} lead${count>1?'s':''} modificado${count>1?'s':''}\n\nEl reporte completo se ha copiado al portapapeles.\nTambién puedes verlo en la consola del navegador (F12).`);
+    console.log(report);
+    console.log('Objeto de cambios:',leadChanges);
+  }).catch(()=>{
+    alert('⚠️ No se pudo copiar al portapapeles.\nVer cambios en la consola (F12).');
+    console.log(report);
+    console.log('Objeto de cambios:',leadChanges);
+  });
 }
 
 // ── Modo privado (ocultar datos sensibles al hablar con integradores)
