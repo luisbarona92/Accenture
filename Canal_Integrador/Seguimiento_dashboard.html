@@ -168,6 +168,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 #s5.s5-private .s5-sensitive{display:none!important}
 #s5.s5-private .int-badge{opacity:0;pointer-events:none}
 #s5.s5-private .lead-card-id{display:none!important}
+#s5.s5-private .chip.ch-int:not(.on){display:none!important}
 /* Estado interactivo */
 .estado-selector{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;padding:12px;background:var(--bg);border-radius:8px;border:2px solid var(--line)}
 .estado-selector-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);width:100%;margin-bottom:6px}
@@ -2270,35 +2271,70 @@ function s6BuildDots(){
   });
 }
 
-// ── Tooltip
+// ── Tooltip con delay para evitar vibración
+let s6TipTimeout=null;
+let s6HideTimeout=null;
+
 function s6ShowTip(e,v){
-  const t=document.getElementById('s6Tip');
-  if(!t)return;
-  const col=v.prioridad==='A'?'#34D399':v.prioridad==='B'?'#FCD34D':'#9CA3AF';
-  const lbl=v.prioridad==='A'?'Presencial prioritario':v.prioridad==='B'?'Presencial en ruta':'Remoto primero';
-  t.innerHTML=`<div class="s6tip-name">${v.nombre}</div>
-    <div class="s6tip-city">📍 ${v.ciudad}, ${v.provincia}</div>
-    <div class="s6tip-prio" style="color:${col}">${lbl} · Grupo ${v.prioridad}</div>
-    <div class="s6tip-nota">${v.nota}</div>
-    <div class="s6tip-action">${S6_SEL.has(v.id)?'Clic para deseleccionar':'Clic para añadir al plan'}</div>`;
-  t.style.display='block';
-  t.style.opacity='0';
-  // Posicionar tooltip de forma fija, sin seguir el mouse
-  const x=e.clientX+20,y=e.clientY+20;
-  t.style.left=(x+t.offsetWidth>window.innerWidth?e.clientX-t.offsetWidth-20:x)+'px';
-  t.style.top=(y+t.offsetHeight>window.innerHeight?e.clientY-t.offsetHeight-20:y)+'px';
-  // Fade in suave
-  requestAnimationFrame(()=>{t.style.opacity='1'});
-}
-function s6HideTip(){
-  const t=document.getElementById('s6Tip');
-  if(t){
-    t.style.opacity='0';
-    setTimeout(()=>t.style.display='none',150);
+  // Cancelar cualquier ocultación pendiente
+  if(s6HideTimeout){
+    clearTimeout(s6HideTimeout);
+    s6HideTimeout=null;
   }
+
+  // Cancelar cualquier muestra pendiente
+  if(s6TipTimeout){
+    clearTimeout(s6TipTimeout);
+  }
+
+  // Mostrar tooltip después de un pequeño delay
+  s6TipTimeout=setTimeout(()=>{
+    const t=document.getElementById('s6Tip');
+    if(!t)return;
+    const col=v.prioridad==='A'?'#34D399':v.prioridad==='B'?'#FCD34D':'#9CA3AF';
+    const lbl=v.prioridad==='A'?'Presencial prioritario':v.prioridad==='B'?'Presencial en ruta':'Remoto primero';
+    t.innerHTML=`<div class="s6tip-name">${v.nombre}</div>
+      <div class="s6tip-city">📍 ${v.ciudad}, ${v.provincia}</div>
+      <div class="s6tip-prio" style="color:${col}">${lbl} · Grupo ${v.prioridad}</div>
+      <div class="s6tip-nota">${v.nota}</div>
+      <div class="s6tip-action">${S6_SEL.has(v.id)?'Clic para deseleccionar':'Clic para añadir al plan'}</div>`;
+
+    // Posicionar ANTES de mostrar
+    const rect=e.target.getBoundingClientRect();
+    const x=rect.right+12;
+    const y=rect.top;
+
+    t.style.display='block';
+    t.style.opacity='0';
+
+    // Calcular posición evitando desbordamiento
+    const tipRect=t.getBoundingClientRect();
+    const finalX=x+tipRect.width>window.innerWidth?rect.left-tipRect.width-12:x;
+    const finalY=y+tipRect.height>window.innerHeight?window.innerHeight-tipRect.height-10:y;
+
+    t.style.left=finalX+'px';
+    t.style.top=finalY+'px';
+
+    // Fade in
+    requestAnimationFrame(()=>{t.style.opacity='1'});
+  },100);
 }
-function s6MoveTip(e){
-  // No mover el tooltip - mantenerlo fijo para evitar vibración
+
+function s6HideTip(){
+  // Cancelar cualquier muestra pendiente
+  if(s6TipTimeout){
+    clearTimeout(s6TipTimeout);
+    s6TipTimeout=null;
+  }
+
+  const t=document.getElementById('s6Tip');
+  if(t&&t.style.display==='block'){
+    t.style.opacity='0';
+    s6HideTimeout=setTimeout(()=>{
+      t.style.display='none';
+      s6HideTimeout=null;
+    },150);
+  }
 }
 
 // ── Stats
