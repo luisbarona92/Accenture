@@ -1548,9 +1548,9 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
           <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#D97706,#FBBF24);border:2px solid #fff"></span>En ruta (B)</span>
           <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#9CA3AF,#D1D5DB);border:2px solid #fff"></span>Remoto primero (C)</span>
         </div>
-        <span class="s6-leg" style="color:var(--or);font-weight:600;font-size:11px">👆 Click en el mapa para seleccionar</span>
+        <span class="s6-leg" style="color:var(--ink3);font-weight:500;font-size:11px">📍 Pasa el cursor para ver detalles</span>
       </div>
-      <svg id="mapSpain" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
+      <svg id="mapSpain" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <filter id="shadowMap" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
@@ -1564,29 +1564,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
             </feMerge>
           </filter>
         </defs>
-        <!-- Fondo con imagen de España -->
-        <rect width="700" height="520" fill="#E8F1F8"/>
 
-        <!-- Mapa vectorial limpio de España -->
-        <path d="M 97,45 C 72,55 50,75 31,94 C 35,112 48,125 57,132 C 52,143 48,158 50,175 C 52,195 57,228 60,250 C 85,280 112,302 137,324 L 130,360 L 118,400 C 116,410 118,418 120,422 C 145,448 170,470 203,488 C 235,500 275,506 300,503 C 330,498 348,472 364,448 C 400,415 432,378 445,355 C 447,330 450,310 450,290 C 477,255 503,222 526,196 C 555,168 585,140 616,121 C 605,112 580,106 558,102 L 501,100 C 468,96 438,94 390,99 C 379,101 373,91 374,70 C 357,72 340,73 329,74 C 313,70 297,63 288,62 C 263,59 233,58 201,58 C 168,56 133,50 97,45 Z"
-              fill="#C8D9E6"
-              stroke="#7D9CB5"
-              stroke-width="1.5"
-              stroke-linejoin="round"/>
+        <!-- Fondo -->
+        <rect width="700" height="520" fill="#E3EDF5"/>
 
-        <!-- Islas Baleares -->
-        <ellipse cx="607" cy="284" rx="18" ry="11" fill="#C8D9E6" stroke="#7D9CB5" stroke-width="1.5"/>
-        <ellipse cx="581" cy="308" rx="9" ry="6" fill="#C8D9E6" stroke="#7D9CB5" stroke-width="1.5"/>
-
-        <!-- Etiquetas de regiones -->
-        <text x="282" y="225" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">MADRID</text>
-        <text x="558" y="162" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">CATALUÑA</text>
-        <text x="225" y="452" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">ANDALUCÍA</text>
-        <text x="262" y="74" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">NORTE</text>
-        <text x="67" y="111" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">GALICIA</text>
-        <text x="455" y="328" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">C.VALENCIANA</text>
-        <text x="430" y="148" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">ARAGÓN</text>
-        <text x="158" y="298" font-size="9" fill="#4A5F75" text-anchor="middle" font-weight="700" letter-spacing="1.2" opacity="0.8">EXTREMADURA</text>
+        <!-- Imagen de mapa de España -->
+        <image x="0" y="0" width="700" height="520"
+               xlink:href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 520'%3E%3Crect fill='%23E3EDF5' width='700' height='520'/%3E%3Cpath d='M97 45c-25 10-47 30-66 49 4 18 17 31 26 38-5 11-9 26-7 43 2 20 7 53 10 75 25 30 52 52 77 74l-7 36-12 40c-2 10 0 18 2 22 25 26 50 48 83 66 32 12 72 18 97 15 30-5 48-31 64-55 36-33 68-70 81-93 2-25 5-45 5-65 27-35 53-68 76-94 29-28 59-56 90-75-11-9-36-15-58-19l-57-2c-33-4-63-6-111-1-11 2-17-8-16-29-17 2-34 3-45 4-16-4-32-11-41-12-25-3-55-4-87-4-33-2-68-8-104-13z' fill='%23D4E3ED' stroke='%239BB5C9' stroke-width='2'/%3E%3Cellipse cx='607' cy='284' rx='18' ry='11' fill='%23D4E3ED' stroke='%239BB5C9' stroke-width='1.5'/%3E%3Cellipse cx='581' cy='308' rx='9' ry='6' fill='%23D4E3ED' stroke='%239BB5C9' stroke-width='1.5'/%3E%3C/svg%3E"
+               opacity="1"/>
 
         <!-- Dots inyectados por JS -->
         <g id="s6MapDots"></g>
@@ -2219,7 +2204,7 @@ function s6BuildDots(){
     const grp=document.createElementNS(svgNS,'g');
     grp.setAttribute('class','s6-map-dot');
     grp.style.opacity=op;
-    grp.style.cursor='pointer';
+    grp.style.cursor='default';
 
     // Anillo exterior pulsante si está seleccionado
     if(sel){
@@ -2256,7 +2241,7 @@ function s6BuildDots(){
     highlight.setAttribute('fill','rgba(255,255,255,0.5)');
     grp.appendChild(highlight);
 
-    grp.addEventListener('click',()=>s6ToggleCo(v.id));
+    // Solo tooltip, sin click para seleccionar
     grp.addEventListener('mouseenter',e=>s6ShowTip(e,v));
     grp.addEventListener('mouseleave',s6HideTip);
     g.appendChild(grp);
@@ -2290,8 +2275,7 @@ function s6ShowTip(e,v){
     t.innerHTML=`<div class="s6tip-name">${v.nombre}</div>
       <div class="s6tip-city">📍 ${v.ciudad}, ${v.provincia}</div>
       <div class="s6tip-prio" style="color:${col}">${lbl} · Grupo ${v.prioridad}</div>
-      <div class="s6tip-nota">${v.nota}</div>
-      <div class="s6tip-action">${S6_SEL.has(v.id)?'Clic para deseleccionar':'Clic para añadir al plan'}</div>`;
+      <div class="s6tip-nota">${v.nota}</div>`;
 
     // Obtener SVG container para posición relativa
     const svg=document.getElementById('mapSpain');
