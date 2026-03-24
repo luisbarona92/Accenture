@@ -657,7 +657,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .s6-rtag-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.2)}
 .s6-cluster-lbl{font-size:11px;color:var(--ink3);margin:8px 0 6px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
 /* Tooltip */
-#s6Tip{position:fixed;pointer-events:none;z-index:9999;background:linear-gradient(135deg,#1F2937 0%,#111827 100%);color:#fff;border-radius:12px;padding:14px 18px;font-size:12.5px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.3);max-width:260px;display:none;border:2px solid rgba(255,255,255,.1)}
+#s6Tip{position:fixed;pointer-events:none;z-index:9999;background:linear-gradient(135deg,#1F2937 0%,#111827 100%);color:#fff;border-radius:12px;padding:14px 18px;font-size:12.5px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.3);max-width:280px;display:none;border:2px solid rgba(255,255,255,.1);transition:opacity .15s ease;opacity:0}
 .s6tip-name{font-weight:700;font-size:14px;margin-bottom:5px;color:#FF8A3D}
 .s6tip-city{color:rgba(255,255,255,.85);font-size:12px}
 .s6tip-prio{font-size:11.5px;margin-top:4px;padding:3px 8px;background:rgba(255,255,255,.15);border-radius:6px;display:inline-block;margin-top:6px}
@@ -1542,52 +1542,59 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <!-- ── Mapa -->
     <div class="s6-map-card">
       <div class="s6-legend">
-        <span class="s6-leg"><span class="s6-leg-dot" style="background:#059669"></span>Presencial prioritario (A)</span>
-        <span class="s6-leg"><span class="s6-leg-dot" style="background:#D97706"></span>En ruta (B)</span>
-        <span class="s6-leg"><span class="s6-leg-dot" style="background:#9CA3AF"></span>Remoto primero (C)</span>
-        <span class="s6-leg" style="margin-left:auto;color:var(--ink4);font-style:italic">Haz click para seleccionar</span>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;flex:1">
+          <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#059669,#34D399);border:2px solid #fff"></span>Presencial prioritario (A)</span>
+          <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#D97706,#FBBF24);border:2px solid #fff"></span>En ruta (B)</span>
+          <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#9CA3AF,#D1D5DB);border:2px solid #fff"></span>Remoto primero (C)</span>
+        </div>
+        <span class="s6-leg" style="color:var(--or);font-weight:600;font-size:11px">👆 Click en el mapa para seleccionar</span>
       </div>
       <svg id="mapSpain" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
-        <!-- Fondo -->
-        <rect width="700" height="520" fill="#F8FAFC"/>
-        <!-- Contorno España peninsular -->
-        <path d="M 97,45
-          C 72,55 50,75 31,94
-          C 35,112 48,125 57,132
-          C 52,143 48,158 50,175
-          C 52,195 57,228 60,250
-          C 85,280 112,302 137,324
-          L 130,360 L 118,400
-          C 116,410 118,418 120,422
-          C 145,448 170,470 203,488
-          C 235,500 275,506 300,503
-          C 330,498 348,472 364,448
-          C 400,415 432,378 445,355
-          C 447,330 450,310 450,290
-          C 477,255 503,222 526,196
-          C 555,168 585,140 616,121
-          C 605,112 580,106 558,102
-          L 501,100
-          C 468,96 438,94 390,99
-          C 379,101 373,91 374,70
-          C 357,72 340,73 329,74
-          C 313,70 297,63 288,62
-          C 263,59 233,58 201,58
-          C 168,56 133,50 97,45 Z"
-          fill="#EFF3F8" stroke="#CBD5E1" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Definiciones de degradados y sombras -->
+        <defs>
+          <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#F8FAFC;stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1"/>
+          </linearGradient>
+          <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#DBEAFE;stop-opacity:0.3"/>
+            <stop offset="100%" style="stop-color:#93C5FD;stop-opacity:0.5"/>
+          </linearGradient>
+          <filter id="shadowMap" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dx="0" dy="2" result="offsetblur"/>
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.15"/>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <radialGradient id="highlightGrad" cx="30%" cy="30%">
+            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.4"/>
+            <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0"/>
+          </radialGradient>
+        </defs>
+        <!-- Fondo mar con degradado -->
+        <rect width="700" height="520" fill="url(#seaGrad)"/>
+        <!-- Contorno España peninsular con sombra y degradado -->
+        <path d="M 97,45 C 72,55 50,75 31,94 C 35,112 48,125 57,132 C 52,143 48,158 50,175 C 52,195 57,228 60,250 C 85,280 112,302 137,324 L 130,360 L 118,400 C 116,410 118,418 120,422 C 145,448 170,470 203,488 C 235,500 275,506 300,503 C 330,498 348,472 364,448 C 400,415 432,378 445,355 C 447,330 450,310 450,290 C 477,255 503,222 526,196 C 555,168 585,140 616,121 C 605,112 580,106 558,102 L 501,100 C 468,96 438,94 390,99 C 379,101 373,91 374,70 C 357,72 340,73 329,74 C 313,70 297,63 288,62 C 263,59 233,58 201,58 C 168,56 133,50 97,45 Z" fill="url(#mapGrad)" stroke="#94A3B8" stroke-width="2" stroke-linejoin="round" filter="url(#shadowMap)"/>
+        <!-- Highlight sutil para dar profundidad -->
+        <path d="M 97,45 C 72,55 50,75 31,94 C 35,112 48,125 57,132 C 52,143 48,158 50,175 C 52,195 57,228 60,250 C 85,280 112,302 137,324 L 130,360 L 118,400 C 116,410 118,418 120,422 C 145,448 170,470 203,488 C 235,500 275,506 300,503 C 330,498 348,472 364,448 C 400,415 432,378 445,355 C 447,330 450,310 450,290 C 477,255 503,222 526,196 C 555,168 585,140 616,121 C 605,112 580,106 558,102 L 501,100 C 468,96 438,94 390,99 C 379,101 373,91 374,70 C 357,72 340,73 329,74 C 313,70 297,63 288,62 C 263,59 233,58 201,58 C 168,56 133,50 97,45 Z" fill="url(#highlightGrad)" opacity="0.6"/>
         <!-- Mallorca -->
-        <ellipse cx="607" cy="284" rx="18" ry="11" fill="#EFF3F8" stroke="#CBD5E1" stroke-width="1"/>
+        <ellipse cx="607" cy="284" rx="18" ry="11" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.5" filter="url(#shadowMap)"/>
         <!-- Ibiza -->
-        <ellipse cx="581" cy="308" rx="9" ry="6" fill="#EFF3F8" stroke="#CBD5E1" stroke-width="1"/>
-        <!-- Etiquetas de zona -->
-        <text x="282" y="225" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">MADRID</text>
-        <text x="558" y="162" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">CATALUÑA</text>
-        <text x="225" y="452" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">ANDALUCÍA</text>
-        <text x="262" y="74" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">NORTE</text>
-        <text x="67" y="111" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">GALICIA</text>
-        <text x="455" y="328" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">C.VAL</text>
-        <text x="430" y="148" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">ARAGÓN</text>
-        <text x="158" y="298" font-size="8.5" fill="#94A3B8" text-anchor="middle" font-weight="700" letter-spacing="1">EXTREM.</text>
+        <ellipse cx="581" cy="308" rx="9" ry="6" fill="#EFF6FF" stroke="#94A3B8" stroke-width="1.5" filter="url(#shadowMap)"/>
+        <!-- Etiquetas de zona con fondo -->
+        <text x="282" y="225" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">MADRID</text>
+        <text x="558" y="162" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">CATALUÑA</text>
+        <text x="225" y="452" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">ANDALUCÍA</text>
+        <text x="262" y="74" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">NORTE</text>
+        <text x="67" y="111" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">GALICIA</text>
+        <text x="455" y="328" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">C.VAL</text>
+        <text x="430" y="148" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">ARAGÓN</text>
+        <text x="158" y="298" font-size="10" fill="#475569" text-anchor="middle" font-weight="800" letter-spacing="1.5">EXTREM.</text>
         <!-- Dots inyectados por JS -->
         <g id="s6MapDots"></g>
       </svg>
@@ -1595,7 +1602,13 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
     <!-- ── Panel lateral -->
     <div class="s6-panel">
-      <div class="s6-zones-card" id="s6ZonesList"></div>
+      <div class="s6-zones-card">
+        <div style="padding:8px 0 12px 0;border-bottom:2px solid var(--line);margin-bottom:12px">
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">📍 Empresas por zona</div>
+          <div style="font-size:11px;color:var(--ink3)">Selecciona para crear tu ruta</div>
+        </div>
+        <div id="s6ZonesList"></div>
+      </div>
     </div>
   </div>
 
@@ -2208,25 +2221,51 @@ function s6BuildDots(){
   VISITAS.forEach(v=>{
     const sel=S6_SEL.has(v.id);
     const col=v.prioridad==='A'?'#059669':v.prioridad==='B'?'#D97706':'#9CA3AF';
-    const op=!sel&&v.prioridad==='C'?0.3:1;
+    const colLight=v.prioridad==='A'?'#34D399':v.prioridad==='B'?'#FBBF24':'#D1D5DB';
+    const op=!sel&&v.prioridad==='C'?0.4:1;
     const grp=document.createElementNS(svgNS,'g');
     grp.setAttribute('class','s6-map-dot');
     grp.style.opacity=op;
     grp.style.cursor='pointer';
+
+    // Anillo exterior pulsante si está seleccionado
     if(sel){
+      const outerRing=document.createElementNS(svgNS,'circle');
+      outerRing.setAttribute('cx',v.x);outerRing.setAttribute('cy',v.y);outerRing.setAttribute('r',14);
+      outerRing.setAttribute('fill','none');outerRing.setAttribute('stroke',colLight);
+      outerRing.setAttribute('stroke-width','1.5');outerRing.setAttribute('opacity','0.2');
+      grp.appendChild(outerRing);
+
       const ring=document.createElementNS(svgNS,'circle');
-      ring.setAttribute('cx',v.x);ring.setAttribute('cy',v.y);ring.setAttribute('r',11);
-      ring.setAttribute('fill','none');ring.setAttribute('stroke',col);ring.setAttribute('stroke-width','2');ring.setAttribute('opacity','0.35');
+      ring.setAttribute('cx',v.x);ring.setAttribute('cy',v.y);ring.setAttribute('r',10);
+      ring.setAttribute('fill','none');ring.setAttribute('stroke',col);
+      ring.setAttribute('stroke-width','2.5');ring.setAttribute('opacity','0.5');
       grp.appendChild(ring);
     }
+
+    // Glow de fondo
+    const glow=document.createElementNS(svgNS,'circle');
+    glow.setAttribute('cx',v.x);glow.setAttribute('cy',v.y);glow.setAttribute('r',sel?9:7);
+    glow.setAttribute('fill',col);glow.setAttribute('opacity','0.3');
+    glow.setAttribute('filter','url(#shadowMap)');
+    grp.appendChild(glow);
+
+    // Círculo principal
     const c=document.createElementNS(svgNS,'circle');
     c.setAttribute('cx',v.x);c.setAttribute('cy',v.y);c.setAttribute('r',sel?7:5);
-    c.setAttribute('fill',col);c.setAttribute('stroke',sel?'#fff':'rgba(255,255,255,0.6)');c.setAttribute('stroke-width',sel?'1.5':'0.8');
+    c.setAttribute('fill',col);c.setAttribute('stroke','#FFFFFF');
+    c.setAttribute('stroke-width',sel?'2':'1.5');
     grp.appendChild(c);
+
+    // Highlight interno
+    const highlight=document.createElementNS(svgNS,'circle');
+    highlight.setAttribute('cx',v.x-1);highlight.setAttribute('cy',v.y-1);highlight.setAttribute('r',sel?3:2);
+    highlight.setAttribute('fill','rgba(255,255,255,0.5)');
+    grp.appendChild(highlight);
+
     grp.addEventListener('click',()=>s6ToggleCo(v.id));
     grp.addEventListener('mouseenter',e=>s6ShowTip(e,v));
     grp.addEventListener('mouseleave',s6HideTip);
-    grp.addEventListener('mousemove',s6MoveTip);
     g.appendChild(grp);
   });
 }
@@ -2243,15 +2282,23 @@ function s6ShowTip(e,v){
     <div class="s6tip-nota">${v.nota}</div>
     <div class="s6tip-action">${S6_SEL.has(v.id)?'Clic para deseleccionar':'Clic para añadir al plan'}</div>`;
   t.style.display='block';
-  s6MoveTip(e);
+  t.style.opacity='0';
+  // Posicionar tooltip de forma fija, sin seguir el mouse
+  const x=e.clientX+20,y=e.clientY+20;
+  t.style.left=(x+t.offsetWidth>window.innerWidth?e.clientX-t.offsetWidth-20:x)+'px';
+  t.style.top=(y+t.offsetHeight>window.innerHeight?e.clientY-t.offsetHeight-20:y)+'px';
+  // Fade in suave
+  requestAnimationFrame(()=>{t.style.opacity='1'});
 }
-function s6HideTip(){const t=document.getElementById('s6Tip');if(t)t.style.display='none';}
-function s6MoveTip(e){
+function s6HideTip(){
   const t=document.getElementById('s6Tip');
-  if(!t||t.style.display==='none')return;
-  const x=e.clientX+16,y=e.clientY-10;
-  t.style.left=(x+t.offsetWidth>window.innerWidth?e.clientX-t.offsetWidth-16:x)+'px';
-  t.style.top=(y+t.offsetHeight>window.innerHeight?e.clientY-t.offsetHeight:y)+'px';
+  if(t){
+    t.style.opacity='0';
+    setTimeout(()=>t.style.display='none',150);
+  }
+}
+function s6MoveTip(e){
+  // No mover el tooltip - mantenerlo fijo para evitar vibración
 }
 
 // ── Stats
