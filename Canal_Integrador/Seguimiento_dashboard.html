@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
   ╔══════════════════════════════════════════════════════════════╗
   ║  MAS Orange · Canal Integrador · Weekly PMO Dashboard        ║
@@ -1447,7 +1447,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="sh">
     <div>
       <div class="sh-title">Detalle Leads <span id="changesCounter" class="change-badge" style="display:none">0 cambios</span></div>
-      <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">52 leads potenciales</div>
+      <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">55 leads potenciales</div>
     </div>
     <div style="display:flex;gap:8px">
       <button class="export-changes-btn" id="btnExportChanges" onclick="exportChanges()" disabled title="Exportar cambios realizados">📋 Exportar cambios</button>
@@ -1693,69 +1693,112 @@ document.querySelectorAll('.funnel-vis').forEach(f=>obs.observe(f));
 // Última actualización: PMO #15 (2026-03-20)
 // ══════════════════════════════════════════════════════════════
 const LEADS = [
-  // ── COBITRATEL (3)
-  {id:26,nombre:'Conchi',cif:'',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46065,comercial:'Nazaret',estado:'KO',segmento:'',sigPasoEq:'Pendiente Nazaret',fecSigPasoEq:46071,sigPasoComercial:'Pendiente reagendar reunión (inicialmente esperada para viernes 27.02)',fecSigPasoComercial:46084,venta:null,productos:''},
-  {id:30,nombre:'Adrián',cif:'',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46072,comercial:'Sergio Mena',estado:'KO',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'Cliente no interesado en oferta con descuento',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:35,nombre:'Fernando Pedroviejo (Autoescuela San Cristobal)',cif:'A19120385',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46083,comercial:'Álvaro',estado:'Venta realizada',segmento:'',sigPasoEq:'Seguimiento con Álvaro',fecSigPasoEq:46090,sigPasoComercial:'35 móvil, 5 conecta, centralita, 2 dispositivos, etc. Oferta presentada +9K anual. En revisión por cliente.',fecSigPasoComercial:46090,venta:756,productos:'35 líneas móviles, 5 Conecta Pyme 1Gb + IP fija + Fibra Oro, 1 Fibra Big con centralita y grabación'},
-  // ── COVERNET (8)
-  {id:14,nombre:'Grupo Calillo',cif:'B85380186',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Activación en curso',fecSigPasoEq:46065,sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:176.59,productos:'4 líneas móviles, 1 FBB, 3 dispositivos, 3 terminales, Sin Centralita'},
-  {id:15,nombre:'AREXPRESS',cif:'B86054921',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Activación bloqueada por fraude — Desbloqueo urgente',fecSigPasoEq:46065,sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:243,productos:'5 líneas móviles, 1 FBB, 3 dispositivos, 3 terminales, Con Centralita'},
-  {id:16,nombre:'RAIL 28',cif:'B87253795',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'PYME',sigPasoEq:'Ampliación PYME',fecSigPasoEq:46091,sigPasoComercial:'Pendiente bloqueo operativo por proceso ampliaciones.',fecSigPasoComercial:'',venta:304,productos:'9 líneas móviles, 1 FBB, Con Centralita'},
-  {id:17,nombre:'VPLATAS ASESORES FISCALES',cif:'B83768366',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'En curso',segmento:'PYME',sigPasoEq:'Seguimiento dudas a resolver',fecSigPasoEq:46098,sigPasoComercial:'Pendiente respuesta dudas por Didac',fecSigPasoComercial:46098,venta:null,productos:''},
-  {id:36,nombre:'AREXPRESS (ampliación)',cif:'B86054921',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Ampliación SoHo',fecSigPasoEq:46091,sigPasoComercial:'Ampliación hecha, pendiente cliente',fecSigPasoComercial:46091,venta:120,productos:''},
-  {id:38,nombre:'URBEQUIPO, S.L.',cif:'B81990764',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46091,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46094,venta:null,productos:''},
-  {id:39,nombre:'COVER SPI, S.L.',cif:'B81846792',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46091,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46094,venta:null,productos:''},
-  {id:40,nombre:'COVER NET, S.L.',cif:'B82483280',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46091,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46094,venta:null,productos:''},
-  // ── DATAQU (4)
-  {id:20,nombre:'Asociación Apromar',cif:'G78295748 / E36115814',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez para descuento especial para socios.',fecSigPasoEq:46097,sigPasoComercial:'Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez.',fecSigPasoComercial:46097,venta:null,productos:''},
-  {id:21,nombre:'Schreiber Foods',cif:'B82690082',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Sesión presencial en +O el 13.02',fecSigPasoEq:46066,sigPasoComercial:'Sesión presencial en +O el 13.02',fecSigPasoComercial:46066,venta:null,productos:''},
-  {id:22,nombre:'Armadora Pereira',cif:'A36630028',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente reactivación por reestructuración interna.',fecSigPasoEq:46070,sigPasoComercial:'Pendiente reorganización interna y ajuste de cuotas de pesca para activación de lead.',fecSigPasoComercial:46136,venta:null,productos:''},
-  {id:23,nombre:'Grupo Adarsa',cif:'Múltiples CIFs [TBD]',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento. Habla 18.03 con ellos para organizar sesión online',fecSigPasoEq:46099,sigPasoComercial:'Pendiente fecha por Dataqu para visita presencial (semana 16.03)',fecSigPasoComercial:46097,venta:null,productos:''},
-  // ── DUOIT (3)
-  {id:24,nombre:'Lead 1',cif:'B95601795',integrador:'DuoIT',modelo:'Tier 1',fecGen:46058,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'Pendiente enviar oferta a Angel (Jonathan)',fecSigPasoEq:46073,sigPasoComercial:'Asegurar aplicación máximo descuento sobre oferta — Jonathan hace PT (15/20%). Pendiente oferta a 24 meses.',fecSigPasoComercial:46070,venta:null,productos:''},
-  {id:45,nombre:'Clínica Dental Ortiz-Vigón',cif:'B95027165',integrador:'DuoIT',modelo:'Tier 1',fecGen:46090,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Lead recibido, seguimiento (cliente Euskaltel 2 clínicas)',fecSigPasoEq:46100,sigPasoComercial:'Preparando oferta',fecSigPasoComercial:46100,venta:null,productos:''},
-  {id:46,nombre:'Lead 3',cif:'',integrador:'DuoIT',modelo:'Tier 1',fecGen:46090,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Angel esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
-  // ── LISOT (1)
-  {id:52,nombre:'Cliente de Argentona',cif:'',integrador:'Lisot',modelo:'Tier 1',fecGen:46099,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento — cliente elaborado la lista de requerimientos.',fecSigPasoEq:46107,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46107,venta:null,productos:''},
-  // ── MARISKALNET (3)
-  {id:47,nombre:'Lead 1',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:48,nombre:'Lead 2',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Emilio esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
-  {id:49,nombre:'Lead 3',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Emilio esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
-  // ── MAXEN (19)
-  {id:1,nombre:'Autocars Barrera',cif:'B60416302',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Venta realizada',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'N/A',fecSigPasoComercial:'',venta:361,productos:'9 líneas móviles, 3 FBB, Con Centralita'},
-  {id:2,nombre:'Lead 10',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:3,nombre:'Lead 11',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:4,nombre:'Lead 12',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:5,nombre:'Lead 13',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:6,nombre:'Lead 14',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:7,nombre:'Lead 15',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:8,nombre:'Lead 16',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:9,nombre:'Lead 17',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:10,nombre:'Lead 18',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:11,nombre:'Lead 19',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:13,nombre:'RUT PERFIL',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46009,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46069,sigPasoComercial:'Nueva oferta con centralita enviada a cliente 20.02. Pendiente re-contacto.',fecSigPasoComercial:46081,venta:null,productos:''},
-  {id:18,nombre:'Florflex (vecino RUTPERFIL)',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46054,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente respuesta cliente (Rut). Ligado a la oferta RUTPERFIL.',fecSigPasoComercial:46069,venta:null,productos:''},
+  // -- MAXEN
+  {id:1,nombre:'Autocars Barrera',cif:'B60416302',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Venta realizada',segmento:'',sigPasoEq:'',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:361,productos:'9 líneas móviles, 3 líneas FBB, Con Centralita'},
+  {id:2,nombre:'Lead 10',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:3,nombre:'Lead 11',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:4,nombre:'Lead 12',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:5,nombre:'Lead 13',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:6,nombre:'Lead 14',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:7,nombre:'Lead 15',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:8,nombre:'Lead 16',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:9,nombre:'Lead 17',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:10,nombre:'Lead 18',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:11,nombre:'Lead 19',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:45966,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente lead',fecSigPasoEq:'',sigPasoComercial:'Pendiente lead',fecSigPasoComercial:'',venta:null,productos:''},
+
+  // -- OX-ONE
+  {id:12,nombre:'Magnetron',cif:'A28325785',integrador:'Ox-One',modelo:'Tier 1',fecGen:46374,comercial:'Jonathan Macías',estado:'KO',segmento:'',sigPasoEq:'',fecSigPasoEq:'',sigPasoComercial:'Alta complejidad técnica',fecSigPasoComercial:'',venta:null,productos:''},
+
+  // -- MAXEN
+  {id:13,nombre:'RUT PERFIL',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46009,comercial:'Didac',estado:'KO',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46069,sigPasoComercial:'Nueva oferta con centralita enviada a cliente 20.02. Pendiente re-contacto con cliente',fecSigPasoComercial:46081,venta:null,productos:''},
+
+  // -- COVERNET
+  {id:14,nombre:'Grupo Calillo',cif:'B85380186',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'',fecSigPasoEq:46065,sigPasoComercial:'',fecSigPasoComercial:'',venta:177,productos:'4 líneas móviles, 1 líneas FBB, 3 dispositivos, 3 terminales, Sin Centralita'},
+  {id:15,nombre:'AREXPRESS',cif:'B86054921',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'',fecSigPasoEq:46065,sigPasoComercial:'',fecSigPasoComercial:'',venta:243,productos:'5 líneas móviles, 1 líneas FBB, 3 dispositivos, 3 terminales, Con Centralita'},
+  {id:16,nombre:'RAIL 28',cif:'B87253795',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'Venta realizada',segmento:'PYME',sigPasoEq:'Ampliación PYME. Nos pasa info para darle el OK semana que viene.',fecSigPasoEq:46105,sigPasoComercial:'Pendiente bloqueo operativo por proceso ampliaciones.',fecSigPasoComercial:'',venta:304,productos:'9 líneas móviles, 1 línea FBB, Con Centralita'},
+  {id:17,nombre:'VPLATAS ASESORES FISCALES',cif:'B83768366',integrador:'Covernet',modelo:'Tier 2',fecGen:46376,comercial:'Didac',estado:'En curso',segmento:'PYME',sigPasoEq:'Seguimiento dudas a resolver',fecSigPasoEq:46101,sigPasoComercial:'Pendiente respuesta dudas por Didac',fecSigPasoComercial:46101,venta:null,productos:''},
+
+  // -- MAXEN
+  {id:18,nombre:'Florflex (vecino RUTPERFIL)',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46054,comercial:'Didac',estado:'KO',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente respuesta cliente (Rut). Ligado a la oferta RUTPERFIL',fecSigPasoComercial:46069,venta:null,productos:''},
   {id:19,nombre:'KEIM ECOPAINT IBERICA SL',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46062,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente re-contacto con cliente semana 23.02',fecSigPasoComercial:46081,venta:null,productos:''},
+
+  // -- DATAQU
+  {id:20,nombre:'Asociación Apromar',cif:'G78295748 | E36115814 (Cliente +O)',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan Macías',estado:'En curso',segmento:'',sigPasoEq:'Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez para descuento especial para socios.',fecSigPasoEq:46097,sigPasoComercial:'Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez para descuento especial para socios.',fecSigPasoComercial:46097,venta:null,productos:''},
+  {id:21,nombre:'Schreiber Foods',cif:'B82690082 (Cliente hasta 12/2025)',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Sesión presencial en +O el 13.02',fecSigPasoEq:46066,sigPasoComercial:'Sesión presencial en +O el 13.02',fecSigPasoComercial:46066,venta:null,productos:''},
+  {id:22,nombre:'Armadora Pereira',cif:'A36630028',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente reactivación por reestructuración interna.',fecSigPasoEq:46070,sigPasoComercial:'Pendiente reorganización interna y ajuste de cuotas de pesca para activación de lead.',fecSigPasoComercial:46136,venta:null,productos:''},
+  {id:23,nombre:'Grupo Adarsa',cif:'Múltiples CIFs [TBD]',integrador:'Dataqu',modelo:'Tier 1',fecGen:46035,comercial:'Jonathan Macías',estado:'KO',segmento:'',sigPasoEq:'Sesión online 25.03',fecSigPasoEq:46106,sigPasoComercial:'Sesión online 25.03.',fecSigPasoComercial:46106,venta:null,productos:''},
+
+  // -- DUOIT
+  {id:24,nombre:'Lead 1',cif:'B95601795',integrador:'DuoIT',modelo:'Tier 1',fecGen:46058,comercial:'Jonathan Macías',estado:'KO',segmento:'',sigPasoEq:'Pendiente enviar oferta a Angel (Jonathan)',fecSigPasoEq:46073,sigPasoComercial:'Asegurar aplicación máximo descuento sobre oferta - Jonathan hace PT (15/20%). Miércoles Carmen Sanchez Arias debería pasar oferta a 24 meses (ahora la tiene Jonathan a 36)',fecSigPasoComercial:46070,venta:null,productos:''},
+
+  // -- OX-ONE
+  {id:25,nombre:'Lead 1',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46062,comercial:'Jonathan Macías',estado:'KO',segmento:'',sigPasoEq:'Mail con precio licencias google competitivas compartido con Gonzalo por Jonathan el 18.02. Pendiente respuesta',fecSigPasoEq:46071,sigPasoComercial:'Gestión con GGCC [ 27 licencias Business plus de Google (el cliente paga 25,3€ actualmente) + centralita cisco (ox-one hace mantenimiento). Acaba permanencia 01.03] - Pendiente feedback',fecSigPasoComercial:46087,venta:null,productos:''},
+
+  // -- COBITRATEL
+  {id:26,nombre:'Conchi',cif:'',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46065,comercial:'Nazaret González',estado:'KO',segmento:'',sigPasoEq:'Pendiente Nazaret',fecSigPasoEq:46071,sigPasoComercial:'Pendiente reagendar reunión (inicialmente esperada para viernes 27.02)',fecSigPasoComercial:46084,venta:null,productos:''},
+
+  // -- OX-ONE
+  {id:27,nombre:'Lead 2',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46023,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente recibir lead (despacho abogados)',fecSigPasoEq:46066,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46066,venta:null,productos:''},
+  {id:28,nombre:'Lead 3',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46023,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente recibir lead',fecSigPasoEq:46066,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46066,venta:null,productos:''},
+  {id:29,nombre:'Duino Inversiones SL',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46070,comercial:'Jonathan Macías',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46119,sigPasoComercial:'Jonathan le envía la oferta 18.02 - 11 líneas móviles + 2 fibras 1GB + backup. Visita comercial pendiente de agendar desde semana 23.02). Llamada lunes 09.03',fecSigPasoComercial:46119,venta:null,productos:''},
+
+  // -- COBITRATEL
+  {id:30,nombre:'Adrián',cif:'',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46072,comercial:'Sergio Mena',estado:'KO',segmento:'',sigPasoEq:'',fecSigPasoEq:'',sigPasoComercial:'Cliente no interesado en oferta con descuento',fecSigPasoComercial:'',venta:null,productos:''},
+
+  // -- MAXEN
   {id:31,nombre:'Wecolors',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46070,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Pendiente reagendar visita comercial (inicialmente planeada para 24.02)',fecSigPasoComercial:46083,venta:null,productos:''},
-  {id:32,nombre:'Expansiva',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento. Posible M2M (SIM para alarmas). Preparando oferta.',fecSigPasoEq:46104,sigPasoComercial:'Oferta preparada. Visita el 23.03',fecSigPasoComercial:46104,venta:null,productos:''},
-  {id:33,nombre:'Llorens vial',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46104,sigPasoComercial:'Oferta preparada. Visita el 23.03',fecSigPasoComercial:46104,venta:null,productos:''},
-  {id:34,nombre:'Plantas VADA',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46104,sigPasoComercial:'Preparando oferta presencial (Conecta Empresa + líneas móviles)',fecSigPasoComercial:46104,venta:null,productos:''},
-  {id:44,nombre:'Pleplants',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46090,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Oferta preparada. Visita el 23.03',fecSigPasoComercial:46104,venta:null,productos:''},
-  // ── OX-ONE (6)
-  {id:12,nombre:'Magnetron',cif:'A28325785',integrador:'Ox-One',modelo:'Tier 1',fecGen:46374,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'N/A',fecSigPasoEq:'',sigPasoComercial:'Alta complejidad técnica',fecSigPasoComercial:'',venta:null,productos:''},
-  {id:25,nombre:'Lead 1',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46062,comercial:'Jonathan',estado:'KO',segmento:'',sigPasoEq:'Mail con precio licencias Google compartido con Gonzalo por Jonathan el 18.02. Pendiente respuesta.',fecSigPasoEq:46071,sigPasoComercial:'Gestión con GGCC: 27 licencias Business Plus Google + centralita Cisco (fin permanencia 01.03). Pendiente feedback.',fecSigPasoComercial:46087,venta:null,productos:''},
-  {id:27,nombre:'Lead 2',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46023,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente recibir lead (despacho abogados)',fecSigPasoEq:46066,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46066,venta:null,productos:''},
-  {id:28,nombre:'Lead 3',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46023,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Pendiente recibir lead',fecSigPasoEq:46066,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46066,venta:null,productos:''},
-  {id:29,nombre:'Duino Inversiones SL',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46070,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46090,sigPasoComercial:'Oferta enviada 18.02: 11 líneas móviles + 2 fibras 1GB + backup. Visita comercial pendiente de agendar.',fecSigPasoComercial:46090,venta:null,productos:''},
-  {id:51,nombre:'NSK',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46098,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46099,sigPasoComercial:'Jonathan prepara número rápido y llama a Gonzalo.',fecSigPasoComercial:46099,venta:null,productos:''},
-  // ── PAPERLABS (1)
-  {id:50,nombre:'Lead 1 (5 CIFs)',cif:'Múltiples CIFs [5]',integrador:'Paperlabs',modelo:'Tier 1',fecGen:46098,comercial:'Jonathan',estado:'En curso',segmento:'',sigPasoEq:'Lead recibido, seguimiento',fecSigPasoEq:46098,sigPasoComercial:'Jonathan llama a Carlos para entender situación y preparar oferta.',fecSigPasoComercial:46099,venta:null,productos:''},
-  // ── SICTEMAS (3)
-  {id:41,nombre:'Lead 1',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Movido a abril.',fecSigPasoEq:46113,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46113,venta:null,productos:''},
-  {id:42,nombre:'Lead 2',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Movido a abril.',fecSigPasoEq:46113,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46113,venta:null,productos:''},
-  {id:43,nombre:'Lead 3',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead (líneas propias)',fecSigPasoEq:46143,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46143,venta:null,productos:''},
-  // ── SISYTEC (1)
-  {id:37,nombre:'Lead 1',cif:'',integrador:'Sisytec',modelo:'Tier 1',fecGen:46084,comercial:'Sergio Mena',estado:'En curso',segmento:'',sigPasoEq:'Pendiente integrador',fecSigPasoEq:46106,sigPasoComercial:'Posible cliente con Movistar que necesita línea adicional para VPN. Información enviada a integrador. Pendiente feedback.',fecSigPasoComercial:46106,venta:null,productos:''}
+  {id:32,nombre:'Expansiva',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento. Preguntar a Fernando Cifo si podemos venderle M2M (SIM para alarmas) a una empresa de seguridad pyme. A razon del mail q le envió a Didac, va a ir él con el integrador y quiere saber si le podemos proporcionar eso',fecSigPasoEq:46104,sigPasoComercial:'Primera visita el 25.03',fecSigPasoComercial:46106,venta:null,productos:''},
+  {id:33,nombre:'Llorens Vila',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46104,sigPasoComercial:'Oferta preparada. Visita el 25.03',fecSigPasoComercial:46106,venta:null,productos:''},
+  {id:34,nombre:'Plantas VADA',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46076,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46104,sigPasoComercial:'Pendiente cliente. Conecta empresa con líneas móviles.',fecSigPasoComercial:46104,venta:null,productos:''},
+
+  // -- COBITRATEL
+  {id:35,nombre:'Fernando Pedroviejo (Autoescuela San Cristobal)',cif:'A19120385',integrador:'Cobitratel',modelo:'Tier 1',fecGen:46083,comercial:'Álvaro María García',estado:'Venta realizada',segmento:'',sigPasoEq:'Seguimiento con Álvaro',fecSigPasoEq:46090,sigPasoComercial:'35 movil, 5 conecta, centralita, 2 dispositivos, etc. Oferta presentada +9K anual. En revisión por cliente.',fecSigPasoComercial:46090,venta:756,productos:'35 líneas móviles, 5 Conecta Pyme 1Gb + IP fija + Fibra Oro, 1 Fibra Big con centralita y grabación'},
+
+  // -- COVERNET
+  {id:36,nombre:'AREXPRESS',cif:'B86054921',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Venta realizada',segmento:'SoHo',sigPasoEq:'Ampliación SoHo',fecSigPasoEq:46091,sigPasoComercial:'Ampliación hecha, penidente cliente',fecSigPasoComercial:46091,venta:120,productos:''},
+
+  // -- SISYTEC
+  {id:37,nombre:'Asociación discapacitados',cif:'',integrador:'Sisytec',modelo:'Tier 1',fecGen:46084,comercial:'Sergio Mena',estado:'En curso',segmento:'',sigPasoEq:'Pendiente integrador',fecSigPasoEq:46106,sigPasoComercial:'Contacto con integrador. Posible cliente que está con Movistar y aunque quiere seguir con ellos, necesita una línea adicional para instalar una VPN. Información enviada a integrador para que la trasladen al cliente. Pendiente feedback.',fecSigPasoComercial:46106,venta:null,productos:''},
+
+  // -- COVERNET
+  {id:38,nombre:'URBEQUIPO, S.L.',cif:'B81990764',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46127,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46127,venta:null,productos:''},
+  {id:39,nombre:'COVER SPI, S.L.',cif:'B81846792',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46127,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46127,venta:null,productos:''},
+  {id:40,nombre:'COVER NET, S.L.',cif:'B82483280',integrador:'Covernet',modelo:'Tier 2',fecGen:46083,comercial:'Didac',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento renove',fecSigPasoEq:46127,sigPasoComercial:'Pendiente vencimiento permanencia para hacer renove',fecSigPasoComercial:46127,venta:null,productos:''},
+
+  // -- SICTEMAS
+  {id:41,nombre:'Lead 1',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Movido a abril.',fecSigPasoEq:46113,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46113,venta:null,productos:''},
+  {id:42,nombre:'Lead 2',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Movido a abril.',fecSigPasoEq:46113,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46113,venta:null,productos:''},
+  {id:43,nombre:'Sictemas',cif:'',integrador:'Sictemas',modelo:'Tier 1',fecGen:46089,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead (líneas propias)',fecSigPasoEq:46143,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46143,venta:null,productos:''},
+
+  // -- MAXEN
+  {id:44,nombre:'Poleplants',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46090,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:'',sigPasoComercial:'Oferta preparada. Visita el 25.03',fecSigPasoComercial:46106,venta:null,productos:''},
+
+  // -- DUOIT
+  {id:45,nombre:'Clínica Dental Ortiz-Vigón',cif:'B95027165',integrador:'DuoIT',modelo:'Tier 1',fecGen:46090,comercial:'Álvaro María García',estado:'En curso',segmento:'',sigPasoEq:'Lead recibido, seguimiento (cliente Euskaltel 2 clínicas)',fecSigPasoEq:46100,sigPasoComercial:'Preparando oferta',fecSigPasoComercial:46100,venta:null,productos:''},
+  {id:46,nombre:'Lead 3',cif:'',integrador:'DuoIT',modelo:'Tier 1',fecGen:46090,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Angel esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
+
+  // -- MARISKALNET
+  {id:47,nombre:'Lead 1',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan Macías',estado:'KO',segmento:'',sigPasoEq:'',fecSigPasoEq:'',sigPasoComercial:'',fecSigPasoComercial:'',venta:null,productos:''},
+  {id:48,nombre:'Lead 2',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Emilio esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
+  {id:49,nombre:'Lead 3',cif:'',integrador:'Mariskalnet',modelo:'Tier 1',fecGen:46092,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead. Nos lo pasa Emilio esta semana (09.03).',fecSigPasoEq:46094,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46094,venta:null,productos:''},
+
+  // -- PAPERLABS
+  {id:50,nombre:'Grupo ARC',cif:'Múltiples CIFs [5]',integrador:'Paperlabs',modelo:'Tier 1',fecGen:46098,comercial:'Nazaret González',estado:'En curso',segmento:'',sigPasoEq:'Lead recibido, seguimiento',fecSigPasoEq:46098,sigPasoComercial:'Contactando a cliente para conocer casuística real',fecSigPasoComercial:46099,venta:null,productos:''},
+
+  // -- OX-ONE
+  {id:51,nombre:'NSK',cif:'',integrador:'Ox-One',modelo:'Tier 1',fecGen:46098,comercial:'Jonathan Macías',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46119,sigPasoComercial:'Jonathan prepara número rápido y llama a Gonzalo. Gonzalo pendiente de comentar con cliente',fecSigPasoComercial:46119,venta:null,productos:''},
+
+  // -- LISOT
+  {id:52,nombre:'Cliente de Argentona',cif:'',integrador:'Lisot',modelo:'Tier 1',fecGen:46099,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento - cliente elaborado la lista de requerimientos.',fecSigPasoEq:46107,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46107,venta:null,productos:''},
+
+  // -- AIDEEA
+  {id:53,nombre:'Academia',cif:'',integrador:'Aideea',modelo:'Tier 1',fecGen:46105,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento - academia 2 sedes, pendiente confirmar por integrador',fecSigPasoEq:46108,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46108,venta:null,productos:''},
+
+  // -- SISYTEC
+  {id:54,nombre:'SISYTEC',cif:'',integrador:'Sisytec',modelo:'Tier 1',fecGen:46105,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead (líneas propias)',fecSigPasoEq:46108,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46108,venta:null,productos:''},
+
+  // -- AMIRITMO
+  {id:55,nombre:'Lead 1',cif:'',integrador:'Amiritmo',modelo:'Tier 1',fecGen:46106,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.',fecSigPasoEq:46119,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46119,venta:null,productos:''}
 ];
 
 // ── Colores por integrador
