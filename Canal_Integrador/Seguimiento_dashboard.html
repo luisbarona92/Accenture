@@ -159,11 +159,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .leads-empty{text-align:center;color:var(--ink3);padding:48px 0;font-size:14px}
 /* Privacy mode */
 .btn-privacy{
-  display:flex;align-items:center;gap:6px;
-  padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:600;
-  border:1.5px solid var(--line2);background:var(--card);color:var(--ink3);
+  display:flex;align-items:center;gap:5px;
+  padding:5px 10px;border-radius:6px;font-size:11px;font-weight:500;
+  border:1px solid var(--line2);background:var(--card);color:var(--ink3);
   cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
-.btn-privacy:hover{border-color:var(--ink);color:var(--ink)}
+.btn-privacy:hover{border-color:var(--ink2);color:var(--ink2)}
 .btn-privacy.on{background:#1F2937;border-color:#1F2937;color:#fff}
 #s5.s5-private .s5-sensitive{display:none!important}
 #s5.s5-private .int-badge{opacity:0;pointer-events:none}
@@ -182,9 +182,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 /* Marcador de cambio */
 .lead-card.changed{border-color:#8B5CF6;box-shadow:0 0 0 3px rgba(139,92,246,.12);position:relative}
 .lead-card.changed::before{content:'EDITADO';position:absolute;top:-8px;right:8px;background:#8B5CF6;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:.5px}
-.change-badge{display:inline-block;background:#8B5CF6;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:.5px;margin-left:8px}
-.export-changes-btn{padding:8px 16px;border-radius:8px;border:2px solid #8B5CF6;background:#8B5CF6;color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;margin-top:12px}
-.export-changes-btn:hover{background:#7C3AED;border-color:#7C3AED;transform:translateY(-1px);box-shadow:0 4px 12px rgba(139,92,246,.3)}
+.change-badge{display:inline-block;background:#8B5CF6;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.3px;margin-left:6px}
+.export-changes-btn{padding:5px 10px;border-radius:6px;border:1px solid #8B5CF6;background:#8B5CF6;color:#fff;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s}
+.export-changes-btn:hover{background:#7C3AED;border-color:#7C3AED}
 .export-changes-btn:disabled{opacity:.5;cursor:not-allowed}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
@@ -1447,7 +1447,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="sh">
     <div>
       <div class="sh-title">Detalle Leads <span id="changesCounter" class="change-badge" style="display:none">0 cambios</span></div>
-      <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">52 leads potenciales · Fuente: Partners_BBDD_v1.xlsx · Actualizado PMO #15</div>
+      <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">52 leads potenciales</div>
     </div>
     <div style="display:flex;gap:8px">
       <button class="export-changes-btn" id="btnExportChanges" onclick="exportChanges()" disabled title="Exportar cambios realizados">📋 Exportar cambios</button>
