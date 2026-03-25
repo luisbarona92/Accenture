@@ -666,6 +666,47 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .s6tip-prio{font-size:11.5px;margin-top:4px;padding:3px 8px;background:rgba(255,255,255,.15);border-radius:6px;display:inline-block;margin-top:6px}
 .s6tip-nota{font-size:11px;color:rgba(255,255,255,.65);margin-top:8px;border-top:2px solid rgba(255,255,255,.15);padding-top:8px}
 .s6tip-action{font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;font-style:italic}
+
+/* ── Update button ── */
+.btn-update{
+  padding:6px 14px;border-radius:7px;font-size:12px;font-weight:600;
+  background:var(--or);color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;gap:6px;transition:opacity .15s;
+  white-space:nowrap
+}
+.btn-update:hover{opacity:.85}
+.btn-update:disabled{opacity:.4;cursor:not-allowed}
+.btn-update.loading{animation:pulse 1s infinite}
+/* Update overlay */
+.upd-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:9999;align-items:center;justify-content:center
+}
+.upd-overlay.show{display:flex}
+.upd-box{
+  background:#fff;border-radius:14px;padding:28px 32px;max-width:540px;width:90%;
+  box-shadow:0 20px 60px rgba(0,0,0,.3)
+}
+.upd-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.upd-log{
+  background:#F9FAFB;border-radius:8px;padding:12px;font-size:12px;
+  font-family:monospace;max-height:200px;overflow-y:auto;margin-bottom:16px;
+  border:1px solid var(--line)
+}
+.upd-log p{margin:2px 0;color:var(--ink2)}
+.upd-log p.ok{color:var(--green)}
+.upd-log p.err{color:var(--red)}
+.upd-log p.info{color:var(--blue)}
+.upd-actions{display:flex;gap:8px;justify-content:flex-end}
+.upd-btn-apply{
+  padding:8px 20px;border-radius:7px;font-size:13px;font-weight:600;
+  background:var(--green);color:#fff;border:none;cursor:pointer
+}
+.upd-btn-apply:disabled{opacity:.4;cursor:not-allowed}
+.upd-btn-cancel{
+  padding:8px 16px;border-radius:7px;font-size:13px;
+  background:var(--bg);color:var(--ink2);border:1px solid var(--line2);cursor:pointer
+}
 </style>
 </head>
 <body>
@@ -709,10 +750,23 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   </nav>
 
   <div class="topbar-right">
+    <button class="btn-update" id="btnUpdate" onclick="openUpdatePanel()" title="Actualizar dashboard desde Excel y PPT">
+      🔄 Actualizar
+    </button>
     <span class="date-lbl">25 mar 2026</span>
   </div>
 </header>
 
+<div class="upd-overlay" id="updOverlay">
+  <div class="upd-box">
+    <div class="upd-title">🔄 Actualizar dashboard</div>
+    <div id="updLog" class="upd-log"><p class="info">Conectando con servidor local...</p></div>
+    <div class="upd-actions">
+      <button class="upd-btn-cancel" onclick="closeUpdatePanel()">Cancelar</button>
+      <button class="upd-btn-apply" id="btnApply" onclick="applyUpdate()" disabled>✅ Aplicar y publicar</button>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════════════════════
      S0 · PORTADA
@@ -2429,6 +2483,233 @@ function s6UpdatePlan(){
 function s6SelA(){S6_SEL.clear();VISITAS.filter(v=>v.prioridad==='A').forEach(v=>S6_SEL.add(v.id));s6Refresh();}
 function s6SelAB(){S6_SEL.clear();VISITAS.filter(v=>v.prioridad!=='C').forEach(v=>S6_SEL.add(v.id));s6Refresh();}
 function s6Clear(){S6_SEL.clear();s6Refresh();}
+
+// ── Auto-update panel ─────────────────────────────────────────────────────────
+const UPD_SERVER = 'http://localhost:3001';
+window._pendingUpdate = null;
+
+function logUpd(msg, type) {
+  const log = document.getElementById('updLog');
+  if (!log) return;
+  const p = document.createElement('p');
+  p.className = type || 'info';
+  p.textContent = msg;
+  log.appendChild(p);
+  log.scrollTop = log.scrollHeight;
+}
+
+function clearLog() {
+  const log = document.getElementById('updLog');
+  if (log) log.innerHTML = '';
+}
+
+function openUpdatePanel() {
+  const overlay = document.getElementById('updOverlay');
+  const btnApply = document.getElementById('btnApply');
+  if (!overlay) return;
+  clearLog();
+  if (btnApply) { btnApply.disabled = true; }
+  window._pendingUpdate = null;
+  overlay.classList.add('show');
+  logUpd('Conectando con servidor local...', 'info');
+
+  fetch(UPD_SERVER + '/api/ping', { method: 'GET' })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        logUpd('Servidor disponible (v' + d.version + ')', 'ok');
+        parseFiles();
+      } else {
+        logUpd('Servidor respondio pero con error.', 'err');
+      }
+    })
+    .catch(() => {
+      logUpd('Servidor no disponible. Ejecuta start.bat primero.', 'err');
+    });
+}
+
+function parseFiles() {
+  logUpd('Leyendo archivos (Excel + PPT)...', 'info');
+  fetch(UPD_SERVER + '/api/parse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+    .then(r => r.json())
+    .then(res => {
+      if (res.log && res.log.length) {
+        res.log.forEach(entry => logUpd(entry.msg, entry.type));
+      }
+      if (res.ok && res.data) {
+        window._pendingUpdate = res.data;
+        const btnApply = document.getElementById('btnApply');
+        if (btnApply) btnApply.disabled = false;
+        logUpd('Parseo completado. Revisa los datos y pulsa Aplicar.', 'ok');
+      } else {
+        logUpd('Error en el parseo: ' + (res.error || 'desconocido'), 'err');
+      }
+    })
+    .catch(e => {
+      logUpd('Error de conexion: ' + e.message, 'err');
+    });
+}
+
+function applyUpdate() {
+  const btnApply = document.getElementById('btnApply');
+  if (btnApply) btnApply.disabled = true;
+  logUpd('Aplicando cambios y publicando...', 'info');
+
+  fetch(UPD_SERVER + '/api/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+    .then(r => r.json())
+    .then(res => {
+      if (res.log && res.log.length) {
+        res.log.forEach(entry => logUpd(entry.msg, entry.type));
+      }
+      if (res.ok && res.data) {
+        logUpd('Cambios aplicados y publicados correctamente.', 'ok');
+        applyDataToDOM(res.data);
+        setTimeout(() => closeUpdatePanel(), 1800);
+      } else {
+        logUpd('Error aplicando: ' + (res.error || 'desconocido'), 'err');
+        if (btnApply) btnApply.disabled = false;
+      }
+    })
+    .catch(e => {
+      logUpd('Error de conexion: ' + e.message, 'err');
+      if (btnApply) btnApply.disabled = false;
+    });
+}
+
+function closeUpdatePanel() {
+  const overlay = document.getElementById('updOverlay');
+  if (overlay) overlay.classList.remove('show');
+}
+
+function applyDataToDOM(data) {
+  try {
+    // Date
+    if (data.meta && data.meta.date) {
+      const d = data.meta.date;
+      document.querySelectorAll('.date-lbl').forEach(el => { el.textContent = d.toLowerCase(); });
+      const heroBadge = document.querySelector('.hero-badge');
+      if (heroBadge) heroBadge.innerHTML = '<b></b> Weekly PMO \u00B7 ' + d;
+    }
+
+    // S5 counters (data-cnt attribute)
+    if (data.s5) {
+      const mapping = {
+        's5-total': data.s5.total,
+        's5-ventas': data.s5.ventas,
+        's5-encurso': data.s5.enCurso,
+        's5-pendiente': data.s5.pendiente,
+        's5-ko': data.s5.ko
+      };
+      Object.entries(mapping).forEach(([key, val]) => {
+        document.querySelectorAll('[data-cnt="' + key + '"]').forEach(el => {
+          el.setAttribute('data-t', val);
+          el.textContent = val;
+        });
+      });
+    }
+
+    // S1: H1-H4 counters
+    if (data.s1) {
+      const s1map = { 'h1': data.s1.h1, 'h2': data.s1.h2, 'h3': data.s1.h3, 'h4': data.s1.h4 };
+      Object.entries(s1map).forEach(([key, val]) => {
+        if (!val) return;
+        document.querySelectorAll('[data-cnt="s1-' + key + '"]').forEach(el => {
+          el.setAttribute('data-t', val);
+          el.textContent = val;
+        });
+      });
+      // Firmados count
+      if (data.s1.firmados && data.s1.firmados.count) {
+        document.querySelectorAll('[data-cnt="s1-firmados"]').forEach(el => {
+          el.setAttribute('data-t', data.s1.firmados.count);
+          el.textContent = data.s1.firmados.count;
+        });
+      }
+      if (data.s1.enProceso && data.s1.enProceso.count) {
+        document.querySelectorAll('[data-cnt="s1-enproceso"]').forEach(el => {
+          el.setAttribute('data-t', data.s1.enProceso.count);
+          el.textContent = data.s1.enProceso.count;
+        });
+      }
+    }
+
+    // S2: integradores table rows
+    if (data.s2 && data.s2.integradores && data.s2.integradores.length) {
+      data.s2.integradores.forEach(integ => {
+        const rows = document.querySelectorAll('tr[data-n]');
+        rows.forEach(row => {
+          const name = row.getAttribute('data-n') || '';
+          if (name.toLowerCase() === integ.nombre.toLowerCase()) {
+            // Update observacion cell
+            const obsCell = row.querySelector('.obs-cell, td.obs, [data-col="obs"]');
+            if (obsCell && integ.observacion) obsCell.textContent = integ.observacion;
+            // Update grupo class
+            row.setAttribute('data-g', integ.grupo);
+          }
+        });
+      });
+      // Update group counts
+      if (data.s2.counts) {
+        Object.entries(data.s2.counts).forEach(([grp, cnt]) => {
+          document.querySelectorAll('[data-cnt="s2-' + grp + '"]').forEach(el => {
+            el.setAttribute('data-t', cnt);
+            el.textContent = cnt;
+          });
+        });
+      }
+    }
+
+    // S3: funnel ventas counters
+    if (data.s3) {
+      const s3map = {
+        's3-total': data.s3.total,
+        's3-leads': data.s3.leads,
+        's3-ofertas': data.s3.ofertas,
+        's3-ventas': data.s3.ventas
+      };
+      Object.entries(s3map).forEach(([key, val]) => {
+        if (!val) return;
+        document.querySelectorAll('[data-cnt="' + key + '"]').forEach(el => {
+          el.setAttribute('data-t', val);
+          el.textContent = val;
+        });
+      });
+    }
+
+    // S4: task counts
+    if (data.s4 && data.s4.counts) {
+      const s4map = {
+        's4-retrasadas': data.s4.counts.retrasadas,
+        's4-encurso': data.s4.counts.enCurso,
+        's4-finalizado': data.s4.counts.finalizado,
+        's4-onhold': data.s4.counts.onHold
+      };
+      Object.entries(s4map).forEach(([key, val]) => {
+        if (val === undefined) return;
+        document.querySelectorAll('[data-cnt="' + key + '"]').forEach(el => {
+          el.setAttribute('data-t', val);
+          el.textContent = val;
+        });
+      });
+    }
+
+    // Re-trigger counter animations
+    document.querySelectorAll('.cnt[data-t]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-t'), 10);
+      if (isNaN(target)) return;
+      let current = 0;
+      const step = Math.ceil(target / 30);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current;
+        if (current >= target) clearInterval(timer);
+      }, 30);
+    });
+
+  } catch (e) {
+    console.error('applyDataToDOM error:', e);
+  }
+}
 </script>
 </body>
 </html>
