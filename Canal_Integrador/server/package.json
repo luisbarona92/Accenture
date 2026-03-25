@@ -1,0 +1,8 @@
+{
+  "name": "dashboard-update-server",
+  "version": "1.0.0",
+  "description": "Local update server for Canal Integrador dashboard",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "jszip": "^3.10.1" }
+}

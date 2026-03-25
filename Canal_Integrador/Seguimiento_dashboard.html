@@ -804,17 +804,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       </div>
       <div class="hd-kpis">
         <div class="hk">
-          <div class="hk-num c-or cnt" data-t="36">0</div>
+          <div class="hk-num c-or cnt" data-cnt="s0-captados" data-t="36">0</div>
           <div class="hk-lbl">Captados</div>
           <div class="hk-line hl-or"></div>
         </div>
         <div class="hk">
-          <div class="hk-num c-gr cnt" data-t="24">0</div>
+          <div class="hk-num c-gr cnt" data-cnt="s0-activados" data-t="24">0</div>
           <div class="hk-lbl">Activados</div>
           <div class="hk-line hl-gr"></div>
         </div>
         <div class="hk">
-          <div class="hk-num c-am cnt" data-t="12">0</div>
+          <div class="hk-num c-am cnt" data-cnt="s0-alta" data-t="12">0</div>
           <div class="hk-lbl">Alta participación</div>
           <div class="hk-line hl-am"></div>
         </div>
@@ -831,17 +831,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       </div>
       <div class="hd-kpis">
         <div class="hk">
-          <div class="hk-num c-bl cnt" data-t="55">0</div>
+          <div class="hk-num c-bl cnt" data-cnt="s0-oportunidades" data-t="55">0</div>
           <div class="hk-lbl">Oportunidades</div>
           <div class="hk-line hl-bl"></div>
         </div>
         <div class="hk">
-          <div class="hk-num c-am cnt" data-t="6">0</div>
+          <div class="hk-num c-am cnt" data-cnt="s0-ofertas" data-t="6">0</div>
           <div class="hk-lbl">Ofertas en curso</div>
           <div class="hk-line hl-am"></div>
         </div>
         <div class="hk">
-          <div class="hk-num c-gr cnt" data-t="6">0</div>
+          <div class="hk-num c-gr cnt" data-cnt="s0-ventas" data-t="6">0</div>
           <div class="hk-lbl">Ventas activadas</div>
           <div class="hk-line hl-gr"></div>
         </div>
@@ -891,27 +891,27 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="krow">
     <div class="kcard k-or">
       <div class="k-lbl">Fishing Pool</div>
-      <div class="k-num cnt" data-t="5124">0</div>
+      <div class="k-num cnt" data-cnt="s1-pool" data-t="5124">0</div>
       <div class="k-sub">Total integradores en BBDD atacable</div>
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">Hito 1 · Contacto</div>
-      <div class="k-num cnt" data-t="844">0</div>
+      <div class="k-num cnt" data-cnt="s1-h1" data-t="844">0</div>
       <div class="k-sub">16% del fishing pool</div>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Hito 2 · Interés</div>
-      <div class="k-num cnt" data-t="71">0</div>
+      <div class="k-num cnt" data-cnt="s1-h2" data-t="71">0</div>
       <div class="k-sub">Sesión informativa 1:1</div>
     </div>
     <div class="kcard k-or">
       <div class="k-lbl">Hito 3 · Captados</div>
-      <div class="k-num cnt" data-t="48">0</div>
+      <div class="k-num cnt" data-cnt="s1-h3" data-t="48">0</div>
       <div class="k-sub">KO presencial</div>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Hito 4 · Activados</div>
-      <div class="k-num cnt" data-t="24">0</div>
+      <div class="k-num cnt" data-cnt="s1-h4" data-t="24">0</div>
       <div class="k-sub">Contrato + modelo colaboración</div>
       <span class="k-delta kd-up">↑ +1 esta semana</span>
     </div>
@@ -1151,11 +1151,11 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <!-- Toolbar filtros -->
   <div class="int-toolbar">
     <input class="int-search" id="intSearch" type="text" placeholder="Buscar integrador..." oninput="searchInt()">
-    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(36)</span></button>
-    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (12)</button>
-    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (13)</button>
-    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (6)</button>
-    <button class="filt-btn"   onclick="filt('churn',this)"><span class="filt-dot fd-rd"></span>Riesgo churn (5)</button>
+    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(<span data-cnt="s2-total">36</span>)</span></button>
+    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (<span data-cnt="s2-verde">12</span>)</button>
+    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (<span data-cnt="s2-posible">13</span>)</button>
+    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (<span data-cnt="s2-hold">6</span>)</button>
+    <button class="filt-btn"   onclick="filt('churn',this)"><span class="filt-dot fd-rd"></span>Riesgo churn (<span data-cnt="s2-churn">5</span>)</button>
   </div>
 
   <!-- Tabla desplegada completa, sin scroll interno -->
@@ -1267,21 +1267,21 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="krow">
     <div class="kcard k-or">
       <div class="k-lbl">Total oportunidades</div>
-      <div class="k-num cnt" data-t="55">0</div>
+      <div class="k-num cnt" data-cnt="s3-total" data-t="55">0</div>
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">Leads en curso</div>
-      <div class="k-num cnt" data-t="11">0</div>
+      <div class="k-num cnt" data-cnt="s3-leads" data-t="11">0</div>
       <div class="k-sub">20% de oportunidades</div>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Ofertas en curso</div>
-      <div class="k-num cnt" data-t="6">0</div>
+      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="6">0</div>
       <div class="k-sub">55% de leads</div>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas activadas</div>
-      <div class="k-num cnt" data-t="6">0</div>
+      <div class="k-num cnt" data-cnt="s3-ventas" data-t="6">0</div>
       <div class="k-sub">11% de oportunidades</div>
       <span class="k-delta kd-up">↑ Meta en curso</span>
     </div>
@@ -1506,7 +1506,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="sh">
     <div>
       <div class="sh-title">Detalle Leads <span id="changesCounter" class="change-badge" style="display:none">0 cambios</span></div>
-      <div class="s5-sensitive" style="font-size:12px;color:var(--ink3);margin-top:4px">55 leads potenciales</div>
+      <div class="s5-sensitive" data-cnt="s5-subtitle" style="font-size:12px;color:var(--ink3);margin-top:4px">55 leads potenciales</div>
     </div>
     <div style="display:flex;gap:8px">
       <button class="export-changes-btn" id="btnExportChanges" onclick="exportChanges()" disabled title="Exportar cambios realizados">📋 Exportar cambios</button>
@@ -1518,12 +1518,12 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="krow s5-sensitive">
     <div class="kcard k-or">
       <div class="k-lbl">Leads potenciales</div>
-      <div class="k-num cnt" data-t="55">55</div>
+      <div class="k-num cnt" data-cnt="s5-total" data-t="55">55</div>
       <div class="k-sub">Total identificados</div>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas realizadas</div>
-      <div class="k-num cnt" data-t="6">6</div>
+      <div class="k-num cnt" data-cnt="s5-ventas" data-t="6">6</div>
       <div class="k-sub">Contratos firmados</div>
       <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
         <span style="font-size:11px;color:var(--green);font-weight:600;background:var(--green-bg);padding:3px 8px;border-radius:5px">∑ 1.960,59 €</span>
@@ -1532,17 +1532,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">En curso</div>
-      <div class="k-num cnt" data-t="11">11</div>
+      <div class="k-num cnt" data-cnt="s5-encurso" data-t="11">11</div>
       <div class="k-sub">Oferta en proceso</div>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Pendiente</div>
-      <div class="k-num cnt" data-t="29">29</div>
+      <div class="k-num cnt" data-cnt="s5-pendiente" data-t="29">29</div>
       <div class="k-sub">Sin oferta activa</div>
     </div>
     <div class="kcard k-rd">
       <div class="k-lbl">KO</div>
-      <div class="k-num cnt" data-t="9">9</div>
+      <div class="k-num cnt" data-cnt="s5-ko" data-t="9">9</div>
       <div class="k-sub">Descartados</div>
     </div>
   </div>
@@ -1555,7 +1555,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="chip ch-bl"             onclick="setEstFilt('En curso',this)">◉ En curso</div>
     <div class="chip ch-am"             onclick="setEstFilt('Pendiente',this)">⏳ Pendiente</div>
     <div class="chip ch-rd"             onclick="setEstFilt('KO',this)">✕ KO</div>
-    <span class="leads-count" id="leadsCount">55 leads</span>
+    <span class="leads-count" id="leadsCount" data-cnt="s5-leads-count">55 leads</span>
   </div>
 
   <!-- Filtros por integrador -->
@@ -2606,6 +2606,11 @@ function applyDataToDOM(data) {
           el.textContent = val;
         });
       });
+      // Subtitle and chip
+      const sub = document.querySelector('[data-cnt="s5-subtitle"]');
+      if (sub) sub.textContent = data.s5.total + ' leads potenciales';
+      const chip = document.querySelector('[data-cnt="s5-leads-count"]');
+      if (chip) chip.textContent = data.s5.total + ' leads';
     }
 
     // S1: H1-H4 counters
@@ -2656,6 +2661,12 @@ function applyDataToDOM(data) {
             el.textContent = cnt;
           });
         });
+        // Update total filter button
+        if (data.s2.total !== undefined) {
+          document.querySelectorAll('[data-cnt="s2-total"]').forEach(el => {
+            el.textContent = data.s2.total;
+          });
+        }
       }
     }
 
