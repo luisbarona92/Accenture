@@ -603,69 +603,6 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .fvb-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .fvb-n{font-weight:800;font-size:13px}
 
-/* ══════════════════════════════════ S6 · Plan de Visitas */
-.s6-toprow{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
-.s6-fbtns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.s6-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--line2);font-size:12.5px;font-weight:600;cursor:pointer;background:var(--card);color:var(--ink2);transition:all .2s ease;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.05)}
-.s6-btn:hover{border-color:var(--or);color:var(--or);transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,102,0,.15)}
-.s6-btn:active{transform:translateY(0);box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.s6-stats-strip{display:flex;gap:12px;margin-bottom:20px}
-.s6-stat{background:linear-gradient(135deg,#FFFFFF 0%,#F9FAFB 100%);border:2px solid var(--line);border-radius:12px;padding:14px 18px;flex:1;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:all .2s ease}
-.s6-stat:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1);border-color:var(--or-lt)}
-.s6-stat-n{font-size:28px;font-weight:800;color:var(--or);line-height:1;text-shadow:0 1px 2px rgba(255,102,0,.1)}
-.s6-stat-l{font-size:11px;color:var(--ink3);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.s6-body{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
-.s6-map-card{background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFB 100%);border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);padding:20px;border:2px solid var(--line)}
-.s6-legend{display:flex;gap:16px;margin-bottom:14px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid var(--line)}
-.s6-leg{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink2);font-weight:500}
-.s6-leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-#mapSpain{width:100%;height:auto;display:block;border-radius:10px}
-.s6-map-dot{cursor:pointer;transition:all .2s ease;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
-.s6-map-dot:hover{opacity:1!important;transform:scale(1.15);filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
-.s6-panel{display:flex;flex-direction:column;gap:12px}
-.s6-zones-card{background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFB 100%);border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);padding:16px;max-height:calc(100vh - 280px);overflow-y:auto;border:2px solid var(--line)}
-.s6-zone-block{margin-bottom:12px}
-.s6-zone-hdr{display:flex;align-items:center;gap:8px;padding:8px 6px;cursor:pointer;user-select:none;border-bottom:2px solid var(--line);transition:all .2s ease;border-radius:6px}
-.s6-zone-hdr:hover{background:var(--or-bg);border-bottom-color:var(--or-lt)}
-.s6-zone-name{font-weight:700;font-size:13px;flex:1;color:var(--ink)}
-.s6-zone-cnt{font-size:11px;color:var(--or);background:var(--or-bg);border-radius:99px;padding:3px 9px;font-weight:700}
-.s6-zone-arr{font-size:11px;color:var(--ink3);transition:transform .25s ease}
-.s6-zone-arr.open{transform:rotate(90deg);color:var(--or)}
-.s6-co-list{display:flex;flex-direction:column;gap:4px;padding-top:8px}
-.s6-co{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:all .2s ease;border:2px solid transparent}
-.s6-co:hover{background:var(--bg);transform:translateX(4px);border-color:var(--line2)}
-.s6-co.sel{background:var(--or-bg);border-color:var(--or-lt);box-shadow:0 2px 6px rgba(255,102,0,.15)}
-.s6-co-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.2)}
-.s6-co-name{font-size:12px;flex:1;line-height:1.4;font-weight:500}
-.s6-co.sel .s6-co-name{font-weight:700;color:var(--or-dk)}
-.s6-co-badge{font-size:10.5px;padding:3px 8px;border-radius:6px;font-weight:700;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.s6-co-badge.ba{background:var(--green-bg);color:var(--green);border:1px solid rgba(5,150,105,.2)}
-.s6-co-badge.bb{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(217,119,6,.2)}
-.s6-co-badge.bc{background:#F3F4F6;color:var(--ink3);border:1px solid var(--line2)}
-.s6-plan-card{background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFB 100%);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.1),0 1px 6px rgba(0,0,0,.06);padding:24px;margin-top:20px;border:2px solid var(--line)}
-.s6-plan-ttl{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;color:var(--ink);border-bottom:2px solid var(--line);padding-bottom:12px}
-.s6-plan-sub{font-size:12px;font-weight:500;color:var(--ink3)}
-.s6-plan-empty{color:var(--ink4);font-size:13px;text-align:center;padding:40px 20px;background:var(--bg);border-radius:12px;border:2px dashed var(--line2)}
-.s6-routes{display:flex;flex-wrap:wrap;gap:18px}
-.s6-route{min-width:220px;flex:1;background:var(--card);padding:14px;border-radius:12px;border:2px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.05)}
-.s6-route-hdr{display:flex;align-items:center;gap:9px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--line)}
-.s6-route-zone{font-size:13px;font-weight:700;color:var(--ink)}
-.s6-route-cnt{font-size:11px;color:var(--or);background:var(--or-bg);border-radius:99px;padding:3px 9px;font-weight:700}
-.s6-route-tags{display:flex;flex-wrap:wrap;gap:6px}
-.s6-rtag{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;font-size:11.5px;font-weight:600;border:2px solid transparent;cursor:pointer;transition:all .2s ease;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.s6-rtag:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(0,0,0,.15)}
-.s6-rtag.ta{color:var(--green);background:var(--green-bg);border-color:rgba(5,150,105,.3)}
-.s6-rtag.tb{color:var(--amber);background:var(--amber-bg);border-color:rgba(217,119,6,.3)}
-.s6-rtag.tc{color:var(--ink3);background:#F3F4F6;border-color:var(--line2)}
-.s6-rtag-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.2)}
-.s6-cluster-lbl{font-size:11px;color:var(--ink3);margin:8px 0 6px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
-/* Tooltip */
-#s6Tip{position:fixed;pointer-events:none;z-index:9999;background:linear-gradient(135deg,#1F2937 0%,#111827 100%);color:#fff;border-radius:12px;padding:14px 18px;font-size:12.5px;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.3);max-width:280px;display:none;border:2px solid rgba(255,255,255,.1);transition:opacity .15s ease;opacity:0}
-.s6tip-name{font-weight:700;font-size:14px;margin-bottom:5px;color:#FF8A3D}
-.s6tip-city{color:rgba(255,255,255,.85);font-size:12px}
-.s6tip-prio{font-size:11.5px;margin-top:4px;padding:3px 8px;background:rgba(255,255,255,.15);border-radius:6px;display:inline-block;margin-top:6px}
-.s6tip-nota{font-size:11px;color:rgba(255,255,255,.65);margin-top:8px;border-top:2px solid rgba(255,255,255,.15);padding-top:8px}
-.s6tip-action{font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;font-style:italic}
 
 /* ── Update button ── */
 .btn-update{
@@ -746,14 +683,13 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <button class="tnav"     onclick="show('s3')">03 · Funnel Ventas</button>
     <button class="tnav"     onclick="show('s4')">04 · Tareas</button>
     <button class="tnav"     onclick="show('s5')">05 · Detalle Leads</button>
-    <button class="tnav"     onclick="show('s6')">06 · Plan Visitas</button>
   </nav>
 
   <div class="topbar-right">
     <button class="btn-update" id="btnUpdate" onclick="openUpdatePanel()" title="Actualizar dashboard desde Excel y PPT">
       🔄 Actualizar
     </button>
-    <span class="date-lbl">25 marzo de 2026</span>
+    <span class="date-lbl" id="topbarDate"></span>
   </div>
 </header>
 
@@ -774,7 +710,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s0" class="sec on">
 <div class="hero">
 
-  <div class="hero-badge"><b></b> Weekly PMO · 25 marzo de 2026</div>
+  <div class="hero-badge" id="heroBadge"><b></b> Weekly PMO · <span id="heroBadgeDate"></span></div>
 
   <!-- Logo grande portada -->
   <div class="hero-logo">
@@ -1577,100 +1513,25 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 </section>
 
 
-<!-- ════════════════ S6 · PLAN DE VISITAS ════════════════ -->
-<section class="sec" id="s6">
-  <div class="s6-toprow">
-    <div>
-      <h1 class="sec-title">Plan de Visitas</h1>
-      <p class="sec-sub">34 empresas mapeadas · Selecciona para construir tu ruta óptima</p>
-    </div>
-    <div class="s6-fbtns">
-      <button class="s6-btn" onclick="s6SelA()">Solo prioritarios A</button>
-      <button class="s6-btn" onclick="s6SelAB()">✓ Verde + Naranja</button>
-      <button class="s6-btn" onclick="s6Clear()" style="color:var(--red)">✕ Limpiar</button>
-    </div>
-  </div>
-
-  <div class="s6-stats-strip">
-    <div class="s6-stat"><div class="s6-stat-n">34</div><div class="s6-stat-l">Empresas</div></div>
-    <div class="s6-stat"><div class="s6-stat-n" id="s6SelN">0</div><div class="s6-stat-l">Seleccionadas</div></div>
-    <div class="s6-stat"><div class="s6-stat-n" id="s6ZonesN">—</div><div class="s6-stat-l">Zonas</div></div>
-    <div class="s6-stat"><div class="s6-stat-n" id="s6DaysN">—</div><div class="s6-stat-l">Días est.</div></div>
-  </div>
-
-  <div class="s6-body">
-    <!-- ── Mapa -->
-    <div class="s6-map-card">
-      <div class="s6-legend">
-        <div style="display:flex;gap:16px;flex-wrap:wrap;flex:1">
-          <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#059669,#34D399);border:2px solid #fff"></span>Presencial prioritario (A)</span>
-          <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#D97706,#FBBF24);border:2px solid #fff"></span>En ruta (B)</span>
-          <span class="s6-leg"><span class="s6-leg-dot" style="background:linear-gradient(135deg,#9CA3AF,#D1D5DB);border:2px solid #fff"></span>Remoto primero (C)</span>
-        </div>
-        <span class="s6-leg" style="color:var(--ink3);font-weight:500;font-size:11px">📍 Pasa el cursor para ver detalles</span>
-      </div>
-      <svg id="mapSpain" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <filter id="shadowMap" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-            <feOffset dx="0" dy="1" result="offsetblur"/>
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.2"/>
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-
-        <!-- Fondo -->
-        <rect width="700" height="520" fill="#E3EDF5"/>
-
-        <!-- Imagen de mapa de España -->
-        <image x="0" y="0" width="700" height="520"
-               xlink:href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 520'%3E%3Crect fill='%23E3EDF5' width='700' height='520'/%3E%3Cpath d='M97 45c-25 10-47 30-66 49 4 18 17 31 26 38-5 11-9 26-7 43 2 20 7 53 10 75 25 30 52 52 77 74l-7 36-12 40c-2 10 0 18 2 22 25 26 50 48 83 66 32 12 72 18 97 15 30-5 48-31 64-55 36-33 68-70 81-93 2-25 5-45 5-65 27-35 53-68 76-94 29-28 59-56 90-75-11-9-36-15-58-19l-57-2c-33-4-63-6-111-1-11 2-17-8-16-29-17 2-34 3-45 4-16-4-32-11-41-12-25-3-55-4-87-4-33-2-68-8-104-13z' fill='%23D4E3ED' stroke='%239BB5C9' stroke-width='2'/%3E%3Cellipse cx='607' cy='284' rx='18' ry='11' fill='%23D4E3ED' stroke='%239BB5C9' stroke-width='1.5'/%3E%3Cellipse cx='581' cy='308' rx='9' ry='6' fill='%23D4E3ED' stroke='%239BB5C9' stroke-width='1.5'/%3E%3C/svg%3E"
-               opacity="1"/>
-
-        <!-- Dots inyectados por JS -->
-        <g id="s6MapDots"></g>
-      </svg>
-    </div>
-
-    <!-- ── Panel lateral -->
-    <div class="s6-panel">
-      <div class="s6-zones-card">
-        <div style="padding:8px 0 12px 0;border-bottom:2px solid var(--line);margin-bottom:12px">
-          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">📍 Empresas por zona</div>
-          <div style="font-size:11px;color:var(--ink3)">Selecciona para crear tu ruta</div>
-        </div>
-        <div id="s6ZonesList"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Plan de rutas -->
-  <div class="s6-plan-card" id="s6PlanCard" style="margin-top:16px">
-    <div class="s6-plan-ttl">
-      Ruta optimizada
-      <span class="s6-plan-sub" id="s6PlanSub">Selecciona empresas para ver el plan</span>
-    </div>
-    <div id="s6PlanContent">
-      <div class="s6-plan-empty">Selecciona empresas en el mapa o en la lista para construir tu plan de visitas</div>
-    </div>
-  </div>
-</section>
-
-<!-- Tooltip flotante -->
-<div id="s6Tip"></div>
 
 <!-- ════════════════ JS ════════════════ -->
 <script>
+// ── Fecha dinámica (siempre el día actual)
+(function(){
+  const ms=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const d=new Date();
+  const str=d.getDate()+' '+ms[d.getMonth()]+' de '+d.getFullYear();
+  const lbl=document.getElementById('topbarDate');
+  if(lbl) lbl.textContent=str;
+  const badge=document.getElementById('heroBadgeDate');
+  if(badge) badge.textContent=str;
+})();
+
 // ── Navegación
 function show(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.tnav').forEach(t=>t.classList.remove('on'));
-  const secs=['s0','s1','s2','s3','s4','s5','s6'];
+  const secs=['s0','s1','s2','s3','s4','s5'];
   document.getElementById(id).classList.add('on');
   document.querySelectorAll('.tnav')[secs.indexOf(id)].classList.add('on');
   startCounters(document.getElementById(id));
@@ -2179,310 +2040,8 @@ function togglePrivacy(){
   window.show=function(id){
     origFn(id);
     if(id==='s5') initLeads();
-    if(id==='s6') s6Init();
   };
 })();
-
-// ══════════════════════════════════════════
-// S6 · Plan de Visitas
-// Coords: x=(lon+9.5)/14*660+20  y=(44.2-lat)/8.4*480+20
-// ══════════════════════════════════════════
-const VISITAS=[
-  // Madrid y alrededores
-  {id:'binfor',     nombre:'Binfor Solutions',           zona:'Madrid',       ciudad:'Alcorcón',              provincia:'Madrid',     cluster:'Madrid Sur',       prioridad:'A', x:287, y:240, nota:'Añade densidad en el cinturón sur de Madrid.'},
-  {id:'brain',      nombre:'Brain Hardware, S.L.',        zona:'Madrid',       ciudad:'Fuenlabrada',           provincia:'Madrid',     cluster:'Madrid Sur',       prioridad:'A', x:291, y:246, nota:'Junto a Deiteco y Binfor en el cinturón sur.'},
-  {id:'nextmob',    nombre:'Next Mobility',                zona:'Madrid',       ciudad:'Las Rozas de Madrid',   provincia:'Madrid',     cluster:'Madrid Oeste',     prioridad:'A', x:284, y:231, nota:'Completa jornada densa junto a Pozuelo.'},
-  {id:'deiteco',    nombre:'Deiteco',                      zona:'Madrid',       ciudad:'Fuenlabrada',           provincia:'Madrid',     cluster:'Madrid Sur',       prioridad:'A', x:296, y:250, nota:'Muy eficiente junto a Brain Hardware y Binfor.'},
-  {id:'covernet',   nombre:'Covernet',                     zona:'Madrid',       ciudad:'Pozuelo de Alarcón',    provincia:'Madrid',     cluster:'Madrid Oeste',     prioridad:'A', x:286, y:235, nota:'Agrupar con OX-ONE y Next Mobility.'},
-  {id:'oxone',      nombre:'OX-ONE NETWORKS SL',           zona:'Madrid',       ciudad:'Pozuelo de Alarcón',    provincia:'Madrid',     cluster:'Madrid Oeste',     prioridad:'A', x:292, y:239, nota:'Muy rentable en la misma jornada que Covernet.'},
-  {id:'cobitratel', nombre:'Cobitratel',                   zona:'Madrid',       ciudad:'Azuqueca de Henares',   provincia:'Guadalajara',cluster:'Corredor Henares', prioridad:'C', x:315, y:228, nota:'Priorizar Azuqueca por cercanía al corredor Madrid-Henares.'},
-  {id:'naimitech',  nombre:'NaimiTech, S.L.',              zona:'Madrid',       ciudad:'Illescas',              provincia:'Toledo',     cluster:'Toledo/Madrid Sur', prioridad:'C', x:286, y:255, nota:'Buen candidato si confirma interés desde Madrid Sur.'},
-  // Cataluña
-  {id:'lisot',      nombre:'Lisot',                        zona:'Cataluña',     ciudad:'Barcelona',             provincia:'Barcelona',  cluster:'Barcelona',        prioridad:'A', x:568, y:182, nota:'Refuerza la lógica de hacer una jornada en Barcelona capital.'},
-  {id:'ocvistas',   nombre:'Ocvistas',                     zona:'Cataluña',     ciudad:'Barcelona',             provincia:'Barcelona',  cluster:'Barcelona',        prioridad:'A', x:573, y:187, nota:'Suma densidad en Barcelona capital junto a Lisot.'},
-  {id:'maxen',      nombre:'Maxen',                        zona:'Cataluña',     ciudad:'Cabrera de Mar',        provincia:'Barcelona',  cluster:'Barcelona Norte',   prioridad:'B', x:590, y:172, nota:'Encaja en ruta Barcelona–Tarragona.'},
-  {id:'elpis',      nombre:'Elpis Informática, S.L.',      zona:'Cataluña',     ciudad:'Tarragona',             provincia:'Tarragona',  cluster:'Tarragona',        prioridad:'B', x:526, y:197, nota:'Buen cierre de la ruta de Cataluña.'},
-  {id:'amiritmo',   nombre:'Amiritmo',                     zona:'Cataluña',     ciudad:'Cervelló',              provincia:'Barcelona',  cluster:'Barcelona Sur',    prioridad:'C', x:560, y:189, nota:'Validar interlocutor comercial antes de visitar.'},
-  // Andalucía
-  {id:'a4i',        nombre:'A4I',                          zona:'Andalucía',    ciudad:'El Puerto de Santa María',provincia:'Cádiz',    cluster:'Bahía de Cádiz',   prioridad:'B', x:174, y:455, nota:'Buen punto de arranque de la ruta andaluza occidental.'},
-  {id:'fedesoft',   nombre:'Fedesoft',                     zona:'Andalucía',    ciudad:'Puente Genil',          provincia:'Córdoba',    cluster:'Andalucía Centro', prioridad:'B', x:243, y:410, nota:'Confirmar dirección exacta antes de visitar.'},
-  {id:'sictemas',   nombre:'Sictemas',                     zona:'Andalucía',    ciudad:'Málaga',                provincia:'Málaga',     cluster:'Andalucía Oriental',prioridad:'B', x:258, y:449, nota:'Encaja con Sur Computers en el eje Málaga–Mijas.'},
-  {id:'omnia',      nombre:'Omnia Soluciones',              zona:'Andalucía',    ciudad:'Sevilla',               provincia:'Sevilla',    cluster:'Andalucía Occidental',prioridad:'B',x:185, y:410, nota:'Abrir la ruta andaluza con Sevilla y continuar hacia Cádiz.'},
-  {id:'surcomp',    nombre:'Sur Computers, S.L.',          zona:'Andalucía',    ciudad:'Mijas Costa',           provincia:'Málaga',     cluster:'Costa del Sol',    prioridad:'C', x:249, y:460, nota:'Visita final si Málaga genera tracción suficiente.'},
-  // Norte
-  {id:'infornet',   nombre:'Infornet',                     zona:'Norte',        ciudad:'Gijón',                 provincia:'Asturias',   cluster:'Asturias',         prioridad:'B', x:201, y:65,  nota:'Corredor norte Gijón–Santander–Bilbao.'},
-  {id:'duoit',      nombre:'DuoIT',                        zona:'Norte',        ciudad:'Bilbao',                provincia:'Bizkaia',    cluster:'País Vasco',       prioridad:'B', x:329, y:80,  nota:'Combinar con DOSYS en la ruta norte.'},
-  {id:'ache',       nombre:'Ache Informática SLL',          zona:'Norte',        ciudad:'Santander',             provincia:'Cantabria',  cluster:'Cantabria',        prioridad:'B', x:286, y:68,  nota:'Sumar en la parada de Santander junto con DurnIA.'},
-  {id:'dosys',      nombre:'DOSYS',                        zona:'Norte',        ciudad:'Donostia-San Sebastián', provincia:'Gipuzkoa',  cluster:'País Vasco',       prioridad:'B', x:373, y:76,  nota:'Muy buena combinación con Bilbao en cierre de ruta norte.'},
-  {id:'durnia',     nombre:'DurnIA',                       zona:'Norte',        ciudad:'Santander',             provincia:'Cantabria',  cluster:'Cantabria',        prioridad:'C', x:292, y:73,  nota:'También tienen presencia en Madrid; validar antes de visitar.'},
-  // Galicia
-  {id:'paperlabs',  nombre:'Paperlabs',                    zona:'Galicia',      ciudad:'Santiago de Compostela',provincia:'A Coruña',   cluster:'Galicia',          prioridad:'B', x:72,  y:100, nota:'Aprovechar junto con Dirbapont para dar masa crítica a Galicia.'},
-  {id:'dirbapont',  nombre:'DIRBAPONT SLU',                zona:'Galicia',      ciudad:'Pontevedra',            provincia:'Pontevedra', cluster:'Galicia',          prioridad:'B', x:62,  y:126, nota:'Combinar con Santiago en jornada compacta.'},
-  // C. Valenciana
-  {id:'solventus',  nombre:'Solventus Software, S.L.',     zona:'C. Valenciana',ciudad:'Alicante',              provincia:'Alicante',   cluster:'Alicante',         prioridad:'B', x:444, y:356, nota:'Muy lógico agrupar con Visualsoft en la misma jornada.'},
-  {id:'visualsoft', nombre:'Visualsoft',                   zona:'C. Valenciana',ciudad:'Sant Joan d\'Alacant',  provincia:'Alicante',   cluster:'Alicante',         prioridad:'B', x:450, y:351, nota:'Ideal junto con Solventus; misma zona de Alicante.'},
-  {id:'dataqu',     nombre:'Dataqu',                       zona:'C. Valenciana',ciudad:'Valencia',              provincia:'Valencia',   cluster:'Valencia',         prioridad:'C', x:449, y:291, nota:'Validar dirección antes de agendar; puede ser Madrid.'},
-  {id:'sisytec',    nombre:'Sisytec',                      zona:'C. Valenciana',ciudad:'Espinardo (Murcia)',     provincia:'Murcia',     cluster:'Murcia',           prioridad:'C', x:414, y:376, nota:'Usar la oficina comercial de Espinardo; confirmar.'},
-  // Aragón / Meseta Norte
-  {id:'audinfor',   nombre:'Audinfor',                     zona:'Aragón',       ciudad:'Zaragoza',              provincia:'Zaragoza',   cluster:'Aragón',           prioridad:'B', x:425, y:166, nota:'También tienen oficina en Madrid.'},
-  {id:'digitalhm',  nombre:'Digital Hand Made, S.L.',      zona:'Aragón',       ciudad:'Zaragoza',              provincia:'Zaragoza',   cluster:'Aragón',           prioridad:'B', x:430, y:171, nota:'Muy eficiente en el mismo bloque que Audinfor.'},
-  {id:'mariskalnet',nombre:'Mariskalnet Informática',      zona:'Aragón',       ciudad:'Medina del Campo',      provincia:'Valladolid', cluster:'Castilla y León',  prioridad:'C', x:236, y:186, nota:'Parada táctica si se activa ruta Zaragoza–Meseta Norte.'},
-  // Extremadura
-  {id:'gnuo',       nombre:'GNUO Consultores',             zona:'Extremadura',  ciudad:'Badajoz',               provincia:'Badajoz',    cluster:'Extremadura Sur',  prioridad:'C', x:148, y:325, nota:'Presencial solo si responde al primer contacto; zona aislada.'},
-  {id:'microsip',   nombre:'Micro Sip',                    zona:'Extremadura',  ciudad:'Navalmoral de la Mata', provincia:'Cáceres',    cluster:'Extremadura Norte',prioridad:'C', x:208, y:267, nota:'Usar dirección comercial/tienda; domicilio social distinto.'},
-];
-
-const S6_SEL=new Set();
-let s6Inited=false;
-
-function s6Init(){
-  if(s6Inited) return;
-  s6Inited=true;
-  s6BuildZoneList();
-  s6BuildDots();
-  s6UpdateStats();
-}
-
-// ── Construye lista de zonas en el panel lateral
-function s6BuildZoneList(){
-  const byZona={};
-  VISITAS.forEach(v=>{if(!byZona[v.zona])byZona[v.zona]=[];byZona[v.zona].push(v);});
-  const wrap=document.getElementById('s6ZonesList');
-  if(!wrap)return;
-  wrap.innerHTML='';
-  Object.entries(byZona).forEach(([zona,list])=>{
-    const selC=list.filter(v=>S6_SEL.has(v.id)).length;
-    const zid='s6z_'+zona.replace(/\W/g,'_');
-    const block=document.createElement('div');
-    block.className='s6-zone-block';
-    block.innerHTML=`
-      <div class="s6-zone-hdr" onclick="s6ToggleZone('${zid}',this)">
-        <span class="s6-zone-name">${zona}</span>
-        <span class="s6-zone-cnt" id="cnt_${zid}">${selC}/${list.length}</span>
-        <span class="s6-zone-arr open">▶</span>
-      </div>
-      <div class="s6-co-list" id="${zid}">
-        ${list.map(v=>`<div class="s6-co${S6_SEL.has(v.id)?' sel':''}" data-id="${v.id}" onclick="s6ToggleCo('${v.id}')">
-          <span class="s6-co-dot" style="background:${v.prioridad==='A'?'#059669':v.prioridad==='B'?'#D97706':'#9CA3AF'}"></span>
-          <span class="s6-co-name">${v.nombre}</span>
-          <span class="s6-co-badge b${v.prioridad.toLowerCase()}">${v.prioridad}</span>
-        </div>`).join('')}
-      </div>`;
-    wrap.appendChild(block);
-  });
-}
-
-function s6ToggleZone(zid,hdr){
-  const list=document.getElementById(zid);
-  const arr=hdr.querySelector('.s6-zone-arr');
-  const open=arr.classList.contains('open');
-  list.style.display=open?'none':'flex';
-  arr.classList.toggle('open',!open);
-}
-
-function s6ToggleCo(id){
-  S6_SEL.has(id)?S6_SEL.delete(id):S6_SEL.add(id);
-  s6Refresh();
-}
-
-function s6Refresh(){
-  s6BuildZoneList();
-  s6BuildDots();
-  s6UpdateStats();
-  s6UpdatePlan();
-}
-
-// ── Dibuja los dots en el SVG
-function s6BuildDots(){
-  const g=document.getElementById('s6MapDots');
-  if(!g)return;
-  g.innerHTML='';
-  const svgNS='http://www.w3.org/2000/svg';
-  VISITAS.forEach(v=>{
-    const sel=S6_SEL.has(v.id);
-    const col=v.prioridad==='A'?'#059669':v.prioridad==='B'?'#D97706':'#9CA3AF';
-    const colLight=v.prioridad==='A'?'#34D399':v.prioridad==='B'?'#FBBF24':'#D1D5DB';
-    const op=!sel&&v.prioridad==='C'?0.4:1;
-    const grp=document.createElementNS(svgNS,'g');
-    grp.setAttribute('class','s6-map-dot');
-    grp.style.opacity=op;
-    grp.style.cursor='default';
-
-    // Anillo exterior pulsante si está seleccionado
-    if(sel){
-      const outerRing=document.createElementNS(svgNS,'circle');
-      outerRing.setAttribute('cx',v.x);outerRing.setAttribute('cy',v.y);outerRing.setAttribute('r',14);
-      outerRing.setAttribute('fill','none');outerRing.setAttribute('stroke',colLight);
-      outerRing.setAttribute('stroke-width','1.5');outerRing.setAttribute('opacity','0.2');
-      grp.appendChild(outerRing);
-
-      const ring=document.createElementNS(svgNS,'circle');
-      ring.setAttribute('cx',v.x);ring.setAttribute('cy',v.y);ring.setAttribute('r',10);
-      ring.setAttribute('fill','none');ring.setAttribute('stroke',col);
-      ring.setAttribute('stroke-width','2.5');ring.setAttribute('opacity','0.5');
-      grp.appendChild(ring);
-    }
-
-    // Glow de fondo
-    const glow=document.createElementNS(svgNS,'circle');
-    glow.setAttribute('cx',v.x);glow.setAttribute('cy',v.y);glow.setAttribute('r',sel?9:7);
-    glow.setAttribute('fill',col);glow.setAttribute('opacity','0.3');
-    glow.setAttribute('filter','url(#shadowMap)');
-    grp.appendChild(glow);
-
-    // Círculo principal
-    const c=document.createElementNS(svgNS,'circle');
-    c.setAttribute('cx',v.x);c.setAttribute('cy',v.y);c.setAttribute('r',sel?7:5);
-    c.setAttribute('fill',col);c.setAttribute('stroke','#FFFFFF');
-    c.setAttribute('stroke-width',sel?'2':'1.5');
-    grp.appendChild(c);
-
-    // Highlight interno
-    const highlight=document.createElementNS(svgNS,'circle');
-    highlight.setAttribute('cx',v.x-1);highlight.setAttribute('cy',v.y-1);highlight.setAttribute('r',sel?3:2);
-    highlight.setAttribute('fill','rgba(255,255,255,0.5)');
-    grp.appendChild(highlight);
-
-    // Solo tooltip, sin click para seleccionar
-    grp.addEventListener('mouseenter',e=>s6ShowTip(e,v));
-    grp.addEventListener('mouseleave',s6HideTip);
-    g.appendChild(grp);
-  });
-}
-
-// ── Tooltip SIMPLIFICADO sin vibración
-let s6TipTimeout=null;
-let s6CurrentTip=null;
-
-function s6ShowTip(e,v){
-  // Cancelar timeout pendiente
-  if(s6TipTimeout){
-    clearTimeout(s6TipTimeout);
-  }
-
-  // Guardar referencia del tooltip actual
-  s6CurrentTip=v.id;
-
-  // Delay mínimo antes de mostrar
-  s6TipTimeout=setTimeout(()=>{
-    // Verificar que seguimos queriendo mostrar este tooltip
-    if(s6CurrentTip!==v.id)return;
-
-    const t=document.getElementById('s6Tip');
-    if(!t)return;
-
-    const col=v.prioridad==='A'?'#34D399':v.prioridad==='B'?'#FCD34D':'#9CA3AF';
-    const lbl=v.prioridad==='A'?'Presencial prioritario':v.prioridad==='B'?'Presencial en ruta':'Remoto primero';
-
-    t.innerHTML=`<div class="s6tip-name">${v.nombre}</div>
-      <div class="s6tip-city">📍 ${v.ciudad}, ${v.provincia}</div>
-      <div class="s6tip-prio" style="color:${col}">${lbl} · Grupo ${v.prioridad}</div>
-      <div class="s6tip-nota">${v.nota}</div>`;
-
-    // Obtener SVG container para posición relativa
-    const svg=document.getElementById('mapSpain');
-    const svgRect=svg.getBoundingClientRect();
-
-    // Calcular posición basada en coordenadas del dot en el SVG
-    const dotX=v.x;
-    const dotY=v.y;
-
-    // Convertir a coordenadas de pantalla
-    const scaleX=svgRect.width/700; // viewBox width
-    const scaleY=svgRect.height/520; // viewBox height
-
-    const screenX=svgRect.left+(dotX*scaleX)+15;
-    const screenY=svgRect.top+(dotY*scaleY)-10;
-
-    t.style.display='block';
-    t.style.left=screenX+'px';
-    t.style.top=screenY+'px';
-    t.style.opacity='1';
-  },150);
-}
-
-function s6HideTip(){
-  // Limpiar referencia
-  s6CurrentTip=null;
-
-  // Cancelar timeout
-  if(s6TipTimeout){
-    clearTimeout(s6TipTimeout);
-    s6TipTimeout=null;
-  }
-
-  const t=document.getElementById('s6Tip');
-  if(t){
-    t.style.opacity='0';
-    setTimeout(()=>{
-      if(s6CurrentTip===null){
-        t.style.display='none';
-      }
-    },200);
-  }
-}
-
-// ── Stats
-function s6UpdateStats(){
-  const sel=[...S6_SEL];
-  document.getElementById('s6SelN').textContent=sel.length||0;
-  if(sel.length===0){
-    document.getElementById('s6ZonesN').textContent='—';
-    document.getElementById('s6DaysN').textContent='—';
-    s6UpdatePlan();return;
-  }
-  const zonas=new Set(VISITAS.filter(v=>S6_SEL.has(v.id)).map(v=>v.zona));
-  document.getElementById('s6ZonesN').textContent=zonas.size;
-  // ~2-3 empresas/día en ruta
-  const dias=Math.ceil(sel.length/2.5);
-  document.getElementById('s6DaysN').textContent='~'+dias;
-  s6UpdatePlan();
-}
-
-// ── Plan de rutas
-function s6UpdatePlan(){
-  const content=document.getElementById('s6PlanContent');
-  const sub=document.getElementById('s6PlanSub');
-  if(!content)return;
-  const selected=VISITAS.filter(v=>S6_SEL.has(v.id));
-  if(selected.length===0){
-    content.innerHTML='<div class="s6-plan-empty">Selecciona empresas para ver el plan de rutas optimizado</div>';
-    if(sub)sub.textContent='Selecciona empresas en el mapa o en la lista para construir tu plan';
-    return;
-  }
-  // Agrupar por zona → cluster
-  const byZona={};
-  selected.forEach(v=>{
-    if(!byZona[v.zona])byZona[v.zona]={};
-    if(!byZona[v.zona][v.cluster])byZona[v.zona][v.cluster]=[];
-    byZona[v.zona][v.cluster].push(v);
-  });
-  let html='<div class="s6-routes">';
-  Object.entries(byZona).forEach(([zona,clusters])=>{
-    const total=Object.values(clusters).flat().length;
-    html+=`<div class="s6-route">
-      <div class="s6-route-hdr">
-        <span class="s6-route-zone">${zona}</span>
-        <span class="s6-route-cnt">${total} empresa${total!==1?'s':''}</span>
-      </div>`;
-    Object.entries(clusters).forEach(([cl,cos])=>{
-      if(Object.keys(clusters).length>1)html+=`<div class="s6-cluster-lbl">${cl}</div>`;
-      html+='<div class="s6-route-tags">';
-      cos.forEach(c=>{html+=`<span class="s6-rtag t${c.prioridad.toLowerCase()}"><span class="s6-rtag-dot"></span>${c.nombre}</span>`;});
-      html+='</div>';
-    });
-    html+='</div>';
-  });
-  html+='</div>';
-  content.innerHTML=html;
-  const nZ=Object.keys(byZona).length;
-  if(sub)sub.textContent=`${selected.length} empresa${selected.length!==1?'s':''}  en ${nZ} zona${nZ!==1?'s':''}`;
-}
-
-// ── Botones de selección masiva
-function s6SelA(){S6_SEL.clear();VISITAS.filter(v=>v.prioridad==='A').forEach(v=>S6_SEL.add(v.id));s6Refresh();}
-function s6SelAB(){S6_SEL.clear();VISITAS.filter(v=>v.prioridad!=='C').forEach(v=>S6_SEL.add(v.id));s6Refresh();}
-function s6Clear(){S6_SEL.clear();s6Refresh();}
 
 // ── Auto-update panel ─────────────────────────────────────────────────────────
 const UPD_SERVER = 'http://localhost:3001';
