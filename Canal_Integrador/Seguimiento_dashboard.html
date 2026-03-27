@@ -1610,7 +1610,7 @@ document.querySelectorAll('.funnel-vis').forEach(f=>obs.observe(f));
 // ──────────────────────────────────────────────────────────────
 // DATOS: actualizar este array cuando el usuario suba un nuevo Excel.
 // Columnas fuente: Partners_BBDD_v1.xlsx → hoja "Leads"
-// Última actualización: PMO #15 (2026-03-20)
+// Última actualización: PMO #17 (2026-03-25)
 // ══════════════════════════════════════════════════════════════
 const LEADS = [
   // -- MAXEN
@@ -1718,7 +1718,13 @@ const LEADS = [
   {id:54,nombre:'SISYTEC',cif:'',integrador:'Sisytec',modelo:'Tier 1',fecGen:46105,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead (líneas propias)',fecSigPasoEq:46108,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46108,venta:null,productos:''},
 
   // -- AMIRITMO
-  {id:55,nombre:'Lead 1',cif:'',integrador:'Amiritmo',modelo:'Tier 1',fecGen:46106,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.',fecSigPasoEq:46119,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46119,venta:null,productos:''}
+  {id:55,nombre:'Lead 1',cif:'',integrador:'Amiritmo',modelo:'Tier 1',fecGen:46106,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.',fecSigPasoEq:46119,sigPasoComercial:'Pendiente recibir lead',fecSigPasoComercial:46119,venta:null,productos:''},
+
+  // -- MAXEN
+  {id:56,nombre:'Clavisa Viveros',cif:'',integrador:'Maxen',modelo:'Tier 2',fecGen:46106,comercial:'Didac',estado:'En curso',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46107,sigPasoComercial:'Visita técnica 25.03. Rubén pendiente llamarles para cuadrar cita con gerente.',fecSigPasoComercial:46107,venta:null,productos:''},
+
+  // -- MICROSIP
+  {id:57,nombre:'Becton Dickinson',cif:'',integrador:'Microsip',modelo:'Tier 1',fecGen:46106,comercial:'Jonathan Macías',estado:'Pendiente',segmento:'',sigPasoEq:'Seguimiento',fecSigPasoEq:46121,sigPasoComercial:'Reunión por Teams pendiente.',fecSigPasoComercial:46121,venta:null,productos:''}
 ];
 
 // ── Colores por integrador
@@ -1734,6 +1740,9 @@ const INT_CLR = {
   'Sictemas':    {bg:'#F0F9FF',fg:'#0369A1'},
   'Sisytec':     {bg:'#F9FAFB',fg:'#4B5563'},
   'Lisot':       {bg:'#FFF7ED',fg:'#C2410C'},
+  'Microsip':    {bg:'#F0F9FF',fg:'#0284C7'},
+  'Aideea':      {bg:'#F0FDF4',fg:'#15803D'},
+  'Amiritmo':    {bg:'#FFF1F2',fg:'#BE185D'},
 };
 
 // ── Helpers
