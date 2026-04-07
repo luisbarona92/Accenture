@@ -58,6 +58,41 @@ function colorToGroup(hex) {
   }
 }
 
+// ── Integrador name normalisation ────────────────────────────────────────────
+
+const INT_NAME_MAP = {
+  'MAXEN TECHNOLOGIES SL':'Maxen','MAXEN':'Maxen',
+  'OX-ONE NETWORKS SL':'Ox-One','OX-ONE':'Ox-One',
+  'COVERNET':'Covernet','COVER NET':'Covernet',
+  'DUOIT':'DuoIT','DuoIT':'DuoIT',
+  'COBITRATEL':'Cobitratel','Cobitratel':'Cobitratel',
+  'DATAQU':'Dataqu','Dataqu':'Dataqu',
+  'SISYTEC':'Sisytec','Sisytec':'Sisytec',
+  'SICTEMAS':'Sictemas','Sictemas':'Sictemas',
+  'MARISKALNET':'Mariskalnet','Mariskalnet':'Mariskalnet',
+  'PAPERLABS':'Paperlabs','Paperlabs':'Paperlabs',
+  'LISOT':'Lisot','Lisot':'Lisot',
+  'AIDEEA':'Aideea','Aideea':'Aideea',
+  'AMIRITMO':'Amiritmo','Amiritmo':'Amiritmo',
+  'MICRO SIP':'Microsip','MICROSIP':'Microsip','Microsip':'Microsip',
+};
+
+function normalizeIntegrador(raw) {
+  const key = (raw || '').trim();
+  if (INT_NAME_MAP[key]) return INT_NAME_MAP[key];
+  const stripped = key.replace(/\s+(SL|SA|SLU|SCP|CB|SLL)$/i,'').trim();
+  if (INT_NAME_MAP[stripped]) return INT_NAME_MAP[stripped];
+  return key.replace(/\b\w/g, c => c.toUpperCase()).slice(0, 25);
+}
+
+function normalizeEstado(raw) {
+  const r = (raw || '').toLowerCase().trim();
+  if (r.includes('venta')) return 'Venta';
+  if (r.includes('en curso')) return 'En curso';
+  if (r === 'ko') return 'KO';
+  return 'Pendiente';
+}
+
 // ── XML helpers ──────────────────────────────────────────────────────────────
 
 function extractAllText(xml) {
@@ -113,28 +148,61 @@ async function parseExcel() {
   const ssXml    = await zip.file('xl/sharedStrings.xml').async('string');
   const shared   = parseSharedStrings(ssXml);
 
-  // Find row 5
+  // Single-pass: collect row5 and all lead rows (11+)
   const rowRe = /<row[^>]*r="(\d+)"[^>]*>([\s\S]*?)<\/row>/g;
   let row5xml = '';
+  const leadRowsMap = {};
   let m;
   while ((m = rowRe.exec(sheetXml)) !== null) {
-    if (m[1] === '5') { row5xml = m[2]; break; }
+    const rNum = parseInt(m[1]);
+    if (rNum === 5)       row5xml = m[2];
+    else if (rNum >= 11)  leadRowsMap[rNum] = m[2];
   }
 
-  // Extract cells by column letter
-  function getCell(col) {
-    const re = new RegExp(`<c r="${col}5"[^>]*>([\\s\\S]*?)<\\/c>`);
-    const match = row5xml.match(re);
-    return match ? cellVal(match[0], shared) : '0';
+  // Get a cell from given row content
+  function getCell(col, rowNum, rowContent) {
+    const re = new RegExp(`<c r="${col}${rowNum}"[^>]*>([\\s\\S]*?)<\\/c>`);
+    const match = rowContent.match(re);
+    return match ? cellVal(match[0], shared) : '';
   }
 
-  const total     = parseInt(getCell('C'), 10) || 0;
-  const ventas    = parseInt(getCell('F'), 10) || 0;
-  const enCurso   = parseInt(getCell('G'), 10) || 0;
-  const pendiente = parseInt(getCell('H'), 10) || 0;
-  const ko        = parseInt(getCell('I'), 10) || 0;
+  // Row 5 — totals
+  const total     = parseInt(getCell('C', 5, row5xml), 10) || 0;
+  const ventas    = parseInt(getCell('F', 5, row5xml), 10) || 0;
+  const enCurso   = parseInt(getCell('G', 5, row5xml), 10) || 0;
+  const pendiente = parseInt(getCell('H', 5, row5xml), 10) || 0;
+  const ko        = parseInt(getCell('I', 5, row5xml), 10) || 0;
 
-  return { total, ventas, enCurso, pendiente, ko };
+  // Rows 11+ — individual leads
+  const leads = [];
+  const sortedNums = Object.keys(leadRowsMap).map(Number).sort((a,b) => a-b);
+  for (const rowNum of sortedNums) {
+    const rc = leadRowsMap[rowNum];
+    const g  = col => getCell(col, rowNum, rc);
+
+    const id = parseInt(g('B'), 10);
+    if (!id || isNaN(id)) continue;
+
+    leads.push({
+      id,
+      nombre:               g('C') || 'Lead ' + id,
+      cif:                  g('D') || '',
+      integrador:           normalizeIntegrador(g('E')),
+      modelo:               (g('F') || '').includes('2') ? 'Tier 2' : 'Tier 1',
+      fecGen:               parseFloat(g('G')) || 0,
+      comercial:            g('H') || '',
+      estado:               normalizeEstado(g('I')),
+      segmento:             g('K') || '',
+      sigPasoEq:            g('L') || '',
+      fecSigPasoEq:         parseFloat(g('M')) || 0,
+      sigPasoComercial:     g('N') || '',
+      fecSigPasoComercial:  parseFloat(g('O')) || 0,
+      venta:                g('P') ? (parseFloat(g('P')) || null) : null,
+      productos:            g('Q') || ''
+    });
+  }
+
+  return { total, ventas, enCurso, pendiente, ko, leads };
 }
 
 // ── PPT parser ───────────────────────────────────────────────────────────────
@@ -528,11 +596,20 @@ function patchHTML(html, data) {
   // ── S5 KPI counters (leads Excel) ─────────────────────────────────────────
   if (data.s5) {
     const { total, ventas, enCurso, pendiente, ko } = data.s5;
-    h = replaceCnt(h, 's5-total', total);
-    h = replaceCnt(h, 's5-ventas', ventas);
-    h = replaceCnt(h, 's5-encurso', enCurso);
+    h = replaceCnt(h, 's5-total',     total);
+    h = replaceCnt(h, 's5-ventas',    ventas);
+    h = replaceCnt(h, 's5-encurso',   enCurso);
     h = replaceCnt(h, 's5-pendiente', pendiente);
-    h = replaceCnt(h, 's5-ko', ko);
+    h = replaceCnt(h, 's5-ko',        ko);
+
+    // Sync S0 resumen + S3 title with Excel total (source of truth for leads)
+    h = replaceCnt(h, 's0-oportunidades', total);
+    h = replaceCnt(h, 's3-total',         total);
+    h = h.replace(
+      /Funnel de ventas · \d+ oportunidades identificadas/,
+      `Funnel de ventas · ${total} oportunidades identificadas`
+    );
+
     // Subtitle text
     h = h.replace(
       /(data-cnt="s5-subtitle"[^>]*>)\d+ leads potenciales(<)/,
@@ -543,6 +620,17 @@ function patchHTML(html, data) {
       /(data-cnt="s5-leads-count"[^>]*>)\d+ leads(<)/,
       `$1${total} leads$2`
     );
+
+    // ── Rebuild LEADS JS array from Excel rows ────────────────────────────
+    if (data.s5.leads && data.s5.leads.length > 0) {
+      const leadsJson = JSON.stringify(data.s5.leads, null, 2)
+        .replace(/</g, '\\u003C')
+        .replace(/>/g, '\\u003E');
+      h = h.replace(
+        /const LEADS\s*=\s*\[[\s\S]*?\n\];/,
+        () => 'const LEADS = ' + leadsJson + ';'
+      );
+    }
   }
 
   return h;
