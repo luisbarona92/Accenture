@@ -33,6 +33,45 @@
   --r:10px;--font:'Segoe UI',system-ui,-apple-system,sans-serif
 }
 body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;-webkit-font-smoothing:antialiased}
+
+/* ══════════════════════════════════ LOGIN OVERLAY */
+#loginOverlay{
+  position:fixed;inset:0;z-index:9999;
+  background:#0F1117;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .4s ease
+}
+#loginOverlay.fade-out{opacity:0;pointer-events:none}
+.login-box{
+  background:#1A1D27;border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:48px 44px;width:360px;
+  box-shadow:0 24px 64px rgba(0,0,0,.5);text-align:center
+}
+.login-logo{
+  width:52px;height:52px;background:var(--or);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;font-size:24px
+}
+.login-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:4px}
+.login-sub{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:32px}
+.login-field{
+  width:100%;padding:12px 16px;border-radius:8px;
+  background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);
+  color:#fff;font:inherit;font-size:15px;letter-spacing:.1em;
+  outline:none;text-align:center;transition:border-color .2s;margin-bottom:12px
+}
+.login-field:focus{border-color:var(--or)}
+.login-field.error{border-color:#DC2626;animation:shake .3s ease}
+.login-btn{
+  width:100%;padding:12px;border-radius:8px;
+  background:var(--or);border:none;color:#fff;
+  font:inherit;font-size:14px;font-weight:700;cursor:pointer;
+  transition:background .2s,transform .1s
+}
+.login-btn:hover{background:var(--or-lt)}
+.login-btn:active{transform:scale(.98)}
+.login-err{font-size:12px;color:#DC2626;margin-top:8px;min-height:16px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:99px}
@@ -647,6 +686,21 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 </style>
 </head>
 <body>
+
+<!-- ══ LOGIN OVERLAY ══ -->
+<div id="loginOverlay">
+  <div class="login-box">
+    <div class="login-logo">🔶</div>
+    <div class="login-title">Canal Integrador</div>
+    <div class="login-sub">MAS Orange · Acceso restringido</div>
+    <input id="loginInput" class="login-field" type="password"
+      placeholder="Contraseña" autocomplete="current-password"
+      onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Acceder</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
 
 <!-- ════════════════ TOP BAR ════════════════ -->
 <header class="topbar">
@@ -3161,6 +3215,32 @@ function applyDataToDOM(data) {
 
   } catch (e) {
     console.error('applyDataToDOM error:', e);
+  }
+}
+
+// ── Login ─────────────────────────────────────────────────────────────────────
+(function(){
+  const KEY = 'ci_auth';
+  const overlay = document.getElementById('loginOverlay');
+  if (sessionStorage.getItem(KEY) === '1') { overlay.style.display = 'none'; return; }
+  overlay.style.display = 'flex';
+  document.getElementById('loginInput').focus();
+})();
+
+function doLogin() {
+  const input = document.getElementById('loginInput');
+  const err   = document.getElementById('loginErr');
+  if (input.value === 'orange2026') {
+    sessionStorage.setItem('ci_auth', '1');
+    const overlay = document.getElementById('loginOverlay');
+    overlay.classList.add('fade-out');
+    setTimeout(() => overlay.style.display = 'none', 420);
+  } else {
+    input.classList.add('error');
+    err.textContent = 'Contraseña incorrecta';
+    input.value = '';
+    setTimeout(() => { input.classList.remove('error'); err.textContent = ''; }, 1800);
+    input.focus();
   }
 }
 </script>
