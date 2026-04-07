@@ -20,7 +20,7 @@ try {
 }
 
 // ── Fixed paths ──────────────────────────────────────────────────────────────
-const EXCEL_PATH   = 'C:/Users/luis.barona.arroyo/OneDrive - Accenture/Documents/MAS ORANGE/Partners_BBDD_v1.xlsx';
+const EXCEL_PATH   = 'C:/Users/luis.barona.arroyo/OneDrive - Accenture/Documents/MAS ORANGE/Partners_BBDD_v2.xlsx';
 const PPT_DIR      = 'C:/Users/luis.barona.arroyo/OneDrive - Accenture/Documents/MAS ORANGE';
 const HTML_SRC     = 'C:/Users/luis.barona.arroyo/OneDrive - Accenture/Documents/MAS ORANGE/Canal_Integrador/Seguimiento_dashboard.html';
 const HTML_DST     = 'C:/Users/luis.barona.arroyo/tmpAccenture/Canal_Integrador/Seguimiento_dashboard.html';
@@ -639,10 +639,15 @@ function patchHTML(html, data) {
       const leadsJson = JSON.stringify(data.s5.leads, null, 2)
         .replace(/</g, '\\u003C')
         .replace(/>/g, '\\u003E');
-      h = h.replace(
-        /const LEADS\s*=\s*\[[\s\S]*?\n\];/,
-        () => 'const LEADS = ' + leadsJson + ';'
-      );
+      const newLeads = 'const LEADS = ' + leadsJson + ';';
+      // Use indexOf to avoid regex/CRLF issues
+      const leadsStart = h.indexOf('const LEADS = [');
+      if (leadsStart !== -1) {
+        const leadsEnd = h.indexOf('\n];', leadsStart);
+        if (leadsEnd !== -1) {
+          h = h.slice(0, leadsStart) + newLeads + h.slice(leadsEnd + 3);
+        }
+      }
     }
   }
 
