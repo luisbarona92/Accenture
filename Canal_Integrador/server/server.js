@@ -113,12 +113,21 @@ function getAttr(str, attr) {
 }
 
 // Parse sharedStrings.xml → array of strings
+// Excel uses plain <t> tags (NOT <a:t> like PPTX), so we use a dedicated regex
 function parseSharedStrings(xml) {
   const strings = [];
   const siRe = /<si>([\s\S]*?)<\/si>/g;
   let si;
   while ((si = siRe.exec(xml)) !== null) {
-    const texts = extractAllText(si[1]);
+    const texts = [];
+    const tRe = /<t[^>]*>([^<]*)<\/t>/g;
+    let t;
+    while ((t = tRe.exec(si[1])) !== null) {
+      const txt = t[1]
+        .replace(/&amp;/g,'&').replace(/&lt;/g,'<')
+        .replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'");
+      if (txt) texts.push(txt);
+    }
     strings.push(texts.join(''));
   }
   return strings;
