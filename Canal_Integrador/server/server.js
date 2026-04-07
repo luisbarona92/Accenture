@@ -87,7 +87,7 @@ function normalizeIntegrador(raw) {
 
 function normalizeEstado(raw) {
   const r = (raw || '').toLowerCase().trim();
-  if (r.includes('venta')) return 'Venta';
+  if (r.includes('venta')) return 'Venta realizada';
   if (r.includes('en curso')) return 'En curso';
   if (r === 'ko') return 'KO';
   return 'Pendiente';
