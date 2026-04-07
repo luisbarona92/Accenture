@@ -168,11 +168,15 @@ async function parseExcel() {
     else if (rNum >= 11)  leadRowsMap[rNum] = m[2];
   }
 
-  // Get a cell from given row content
+  // Get a cell from given row content (indexOf avoids regex backslash escaping issues)
   function getCell(col, rowNum, rowContent) {
-    const re = new RegExp(`<c r="${col}${rowNum}"[^>]*>([\\s\\S]*?)<\\/c>`);
-    const match = rowContent.match(re);
-    return match ? cellVal(match[0], shared) : '';
+    const startTag = '<c r="' + col + rowNum + '"';
+    const startIdx = rowContent.indexOf(startTag);
+    if (startIdx === -1) return '';
+    const endIdx = rowContent.indexOf('</c>', startIdx);
+    if (endIdx === -1) return '';
+    const cellXml = rowContent.slice(startIdx, endIdx + 4);
+    return cellVal(cellXml, shared);
   }
 
   // Row 5 — totals
