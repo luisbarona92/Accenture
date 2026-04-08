@@ -273,6 +273,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 }
 .kd-up{background:var(--green-bg);color:var(--green)}
 .kd-dn{background:var(--red-bg);color:var(--red)}
+.kd-or{background:var(--or-bg);color:var(--or)}
+.k-delta[data-delta="0"]{display:none!important}
 
 /* ══════════════════════════════════ PORTADA */
 .hero{
@@ -888,22 +890,26 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <div class="k-lbl">Hito 1 · Contacto</div>
       <div class="k-num cnt" data-cnt="s1-h1" data-t="861">0</div>
       <div class="k-sub">17% del fishing pool</div>
+      <span class="k-delta kd-or" data-cnt="s1-h1-delta" data-delta="0" style="display:none"></span>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Hito 2 · Interés</div>
       <div class="k-num cnt" data-cnt="s1-h2" data-t="74">0</div>
       <div class="k-sub">Sesión informativa 1:1</div>
+      <span class="k-delta kd-or" data-cnt="s1-h2-delta" data-delta="0" style="display:none"></span>
     </div>
     <div class="kcard k-or">
       <div class="k-lbl">Hito 3 · Captados</div>
       <div class="k-num cnt" data-cnt="s1-h3" data-t="48">0</div>
       <div class="k-sub">KO presencial</div>
+      <span class="k-delta kd-or" data-cnt="s1-h3-delta" data-delta="0" style="display:none"></span>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Hito 4 · Activados</div>
       <div class="k-num cnt" data-cnt="s1-h4" data-t="24">0</div>
       <div class="k-sub">Contrato + modelo colaboración</div>
-      
+      <span class="k-delta kd-up" data-cnt="s1-h4-delta" data-delta="0" style="display:none"></span>
+
     </div>
   </div>
 
@@ -1256,22 +1262,25 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="kcard k-or">
       <div class="k-lbl">Total oportunidades</div>
       <div class="k-num cnt" data-cnt="s3-total" data-t="58">58</div>
+      <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="0" style="display:none"></span>
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">Leads en curso</div>
       <div class="k-num cnt" data-cnt="s3-leads" data-t="12">0</div>
       <div class="k-sub">21% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="0" style="display:none"></span>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Ofertas en curso</div>
       <div class="k-num cnt" data-cnt="s3-ofertas" data-t="6">0</div>
       <div class="k-sub">50% de leads</div>
+      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="0" style="display:none"></span>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas activadas</div>
       <div class="k-num cnt" data-cnt="s3-ventas" data-t="6">0</div>
       <div class="k-sub">11% de oportunidades</div>
-      <span class="k-delta kd-up">↑ Meta en curso</span>
+      <span class="k-delta kd-up" data-cnt="s3-ventas-delta" data-delta="0" style="display:none"></span>
     </div>
   </div>
 
