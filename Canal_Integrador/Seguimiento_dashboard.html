@@ -1519,7 +1519,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="sh">
     <div>
       <div class="sh-title">Detalle Leads <span id="changesCounter" class="change-badge" style="display:none">0 cambios</span></div>
-      <div class="s5-sensitive" data-cnt="s5-subtitle" style="font-size:12px;color:var(--ink3);margin-top:4px">58 leads potenciales</div>
+      <div class="s5-sensitive" data-cnt="s5-subtitle" style="font-size:12px;color:var(--ink3);margin-top:4px">59 leads potenciales</div>
     </div>
     <div style="display:flex;gap:8px">
       <button class="export-changes-btn" id="btnExportChanges" onclick="exportChanges()" disabled title="Exportar cambios realizados">📋 Exportar cambios</button>
@@ -1531,7 +1531,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="krow s5-sensitive">
     <div class="kcard k-or">
       <div class="k-lbl">Leads potenciales</div>
-      <div class="k-num cnt" data-cnt="s5-total" data-t="58">58</div>
+      <div class="k-num cnt" data-cnt="s5-total" data-t="59">59</div>
       <div class="k-sub">Total identificados</div>
     </div>
     <div class="kcard k-gr">
@@ -1545,7 +1545,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">En curso</div>
-      <div class="k-num cnt" data-cnt="s5-encurso" data-t="14">14</div>
+      <div class="k-num cnt" data-cnt="s5-encurso" data-t="15">15</div>
       <div class="k-sub">Oferta en proceso</div>
     </div>
     <div class="kcard k-am">
@@ -1568,7 +1568,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="chip ch-bl"             onclick="setEstFilt('En curso',this)">◉ En curso</div>
     <div class="chip ch-am"             onclick="setEstFilt('Pendiente',this)">⏳ Pendiente</div>
     <div class="chip ch-rd"             onclick="setEstFilt('KO',this)">✕ KO</div>
-    <span class="leads-count" id="leadsCount" data-cnt="s5-leads-count">58 leads</span>
+    <span class="leads-count" id="leadsCount" data-cnt="s5-leads-count">59 leads</span>
   </div>
 
   <!-- Filtros por integrador -->
@@ -2021,7 +2021,7 @@ const LEADS = [
     "modelo": "Tier 1",
     "fecGen": 46035,
     "comercial": "Jonathan Macías",
-    "estado": "En curso",
+    "estado": "Pendiente",
     "segmento": "Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez para descuento especial para socios.",
     "sigPasoEq": "Preparar webinar junto a Dataqu. Pendiente datos Maria Sebastián y oferta Carmen Sánchez para descuento especial para socios.",
     "fecSigPasoEq": 46097,
@@ -2245,9 +2245,9 @@ const LEADS = [
     "estado": "En curso",
     "segmento": "Seguimiento ",
     "sigPasoEq": "Seguimiento ",
-    "fecSigPasoEq": 46113,
-    "sigPasoComercial": "Oferta preparada. Visita el 25.03",
-    "fecSigPasoComercial": 46113,
+    "fecSigPasoEq": 46121,
+    "sigPasoComercial": "Oferta presentada el 25.03. Pendiente respuesta cliente.",
+    "fecSigPasoComercial": 46121,
     "venta": null,
     "productos": ""
   },
@@ -2381,9 +2381,9 @@ const LEADS = [
     "estado": "Pendiente",
     "segmento": "Seguimiento potencial lead. Movido a abril.",
     "sigPasoEq": "Seguimiento potencial lead. Movido a abril.",
-    "fecSigPasoEq": 46113,
+    "fecSigPasoEq": 46127,
     "sigPasoComercial": "Pendiente recibir lead",
-    "fecSigPasoComercial": 46113,
+    "fecSigPasoComercial": 46127,
     "venta": null,
     "productos": ""
   },
@@ -2398,9 +2398,9 @@ const LEADS = [
     "estado": "Pendiente",
     "segmento": "Seguimiento potencial lead. Movido a abril.",
     "sigPasoEq": "Seguimiento potencial lead. Movido a abril.",
-    "fecSigPasoEq": 46113,
+    "fecSigPasoEq": 46127,
     "sigPasoComercial": "Pendiente recibir lead",
-    "fecSigPasoComercial": 46113,
+    "fecSigPasoComercial": 46127,
     "venta": null,
     "productos": ""
   },
@@ -2415,9 +2415,9 @@ const LEADS = [
     "estado": "Pendiente",
     "segmento": "Seguimiento potencial lead (líneas propias)",
     "sigPasoEq": "Seguimiento potencial lead (líneas propias)",
-    "fecSigPasoEq": 46143,
+    "fecSigPasoEq": 46127,
     "sigPasoComercial": "Pendiente recibir lead",
-    "fecSigPasoComercial": 46143,
+    "fecSigPasoComercial": 46127,
     "venta": null,
     "productos": ""
   },
@@ -2432,9 +2432,9 @@ const LEADS = [
     "estado": "En curso",
     "segmento": "Seguimiento ",
     "sigPasoEq": "Seguimiento ",
-    "fecSigPasoEq": 46113,
-    "sigPasoComercial": "Oferta preparada. Visita el 25.03",
-    "fecSigPasoComercial": 46113,
+    "fecSigPasoEq": 46121,
+    "sigPasoComercial": "Oferta presentada el 25.03. Pendiente respuesta cliente.",
+    "fecSigPasoComercial": 46121,
     "venta": null,
     "productos": ""
   },
@@ -2457,18 +2457,18 @@ const LEADS = [
   },
   {
     "id": 46,
-    "nombre": "Lead 3",
+    "nombre": "NORDKAPP",
     "cif": "DuoIT",
     "integrador": "DuoIT",
     "modelo": "Tier 1",
-    "fecGen": 46090,
-    "comercial": "Jonathan Macías",
-    "estado": "Pendiente",
-    "segmento": "Seguimiento potencial lead. Nos lo pasa Angel esta semana (09.03).",
-    "sigPasoEq": "Seguimiento potencial lead. Nos lo pasa Angel esta semana (09.03).",
-    "fecSigPasoEq": 46094,
-    "sigPasoComercial": "Pendiente recibir lead",
-    "fecSigPasoComercial": 46094,
+    "fecGen": 46106,
+    "comercial": "Javier Moya",
+    "estado": "En curso",
+    "segmento": "Lead recibido, seguimiento (cliente Euskaltel 2 clínicas)",
+    "sigPasoEq": "Lead recibido, seguimiento (cliente Euskaltel 2 clínicas)",
+    "fecSigPasoEq": 46121,
+    "sigPasoComercial": "Preparando oferta",
+    "fecSigPasoComercial": 46121,
     "venta": null,
     "productos": ""
   },
@@ -2637,7 +2637,7 @@ const LEADS = [
     "segmento": "Seguimiento ",
     "sigPasoEq": "Seguimiento ",
     "fecSigPasoEq": 46107,
-    "sigPasoComercial": "Visita técnica 25.03. Rubén pendiente llamarles para cuadrar cita con gerente",
+    "sigPasoComercial": "Rubén pendiente llamarles para cuadrar cita con gerente",
     "fecSigPasoComercial": 46107,
     "venta": null,
     "productos": ""
@@ -2673,6 +2673,23 @@ const LEADS = [
     "fecSigPasoEq": 46119,
     "sigPasoComercial": "Pendiente VVDD",
     "fecSigPasoComercial": 46119,
+    "venta": null,
+    "productos": ""
+  },
+  {
+    "id": 59,
+    "nombre": "EVERYTHINNG OUTSOURCING SERVICES",
+    "cif": "Elpis Informática",
+    "integrador": "Elpis InformáTica",
+    "modelo": "Tier 1",
+    "fecGen": 46120,
+    "comercial": "Jonathan Macías",
+    "estado": "En curso",
+    "segmento": "Seguimiento lead grande  - centralita virtual, 30 líneas móviles, control de presencia",
+    "sigPasoEq": "Seguimiento lead grande  - centralita virtual, 30 líneas móviles, control de presencia",
+    "fecSigPasoEq": 46120,
+    "sigPasoComercial": "Pendiente VVDD",
+    "fecSigPasoComercial": 46120,
     "venta": null,
     "productos": ""
   }
