@@ -492,7 +492,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .vtbl tbody tr:hover td:first-child{border-left:3px solid var(--or)}
 .vtbl td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .n{text-align:center;font-weight:700;font-size:15px}
-.n-or{color:var(--or)}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}
+.n-or{color:var(--or)}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}.n-bl{color:var(--blue)}.n-am{color:var(--amber)}.n-rd{color:var(--red)}
 
 /* EOP cards */
 .eop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
@@ -1270,30 +1270,36 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <div class="k-num cnt" data-cnt="s3-total" data-t="59">59</div>
       <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="2">▲ +2 vs sem. anterior</span>
     </div>
-    <div class="kcard k-bl">
-      <div class="k-lbl">Leads en curso</div>
-      <div class="k-num cnt" data-cnt="s3-leads" data-t="15">0</div>
-      <div class="k-sub">25% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="3">▲ +3 vs sem. anterior</span>
-    </div>
-    <div class="kcard k-am">
-      <div class="k-lbl">Ofertas en curso</div>
-      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="7">0</div>
-      <div class="k-sub">50% de leads</div>
-      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="1">▲ +1 vs sem. anterior</span>
-    </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas activadas</div>
       <div class="k-num cnt" data-cnt="s3-ventas" data-t="6">0</div>
       <div class="k-sub">10% de oportunidades</div>
-      <span class="k-delta kd-up" data-cnt="s3-ventas-delta" data-delta="0" style="display:none">▲ +0</span>
+      <span class="k-delta kd-up" data-cnt="s3-ventas-delta" data-delta="0">▲ +0</span>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">Ofertas en curso</div>
+      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="15">0</div>
+      <div class="k-sub">25% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="3">▲ +3 vs sem. anterior</span>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Leads pendientes</div>
+      <div class="k-num cnt" data-cnt="s3-leads" data-t="29">0</div>
+      <div class="k-sub">49% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="0">▲</span>
+    </div>
+    <div class="kcard k-rd">
+      <div class="k-lbl">Leads KO</div>
+      <div class="k-num cnt" data-cnt="s3-leads-ko" data-t="9">0</div>
+      <div class="k-sub">15% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-leads-ko-delta" data-delta="0">▲</span>
     </div>
   </div>
 
   <!-- Tabla detalle -->
   <div class="card" style="margin-bottom:18px">
     <div class="card-h">
-      <span class="card-title">Estado por integrador</span>
+      <span class="card-title">Estado de leads por integrador</span>
       <span class="card-sub">15 integradores con oportunidades activas</span>
     </div>
     <div style="overflow-x:auto">
@@ -1303,29 +1309,30 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
           <th>Integrador</th>
           <th>Modelo</th>
           <th style="text-align:center">Oport.</th>
-          <th style="text-align:center">Leads</th>
-          <th style="text-align:center">Ofertas</th>
           <th style="text-align:center">Ventas</th>
+          <th style="text-align:center">Leads pend.</th>
+          <th style="text-align:center">Leads KO</th>
+          <th style="text-align:center">Ofertas</th>
           <th>Estado ofertas en curso</th>
           <th>Próximo paso</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-bl">5</td><td class="n n-or">3</td><td class="n n-gr">1</td><td style="font-size:12px;color:var(--ink2)">3 ofertas preparadas – visita 25.03 a clientes</td><td style="font-size:12px">Avanzar con ofertas</td></tr>
-        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">8</td><td class="n n-bl">1</td><td class="n n-or">1</td><td class="n n-gr">4</td><td style="font-size:12px;color:var(--ink2)">1 oferta ampliación en curso – PYME</td><td style="font-size:12px">Activación de ampliaciones por clientes</td></tr>
-        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">7</td><td class="n n-bl">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 visita a cliente pendiente · 2 nuevos leads</td><td style="font-size:12px">Confirmar visita y avanzar con leads</td></tr>
-        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-bl">2</td><td class="n n-or">2</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">2 ofertas en curso</td><td style="font-size:12px">Pendiente envío a integrador</td></tr>
-        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td class="n n-or">4</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">2 leads priorizados – preparando webinar + sesión</td><td style="font-size:12px">Pendiente trabajar formato final webinar</td></tr>
-        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gr">1</td><td style="font-size:12px;color:var(--ink2)">1 lead KO por no respuesta cliente</td><td style="font-size:12px">Pendiente integrador, envío de leads</td></tr>
-        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">2 leads potenciales identificados · 1 lead pendiente – oferta propia</td><td style="font-size:12px">Avanzar con 3 leads identificados</td></tr>
-        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 lead en curso (pendiente integrador-cliente)</td><td style="font-size:12px">Avanzar con ofertas</td></tr>
-        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">2 leads potenciales identificados · 1 lead KO por no respuesta cliente</td><td style="font-size:12px">Avanzar con 2 leads identificados</td></tr>
-        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-bl">1</td><td class="n n-or">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 oferta en curso</td><td style="font-size:12px">Pendiente envío a integrador</td></tr>
-        <tr><td><strong>Aideea</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 lead potencial identificado</td><td style="font-size:12px">Avanzar con lead identificado</td></tr>
-        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 lead potencial identificado</td><td style="font-size:12px">Avanzar con lead identificado</td></tr>
-        <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 lead potencial identificado</td><td style="font-size:12px">Avanzar con lead identificado</td></tr>
-        <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 lead potencial identificado</td><td style="font-size:12px">Avanzar con lead identificado</td></tr>
-        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">1 lead grande identificado</td><td style="font-size:12px">Avanzar con lead identificado</td></tr>
+        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-gr">1</td><td class="n n-bl">12</td><td class="n n-rd">2</td><td class="n n-am">5</td><td style="font-size:12px;color:var(--ink2)">3 ofertas en revisión y 2 pendientes</td><td style="font-size:12px">Confirmar ofertas presentadas</td></tr>
+        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">8</td><td class="n n-gr">4</td><td class="n n-bl">3</td><td class="n n-gy">0</td><td class="n n-am">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta ampliación PYME</td><td style="font-size:12px">Activación de ampliación por cliente</td></tr>
+        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">7</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td class="n n-rd">2</td><td class="n n-am">3</td><td style="font-size:12px;color:var(--ink2)">2 ofertas pequeñas y 1 oferta fría</td><td style="font-size:12px">Confirmar visitas y avanzar con leads</td></tr>
+        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-am">2</td><td style="font-size:12px;color:var(--ink2)">2 ofertas de clientes Euskaltel en curso</td><td style="font-size:12px">En revisión con cliente/integrador</td></tr>
+        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-bl">3</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-bl">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-am">2</td><td style="font-size:12px;color:var(--ink2)">2 ofertas en curso (1 propios servicios)</td><td style="font-size:12px">Preparar ofertas</td></tr>
+        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-am">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta de cliente Orange con riesgo</td><td style="font-size:12px">Confirmar riesgo fuga y cerrar oferta</td></tr>
+        <tr><td><strong>Aideea</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-am">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta grande en curso</td><td style="font-size:12px">Activar cliente y cerrar oferta</td></tr>
       </tbody>
     </table>
     </div>
