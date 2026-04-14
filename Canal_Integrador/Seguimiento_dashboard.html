@@ -494,6 +494,66 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .n{text-align:center;font-weight:700;font-size:15px}
 .n-or{color:var(--or)}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}.n-bl{color:var(--blue)}.n-am{color:var(--amber)}.n-rd{color:var(--red)}
 
+/* ── S6 Plan Visitas ── */
+.tl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.tl-card{background:var(--card);border-radius:10px;padding:16px;border:1px solid var(--line);cursor:pointer;transition:box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.tl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.tl-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.tl-card.tl-on{border-color:var(--or);box-shadow:0 2px 10px rgba(245,124,0,.15)}
+.tl-week{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3)}
+.tl-dest{font-size:13px;font-weight:600;color:var(--ink1);margin:6px 0 8px}
+.tl-meta{display:flex;gap:12px;font-size:11px;color:var(--ink3)}
+.tl-meta b{color:var(--ink1)}
+.tl-badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:4px;background:var(--or);color:#fff}
+.vf-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.vf-row+.vf-row{margin-top:2px}
+.vf-btn{padding:5px 12px;border-radius:99px;font-size:11.5px;font-weight:500;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.vf-btn:hover{border-color:var(--ink4)}
+.vf-btn.vf-on{background:var(--or);color:#fff;border-color:var(--or);font-weight:600}
+.vf-search{padding:7px 14px;border-radius:8px;border:1px solid var(--line);font-size:12.5px;width:280px;outline:none;transition:border-color .15s}
+.vf-search:focus{border-color:var(--or)}
+.vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px;margin-top:14px}
+.vcard{background:var(--card);border-radius:10px;padding:16px 18px;border:1px solid var(--line);transition:box-shadow .15s}
+.vcard:hover{box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.vcard-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.vcard-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.vcard-dot.vd-gr{background:var(--green)}.vcard-dot.vd-am{background:var(--amber)}.vcard-dot.vd-gy{background:#9CA3AF}
+.vcard-name{font-size:14px;font-weight:700;color:var(--ink1)}
+.vcard-pri{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.4px}
+.vcard-pri.vp-alta{background:#FEE2E2;color:#B91C1C}.vcard-pri.vp-media{background:#DBEAFE;color:#1E40AF}
+.vcard-sub{font-size:11.5px;color:var(--ink3);margin-bottom:8px}
+.vcard-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.vtag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px}
+.vtag-rd{background:#FEE2E2;color:#B91C1C}.vtag-gr{background:#D1FAE5;color:#065F46}.vtag-am{background:#FEF3C7;color:#92400E}.vtag-or{background:#FFF7ED;color:#C2410C}.vtag-bl{background:#DBEAFE;color:#1E40AF}.vtag-gy{background:#F3F4F6;color:#4B5563}
+.vcard-obs{font-size:12px;color:var(--ink3);margin-bottom:6px;line-height:1.5}
+.vcard-action{font-size:12px;color:var(--ink1);background:#FFF7ED;border-left:3px solid var(--or);padding:8px 10px;border-radius:0 6px 6px 0;margin-bottom:8px;line-height:1.5}
+.vcard-addr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink3);flex-wrap:wrap}
+.vcard-addr a,.vcard-addr button{font-size:11px;font-weight:600;cursor:pointer;border:none;background:none;padding:2px 6px;border-radius:4px}
+.vcard-addr a{color:#1D6FB8;text-decoration:none}.vcard-addr a:hover{background:#EFF6FF}
+.vcard-addr button{color:var(--ink3)}.vcard-addr button:hover{background:var(--bg)}
+.vcoll{margin-top:18px}
+.vcoll-h{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--bg);border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink2);transition:background .15s}
+.vcoll-h:hover{background:var(--line)}
+.vcoll-h .vcoll-arr{transition:transform .2s;font-size:11px;color:var(--ink4)}
+.vcoll-h.vcoll-open .vcoll-arr{transform:rotate(90deg)}
+.vcoll-body{display:none;margin-top:8px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.vcoll-body.vcoll-show{display:block}
+.vhtbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.vhtbl th{background:var(--bg);padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.vhtbl td{padding:8px 14px;border-bottom:1px solid var(--line);color:var(--ink2)}
+.vhtbl tr:last-child td{border-bottom:none}
+.vkpi-bar{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:18px}
+.vkpi-item{background:var(--card);border-radius:8px;padding:14px;border:1px solid var(--line)}
+.vkpi-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);margin-bottom:8px}
+.vkpi-vals{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.vkpi-cur{font-size:18px;font-weight:700;color:var(--ink1)}
+.vkpi-arr{font-size:12px;color:var(--ink4)}
+.vkpi-tgt{font-size:18px;font-weight:700;color:var(--or)}
+.vkpi-track{height:6px;background:var(--bg);border-radius:99px;overflow:hidden}
+.vkpi-fill{height:100%;border-radius:99px;background:var(--or);transition:width .6s ease}
+@media(max-width:900px){.tl-grid{grid-template-columns:repeat(2,1fr)}.vcards{grid-template-columns:1fr}}
+@media(max-width:600px){.tl-grid{grid-template-columns:1fr}.vf-search{width:100%}}
+
 /* EOP cards */
 .eop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
 .eop-card{border-radius:8px;padding:18px;background:var(--bg);border:1px solid var(--line)}
@@ -739,6 +799,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <button class="tnav"     onclick="show('s3')">03 · Funnel Ventas</button>
     <button class="tnav"     onclick="show('s4')">04 · Tareas</button>
     <button class="tnav"     onclick="show('s5')">05 · Detalle Leads</button>
+    <button class="tnav"     onclick="show('s6')">06 · Plan Visitas</button>
   </nav>
 
   <div class="topbar-right">
@@ -1550,6 +1611,134 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 </section>
 
 
+<!-- ══════════════════════════════════════════════════════
+     S6 · PLAN VISITAS
+══════════════════════════════════════════════════════ -->
+<section id="s6" class="sec">
+  <div class="sh">
+    <span class="sh-slide">Plan operativo</span>
+    <h2 class="sh-title">Plan de visitas presenciales a integradores</h2>
+  </div>
+
+  <!-- KPI row -->
+  <div class="krow">
+    <div class="kcard k-or">
+      <div class="k-lbl">A visitar</div>
+      <div class="k-num">26</div>
+      <div class="k-sub">En 8 rutas desde Madrid</div>
+    </div>
+    <div class="kcard k-rd">
+      <div class="k-lbl">Prioridad alta</div>
+      <div class="k-num">13</div>
+      <div class="k-sub">Oportunidad + churn</div>
+    </div>
+    <div class="kcard" style="border-top-color:#757575">
+      <div class="k-lbl">En hold</div>
+      <div class="k-num" style="color:#757575">5</div>
+      <div class="k-sub">No visitar ahora</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Rutas</div>
+      <div class="k-num">8</div>
+      <div class="k-sub">4 semanas</div>
+    </div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Dias estimados</div>
+      <div class="k-num">12</div>
+      <div class="k-sub">Abr-May 2026</div>
+    </div>
+  </div>
+
+  <!-- Timeline semanal -->
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-h"><span class="card-title">Timeline semanal</span><span class="card-sub">Click en una semana para filtrar</span></div>
+    <div class="tl-grid" id="tlGrid">
+      <div class="tl-card tl-on" data-tl="1" onclick="filtTL(1,this)" style="border-top:3px solid #F57C00">
+        <span class="tl-badge">ACTUAL</span>
+        <div class="tl-week">Semana 14-18 abril</div>
+        <div class="tl-dest">Madrid y alrededores</div>
+        <div class="tl-meta"><span><b>5</b> visitas</span><span><b>3</b> dias</span><span>Ruta 1</span></div>
+      </div>
+      <div class="tl-card" data-tl="2" onclick="filtTL(2,this)" style="border-top:3px solid #1976D2">
+        <div class="tl-week">Semana 21-25 abril</div>
+        <div class="tl-dest">Zaragoza + Extremadura + Valladolid</div>
+        <div class="tl-meta"><span><b>5</b> visitas</span><span><b>3</b> dias</span><span>Rutas 2, 5</span></div>
+      </div>
+      <div class="tl-card" data-tl="3" onclick="filtTL(3,this)" style="border-top:3px solid #388E3C">
+        <div class="tl-week">Semana 28 abr - 2 may</div>
+        <div class="tl-dest">Pais Vasco + Cantabria + Cataluna</div>
+        <div class="tl-meta"><span><b>8</b> visitas</span><span><b>4</b> dias</span><span>Rutas 3, 4</span></div>
+      </div>
+      <div class="tl-card" data-tl="4" onclick="filtTL(4,this)" style="border-top:3px solid #00796B">
+        <div class="tl-week">Semana 5-9 mayo</div>
+        <div class="tl-dest">Galicia + Andalucia + Levante</div>
+        <div class="tl-meta"><span><b>8</b> visitas</span><span><b>3</b> dias</span><span>Rutas 6, 7, 8</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card" style="margin-bottom:14px;padding:14px 18px">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Prioridad:</span>
+      <div class="vf-row" id="vfPri">
+        <button class="vf-btn vf-on" onclick="filtVP('all',this)">Todos (26)</button>
+        <button class="vf-btn" onclick="filtVP('alta',this)">Alta (13)</button>
+        <button class="vf-btn" onclick="filtVP('media',this)">Media (13)</button>
+        <button class="vf-btn" onclick="filtVP('hold',this)">Hold (5)</button>
+        <button class="vf-btn" onclick="filtVP('excl',this)">Excluidos (5)</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Ruta:</span>
+      <div class="vf-row" id="vfRoute">
+        <button class="vf-btn vf-on" onclick="filtVR('all',this)">Todas</button>
+        <button class="vf-btn" onclick="filtVR(1,this)" style="border-left:3px solid #F57C00">R1 Madrid</button>
+        <button class="vf-btn" onclick="filtVR(2,this)" style="border-left:3px solid #1976D2">R2 Zaragoza</button>
+        <button class="vf-btn" onclick="filtVR(3,this)" style="border-left:3px solid #388E3C">R3 P. Vasco</button>
+        <button class="vf-btn" onclick="filtVR(4,this)" style="border-left:3px solid #7B1FA2">R4 Cataluna</button>
+        <button class="vf-btn" onclick="filtVR(5,this)" style="border-left:3px solid #795548">R5 Extremadura</button>
+        <button class="vf-btn" onclick="filtVR(6,this)" style="border-left:3px solid #00796B">R6 Galicia</button>
+        <button class="vf-btn" onclick="filtVR(7,this)" style="border-left:3px solid #C62828">R7 Andalucia</button>
+        <button class="vf-btn" onclick="filtVR(8,this)" style="border-left:3px solid #0288D1">R8 Levante</button>
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <input class="vf-search" id="vfSearch" type="text" placeholder="Buscar integrador o ciudad..." oninput="filtVS()">
+    </div>
+  </div>
+
+  <!-- Grid de tarjetas de integradores -->
+  <div class="vcards" id="vcardsGrid"></div>
+
+  <!-- Secciones colapsables -->
+  <div class="vcoll" id="vcollHold">
+    <div class="vcoll-h" onclick="toggleVcoll('vcollHold')"><span class="vcoll-arr">&#9654;</span> Integradores en hold (5)</div>
+    <div class="vcoll-body">
+      <table class="vhtbl">
+        <thead><tr><th>Integrador</th><th>Ciudad</th><th>Motivo</th><th>Reactivar</th></tr></thead>
+        <tbody id="vholdBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="vcoll" id="vcollExcl">
+    <div class="vcoll-h" onclick="toggleVcoll('vcollExcl')"><span class="vcoll-arr">&#9654;</span> Excluidos de visitas (5)</div>
+    <div class="vcoll-body">
+      <table class="vhtbl">
+        <thead><tr><th>Integrador</th><th>Ciudad</th><th>Motivo</th></tr></thead>
+        <tbody id="vexclBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- KPIs objetivo -->
+  <div class="card" style="margin-top:18px">
+    <div class="card-h"><span class="card-title">KPIs objetivo post-visitas (6 semanas)</span><span class="card-sub">Actual vs objetivo</span></div>
+    <div class="vkpi-bar" id="vkpiBar"></div>
+  </div>
+
+</section>
+
 
 <!-- ════════════════ JS ════════════════ -->
 <script>
@@ -1568,7 +1757,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 function show(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.tnav').forEach(t=>t.classList.remove('on'));
-  const secs=['s0','s1','s2','s3','s4','s5'];
+  const secs=['s0','s1','s2','s3','s4','s5','s6'];
   document.getElementById(id).classList.add('on');
   document.querySelectorAll('.tnav')[secs.indexOf(id)].classList.add('on');
   startCounters(document.getElementById(id));
@@ -3243,6 +3432,189 @@ function doLogin() {
     input.focus();
   }
 }
+
+// ══════════════════════════════════════════════════════
+// S6 · PLAN VISITAS — Data + Logic
+// ══════════════════════════════════════════════════════
+
+const visitPlanData={summary:{totalIntegrators:33,toVisit:26,excluded:5,onHold:5,highPriority:13,routes:8,estimatedDays:12,weeks:4},
+timeline:[
+{week:"Semana 14-18 abril",label:"Esta semana",routes:[1],destinations:"Madrid y alrededores",visits:5,days:3,highlight:true},
+{week:"Semana 21-25 abril",label:"Semana 2",routes:[2,5],destinations:"Zaragoza + Extremadura + Valladolid",visits:5,days:3},
+{week:"Semana 28 abr - 2 may",label:"Semana 3",routes:[3,4],destinations:"Pais Vasco + Cantabria + Cataluna",visits:8,days:4},
+{week:"Semana 5-9 mayo",label:"Semana 4",routes:[6,7,8],destinations:"Galicia + Andalucia + Levante",visits:8,days:3}
+],
+routes:[
+{id:1,name:"Madrid y alrededores",zone:"Madrid",week:"14-18 abril",transport:"Coche propio / sin viaje",travelTime:"20-45 min entre visitas",days:3,color:"#F57C00",integrators:[
+{name:"Cobitratel",city:"Azuqueca de Henares",province:"Guadalajara",address:"C/ La Victoria, 4",statusDot:"green",priority:"alta",tags:["756\u20AC/mes cerrados","Contrato pendiente pago"],observation:"1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.",action:"Cerrar contrato de pago. Revisar cartera para nuevos leads.",suggestedDay:"Martes 15 abril",suggestedTime:"10:00"},
+{name:"Binfor Solutions",city:"Alcorcon",province:"Madrid",address:"C/ Sapporo, 2, local",statusDot:"green",priority:"alta",tags:["Sin respuesta","Contrato pendiente"],observation:"Contrato pendiente de envio. Sin respuesta a seguimientos.",action:"Desbloquear firma contrato in situ. Ultimo intento presencial.",suggestedDay:"Jueves 17 abril",suggestedTime:"10:00"},
+{name:"NaimiTech",city:"Illescas",province:"Toledo",address:"Illescas, Toledo",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultima oportunidad presencial antes de considerar descarte.",suggestedDay:"Martes 15 abril",suggestedTime:"16:00"},
+{name:"OX-ONE Networks",city:"Pozuelo de Alarcon",province:"Madrid",address:"C/ Mimosas, 15",statusDot:"green",priority:"media",tags:["Reactivar esta semana"],observation:"1 visita pendiente. Hold hasta semana que viene.",action:"Su hold termina esta semana. Activar, revisar cartera, primeros leads.",suggestedDay:"Jueves 17 abril",suggestedTime:"16:00"},
+{name:"Next Mobility",city:"Las Rozas de Madrid",province:"Madrid",address:"C/ Comunidad de Madrid, 41, local 110",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo y pedir leads.",suggestedDay:"Viernes 18 abril",suggestedTime:"10:00"}
+]},
+{id:2,name:"Zaragoza + Valladolid",zone:"Aragon / Meseta Norte",week:"21-25 abril",transport:"AVE Madrid-Zaragoza (1h20)",travelTime:"1h20 AVE + desplazamientos",days:2,color:"#1976D2",integrators:[
+{name:"Audinfor",city:"Zaragoza",province:"Zaragoza",address:"C/ Marcelino Alvarez, 84",statusDot:"green",priority:"alta",tags:["4-5 leads identificados","Sin noticias"],observation:"Han identificado 4/5 leads potenciales, pendiente recepcion. Sin noticias.",action:"PRIORIDAD MAXIMA. Tienen leads listos pero no dan noticias. Visita para cerrar firma y activar los 4-5 leads.",suggestedDay:"Lunes 21 abril",suggestedTime:"10:00"},
+{name:"Digital Hand Made",city:"Zaragoza",province:"Zaragoza",address:"C/ Acacias, 9, local",statusDot:"yellow",priority:"media",tags:["Baja prioridad interna"],observation:"No es su prioridad, pero hay que mantener momentum.",action:"Mantener relacion. Aprovechar el viaje a Zaragoza.",suggestedDay:"Lunes 21 abril",suggestedTime:"13:00"},
+{name:"Mariskalnet Informatica",city:"Medina del Campo",province:"Valladolid",address:"C/ Ribera del Zapardiel, 16",statusDot:"green",priority:"media",tags:["Leads sin exito","Retomando activamente"],observation:"Varios leads sin exito. Continua con contactos activamente.",action:"Revisar que fallo en leads anteriores. Planificar nuevos contactos juntos.",suggestedDay:"Martes 22 abril",suggestedTime:"10:00"}
+]},
+{id:3,name:"Pais Vasco + Cantabria",zone:"Norte",week:"28 abr - 2 may",transport:"Vuelo Madrid-Bilbao (1h) + coche alquiler",travelTime:"1h vuelo + desplazamientos",days:2,color:"#388E3C",integrators:[
+{name:"DuoIT",city:"Bilbao",province:"Bizkaia",address:"Maria Diaz de Haro, 10 BIS, 2a planta",statusDot:"green",priority:"alta",tags:["2 ofertas presentadas"],observation:"2 ofertas presentadas y ajustadas con indicaciones de clientes.",action:"Cerrar las 2 ofertas. Pedir nuevos leads.",suggestedDay:"Lunes 28 abril",suggestedTime:"10:00"},
+{name:"DOSYS",city:"Donostia-San Sebastian",province:"Gipuzkoa",address:"C/ Santa Barbara, 21, 3o A",statusDot:"green",priority:"media",tags:["Frio"],observation:"Solicito precios de productos y estamos a la espera de leads (frio).",action:"Reactivar interes. Explicar modelo en persona.",suggestedDay:"Lunes 28 abril",suggestedTime:"16:00"},
+{name:"Ache Informatica",city:"Santander",province:"Cantabria",address:"C/ Colombia, 2, local",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes, descartar.",suggestedDay:"Martes 29 abril",suggestedTime:"10:00"},
+{name:"DurnIA",city:"Santander",province:"Cantabria",address:"C/ Lirio, 13, Chalet G",statusDot:"green",priority:"media",tags:["Evaluando modelo"],observation:"Analizando el modelo de colaboracion.",action:"Explicar modelo presencialmente. Conseguir compromiso inicial.",suggestedDay:"Martes 29 abril",suggestedTime:"12:00"}
+]},
+{id:4,name:"Cataluna",zone:"Cataluna",week:"28 abr - 2 may",transport:"AVE Madrid-Barcelona (2h30)",travelTime:"2h30 AVE + 1h regional",days:2,color:"#7B1FA2",integrators:[
+{name:"Elpis Informatica",city:"Tarragona",province:"Tarragona",address:"C/ del Ferro, parcela 61, nave 22",statusDot:"green",priority:"alta",tags:["1 oferta en curso"],observation:"1 oferta en curso.",action:"Cerrar oferta activa. Activar listado de leads que tenian preparado.",suggestedDay:"Jueves 1 mayo",suggestedTime:"10:00"},
+{name:"Amiritmo",city:"Cervello",province:"Barcelona",address:"C/ Muntanya, 84, Urb. Can Guitart Vell",statusDot:"green",priority:"alta",tags:["Lead grande abril"],observation:"Potencial lead grande para abril. Recontactando para activacion.",action:"Activar el lead grande. Revisar cartera completa.",suggestedDay:"Miercoles 30 abril",suggestedTime:"10:00"},
+{name:"Lisot",city:"Barcelona",province:"Barcelona",address:"C/ Casp, 118",statusDot:"yellow",priority:"media",tags:["Lead identificado"],observation:"Potencial lead identificado, pendiente integrador.",action:"Activar lead identificado. Primer contacto presencial.",suggestedDay:"Miercoles 30 abril",suggestedTime:"13:00"},
+{name:"Ocvistas",city:"Barcelona",province:"Barcelona",address:"Av. de Roma, 155",statusDot:"green",priority:"media",tags:["Leads grandes pendientes"],observation:"Peticiones menores. Leads grandes pendientes.",action:"Empujar leads grandes. Entender que bloquea.",suggestedDay:"Miercoles 30 abril",suggestedTime:"16:00"}
+]},
+{id:5,name:"Extremadura",zone:"Extremadura",week:"21-25 abril",transport:"Coche desde Madrid",travelTime:"~9h conduccion total",days:1,color:"#795548",integrators:[
+{name:"Micro Sip",city:"Navalmoral de la Mata",province:"Caceres",address:"C/ Gabriel y Galan, 2",statusDot:"green",priority:"media",tags:["Reunion BD realizada"],observation:"Reunion con BD realizada. Pendiente que Victor organice sesion con BD.",action:"Desbloquear sesion con BD. Activar modelo.",suggestedDay:"Miercoles 23 abril",suggestedTime:"09:30"},
+{name:"GNUO Consultores",city:"Badajoz",province:"Badajoz",address:"PCTEX, Av. Investigacion s/n, despacho B24",statusDot:"green",priority:"media",tags:["Pendiente identificar leads"],observation:"Pendiente identificacion de leads.",action:"Activar en persona. Revisar cartera juntos. Identificar primeros leads.",suggestedDay:"Miercoles 23 abril",suggestedTime:"14:00"}
+]},
+{id:6,name:"Galicia",zone:"Galicia",week:"5-9 mayo",transport:"Vuelo Madrid-Santiago (1h)",travelTime:"1h vuelo",days:1,color:"#00796B",integrators:[
+{name:"Paperlabs",city:"Santiago de Compostela",province:"A Coruna",address:"Monte Gaias s/n, Cidade da Cultura",statusDot:"green",priority:"alta",tags:["Lead compartido","Desbloquear contacto"],observation:"1 lead interesante compartido, no conseguido el contacto con cliente.",action:"Desbloquear acceso al cliente final. Planificar nuevos leads.",suggestedDay:"Lunes 5 mayo",suggestedTime:"11:00"}
+]},
+{id:7,name:"Andalucia",zone:"Andalucia",week:"5-9 mayo",transport:"AVE Madrid-Sevilla (2h30) + coche",travelTime:"2h30 AVE + desplazamientos",days:2,color:"#C62828",integrators:[
+{name:"Omnia Soluciones",city:"Sevilla",province:"Sevilla",address:"Av. Alcalde Luis Urunuela, 6, oficina 120",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes real, descartar.",suggestedDay:"Martes 6 mayo",suggestedTime:"10:00"},
+{name:"A4I",city:"El Puerto de Santa Maria",province:"Cadiz",address:"Pol. Industrial El Palmar, C/ Sederia, 19",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",suggestedDay:"Martes 6 mayo",suggestedTime:"16:00"},
+{name:"Sictemas",city:"Malaga",province:"Malaga",address:"C/ Estado, 24",statusDot:"yellow",priority:"alta",tags:["Reactivar 15-abril","Contrato firmado"],observation:"Hold hasta 15-abril por reestructuracion interna. Contrato firmado enviado.",action:"Su hold termino el 15 de abril. Contrato ya firmado. Reactivar y arrancar.",suggestedDay:"Miercoles 7 mayo",suggestedTime:"10:00"},
+{name:"Sur Computers",city:"Mijas Costa",province:"Malaga",address:"C/ Albahaca, 6",statusDot:"yellow",priority:"media",tags:["Reactivar 15-abril"],observation:"Hold hasta 15-abril por carga de trabajo.",action:"Su hold termino el 15 de abril. Reactivar.",suggestedDay:"Miercoles 7 mayo",suggestedTime:"13:00"}
+]},
+{id:8,name:"Levante",zone:"C. Valenciana + Murcia",week:"5-9 mayo",transport:"AVE Madrid-Valencia (1h40) + coche",travelTime:"1h40 AVE + 3h coche total",days:1,color:"#0288D1",integrators:[
+{name:"DataQu",city:"Valencia",province:"Valencia",address:"Valencia (direccion pendiente confirmar)",statusDot:"green",priority:"alta",tags:["2 leads potenciales","Buscando sesion"],observation:"Pendiente 2 leads potenciales. Buscando sesion con integrador.",action:"Hacer la sesion en persona. Activar los 2 leads directamente.",suggestedDay:"Jueves 8 mayo",suggestedTime:"10:00"},
+{name:"Solventus Software",city:"Alicante",province:"Alicante",address:"Av. Oviedo, 10, D11",statusDot:"yellow",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",suggestedDay:"Jueves 8 mayo",suggestedTime:"13:00"},
+{name:"Sisytec",city:"Espinardo (Murcia)",province:"Murcia",address:"C/ Central, 10, 7a planta",statusDot:"green",priority:"alta",tags:["Oferta en curso","1 lead frio"],observation:"1 oferta en curso (servicios propios) y 1 lead frio.",action:"Cerrar oferta activa. Reactivar lead frio. Pedir mas.",suggestedDay:"Jueves 8 mayo",suggestedTime:"16:00"}
+]}
+],
+onHold:[
+{name:"Brain Hardware",city:"Fuenlabrada",province:"Madrid",reason:"Hold hasta mayo por carga de trabajo.",statusDot:"yellow",reactivate:"Mayo 2026"},
+{name:"DIRBAPONT SLU",city:"Pontevedra",province:"Pontevedra",reason:"Hold hasta mayo por carga de trabajo (Kits venciendo este mes).",statusDot:"yellow",reactivate:"Mayo 2026"},
+{name:"Fedesoft",city:"Puente Genil",province:"Cordoba",reason:"Hold hasta abril por problemas personales.",statusDot:"yellow",reactivate:"Fin abril 2026"},
+{name:"Redem",city:"Sin direccion disponible",province:"\u2014",reason:"Hold hasta reunion con Negocio.",statusDot:"yellow",reactivate:"Pendiente"},
+{name:"Inforware",city:"Sin direccion disponible",province:"\u2014",reason:"En revision del modelo para ver si comenzamos a trabajar juntos.",statusDot:"yellow",reactivate:"Pendiente"}
+],
+excluded:[
+{name:"Covernet",city:"Pozuelo de Alarcon",reason:"Ya produce activamente (4 ventas). Seguimiento remoto.",statusDot:"green"},
+{name:"Maxen",city:"Cabrera de Mar (Barcelona)",reason:"Ya produce activamente (1 venta + 3 ofertas). Seguimiento remoto.",statusDot:"green"},
+{name:"Deiteco",city:"Fuenlabrada",reason:"Campana de mailing en curso sin resultados. Seguimiento remoto.",statusDot:"green"},
+{name:"Aideea",city:"Sevilla",reason:"Contrato firmado compartido y posible lead. Seguimiento remoto.",statusDot:"yellow"},
+{name:"Infornet",city:"Gijon",reason:"Lead de ampliaciones de cliente Orange. Bajo ROI de viaje.",statusDot:"gray"}
+],
+kpiTarget:{
+integradoresActivos:{label:"Integradores activos",current:8,target:18},
+leadsNuevos:{label:"Leads totales",current:59,target:90},
+ofertasEnCurso:{label:"Ofertas en curso",current:14,target:25},
+ventasCerradas:{label:"Ventas cerradas",current:6,target:12},
+facturacionMensual:{label:"Facturacion mensual",current:1960,target:4000,suffix:"\u20AC"},
+conversionRate:{label:"Conversion %",current:10.2,target:15,suffix:"%"}
+}};
+
+// ── S6 state
+let s6_tlWeek=0, s6_pri='all', s6_route='all', s6_search='';
+
+// ── Tag color map
+const tagColors={"Riesgo churn":"vtag-rd","756\u20AC/mes cerrados":"vtag-gr","Contrato pendiente pago":"vtag-or","Sin respuesta":"vtag-or","Contrato pendiente":"vtag-or","Desbloquear contacto":"vtag-or","Pendiente identificar leads":"vtag-or","Reactivar esta semana":"vtag-am","Reactivar 15-abril":"vtag-am","Lead grande abril":"vtag-gr","1 oferta en curso":"vtag-gr","Oferta en curso":"vtag-gr","Lead compartido":"vtag-gr","4-5 leads identificados":"vtag-gr","2 ofertas presentadas":"vtag-gr","2 leads potenciales":"vtag-gr","Buscando sesion":"vtag-gr","1 lead frio":"vtag-bl","Evaluando modelo":"vtag-bl","Frio":"vtag-bl","Reunion BD realizada":"vtag-bl","Lead identificado":"vtag-bl","Leads grandes pendientes":"vtag-gr","Baja prioridad interna":"vtag-gy","Leads sin exito":"vtag-gy","Retomando activamente":"vtag-gr","Contrato firmado":"vtag-gr"};
+
+function getTagClass(t){return tagColors[t]||'vtag-gy'}
+
+function buildVCards(){
+  const grid=document.getElementById('vcardsGrid');
+  if(!grid)return;
+  let html='';
+  const tlRoutes=s6_tlWeek>0?visitPlanData.timeline[s6_tlWeek-1].routes:null;
+
+  // Normal cards (from routes)
+  if(s6_pri!=='hold'&&s6_pri!=='excl'){
+    visitPlanData.routes.forEach(r=>{
+      if(s6_route!=='all'&&r.id!==s6_route)return;
+      if(tlRoutes&&!tlRoutes.includes(r.id))return;
+      r.integrators.forEach(ig=>{
+        if(s6_pri!=='all'&&ig.priority!==s6_pri)return;
+        if(s6_search){
+          const q=s6_search.toLowerCase();
+          if(!ig.name.toLowerCase().includes(q)&&!ig.city.toLowerCase().includes(q)&&!ig.province.toLowerCase().includes(q))return;
+        }
+        const dotCls=ig.statusDot==='green'?'vd-gr':ig.statusDot==='yellow'?'vd-am':'vd-gy';
+        const priCls=ig.priority==='alta'?'vp-alta':'vp-media';
+        const mapsQ=encodeURIComponent(ig.address+', '+ig.city);
+        let tagsH=ig.tags.map(t=>'<span class="vtag '+getTagClass(t)+'">'+t+'</span>').join('');
+        html+='<div class="vcard" data-route="'+r.id+'" data-pri="'+ig.priority+'">';
+        html+='<div class="vcard-head"><div class="vcard-dot '+dotCls+'"></div><span class="vcard-name">'+ig.name+'</span><span class="vcard-pri '+priCls+'">'+ig.priority+'</span></div>';
+        html+='<div class="vcard-sub">'+ig.city+', '+ig.province+' \u00B7 Ruta '+r.id+' \u00B7 '+ig.suggestedDay+' '+ig.suggestedTime+'</div>';
+        if(tagsH)html+='<div class="vcard-tags">'+tagsH+'</div>';
+        html+='<div class="vcard-obs">'+ig.observation+'</div>';
+        html+='<div class="vcard-action">\u{1F3AF} '+ig.action+'</div>';
+        html+='<div class="vcard-addr"><span>\u{1F4CD} '+ig.address+', '+ig.city+'</span>';
+        html+='<a href="https://www.google.com/maps/search/?api=1&query='+mapsQ+'" target="_blank" rel="noopener">\u{1F4CD} Ver en Maps</a>';
+        html+='<button onclick="navigator.clipboard.writeText(\''+ig.address.replace(/'/g,"\\'")+', '+ig.city+'\');this.textContent=\'\u2705 Copiado\';setTimeout(()=>this.textContent=\'\u{1F4CB} Copiar\',1500)">\u{1F4CB} Copiar</button>';
+        html+='</div></div>';
+      });
+    });
+  }
+  grid.innerHTML=html||'<div style="padding:40px;text-align:center;color:var(--ink3);font-size:13px">No hay integradores con estos filtros</div>';
+}
+
+function buildHoldExcl(){
+  const hb=document.getElementById('vholdBody');
+  const eb=document.getElementById('vexclBody');
+  if(hb)hb.innerHTML=visitPlanData.onHold.map(h=>'<tr><td><strong>'+h.name+'</strong></td><td>'+h.city+'</td><td>'+h.reason+'</td><td>'+h.reactivate+'</td></tr>').join('');
+  if(eb)eb.innerHTML=visitPlanData.excluded.map(e=>'<tr><td><strong>'+e.name+'</strong></td><td>'+e.city+'</td><td>'+e.reason+'</td></tr>').join('');
+}
+
+function buildKPIs(){
+  const bar=document.getElementById('vkpiBar');
+  if(!bar)return;
+  let h='';
+  Object.values(visitPlanData.kpiTarget).forEach(k=>{
+    const pct=Math.min(100,Math.round(k.current/k.target*100));
+    const sfx=k.suffix||'';
+    const curStr=sfx==='\u20AC'?k.current.toLocaleString('es-ES')+sfx:k.current+sfx;
+    const tgtStr=sfx==='\u20AC'?k.target.toLocaleString('es-ES')+sfx:k.target+sfx;
+    h+='<div class="vkpi-item"><div class="vkpi-lbl">'+k.label+'</div>';
+    h+='<div class="vkpi-vals"><span class="vkpi-cur">'+curStr+'</span><span class="vkpi-arr">\u2192</span><span class="vkpi-tgt">'+tgtStr+'</span></div>';
+    h+='<div class="vkpi-track"><div class="vkpi-fill" style="width:'+pct+'%"></div></div></div>';
+  });
+  bar.innerHTML=h;
+}
+
+function filtTL(week,el){
+  if(s6_tlWeek===week){s6_tlWeek=0;el.classList.remove('tl-on');}
+  else{s6_tlWeek=week;document.querySelectorAll('#tlGrid .tl-card').forEach(c=>c.classList.remove('tl-on'));el.classList.add('tl-on');}
+  buildVCards();
+}
+function filtVP(val,el){
+  s6_pri=val;
+  document.querySelectorAll('#vfPri .vf-btn').forEach(b=>b.classList.remove('vf-on'));el.classList.add('vf-on');
+  // Show/hide hold & excl sections
+  document.getElementById('vcollHold').style.display=(val==='hold'||val==='all')?'':'none';
+  document.getElementById('vcollExcl').style.display=(val==='excl'||val==='all')?'':'none';
+  buildVCards();
+}
+function filtVR(val,el){
+  s6_route=val;
+  document.querySelectorAll('#vfRoute .vf-btn').forEach(b=>b.classList.remove('vf-on'));el.classList.add('vf-on');
+  buildVCards();
+}
+function filtVS(){
+  s6_search=document.getElementById('vfSearch').value;
+  buildVCards();
+}
+function toggleVcoll(id){
+  const wrap=document.getElementById(id);
+  const h=wrap.querySelector('.vcoll-h');
+  const b=wrap.querySelector('.vcoll-body');
+  h.classList.toggle('vcoll-open');
+  b.classList.toggle('vcoll-show');
+}
+
+// Init S6 on first show
+const origShow=show;
+show=function(id){
+  origShow(id);
+  if(id==='s6'){buildVCards();buildHoldExcl();buildKPIs();}
+};
 </script>
 </body>
 </html>
