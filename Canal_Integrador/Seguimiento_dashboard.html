@@ -664,36 +664,34 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 /* ══════════════════════════════════ CONTADORES */
 .cnt{display:inline}
 
-/* ══════════════════════════════════ HERO DUAL KPI */
-.hero-dual{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;
-  width:100%;max-width:900px;margin-bottom:36px;
+/* ══════════════════════════════════ HERO KPI 3×2 */
+.hero-kpis{
+  width:100%;max-width:940px;margin-bottom:36px;
   background:var(--card);border-radius:16px;
-  box-shadow:var(--shadow-lg);overflow:hidden
+  box-shadow:var(--shadow-lg);padding:28px 30px 24px
 }
-.hero-domain{padding:24px 24px 20px}
-.hero-domain:first-child{border-right:1px solid var(--line)}
-.hd-label{
+.hk-row{margin-bottom:22px}
+.hk-row:last-child{margin-bottom:0}
+.hk-row-tag{
   display:flex;align-items:center;gap:6px;
   font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-  color:var(--or);margin-bottom:16px;padding-bottom:12px;
+  color:var(--or);margin-bottom:14px;padding-bottom:10px;
   border-bottom:1px solid var(--line)
 }
-.hero-domain:last-child .hd-label{color:var(--blue)}
-.hd-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.hero-domain .hk{
-  background:var(--bg);border-radius:10px;
-  padding:18px 14px 16px;text-align:center;border-bottom:none;
+.hk-row.hk-ven .hk-row-tag{color:var(--blue)}
+.hk-row-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.hk-row-cards .hk{
+  background:var(--bg);border-radius:12px;
+  padding:22px 16px 18px;text-align:center;border-bottom:none;
   box-shadow:none;border-top:3px solid var(--or);transition:transform .15s,box-shadow .15s
 }
-.hero-domain:last-child .hk{border-top-color:var(--blue)}
-.hero-domain .hk:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.07)}
-.hero-domain .hk .hk-num{font-size:38px;letter-spacing:-1.5px;line-height:1.1}
-.hero-domain .hk .hk-lbl{font-size:11px;font-weight:600;margin-top:6px}
-.hero-domain .hk .hk-line{display:none}
-.hero-domain .hk .hk-sub{font-size:10px;color:var(--ink3);margin-top:6px;line-height:1.4}
-.hero-domain-sep{display:none}
-@media(max-width:700px){.hero-dual{grid-template-columns:1fr}.hero-domain:first-child{border-right:none;border-bottom:1px solid var(--line)}}
+.hk-row.hk-ven .hk-row-cards .hk{border-top-color:var(--blue)}
+.hk-row-cards .hk:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.hk-row-cards .hk .hk-num{font-size:44px;letter-spacing:-1.5px;line-height:1.1}
+.hk-row-cards .hk .hk-lbl{font-size:12.5px;font-weight:600;margin-top:8px;color:var(--ink2)}
+.hk-row-cards .hk .hk-line{display:none}
+.hk-row-cards .hk .hk-sub{font-size:11px;color:var(--ink3);margin-top:6px;line-height:1.4}
+@media(max-width:640px){.hk-row-cards{grid-template-columns:1fr}}
 
 /* Funnel desglose inline */
 .fv-breakdown{
@@ -850,63 +848,55 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <h1>Proyecto <em>Canal Integrador</em><br>B2B SME</h1>
   <p class="hero-sub">Seguimiento semanal · Accenture &amp; MasOrange</p>
 
-  <!-- KPIs divididos en dos ámbitos -->
-  <div class="hero-dual">
+  <!-- KPIs 3×2 -->
+  <div class="hero-kpis">
 
-    <!-- CAPTACIÓN -->
-    <div class="hero-domain">
-      <div class="hd-label">
+    <!-- Fila 1: Captación -->
+    <div class="hk-row hk-cap">
+      <div class="hk-row-tag">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="currentColor"/></svg>
         Captación
       </div>
-      <div class="hd-kpis">
+      <div class="hk-row-cards">
         <div class="hk">
           <div class="hk-num c-or cnt" data-cnt="s0-captados" data-t="50">0</div>
           <div class="hk-lbl">Integradores captados</div>
-          <div class="hk-line hl-or"></div>
-          <div style="font-size:10px;color:var(--ink3);margin-top:3px">tras interés y reunión con Negocio</div>
+          <div class="hk-sub">tras interés y reunión con Negocio</div>
         </div>
         <div class="hk">
           <div class="hk-num c-gr cnt" data-cnt="s0-activados" data-t="21">0</div>
           <div class="hk-lbl">Integradores activados</div>
-          <div class="hk-line hl-gr"></div>
-          <div style="font-size:10px;color:var(--ink3);margin-top:3px"><span style="color:var(--green);font-weight:600">9 firmados</span> y 12 en proceso</div>
+          <div class="hk-sub"><span style="color:var(--green);font-weight:600">9 firmados</span> y 12 en proceso</div>
         </div>
         <div class="hk">
           <div class="hk-num c-am cnt" data-cnt="s0-alta" data-t="15">0</div>
           <div class="hk-lbl">Integradores productivos</div>
-          <div class="hk-line hl-am"></div>
-          <div style="font-size:10px;color:var(--ink3);margin-top:3px">generando oportunidades</div>
+          <div class="hk-sub">generando oportunidades</div>
         </div>
       </div>
     </div>
 
-    <div class="hero-domain-sep"></div>
-
-    <!-- VENTAS -->
-    <div class="hero-domain">
-      <div class="hd-label" style="color:var(--blue)">
+    <!-- Fila 2: Ventas -->
+    <div class="hk-row hk-ven">
+      <div class="hk-row-tag">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 9L6 3L10 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Ventas
       </div>
-      <div class="hd-kpis">
+      <div class="hk-row-cards">
         <div class="hk">
           <div class="hk-num c-bl cnt" data-cnt="s0-oportunidades" data-t="59">0</div>
           <div class="hk-lbl">Oportunidades identificadas</div>
-          <div class="hk-line hl-bl"></div>
-          <div style="font-size:10px;color:var(--ink3);margin-top:3px">en funnel activo de ventas</div>
+          <div class="hk-sub">en funnel activo de ventas</div>
         </div>
         <div class="hk">
           <div class="hk-num c-or cnt" data-cnt="s0-ofertas" data-t="19">0</div>
           <div class="hk-lbl">Ofertas presentadas</div>
-          <div class="hk-line hl-or"></div>
-          <div style="font-size:10px;color:var(--ink3);margin-top:3px"><span style="color:var(--green);font-weight:600">6 ventas</span>, 7 en curso y 6 KO</div>
+          <div class="hk-sub"><span style="color:var(--green);font-weight:600">6 ventas</span>, 7 en curso y 6 KO</div>
         </div>
         <div class="hk">
           <div class="hk-num c-gr cnt" data-cnt="s0-ventas" data-t="2000" data-prefix="+" data-suffix=" €">0</div>
           <div class="hk-lbl">Facturación recurrente</div>
-          <div class="hk-line hl-gr"></div>
-          <div style="font-size:10px;color:var(--ink3);margin-top:3px">MRR mensual acumulado</div>
+          <div class="hk-sub">MRR mensual acumulado</div>
         </div>
       </div>
     </div>
@@ -1775,6 +1765,7 @@ function show(id){
 }
 
 // ── Contadores animados
+function fmtES(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
 function countUp(el,target,dur=850){
   const start=performance.now();
   const pre=el.dataset.prefix||'';
@@ -1782,7 +1773,7 @@ function countUp(el,target,dur=850){
   (function step(now){
     const p=Math.min((now-start)/dur,1);
     const e=1-Math.pow(1-p,3);
-    el.textContent=pre+Math.round(target*e).toLocaleString('es-ES')+suf;
+    el.textContent=pre+fmtES(Math.round(target*e))+suf;
     if(p<1)requestAnimationFrame(step);
   })(performance.now());
 }
