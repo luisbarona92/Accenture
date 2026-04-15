@@ -912,7 +912,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="hnav-item" onclick="show('s2')">
       <div class="hnav-n">2</div>
-      <div class="hnav-t">Detalle de los 33 integradores captados</div>
+      <div class="hnav-t">Detalle de los 36 integradores captados y activos</div>
       <div class="hnav-arr">›</div>
     </div>
     <div class="hnav-item" onclick="show('s3')">
@@ -1220,14 +1220,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s2" class="sec">
   <div class="sh">
     <span class="sh-slide">Slide 4</span>
-    <h2 class="sh-title">Detalle de los 33 integradores captados</h2>
+    <h2 class="sh-title">Detalle de los 36 integradores captados y activos</h2>
   </div>
 
   <!-- Toolbar filtros -->
   <div class="int-toolbar">
     <input class="int-search" id="intSearch" type="text" placeholder="Buscar integrador..." oninput="searchInt()">
-    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(<span data-cnt="s2-total">33</span>)</span></button>
-    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (<span data-cnt="s2-verde">10</span>)</button>
+    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(<span data-cnt="s2-total">36</span>)</span></button>
+    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (<span data-cnt="s2-verde">13</span>)</button>
     <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (<span data-cnt="s2-posible">17</span>)</button>
     <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (<span data-cnt="s2-hold">6</span>)</button>
   </div>
@@ -1246,12 +1246,12 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </thead>
     <tbody>
 
-      <!-- ══════ VERDE · Leads compartidos, alta participación (10) ══════ -->
+      <!-- ══════ VERDE · Leads compartidos, alta participación (13) ══════ -->
       <tr class="grp-sep" data-gh="verde">
         <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--green-bg);border-top:2px solid rgba(5,150,105,.2);border-bottom:1px solid rgba(5,150,105,.15);display:flex;align-items:center;gap:8px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--green)">Leads compartidos · alta participación</span>
-          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">10 integradores</span>
+          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">13 integradores</span>
         </div></td>
       </tr>
       <tr class="grp-gap" data-gh="verde"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
@@ -1259,55 +1259,58 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <tr data-g="verde" data-n="covernet">      <td><div class="int-name">Covernet</div></td>      <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Incidencias graves con Arexpres SL por cambios de titularidad.</td></tr>
       <tr data-g="verde" data-n="cobitratel">    <td><div class="int-name">Cobitratel</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.</td></tr>
       <tr data-g="verde" data-n="paper labs">    <td><div class="int-name">Paper Labs</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 lead interesante compartido, no conseguido el contacto con cliente.</td></tr>
-      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta pendiente. Hold hasta semana que viene.</td></tr>
-      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Bastante activo. 2 ofertas presentadas.</td></tr>
-      <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Peticiones menores. Leads pendiente.</td></tr>
-      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 30.04 por reestructuración interna – Contrato firmado enviado.</td></tr>
-      <tr data-g="verde" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente 1 lead. Buscando socio con integrador.</td></tr>
-      <tr data-g="verde" data-n="infornet">      <td><div class="int-name">Infornet</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Modelo de colaboración para ver si consiguen trabajar juntos.</td></tr>
+      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 visita pendiente. Hold hasta semana que viene.</td></tr>
+      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">2 ofertas presentadas y ajustadas con indicaciones de clientes.</td></tr>
+      <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Peticiones menores. Leads grandes pendientes.</td></tr>
+      <tr data-g="verde" data-n="dataqu">        <td><div class="int-name">DataQu</div></td>        <td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente 2 leads potenciales. Buscando sesión con integrador.</td></tr>
+      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta en curso.</td></tr>
+      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta en curso (servicios propios) y 1 lead frío.</td></tr>
+      <tr data-g="verde" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Campaña sin resultados esperados.</td></tr>
+      <tr data-g="verde" data-n="gnuo">          <td><div class="int-name">GNUO</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente identificación de leads.</td></tr>
+      <tr data-g="verde" data-n="audinfor">      <td><div class="int-name">Audinfor</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Han identificado 4/5 leads potenciales, pendiente recepción. Sin noticias.</td></tr>
 
-      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (15) ══════ -->
+      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (17) ══════ -->
       <tr class="grp-sep" data-gh="posible">
         <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--amber-bg);border-top:2px solid rgba(217,119,6,.2);border-bottom:1px solid rgba(217,119,6,.15);display:flex;align-items:center;gap:8px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--amber)">Posibles leads · aún no recibidos · participación moderada</span>
-          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">18 integradores</span>
+          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">17 integradores</span>
         </div></td>
       </tr>
       <tr class="grp-gap" data-gh="posible"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
-      <tr data-g="posible" data-n="dataqu">          <td><div class="int-name">Dataqu</div></td>          <td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Lead marzo KO. Pendiente webinar en abril.</td></tr>
-      <tr data-g="posible" data-n="elpis informatica"> <td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Tiene listado de leads preparado, contactando esta semana.</td></tr>
-      <tr data-g="posible" data-n="gnuo">              <td><div class="int-name">GNUO</div></td>              <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Pendiente identificación de leads.</td></tr>
-      <tr data-g="posible" data-n="audinfor">          <td><div class="int-name">Audinfor</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Han identificado 4/5 leads potenciales, pendiente recepción. Sin noticias.</td></tr>
-      <tr data-g="posible" data-n="mariskalnet">       <td><div class="int-name">Mariskalnet</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Varios leads en ruta. Confirmarse con cliente.</td></tr>
+      <tr data-g="posible" data-n="mariskalnet">       <td><div class="int-name">Mariskalnet</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Varios leads sin éxito. Continúa con contactos activamente.</td></tr>
       <tr data-g="posible" data-n="amiritmo">          <td><div class="int-name">Amiritmo</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Potencial lead grande para abril. Recontactando para activación.</td></tr>
       <tr data-g="posible" data-n="microsip">          <td><div class="int-name">Micro Sip</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Reunión con BD realizada. Pendiente que Víctor organice sesión con BD.</td></tr>
       <tr data-g="posible" data-n="durnia">            <td><div class="int-name">Durnia</div></td>            <td><span class="mod-tag mt-lg">Partner Aut.</span></td><td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Analizando el modelo de colaboración.</td></tr>
       <tr data-g="posible" data-n="binfor soluciones"> <td><div class="int-name">Binfor Sol.</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Contrato pendiente de envío. Sin respuesta a seguimientos.</td></tr>
       <tr data-g="posible" data-n="dosys">             <td><div class="int-name">Dosys</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Solicitó precios de productos y estamos a la espera de leads (frío).</td></tr>
       <tr data-g="posible" data-n="sur computers">     <td><div class="int-name">Sur Computers</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 15-abril por carga de trabajo.</td></tr>
-      <tr data-g="posible" data-n="aideea">            <td><div class="int-name">Aideea</div></td>            <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 30.04 con nuevos intentos y posible lead.</td></tr>
+      <tr data-g="posible" data-n="aideea">            <td><div class="int-name">Aideea</div></td>            <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Contrato firmado compartido y posible lead.</td></tr>
       <tr data-g="posible" data-n="lisot">             <td><div class="int-name">Lisot</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Potencial lead identificado, pendiente integrador.</td></tr>
-      <tr data-g="posible" data-n="sictemas">          <td><div class="int-name">Sictemas</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 30.04 por reestructuración interna – Contrato firmado enviado.</td></tr>
+      <tr data-g="posible" data-n="inforware">         <td><div class="int-name">Inforware</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">En revisión del modelo para ver si comenzamos a trabajar juntos.</td></tr>
+      <tr data-g="posible" data-n="sictemas">          <td><div class="int-name">Sictemas</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 15.04 por reestructuración interna – Contrato firmado enviado.</td></tr>
       <tr data-g="posible" data-n="solventus software"><td><div class="int-name">Solventus Soft.</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Pendiente otra sesión con Negocio solicitada por integrador.</td></tr>
-      <tr data-g="hold" data-n="naimitech">        <td><div class="int-name">NaimiTech</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
+      <tr data-g="posible" data-n="infornet">          <td><div class="int-name">Infornet</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Lead de ampliaciones de cliente Orange. Sin comisión, genera cercanía.</td></tr>
       <tr data-g="posible" data-n="ache informatica">  <td><div class="int-name">Ache Infor.</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
       <tr data-g="posible" data-n="omnia soluciones">  <td><div class="int-name">Omnia Sol.</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
+      <tr data-g="posible" data-n="gi pensiones">      <td><div class="int-name">G.I. Pensiones</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
+      <tr data-g="posible" data-n="pruggit">           <td><div class="int-name">Pruggit</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
 
-      <!-- ══════ GRIS · Hold (5) ══════ -->
+      <!-- ══════ GRIS · Hold (6) ══════ -->
       <tr class="grp-sep" data-gh="hold">
         <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:#F3F4F6;border-top:2px solid rgba(107,114,128,.2);border-bottom:1px solid rgba(107,114,128,.15);display:flex;align-items:center;gap:8px">
           <span style="width:8px;height:8px;border-radius:50%;background:#9CA3AF;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6B7280">Hold</span>
-          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">5 integradores</span>
+          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">6 integradores</span>
         </div></td>
       </tr>
       <tr class="grp-gap" data-gh="hold"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
       <tr data-g="hold" data-n="redem">         <td><div class="int-name">Redem</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta reunión con Negocio.</td></tr>
       <tr data-g="hold" data-n="digital hm">    <td><div class="int-name">Digital HM</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">No es su prioridad, pero hay que mantener momentum.</td></tr>
       <tr data-g="hold" data-n="dirbapont">     <td><div class="int-name">Dirbapont</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo (Kits venciendo este mes).</td></tr>
-      <tr data-g="hold" data-n="fedesoft">      <td><div class="int-name">Fedesoft</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
+      <tr data-g="hold" data-n="fedesoft">      <td><div class="int-name">Fedesoft</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta abril por problemas personales.</td></tr>
       <tr data-g="hold" data-n="brain hardware"><td><div class="int-name">Brain Hardware</div></td> <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo.</td></tr>
+      <tr data-g="hold" data-n="naimitech">     <td><div class="int-name">NaimiTech</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
 
     </tbody>
   </table>
