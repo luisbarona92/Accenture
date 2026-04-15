@@ -551,8 +551,19 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .vkpi-tgt{font-size:18px;font-weight:700;color:var(--or)}
 .vkpi-track{height:6px;background:var(--bg);border-radius:99px;overflow:hidden}
 .vkpi-fill{height:100%;border-radius:99px;background:var(--or);transition:width .6s ease}
-@media(max-width:900px){.tl-grid{grid-template-columns:repeat(2,1fr)}.vcards{grid-template-columns:1fr}}
-@media(max-width:600px){.tl-grid{grid-template-columns:1fr}.vf-search{width:100%}}
+.jrn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:12px}
+.jrn-card{background:var(--card);border-radius:8px;padding:10px 12px;border:1px solid var(--line);cursor:pointer;transition:box-shadow .15s,border-color .15s}
+.jrn-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.07)}
+.jrn-card.jrn-on{border-color:var(--or);box-shadow:0 2px 10px rgba(245,124,0,.18);background:#FFF7ED}
+.jrn-head{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.jrn-num{font-size:10px;font-weight:800;color:#fff;background:var(--ink3);border-radius:4px;padding:1px 5px;letter-spacing:.3px}
+.jrn-card.jrn-on .jrn-num{background:var(--or)}
+.jrn-name{font-size:13px;font-weight:700;color:var(--ink1)}
+.jrn-transport{font-size:11px;color:var(--ink3);margin-bottom:3px}
+.jrn-names{font-size:11px;color:var(--ink2);line-height:1.4}
+.jrn-logistics{background:#FFF8E1;border-left:4px solid #FFB300;padding:10px 14px;border-radius:0 8px 8px 0;font-size:12px;margin-bottom:14px;color:var(--ink1);line-height:1.6}
+@media(max-width:900px){.jrn-grid{grid-template-columns:repeat(3,1fr)}.vcards{grid-template-columns:1fr}}
+@media(max-width:600px){.jrn-grid{grid-template-columns:repeat(2,1fr)}.vf-search{width:100%}}
 
 /* EOP cards */
 .eop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
@@ -1630,7 +1641,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="kcard k-or">
       <div class="k-lbl">A visitar</div>
       <div class="k-num">25</div>
-      <div class="k-sub">En 8 rutas desde Madrid</div>
+      <div class="k-sub">integradores en 15 jornadas</div>
     </div>
     <div class="kcard k-rd">
       <div class="k-lbl">Prioridad alta</div>
@@ -1643,43 +1654,16 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <div class="k-sub">No visitar ahora</div>
     </div>
     <div class="kcard k-bl">
-      <div class="k-lbl">Rutas</div>
-      <div class="k-num">8</div>
-      <div class="k-sub">Ida y vuelta desde Madrid</div>
-    </div>
-    <div class="kcard k-gr">
-      <div class="k-lbl">Dias estimados</div>
+      <div class="k-lbl">Jornadas</div>
       <div class="k-num">15</div>
-      <div class="k-sub">Jornadas diarias Abr-May 2026</div>
+      <div class="k-sub">Todas ida y vuelta desde Madrid</div>
     </div>
   </div>
 
-  <!-- Timeline semanal -->
+  <!-- Jornadas grid (generado por JS) -->
   <div class="card" style="margin-bottom:18px">
-    <div class="card-h"><span class="card-title">Timeline semanal</span><span class="card-sub">Click en una semana para filtrar</span></div>
-    <div class="tl-grid" id="tlGrid">
-      <div class="tl-card tl-on" data-tl="1" onclick="filtTL(1,this)" style="border-top:3px solid #F57C00">
-        <span class="tl-badge">ACTUAL</span>
-        <div class="tl-week">Semana 14-18 abril</div>
-        <div class="tl-dest">Madrid + Valladolid</div>
-        <div class="tl-meta"><span><b>5</b> visitas</span><span><b>3</b> dias</span><span>Ruta 1</span></div>
-      </div>
-      <div class="tl-card" data-tl="2" onclick="filtTL(2,this)" style="border-top:3px solid #1976D2">
-        <div class="tl-week">Semana 21-25 abril</div>
-        <div class="tl-dest">Zaragoza + Extremadura</div>
-        <div class="tl-meta"><span><b>4</b> visitas</span><span><b>3</b> dias</span><span>Rutas 2, 5</span></div>
-      </div>
-      <div class="tl-card" data-tl="3" onclick="filtTL(3,this)" style="border-top:3px solid #388E3C">
-        <div class="tl-week">Semana 28 abr - 2 may</div>
-        <div class="tl-dest">Pais Vasco + Cantabria + Cataluna</div>
-        <div class="tl-meta"><span><b>8</b> visitas</span><span><b>4</b> dias</span><span>Rutas 3, 4</span></div>
-      </div>
-      <div class="tl-card" data-tl="4" onclick="filtTL(4,this)" style="border-top:3px solid #00796B">
-        <div class="tl-week">Semana 5-9 mayo</div>
-        <div class="tl-dest">Galicia + Andalucia + Levante</div>
-        <div class="tl-meta"><span><b>8</b> visitas</span><span><b>5</b> dias</span><span>Rutas 6, 7, 8</span></div>
-      </div>
-    </div>
+    <div class="card-h"><span class="card-title">15 jornadas de visitas</span><span class="card-sub">Cada jornada es ida y vuelta desde Madrid &middot; Click para filtrar</span></div>
+    <div class="jrn-grid" id="jrnGrid"></div>
   </div>
 
   <!-- Filtros -->
@@ -1692,20 +1676,6 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <button class="vf-btn" onclick="filtVP('media',this)">Media (13)</button>
         <button class="vf-btn" onclick="filtVP('hold',this)">Hold (5)</button>
         <button class="vf-btn" onclick="filtVP('excl',this)">Excluidos (6)</button>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px">
-      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Ruta:</span>
-      <div class="vf-row" id="vfRoute">
-        <button class="vf-btn vf-on" onclick="filtVR('all',this)">Todas</button>
-        <button class="vf-btn" onclick="filtVR(1,this)" style="border-left:3px solid #F57C00">R1 Madrid+VLL</button>
-        <button class="vf-btn" onclick="filtVR(2,this)" style="border-left:3px solid #1976D2">R2 Zaragoza</button>
-        <button class="vf-btn" onclick="filtVR(3,this)" style="border-left:3px solid #388E3C">R3 P. Vasco</button>
-        <button class="vf-btn" onclick="filtVR(4,this)" style="border-left:3px solid #7B1FA2">R4 Cataluna</button>
-        <button class="vf-btn" onclick="filtVR(5,this)" style="border-left:3px solid #795548">R5 Extremadura</button>
-        <button class="vf-btn" onclick="filtVR(6,this)" style="border-left:3px solid #00796B">R6 Galicia</button>
-        <button class="vf-btn" onclick="filtVR(7,this)" style="border-left:3px solid #C62828">R7 Andalucia</button>
-        <button class="vf-btn" onclick="filtVR(8,this)" style="border-left:3px solid #0288D1">R8 Levante</button>
       </div>
     </div>
     <div style="margin-top:10px">
@@ -3445,54 +3415,63 @@ function doLogin() {
 // S6 · PLAN VISITAS — Data + Logic
 // ══════════════════════════════════════════════════════
 
-const visitPlanData={summary:{totalIntegrators:36,toVisit:25,excluded:6,onHold:5,highPriority:12,routes:8,estimatedDays:15,weeks:4},
-timeline:[
-{week:"Semana 14-18 abril",label:"Esta semana",routes:[1],destinations:"Madrid + Valladolid",visits:5,days:3,highlight:true},
-{week:"Semana 21-25 abril",label:"Semana 2",routes:[2,5],destinations:"Zaragoza + Extremadura",visits:4,days:3},
-{week:"Semana 28 abr - 2 may",label:"Semana 3",routes:[3,4],destinations:"Pais Vasco + Cantabria + Cataluna",visits:8,days:4},
-{week:"Semana 5-9 mayo",label:"Semana 4",routes:[6,7,8],destinations:"Galicia + Andalucia + Levante",visits:8,days:5}
-],
+const visitPlanData={summary:{totalIntegrators:36,toVisit:25,excluded:6,onHold:5,highPriority:12,jornadas:15},
+timeline:[],
 routes:[
-{id:1,name:"Madrid + Valladolid",zone:"Madrid / Castilla y Leon",week:"14-18 abril",transport:"Coche ida/vuelta (Madrid) \u00b7 AVE ida/vuelta Madrid-Valladolid 1h (Medina del Campo)",travelTime:"3 jornadas diarias, vuelta a casa cada noche",days:3,color:"#F57C00",integrators:[
-{name:"Cobitratel",city:"Azuqueca de Henares",province:"Guadalajara",address:"C/ La Victoria, 4",statusDot:"green",priority:"alta",tags:["756\u20AC/mes cerrados","Contrato pendiente pago"],observation:"1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.",action:"Cerrar contrato de pago. Revisar cartera para nuevos leads.",suggestedDay:"Martes 15 abril",suggestedTime:"10:00"},
-{name:"Binfor Solutions",city:"Alcorcon",province:"Madrid",address:"C/ Sapporo, 2, local",statusDot:"green",priority:"alta",tags:["Sin respuesta","Contrato pendiente"],observation:"Contrato pendiente de envio. Sin respuesta a seguimientos.",action:"Desbloquear firma contrato in situ. Ultimo intento presencial.",suggestedDay:"Martes 15 abril",suggestedTime:"13:00"},
-{name:"OX-ONE Networks",city:"Pozuelo de Alarcon",province:"Madrid",address:"C/ Mimosas, 15",statusDot:"green",priority:"media",tags:["Reactivar esta semana"],observation:"1 visita pendiente. Hold hasta semana que viene.",action:"Su hold termina esta semana. Activar, revisar cartera, primeros leads.",suggestedDay:"Jueves 17 abril",suggestedTime:"10:00"},
-{name:"Next Mobility",city:"Las Rozas de Madrid",province:"Madrid",address:"C/ Comunidad de Madrid, 41, local 110",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo y pedir leads.",suggestedDay:"Jueves 17 abril",suggestedTime:"13:00"},
-{name:"Mariskalnet Informatica",city:"Medina del Campo",province:"Valladolid",address:"C/ Ribera del Zapardiel, 16",statusDot:"green",priority:"media",tags:["Leads sin exito","Retomando activamente"],observation:"Varios leads sin exito pero continua con contactos activamente. Requiere revision de estrategia.",action:"AVE a Valladolid + coche alquiler. Revisar que fallo en leads anteriores. Planificar nuevos contactos juntos con enfoque distinto.",suggestedDay:"Miercoles 16 abril",suggestedTime:"10:00"}
+{id:1,name:"Madrid Este",zone:"Madrid",transport:"\ud83d\ude97 Coche ida/vuelta",logistics:"Salir de Madrid a Azuqueca de Henares (~45 min NE), visita Cobitratel. Cruzar a Alcorcon (~1h15), visita Binfor. Vuelta a casa por la tarde.",days:1,color:"#F57C00",integrators:[
+{name:"Cobitratel",city:"Azuqueca de Henares",province:"Guadalajara",address:"C/ La Victoria, 4",statusDot:"green",priority:"alta",tags:["756\u20ac/mes cerrados","Contrato pendiente pago"],observation:"1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.",action:"Cerrar contrato de pago. Revisar cartera para nuevos leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Binfor Solutions",city:"Alcorcon",province:"Madrid",address:"C/ Sapporo, 2, local",statusDot:"green",priority:"alta",tags:["Sin respuesta","Contrato pendiente"],observation:"Contrato pendiente de envio. Sin respuesta a seguimientos.",action:"Desbloquear firma contrato in situ. Ultimo intento presencial.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]},
-{id:2,name:"Zaragoza",zone:"Aragon",week:"21-25 abril",transport:"AVE Madrid-Zaragoza ida/vuelta en el dia (1h20/trayecto)",travelTime:"2h40 AVE total + taxi local",days:1,color:"#1976D2",integrators:[
-{name:"Audinfor",city:"Zaragoza",province:"Zaragoza",address:"C/ Marcelino Alvarez, 84",statusDot:"green",priority:"alta",tags:["4-5 leads identificados","Sin noticias"],observation:"Han identificado 4/5 leads potenciales, pendiente recepcion. Sin noticias.",action:"PRIORIDAD MAXIMA. Tienen leads listos pero no dan noticias. Visita para cerrar firma y activar los 4-5 leads.",suggestedDay:"Lunes 21 abril",suggestedTime:"10:00"},
-{name:"Digital Hand Made",city:"Zaragoza",province:"Zaragoza",address:"C/ Acacias, 9, local",statusDot:"yellow",priority:"media",tags:["Baja prioridad interna"],observation:"No es su prioridad, pero hay que mantener momentum.",action:"Mantener relacion. Aprovechar viaje a Zaragoza para reunion presencial y empujar activacion.",suggestedDay:"Lunes 21 abril",suggestedTime:"13:00"}
+{id:2,name:"Madrid Oeste",zone:"Madrid",transport:"\ud83d\ude97 Coche ida/vuelta",logistics:"Pozuelo y Las Rozas a 15 min entre si, zona noroeste de Madrid. Media jornada, vuelta a casa a mediod\u00eda.",days:1,color:"#F57C00",integrators:[
+{name:"OX-ONE Networks",city:"Pozuelo de Alarcon",province:"Madrid",address:"C/ Mimosas, 15",statusDot:"green",priority:"media",tags:["Reactivar esta semana"],observation:"1 visita pendiente. Hold hasta semana que viene.",action:"Su hold termina esta semana. Activar, revisar cartera, primeros leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Next Mobility",city:"Las Rozas de Madrid",province:"Madrid",address:"C/ Comunidad de Madrid, 41, local 110",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo y pedir leads.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]},
-{id:3,name:"Pais Vasco + Cantabria",zone:"Norte",week:"28 abr - 2 may",transport:"Vuelo Madrid-Bilbao ida/vuelta + coche alquiler (devolver aeropuerto)",travelTime:"2 jornadas diarias \u00b7 1h vuelo/trayecto \u00b7 vuelta cada noche",days:2,color:"#388E3C",integrators:[
-{name:"DuoIT",city:"Bilbao",province:"Bizkaia",address:"Maria Diaz de Haro, 10 BIS, 2a planta",statusDot:"green",priority:"alta",tags:["2 ofertas presentadas"],observation:"2 ofertas presentadas y ajustadas con indicaciones de clientes.",action:"Cerrar las 2 ofertas. Pedir nuevos leads.",suggestedDay:"Lunes 28 abril",suggestedTime:"10:00"},
-{name:"DOSYS",city:"Donostia-San Sebastian",province:"Gipuzkoa",address:"C/ Santa Barbara, 21, 3o A",statusDot:"green",priority:"media",tags:["Frio"],observation:"Solicito precios de productos y estamos a la espera de leads (frio).",action:"Reactivar interes. Explicar modelo en persona.",suggestedDay:"Lunes 28 abril",suggestedTime:"16:00"},
-{name:"Ache Informatica",city:"Santander",province:"Cantabria",address:"C/ Colombia, 2, local",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes, descartar.",suggestedDay:"Martes 29 abril",suggestedTime:"10:00"},
-{name:"DurnIA",city:"Santander",province:"Cantabria",address:"C/ Lirio, 13, Chalet G",statusDot:"green",priority:"media",tags:["Evaluando modelo"],observation:"Analizando el modelo de colaboracion.",action:"Explicar modelo presencialmente. Conseguir compromiso inicial.",suggestedDay:"Martes 29 abril",suggestedTime:"12:00"}
+{id:3,name:"Valladolid",zone:"Castilla y Leon",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Valladolid (1h) + coche alquiler",logistics:"AVE primera hora a Valladolid, recoger coche, conducir a Medina del Campo (~45 min). Visita Mariskalnet. Devolver coche, AVE vuelta a Madrid por la tarde.",days:1,color:"#F57C00",integrators:[
+{name:"Mariskalnet Informatica",city:"Medina del Campo",province:"Valladolid",address:"C/ Ribera del Zapardiel, 16",statusDot:"green",priority:"media",tags:["Leads sin exito","Retomando activamente"],observation:"Varios leads sin exito pero continua con contactos activamente. Requiere revision de estrategia.",action:"Revisar que fallo en leads anteriores. Planificar nuevos contactos juntos con enfoque distinto.",orden:"\u00danica visita"}
 ]},
-{id:4,name:"Cataluna",zone:"Cataluna",week:"28 abr - 2 may",transport:"AVE Madrid-Barcelona/Tarragona ida/vuelta + coche alquiler (devolver estacion)",travelTime:"2 jornadas diarias \u00b7 2h30 AVE/trayecto \u00b7 vuelta cada noche",days:2,color:"#7B1FA2",integrators:[
-{name:"Elpis Informatica",city:"Tarragona",province:"Tarragona",address:"C/ del Ferro, parcela 61, nave 22",statusDot:"green",priority:"alta",tags:["1 oferta en curso"],observation:"1 oferta en curso.",action:"Cerrar oferta activa. Activar listado de leads que tenian preparado.",suggestedDay:"Jueves 1 mayo",suggestedTime:"10:00"},
-{name:"Amiritmo",city:"Cervello",province:"Barcelona",address:"C/ Muntanya, 84, Urb. Can Guitart Vell",statusDot:"green",priority:"alta",tags:["Lead grande abril"],observation:"Potencial lead grande para abril. Recontactando para activacion.",action:"Activar el lead grande. Revisar cartera completa.",suggestedDay:"Miercoles 30 abril",suggestedTime:"10:00"},
-{name:"Lisot",city:"Barcelona",province:"Barcelona",address:"C/ Casp, 118",statusDot:"yellow",priority:"media",tags:["Lead identificado"],observation:"Potencial lead identificado, pendiente integrador.",action:"Activar lead identificado. Primer contacto presencial.",suggestedDay:"Miercoles 30 abril",suggestedTime:"13:00"},
-{name:"Ocvistas",city:"Barcelona",province:"Barcelona",address:"Av. de Roma, 155",statusDot:"green",priority:"media",tags:["Leads grandes pendientes"],observation:"Peticiones menores. Leads grandes pendientes.",action:"Empujar leads grandes. Entender que bloquea.",suggestedDay:"Miercoles 30 abril",suggestedTime:"16:00"}
+{id:4,name:"Zaragoza",zone:"Aragon",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Zaragoza (1h20/trayecto)",logistics:"AVE primera hora a Zaragoza Delicias, taxi entre visitas. Audinfor ma\u00f1ana, DHM mediod\u00eda. AVE vuelta a Madrid por la tarde.",days:1,color:"#1976D2",integrators:[
+{name:"Audinfor",city:"Zaragoza",province:"Zaragoza",address:"C/ Marcelino Alvarez, 84",statusDot:"green",priority:"alta",tags:["4-5 leads identificados","Sin noticias"],observation:"Han identificado 4/5 leads potenciales, pendiente recepcion. Sin noticias.",action:"PRIORIDAD MAXIMA. Tienen leads listos pero no dan noticias. Visita para cerrar firma y activar los 4-5 leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Digital Hand Made",city:"Zaragoza",province:"Zaragoza",address:"C/ Acacias, 9, local",statusDot:"yellow",priority:"media",tags:["Baja prioridad interna"],observation:"No es su prioridad, pero hay que mantener momentum.",action:"Mantener relacion. Aprovechar viaje a Zaragoza para reunion presencial y empujar activacion.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]},
-{id:5,name:"Extremadura",zone:"Extremadura",week:"21-25 abril",transport:"Coche ida/vuelta desde Madrid cada dia (Navalmoral ~2h, Badajoz ~4h por trayecto)",travelTime:"2 jornadas separadas \u00b7 vuelta a Madrid cada noche",days:2,color:"#795548",integrators:[
-{name:"Micro Sip",city:"Navalmoral de la Mata",province:"Caceres",address:"C/ Gabriel y Galan, 2",statusDot:"green",priority:"media",tags:["Reunion BD realizada"],observation:"Reunion con BD realizada. Pendiente que Victor organice sesion con BD.",action:"Desbloquear sesion con BD. Activar modelo.",suggestedDay:"Martes 22 abril",suggestedTime:"10:00"},
-{name:"GNUO Consultores",city:"Badajoz",province:"Badajoz",address:"PCTEX, Av. Investigacion s/n, despacho B24",statusDot:"green",priority:"media",tags:["Pendiente identificar leads"],observation:"Pendiente identificacion de leads.",action:"Activar en persona. Revisar cartera juntos. Identificar primeros leads.",suggestedDay:"Miercoles 23 abril",suggestedTime:"11:00"}
+{id:5,name:"Navalmoral de la Mata",zone:"Extremadura",transport:"\ud83d\ude97 Coche ida/vuelta desde Madrid (~2h/trayecto)",logistics:"Salir temprano de Madrid (~7:30), llegar a Navalmoral ~9:30, visita Micro Sip. Vuelta a Madrid despu\u00e9s de comer. Media jornada de conducci\u00f3n.",days:1,color:"#795548",integrators:[
+{name:"Micro Sip",city:"Navalmoral de la Mata",province:"Caceres",address:"C/ Gabriel y Galan, 2",statusDot:"green",priority:"media",tags:["Reunion BD realizada"],observation:"Reunion con BD realizada. Pendiente que Victor organice sesion con BD.",action:"Desbloquear sesion con BD. Activar modelo.",orden:"\u00danica visita"}
 ]},
-{id:6,name:"Galicia",zone:"Galicia",week:"5-9 mayo",transport:"Vuelo Madrid-Santiago ida/vuelta en el dia (1h/trayecto) + coche alquiler",travelTime:"2h vuelo total + coche alquiler Santiago",days:1,color:"#00796B",integrators:[
-{name:"Paperlabs",city:"Santiago de Compostela",province:"A Coruna",address:"Monte Gaias s/n, Cidade da Cultura",statusDot:"green",priority:"alta",tags:["Lead compartido","Desbloquear contacto"],observation:"1 lead interesante compartido, no conseguido el contacto con cliente.",action:"Desbloquear acceso al cliente final. Planificar nuevos leads.",suggestedDay:"Lunes 5 mayo",suggestedTime:"11:00"}
+{id:6,name:"Badajoz",zone:"Extremadura",transport:"\ud83d\ude97 Coche ida/vuelta desde Madrid (~4h/trayecto) \u26a0\ufe0f Jornada larga",logistics:"Salir muy temprano (~6:30), llegar a Badajoz ~10:30. Visita GNUO en PCTEX. Vuelta a Madrid por la tarde (~4h). D\u00eda largo pero evitamos pernoctar.",days:1,color:"#795548",integrators:[
+{name:"GNUO Consultores",city:"Badajoz",province:"Badajoz",address:"PCTEX, Av. Investigacion s/n, despacho B24",statusDot:"green",priority:"media",tags:["Pendiente identificar leads"],observation:"Pendiente identificacion de leads.",action:"Activar en persona. Revisar cartera juntos. Identificar primeros leads.",orden:"\u00danica visita"}
 ]},
-{id:7,name:"Andalucia",zone:"Andalucia",week:"5-9 mayo",transport:"AVE Madrid-Sevilla/Malaga ida/vuelta cada dia + coche alquiler",travelTime:"2 jornadas diarias \u00b7 2h30 AVE/trayecto \u00b7 vuelta cada noche",days:2,color:"#C62828",integrators:[
-{name:"Omnia Soluciones",city:"Sevilla",province:"Sevilla",address:"Av. Alcalde Luis Urunuela, 6, oficina 120",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes real, descartar.",suggestedDay:"Martes 6 mayo",suggestedTime:"10:00"},
-{name:"A4I",city:"El Puerto de Santa Maria",province:"Cadiz",address:"Pol. Industrial El Palmar, C/ Sederia, 19",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",suggestedDay:"Martes 6 mayo",suggestedTime:"16:00"},
-{name:"Sictemas",city:"Malaga",province:"Malaga",address:"C/ Estado, 24",statusDot:"yellow",priority:"alta",tags:["Reactivar 15-abril","Contrato firmado"],observation:"Hold hasta 15-abril por reestructuracion interna. Contrato firmado enviado.",action:"Su hold termino el 15 de abril. Contrato ya firmado. Reactivar y arrancar.",suggestedDay:"Miercoles 7 mayo",suggestedTime:"10:00"},
-{name:"Sur Computers",city:"Mijas Costa",province:"Malaga",address:"C/ Albahaca, 6",statusDot:"yellow",priority:"media",tags:["Reactivar 15-abril"],observation:"Hold hasta 15-abril por carga de trabajo.",action:"Su hold termino el 15 de abril. Reactivar.",suggestedDay:"Miercoles 7 mayo",suggestedTime:"13:00"}
+{id:7,name:"Bilbao + Donostia",zone:"Pais Vasco",transport:"\u2708\ufe0f Vuelo ida/vuelta Madrid\u2013Bilbao (1h) + coche alquiler",logistics:"Vuelo primera hora a Bilbao (Loiu), recoger coche. Visita DuoIT en Bilbao ma\u00f1ana. Conducir a Donostia (~1h15), visita DOSYS tarde. Volver a Bilbao, devolver coche, vuelo \u00faltimo a Madrid.",days:1,color:"#388E3C",integrators:[
+{name:"DuoIT",city:"Bilbao",province:"Bizkaia",address:"Maria Diaz de Haro, 10 BIS, 2a planta",statusDot:"green",priority:"alta",tags:["2 ofertas presentadas"],observation:"2 ofertas presentadas y ajustadas con indicaciones de clientes.",action:"Cerrar las 2 ofertas. Pedir nuevos leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"DOSYS",city:"Donostia-San Sebastian",province:"Gipuzkoa",address:"C/ Santa Barbara, 21, 3o A",statusDot:"green",priority:"media",tags:["Frio"],observation:"Solicito precios de productos y estamos a la espera de leads (frio).",action:"Reactivar interes. Explicar modelo en persona.",orden:"2\u00aa visita (tarde)"}
 ]},
-{id:8,name:"Levante",zone:"C. Valenciana + Murcia",week:"5-9 mayo",transport:"AVE Madrid-Valencia/Alicante ida/vuelta cada dia + coche alquiler",travelTime:"2 jornadas diarias \u00b7 1h40-2h15 AVE/trayecto \u00b7 vuelta cada noche",days:2,color:"#0288D1",integrators:[
-{name:"DataQu",city:"Valencia",province:"Valencia",address:"Valencia (direccion pendiente confirmar)",statusDot:"green",priority:"alta",tags:["2 leads potenciales","Buscando sesion"],observation:"Pendiente 2 leads potenciales. Buscando sesion con integrador.",action:"Hacer la sesion en persona. Activar los 2 leads directamente.",suggestedDay:"Jueves 8 mayo",suggestedTime:"10:00"},
-{name:"Solventus Software",city:"Alicante",province:"Alicante",address:"Av. Oviedo, 10, D11",statusDot:"yellow",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",suggestedDay:"Viernes 9 mayo",suggestedTime:"10:00"},
-{name:"Sisytec",city:"Espinardo (Murcia)",province:"Murcia",address:"C/ Central, 10, 7a planta",statusDot:"green",priority:"alta",tags:["Oferta en curso","1 lead frio"],observation:"1 oferta en curso (servicios propios) y 1 lead frio.",action:"Cerrar oferta activa. Reactivar lead frio. Pedir mas.",suggestedDay:"Viernes 9 mayo",suggestedTime:"14:00"}
+{id:8,name:"Santander",zone:"Cantabria",transport:"\u2708\ufe0f Vuelo ida/vuelta Madrid\u2013Bilbao (1h) + coche alquiler a Santander (1h15)",logistics:"Vuelo primera hora a Bilbao (Loiu), recoger coche, conducir a Santander (~1h15). Visitar Ache y DurnIA (ambos en Santander). Vuelta a Bilbao, devolver coche, vuelo \u00faltimo a Madrid.",days:1,color:"#388E3C",integrators:[
+{name:"Ache Informatica",city:"Santander",province:"Cantabria",address:"C/ Colombia, 2, local",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes, descartar.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"DurnIA",city:"Santander",province:"Cantabria",address:"C/ Lirio, 13, Chalet G",statusDot:"green",priority:"media",tags:["Evaluando modelo"],observation:"Analizando el modelo de colaboracion.",action:"Explicar modelo presencialmente. Conseguir compromiso inicial.",orden:"2\u00aa visita (mediod\u00eda)"}
+]},
+{id:9,name:"Barcelona",zone:"Cataluna",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Barcelona (2h30) + coche alquiler",logistics:"AVE primera hora a Barcelona Sants, recoger coche. Cervell\u00f3 ma\u00f1ana (~30 min desde Sants), luego Barcelona centro: Lisot mediod\u00eda, Ocvistas tarde. Devolver coche en Sants, AVE \u00faltimo a Madrid.",days:1,color:"#7B1FA2",integrators:[
+{name:"Amiritmo",city:"Cervello",province:"Barcelona",address:"C/ Muntanya, 84, Urb. Can Guitart Vell",statusDot:"green",priority:"alta",tags:["Lead grande abril"],observation:"Potencial lead grande para abril. Recontactando para activacion.",action:"Activar el lead grande. Revisar cartera completa.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Lisot",city:"Barcelona",province:"Barcelona",address:"C/ Casp, 118",statusDot:"yellow",priority:"media",tags:["Lead identificado"],observation:"Potencial lead identificado, pendiente integrador.",action:"Activar lead identificado. Primer contacto presencial.",orden:"2\u00aa visita (mediod\u00eda)"},
+{name:"Ocvistas",city:"Barcelona",province:"Barcelona",address:"Av. de Roma, 155",statusDot:"green",priority:"media",tags:["Leads grandes pendientes"],observation:"Peticiones menores. Leads grandes pendientes.",action:"Empujar leads grandes. Entender que bloquea.",orden:"3\u00aa visita (tarde)"}
+]},
+{id:10,name:"Tarragona",zone:"Cataluna",transport:"\ud83d\ude84 AVE ida/vuelta Camp de Tarragona (2h15) + coche alquiler",logistics:"AVE primera hora a Camp de Tarragona, recoger coche. Visita Elpis en zona industrial. Devolver coche, AVE vuelta a Madrid. Media jornada.",days:1,color:"#7B1FA2",integrators:[
+{name:"Elpis Informatica",city:"Tarragona",province:"Tarragona",address:"C/ del Ferro, parcela 61, nave 22",statusDot:"green",priority:"alta",tags:["1 oferta en curso"],observation:"1 oferta en curso.",action:"Cerrar oferta activa. Activar listado de leads que tenian preparado.",orden:"\u00danica visita"}
+]},
+{id:11,name:"Santiago de Compostela",zone:"Galicia",transport:"\u2708\ufe0f Vuelo ida/vuelta Madrid\u2013Santiago (1h) + coche alquiler",logistics:"Vuelo primera hora a Santiago (Lavacolla), recoger coche. Visita Paperlabs en Cidade da Cultura. Devolver coche, vuelo vuelta a Madrid por la tarde. Media jornada.",days:1,color:"#00796B",integrators:[
+{name:"Paperlabs",city:"Santiago de Compostela",province:"A Coruna",address:"Monte Gaias s/n, Cidade da Cultura",statusDot:"green",priority:"alta",tags:["Lead compartido","Desbloquear contacto"],observation:"1 lead interesante compartido, no conseguido el contacto con cliente.",action:"Desbloquear acceso al cliente final. Planificar nuevos leads.",orden:"\u00danica visita"}
+]},
+{id:12,name:"Sevilla + Cadiz",zone:"Andalucia",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Sevilla (2h30) + coche alquiler",logistics:"AVE primera hora a Sevilla Santa Justa, recoger coche. Visita Omnia en Sevilla ma\u00f1ana. Conducir a El Puerto de Santa Mar\u00eda (~1h30), visita A4I tarde. Vuelta a Sevilla, devolver coche, AVE \u00faltimo a Madrid.",days:1,color:"#C62828",integrators:[
+{name:"Omnia Soluciones",city:"Sevilla",province:"Sevilla",address:"Av. Alcalde Luis Urunuela, 6, oficina 120",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes real, descartar.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"A4I",city:"El Puerto de Santa Maria",province:"Cadiz",address:"Pol. Industrial El Palmar, C/ Sederia, 19",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",orden:"2\u00aa visita (tarde)"}
+]},
+{id:13,name:"Malaga",zone:"Andalucia",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Malaga (2h30) + coche alquiler",logistics:"AVE primera hora a M\u00e1laga Mar\u00eda Zambrano, recoger coche. Visita Sictemas en M\u00e1laga ma\u00f1ana. Conducir a Mijas Costa (~30 min), visita Sur Computers mediod\u00eda. Devolver coche, AVE vuelta a Madrid por la tarde.",days:1,color:"#C62828",integrators:[
+{name:"Sictemas",city:"Malaga",province:"Malaga",address:"C/ Estado, 24",statusDot:"yellow",priority:"alta",tags:["Reactivar 15-abril","Contrato firmado"],observation:"Hold hasta 15-abril por reestructuracion interna. Contrato firmado enviado.",action:"Contrato ya firmado. Reactivar y arrancar con leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Sur Computers",city:"Mijas Costa",province:"Malaga",address:"C/ Albahaca, 6",statusDot:"yellow",priority:"media",tags:["Reactivar 15-abril"],observation:"Hold hasta 15-abril por carga de trabajo.",action:"Reactivar. Revisar disponibilidad y primeros leads.",orden:"2\u00aa visita (mediod\u00eda)"}
+]},
+{id:14,name:"Valencia",zone:"Levante",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Valencia (1h40)",logistics:"AVE primera hora a Valencia Joaqu\u00edn Sorolla. Visita DataQu. AVE vuelta a Madrid antes de comer. Media jornada.",days:1,color:"#0288D1",integrators:[
+{name:"DataQu",city:"Valencia",province:"Valencia",address:"Valencia (direccion pendiente confirmar)",statusDot:"green",priority:"alta",tags:["2 leads potenciales","Buscando sesion"],observation:"Pendiente 2 leads potenciales. Buscando sesion con integrador.",action:"Hacer la sesion en persona. Activar los 2 leads directamente.",orden:"\u00danica visita"}
+]},
+{id:15,name:"Alicante + Murcia",zone:"Levante",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Alicante (2h15) + coche alquiler",logistics:"AVE primera hora a Alicante, recoger coche. Visita Solventus en Alicante ma\u00f1ana. Conducir a Murcia (~1h), visita Sisytec mediod\u00eda. Vuelta a Alicante, devolver coche, AVE vuelta a Madrid por la tarde.",days:1,color:"#0288D1",integrators:[
+{name:"Solventus Software",city:"Alicante",province:"Alicante",address:"Av. Oviedo, 10, D11",statusDot:"yellow",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Sisytec",city:"Espinardo (Murcia)",province:"Murcia",address:"C/ Central, 10, 7a planta",statusDot:"green",priority:"alta",tags:["Oferta en curso","1 lead frio"],observation:"1 oferta en curso (servicios propios) y 1 lead frio.",action:"Cerrar oferta activa. Reactivar lead frio. Pedir mas.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]}
 ],
 onHold:[
@@ -3515,29 +3494,49 @@ integradoresActivos:{label:"Integradores activos",current:8,target:18},
 leadsNuevos:{label:"Leads totales",current:59,target:90},
 ofertasEnCurso:{label:"Ofertas en curso",current:14,target:25},
 ventasCerradas:{label:"Ventas cerradas",current:6,target:12},
-facturacionMensual:{label:"Facturacion mensual",current:1960,target:4000,suffix:"\u20AC"},
+facturacionMensual:{label:"Facturacion mensual",current:1960,target:4000,suffix:"\u20ac"},
 conversionRate:{label:"Conversion %",current:10.2,target:15,suffix:"%"}
 }};
 
 // ── S6 state
-let s6_tlWeek=0, s6_pri='all', s6_route='all', s6_search='';
+let s6_pri='all', s6_route='all', s6_search='';
 
 // ── Tag color map
 const tagColors={"Riesgo churn":"vtag-rd","756\u20AC/mes cerrados":"vtag-gr","Contrato pendiente pago":"vtag-or","Sin respuesta":"vtag-or","Contrato pendiente":"vtag-or","Desbloquear contacto":"vtag-or","Pendiente identificar leads":"vtag-or","Reactivar esta semana":"vtag-am","Reactivar 15-abril":"vtag-am","Lead grande abril":"vtag-gr","1 oferta en curso":"vtag-gr","Oferta en curso":"vtag-gr","Lead compartido":"vtag-gr","4-5 leads identificados":"vtag-gr","2 ofertas presentadas":"vtag-gr","2 leads potenciales":"vtag-gr","Buscando sesion":"vtag-gr","1 lead frio":"vtag-bl","Evaluando modelo":"vtag-bl","Frio":"vtag-bl","Reunion BD realizada":"vtag-bl","Lead identificado":"vtag-bl","Leads grandes pendientes":"vtag-gr","Baja prioridad interna":"vtag-gy","Leads sin exito":"vtag-gy","Retomando activamente":"vtag-gr","Contrato firmado":"vtag-gr"};
 
 function getTagClass(t){return tagColors[t]||'vtag-gy'}
 
+// ── Jornada grid builder
+function buildJornadas(){
+  const grid=document.getElementById('jrnGrid');
+  if(!grid)return;
+  let h='';
+  visitPlanData.routes.forEach(r=>{
+    const on=s6_route===r.id;
+    h+='<div class="jrn-card'+(on?' jrn-on':'')+'" onclick="filtJR('+r.id+',this)" style="border-left:4px solid '+r.color+'">';
+    h+='<div class="jrn-head"><span class="jrn-num'+(on?' jrn-on':'')+'">J'+r.id+'</span><span class="jrn-name">'+r.name+'</span></div>';
+    h+='<div class="jrn-transport">'+r.transport+'</div>';
+    h+='<div class="jrn-names">'+r.integrators.map(i=>i.name).join(' \u00b7 ')+'</div>';
+    h+='</div>';
+  });
+  grid.innerHTML=h;
+}
+
+// ── Integrator cards
 function buildVCards(){
   const grid=document.getElementById('vcardsGrid');
   if(!grid)return;
   let html='';
-  const tlRoutes=s6_tlWeek>0?visitPlanData.timeline[s6_tlWeek-1].routes:null;
 
-  // Normal cards (from routes)
+  // Logistics banner when a specific jornada is selected
+  if(s6_route!=='all'&&s6_pri!=='hold'&&s6_pri!=='excl'){
+    const sel=visitPlanData.routes.find(r=>r.id===s6_route);
+    if(sel)html+='<div class="jrn-logistics">\ud83d\uddfa\ufe0f <strong>J'+sel.id+' '+sel.name+'</strong> \u2014 '+sel.logistics+'</div>';
+  }
+
   if(s6_pri!=='hold'&&s6_pri!=='excl'){
     visitPlanData.routes.forEach(r=>{
       if(s6_route!=='all'&&r.id!==s6_route)return;
-      if(tlRoutes&&!tlRoutes.includes(r.id))return;
       r.integrators.forEach(ig=>{
         if(s6_pri!=='all'&&ig.priority!==s6_pri)return;
         if(s6_search){
@@ -3550,7 +3549,7 @@ function buildVCards(){
         let tagsH=ig.tags.map(t=>'<span class="vtag '+getTagClass(t)+'">'+t+'</span>').join('');
         html+='<div class="vcard" data-route="'+r.id+'" data-pri="'+ig.priority+'">';
         html+='<div class="vcard-head"><div class="vcard-dot '+dotCls+'"></div><span class="vcard-name">'+ig.name+'</span><span class="vcard-pri '+priCls+'">'+ig.priority+'</span></div>';
-        html+='<div class="vcard-sub">'+ig.city+', '+ig.province+' \u00B7 Ruta '+r.id+' \u00B7 '+ig.suggestedDay+' '+ig.suggestedTime+'</div>';
+        html+='<div class="vcard-sub">'+ig.city+', '+ig.province+' \u00B7 J'+r.id+' '+r.name+' \u00B7 '+ig.orden+'</div>';
         if(tagsH)html+='<div class="vcard-tags">'+tagsH+'</div>';
         html+='<div class="vcard-obs">'+ig.observation+'</div>';
         html+='<div class="vcard-action">\u{1F3AF} '+ig.action+'</div>';
@@ -3587,22 +3586,16 @@ function buildKPIs(){
   bar.innerHTML=h;
 }
 
-function filtTL(week,el){
-  if(s6_tlWeek===week){s6_tlWeek=0;el.classList.remove('tl-on');}
-  else{s6_tlWeek=week;document.querySelectorAll('#tlGrid .tl-card').forEach(c=>c.classList.remove('tl-on'));el.classList.add('tl-on');}
-  buildVCards();
+function filtJR(id,el){
+  if(s6_route===id){s6_route='all';}
+  else{s6_route=id;}
+  buildJornadas();buildVCards();
 }
 function filtVP(val,el){
   s6_pri=val;
   document.querySelectorAll('#vfPri .vf-btn').forEach(b=>b.classList.remove('vf-on'));el.classList.add('vf-on');
-  // Show/hide hold & excl sections
   document.getElementById('vcollHold').style.display=(val==='hold'||val==='all')?'':'none';
   document.getElementById('vcollExcl').style.display=(val==='excl'||val==='all')?'':'none';
-  buildVCards();
-}
-function filtVR(val,el){
-  s6_route=val;
-  document.querySelectorAll('#vfRoute .vf-btn').forEach(b=>b.classList.remove('vf-on'));el.classList.add('vf-on');
   buildVCards();
 }
 function filtVS(){
@@ -3621,7 +3614,7 @@ function toggleVcoll(id){
 const origShow=show;
 show=function(id){
   origShow(id);
-  if(id==='s6'){buildVCards();buildHoldExcl();buildKPIs();}
+  if(id==='s6'){buildJornadas();buildVCards();buildHoldExcl();buildKPIs();}
 };
 </script>
 </body>
