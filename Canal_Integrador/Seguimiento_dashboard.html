@@ -796,6 +796,121 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   padding:8px 16px;border-radius:7px;font-size:13px;
   background:var(--bg);color:var(--ink2);border:1px solid var(--line2);cursor:pointer
 }
+
+/* ══════════════════════════════════ RESPONSIVE · MOBILE */
+@media(max-width:860px){
+  /* Topbar: scroll horizontal para caber las 6 pestañas */
+  .topbar{padding:0 14px;gap:10px;overflow-x:auto;overflow-y:hidden}
+  .topbar::-webkit-scrollbar{display:none}
+  .topbar-nav{flex:none;justify-content:flex-start;gap:0}
+  .tnav{padding:6px 10px;font-size:12px}
+  .topbar-right{gap:6px}
+  .pmo-badge{padding:3px 9px;font-size:10.5px}
+  .date-lbl{display:none}
+  .plt-bot{display:none}
+  .proj-logo-mark{width:30px;height:30px}
+  .proj-logo-mark svg{width:18px;height:18px}
+  .plt-top{font-size:12px}
+
+  /* Secciones: menos padding lateral */
+  .sec{padding:18px 14px 40px}
+  .sh{margin-bottom:18px;padding-bottom:14px;gap:10px}
+  .sh-title{font-size:17px}
+
+  /* KPI row: 2 columnas */
+  .krow{gap:10px;margin-bottom:16px}
+  .kcard{flex:1 1 calc(50% - 5px);min-width:0;padding:14px 14px}
+  .k-num{font-size:30px;letter-spacing:-1px}
+  .k-lbl{font-size:9.5px}
+  .k-sub{font-size:11px}
+
+  /* Leads: panel detalle a ancho completo */
+  .leads-wrap{flex-direction:column;gap:14px}
+  .leads-panel{width:100%;position:static;max-height:none}
+  .leads-search{width:100%}
+  .leads-ctrl{gap:6px}
+  .lead-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+
+  /* Hero */
+  .hero{min-height:calc(100vh - 60px);padding:28px 14px}
+  .hero-kpis{padding:20px 16px 16px;margin-bottom:24px}
+  .hk-row{margin-bottom:16px}
+  .hk-row-cards .hk .hk-num{font-size:34px;letter-spacing:-1px}
+  .hk-row-cards .hk .hk-lbl{font-size:11.5px}
+
+  /* Tablas con scroll horizontal */
+  .vtbl{font-size:12px}
+  .ttbl{font-size:12px}
+  .ttbl th,.ttbl td{padding:9px 10px}
+
+  /* S6 planner: filas de semanas mejor en móvil */
+  .vp-week-row{gap:10px;padding:10px 12px}
+  .vp-week-side{min-width:50px}
+  .vp-week-actions{width:100%;justify-content:flex-start;margin-top:4px}
+  .vp-popover{min-width:220px;max-width:calc(100vw - 24px)}
+
+  /* Cards planner journey */
+  .jrn-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* Login */
+  .login-box,[class*="login"]{max-width:calc(100vw - 32px)}
+}
+
+@media(max-width:480px){
+  /* Topbar más compacto */
+  .topbar{height:54px;padding:0 10px;gap:8px}
+  .tnav{padding:5px 8px;font-size:11.5px}
+  .pmo-badge{font-size:10px;padding:3px 8px;letter-spacing:.2px}
+  .topbar-sep{display:none}
+
+  /* Sec */
+  .sec{padding:14px 10px 36px}
+  .sh{flex-wrap:wrap;gap:8px}
+  .sh-title{font-size:15.5px}
+  .card-h{padding:12px 14px;flex-wrap:wrap}
+  .card-b{padding:14px}
+
+  /* KPI: 1 columna */
+  .kcard{flex:1 1 100%}
+  .k-num{font-size:34px}
+
+  /* Hero KPIs 1 columna */
+  .hero-kgrid{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+  .hero-sub{font-size:13px;margin-bottom:24px}
+  .hk-row-cards{grid-template-columns:1fr;gap:10px}
+  .hk-row-cards .hk{padding:16px 14px 14px}
+  .hk-row-cards .hk .hk-num{font-size:32px}
+
+  /* Journey 1 columna */
+  .jrn-grid{grid-template-columns:1fr}
+
+  /* Planner popover casi full width */
+  .vp-popover{min-width:200px;max-width:calc(100vw - 16px);max-height:70vh}
+  .vp-pop-scroll{max-height:50vh}
+  .vp-week-row{padding:10px}
+  .vp-week-body{flex:1 1 100%;order:3}
+  .vp-week-actions{order:4}
+
+  /* Leads: tarjetas más compactas */
+  .lead-grid{grid-template-columns:1fr;gap:10px}
+  .lead-card{padding:12px}
+
+  /* Update modal */
+  .upd-box{padding:20px 18px}
+
+  /* Login box */
+  [class*="login-box"],.login-card{width:100%!important;padding:28px 20px!important}
+
+  /* Chips / estado-selector: más finos */
+  .estado-btn{padding:5px 10px;font-size:11px}
+  .chip{padding:4px 10px;font-size:11.5px}
+}
+
+/* Tablas con min-width: wrapper debe tener scroll */
+@media(max-width:760px){
+  .vtbl{min-width:620px}
+}
 </style>
 </head>
 <body>
