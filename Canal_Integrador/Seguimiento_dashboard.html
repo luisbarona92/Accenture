@@ -565,44 +565,6 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 @media(max-width:900px){.jrn-grid{grid-template-columns:repeat(3,1fr)}.vcards{grid-template-columns:1fr}}
 @media(max-width:600px){.jrn-grid{grid-template-columns:repeat(2,1fr)}.vf-search{width:100%}}
 
-/* ── S6 Planner ── */
-.vp-week-row{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:8px;background:var(--card);border:1px solid var(--line);margin-bottom:8px;flex-wrap:wrap;transition:box-shadow .15s}
-.vp-week-row:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.vp-week-side{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:58px;flex-shrink:0;padding-top:2px}
-.vp-week-badge{font-size:10px;font-weight:800;letter-spacing:.4px;background:var(--or);color:#fff;padding:2px 8px;border-radius:4px}
-.vp-week-day{font-size:10px;font-weight:600;color:var(--or);text-transform:uppercase;text-align:center;margin-top:2px}
-.vp-week-datestr{font-size:10px;color:var(--ink3);text-align:center;line-height:1.3;cursor:pointer;border-bottom:1px dashed transparent;padding:0 2px}
-.vp-week-datestr:hover{border-bottom-color:var(--ink3)}
-.vp-week-body{flex:1;min-width:0}
-.vp-week-chips{display:flex;flex-wrap:wrap;gap:6px;min-height:32px;align-items:center}
-.vp-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 8px 4px 7px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:12px;font-weight:500;color:var(--ink1);white-space:nowrap}
-.vp-chip.chip-alta{border-color:#FECACA;background:#FFF5F5}
-.vp-chip.chip-media{border-color:#BFDBFE;background:#EFF6FF}
-.vp-chip-rm{border:none;background:none;cursor:pointer;color:var(--ink4);font-size:14px;padding:0;line-height:1;margin-left:1px}
-.vp-chip-rm:hover{color:#DC2626}
-.vp-week-empty{font-size:12px;color:var(--ink4);font-style:italic;padding:4px 0}
-.vp-week-actions{display:flex;gap:6px;align-items:flex-start;flex-shrink:0}
-.vp-add-btn{padding:5px 11px;border-radius:6px;font-size:12px;font-weight:600;border:1px dashed var(--or);background:transparent;color:var(--or);cursor:pointer;white-space:nowrap}
-.vp-add-btn:hover{background:#FFF7ED}
-.vp-del-btn{border:none;background:none;cursor:pointer;color:var(--ink4);font-size:14px;padding:4px 6px;border-radius:4px;line-height:1}
-.vp-del-btn:hover{background:#FEE2E2;color:#DC2626}
-/* Popover */
-.vp-popover{position:fixed;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.14);min-width:252px;max-width:300px;overflow:hidden;z-index:9999}
-.vp-pop-hdr{padding:8px 14px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);background:var(--bg);border-bottom:1px solid var(--line)}
-.vp-pop-scroll{max-height:260px;overflow-y:auto}
-.vp-pop-item{display:flex;align-items:flex-start;gap:8px;width:100%;padding:9px 14px;border:none;background:transparent;cursor:pointer;text-align:left;border-bottom:1px solid var(--line)}
-.vp-pop-item:last-child{border-bottom:none}
-.vp-pop-item:hover{background:var(--bg)}
-.vp-pop-empty{padding:12px 14px;font-size:12px;color:var(--ink3);font-style:italic}
-/* Card planner additions */
-.vcard-assigned{border-color:#A7F3D0;background:linear-gradient(to bottom,#fff,#F0FFF8)}
-.vcard-asn-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:#D1FAE5;color:#065F46;margin-bottom:6px}
-.vcard-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}
-.vp-asn-btn{padding:5px 10px;border-radius:5px;font-size:11px;font-weight:600;border:1px solid var(--or);background:transparent;color:var(--or);cursor:pointer}
-.vp-asn-btn:hover{background:#FFF7ED}
-.vp-unasn-btn{padding:5px 10px;border-radius:5px;font-size:11px;font-weight:600;border:1px solid #BBF7D0;background:#D1FAE5;color:#065F46;cursor:pointer}
-.vp-unasn-btn:hover{background:#A7F3D0}
-
 /* EOP cards */
 .eop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
 .eop-card{border-radius:8px;padding:18px;background:var(--bg);border:1px solid var(--line)}
@@ -795,121 +757,6 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .upd-btn-cancel{
   padding:8px 16px;border-radius:7px;font-size:13px;
   background:var(--bg);color:var(--ink2);border:1px solid var(--line2);cursor:pointer
-}
-
-/* ══════════════════════════════════ RESPONSIVE · MOBILE */
-@media(max-width:860px){
-  /* Topbar: scroll horizontal para caber las 6 pestañas */
-  .topbar{padding:0 14px;gap:10px;overflow-x:auto;overflow-y:hidden}
-  .topbar::-webkit-scrollbar{display:none}
-  .topbar-nav{flex:none;justify-content:flex-start;gap:0}
-  .tnav{padding:6px 10px;font-size:12px}
-  .topbar-right{gap:6px}
-  .pmo-badge{padding:3px 9px;font-size:10.5px}
-  .date-lbl{display:none}
-  .plt-bot{display:none}
-  .proj-logo-mark{width:30px;height:30px}
-  .proj-logo-mark svg{width:18px;height:18px}
-  .plt-top{font-size:12px}
-
-  /* Secciones: menos padding lateral */
-  .sec{padding:18px 14px 40px}
-  .sh{margin-bottom:18px;padding-bottom:14px;gap:10px}
-  .sh-title{font-size:17px}
-
-  /* KPI row: 2 columnas */
-  .krow{gap:10px;margin-bottom:16px}
-  .kcard{flex:1 1 calc(50% - 5px);min-width:0;padding:14px 14px}
-  .k-num{font-size:30px;letter-spacing:-1px}
-  .k-lbl{font-size:9.5px}
-  .k-sub{font-size:11px}
-
-  /* Leads: panel detalle a ancho completo */
-  .leads-wrap{flex-direction:column;gap:14px}
-  .leads-panel{width:100%;position:static;max-height:none}
-  .leads-search{width:100%}
-  .leads-ctrl{gap:6px}
-  .lead-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-
-  /* Hero */
-  .hero{min-height:calc(100vh - 60px);padding:28px 14px}
-  .hero-kpis{padding:20px 16px 16px;margin-bottom:24px}
-  .hk-row{margin-bottom:16px}
-  .hk-row-cards .hk .hk-num{font-size:34px;letter-spacing:-1px}
-  .hk-row-cards .hk .hk-lbl{font-size:11.5px}
-
-  /* Tablas con scroll horizontal */
-  .vtbl{font-size:12px}
-  .ttbl{font-size:12px}
-  .ttbl th,.ttbl td{padding:9px 10px}
-
-  /* S6 planner: filas de semanas mejor en móvil */
-  .vp-week-row{gap:10px;padding:10px 12px}
-  .vp-week-side{min-width:50px}
-  .vp-week-actions{width:100%;justify-content:flex-start;margin-top:4px}
-  .vp-popover{min-width:220px;max-width:calc(100vw - 24px)}
-
-  /* Cards planner journey */
-  .jrn-grid{grid-template-columns:repeat(2,1fr)}
-
-  /* Login */
-  .login-box,[class*="login"]{max-width:calc(100vw - 32px)}
-}
-
-@media(max-width:480px){
-  /* Topbar más compacto */
-  .topbar{height:54px;padding:0 10px;gap:8px}
-  .tnav{padding:5px 8px;font-size:11.5px}
-  .pmo-badge{font-size:10px;padding:3px 8px;letter-spacing:.2px}
-  .topbar-sep{display:none}
-
-  /* Sec */
-  .sec{padding:14px 10px 36px}
-  .sh{flex-wrap:wrap;gap:8px}
-  .sh-title{font-size:15.5px}
-  .card-h{padding:12px 14px;flex-wrap:wrap}
-  .card-b{padding:14px}
-
-  /* KPI: 1 columna */
-  .kcard{flex:1 1 100%}
-  .k-num{font-size:34px}
-
-  /* Hero KPIs 1 columna */
-  .hero-kgrid{grid-template-columns:1fr}
-  .hero h1{font-size:24px}
-  .hero-sub{font-size:13px;margin-bottom:24px}
-  .hk-row-cards{grid-template-columns:1fr;gap:10px}
-  .hk-row-cards .hk{padding:16px 14px 14px}
-  .hk-row-cards .hk .hk-num{font-size:32px}
-
-  /* Journey 1 columna */
-  .jrn-grid{grid-template-columns:1fr}
-
-  /* Planner popover casi full width */
-  .vp-popover{min-width:200px;max-width:calc(100vw - 16px);max-height:70vh}
-  .vp-pop-scroll{max-height:50vh}
-  .vp-week-row{padding:10px}
-  .vp-week-body{flex:1 1 100%;order:3}
-  .vp-week-actions{order:4}
-
-  /* Leads: tarjetas más compactas */
-  .lead-grid{grid-template-columns:1fr;gap:10px}
-  .lead-card{padding:12px}
-
-  /* Update modal */
-  .upd-box{padding:20px 18px}
-
-  /* Login box */
-  [class*="login-box"],.login-card{width:100%!important;padding:28px 20px!important}
-
-  /* Chips / estado-selector: más finos */
-  .estado-btn{padding:5px 10px;font-size:11px}
-  .chip{padding:4px 10px;font-size:11.5px}
-}
-
-/* Tablas con min-width: wrapper debe tener scroll */
-@media(max-width:760px){
-  .vtbl{min-width:620px}
 }
 </style>
 </head>
@@ -1119,9 +966,9 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Hito 2 · Interés</div>
-      <div class="k-num cnt" data-cnt="s1-h2" data-t="83">0</div>
+      <div class="k-num cnt" data-cnt="s1-h2" data-t="82">0</div>
       <div class="k-sub">Sesión informativa 1:1</div>
-      <span class="k-delta kd-or" data-cnt="s1-h2-delta" data-delta="6">▲ +6 sesiones</span>
+      <span class="k-delta kd-up" data-cnt="s1-h2-delta" data-delta="0">▲ +0 sesiones</span>
     </div>
     <div class="kcard k-or">
       <div class="k-lbl">Hito 3 · Captados</div>
@@ -1190,7 +1037,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
             </div>
           </div>
           <div class="fv-num-col">
-            <div class="fv-num fc-h2 cnt" data-t="83">0</div>
+            <div class="fv-num fc-h2 cnt" data-t="82">0</div>
             <div class="fv-pct fc-h2">6% de H1</div>
           </div>
         </div>
@@ -1207,10 +1054,10 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
             <!-- desglose de los 54 -->
             <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
               <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">21</span> activados</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--amber)"></div><span class="fvb-n" style="color:var(--amber)">6</span> on hold</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">10</span> pdte. agendar</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--red)"></div><span class="fvb-n" style="color:var(--red)">13</span> churn</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">4</span> ses. negocio agendadas</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--amber)"></div><span class="fvb-n" style="color:var(--amber)">7</span> on hold</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">11</span> pdte. agendar</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--red)"></div><span class="fvb-n" style="color:var(--red)">14</span> churn</div>
+              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">1</span> ses. negocio agendadas</div>
             </div>
           </div>
           <div class="fv-num-col" style="padding-top:14px">
@@ -1249,8 +1096,8 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
           <div class="al-body">Integradores que declinaron continuar tras la sesión 1:1</div>
         </div>
         <div class="alert al-am" style="flex:1">
-          <div class="al-title alt-am">13 en churn</div>
-          <div class="al-body">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Services · Tec. Estratégica · ITsoft · Solventus Software</div>
+          <div class="al-title alt-am">14 en churn</div>
+          <div class="al-body">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Services · Tec. Estratégica · ITsoft · Solventus Software · ISP</div>
         </div>
       </div>
     </div>
@@ -1295,13 +1142,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <div class="card">
         <div class="card-h">
           <span class="card-title" style="color:var(--amber)">On Hold</span>
-          <span style="font-size:22px;font-weight:800;color:var(--amber)">6</span>
+          <span style="font-size:22px;font-weight:800;color:var(--amber)">7</span>
         </div>
         <div style="padding:10px 14px">
           <div class="tags-wrap">
             <span class="tag tg-am">Fedesoft</span><span class="tag tg-am">Dirbapont</span>
             <span class="tag tg-am">Brain Hardware</span><span class="tag tg-am">Redem</span>
-            <span class="tag tg-am">Digital HM</span><span class="tag tg-am">NaimiTech</span>
+            <span class="tag tg-am">Digital HM</span><span class="tag tg-am">Sur Computers</span>
+            <span class="tag tg-am">Inforware</span>
           </div>
         </div>
       </div>
@@ -1309,7 +1157,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <div class="card">
         <div class="card-h">
           <span class="card-title" style="color:var(--blue)">Pendiente agendar KO</span>
-          <span style="font-size:22px;font-weight:800;color:var(--blue)">10</span>
+          <span style="font-size:22px;font-weight:800;color:var(--blue)">11</span>
         </div>
         <div style="padding:10px 14px">
           <div class="tags-wrap">
@@ -1318,6 +1166,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
             <span class="tag tg-bl">Lisot</span><span class="tag tg-bl">ISC Tech</span>
             <span class="tag tg-bl">Gestión Inf. Pensiones</span><span class="tag tg-bl">Procgal</span>
             <span class="tag tg-bl">Redestic Cloud</span><span class="tag tg-bl">Ciset</span>
+            <span class="tag tg-bl">Maicrosoft</span>
           </div>
         </div>
       </div>
@@ -1342,11 +1191,13 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="card">
       <div class="card-h">
         <span class="card-title">Próximas sesiones · H2 (interés)</span>
-        <span class="sp sp-or">2 agendadas</span>
+        <span class="sp sp-or">4 agendadas</span>
       </div>
       <div class="slist">
-        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Onutech</span><span class="sdate">14.04</span><span class="spill pill-prx">Agendada</span></div>
-        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Imatiq</span><span class="sdate">16.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Mikos Inside</span><span class="sdate">23.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Imatiq</span><span class="sdate">23.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Informática Pavon</span><span class="sdate">23.04</span><span class="spill pill-prx">Agendada</span></div>
+        <div class="srow"><div class="sdot sd-or"></div><span class="sname">Informel</span><span class="sdate">27.04</span><span class="spill pill-prx">Agendada</span></div>
       </div>
     </div>
   </div>
@@ -1354,25 +1205,23 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="card">
       <div class="card-h">
         <span class="card-title">Próximas sesiones · H3 (negocio)</span>
-        <span class="sp sp-am">4 agendadas</span>
+        <span class="sp sp-am">1 agendada</span>
       </div>
       <div class="slist">
-        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Maicorsoft</span><span class="sdate">14.04</span><span class="spill pill-prx">Agendada</span></div>
-        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Inforware</span><span class="sdate">14.04</span><span class="spill pill-prx">Agendada</span></div>
-        <div class="srow"><div class="sdot sd-am"></div><span class="sname">Procgal</span><span class="sdate">15.04</span><span class="spill pill-prx">Agendada</span></div>
         <div class="srow"><div class="sdot sd-am"></div><span class="sname">Provide</span><span class="sdate">05.05</span><span class="spill pill-prx">Agendada</span></div>
       </div>
     </div>
     <div class="card">
       <div class="card-h">
         <span class="card-title">Pendiente agendar H2</span>
-        <span class="sp sp-or">4 pendientes</span>
+        <span class="sp sp-or">5 pendientes</span>
       </div>
       <div class="slist">
         <div class="srow"><div class="sdot sd-gy"></div><span class="sname">IT Genesis</span><span class="sdate">—</span><span class="spill pill-prx">Pendiente</span></div>
         <div class="srow"><div class="sdot sd-gy"></div><span class="sname">SYC Almería</span><span class="sdate">—</span><span class="spill pill-prx">Pendiente</span></div>
         <div class="srow"><div class="sdot sd-gy"></div><span class="sname">Evolur</span><span class="sdate">—</span><span class="spill pill-prx">Pendiente</span></div>
         <div class="srow"><div class="sdot sd-gy"></div><span class="sname">Univecs</span><span class="sdate">abr.</span><span class="spill pill-prx">Tentativo</span></div>
+        <div class="srow"><div class="sdot sd-gy"></div><span class="sname">Onutech</span><span class="sdate">abr.</span><span class="spill pill-prx">Tentativo</span></div>
       </div>
     </div>
   </div>
@@ -1386,16 +1235,16 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s2" class="sec">
   <div class="sh">
     <span class="sh-slide">Slide 4</span>
-    <h2 class="sh-title">Detalle de los 36 integradores captados y activos</h2>
+    <h2 class="sh-title">Detalle de los 39 integradores captados y activos</h2>
   </div>
 
   <!-- Toolbar filtros -->
   <div class="int-toolbar">
     <input class="int-search" id="intSearch" type="text" placeholder="Buscar integrador..." oninput="searchInt()">
-    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(<span data-cnt="s2-total">36</span>)</span></button>
-    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (<span data-cnt="s2-verde">13</span>)</button>
-    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (<span data-cnt="s2-posible">17</span>)</button>
-    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (<span data-cnt="s2-hold">6</span>)</button>
+    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(<span data-cnt="s2-total">39</span>)</span></button>
+    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (<span data-cnt="s2-verde">12</span>)</button>
+    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (<span data-cnt="s2-posible">19</span>)</button>
+    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (<span data-cnt="s2-hold">8</span>)</button>
   </div>
 
   <!-- Tabla desplegada completa, sin scroll interno -->
@@ -1412,71 +1261,74 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </thead>
     <tbody>
 
-      <!-- ══════ VERDE · Leads compartidos, alta participación (13) ══════ -->
+      <!-- ══════ VERDE · Leads compartidos, alta participación (12) ══════ -->
       <tr class="grp-sep" data-gh="verde">
         <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--green-bg);border-top:2px solid rgba(5,150,105,.2);border-bottom:1px solid rgba(5,150,105,.15);display:flex;align-items:center;gap:8px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--green)">Leads compartidos · alta participación</span>
-          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">13 integradores</span>
+          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">12 integradores</span>
         </div></td>
       </tr>
       <tr class="grp-gap" data-gh="verde"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
-      <tr data-g="verde" data-n="maxen">        <td><div class="int-name">Maxen</div></td>        <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">3 ofertas presentadas y pendientes. Varios leads activos.</td></tr>
-      <tr data-g="verde" data-n="covernet">      <td><div class="int-name">Covernet</div></td>      <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Incidencias graves con Arexpres SL por cambios de titularidad.</td></tr>
-      <tr data-g="verde" data-n="cobitratel">    <td><div class="int-name">Cobitratel</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.</td></tr>
-      <tr data-g="verde" data-n="paper labs">    <td><div class="int-name">Paper Labs</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 lead interesante compartido, no conseguido el contacto con cliente.</td></tr>
-      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 visita pendiente. Hold hasta semana que viene.</td></tr>
-      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">2 ofertas presentadas y ajustadas con indicaciones de clientes.</td></tr>
-      <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Peticiones menores. Leads grandes pendientes.</td></tr>
-      <tr data-g="verde" data-n="dataqu">        <td><div class="int-name">DataQu</div></td>        <td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente 2 leads potenciales. Buscando sesión con integrador.</td></tr>
-      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta en curso.</td></tr>
-      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta en curso (servicios propios) y 1 lead frío.</td></tr>
-      <tr data-g="verde" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Campaña sin resultados esperados.</td></tr>
-      <tr data-g="verde" data-n="gnuo">          <td><div class="int-name">GNUO</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Pendiente identificación de leads.</td></tr>
-      <tr data-g="verde" data-n="audinfor">      <td><div class="int-name">Audinfor</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Han identificado 4/5 leads potenciales, pendiente recepción. Sin noticias.</td></tr>
+      <tr data-g="verde" data-n="maxen">        <td><div class="int-name">Maxen</div></td>        <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">2 oferta a presentar nuevamente y visitas pendientes con Didac.</td></tr>
+      <tr data-g="verde" data-n="covernet">      <td><div class="int-name">Covernet</div></td>      <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Operación con Arexpres realizada, pendiente ampliación SoHo y renoves.</td></tr>
+      <tr data-g="verde" data-n="cobitratel">    <td><div class="int-name">Cobitratel</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada; pendiente firma nuevo contrato para realizar pago.</td></tr>
+      <tr data-g="verde" data-n="paper labs">    <td><div class="int-name">Paper Labs</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita planteada y pendiente planificar.</td></tr>
+      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita planteada y pendiente planificar.</td></tr>
+      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada, 1 oferta ajustadas con indicaciones de clientes.</td></tr>
+      <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Peticiones menores. Leads grandes pendientes. Sin novedades.</td></tr>
+      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta en curso. Visita planteada y pendiente planificar.</td></tr>
+      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 ofertas en curso (servicios propios) y 1 lead frio.</td></tr>
+      <tr data-g="verde" data-n="audinfor">      <td><div class="int-name">Audinfor</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Reactivado. Visita presencial lunes 27.04.</td></tr>
+      <tr data-g="verde" data-n="sictemas">      <td><div class="int-name">Sictemas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita presencial miércoles 22.03. Pendiente hora.</td></tr>
+      <tr data-g="verde" data-n="infornet">      <td><div class="int-name">Infornet</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Lead de ampliaciones de cliente Orange. Sin comisión, genera cercanía.</td></tr>
 
-      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (17) ══════ -->
+      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (19) ══════ -->
       <tr class="grp-sep" data-gh="posible">
         <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--amber-bg);border-top:2px solid rgba(217,119,6,.2);border-bottom:1px solid rgba(217,119,6,.15);display:flex;align-items:center;gap:8px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--amber)">Posibles leads · aún no recibidos · participación moderada</span>
-          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">17 integradores</span>
+          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">19 integradores</span>
         </div></td>
       </tr>
       <tr class="grp-gap" data-gh="posible"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
+      <tr data-g="posible" data-n="dataqu">            <td><div class="int-name">DataQu</div></td>           <td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente 2 leads potenciales. Buscando sesión presencial con integrador.</td></tr>
+      <tr data-g="posible" data-n="gnuo">              <td><div class="int-name">GNUO</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente identificación de leads.</td></tr>
       <tr data-g="posible" data-n="mariskalnet">       <td><div class="int-name">Mariskalnet</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Varios leads sin éxito. Continúa con contactos activamente.</td></tr>
-      <tr data-g="posible" data-n="amiritmo">          <td><div class="int-name">Amiritmo</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Potencial lead grande para abril. Recontactando para activación.</td></tr>
+      <tr data-g="posible" data-n="amiritmo">          <td><div class="int-name">Amiritmo</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Lead grande identificado, reunión semana 20.04. Potencial visita en mayo.</td></tr>
       <tr data-g="posible" data-n="microsip">          <td><div class="int-name">Micro Sip</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Reunión con BD realizada. Pendiente que Víctor organice sesión con BD.</td></tr>
       <tr data-g="posible" data-n="durnia">            <td><div class="int-name">Durnia</div></td>            <td><span class="mod-tag mt-lg">Partner Aut.</span></td><td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Analizando el modelo de colaboración.</td></tr>
       <tr data-g="posible" data-n="binfor soluciones"> <td><div class="int-name">Binfor Sol.</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Contrato pendiente de envío. Sin respuesta a seguimientos.</td></tr>
       <tr data-g="posible" data-n="dosys">             <td><div class="int-name">Dosys</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Solicitó precios de productos y estamos a la espera de leads (frío).</td></tr>
-      <tr data-g="posible" data-n="sur computers">     <td><div class="int-name">Sur Computers</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 15-abril por carga de trabajo.</td></tr>
       <tr data-g="posible" data-n="aideea">            <td><div class="int-name">Aideea</div></td>            <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Contrato firmado compartido y posible lead.</td></tr>
       <tr data-g="posible" data-n="lisot">             <td><div class="int-name">Lisot</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Potencial lead identificado, pendiente integrador.</td></tr>
-      <tr data-g="posible" data-n="inforware">         <td><div class="int-name">Inforware</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">En revisión del modelo para ver si comenzamos a trabajar juntos.</td></tr>
-      <tr data-g="posible" data-n="sictemas">          <td><div class="int-name">Sictemas</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 15.04 por reestructuración interna – Contrato firmado enviado.</td></tr>
-      <tr data-g="posible" data-n="solventus software"><td><div class="int-name">Solventus Soft.</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Pendiente otra sesión con Negocio solicitada por integrador.</td></tr>
-      <tr data-g="posible" data-n="infornet">          <td><div class="int-name">Infornet</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Lead de ampliaciones de cliente Orange. Sin comisión, genera cercanía.</td></tr>
+      <tr data-g="posible" data-n="naimitech">         <td><div class="int-name">NaimiTech</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de alineación en modelo de colaboración.</td></tr>
       <tr data-g="posible" data-n="ache informatica">  <td><div class="int-name">Ache Infor.</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
       <tr data-g="posible" data-n="omnia soluciones">  <td><div class="int-name">Omnia Sol.</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
+      <tr data-g="posible" data-n="isc tech">          <td><div class="int-name">ISC Tech</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
       <tr data-g="posible" data-n="gi pensiones">      <td><div class="int-name">G.I. Pensiones</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
-      <tr data-g="posible" data-n="pruggit">           <td><div class="int-name">Pruggit</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
+      <tr data-g="posible" data-n="procgal">           <td><div class="int-name">Procgal</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
+      <tr data-g="posible" data-n="redestic cloud">    <td><div class="int-name">Redestic Cloud</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
+      <tr data-g="posible" data-n="ciset">             <td><div class="int-name">Ciset</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
+      <tr data-g="posible" data-n="maicrosoft">        <td><div class="int-name">Maicrosoft</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente sesión con Negocio.</td></tr>
 
-      <!-- ══════ GRIS · Hold (6) ══════ -->
+      <!-- ══════ GRIS · Hold (8) ══════ -->
       <tr class="grp-sep" data-gh="hold">
         <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:#F3F4F6;border-top:2px solid rgba(107,114,128,.2);border-bottom:1px solid rgba(107,114,128,.15);display:flex;align-items:center;gap:8px">
           <span style="width:8px;height:8px;border-radius:50%;background:#9CA3AF;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6B7280">Hold</span>
-          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">6 integradores</span>
+          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">8 integradores</span>
         </div></td>
       </tr>
       <tr class="grp-gap" data-gh="hold"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
       <tr data-g="hold" data-n="redem">         <td><div class="int-name">Redem</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta reunión con Negocio.</td></tr>
+      <tr data-g="hold" data-n="sur computers"> <td><div class="int-name">Sur Computers</div></td> <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold. Probabilidad de churn al no verle.</td></tr>
+      <tr data-g="hold" data-n="inforware">     <td><div class="int-name">Inforware</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 6 de mayo.</td></tr>
       <tr data-g="hold" data-n="digital hm">    <td><div class="int-name">Digital HM</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">No es su prioridad, pero hay que mantener momentum.</td></tr>
       <tr data-g="hold" data-n="dirbapont">     <td><div class="int-name">Dirbapont</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo (Kits venciendo este mes).</td></tr>
       <tr data-g="hold" data-n="fedesoft">      <td><div class="int-name">Fedesoft</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta abril por problemas personales.</td></tr>
       <tr data-g="hold" data-n="brain hardware"><td><div class="int-name">Brain Hardware</div></td> <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo.</td></tr>
-      <tr data-g="hold" data-n="naimitech">     <td><div class="int-name">NaimiTech</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
+      <tr data-g="hold" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Campaña sin resultados esperados.</td></tr>
 
     </tbody>
   </table>
@@ -1490,39 +1342,39 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s3" class="sec">
   <div class="sh">
     <span class="sh-slide">Slide 5</span>
-    <h2 class="sh-title">Funnel de ventas · 68 oportunidades identificadas</h2>
+    <h2 class="sh-title">Funnel de ventas · 69 oportunidades identificadas</h2>
   </div>
 
   <!-- KPI row -->
   <div class="krow">
     <div class="kcard k-or">
       <div class="k-lbl">Total oportunidades</div>
-      <div class="k-num cnt" data-cnt="s3-total" data-t="68">68</div>
-      <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="9">▲ +9 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-total" data-t="69">69</div>
+      <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="10">▲ +10 vs sem. anterior</span>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas activadas</div>
-      <div class="k-num cnt" data-cnt="s3-ventas" data-t="6">0</div>
-      <div class="k-sub">9% de oportunidades</div>
-      <span class="k-delta kd-up" data-cnt="s3-ventas-delta" data-delta="0">▲ +0</span>
+      <div class="k-num cnt" data-cnt="s3-ventas" data-t="7">0</div>
+      <div class="k-sub">10% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-ventas-delta" data-delta="1">▲ +1</span>
     </div>
     <div class="kcard k-or">
       <div class="k-lbl">Leads pendientes</div>
-      <div class="k-num cnt" data-cnt="s3-leads" data-t="37">0</div>
-      <div class="k-sub">54% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="9">▲ +9 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-leads" data-t="34">0</div>
+      <div class="k-sub">49% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="6">▲ +6 vs sem. anterior</span>
     </div>
     <div class="kcard k-rd">
       <div class="k-lbl">Leads KO</div>
-      <div class="k-num cnt" data-cnt="s3-leads-ko" data-t="11">0</div>
-      <div class="k-sub">16% de oportunidades</div>
+      <div class="k-num cnt" data-cnt="s3-leads-ko" data-t="12">0</div>
+      <div class="k-sub">17% de oportunidades</div>
       <span class="k-delta kd-or" data-cnt="s3-leads-ko-delta" data-delta="1">▲ +1 vs sem. anterior</span>
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">Ofertas en curso</div>
-      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="14">0</div>
-      <div class="k-sub">21% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="0">▲ +0 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="16">0</div>
+      <div class="k-sub">23% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="2">▲ +2 vs sem. anterior</span>
     </div>
   </div>
 
@@ -1530,7 +1382,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="card" style="margin-bottom:18px">
     <div class="card-h">
       <span class="card-title">Estado de leads por integrador</span>
-      <span class="card-sub">15 integradores con oportunidades activas</span>
+      <span class="card-sub">16 integradores con oportunidades activas</span>
     </div>
     <div style="overflow-x:auto">
     <table class="vtbl">
@@ -1548,21 +1400,22 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-gr">1</td><td class="n n-or">12</td><td class="n n-rd">2</td><td class="n n-bl">5</td><td style="font-size:12px;color:var(--ink2)">3 ofertas en revisión y 2 pendientes</td><td style="font-size:12px">Confirmar ofertas presentadas</td></tr>
-        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">8</td><td class="n n-gr">4</td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta ampliación PYME</td><td style="font-size:12px">Activación de ampliación por cliente</td></tr>
-        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">7</td><td class="n n-gy">0</td><td class="n n-or">2</td><td class="n n-rd">4</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta fría</td><td style="font-size:12px">Confirmar visita a cliente y oferta</td></tr>
-        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">2</td><td style="font-size:12px;color:var(--ink2)">2 ofertas de clientes Euskaltel en curso</td><td style="font-size:12px">En revisión con cliente/integrador</td></tr>
+        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-gr">1</td><td class="n n-or">12</td><td class="n n-rd">2</td><td class="n n-bl">5</td><td style="font-size:12px;color:var(--ink2)">2 presentadas, 1 pendiente, 2 hold</td><td style="font-size:12px">Confirmar ofertas presentadas</td></tr>
+        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">8</td><td class="n n-gr">4</td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 presentada, ampliación PYME</td><td style="font-size:12px">Activación de ampliación por cliente</td></tr>
+        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">7</td><td class="n n-gy">0</td><td class="n n-or">2</td><td class="n n-rd">4</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta fría</td><td style="font-size:12px">Confirmar visita a cliente, parada</td></tr>
+        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta cliente Euskaltel presentada</td><td style="font-size:12px">En revisión con cliente/integrador</td></tr>
         <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen (ant.)</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-or">3</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
         <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta en curso</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td style="font-size:12px;color:var(--ink2)">2 ofertas en curso (1 propios servicios)</td><td style="font-size:12px">Preparar ofertas</td></tr>
+        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td style="font-size:12px;color:var(--ink2)">1 presentada, 1 pendiente información</td><td style="font-size:12px">Visita presencial a integrador</td></tr>
+        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td style="font-size:12px;color:var(--ink2)">2 oferta en curso (1 propios servicios)</td><td style="font-size:12px">Preparar ofertas</td></tr>
         <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-or">2</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta de cliente Orange con riesgo</td><td style="font-size:12px">Confirmar riesgo fuga y cerrar oferta</td></tr>
+        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
         <tr><td><strong>Aideea</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
         <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
         <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
         <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gy">0</td><td class="n n-or">9</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta grande en curso</td><td style="font-size:12px">Activar cliente y cerrar oferta</td></tr>
+        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gy">0</td><td class="n n-or">7</td><td class="n n-gy">0</td><td class="n n-bl">3</td><td style="font-size:12px;color:var(--ink2)">2 presentadas, 1 en análisis VVDD</td><td style="font-size:12px">Cerrar ventas y seguir trabajando</td></tr>
+        <tr><td><strong>Binfor Sol.</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 en análisis VVDD</td><td style="font-size:12px">Activar cliente y cerrar oferta</td></tr>
       </tbody>
     </table>
     </div>
@@ -1793,57 +1646,55 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="krow">
     <div class="kcard k-or">
       <div class="k-lbl">A visitar</div>
-      <div class="k-num" id="vp-cnt-total">24</div>
-      <div class="k-sub">integradores, 15 jornadas</div>
+      <div class="k-num">25</div>
+      <div class="k-sub">integradores en 15 jornadas</div>
     </div>
     <div class="kcard k-rd">
       <div class="k-lbl">Prioridad alta</div>
       <div class="k-num">12</div>
       <div class="k-sub">Oportunidad + churn</div>
     </div>
-    <div class="kcard" style="border-top-color:#059669">
-      <div class="k-lbl">Planificadas</div>
-      <div class="k-num" id="vp-cnt-assigned" style="color:#059669">0</div>
-      <div class="k-sub">con fecha asignada</div>
-    </div>
     <div class="kcard" style="border-top-color:#757575">
-      <div class="k-lbl">Sin asignar</div>
-      <div class="k-num" id="vp-cnt-pending" style="color:#757575">24</div>
-      <div class="k-sub">pendientes de fecha</div>
+      <div class="k-lbl">En hold</div>
+      <div class="k-num" style="color:#757575">5</div>
+      <div class="k-sub">No visitar ahora</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Jornadas</div>
+      <div class="k-num">15</div>
+      <div class="k-sub">Todas ida y vuelta desde Madrid</div>
     </div>
   </div>
 
-  <!-- Planificador semanal -->
+  <!-- Jornadas grid (generado por JS) -->
   <div class="card" style="margin-bottom:18px">
-    <div class="card-h" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div><span class="card-title">Planificador semanal</span><span class="card-sub">Asigna integradores a cada semana &middot; Se guarda automáticamente</span></div>
-      <button class="vf-btn" onclick="vpAddWeek()" style="flex-shrink:0;white-space:nowrap">+ Nueva semana</button>
-    </div>
-    <div id="vpPlannerRows" style="padding:4px 0 2px"></div>
+    <div class="card-h"><span class="card-title">15 jornadas de visitas</span><span class="card-sub">Cada jornada es ida y vuelta desde Madrid &middot; Click para filtrar</span></div>
+    <div class="jrn-grid" id="jrnGrid"></div>
   </div>
 
-  <!-- Filtros + búsqueda -->
+  <!-- Filtros -->
   <div class="card" style="margin-bottom:14px;padding:14px 18px">
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Filtrar:</span>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Prioridad:</span>
       <div class="vf-row" id="vfPri">
-        <button class="vf-btn vf-on" onclick="filtVP('all',this)">Todos</button>
-        <button class="vf-btn" onclick="filtVP('alta',this)">Alta prioridad</button>
-        <button class="vf-btn" onclick="filtVP('media',this)">Media prioridad</button>
-        <button class="vf-btn" onclick="filtVP('sinasignar',this)">Sin asignar</button>
-        <button class="vf-btn" onclick="filtVP('hold',this)">Hold</button>
-        <button class="vf-btn" onclick="filtVP('excl',this)">Excluidos</button>
+        <button class="vf-btn vf-on" onclick="filtVP('all',this)">Todos (25)</button>
+        <button class="vf-btn" onclick="filtVP('alta',this)">Alta (12)</button>
+        <button class="vf-btn" onclick="filtVP('media',this)">Media (13)</button>
+        <button class="vf-btn" onclick="filtVP('hold',this)">Hold (5)</button>
+        <button class="vf-btn" onclick="filtVP('excl',this)">Excluidos (6)</button>
       </div>
     </div>
-    <input class="vf-search" id="vfSearch" type="text" placeholder="Buscar integrador o ciudad..." oninput="filtVS()">
+    <div style="margin-top:10px">
+      <input class="vf-search" id="vfSearch" type="text" placeholder="Buscar integrador o ciudad..." oninput="filtVS()">
+    </div>
   </div>
 
-  <!-- Fichas de integradores -->
+  <!-- Grid de tarjetas de integradores -->
   <div class="vcards" id="vcardsGrid"></div>
 
-  <!-- Hold -->
+  <!-- Secciones colapsables -->
   <div class="vcoll" id="vcollHold">
-    <div class="vcoll-h" onclick="toggleVcoll('vcollHold')"><span class="vcoll-arr">&#9654;</span> Integradores en hold</div>
+    <div class="vcoll-h" onclick="toggleVcoll('vcollHold')"><span class="vcoll-arr">&#9654;</span> Integradores en hold (5)</div>
     <div class="vcoll-body">
       <table class="vhtbl">
         <thead><tr><th>Integrador</th><th>Ciudad</th><th>Motivo</th><th>Reactivar</th></tr></thead>
@@ -1852,7 +1703,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
   </div>
   <div class="vcoll" id="vcollExcl">
-    <div class="vcoll-h" onclick="toggleVcoll('vcollExcl')"><span class="vcoll-arr">&#9654;</span> Excluidos de visitas</div>
+    <div class="vcoll-h" onclick="toggleVcoll('vcollExcl')"><span class="vcoll-arr">&#9654;</span> Excluidos de visitas (6)</div>
     <div class="vcoll-body">
       <table class="vhtbl">
         <thead><tr><th>Integrador</th><th>Ciudad</th><th>Motivo</th></tr></thead>
@@ -1863,7 +1714,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
   <!-- KPIs objetivo -->
   <div class="card" style="margin-top:18px">
-    <div class="card-h"><span class="card-title">KPIs objetivo post-visitas</span><span class="card-sub">Actual vs objetivo</span></div>
+    <div class="card-h"><span class="card-title">KPIs objetivo post-visitas (6 semanas)</span><span class="card-sub">Actual vs objetivo</span></div>
     <div class="vkpi-bar" id="vkpiBar"></div>
   </div>
 
@@ -3723,13 +3574,12 @@ function doLogin() {
 // S6 · PLAN VISITAS — Data + Logic
 // ══════════════════════════════════════════════════════
 
-const visitPlanData={summary:{totalIntegrators:36,toVisit:24,excluded:6,onHold:6,highPriority:12,jornadas:15},
+const visitPlanData={summary:{totalIntegrators:36,toVisit:25,excluded:6,onHold:5,highPriority:12,jornadas:15},
 timeline:[],
 routes:[
-{id:1,name:"Madrid",zone:"Madrid",transport:"\ud83d\ude97 Coche ida/vuelta",logistics:"Primer parada Chamartín (Audinfor, ~10 min desde centro). Cruzar a Azuqueca de Henares (~50 min NE), visita Cobitratel. Bajar a Alcorcón (~1h15), visita Binfor. Vuelta a casa por la tarde.",days:1,color:"#F57C00",integrators:[
-{name:"Audinfor",city:"Madrid (Chamartín)",province:"Madrid",address:"Chamartín, Madrid (dirección por confirmar)",statusDot:"green",priority:"alta",tags:["4-5 leads identificados","Sin noticias"],observation:"Han identificado 4/5 leads potenciales, pendiente recepcion. Sin noticias.",action:"PRIORIDAD MAXIMA. Tienen leads listos pero no dan noticias. Visita para cerrar firma y activar los 4-5 leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
-{name:"Cobitratel",city:"Azuqueca de Henares",province:"Guadalajara",address:"C/ La Victoria, 4",statusDot:"green",priority:"alta",tags:["756\u20ac/mes cerrados","Contrato pendiente pago"],observation:"1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.",action:"Cerrar contrato de pago. Revisar cartera para nuevos leads.",orden:"2\u00aa visita (mediod\u00eda)"},
-{name:"Binfor Solutions",city:"Alcorcon",province:"Madrid",address:"C/ Sapporo, 2, local",statusDot:"green",priority:"alta",tags:["Sin respuesta","Contrato pendiente"],observation:"Contrato pendiente de envio. Sin respuesta a seguimientos.",action:"Desbloquear firma contrato in situ. Ultimo intento presencial.",orden:"3\u00aa visita (tarde)"}
+{id:1,name:"Madrid Este",zone:"Madrid",transport:"\ud83d\ude97 Coche ida/vuelta",logistics:"Salir de Madrid a Azuqueca de Henares (~45 min NE), visita Cobitratel. Cruzar a Alcorcon (~1h15), visita Binfor. Vuelta a casa por la tarde.",days:1,color:"#F57C00",integrators:[
+{name:"Cobitratel",city:"Azuqueca de Henares",province:"Guadalajara",address:"C/ La Victoria, 4",statusDot:"green",priority:"alta",tags:["756\u20ac/mes cerrados","Contrato pendiente pago"],observation:"1 venta cerrada; pendiente contrato para realizar pago y nuevos leads.",action:"Cerrar contrato de pago. Revisar cartera para nuevos leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Binfor Solutions",city:"Alcorcon",province:"Madrid",address:"C/ Sapporo, 2, local",statusDot:"green",priority:"alta",tags:["Sin respuesta","Contrato pendiente"],observation:"Contrato pendiente de envio. Sin respuesta a seguimientos.",action:"Desbloquear firma contrato in situ. Ultimo intento presencial.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]},
 {id:2,name:"Madrid Oeste",zone:"Madrid",transport:"\ud83d\ude97 Coche ida/vuelta",logistics:"Pozuelo y Las Rozas a 15 min entre si, zona noroeste de Madrid. Media jornada, vuelta a casa a mediod\u00eda.",days:1,color:"#F57C00",integrators:[
 {name:"OX-ONE Networks",city:"Pozuelo de Alarcon",province:"Madrid",address:"C/ Mimosas, 15",statusDot:"green",priority:"media",tags:["Reactivar esta semana"],observation:"1 visita pendiente. Hold hasta semana que viene.",action:"Su hold termina esta semana. Activar, revisar cartera, primeros leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
@@ -3738,8 +3588,9 @@ routes:[
 {id:3,name:"Valladolid",zone:"Castilla y Leon",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Valladolid (1h) + coche alquiler",logistics:"AVE primera hora a Valladolid, recoger coche, conducir a Medina del Campo (~45 min). Visita Mariskalnet. Devolver coche, AVE vuelta a Madrid por la tarde.",days:1,color:"#F57C00",integrators:[
 {name:"Mariskalnet Informatica",city:"Medina del Campo",province:"Valladolid",address:"C/ Ribera del Zapardiel, 16",statusDot:"green",priority:"media",tags:["Leads sin exito","Retomando activamente"],observation:"Varios leads sin exito pero continua con contactos activamente. Requiere revision de estrategia.",action:"Revisar que fallo en leads anteriores. Planificar nuevos contactos juntos con enfoque distinto.",orden:"\u00danica visita"}
 ]},
-{id:4,name:"Zaragoza",zone:"Aragon",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Zaragoza (1h20/trayecto)",logistics:"AVE primera hora a Zaragoza Delicias. Visita Digital Hand Made. AVE vuelta a Madrid por la tarde. Media jornada.",days:1,color:"#1976D2",integrators:[
-{name:"Digital Hand Made",city:"Zaragoza",province:"Zaragoza",address:"C/ Acacias, 9, local",statusDot:"yellow",priority:"media",tags:["Baja prioridad interna"],observation:"No es su prioridad, pero hay que mantener momentum.",action:"Mantener relacion. Aprovechar viaje a Zaragoza para reunion presencial y empujar activacion.",orden:"\u00danica visita"}
+{id:4,name:"Zaragoza",zone:"Aragon",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Zaragoza (1h20/trayecto)",logistics:"AVE primera hora a Zaragoza Delicias, taxi entre visitas. Audinfor ma\u00f1ana, DHM mediod\u00eda. AVE vuelta a Madrid por la tarde.",days:1,color:"#1976D2",integrators:[
+{name:"Audinfor",city:"Zaragoza",province:"Zaragoza",address:"C/ Marcelino Alvarez, 84",statusDot:"green",priority:"alta",tags:["4-5 leads identificados","Sin noticias"],observation:"Han identificado 4/5 leads potenciales, pendiente recepcion. Sin noticias.",action:"PRIORIDAD MAXIMA. Tienen leads listos pero no dan noticias. Visita para cerrar firma y activar los 4-5 leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Digital Hand Made",city:"Zaragoza",province:"Zaragoza",address:"C/ Acacias, 9, local",statusDot:"yellow",priority:"media",tags:["Baja prioridad interna"],observation:"No es su prioridad, pero hay que mantener momentum.",action:"Mantener relacion. Aprovechar viaje a Zaragoza para reunion presencial y empujar activacion.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]},
 {id:5,name:"Navalmoral de la Mata",zone:"Extremadura",transport:"\ud83d\ude97 Coche ida/vuelta desde Madrid (~2h/trayecto)",logistics:"Salir temprano de Madrid (~7:30), llegar a Navalmoral ~9:30, visita Micro Sip. Vuelta a Madrid despu\u00e9s de comer. Media jornada de conducci\u00f3n.",days:1,color:"#795548",integrators:[
 {name:"Micro Sip",city:"Navalmoral de la Mata",province:"Caceres",address:"C/ Gabriel y Galan, 2",statusDot:"green",priority:"media",tags:["Reunion BD realizada"],observation:"Reunion con BD realizada. Pendiente que Victor organice sesion con BD.",action:"Desbloquear sesion con BD. Activar modelo.",orden:"\u00danica visita"}
@@ -3770,8 +3621,9 @@ routes:[
 {name:"Omnia Soluciones",city:"Sevilla",province:"Sevilla",address:"Av. Alcalde Luis Urunuela, 6, oficina 120",statusDot:"gray",priority:"alta",tags:["Riesgo churn"],observation:"Riesgo churn por falta de respuesta.",action:"Ultimo intento presencial. Si no hay interes real, descartar.",orden:"1\u00aa visita (ma\u00f1ana)"},
 {name:"A4I",city:"El Puerto de Santa Maria",province:"Cadiz",address:"Pol. Industrial El Palmar, C/ Sederia, 19",statusDot:"green",priority:"media",tags:[],observation:"Sin observaciones en slide de estado.",action:"Primer contacto presencial. Activar modelo.",orden:"2\u00aa visita (tarde)"}
 ]},
-{id:13,name:"Malaga",zone:"Andalucia",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Malaga (2h30) + coche alquiler",logistics:"AVE primera hora a M\u00e1laga Mar\u00eda Zambrano, recoger coche. Visita Sictemas en M\u00e1laga. Devolver coche, AVE vuelta a Madrid por la tarde. Media jornada.",days:1,color:"#C62828",integrators:[
-{name:"Sictemas",city:"Malaga",province:"Malaga",address:"C/ Estado, 24",statusDot:"yellow",priority:"alta",tags:["Reactivar 15-abril","Contrato firmado"],observation:"Hold hasta 15-abril por reestructuracion interna. Contrato firmado enviado.",action:"Contrato ya firmado. Reactivar y arrancar con leads.",orden:"\u00danica visita"}
+{id:13,name:"Malaga",zone:"Andalucia",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Malaga (2h30) + coche alquiler",logistics:"AVE primera hora a M\u00e1laga Mar\u00eda Zambrano, recoger coche. Visita Sictemas en M\u00e1laga ma\u00f1ana. Conducir a Mijas Costa (~30 min), visita Sur Computers mediod\u00eda. Devolver coche, AVE vuelta a Madrid por la tarde.",days:1,color:"#C62828",integrators:[
+{name:"Sictemas",city:"Malaga",province:"Malaga",address:"C/ Estado, 24",statusDot:"yellow",priority:"alta",tags:["Reactivar 15-abril","Contrato firmado"],observation:"Hold hasta 15-abril por reestructuracion interna. Contrato firmado enviado.",action:"Contrato ya firmado. Reactivar y arrancar con leads.",orden:"1\u00aa visita (ma\u00f1ana)"},
+{name:"Sur Computers",city:"Mijas Costa",province:"Malaga",address:"C/ Albahaca, 6",statusDot:"yellow",priority:"media",tags:["Reactivar 15-abril"],observation:"Hold hasta 15-abril por carga de trabajo.",action:"Reactivar. Revisar disponibilidad y primeros leads.",orden:"2\u00aa visita (mediod\u00eda)"}
 ]},
 {id:14,name:"Valencia",zone:"Levante",transport:"\ud83d\ude84 AVE ida/vuelta Madrid\u2013Valencia (1h40)",logistics:"AVE primera hora a Valencia Joaqu\u00edn Sorolla. Visita DataQu. AVE vuelta a Madrid antes de comer. Media jornada.",days:1,color:"#0288D1",integrators:[
 {name:"DataQu",city:"Valencia",province:"Valencia",address:"Valencia (direccion pendiente confirmar)",statusDot:"green",priority:"alta",tags:["2 leads potenciales","Buscando sesion"],observation:"Pendiente 2 leads potenciales. Buscando sesion con integrador.",action:"Hacer la sesion en persona. Activar los 2 leads directamente.",orden:"\u00danica visita"}
@@ -3786,8 +3638,7 @@ onHold:[
 {name:"DIRBAPONT SLU",city:"Pontevedra",province:"Pontevedra",reason:"Hold hasta mayo por carga de trabajo (Kits venciendo este mes).",statusDot:"yellow",reactivate:"Mayo 2026"},
 {name:"Fedesoft",city:"Puente Genil",province:"Cordoba",reason:"Hold hasta abril por problemas personales.",statusDot:"yellow",reactivate:"Fin abril 2026"},
 {name:"Redem",city:"Sin direccion disponible",province:"\u2014",reason:"Hold hasta reunion con Negocio.",statusDot:"yellow",reactivate:"Pendiente"},
-{name:"Inforware",city:"Sin direccion disponible",province:"\u2014",reason:"En revision del modelo para ver si comenzamos a trabajar juntos.",statusDot:"yellow",reactivate:"Pendiente"},
-{name:"Sur Computers",city:"Mijas Costa",province:"Malaga",reason:"Hold por carga de trabajo.",statusDot:"yellow",reactivate:"Por confirmar"}
+{name:"Inforware",city:"Sin direccion disponible",province:"\u2014",reason:"En revision del modelo para ver si comenzamos a trabajar juntos.",statusDot:"yellow",reactivate:"Pendiente"}
 ],
 excluded:[
 {name:"Covernet",city:"Pozuelo de Alarcon",reason:"Ya produce activamente (4 ventas). Seguimiento remoto.",statusDot:"green"},
@@ -3806,211 +3657,76 @@ facturacionMensual:{label:"Facturacion mensual",current:1960,target:4000,suffix:
 conversionRate:{label:"Conversion %",current:10.2,target:15,suffix:"%"}
 }};
 
-// ── S6 Visit Planner ─────────────────────────────────────────
-const VP_KEY='visitPlanSchedule_v2';
-const VP_DEFAULTS=[
-  {id:'w17',label:'S17',date:'22 abr 2026',weekday:'Mié',integrators:['Sictemas'],notes:''},
-  {id:'w18',label:'S18',date:'28 abr 2026',weekday:'Mar',integrators:[],notes:''},
-  {id:'w19',label:'S19',date:'5 may 2026', weekday:'Mar',integrators:[],notes:''},
-  {id:'w20',label:'S20',date:'12 may 2026',weekday:'Mar',integrators:[],notes:''},
-  {id:'w21',label:'S21',date:'19 may 2026',weekday:'Mar',integrators:[],notes:''},
-  {id:'w22',label:'S22',date:'26 may 2026',weekday:'Mar',integrators:[],notes:''}
-];
-let vpState=null;
-let s6_pri='all',s6_search='';
+// ── S6 state
+let s6_pri='all', s6_route='all', s6_search='';
 
+// ── Tag color map
 const tagColors={"Riesgo churn":"vtag-rd","756\u20AC/mes cerrados":"vtag-gr","Contrato pendiente pago":"vtag-or","Sin respuesta":"vtag-or","Contrato pendiente":"vtag-or","Desbloquear contacto":"vtag-or","Pendiente identificar leads":"vtag-or","Reactivar esta semana":"vtag-am","Reactivar 15-abril":"vtag-am","Lead grande abril":"vtag-gr","1 oferta en curso":"vtag-gr","Oferta en curso":"vtag-gr","Lead compartido":"vtag-gr","4-5 leads identificados":"vtag-gr","2 ofertas presentadas":"vtag-gr","2 leads potenciales":"vtag-gr","Buscando sesion":"vtag-gr","1 lead frio":"vtag-bl","Evaluando modelo":"vtag-bl","Frio":"vtag-bl","Reunion BD realizada":"vtag-bl","Lead identificado":"vtag-bl","Leads grandes pendientes":"vtag-gr","Baja prioridad interna":"vtag-gy","Leads sin exito":"vtag-gy","Retomando activamente":"vtag-gr","Contrato firmado":"vtag-gr"};
+
 function getTagClass(t){return tagColors[t]||'vtag-gy'}
 
-// ── State ──
-function vpLoad(){
-  if(vpState)return;
-  try{const s=localStorage.getItem(VP_KEY);if(s)vpState=JSON.parse(s);}catch(e){}
-  if(!vpState)vpState={weeks:JSON.parse(JSON.stringify(VP_DEFAULTS))};
-}
-function vpSave(){try{localStorage.setItem(VP_KEY,JSON.stringify(vpState));}catch(e){}}
-
-// ── Data helpers ──
-function vpAllIgs(){
-  const out=[];
-  visitPlanData.routes.forEach(r=>r.integrators.forEach(ig=>out.push({...ig,routeId:r.id,routeName:r.name,routeColor:r.color,transport:r.transport})));
-  return out;
-}
-function vpAssignedSet(){
-  const s=new Set();
-  if(vpState)vpState.weeks.forEach(w=>w.integrators.forEach(n=>s.add(n)));
-  return s;
-}
-function vpFindIg(name){return vpAllIgs().find(ig=>ig.name===name);}
-function vpWeekForIg(name){
-  if(!vpState)return null;
-  for(let i=0;i<vpState.weeks.length;i++){if(vpState.weeks[i].integrators.includes(name))return{week:vpState.weeks[i],wi:i};}
-  return null;
-}
-
-// ── Escape helpers ──
-function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
-function esc2(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-// ── Planner builder ──
-function buildPlanner(){
-  vpLoad();
-  const rows=document.getElementById('vpPlannerRows');
-  if(!rows)return;
-  if(vpState.weeks.length===0){
-    rows.innerHTML='<div style="padding:24px;text-align:center;color:var(--ink3);font-size:13px">No hay semanas. Pulsa "+ Nueva semana" para empezar.</div>';
-    vpUpdateKPIs();return;
-  }
+// ── Jornada grid builder
+function buildJornadas(){
+  const grid=document.getElementById('jrnGrid');
+  if(!grid)return;
   let h='';
-  vpState.weeks.forEach((w,wi)=>{
-    const chipsH=w.integrators.map(name=>{
-      const ig=vpFindIg(name);
-      const dotCls=ig?(ig.statusDot==='green'?'vd-gr':ig.statusDot==='yellow'?'vd-am':'vd-gy'):'vd-gy';
-      const chipCls=ig?(ig.priority==='alta'?'chip-alta':'chip-media'):'';
-      return `<span class="vp-chip ${chipCls}"><span class="vcard-dot ${dotCls}" style="width:7px;height:7px;flex-shrink:0"></span><span>${esc2(name)}</span><button class="vp-chip-rm" onclick="vpRemove(${wi},'${esc(name)}')">×</button></span>`;
-    }).join('');
-    h+=`<div class="vp-week-row">
-      <div class="vp-week-side">
-        <span class="vp-week-badge">${esc2(w.label)}</span>
-        <span class="vp-week-day">${esc2(w.weekday)}</span>
-        <span class="vp-week-datestr" onclick="vpEditDate(${wi},this)" title="Click para editar fecha">${esc2(w.date)}</span>
-      </div>
-      <div class="vp-week-body">
-        <div class="vp-week-chips">${chipsH||'<span class="vp-week-empty">Sin visitas asignadas</span>'}</div>
-      </div>
-      <div class="vp-week-actions">
-        <button class="vp-add-btn" onclick="vpOpenAddPop(${wi},this)">+ Añadir</button>
-        <button class="vp-del-btn" onclick="vpDelWeek(${wi})" title="Eliminar semana">✕</button>
-      </div>
-    </div>`;
+  visitPlanData.routes.forEach(r=>{
+    const on=s6_route===r.id;
+    h+='<div class="jrn-card'+(on?' jrn-on':'')+'" onclick="filtJR('+r.id+',this)" style="border-left:4px solid '+r.color+'">';
+    h+='<div class="jrn-head"><span class="jrn-num'+(on?' jrn-on':'')+'">J'+r.id+'</span><span class="jrn-name">'+r.name+'</span></div>';
+    h+='<div class="jrn-transport">'+r.transport+'</div>';
+    h+='<div class="jrn-names">'+r.integrators.map(i=>i.name).join(' \u00b7 ')+'</div>';
+    h+='</div>';
   });
-  rows.innerHTML=h;
-  vpUpdateKPIs();
+  grid.innerHTML=h;
 }
 
-// ── Week CRUD ──
-function vpAddWeek(){
-  vpLoad();
-  const n=vpState.weeks.length;
-  vpState.weeks.push({id:'w_'+Date.now(),label:'S'+(17+n),date:'por definir',weekday:'Mar',integrators:[],notes:''});
-  vpSave();buildPlanner();
-}
-function vpDelWeek(wi){
-  vpLoad();vpState.weeks.splice(wi,1);
-  vpSave();buildPlanner();buildVCards();
-}
-function vpEditDate(wi,el){
-  const w=vpState.weeks[wi];
-  const inp=document.createElement('input');
-  inp.value=w.date;
-  inp.style.cssText='font-size:10px;color:var(--ink3);text-align:center;border:1px solid var(--or);border-radius:3px;width:90px;padding:1px 4px;outline:none';
-  el.replaceWith(inp);inp.focus();inp.select();
-  function save(){w.date=inp.value||w.date;vpSave();inp.replaceWith(el);el.textContent=w.date;}
-  inp.addEventListener('blur',save);
-  inp.addEventListener('keydown',e=>{if(e.key==='Enter')inp.blur();if(e.key==='Escape'){inp.value=w.date;inp.blur();}});
-}
-
-// ── Popovers ──
-function makePop(){
-  const pop=document.createElement('div');pop.className='vp-popover';document.body.appendChild(pop);
-  setTimeout(()=>{document.addEventListener('click',function c(e){if(!pop.contains(e.target)){pop.remove();document.removeEventListener('click',c);}});},0);
-  return pop;
-}
-function positionPop(pop,btn){
-  const r=btn.getBoundingClientRect();
-  const below=window.innerHeight-r.bottom;
-  if(below>200){pop.style.top=(r.bottom+4)+'px';}else{pop.style.bottom=(window.innerHeight-r.top+4)+'px';}
-  pop.style.left=Math.min(r.left,window.innerWidth-310)+'px';
-}
-function closePopovers(){document.querySelectorAll('.vp-popover').forEach(p=>p.remove());}
-
-function vpOpenAddPop(wi,btn){
-  closePopovers();vpLoad();
-  const avail=vpAllIgs().filter(ig=>!vpAssignedSet().has(ig.name));
-  const pop=makePop();
-  if(!avail.length){
-    pop.innerHTML='<div class="vp-pop-hdr">Añadir integrador</div><div class="vp-pop-empty">Todos los integradores ya están asignados.</div>';
-  }else{
-    const items=avail.map(ig=>{
-      const dotCls=ig.statusDot==='green'?'vd-gr':ig.statusDot==='yellow'?'vd-am':'vd-gy';
-      const priCls=ig.priority==='alta'?'vp-alta':'vp-media';
-      return `<button class="vp-pop-item" onclick="vpAssign(${wi},'${esc(ig.name)}')"><div class="vcard-dot ${dotCls}" style="width:8px;height:8px;flex-shrink:0;margin-top:3px"></div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:var(--ink1)">${esc2(ig.name)}</div><div style="font-size:10px;color:var(--ink3)">${esc2(ig.city)} &middot; J${ig.routeId} ${esc2(ig.routeName)}</div></div><span class="vcard-pri ${priCls}" style="font-size:9px;padding:1px 5px;flex-shrink:0">${ig.priority}</span></button>`;
-    }).join('');
-    pop.innerHTML='<div class="vp-pop-hdr">Añadir a semana</div><div class="vp-pop-scroll">'+items+'</div>';
-  }
-  positionPop(pop,btn);
-}
-
-function vpOpenWeekPop(name,btn){
-  closePopovers();vpLoad();
-  const items=vpState.weeks.map((w,wi)=>`<button class="vp-pop-item" onclick="vpAssign(${wi},'${esc(name)}')"><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--ink1)">${esc2(w.label)} &mdash; ${esc2(w.date)}</div><div style="font-size:10px;color:var(--ink3)">${w.integrators.length} integrador${w.integrators.length===1?'':'es'} asignado${w.integrators.length===1?'':'s'}</div></div></button>`).join('');
-  const pop=makePop();
-  pop.innerHTML='<div class="vp-pop-hdr">Asignar a semana</div><div class="vp-pop-scroll">'+(items||'<div class="vp-pop-empty">No hay semanas. Añade una primero.</div>')+'</div>';
-  positionPop(pop,btn);
-}
-
-// ── Assign / remove ──
-function vpAssign(wi,name){
-  closePopovers();vpLoad();
-  if(!vpState.weeks[wi].integrators.includes(name)){vpState.weeks[wi].integrators.push(name);vpSave();}
-  buildPlanner();buildVCards();
-}
-function vpRemove(wi,name){
-  vpLoad();
-  vpState.weeks[wi].integrators=vpState.weeks[wi].integrators.filter(n=>n!==name);
-  vpSave();buildPlanner();buildVCards();
-}
-function vpUnassign(name){
-  vpLoad();
-  vpState.weeks.forEach(w=>{w.integrators=w.integrators.filter(n=>n!==name);});
-  vpSave();buildPlanner();buildVCards();
-}
-
-// ── Cards ──
+// ── Integrator cards
 function buildVCards(){
-  vpLoad();
   const grid=document.getElementById('vcardsGrid');
   if(!grid)return;
   let html='';
-  const assigned=vpAssignedSet();
+
+  // Logistics banner when a specific jornada is selected
+  if(s6_route!=='all'&&s6_pri!=='hold'&&s6_pri!=='excl'){
+    const sel=visitPlanData.routes.find(r=>r.id===s6_route);
+    if(sel)html+='<div class="jrn-logistics">\ud83d\uddfa\ufe0f <strong>J'+sel.id+' '+sel.name+'</strong> \u2014 '+sel.logistics+'</div>';
+  }
+
   if(s6_pri!=='hold'&&s6_pri!=='excl'){
-    vpAllIgs().forEach(ig=>{
-      if(s6_pri==='alta'&&ig.priority!=='alta')return;
-      if(s6_pri==='media'&&ig.priority!=='media')return;
-      if(s6_pri==='sinasignar'&&assigned.has(ig.name))return;
-      if(s6_search){const q=s6_search.toLowerCase();if(!ig.name.toLowerCase().includes(q)&&!ig.city.toLowerCase().includes(q)&&!ig.province.toLowerCase().includes(q))return;}
-      const dotCls=ig.statusDot==='green'?'vd-gr':ig.statusDot==='yellow'?'vd-am':'vd-gy';
-      const priCls=ig.priority==='alta'?'vp-alta':'vp-media';
-      const mapsQ=encodeURIComponent(ig.address+', '+ig.city);
-      const tagsH=ig.tags.map(t=>'<span class="vtag '+getTagClass(t)+'">'+esc2(t)+'</span>').join('');
-      const wInfo=vpWeekForIg(ig.name);
-      const isAsn=wInfo!==null;
-      const asnBadge=isAsn?`<div class="vcard-asn-badge">&#10003; ${esc2(wInfo.week.label)} &middot; ${esc2(wInfo.week.date)}</div>`:'';
-      const asnBtn=isAsn
-        ?`<button class="vp-unasn-btn" onclick="vpUnassign('${esc(ig.name)}')">Quitar de ${esc2(wInfo.week.label)}</button>`
-        :`<button class="vp-asn-btn" onclick="vpOpenWeekPop('${esc(ig.name)}',this)">&#128197; Asignar semana</button>`;
-      html+=`<div class="vcard${isAsn?' vcard-assigned':''}" data-pri="${ig.priority}">`;
-      html+=`<div class="vcard-head"><div class="vcard-dot ${dotCls}"></div><span class="vcard-name">${esc2(ig.name)}</span><span class="vcard-pri ${priCls}">${ig.priority}</span></div>`;
-      html+=`<div class="vcard-sub">${esc2(ig.city)}, ${esc2(ig.province)} &middot; J${ig.routeId} ${esc2(ig.routeName)} &middot; ${ig.transport}</div>`;
-      if(asnBadge)html+=asnBadge;
-      if(tagsH)html+=`<div class="vcard-tags">${tagsH}</div>`;
-      html+=`<div class="vcard-obs">${esc2(ig.observation)}</div>`;
-      html+=`<div class="vcard-action">&#127919; ${esc2(ig.action)}</div>`;
-      html+=`<div class="vcard-footer"><div class="vcard-addr"><span>&#128205; ${esc2(ig.address)}, ${esc2(ig.city)}</span>`;
-      html+=`<a href="https://www.google.com/maps/search/?api=1&query=${mapsQ}" target="_blank" rel="noopener">&#128205; Ver en Maps</a>`;
-      html+=`<button onclick="navigator.clipboard.writeText('${esc(ig.address)}, ${esc(ig.city)}');this.textContent='&#10003; Copiado';setTimeout(()=>this.textContent='&#128203; Copiar',1500)">&#128203; Copiar</button></div>`;
-      html+=asnBtn+'</div></div>';
+    visitPlanData.routes.forEach(r=>{
+      if(s6_route!=='all'&&r.id!==s6_route)return;
+      r.integrators.forEach(ig=>{
+        if(s6_pri!=='all'&&ig.priority!==s6_pri)return;
+        if(s6_search){
+          const q=s6_search.toLowerCase();
+          if(!ig.name.toLowerCase().includes(q)&&!ig.city.toLowerCase().includes(q)&&!ig.province.toLowerCase().includes(q))return;
+        }
+        const dotCls=ig.statusDot==='green'?'vd-gr':ig.statusDot==='yellow'?'vd-am':'vd-gy';
+        const priCls=ig.priority==='alta'?'vp-alta':'vp-media';
+        const mapsQ=encodeURIComponent(ig.address+', '+ig.city);
+        let tagsH=ig.tags.map(t=>'<span class="vtag '+getTagClass(t)+'">'+t+'</span>').join('');
+        html+='<div class="vcard" data-route="'+r.id+'" data-pri="'+ig.priority+'">';
+        html+='<div class="vcard-head"><div class="vcard-dot '+dotCls+'"></div><span class="vcard-name">'+ig.name+'</span><span class="vcard-pri '+priCls+'">'+ig.priority+'</span></div>';
+        html+='<div class="vcard-sub">'+ig.city+', '+ig.province+' \u00B7 J'+r.id+' '+r.name+' \u00B7 '+ig.orden+'</div>';
+        if(tagsH)html+='<div class="vcard-tags">'+tagsH+'</div>';
+        html+='<div class="vcard-obs">'+ig.observation+'</div>';
+        html+='<div class="vcard-action">\u{1F3AF} '+ig.action+'</div>';
+        html+='<div class="vcard-addr"><span>\u{1F4CD} '+ig.address+', '+ig.city+'</span>';
+        html+='<a href="https://www.google.com/maps/search/?api=1&query='+mapsQ+'" target="_blank" rel="noopener">\u{1F4CD} Ver en Maps</a>';
+        html+='<button onclick="navigator.clipboard.writeText(\''+ig.address.replace(/'/g,"\\'")+', '+ig.city+'\');this.textContent=\'\u2705 Copiado\';setTimeout(()=>this.textContent=\'\u{1F4CB} Copiar\',1500)">\u{1F4CB} Copiar</button>';
+        html+='</div></div>';
+      });
     });
   }
-  grid.innerHTML=html||'<div style="padding:40px;text-align:center;color:var(--ink3);font-size:13px">No hay integradores con estos filtros.</div>';
-  vpUpdateKPIs();
+  grid.innerHTML=html||'<div style="padding:40px;text-align:center;color:var(--ink3);font-size:13px">No hay integradores con estos filtros</div>';
 }
 
 function buildHoldExcl(){
   const hb=document.getElementById('vholdBody');
   const eb=document.getElementById('vexclBody');
-  if(hb)hb.innerHTML=visitPlanData.onHold.map(h=>'<tr><td><strong>'+esc2(h.name)+'</strong></td><td>'+esc2(h.city)+'</td><td>'+esc2(h.reason)+'</td><td>'+esc2(h.reactivate)+'</td></tr>').join('');
-  if(eb)eb.innerHTML=visitPlanData.excluded.map(e=>'<tr><td><strong>'+esc2(e.name)+'</strong></td><td>'+esc2(e.city)+'</td><td>'+esc2(e.reason)+'</td></tr>').join('');
+  if(hb)hb.innerHTML=visitPlanData.onHold.map(h=>'<tr><td><strong>'+h.name+'</strong></td><td>'+h.city+'</td><td>'+h.reason+'</td><td>'+h.reactivate+'</td></tr>').join('');
+  if(eb)eb.innerHTML=visitPlanData.excluded.map(e=>'<tr><td><strong>'+e.name+'</strong></td><td>'+e.city+'</td><td>'+e.reason+'</td></tr>').join('');
 }
 
 function buildKPIs(){
@@ -4029,18 +3745,11 @@ function buildKPIs(){
   bar.innerHTML=h;
 }
 
-function vpUpdateKPIs(){
-  vpLoad();
-  const total=vpAllIgs().length;
-  const asnCount=vpAssignedSet().size;
-  const el1=document.getElementById('vp-cnt-total');
-  const el2=document.getElementById('vp-cnt-assigned');
-  const el3=document.getElementById('vp-cnt-pending');
-  if(el1)el1.textContent=total;
-  if(el2)el2.textContent=asnCount;
-  if(el3)el3.textContent=total-asnCount;
+function filtJR(id,el){
+  if(s6_route===id){s6_route='all';}
+  else{s6_route=id;}
+  buildJornadas();buildVCards();
 }
-
 function filtVP(val,el){
   s6_pri=val;
   document.querySelectorAll('#vfPri .vf-btn').forEach(b=>b.classList.remove('vf-on'));el.classList.add('vf-on');
@@ -4048,18 +3757,23 @@ function filtVP(val,el){
   document.getElementById('vcollExcl').style.display=(val==='excl'||val==='all')?'':'none';
   buildVCards();
 }
-function filtVS(){s6_search=document.getElementById('vfSearch').value;buildVCards();}
+function filtVS(){
+  s6_search=document.getElementById('vfSearch').value;
+  buildVCards();
+}
 function toggleVcoll(id){
   const wrap=document.getElementById(id);
-  wrap.querySelector('.vcoll-h').classList.toggle('vcoll-open');
-  wrap.querySelector('.vcoll-body').classList.toggle('vcoll-show');
+  const h=wrap.querySelector('.vcoll-h');
+  const b=wrap.querySelector('.vcoll-body');
+  h.classList.toggle('vcoll-open');
+  b.classList.toggle('vcoll-show');
 }
 
 // Init S6 on first show
 const origShow=show;
 show=function(id){
   origShow(id);
-  if(id==='s6'){vpLoad();buildPlanner();buildVCards();buildHoldExcl();buildKPIs();}
+  if(id==='s6'){buildJornadas();buildVCards();buildHoldExcl();buildKPIs();}
 };
 </script>
 </body>
