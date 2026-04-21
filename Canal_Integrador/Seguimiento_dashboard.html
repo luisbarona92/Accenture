@@ -3933,26 +3933,29 @@ function vpParseOldDate(str){
   return m[3]+'-'+String(mi+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
 }
 function vpIsoToMonday(iso){
-  // Get Monday of the same week (ISO: Mon=1..Sun=7)
-  const d=new Date(iso+'T00:00:00');
-  const dow=(d.getDay()+6)%7; // 0=Mon..6=Sun
-  d.setDate(d.getDate()-dow);
+  // Get Monday of the same week (UTC-safe, ISO: Mon=1..Sun=7)
+  if(!iso)return null;
+  const [y,m,day]=iso.split('-').map(Number);
+  const d=new Date(Date.UTC(y,m-1,day));
+  const dow=(d.getUTCDay()+6)%7; // 0=Mon..6=Sun
+  d.setUTCDate(d.getUTCDate()-dow);
   return d.toISOString().slice(0,10);
 }
 function vpWeekDaysOf(iso){
-  // Returns [{iso,d,m,dayShort}, ...] for Mon-Fri of that week
+  // Returns [{iso,d,m,dayShort}, ...] for Mon-Fri of that week (UTC-safe)
   if(!iso)return [];
   const mon=vpIsoToMonday(iso);
-  const base=new Date(mon+'T00:00:00');
+  if(!mon)return [];
+  const [y,m,day]=mon.split('-').map(Number);
   const out=[];
   for(let i=0;i<5;i++){
-    const d=new Date(base); d.setDate(d.getDate()+i);
+    const d=new Date(Date.UTC(y,m-1,day+i));
     out.push({
       iso:d.toISOString().slice(0,10),
-      d:d.getDate(),
-      m:d.getMonth(),
-      mShort:VP_MONTHS[d.getMonth()],
-      dayShort:VP_WEEKDAYS[d.getDay()]
+      d:d.getUTCDate(),
+      m:d.getUTCMonth(),
+      mShort:VP_MONTHS[d.getUTCMonth()],
+      dayShort:VP_WEEKDAYS[d.getUTCDay()]
     });
   }
   return out;
@@ -3971,8 +3974,9 @@ function vpFmtWeekYear(iso){
 }
 function vpFmtDayChip(iso){
   if(!iso)return null;
-  const d=new Date(iso+'T00:00:00');
-  return {num:d.getDate(),lbl:VP_WEEKDAYS[d.getDay()]};
+  const [y,m,day]=iso.split('-').map(Number);
+  const d=new Date(Date.UTC(y,m-1,day));
+  return {num:d.getUTCDate(),lbl:VP_WEEKDAYS[d.getUTCDay()]};
 }
 
 function vpMigrate(st){
@@ -3985,12 +3989,35 @@ function vpMigrate(st){
         w.weekStart=iso?vpIsoToMonday(iso):null;
       }
     }
+    // Normalize weekStart to Monday. The previous tz-buggy code saved
+    // weekStart as Sunday (one day off). Detect & correct.
+    if(w.weekStart){
+      const parts=w.weekStart.split('-').map(Number);
+      if(parts.length===3){
+        const d=new Date(Date.UTC(parts[0],parts[1]-1,parts[2]));
+        const dow=d.getUTCDay(); // 0=Sun..6=Sat
+        if(dow===0){
+          // Sunday → shift +1 (legacy tz bug correction)
+          d.setUTCDate(d.getUTCDate()+1);
+          w.weekStart=d.toISOString().slice(0,10);
+        }else if(dow!==1){
+          // Other day → snap to Monday of same ISO week
+          w.weekStart=vpIsoToMonday(w.weekStart);
+        }
+        w.label='S'+vpIsoWeekNum(w.weekStart);
+      }
+    }
     // Migrate integrators: string[] -> {name,day}[]
     if(Array.isArray(w.integrators)){
       w.integrators=w.integrators.map(it=>{
         if(typeof it==='string')return {name:it,day:''};
         return {name:it.name||'',day:it.day||''};
       });
+      // Drop day if outside the new week range (legacy tz data might be Sunday)
+      if(w.weekStart){
+        const validDays=vpWeekDaysOf(w.weekStart).map(x=>x.iso);
+        w.integrators.forEach(it=>{if(it.day && !validDays.includes(it.day))it.day='';});
+      }
     }else{
       w.integrators=[];
     }
@@ -4087,23 +4114,17 @@ function buildPlanner(){
 function vpAddWeek(){
   vpLoad();
   const n=vpState.weeks.length;
-  // Try to increment from last week's Monday
+  // Try to increment from last week's Monday (UTC-safe)
   let newStart=null;
   if(n>0 && vpState.weeks[n-1].weekStart){
-    const d=new Date(vpState.weeks[n-1].weekStart+'T00:00:00');
-    d.setDate(d.getDate()+7);
+    const [y,m,day]=vpState.weeks[n-1].weekStart.split('-').map(Number);
+    const d=new Date(Date.UTC(y,m-1,day+7));
     newStart=d.toISOString().slice(0,10);
   }else{
-    newStart=vpIsoToMonday(new Date().toISOString().slice(0,10));
+    const now=new Date();
+    newStart=vpIsoToMonday(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0'));
   }
-  // ISO week number
-  const d=new Date(newStart+'T00:00:00');
-  const tmp=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
-  const dn=(tmp.getUTCDay()+6)%7;
-  tmp.setUTCDate(tmp.getUTCDate()-dn+3);
-  const fw=new Date(Date.UTC(tmp.getUTCFullYear(),0,4));
-  const wn=1+Math.round(((tmp-fw)/86400000-3+((fw.getUTCDay()+6)%7))/7);
-  vpState.weeks.push({id:'w_'+Date.now(),label:'S'+wn,weekStart:newStart,integrators:[],notes:''});
+  vpState.weeks.push({id:'w_'+Date.now(),label:'S'+vpIsoWeekNum(newStart),weekStart:newStart,integrators:[],notes:''});
   vpSave();buildPlanner();
 }
 function vpDelWeek(wi){
@@ -4111,8 +4132,10 @@ function vpDelWeek(wi){
   vpSave();buildPlanner();buildVCards();
 }
 function vpIsoWeekNum(isoMon){
-  const d=new Date(isoMon+'T00:00:00');
-  const tmp=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  // UTC-safe ISO week number (isoMon = Monday in YYYY-MM-DD)
+  if(!isoMon)return 0;
+  const [y,m,day]=isoMon.split('-').map(Number);
+  const tmp=new Date(Date.UTC(y,m-1,day));
   const dn=(tmp.getUTCDay()+6)%7;
   tmp.setUTCDate(tmp.getUTCDate()-dn+3);
   const fw=new Date(Date.UTC(tmp.getUTCFullYear(),0,4));
@@ -4122,14 +4145,16 @@ function vpEditWeekStart(wi,el){
   vpCloseAllPops();
   vpLoad();
   const w=vpState.weeks[wi];
-  // Build 60 week options: 6 weeks back, 54 ahead from today's Monday
-  const todayMon=vpIsoToMonday(new Date().toISOString().slice(0,10));
+  // Build 60 week options: 6 weeks back, 54 ahead from today's Monday (UTC-safe)
+  const now=new Date();
+  const todayIso=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  const todayMon=vpIsoToMonday(todayIso);
+  const [ty,tm,td]=todayMon.split('-').map(Number);
   const weeks=[];
   for(let i=-6;i<54;i++){
-    const d=new Date(todayMon+'T00:00:00');
-    d.setDate(d.getDate()+i*7);
+    const d=new Date(Date.UTC(ty,tm-1,td+i*7));
     const iso=d.toISOString().slice(0,10);
-    weeks.push({iso,wn:vpIsoWeekNum(iso),year:d.getFullYear(),range:vpFmtWeekRange(iso)});
+    weeks.push({iso,wn:vpIsoWeekNum(iso),year:d.getUTCFullYear(),range:vpFmtWeekRange(iso)});
   }
   const pop=document.createElement('div');
   pop.className='vp-daypop vp-weekpop';
