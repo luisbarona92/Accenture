@@ -4075,7 +4075,15 @@ function buildPlanner(){
   vpState.weeks.forEach((w,wi)=>{
     const range=vpFmtWeekRange(w.weekStart);
     const year=vpFmtWeekYear(w.weekStart);
-    const chipsH=w.integrators.map((it,idx)=>{
+    // Sort by day (Lun→Vie) then unassigned last; preserve original indices
+    const sortedPairs=w.integrators.map((it,idx)=>({it,idx}))
+      .sort((a,b)=>{
+        const ad=a.it.day||'\uffff';
+        const bd=b.it.day||'\uffff';
+        if(ad!==bd)return ad<bd?-1:1;
+        return a.idx-b.idx;
+      });
+    const chipsH=sortedPairs.map(({it,idx})=>{
       const name=it.name;
       const ig=vpFindIg(name);
       const dotBg=ig?(ig.statusDot==='green'?'#059669':ig.statusDot==='yellow'?'#D97706':'#98A2B3'):'#98A2B3';
