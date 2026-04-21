@@ -932,21 +932,25 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .vp-week-empty{font-size:12px;color:#98A2B3;font-style:italic;padding:6px 0}
 
 /* Visit pill rediseñado: [Día][●][Nombre][×] */
-.vp-chip{display:inline-flex;align-items:stretch;gap:0;padding:0;border-radius:8px;background:#fff;border:1px solid #E4E7EC;font-size:12px;font-weight:500;color:#1D2939;white-space:nowrap;overflow:hidden;transition:all .15s ease;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.vp-chip{display:inline-flex;align-items:stretch;gap:0;padding:0;border-radius:10px;background:#fff;border:1px solid #E4E7EC;font-size:12px;font-weight:500;color:#1D2939;white-space:nowrap;overflow:hidden;transition:all .15s ease;box-shadow:0 1px 2px rgba(16,24,40,.04);height:44px}
 .vp-chip:hover{border-color:#D0D5DD;box-shadow:0 2px 6px rgba(16,24,40,.08);transform:translateY(-1px)}
 .vp-chip.chip-alta{border-color:#FECACA}
 .vp-chip.chip-alta .vp-chip-name{background:#FFF5F5;color:#991B1B}
 .vp-chip.chip-media{border-color:#BFDBFE}
 .vp-chip.chip-media .vp-chip-name{background:#EFF6FF;color:#1E3A8A}
-.vp-chip-day{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:46px;padding:4px 8px;background:linear-gradient(180deg,#F9FAFB,#F2F4F7);border-right:1px solid #E4E7EC;cursor:pointer;transition:background .15s}
-.vp-chip-day:hover{background:linear-gradient(180deg,#FFF7ED,#FFEDD5)}
-.vp-chip-day-num{font-size:14px;font-weight:800;color:#FF6600;line-height:1}
-.vp-chip-day-lbl{font-size:8.5px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:.3px;margin-top:1px}
-.vp-chip-day.unset .vp-chip-day-num{font-size:10px;color:#98A2B3;font-weight:600}
-.vp-chip-day.unset .vp-chip-day-lbl{color:#98A2B3}
-.vp-chip-name{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;font-weight:600}
+.vp-chip-day{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:52px;padding:0 10px;background:linear-gradient(180deg,#FFF9F0,#FFF3E0);border:none;border-right:1px solid #FFE4C0;cursor:pointer;transition:all .15s;font-family:inherit;line-height:1}
+.vp-chip-day:hover{background:linear-gradient(180deg,#FFE8CC,#FFD6A0)}
+.vp-chip-day-num{font-size:16px;font-weight:800;color:#FF6600;line-height:1;letter-spacing:-.3px}
+.vp-chip-day-lbl{font-size:9px;font-weight:700;color:#B54700;text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+.vp-chip-day.unset{background:linear-gradient(180deg,#F9FAFB,#F2F4F7);border-right-color:#E4E7EC}
+.vp-chip-day.unset:hover{background:linear-gradient(180deg,#FFF9F0,#FFF3E0);border-right-color:#FFE4C0}
+.vp-chip-day.unset .vp-chip-day-num{font-size:11px;color:#98A2B3;font-weight:700}
+.vp-chip-day.unset .vp-chip-day-lbl{color:#98A2B3;font-size:8.5px}
+.vp-chip-day.unset:hover .vp-chip-day-num{color:#FF6600}
+.vp-chip-day.unset:hover .vp-chip-day-lbl{color:#B54700}
+.vp-chip-name{display:inline-flex;align-items:center;gap:7px;padding:0 12px;font-weight:600}
 .vp-chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.vp-chip-rm{border:none;background:transparent;cursor:pointer;color:#98A2B3;font-size:14px;padding:0 9px;line-height:1;border-left:1px solid #EEF0F4;transition:all .15s}
+.vp-chip-rm{border:none;background:transparent;cursor:pointer;color:#98A2B3;font-size:15px;padding:0 10px;line-height:1;border-left:1px solid #EEF0F4;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;font-family:inherit}
 .vp-chip-rm:hover{color:#fff;background:#DC2626;border-left-color:#DC2626}
 
 .vp-week-actions{display:flex;gap:6px;align-items:center;flex-shrink:0;padding:14px 18px 14px 0}
@@ -1893,7 +1897,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <!-- Planificador semanal -->
   <div class="card" style="margin-bottom:18px">
     <div class="card-h" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div><span class="card-title">Planificador semanal</span><span class="card-sub">Asigna integradores a cada semana &middot; Se guarda automáticamente</span></div>
+      <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="card-title">Planificador semanal</span><span class="card-sub" style="display:block">Asigna integradores a cada semana &middot; Se guarda automáticamente</span></div>
       <button class="vf-btn" onclick="vpAddWeek()" style="flex-shrink:0;white-space:nowrap">+ Nueva semana</button>
     </div>
     <div id="vpPlannerRows" style="padding:4px 0 2px"></div>
@@ -4039,11 +4043,11 @@ function buildPlanner(){
       const dayCls=dayInfo?'':'unset';
       const dayHtml=dayInfo
         ?`<span class="vp-chip-day-num">${dayInfo.num}</span><span class="vp-chip-day-lbl">${dayInfo.lbl}</span>`
-        :`<span class="vp-chip-day-num">día</span><span class="vp-chip-day-lbl">fijar</span>`;
+        :`<span class="vp-chip-day-num">elegir</span><span class="vp-chip-day-lbl">día</span>`;
       return `<span class="vp-chip ${chipCls}">
-        <span class="vp-chip-day ${dayCls}" onclick="vpOpenDayPop(${wi},${idx},this)" title="Elegir día">${dayHtml}</span>
+        <button type="button" class="vp-chip-day ${dayCls}" onclick="event.stopPropagation();vpOpenDayPop(${wi},${idx},this)" title="Elegir día">${dayHtml}</button>
         <span class="vp-chip-name"><span class="vp-chip-dot" style="background:${dotBg}"></span>${esc2(name)}</span>
-        <button class="vp-chip-rm" onclick="vpRemove(${wi},'${esc(name)}')" title="Quitar">×</button>
+        <button type="button" class="vp-chip-rm" onclick="event.stopPropagation();vpRemove(${wi},'${esc(name)}')" title="Quitar">×</button>
       </span>`;
     }).join('');
     h+=`<div class="vp-week-row">
@@ -4123,49 +4127,76 @@ function vpEditWeekStart(wi,el){
 }
 
 // ── Day picker ──
+function vpCloseAllPops(){
+  document.querySelectorAll('.vp-popover,.vp-daypop').forEach(p=>p.remove());
+  if(window._vpOutsideHandler){
+    document.removeEventListener('mousedown',window._vpOutsideHandler,true);
+    window._vpOutsideHandler=null;
+  }
+}
 function vpOpenDayPop(wi,idx,btn){
-  closePopovers();
-  document.querySelectorAll('.vp-daypop').forEach(p=>p.remove());
+  vpCloseAllPops();
   vpLoad();
   const w=vpState.weeks[wi];
+  if(!w||!w.integrators[idx])return;
   const cur=w.integrators[idx].day;
+  const name=w.integrators[idx].name;
   const days=vpWeekDaysOf(w.weekStart);
   if(!days.length){
+    alert('Primero define la fecha de la semana (click en la fecha).');
     return;
   }
   const pop=document.createElement('div');
   pop.className='vp-daypop';
   const daysHtml=days.map(d=>{
     const active=(cur===d.iso)?'active':'';
-    return `<button class="vp-daypop-day ${active}" onclick="vpSetDay(${wi},${idx},'${d.iso}')">
+    return `<button type="button" class="vp-daypop-day ${active}" data-iso="${d.iso}" data-wi="${wi}" data-idx="${idx}">
       <span class="vp-daypop-num">${d.d}</span>
       <span class="vp-daypop-lbl">${d.dayShort} ${d.mShort}</span>
     </button>`;
   }).join('');
-  pop.innerHTML=`<div class="vp-daypop-hdr">Día de la visita · ${esc2(w.label)}</div>
+  pop.innerHTML=`<div class="vp-daypop-hdr">Día para <b style="color:#1D2939">${esc2(name)}</b> · ${esc2(w.label)}</div>
     <div class="vp-daypop-grid">${daysHtml}</div>
-    ${cur?`<button class="vp-daypop-clear" onclick="vpSetDay(${wi},${idx},'')">Quitar día asignado</button>`:''}`;
+    ${cur?`<button type="button" class="vp-daypop-clear" data-iso="" data-wi="${wi}" data-idx="${idx}">Quitar día asignado</button>`:''}`;
+  // Use pointer-events and delegate click inside the popover
+  pop.addEventListener('click',function(e){
+    e.stopPropagation();
+    const target=e.target.closest('[data-iso],[data-wi]');
+    if(!target)return;
+    const tWi=parseInt(target.getAttribute('data-wi'),10);
+    const tIdx=parseInt(target.getAttribute('data-idx'),10);
+    const iso=target.getAttribute('data-iso');
+    vpSetDay(tWi,tIdx,iso);
+  });
+  pop.addEventListener('mousedown',e=>e.stopPropagation());
   document.body.appendChild(pop);
+  // Position
   const r=btn.getBoundingClientRect();
-  const popW=300;
+  const popRect=pop.getBoundingClientRect();
+  const popW=popRect.width||300, popH=popRect.height||200;
   const below=window.innerHeight-r.bottom;
-  if(below>260){pop.style.top=(r.bottom+6)+'px';}
-  else{pop.style.bottom=(window.innerHeight-r.top+6)+'px';}
+  if(below>popH+12){pop.style.top=(r.bottom+6)+'px';}
+  else if(r.top>popH+12){pop.style.top=(r.top-popH-6)+'px';}
+  else{pop.style.top=Math.max(8,window.innerHeight-popH-8)+'px';}
   pop.style.left=Math.max(8,Math.min(r.left,window.innerWidth-popW-8))+'px';
+  // Outside-close listener (mousedown, capture phase, ignores the opening click)
   setTimeout(()=>{
-    document.addEventListener('click',function c(e){
-      if(!pop.contains(e.target)&&!btn.contains(e.target)){pop.remove();document.removeEventListener('click',c);}
-    });
-  },0);
+    window._vpOutsideHandler=function(e){
+      if(pop.contains(e.target))return;
+      vpCloseAllPops();
+    };
+    document.addEventListener('mousedown',window._vpOutsideHandler,true);
+  },50);
 }
 function vpSetDay(wi,idx,day){
   vpLoad();
   if(vpState.weeks[wi]&&vpState.weeks[wi].integrators[idx]){
-    vpState.weeks[wi].integrators[idx].day=day;
+    vpState.weeks[wi].integrators[idx].day=day||'';
     vpSave();
   }
-  document.querySelectorAll('.vp-daypop').forEach(p=>p.remove());
+  vpCloseAllPops();
   buildPlanner();
+  buildVCards();
 }
 
 // ── Popovers ──
@@ -4180,7 +4211,7 @@ function positionPop(pop,btn){
   if(below>200){pop.style.top=(r.bottom+4)+'px';}else{pop.style.bottom=(window.innerHeight-r.top+4)+'px';}
   pop.style.left=Math.min(r.left,window.innerWidth-310)+'px';
 }
-function closePopovers(){document.querySelectorAll('.vp-popover').forEach(p=>p.remove());}
+function closePopovers(){document.querySelectorAll('.vp-popover,.vp-daypop').forEach(p=>p.remove());if(window._vpOutsideHandler){document.removeEventListener('mousedown',window._vpOutsideHandler,true);window._vpOutsideHandler=null;}}
 
 function vpOpenAddPop(wi,btn){
   closePopovers();vpLoad();
