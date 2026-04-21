@@ -911,6 +911,77 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 @media(max-width:760px){
   .vtbl{min-width:620px}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   S6 · Planificador semanal v2 — rediseño look&feel + día
+   ═══════════════════════════════════════════════════════════ */
+#vpPlannerRows{display:flex;flex-direction:column;gap:12px;padding:10px 0 4px}
+.vp-week-row{display:grid;grid-template-columns:140px 1fr auto;gap:16px;align-items:stretch;padding:0;border-radius:12px;background:linear-gradient(180deg,#fff 0%,#FAFAFB 100%);border:1px solid #E7E9EE;margin-bottom:0;flex-wrap:nowrap;transition:box-shadow .18s ease, border-color .18s ease;overflow:hidden;position:relative}
+.vp-week-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#FF6600 0%,#FF8A33 100%);border-radius:4px 0 0 4px}
+.vp-week-row:hover{box-shadow:0 6px 18px rgba(16,24,40,.08);border-color:#D4D7DE}
+.vp-week-side{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-width:0;flex-shrink:0;padding:14px 10px 14px 18px;border-right:1px solid #EEF0F4;background:linear-gradient(180deg,#FFF9F4 0%,#FFFDFB 100%)}
+.vp-week-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:.4px;background:linear-gradient(135deg,#FF6600,#FF8A33);color:#fff;padding:4px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(255,102,0,.25)}
+.vp-week-badge::before{content:"📅";font-size:10px;filter:grayscale(1) brightness(10)}
+.vp-week-day{font-size:10px;font-weight:700;color:#FF6600;text-transform:uppercase;letter-spacing:.3px;display:none}
+.vp-week-datestr{font-size:12px;font-weight:600;color:#344054;line-height:1.25;cursor:pointer;border:1px solid transparent;padding:2px 4px;border-radius:4px;margin-top:2px}
+.vp-week-datestr:hover{border-color:#FF6600;background:#FFF7ED}
+.vp-week-range{font-size:10px;color:#98A2B3;font-weight:500;margin-top:1px}
+
+.vp-week-body{flex:1;min-width:0;padding:14px 10px 14px 4px;display:flex;align-items:center}
+.vp-week-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;width:100%}
+.vp-week-empty{font-size:12px;color:#98A2B3;font-style:italic;padding:6px 0}
+
+/* Visit pill rediseñado: [Día][●][Nombre][×] */
+.vp-chip{display:inline-flex;align-items:stretch;gap:0;padding:0;border-radius:8px;background:#fff;border:1px solid #E4E7EC;font-size:12px;font-weight:500;color:#1D2939;white-space:nowrap;overflow:hidden;transition:all .15s ease;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.vp-chip:hover{border-color:#D0D5DD;box-shadow:0 2px 6px rgba(16,24,40,.08);transform:translateY(-1px)}
+.vp-chip.chip-alta{border-color:#FECACA}
+.vp-chip.chip-alta .vp-chip-name{background:#FFF5F5;color:#991B1B}
+.vp-chip.chip-media{border-color:#BFDBFE}
+.vp-chip.chip-media .vp-chip-name{background:#EFF6FF;color:#1E3A8A}
+.vp-chip-day{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:46px;padding:4px 8px;background:linear-gradient(180deg,#F9FAFB,#F2F4F7);border-right:1px solid #E4E7EC;cursor:pointer;transition:background .15s}
+.vp-chip-day:hover{background:linear-gradient(180deg,#FFF7ED,#FFEDD5)}
+.vp-chip-day-num{font-size:14px;font-weight:800;color:#FF6600;line-height:1}
+.vp-chip-day-lbl{font-size:8.5px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:.3px;margin-top:1px}
+.vp-chip-day.unset .vp-chip-day-num{font-size:10px;color:#98A2B3;font-weight:600}
+.vp-chip-day.unset .vp-chip-day-lbl{color:#98A2B3}
+.vp-chip-name{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;font-weight:600}
+.vp-chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.vp-chip-rm{border:none;background:transparent;cursor:pointer;color:#98A2B3;font-size:14px;padding:0 9px;line-height:1;border-left:1px solid #EEF0F4;transition:all .15s}
+.vp-chip-rm:hover{color:#fff;background:#DC2626;border-left-color:#DC2626}
+
+.vp-week-actions{display:flex;gap:6px;align-items:center;flex-shrink:0;padding:14px 18px 14px 0}
+.vp-add-btn{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:700;border:1.5px dashed #FF6600;background:#fff;color:#FF6600;cursor:pointer;white-space:nowrap;transition:all .15s;display:inline-flex;align-items:center;gap:4px}
+.vp-add-btn::before{content:"+";font-size:14px;font-weight:800}
+.vp-add-btn:hover{background:#FF6600;color:#fff;box-shadow:0 4px 10px rgba(255,102,0,.25)}
+.vp-del-btn{border:1px solid transparent;background:transparent;cursor:pointer;color:#98A2B3;font-size:13px;width:28px;height:28px;padding:0;border-radius:8px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:all .15s}
+.vp-del-btn:hover{background:#FEF3F2;color:#DC2626;border-color:#FECACA}
+
+/* Header del planificador */
+#s6 .card-h:has(.card-title){background:transparent}
+
+/* Day picker popover */
+.vp-daypop{position:fixed;background:#fff;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 12px 32px rgba(16,24,40,.16);min-width:280px;padding:6px;z-index:10000;overflow:hidden}
+.vp-daypop-hdr{padding:8px 10px 4px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#667085}
+.vp-daypop-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:4px}
+.vp-daypop-day{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px 6px;border:1.5px solid #E4E7EC;background:#fff;border-radius:8px;cursor:pointer;transition:all .15s}
+.vp-daypop-day:hover{border-color:#FF6600;background:#FFF7ED;transform:translateY(-1px)}
+.vp-daypop-day.active{border-color:#FF6600;background:linear-gradient(135deg,#FF6600,#FF8A33);color:#fff;box-shadow:0 3px 8px rgba(255,102,0,.3)}
+.vp-daypop-day.active .vp-daypop-num,.vp-daypop-day.active .vp-daypop-lbl{color:#fff}
+.vp-daypop-num{font-size:17px;font-weight:800;color:#1D2939;line-height:1}
+.vp-daypop-lbl{font-size:9px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:.3px}
+.vp-daypop-clear{width:100%;padding:8px;margin-top:4px;border:none;background:#F9FAFB;color:#667085;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;transition:all .15s}
+.vp-daypop-clear:hover{background:#FEF3F2;color:#DC2626}
+
+@media(max-width:900px){
+  .vp-week-row{grid-template-columns:120px 1fr;grid-template-rows:auto auto}
+  .vp-week-actions{grid-column:1/-1;grid-row:2;padding:0 14px 12px;justify-content:flex-start}
+}
+@media(max-width:560px){
+  .vp-week-row{grid-template-columns:1fr}
+  .vp-week-side{border-right:none;border-bottom:1px solid #EEF0F4;flex-direction:row;align-items:center;gap:10px;padding:10px 14px}
+  .vp-week-body{padding:10px 14px}
+  .vp-daypop{min-width:calc(100vw - 24px)}
+}
 </style>
 </head>
 <body>
@@ -3813,14 +3884,18 @@ conversionRate:{label:"Conversion %",current:10.2,target:15,suffix:"%"}
 }};
 
 // ── S6 Visit Planner ─────────────────────────────────────────
-const VP_KEY='visitPlanSchedule_v2';
+const VP_KEY='visitPlanSchedule_v3';
+const VP_KEY_OLD='visitPlanSchedule_v2';
+const VP_MONTHS=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const VP_MONTHS_FULL=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const VP_WEEKDAYS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const VP_DEFAULTS=[
-  {id:'w17',label:'S17',date:'22 abr 2026',weekday:'Mié',integrators:['Sictemas'],notes:''},
-  {id:'w18',label:'S18',date:'28 abr 2026',weekday:'Mar',integrators:[],notes:''},
-  {id:'w19',label:'S19',date:'5 may 2026', weekday:'Mar',integrators:[],notes:''},
-  {id:'w20',label:'S20',date:'12 may 2026',weekday:'Mar',integrators:[],notes:''},
-  {id:'w21',label:'S21',date:'19 may 2026',weekday:'Mar',integrators:[],notes:''},
-  {id:'w22',label:'S22',date:'26 may 2026',weekday:'Mar',integrators:[],notes:''}
+  {id:'w17',label:'S17',weekStart:'2026-04-20',integrators:[{name:'Sictemas',day:''}],notes:''},
+  {id:'w18',label:'S18',weekStart:'2026-04-27',integrators:[],notes:''},
+  {id:'w19',label:'S19',weekStart:'2026-05-04',integrators:[],notes:''},
+  {id:'w20',label:'S20',weekStart:'2026-05-11',integrators:[],notes:''},
+  {id:'w21',label:'S21',weekStart:'2026-05-18',integrators:[],notes:''},
+  {id:'w22',label:'S22',weekStart:'2026-05-25',integrators:[],notes:''}
 ];
 let vpState=null;
 let s6_pri='all',s6_search='';
@@ -3829,10 +3904,91 @@ const tagColors={"Riesgo churn":"vtag-rd","756\u20AC/mes cerrados":"vtag-gr","Co
 function getTagClass(t){return tagColors[t]||'vtag-gy'}
 
 // ── State ──
+function vpParseOldDate(str){
+  // "22 abr 2026" -> "2026-04-22"
+  if(!str)return null;
+  const m=String(str).trim().toLowerCase().match(/^(\d{1,2})\s+([a-záéíóú]+)\.?\s+(\d{4})$/);
+  if(!m)return null;
+  const mi=VP_MONTHS.indexOf(m[2].slice(0,3));
+  if(mi<0)return null;
+  const d=parseInt(m[1],10);
+  return m[3]+'-'+String(mi+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+}
+function vpIsoToMonday(iso){
+  // Get Monday of the same week (ISO: Mon=1..Sun=7)
+  const d=new Date(iso+'T00:00:00');
+  const dow=(d.getDay()+6)%7; // 0=Mon..6=Sun
+  d.setDate(d.getDate()-dow);
+  return d.toISOString().slice(0,10);
+}
+function vpWeekDaysOf(iso){
+  // Returns [{iso,d,m,dayShort}, ...] for Mon-Fri of that week
+  if(!iso)return [];
+  const mon=vpIsoToMonday(iso);
+  const base=new Date(mon+'T00:00:00');
+  const out=[];
+  for(let i=0;i<5;i++){
+    const d=new Date(base); d.setDate(d.getDate()+i);
+    out.push({
+      iso:d.toISOString().slice(0,10),
+      d:d.getDate(),
+      m:d.getMonth(),
+      mShort:VP_MONTHS[d.getMonth()],
+      dayShort:VP_WEEKDAYS[d.getDay()]
+    });
+  }
+  return out;
+}
+function vpFmtWeekRange(iso){
+  // "28 abr – 2 may"
+  const days=vpWeekDaysOf(iso);
+  if(!days.length)return '';
+  const a=days[0], b=days[4];
+  if(a.m===b.m) return a.d+' – '+b.d+' '+VP_MONTHS[a.m];
+  return a.d+' '+VP_MONTHS[a.m]+' – '+b.d+' '+VP_MONTHS[b.m];
+}
+function vpFmtWeekYear(iso){
+  if(!iso)return '';
+  return iso.slice(0,4);
+}
+function vpFmtDayChip(iso){
+  if(!iso)return null;
+  const d=new Date(iso+'T00:00:00');
+  return {num:d.getDate(),lbl:VP_WEEKDAYS[d.getDay()]};
+}
+
+function vpMigrate(st){
+  if(!st||!st.weeks)return st;
+  st.weeks.forEach(w=>{
+    // Migrate date field -> weekStart (ISO Monday)
+    if(!w.weekStart){
+      if(w.date){
+        const iso=vpParseOldDate(w.date);
+        w.weekStart=iso?vpIsoToMonday(iso):null;
+      }
+    }
+    // Migrate integrators: string[] -> {name,day}[]
+    if(Array.isArray(w.integrators)){
+      w.integrators=w.integrators.map(it=>{
+        if(typeof it==='string')return {name:it,day:''};
+        return {name:it.name||'',day:it.day||''};
+      });
+    }else{
+      w.integrators=[];
+    }
+  });
+  return st;
+}
+
 function vpLoad(){
   if(vpState)return;
-  try{const s=localStorage.getItem(VP_KEY);if(s)vpState=JSON.parse(s);}catch(e){}
+  try{
+    let s=localStorage.getItem(VP_KEY);
+    if(!s){const sOld=localStorage.getItem(VP_KEY_OLD);if(sOld){s=sOld;}}
+    if(s)vpState=JSON.parse(s);
+  }catch(e){}
   if(!vpState)vpState={weeks:JSON.parse(JSON.stringify(VP_DEFAULTS))};
+  vpState=vpMigrate(vpState);
 }
 function vpSave(){try{localStorage.setItem(VP_KEY,JSON.stringify(vpState));}catch(e){}}
 
@@ -3844,13 +4000,16 @@ function vpAllIgs(){
 }
 function vpAssignedSet(){
   const s=new Set();
-  if(vpState)vpState.weeks.forEach(w=>w.integrators.forEach(n=>s.add(n)));
+  if(vpState)vpState.weeks.forEach(w=>w.integrators.forEach(it=>s.add(it.name)));
   return s;
 }
 function vpFindIg(name){return vpAllIgs().find(ig=>ig.name===name);}
 function vpWeekForIg(name){
   if(!vpState)return null;
-  for(let i=0;i<vpState.weeks.length;i++){if(vpState.weeks[i].integrators.includes(name))return{week:vpState.weeks[i],wi:i};}
+  for(let i=0;i<vpState.weeks.length;i++){
+    const idx=vpState.weeks[i].integrators.findIndex(it=>it.name===name);
+    if(idx>=0)return{week:vpState.weeks[i],wi:i,idx,day:vpState.weeks[i].integrators[idx].day};
+  }
   return null;
 }
 
@@ -3864,28 +4023,40 @@ function buildPlanner(){
   const rows=document.getElementById('vpPlannerRows');
   if(!rows)return;
   if(vpState.weeks.length===0){
-    rows.innerHTML='<div style="padding:24px;text-align:center;color:var(--ink3);font-size:13px">No hay semanas. Pulsa "+ Nueva semana" para empezar.</div>';
+    rows.innerHTML='<div style="padding:32px;text-align:center;color:var(--ink3);font-size:13px;background:#FAFAFB;border-radius:12px;border:1px dashed #E4E7EC">No hay semanas. Pulsa <b style="color:#FF6600">+ Nueva semana</b> para empezar.</div>';
     vpUpdateKPIs();return;
   }
   let h='';
   vpState.weeks.forEach((w,wi)=>{
-    const chipsH=w.integrators.map(name=>{
+    const range=vpFmtWeekRange(w.weekStart);
+    const year=vpFmtWeekYear(w.weekStart);
+    const chipsH=w.integrators.map((it,idx)=>{
+      const name=it.name;
       const ig=vpFindIg(name);
-      const dotCls=ig?(ig.statusDot==='green'?'vd-gr':ig.statusDot==='yellow'?'vd-am':'vd-gy'):'vd-gy';
+      const dotBg=ig?(ig.statusDot==='green'?'#059669':ig.statusDot==='yellow'?'#D97706':'#98A2B3'):'#98A2B3';
       const chipCls=ig?(ig.priority==='alta'?'chip-alta':'chip-media'):'';
-      return `<span class="vp-chip ${chipCls}"><span class="vcard-dot ${dotCls}" style="width:7px;height:7px;flex-shrink:0"></span><span>${esc2(name)}</span><button class="vp-chip-rm" onclick="vpRemove(${wi},'${esc(name)}')">×</button></span>`;
+      const dayInfo=vpFmtDayChip(it.day);
+      const dayCls=dayInfo?'':'unset';
+      const dayHtml=dayInfo
+        ?`<span class="vp-chip-day-num">${dayInfo.num}</span><span class="vp-chip-day-lbl">${dayInfo.lbl}</span>`
+        :`<span class="vp-chip-day-num">día</span><span class="vp-chip-day-lbl">fijar</span>`;
+      return `<span class="vp-chip ${chipCls}">
+        <span class="vp-chip-day ${dayCls}" onclick="vpOpenDayPop(${wi},${idx},this)" title="Elegir día">${dayHtml}</span>
+        <span class="vp-chip-name"><span class="vp-chip-dot" style="background:${dotBg}"></span>${esc2(name)}</span>
+        <button class="vp-chip-rm" onclick="vpRemove(${wi},'${esc(name)}')" title="Quitar">×</button>
+      </span>`;
     }).join('');
     h+=`<div class="vp-week-row">
       <div class="vp-week-side">
         <span class="vp-week-badge">${esc2(w.label)}</span>
-        <span class="vp-week-day">${esc2(w.weekday)}</span>
-        <span class="vp-week-datestr" onclick="vpEditDate(${wi},this)" title="Click para editar fecha">${esc2(w.date)}</span>
+        <span class="vp-week-datestr" onclick="vpEditWeekStart(${wi},this)" title="Click para cambiar la semana">${esc2(range||'Sin fecha')}</span>
+        <span class="vp-week-range">${esc2(year)}</span>
       </div>
       <div class="vp-week-body">
         <div class="vp-week-chips">${chipsH||'<span class="vp-week-empty">Sin visitas asignadas</span>'}</div>
       </div>
       <div class="vp-week-actions">
-        <button class="vp-add-btn" onclick="vpOpenAddPop(${wi},this)">+ Añadir</button>
+        <button class="vp-add-btn" onclick="vpOpenAddPop(${wi},this)">Añadir</button>
         <button class="vp-del-btn" onclick="vpDelWeek(${wi})" title="Eliminar semana">✕</button>
       </div>
     </div>`;
@@ -3898,22 +4069,103 @@ function buildPlanner(){
 function vpAddWeek(){
   vpLoad();
   const n=vpState.weeks.length;
-  vpState.weeks.push({id:'w_'+Date.now(),label:'S'+(17+n),date:'por definir',weekday:'Mar',integrators:[],notes:''});
+  // Try to increment from last week's Monday
+  let newStart=null;
+  if(n>0 && vpState.weeks[n-1].weekStart){
+    const d=new Date(vpState.weeks[n-1].weekStart+'T00:00:00');
+    d.setDate(d.getDate()+7);
+    newStart=d.toISOString().slice(0,10);
+  }else{
+    newStart=vpIsoToMonday(new Date().toISOString().slice(0,10));
+  }
+  // ISO week number
+  const d=new Date(newStart+'T00:00:00');
+  const tmp=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  const dn=(tmp.getUTCDay()+6)%7;
+  tmp.setUTCDate(tmp.getUTCDate()-dn+3);
+  const fw=new Date(Date.UTC(tmp.getUTCFullYear(),0,4));
+  const wn=1+Math.round(((tmp-fw)/86400000-3+((fw.getUTCDay()+6)%7))/7);
+  vpState.weeks.push({id:'w_'+Date.now(),label:'S'+wn,weekStart:newStart,integrators:[],notes:''});
   vpSave();buildPlanner();
 }
 function vpDelWeek(wi){
   vpLoad();vpState.weeks.splice(wi,1);
   vpSave();buildPlanner();buildVCards();
 }
-function vpEditDate(wi,el){
+function vpEditWeekStart(wi,el){
   const w=vpState.weeks[wi];
   const inp=document.createElement('input');
-  inp.value=w.date;
-  inp.style.cssText='font-size:10px;color:var(--ink3);text-align:center;border:1px solid var(--or);border-radius:3px;width:90px;padding:1px 4px;outline:none';
-  el.replaceWith(inp);inp.focus();inp.select();
-  function save(){w.date=inp.value||w.date;vpSave();inp.replaceWith(el);el.textContent=w.date;}
+  inp.type='date';
+  inp.value=w.weekStart||'';
+  inp.style.cssText='font-size:11px;color:#344054;border:1px solid #FF6600;border-radius:6px;padding:3px 6px;outline:none;font-weight:600';
+  el.replaceWith(inp);inp.focus();
+  function save(){
+    if(inp.value){
+      w.weekStart=vpIsoToMonday(inp.value);
+      // Recompute week label from ISO week number
+      const d=new Date(w.weekStart+'T00:00:00');
+      const tmp=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+      const dn=(tmp.getUTCDay()+6)%7;
+      tmp.setUTCDate(tmp.getUTCDate()-dn+3);
+      const fw=new Date(Date.UTC(tmp.getUTCFullYear(),0,4));
+      const wn=1+Math.round(((tmp-fw)/86400000-3+((fw.getUTCDay()+6)%7))/7);
+      w.label='S'+wn;
+      // Clear day assignments outside new week range
+      const days=vpWeekDaysOf(w.weekStart).map(x=>x.iso);
+      w.integrators.forEach(it=>{if(it.day && !days.includes(it.day))it.day='';});
+      vpSave();
+    }
+    buildPlanner();
+  }
+  inp.addEventListener('change',save);
   inp.addEventListener('blur',save);
-  inp.addEventListener('keydown',e=>{if(e.key==='Enter')inp.blur();if(e.key==='Escape'){inp.value=w.date;inp.blur();}});
+  inp.addEventListener('keydown',e=>{if(e.key==='Escape'){buildPlanner();}});
+}
+
+// ── Day picker ──
+function vpOpenDayPop(wi,idx,btn){
+  closePopovers();
+  document.querySelectorAll('.vp-daypop').forEach(p=>p.remove());
+  vpLoad();
+  const w=vpState.weeks[wi];
+  const cur=w.integrators[idx].day;
+  const days=vpWeekDaysOf(w.weekStart);
+  if(!days.length){
+    return;
+  }
+  const pop=document.createElement('div');
+  pop.className='vp-daypop';
+  const daysHtml=days.map(d=>{
+    const active=(cur===d.iso)?'active':'';
+    return `<button class="vp-daypop-day ${active}" onclick="vpSetDay(${wi},${idx},'${d.iso}')">
+      <span class="vp-daypop-num">${d.d}</span>
+      <span class="vp-daypop-lbl">${d.dayShort} ${d.mShort}</span>
+    </button>`;
+  }).join('');
+  pop.innerHTML=`<div class="vp-daypop-hdr">Día de la visita · ${esc2(w.label)}</div>
+    <div class="vp-daypop-grid">${daysHtml}</div>
+    ${cur?`<button class="vp-daypop-clear" onclick="vpSetDay(${wi},${idx},'')">Quitar día asignado</button>`:''}`;
+  document.body.appendChild(pop);
+  const r=btn.getBoundingClientRect();
+  const popW=300;
+  const below=window.innerHeight-r.bottom;
+  if(below>260){pop.style.top=(r.bottom+6)+'px';}
+  else{pop.style.bottom=(window.innerHeight-r.top+6)+'px';}
+  pop.style.left=Math.max(8,Math.min(r.left,window.innerWidth-popW-8))+'px';
+  setTimeout(()=>{
+    document.addEventListener('click',function c(e){
+      if(!pop.contains(e.target)&&!btn.contains(e.target)){pop.remove();document.removeEventListener('click',c);}
+    });
+  },0);
+}
+function vpSetDay(wi,idx,day){
+  vpLoad();
+  if(vpState.weeks[wi]&&vpState.weeks[wi].integrators[idx]){
+    vpState.weeks[wi].integrators[idx].day=day;
+    vpSave();
+  }
+  document.querySelectorAll('.vp-daypop').forEach(p=>p.remove());
+  buildPlanner();
 }
 
 // ── Popovers ──
@@ -3949,7 +4201,11 @@ function vpOpenAddPop(wi,btn){
 
 function vpOpenWeekPop(name,btn){
   closePopovers();vpLoad();
-  const items=vpState.weeks.map((w,wi)=>`<button class="vp-pop-item" onclick="vpAssign(${wi},'${esc(name)}')"><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--ink1)">${esc2(w.label)} &mdash; ${esc2(w.date)}</div><div style="font-size:10px;color:var(--ink3)">${w.integrators.length} integrador${w.integrators.length===1?'':'es'} asignado${w.integrators.length===1?'':'s'}</div></div></button>`).join('');
+  const items=vpState.weeks.map((w,wi)=>{
+    const range=vpFmtWeekRange(w.weekStart)||'sin fecha';
+    const n=w.integrators.length;
+    return `<button class="vp-pop-item" onclick="vpAssign(${wi},'${esc(name)}')"><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--ink1)">${esc2(w.label)} &mdash; ${esc2(range)}</div><div style="font-size:10px;color:var(--ink3)">${n} integrador${n===1?'':'es'} asignado${n===1?'':'s'}</div></div></button>`;
+  }).join('');
   const pop=makePop();
   pop.innerHTML='<div class="vp-pop-hdr">Asignar a semana</div><div class="vp-pop-scroll">'+(items||'<div class="vp-pop-empty">No hay semanas. Añade una primero.</div>')+'</div>';
   positionPop(pop,btn);
@@ -3958,17 +4214,18 @@ function vpOpenWeekPop(name,btn){
 // ── Assign / remove ──
 function vpAssign(wi,name){
   closePopovers();vpLoad();
-  if(!vpState.weeks[wi].integrators.includes(name)){vpState.weeks[wi].integrators.push(name);vpSave();}
+  const exists=vpState.weeks[wi].integrators.some(it=>it.name===name);
+  if(!exists){vpState.weeks[wi].integrators.push({name:name,day:''});vpSave();}
   buildPlanner();buildVCards();
 }
 function vpRemove(wi,name){
   vpLoad();
-  vpState.weeks[wi].integrators=vpState.weeks[wi].integrators.filter(n=>n!==name);
+  vpState.weeks[wi].integrators=vpState.weeks[wi].integrators.filter(it=>it.name!==name);
   vpSave();buildPlanner();buildVCards();
 }
 function vpUnassign(name){
   vpLoad();
-  vpState.weeks.forEach(w=>{w.integrators=w.integrators.filter(n=>n!==name);});
+  vpState.weeks.forEach(w=>{w.integrators=w.integrators.filter(it=>it.name!==name);});
   vpSave();buildPlanner();buildVCards();
 }
 
@@ -3991,7 +4248,9 @@ function buildVCards(){
       const tagsH=ig.tags.map(t=>'<span class="vtag '+getTagClass(t)+'">'+esc2(t)+'</span>').join('');
       const wInfo=vpWeekForIg(ig.name);
       const isAsn=wInfo!==null;
-      const asnBadge=isAsn?`<div class="vcard-asn-badge">&#10003; ${esc2(wInfo.week.label)} &middot; ${esc2(wInfo.week.date)}</div>`:'';
+      const asnDayInfo=isAsn?vpFmtDayChip(wInfo.day):null;
+      const asnDayTxt=asnDayInfo?(' · '+asnDayInfo.lbl+' '+asnDayInfo.num):'';
+      const asnBadge=isAsn?`<div class="vcard-asn-badge">&#10003; ${esc2(wInfo.week.label)} &middot; ${esc2(vpFmtWeekRange(wInfo.week.weekStart)||'')}${esc2(asnDayTxt)}</div>`:'';
       const asnBtn=isAsn
         ?`<button class="vp-unasn-btn" onclick="vpUnassign('${esc(ig.name)}')">Quitar de ${esc2(wInfo.week.label)}</button>`
         :`<button class="vp-asn-btn" onclick="vpOpenWeekPop('${esc(ig.name)}',this)">&#128197; Asignar semana</button>`;
