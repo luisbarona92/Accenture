@@ -30,6 +30,21 @@ Cuando el usuario diga "actualiza el dashboard" o suba un nuevo PPT:
 7. `git -C /tmp/Accenture commit -m "PMO #XX - [resumen de cambios]"`
 8. `git -C /tmp/Accenture push origin main`
 
+## Botón "🔄 Actualizar Leads" (servidor local)
+
+El botón del topbar (`server/server.js` en `localhost:3001`) está limitado por
+diseño a actualizar **solo la pestaña 05 · Detalle Leads** a partir del
+**Excel** (`Partners_BBDD_v2.xlsx`, hoja 4).
+
+- **No lee el PPT** — S0/S1/S2/S3/S4 se mantienen manualmente editando el HTML
+  desde las slides del PMO.
+- `POST /api/parse` y `POST /api/apply` aceptan `{onlyExcel:true, scope:'s5'}`
+  pero lo ignoran: siempre operan en modo Excel→S5.
+- `patchHTMLOnlyS5` solo toca: KPIs `s5-*`, subtítulo "N leads potenciales",
+  chip "N leads" y el array `const LEADS = [...]` dentro del HTML.
+- Al aplicar, el servidor hace commit+push automático con mensaje
+  `chore: auto-update S5 Detalle Leads desde Excel (dd/mm/yyyy)`.
+
 ## Rutas clave
 
 - **HTML local**: `C:/Users/luis.barona.arroyo/OneDrive - Accenture/Documents/MAS ORANGE/Canal_Integrador/Seguimiento_dashboard.html`
