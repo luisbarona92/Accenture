@@ -1058,8 +1058,8 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   </nav>
 
   <div class="topbar-right">
-    <button class="btn-update" id="btnUpdate" onclick="openUpdatePanel()" title="Actualizar dashboard desde Excel y PPT">
-      🔄 Actualizar
+    <button class="btn-update" id="btnUpdate" onclick="openUpdatePanel()" title="Actualizar pestaña '05 · Detalle Leads' desde Excel">
+      🔄 Actualizar Leads
     </button>
     <span class="date-lbl" id="topbarDate"></span>
   </div>
@@ -1067,7 +1067,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
 <div class="upd-overlay" id="updOverlay">
   <div class="upd-box">
-    <div class="upd-title">🔄 Actualizar dashboard</div>
+    <div class="upd-title">🔄 Actualizar Detalle Leads <span style="font-size:12px;font-weight:400;color:var(--ink3)">· solo desde Excel</span></div>
     <div id="updLog" class="upd-log"><p class="info">Conectando con servidor local...</p></div>
     <div class="upd-actions">
       <button class="upd-btn-cancel" onclick="closeUpdatePanel()">Cancelar</button>
@@ -1144,7 +1144,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="hk">
           <div class="hk-num c-or cnt" data-cnt="s0-ofertas" data-t="24">0</div>
           <div class="hk-lbl">Ofertas presentadas a clientes</div>
-          <div class="hk-sub"><span style="color:var(--green);font-weight:600">7 ventas</span>, 10 en curso y 7 KO</div>
+          <div class="hk-sub"><span style="color:var(--green);font-weight:600">8 ventas</span>, 9 en curso y 7 KO</div>
         </div>
         <div class="hk">
           <div class="hk-num c-gr cnt" data-cnt="s0-ventas" data-t="2000" data-prefix="+" data-suffix=" €">0</div>
@@ -1519,11 +1519,11 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita planteada y pendiente planificar.</td></tr>
       <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada, 1 oferta presentada pendiente de cliente.</td></tr>
       <tr data-g="verde" data-n="ocvistas">      <td><div class="int-name">Ocvistas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Peticiones menores. Leads grandes pendientes. Sin novedades.</td></tr>
-      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta presentada. 2 ofertas en curso. Visita planteada y pendiente.</td></tr>
+      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada, 2 ofertas en curso. Visita planteada y pendiente.</td></tr>
       <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta presentada (servicios propios) y 1 lead frio.</td></tr>
       <tr data-g="verde" data-n="audinfor">      <td><div class="int-name">Audinfor</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Reactivado. Visita presencial martes 28.04 en oficinas de Madrid con CEO.</td></tr>
       <tr data-g="verde" data-n="binfor soluciones"><td><div class="int-name">Binfor Sol.</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta presentada. Integrador reactivado.</td></tr>
-      <tr data-g="verde" data-n="sictemas">      <td><div class="int-name">Sictemas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita presencial miércoles 22.04.</td></tr>
+      <tr data-g="verde" data-n="sictemas">      <td><div class="int-name">Sictemas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita presencial 22.04. Solicitan formación comercial y precios.</td></tr>
 
       <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (19) ══════ -->
       <tr class="grp-sep" data-gh="posible">
@@ -1596,9 +1596,9 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas activadas</div>
-      <div class="k-num cnt" data-cnt="s3-ventas" data-t="7">0</div>
-      <div class="k-sub">10% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-ventas-delta" data-delta="1">▲ +1</span>
+      <div class="k-num cnt" data-cnt="s3-ventas" data-t="8">0</div>
+      <div class="k-sub">12% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-ventas-delta" data-delta="2">▲ +2</span>
     </div>
     <div class="kcard k-or">
       <div class="k-lbl">Leads pendientes</div>
@@ -1614,9 +1614,9 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">Ofertas en curso</div>
-      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="17">0</div>
-      <div class="k-sub">25% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="3">▲ +3 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="16">0</div>
+      <div class="k-sub">23% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="2">▲ +2 vs sem. anterior</span>
     </div>
   </div>
 
@@ -1656,7 +1656,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 en análisis VVDD</td><td style="font-size:12px">Preparar oferta</td></tr>
         <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
         <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gy">0</td><td class="n n-or">7</td><td class="n n-gy">0</td><td class="n n-bl">3</td><td style="font-size:12px;color:var(--ink2)">2 presentadas, 1 en análisis VVDD</td><td style="font-size:12px">Cerrar ventas y seguir trabajando</td></tr>
+        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gr">1</td><td class="n n-or">7</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td style="font-size:12px;color:var(--ink2)">1 presentada, 1 en análisis VVDD</td><td style="font-size:12px">Cerrar ventas y seguir trabajando</td></tr>
         <tr><td><strong>Binfor Sol.</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 presentada</td><td style="font-size:12px">Pendiente cliente</td></tr>
       </tbody>
     </table>
@@ -3612,18 +3612,28 @@ function openUpdatePanel() {
 }
 
 function parseFiles() {
-  logUpd('Leyendo archivos (Excel + PPT)...', 'info');
-  fetch(UPD_SERVER + '/api/parse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+  logUpd('Leyendo Excel de leads (PPT ignorado)...', 'info');
+  fetch(UPD_SERVER + '/api/parse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ onlyExcel: true, scope: 's5' }) })
     .then(r => r.json())
     .then(res => {
       if (res.log && res.log.length) {
-        res.log.forEach(entry => logUpd(entry.msg, entry.type));
+        // Filtrar mensajes que solo apliquen a PPT / S1-S4 para no confundir al usuario
+        res.log.forEach(entry => {
+          const m = (entry.msg || '').toLowerCase();
+          if (m.includes('ppt') || m.includes('pptx') || m.includes('slide')) return;
+          logUpd(entry.msg, entry.type);
+        });
       }
       if (res.ok && res.data) {
-        window._pendingUpdate = res.data;
+        // Solo nos quedamos con S5 (Detalle Leads)
+        const s5only = { s5: res.data.s5 };
+        window._pendingUpdate = s5only;
         const btnApply = document.getElementById('btnApply');
         if (btnApply) btnApply.disabled = false;
-        logUpd('Parseo completado. Revisa los datos y pulsa Aplicar.', 'ok');
+        if (res.data.s5) {
+          logUpd('Excel leido: ' + (res.data.s5.total || 0) + ' leads detectados.', 'ok');
+        }
+        logUpd('Pulsa Aplicar para actualizar solo la pestaña 05 · Detalle Leads.', 'ok');
       } else {
         logUpd('Error en el parseo: ' + (res.error || 'desconocido'), 'err');
       }
@@ -3636,17 +3646,22 @@ function parseFiles() {
 function applyUpdate() {
   const btnApply = document.getElementById('btnApply');
   if (btnApply) btnApply.disabled = true;
-  logUpd('Aplicando cambios y publicando...', 'info');
+  logUpd('Aplicando cambios en 05 · Detalle Leads (solo Excel)...', 'info');
 
-  fetch(UPD_SERVER + '/api/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+  fetch(UPD_SERVER + '/api/apply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ onlyExcel: true, scope: 's5' }) })
     .then(r => r.json())
     .then(res => {
       if (res.log && res.log.length) {
-        res.log.forEach(entry => logUpd(entry.msg, entry.type));
+        res.log.forEach(entry => {
+          const m = (entry.msg || '').toLowerCase();
+          if (m.includes('ppt') || m.includes('pptx') || m.includes('slide')) return;
+          logUpd(entry.msg, entry.type);
+        });
       }
       if (res.ok && res.data) {
-        logUpd('Cambios aplicados y publicados correctamente.', 'ok');
-        applyDataToDOM(res.data);
+        logUpd('Detalle Leads actualizado correctamente desde Excel.', 'ok');
+        // Solo aplicamos S5; ignoramos s1/s2/s3/s4/meta para no pisar datos manuales
+        applyDataToDOM({ s5: res.data.s5 });
         setTimeout(() => closeUpdatePanel(), 1800);
       } else {
         logUpd('Error aplicando: ' + (res.error || 'desconocido'), 'err');
