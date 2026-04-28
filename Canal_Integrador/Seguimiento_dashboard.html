@@ -2227,105 +2227,10 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="sh">
     <h2 class="sh-title">Modelo de Bonus por Volumen — Integradores LeadGen</h2>
   </div>
-  <p class="bv-sub">Propuesta para reunión de seguimiento con Javier Carrasco · diseño de incentivos adicionales sobre comisión base one-shot. Borrador interno — pendiente de iteración con Estrategia (Natalia).</p>
 
-  <!-- ── Bloque 1 · KPIs punto de partida ──────────────────────── -->
-  <div class="krow">
-    <div class="kcard k-gr">
-      <div class="k-lbl">Ventas LeadGen cerradas</div>
-      <div class="k-num cnt" data-cnt="s7-ventas-lg" data-t="3">3</div>
-      <div class="k-sub">a fecha hoy · 3 integradores distintos</div>
-    </div>
-    <div class="kcard k-bl">
-      <div class="k-lbl">Integradores LeadGen activos</div>
-      <div class="k-num cnt" data-cnt="s7-int-lg" data-t="18">18</div>
-      <div class="k-sub">elegibles para el modelo de bonus</div>
-    </div>
-    <div class="kcard k-or">
-      <div class="k-lbl">Periodo de actividad</div>
-      <div class="k-num">5 <span style="font-size:18px;font-weight:600;letter-spacing:0">meses</span></div>
-      <div class="k-sub">desde primera venta cerrada</div>
-    </div>
-    <div class="kcard k-am">
-      <div class="k-lbl">ARPC medio mensual</div>
-      <div class="k-num">~300 <span style="font-size:24px;font-weight:700">€</span></div>
-      <div class="k-sub">estimación canal LeadGen B2B SME</div>
-    </div>
-  </div>
-
-  <!-- ── Bloque 2 · Diagnóstico ────────────────────────────────── -->
+  <!-- ── Bloque 1 · 3 Escenarios (tabla comparativa) ───────────── -->
   <div class="bv-block-h">
-    <div class="bv-block-num">2</div>
-    <div class="bv-block-t">Diagnóstico del punto de partida</div>
-    <div class="bv-block-sub">Por qué la idea inicial necesita recalibrarse</div>
-  </div>
-
-  <div class="bv-callout cl-amber">
-    <div class="bv-callout-title">⚠ Lectura crítica del dato actual</div>
-    <div class="bv-callout-body">
-      La idea inicial planteada (<strong>10 ventas en 3 meses → bonus</strong>) está desconectada de la realidad operativa. Filtrando solo el modelo LeadGen (excluyendo Partner e2e como Maxen y Covernet), hay <strong>3 ventas cerradas en ~5 meses</strong> entre 18 integradores activos. Ningún LeadGen ha cerrado más de 1 venta. Los umbrales del bonus deben construirse desde "1 venta es la norma actual" hacia arriba, con escalones visibles desde donde está hoy cada integrador.
-    </div>
-  </div>
-
-  <div class="bv-mini-grid">
-    <div class="bv-mini b-gr">
-      <span class="bv-mini-tag">Venta 1</span>
-      <div class="bv-mini-title">Cobitratel</div>
-      <div class="bv-mini-body">Cliente: <strong>Fernando Pedroviejo</strong></div>
-      <div class="bv-mini-arpc">756 €/mes</div>
-    </div>
-    <div class="bv-mini b-gr">
-      <span class="bv-mini-tag">Venta 2</span>
-      <div class="bv-mini-title">DuoIT</div>
-      <div class="bv-mini-body">Cliente: <strong>Nordkapp</strong></div>
-      <div class="bv-mini-arpc">152 €/mes</div>
-    </div>
-    <div class="bv-mini b-gr">
-      <span class="bv-mini-tag">Venta 3</span>
-      <div class="bv-mini-title">Elpis Informática</div>
-      <div class="bv-mini-body">Cliente: <strong>Everything Outsourcing</strong></div>
-      <div class="bv-mini-arpc">311 €/mes</div>
-    </div>
-  </div>
-
-  <!-- ── Bloque 3 · Principios de diseño ───────────────────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">3</div>
-    <div class="bv-block-t">Principios de diseño</div>
-    <div class="bv-block-sub">5 reglas que guían los escenarios</div>
-  </div>
-
-  <div class="bv-pri-grid">
-    <div class="bv-pri">
-      <div class="bv-pri-n">1</div>
-      <div class="bv-pri-title">Ventana rolling, no fija</div>
-      <div class="bv-pri-body">Una ventana fija crea picos artificiales y deja huérfanos a los que firman tarde. Rolling 6 meses se mide cada mes mirando hacia atrás.</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">2</div>
-      <div class="bv-pri-title">Retroactivo en E1, marginal decreciente arriba</div>
-      <div class="bv-pri-body">Cruzar el primer umbral debe sentirse como premio gordo (efecto pull). Los superiores controlan coste.</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">3</div>
-      <div class="bv-pri-title">Doble cualificador: ventas + ARPC mínimo</div>
-      <div class="bv-pri-body">Una venta cuenta solo si supera 150 €/mes de facturación. Neutraliza cherry-picking de líneas sueltas.</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">4</div>
-      <div class="bv-pri-title">Bonus en € fijo, no % sobre comisión</div>
-      <div class="bv-pri-body">Los LeadGen son pequeños y necesitan zanahoria comprensible. "Si llegas a 5, cobras 3.000 €" pega más que "+12% sobre acumulado".</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">5</div>
-      <div class="bv-pri-title">Solo aplica a LeadGen</div>
-      <div class="bv-pri-body">El modelo Partner e2e ya tiene comisión recurrente — no necesita acelerador adicional ahora.</div>
-    </div>
-  </div>
-
-  <!-- ── Bloque 4 · 3 Escenarios (tabla comparativa) ───────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">4</div>
+    <div class="bv-block-num">1</div>
     <div class="bv-block-t">Los 3 escenarios — comparativa</div>
     <div class="bv-block-sub">B destacado como recomendado</div>
   </div>
@@ -2399,17 +2304,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </table>
   </div>
 
-  <!-- ── Bloque 5 · Recomendación ──────────────────────────────── -->
+  <!-- ── Bloque 2 · Justificación por escenario ────────────────── -->
   <div class="bv-block-h">
-    <div class="bv-block-num">5</div>
-    <div class="bv-block-t">Recomendación con justificación</div>
-    <div class="bv-block-sub">Escenario B + ignitor</div>
+    <div class="bv-block-num">2</div>
+    <div class="bv-block-t">¿Por qué B?</div>
+    <div class="bv-block-sub">Justificación de la recomendación</div>
   </div>
 
   <div class="bv-callout">
     <div class="bv-callout-title">★ Recomendación: Escenario B + Bonus Primer Cliente</div>
     <div class="bv-callout-body">
-      Iría con el <strong>Escenario B</strong> y, sobre él, añadiría un <strong>bonus primer cliente simbólico de 500 €</strong> desacoplado del esquema de tramos. La mayoría de los 18 LeadGen activos están en cero ventas. Un 500 € por la primera venta cualificada hace de <strong>ignición</strong> — mueve a los que están atascados sin disparar el coste (<strong>exposure máximo: 18 × 500 € = 9.000 €</strong>). Ya estaba en el diseño original como "bonus primer cliente" y conviene rescatarlo.
+      Iría con el <strong>Escenario B</strong> y, sobre él, añadiría un <strong>bonus primer cliente simbólico de 500 €</strong> desacoplado del esquema de tramos. La mayoría de los 18 LeadGen activos están en cero ventas. Un 500 € por la primera venta cualificada hace de <strong>ignición</strong> — mueve a los que están atascados sin disparar el coste (<strong>exposure máximo: 18 × 500 € = 9.000 €</strong>).
     </div>
   </div>
 
@@ -2417,165 +2322,60 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="bv-mini b-am">
       <span class="bv-mini-tag">A se queda corto</span>
       <div class="bv-mini-title">Techo demasiado bajo</div>
-      <div class="bv-mini-body">Un Top Partner que cierra 10 ventas (lo mismo que Covernet en 4 meses como e2e) cobra solo <strong>10.500 € extra</strong> — no diferencia al excepcional del bueno.</div>
+      <div class="bv-mini-body">Un Top Partner que cierra 10 ventas cobra solo <strong>10.500 € extra</strong> — no diferencia al excepcional del bueno.</div>
     </div>
     <div class="bv-mini b-am">
       <span class="bv-mini-tag">C es inalcanzable</span>
-      <div class="bv-mini-title">Funnel actual no soporta el ritmo</div>
+      <div class="bv-mini-title">Funnel actual no lo soporta</div>
       <div class="bv-mini-body">8 ventas en 6 meses superaría al mejor Partner e2e. Si nadie llega al primer escalón en año 1, <strong>el programa se percibe como humo</strong>.</div>
     </div>
     <div class="bv-mini b-or">
       <span class="bv-mini-tag">B encaja</span>
       <div class="bv-mini-title">Curva de probabilidad correcta</div>
-      <div class="bv-mini-body">~1 de cada 5 LeadGen llega a Bronce, ~1 de cada 30 llega a Oro. <strong>Patrón típico saludable</strong> en programas de canal indirecto telco maduros.</div>
+      <div class="bv-mini-body">~1 de cada 5 LeadGen llega a Bronce, ~1 de cada 30 llega a Oro. <strong>Patrón saludable</strong> en canal indirecto telco maduro.</div>
     </div>
   </div>
 
-  <!-- ── Bloque 6 · Mecánica operativa ─────────────────────────── -->
+  <!-- ── Bloque 3 · Principios de diseño ───────────────────────── -->
   <div class="bv-block-h">
-    <div class="bv-block-num">6</div>
-    <div class="bv-block-t">Mecánica operativa</div>
-    <div class="bv-block-sub">5 reglas a fijar con Javier para evitar disputas</div>
+    <div class="bv-block-num">3</div>
+    <div class="bv-block-t">Principios de diseño</div>
+    <div class="bv-block-sub">5 reglas que guían el modelo</div>
   </div>
 
-  <div class="bv-steps">
-    <div class="bv-step">
-      <div class="bv-step-n">1</div>
-      <div class="bv-step-t"><b>Devengo:</b> mensual, sobre ventas activadas (entrada en cartera) en la ventana rolling de los últimos 6 meses.</div>
+  <div class="bv-pri-grid">
+    <div class="bv-pri">
+      <div class="bv-pri-n">1</div>
+      <div class="bv-pri-title">Ventana rolling, no fija</div>
+      <div class="bv-pri-body">Una ventana fija crea picos artificiales y deja huérfanos a los que firman tarde. Rolling 6 meses se mide cada mes mirando hacia atrás.</div>
     </div>
-    <div class="bv-step">
-      <div class="bv-step-n">2</div>
-      <div class="bv-step-t"><b>Pago:</b> trimestral, mes siguiente al cierre del trimestre natural. Razón: evitar pagar bonus sobre ventas que después churneen los primeros 30 días.</div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">2</div>
+      <div class="bv-pri-title">Retroactivo en E1, marginal decreciente arriba</div>
+      <div class="bv-pri-body">Cruzar el primer umbral debe sentirse como premio gordo (efecto pull). Los superiores controlan coste.</div>
     </div>
-    <div class="bv-step">
-      <div class="bv-step-n">3</div>
-      <div class="bv-step-t"><b>Anti-churn:</b> si un cliente computado para bonus se da de baja en los primeros 90 días tras activación, se descuenta del cómputo en el pago siguiente.</div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">3</div>
+      <div class="bv-pri-title">Doble cualificador: ventas + ARPC mínimo</div>
+      <div class="bv-pri-body">Una venta cuenta solo si supera 150 €/mes de facturación. Neutraliza cherry-picking de líneas sueltas.</div>
     </div>
-    <div class="bv-step">
-      <div class="bv-step-n">4</div>
-      <div class="bv-step-t"><b>Cierre de tramo:</b> una vez alcanzado un escalón, el integrador consolida ese tramo durante 12 meses (no puede caer aunque la ventana rolling deje fuera ventas antiguas). Reduce el efecto desmotivador del rolling.</div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">4</div>
+      <div class="bv-pri-title">Bonus en € fijo, no % sobre comisión</div>
+      <div class="bv-pri-body">Los LeadGen necesitan zanahoria comprensible. "Si llegas a 5, cobras 3.000 €" pega más que "+12% sobre acumulado".</div>
     </div>
-    <div class="bv-step">
-      <div class="bv-step-n">5</div>
-      <div class="bv-step-t"><b>No acumulable</b> con otros bonus puntuales (campañas, kickers de producto): se aplica el más favorable.</div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">5</div>
+      <div class="bv-pri-title">Solo aplica a LeadGen</div>
+      <div class="bv-pri-body">El modelo Partner e2e ya tiene comisión recurrente — no necesita acelerador adicional ahora.</div>
     </div>
   </div>
 
-  <!-- ── Bloque 7 · Riesgos y mitigaciones ─────────────────────── -->
+  <!-- ── Bloque 4 · Benchmarks ─────────────────────────────────── -->
   <div class="bv-block-h">
-    <div class="bv-block-num">7</div>
-    <div class="bv-block-t">Riesgos y mitigaciones</div>
-    <div class="bv-block-sub">Probabilidad coloreada · Alta / Media / Baja</div>
-  </div>
-
-  <div class="card" style="margin-bottom:8px">
-    <table class="bv-risk">
-      <thead>
-        <tr>
-          <th style="width:38%">Riesgo</th>
-          <th style="width:14%;text-align:center">Probabilidad</th>
-          <th>Mitigación</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cherry-picking de líneas sueltas baratas</td>
-          <td style="text-align:center"><span class="bv-risk-prob bv-rp-h">Alta</span></td>
-          <td>ARPC mínimo <strong>150 €/mes</strong> como cualificador</td>
-        </tr>
-        <tr>
-          <td>Canibalización (clientes que vendrían por otro canal)</td>
-          <td style="text-align:center"><span class="bv-risk-prob bv-rp-m">Media</span></td>
-          <td>CIF Integrador obligatorio en CRM + revisión manual de duplicados</td>
-        </tr>
-        <tr>
-          <td>Gaming: integrador divide cliente grande en varios CIFs</td>
-          <td style="text-align:center"><span class="bv-risk-prob bv-rp-m">Media</span></td>
-          <td>Una venta = un CIF + un alta inicial. Ampliaciones del mismo CIF no cuentan</td>
-        </tr>
-        <tr>
-          <td>Race-to-deadline</td>
-          <td style="text-align:center"><span class="bv-risk-prob bv-rp-l">Baja</span></td>
-          <td>Pago trimestral + cláusula anti-churn 90 días</td>
-        </tr>
-        <tr>
-          <td>Coste descontrolado si el canal acelera</td>
-          <td style="text-align:center"><span class="bv-risk-prob bv-rp-l">Baja</span></td>
-          <td>Cap anual por integrador (sugiero <strong>25.000 €/año</strong> en bonus)</td>
-        </tr>
-        <tr>
-          <td>Percepción de inalcanzable</td>
-          <td style="text-align:center"><span class="bv-risk-prob bv-rp-m">Media</span></td>
-          <td>Comunicación con simulador: "tu trayectoria actual te llevaría a X €"</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ── Bloque 8 · Impacto financiero estimado ────────────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">8</div>
-    <div class="bv-block-t">Impacto financiero estimado · Escenario B, año 1</div>
-    <div class="bv-block-sub">Composición del coste anual de bonus</div>
-  </div>
-
-  <div class="card card-b" style="background:var(--bg)">
-    <div class="bv-wf">
-      <div class="bv-wf-row">
-        <div class="bv-wf-lbl"><b>20 integradores</b> en 0–4 ventas</div>
-        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl bv-wf-zero" style="width:1%"></div></div>
-        <div class="bv-wf-num" style="color:var(--ink3)">0 €</div>
-      </div>
-      <div class="bv-wf-row">
-        <div class="bv-wf-lbl"><b>10 en Bronce</b> (5–9 ventas)</div>
-        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:32%"></div></div>
-        <div class="bv-wf-num">30.000 €</div>
-      </div>
-      <div class="bv-wf-row">
-        <div class="bv-wf-lbl"><b>4 en Plata</b> (10–17 ventas)</div>
-        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:38%"></div></div>
-        <div class="bv-wf-num">36.000 €</div>
-      </div>
-      <div class="bv-wf-row">
-        <div class="bv-wf-lbl"><b>1 en Oro</b> (18+ ventas)</div>
-        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:22%"></div></div>
-        <div class="bv-wf-num">21.000 €</div>
-      </div>
-      <div class="bv-wf-row">
-        <div class="bv-wf-lbl"><b>Bonus primer cliente</b> (15 nuevos año 1)</div>
-        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:8%"></div></div>
-        <div class="bv-wf-num">7.500 €</div>
-      </div>
-      <div class="bv-wf-row bv-wf-total">
-        <div class="bv-wf-lbl">Total bonus año 1</div>
-        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:100%"></div></div>
-        <div class="bv-wf-num">~ 94.500 €</div>
-      </div>
-    </div>
-
-    <div class="bv-ratio-grid">
-      <div class="bv-ratio">
-        <div class="bv-ratio-num">22%</div>
-        <div class="bv-ratio-lbl">Ratio bonus / ingresos · año 1</div>
-        <div class="bv-ratio-sub">Mientras conviven comisión base + bonus</div>
-      </div>
-      <div class="bv-ratio r-gr">
-        <div class="bv-ratio-num">~ 5%</div>
-        <div class="bv-ratio-lbl">Ratio bonus / ingresos · año 2</div>
-        <div class="bv-ratio-sub">Cuando solo queda el bonus, ya no comisión base</div>
-      </div>
-    </div>
-
-    <div style="margin-top:14px;padding:12px 14px;background:var(--card);border-radius:8px;font-size:12px;color:var(--ink3);line-height:1.55">
-      Contra ingresos del canal estimados en <strong style="color:var(--ink2)">~432.000 €</strong> año 1 (120 ventas × 300 €/mes × 12). En año 2 baja a ~5% porque solo queda el bonus — patrón esperado de canal indirecto sano.
-    </div>
-  </div>
-
-  <!-- ── Bloque 9 · Benchmarks ─────────────────────────────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">9</div>
-    <div class="bv-block-t">Benchmarks de mercado</div>
-    <div class="bv-block-sub">Referencias del sector telco B2B</div>
+    <div class="bv-block-num">4</div>
+    <div class="bv-block-t">Referencias de mercado</div>
+    <div class="bv-block-sub">Cómo lo hacen otras telcos B2B</div>
   </div>
 
   <div class="bv-mini-grid">
@@ -2598,35 +2398,6 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <span class="bv-mini-tag">Regla de oro</span>
       <div class="bv-mini-title">Calibración del techo</div>
       <div class="bv-mini-body"><strong>&lt; 15%</strong> partners en tier máximo = bien calibrado. <strong>&gt; 25%</strong> = blando. <strong>&lt; 2%</strong> = inalcanzable.</div>
-    </div>
-  </div>
-
-  <!-- ── Bloque 10 · CTA decisiones ────────────────────────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">10</div>
-    <div class="bv-block-t">Decisiones a cerrar con Javier</div>
-    <div class="bv-block-sub">Próxima reunión de seguimiento</div>
-  </div>
-
-  <div class="bv-cta">
-    <span class="bv-cta-tag">★ 3 decisiones para cerrar</span>
-    <div class="bv-cta-title">Tres puntos a fijar para arrancar el modelo</div>
-    <div class="bv-cta-list">
-      <div class="bv-cta-item">
-        <div class="bv-cta-num">1</div>
-        <div class="bv-cta-txt"><b>Ventana:</b> ¿rolling <strong>6 meses (B)</strong> o rolling 12 meses (C)?</div>
-      </div>
-      <div class="bv-cta-item">
-        <div class="bv-cta-num">2</div>
-        <div class="bv-cta-txt"><b>¿Entra el bonus primer cliente</b> como ignitor (<strong>500 €</strong> / primera venta cualificada)?</div>
-      </div>
-      <div class="bv-cta-item">
-        <div class="bv-cta-num">3</div>
-        <div class="bv-cta-txt"><b>¿Techo anual de bonus</b> por integrador? (recomendado: <strong>25.000 €/año</strong>)</div>
-      </div>
-    </div>
-    <div class="bv-cta-foot">
-      Quedan abiertos para iteración con Estrategia (Natalia): ARPC mínimo exacto y cuantías finales de tramos.
     </div>
   </div>
 
