@@ -1000,6 +1000,258 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   .vp-week-body{padding:10px 14px}
   .vp-daypop{min-width:calc(100vw - 24px)}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   S7 · BONUS POR VOLUMEN — propuesta comercial LeadGen
+═══════════════════════════════════════════════════════════ */
+
+/* Callout / nota destacada */
+.bv-callout{
+  background:linear-gradient(135deg,var(--or-bg) 0%,#FFF8F1 100%);
+  border:1px solid rgba(255,102,0,.22);
+  border-left:4px solid var(--or);
+  border-radius:var(--r);padding:18px 22px;margin-bottom:18px;
+  box-shadow:0 1px 3px rgba(255,102,0,.08)
+}
+.bv-callout.cl-amber{
+  background:linear-gradient(135deg,var(--amber-bg) 0%,#FFFCF5 100%);
+  border:1px solid rgba(217,119,6,.22);border-left:4px solid var(--amber)
+}
+.bv-callout.cl-green{
+  background:linear-gradient(135deg,var(--green-bg) 0%,#F4FDF8 100%);
+  border:1px solid rgba(5,150,105,.22);border-left:4px solid var(--green)
+}
+.bv-callout.cl-blue{
+  background:linear-gradient(135deg,var(--blue-bg) 0%,#F6FAFF 100%);
+  border:1px solid rgba(29,111,184,.22);border-left:4px solid var(--blue)
+}
+.bv-callout-title{
+  font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;
+  color:var(--or-dk);margin-bottom:8px;display:flex;align-items:center;gap:8px
+}
+.bv-callout.cl-amber .bv-callout-title{color:var(--amber)}
+.bv-callout.cl-green .bv-callout-title{color:var(--green)}
+.bv-callout.cl-blue  .bv-callout-title{color:var(--blue)}
+.bv-callout-body{font-size:13px;color:var(--ink2);line-height:1.65}
+.bv-callout-body strong{color:var(--ink);font-weight:700}
+
+/* Mini-cards horizontales (ventas actuales, benchmarks, mini-bloques) */
+.bv-mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:22px}
+.bv-mini{
+  background:var(--card);border-radius:10px;padding:14px 16px;
+  box-shadow:var(--shadow);border-top:3px solid var(--line2);
+  transition:box-shadow .18s,transform .18s
+}
+.bv-mini:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.bv-mini.b-or{border-top-color:var(--or)}
+.bv-mini.b-gr{border-top-color:var(--green)}
+.bv-mini.b-bl{border-top-color:var(--blue)}
+.bv-mini.b-am{border-top-color:var(--amber)}
+.bv-mini.b-pu{border-top-color:#8B5CF6}
+.bv-mini-tag{
+  display:inline-block;font-size:9.5px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.6px;padding:2px 8px;border-radius:4px;margin-bottom:8px;
+  background:var(--or-bg);color:var(--or-dk)
+}
+.bv-mini.b-gr .bv-mini-tag{background:var(--green-bg);color:var(--green)}
+.bv-mini.b-bl .bv-mini-tag{background:var(--blue-bg);color:var(--blue)}
+.bv-mini.b-am .bv-mini-tag{background:var(--amber-bg);color:var(--amber)}
+.bv-mini.b-pu .bv-mini-tag{background:#F3F0FF;color:#7C3AED}
+.bv-mini-title{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:5px}
+.bv-mini-body{font-size:12px;color:var(--ink3);line-height:1.5}
+.bv-mini-body strong{color:var(--ink2);font-weight:700}
+.bv-mini-arpc{font-size:18px;font-weight:800;color:var(--green);letter-spacing:-.5px;margin-top:6px}
+
+/* Cards de principios (5 numeradas) */
+.bv-pri-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:12px;margin-bottom:22px}
+.bv-pri{
+  background:var(--card);border-radius:10px;padding:18px 16px 16px;
+  box-shadow:var(--shadow);position:relative;
+  transition:box-shadow .18s,transform .18s
+}
+.bv-pri:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.bv-pri-n{
+  position:absolute;top:-10px;left:14px;
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--or) 0%,var(--or-lt) 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;letter-spacing:-.5px;
+  box-shadow:0 4px 12px rgba(255,102,0,.35)
+}
+.bv-pri-title{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35;margin:14px 0 6px}
+.bv-pri-body{font-size:12px;color:var(--ink3);line-height:1.55}
+
+/* Tabla escenarios (3 columnas, B destacada) */
+.bv-scen-wrap{overflow-x:auto;border-radius:var(--r);box-shadow:var(--shadow);background:var(--card);margin-bottom:8px}
+.bv-scen{width:100%;border-collapse:collapse;font-size:12.5px;min-width:680px}
+.bv-scen th{
+  padding:14px 16px;text-align:left;
+  font-size:11px;font-weight:700;color:var(--ink2);
+  background:var(--bg);border-bottom:2px solid var(--line);
+  vertical-align:bottom
+}
+.bv-scen th.bv-sc-head{
+  font-size:12px;text-transform:uppercase;letter-spacing:.5px;text-align:center;
+  padding:14px 16px 12px
+}
+.bv-scen th.bv-sc-a{background:#F8F9FB;color:var(--ink2)}
+.bv-scen th.bv-sc-b{
+  background:linear-gradient(180deg,var(--or-bg) 0%,#FFE9D6 100%);
+  color:var(--or-dk);border-top:3px solid var(--or);
+  position:relative
+}
+.bv-scen th.bv-sc-b .bv-rec-pill{
+  display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.5px;
+  padding:2px 8px;border-radius:99px;background:var(--or);color:#fff;margin-left:6px;vertical-align:middle
+}
+.bv-scen th.bv-sc-c{background:#F8F9FB;color:var(--ink2)}
+.bv-scen td{
+  padding:11px 16px;border-bottom:1px solid var(--line);
+  font-size:12.5px;color:var(--ink2);line-height:1.5;vertical-align:top
+}
+.bv-scen tr:last-child td{border-bottom:none}
+.bv-scen td.bv-sc-dim{
+  font-weight:700;color:var(--ink);background:var(--bg);
+  font-size:11.5px;letter-spacing:.1px
+}
+.bv-scen td.bv-sc-b-cell{
+  background:rgba(255,243,235,.55);
+  border-left:1px solid rgba(255,102,0,.18);
+  border-right:1px solid rgba(255,102,0,.18);
+  color:var(--ink);font-weight:600
+}
+.bv-scen tr:last-child td.bv-sc-b-cell{border-bottom:3px solid var(--or)}
+.bv-scen td b{color:var(--or-dk);font-weight:800}
+.bv-scen td.bv-sc-b-cell b{color:var(--or-dk)}
+
+/* Pasos operativos numerados */
+.bv-steps{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.bv-step{
+  background:var(--card);border-radius:10px;padding:14px 16px;
+  box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start;
+  border-left:3px solid var(--or)
+}
+.bv-step-n{
+  flex-shrink:0;width:28px;height:28px;border-radius:7px;
+  background:var(--or-bg);color:var(--or-dk);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800
+}
+.bv-step-t{font-size:13px;color:var(--ink2);line-height:1.55;flex:1;min-width:0}
+.bv-step-t b{color:var(--ink);font-weight:700;display:inline-block;margin-right:4px}
+
+/* Tabla riesgos */
+.bv-risk{width:100%;border-collapse:collapse;font-size:12.5px}
+.bv-risk th{
+  padding:10px 14px;text-align:left;background:var(--bg);
+  font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--ink3);border-bottom:2px solid var(--line)
+}
+.bv-risk td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.bv-risk tr:last-child td{border-bottom:none}
+.bv-risk-prob{
+  display:inline-block;padding:3px 10px;border-radius:99px;
+  font-size:11px;font-weight:700;text-align:center;min-width:64px
+}
+.bv-rp-h{background:var(--red-bg);color:var(--red)}
+.bv-rp-m{background:var(--amber-bg);color:var(--amber)}
+.bv-rp-l{background:var(--green-bg);color:var(--green)}
+
+/* Waterfall coste año 1 */
+.bv-wf{display:flex;flex-direction:column;gap:6px;padding:6px 0}
+.bv-wf-row{
+  display:grid;grid-template-columns:1fr 220px 110px;gap:14px;
+  align-items:center;padding:9px 14px;border-radius:8px;
+  background:var(--card);border:1px solid var(--line);
+  transition:background .15s
+}
+.bv-wf-row:hover{background:var(--or-bg)}
+.bv-wf-lbl{font-size:12.5px;color:var(--ink2)}
+.bv-wf-lbl b{color:var(--ink);font-weight:700}
+.bv-wf-bar-tk{height:18px;background:#F3F4F6;border-radius:5px;overflow:hidden}
+.bv-wf-bar-fl{
+  height:100%;border-radius:5px;
+  background:linear-gradient(90deg,var(--or) 0%,var(--or-lt) 100%);
+  transition:width 1s cubic-bezier(.16,1,.3,1)
+}
+.bv-wf-bar-fl.bv-wf-zero{background:#D1D5DB}
+.bv-wf-num{
+  font-size:14px;font-weight:800;color:var(--or-dk);
+  text-align:right;letter-spacing:-.3px;font-variant-numeric:tabular-nums
+}
+.bv-wf-row.bv-wf-total{
+  background:linear-gradient(90deg,var(--or-bg) 0%,#FFF8F1 100%);
+  border:2px solid var(--or);font-weight:700;margin-top:6px
+}
+.bv-wf-row.bv-wf-total .bv-wf-lbl{font-size:13.5px;color:var(--ink);font-weight:700}
+.bv-wf-row.bv-wf-total .bv-wf-num{font-size:18px;color:var(--or)}
+
+/* CTA decisiones final */
+.bv-cta{
+  background:linear-gradient(135deg,#0F1117 0%,#1F2937 100%);
+  color:#fff;border-radius:var(--r);padding:24px 26px;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden
+}
+.bv-cta::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,102,0,.18) 0%,transparent 65%);
+  pointer-events:none
+}
+.bv-cta-tag{
+  display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.2px;
+  text-transform:uppercase;padding:4px 12px;border-radius:99px;
+  background:rgba(255,102,0,.18);color:var(--or-lt);margin-bottom:12px
+}
+.bv-cta-title{font-size:18px;font-weight:800;letter-spacing:-.4px;margin-bottom:16px;line-height:1.3;position:relative;z-index:1}
+.bv-cta-list{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.bv-cta-item{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:12px 14px;border-radius:8px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)
+}
+.bv-cta-num{
+  flex-shrink:0;width:28px;height:28px;border-radius:7px;
+  background:var(--or);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800
+}
+.bv-cta-txt{font-size:13px;color:rgba(255,255,255,.92);line-height:1.55;flex:1}
+.bv-cta-txt b{color:#fff;font-weight:700}
+.bv-cta-foot{margin-top:14px;font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5;position:relative;z-index:1}
+
+/* Section header sub-título */
+.bv-sub{margin-top:-12px;margin-bottom:24px;font-size:13px;color:var(--ink3);line-height:1.5;max-width:780px}
+.bv-block-h{display:flex;align-items:center;gap:10px;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.bv-block-h:first-of-type{margin-top:0}
+.bv-block-num{
+  width:26px;height:26px;border-radius:7px;
+  background:var(--or-bg);color:var(--or-dk);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;flex-shrink:0
+}
+.bv-block-t{font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:-.2px;flex:1}
+.bv-block-sub{font-size:11.5px;color:var(--ink4);font-weight:500}
+
+/* KPIs lado a lado destacados (ratio bonus/ingresos) */
+.bv-ratio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px;margin-bottom:8px}
+.bv-ratio{
+  background:var(--card);border-radius:10px;padding:18px 22px;
+  box-shadow:var(--shadow);border-left:4px solid var(--or);
+  display:flex;flex-direction:column;gap:4px
+}
+.bv-ratio.r-gr{border-left-color:var(--green)}
+.bv-ratio-num{font-size:36px;font-weight:800;color:var(--or);letter-spacing:-1.5px;line-height:1}
+.bv-ratio.r-gr .bv-ratio-num{color:var(--green)}
+.bv-ratio-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3)}
+.bv-ratio-sub{font-size:11.5px;color:var(--ink3);line-height:1.4;margin-top:2px}
+
+/* Responsive S7 */
+@media(max-width:760px){
+  .bv-wf-row{grid-template-columns:1fr;gap:6px}
+  .bv-wf-bar-tk{order:3}
+  .bv-wf-num{text-align:left}
+}
 </style>
 </head>
 <body>
@@ -1055,6 +1307,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <button class="tnav"     onclick="show('s4')">04 · Tareas</button>
     <button class="tnav"     onclick="show('s5')">05 · Detalle Leads</button>
     <button class="tnav"     onclick="show('s6')">06 · Plan Visitas</button>
+    <button class="tnav"     onclick="show('s7')">07 · Bonus Volumen</button>
   </nav>
 
   <div class="topbar-right">
@@ -1965,6 +2218,421 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 </section>
 
 
+<!-- ══════════════════════════════════════════════════════
+     S7 · BONUS POR VOLUMEN — propuesta comercial LeadGen
+══════════════════════════════════════════════════════ -->
+<section id="s7" class="sec">
+
+  <!-- Header -->
+  <div class="sh">
+    <h2 class="sh-title">Modelo de Bonus por Volumen — Integradores LeadGen</h2>
+  </div>
+  <p class="bv-sub">Propuesta para reunión de seguimiento con Javier Carrasco · diseño de incentivos adicionales sobre comisión base one-shot. Borrador interno — pendiente de iteración con Estrategia (Natalia).</p>
+
+  <!-- ── Bloque 1 · KPIs punto de partida ──────────────────────── -->
+  <div class="krow">
+    <div class="kcard k-gr">
+      <div class="k-lbl">Ventas LeadGen cerradas</div>
+      <div class="k-num cnt" data-cnt="s7-ventas-lg" data-t="3">3</div>
+      <div class="k-sub">a fecha hoy · 3 integradores distintos</div>
+    </div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Integradores LeadGen activos</div>
+      <div class="k-num cnt" data-cnt="s7-int-lg" data-t="18">18</div>
+      <div class="k-sub">elegibles para el modelo de bonus</div>
+    </div>
+    <div class="kcard k-or">
+      <div class="k-lbl">Periodo de actividad</div>
+      <div class="k-num">5 <span style="font-size:18px;font-weight:600;letter-spacing:0">meses</span></div>
+      <div class="k-sub">desde primera venta cerrada</div>
+    </div>
+    <div class="kcard k-am">
+      <div class="k-lbl">ARPC medio mensual</div>
+      <div class="k-num">~300 <span style="font-size:24px;font-weight:700">€</span></div>
+      <div class="k-sub">estimación canal LeadGen B2B SME</div>
+    </div>
+  </div>
+
+  <!-- ── Bloque 2 · Diagnóstico ────────────────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">2</div>
+    <div class="bv-block-t">Diagnóstico del punto de partida</div>
+    <div class="bv-block-sub">Por qué la idea inicial necesita recalibrarse</div>
+  </div>
+
+  <div class="bv-callout cl-amber">
+    <div class="bv-callout-title">⚠ Lectura crítica del dato actual</div>
+    <div class="bv-callout-body">
+      La idea inicial planteada (<strong>10 ventas en 3 meses → bonus</strong>) está desconectada de la realidad operativa. Filtrando solo el modelo LeadGen (excluyendo Partner e2e como Maxen y Covernet), hay <strong>3 ventas cerradas en ~5 meses</strong> entre 18 integradores activos. Ningún LeadGen ha cerrado más de 1 venta. Los umbrales del bonus deben construirse desde "1 venta es la norma actual" hacia arriba, con escalones visibles desde donde está hoy cada integrador.
+    </div>
+  </div>
+
+  <div class="bv-mini-grid">
+    <div class="bv-mini b-gr">
+      <span class="bv-mini-tag">Venta 1</span>
+      <div class="bv-mini-title">Cobitratel</div>
+      <div class="bv-mini-body">Cliente: <strong>Fernando Pedroviejo</strong></div>
+      <div class="bv-mini-arpc">756 €/mes</div>
+    </div>
+    <div class="bv-mini b-gr">
+      <span class="bv-mini-tag">Venta 2</span>
+      <div class="bv-mini-title">DuoIT</div>
+      <div class="bv-mini-body">Cliente: <strong>Nordkapp</strong></div>
+      <div class="bv-mini-arpc">152 €/mes</div>
+    </div>
+    <div class="bv-mini b-gr">
+      <span class="bv-mini-tag">Venta 3</span>
+      <div class="bv-mini-title">Elpis Informática</div>
+      <div class="bv-mini-body">Cliente: <strong>Everything Outsourcing</strong></div>
+      <div class="bv-mini-arpc">311 €/mes</div>
+    </div>
+  </div>
+
+  <!-- ── Bloque 3 · Principios de diseño ───────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">3</div>
+    <div class="bv-block-t">Principios de diseño</div>
+    <div class="bv-block-sub">5 reglas que guían los escenarios</div>
+  </div>
+
+  <div class="bv-pri-grid">
+    <div class="bv-pri">
+      <div class="bv-pri-n">1</div>
+      <div class="bv-pri-title">Ventana rolling, no fija</div>
+      <div class="bv-pri-body">Una ventana fija crea picos artificiales y deja huérfanos a los que firman tarde. Rolling 6 meses se mide cada mes mirando hacia atrás.</div>
+    </div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">2</div>
+      <div class="bv-pri-title">Retroactivo en E1, marginal decreciente arriba</div>
+      <div class="bv-pri-body">Cruzar el primer umbral debe sentirse como premio gordo (efecto pull). Los superiores controlan coste.</div>
+    </div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">3</div>
+      <div class="bv-pri-title">Doble cualificador: ventas + ARPC mínimo</div>
+      <div class="bv-pri-body">Una venta cuenta solo si supera 150 €/mes de facturación. Neutraliza cherry-picking de líneas sueltas.</div>
+    </div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">4</div>
+      <div class="bv-pri-title">Bonus en € fijo, no % sobre comisión</div>
+      <div class="bv-pri-body">Los LeadGen son pequeños y necesitan zanahoria comprensible. "Si llegas a 5, cobras 3.000 €" pega más que "+12% sobre acumulado".</div>
+    </div>
+    <div class="bv-pri">
+      <div class="bv-pri-n">5</div>
+      <div class="bv-pri-title">Solo aplica a LeadGen</div>
+      <div class="bv-pri-body">El modelo Partner e2e ya tiene comisión recurrente — no necesita acelerador adicional ahora.</div>
+    </div>
+  </div>
+
+  <!-- ── Bloque 4 · 3 Escenarios (tabla comparativa) ───────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">4</div>
+    <div class="bv-block-t">Los 3 escenarios — comparativa</div>
+    <div class="bv-block-sub">B destacado como recomendado</div>
+  </div>
+
+  <div class="bv-scen-wrap">
+    <table class="bv-scen">
+      <thead>
+        <tr>
+          <th style="width:24%">Dimensión</th>
+          <th class="bv-sc-head bv-sc-a">A · Conservador</th>
+          <th class="bv-sc-head bv-sc-b">B · Equilibrado <span class="bv-rec-pill">★ Recomendado</span></th>
+          <th class="bv-sc-head bv-sc-c">C · Agresivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bv-sc-dim">Ventana</td>
+          <td>Rolling 6 meses</td>
+          <td class="bv-sc-b-cell">Rolling 6 meses</td>
+          <td>Rolling 12 meses</td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">Escalón 1 — Bronce</td>
+          <td>3 ventas → <b>1.500 €</b> retroactivo</td>
+          <td class="bv-sc-b-cell">5 ventas → <b>3.000 €</b> retroactivo</td>
+          <td>8 ventas → <b>5.000 €</b> retroactivo</td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">Escalón 2 — Plata</td>
+          <td>6 ventas → <b>+3.000 €</b></td>
+          <td class="bv-sc-b-cell">10 ventas → <b>+6.000 €</b></td>
+          <td>18 ventas → <b>+12.000 €</b></td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">Escalón 3 — Oro</td>
+          <td>10 ventas → <b>+6.000 €</b> + status</td>
+          <td class="bv-sc-b-cell">18 ventas → <b>+12.000 €</b> + status "Top Partner"</td>
+          <td>30 ventas → <b>+25.000 €</b> + co-marketing 5k</td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">Cualificador ARPC mínimo</td>
+          <td>≥ 100 €/mes</td>
+          <td class="bv-sc-b-cell">≥ 150 €/mes</td>
+          <td>≥ 200 €/mes</td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">% LeadGen que alcanza E1 (año 1)</td>
+          <td>30 – 40%</td>
+          <td class="bv-sc-b-cell">15 – 20%</td>
+          <td>5 – 8%</td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">% LeadGen que alcanza E3 (élite)</td>
+          <td>~ 5%</td>
+          <td class="bv-sc-b-cell">2 – 3%</td>
+          <td>&lt; 1%</td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">Bonus máximo total (Oro)</td>
+          <td><b>10.500 €</b></td>
+          <td class="bv-sc-b-cell"><b>21.000 €</b></td>
+          <td><b>42.000 €</b></td>
+        </tr>
+        <tr>
+          <td class="bv-sc-dim">Coste incremental sobre comisión base (en E3)</td>
+          <td>~ 58%</td>
+          <td class="bv-sc-b-cell">~ 65%</td>
+          <td>~ 78%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Bloque 5 · Recomendación ──────────────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">5</div>
+    <div class="bv-block-t">Recomendación con justificación</div>
+    <div class="bv-block-sub">Escenario B + ignitor</div>
+  </div>
+
+  <div class="bv-callout">
+    <div class="bv-callout-title">★ Recomendación: Escenario B + Bonus Primer Cliente</div>
+    <div class="bv-callout-body">
+      Iría con el <strong>Escenario B</strong> y, sobre él, añadiría un <strong>bonus primer cliente simbólico de 500 €</strong> desacoplado del esquema de tramos. La mayoría de los 18 LeadGen activos están en cero ventas. Un 500 € por la primera venta cualificada hace de <strong>ignición</strong> — mueve a los que están atascados sin disparar el coste (<strong>exposure máximo: 18 × 500 € = 9.000 €</strong>). Ya estaba en el diseño original como "bonus primer cliente" y conviene rescatarlo.
+    </div>
+  </div>
+
+  <div class="bv-mini-grid" style="margin-top:14px">
+    <div class="bv-mini b-am">
+      <span class="bv-mini-tag">A se queda corto</span>
+      <div class="bv-mini-title">Techo demasiado bajo</div>
+      <div class="bv-mini-body">Un Top Partner que cierra 10 ventas (lo mismo que Covernet en 4 meses como e2e) cobra solo <strong>10.500 € extra</strong> — no diferencia al excepcional del bueno.</div>
+    </div>
+    <div class="bv-mini b-am">
+      <span class="bv-mini-tag">C es inalcanzable</span>
+      <div class="bv-mini-title">Funnel actual no soporta el ritmo</div>
+      <div class="bv-mini-body">8 ventas en 6 meses superaría al mejor Partner e2e. Si nadie llega al primer escalón en año 1, <strong>el programa se percibe como humo</strong>.</div>
+    </div>
+    <div class="bv-mini b-or">
+      <span class="bv-mini-tag">B encaja</span>
+      <div class="bv-mini-title">Curva de probabilidad correcta</div>
+      <div class="bv-mini-body">~1 de cada 5 LeadGen llega a Bronce, ~1 de cada 30 llega a Oro. <strong>Patrón típico saludable</strong> en programas de canal indirecto telco maduros.</div>
+    </div>
+  </div>
+
+  <!-- ── Bloque 6 · Mecánica operativa ─────────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">6</div>
+    <div class="bv-block-t">Mecánica operativa</div>
+    <div class="bv-block-sub">5 reglas a fijar con Javier para evitar disputas</div>
+  </div>
+
+  <div class="bv-steps">
+    <div class="bv-step">
+      <div class="bv-step-n">1</div>
+      <div class="bv-step-t"><b>Devengo:</b> mensual, sobre ventas activadas (entrada en cartera) en la ventana rolling de los últimos 6 meses.</div>
+    </div>
+    <div class="bv-step">
+      <div class="bv-step-n">2</div>
+      <div class="bv-step-t"><b>Pago:</b> trimestral, mes siguiente al cierre del trimestre natural. Razón: evitar pagar bonus sobre ventas que después churneen los primeros 30 días.</div>
+    </div>
+    <div class="bv-step">
+      <div class="bv-step-n">3</div>
+      <div class="bv-step-t"><b>Anti-churn:</b> si un cliente computado para bonus se da de baja en los primeros 90 días tras activación, se descuenta del cómputo en el pago siguiente.</div>
+    </div>
+    <div class="bv-step">
+      <div class="bv-step-n">4</div>
+      <div class="bv-step-t"><b>Cierre de tramo:</b> una vez alcanzado un escalón, el integrador consolida ese tramo durante 12 meses (no puede caer aunque la ventana rolling deje fuera ventas antiguas). Reduce el efecto desmotivador del rolling.</div>
+    </div>
+    <div class="bv-step">
+      <div class="bv-step-n">5</div>
+      <div class="bv-step-t"><b>No acumulable</b> con otros bonus puntuales (campañas, kickers de producto): se aplica el más favorable.</div>
+    </div>
+  </div>
+
+  <!-- ── Bloque 7 · Riesgos y mitigaciones ─────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">7</div>
+    <div class="bv-block-t">Riesgos y mitigaciones</div>
+    <div class="bv-block-sub">Probabilidad coloreada · Alta / Media / Baja</div>
+  </div>
+
+  <div class="card" style="margin-bottom:8px">
+    <table class="bv-risk">
+      <thead>
+        <tr>
+          <th style="width:38%">Riesgo</th>
+          <th style="width:14%;text-align:center">Probabilidad</th>
+          <th>Mitigación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cherry-picking de líneas sueltas baratas</td>
+          <td style="text-align:center"><span class="bv-risk-prob bv-rp-h">Alta</span></td>
+          <td>ARPC mínimo <strong>150 €/mes</strong> como cualificador</td>
+        </tr>
+        <tr>
+          <td>Canibalización (clientes que vendrían por otro canal)</td>
+          <td style="text-align:center"><span class="bv-risk-prob bv-rp-m">Media</span></td>
+          <td>CIF Integrador obligatorio en CRM + revisión manual de duplicados</td>
+        </tr>
+        <tr>
+          <td>Gaming: integrador divide cliente grande en varios CIFs</td>
+          <td style="text-align:center"><span class="bv-risk-prob bv-rp-m">Media</span></td>
+          <td>Una venta = un CIF + un alta inicial. Ampliaciones del mismo CIF no cuentan</td>
+        </tr>
+        <tr>
+          <td>Race-to-deadline</td>
+          <td style="text-align:center"><span class="bv-risk-prob bv-rp-l">Baja</span></td>
+          <td>Pago trimestral + cláusula anti-churn 90 días</td>
+        </tr>
+        <tr>
+          <td>Coste descontrolado si el canal acelera</td>
+          <td style="text-align:center"><span class="bv-risk-prob bv-rp-l">Baja</span></td>
+          <td>Cap anual por integrador (sugiero <strong>25.000 €/año</strong> en bonus)</td>
+        </tr>
+        <tr>
+          <td>Percepción de inalcanzable</td>
+          <td style="text-align:center"><span class="bv-risk-prob bv-rp-m">Media</span></td>
+          <td>Comunicación con simulador: "tu trayectoria actual te llevaría a X €"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Bloque 8 · Impacto financiero estimado ────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">8</div>
+    <div class="bv-block-t">Impacto financiero estimado · Escenario B, año 1</div>
+    <div class="bv-block-sub">Composición del coste anual de bonus</div>
+  </div>
+
+  <div class="card card-b" style="background:var(--bg)">
+    <div class="bv-wf">
+      <div class="bv-wf-row">
+        <div class="bv-wf-lbl"><b>20 integradores</b> en 0–4 ventas</div>
+        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl bv-wf-zero" style="width:1%"></div></div>
+        <div class="bv-wf-num" style="color:var(--ink3)">0 €</div>
+      </div>
+      <div class="bv-wf-row">
+        <div class="bv-wf-lbl"><b>10 en Bronce</b> (5–9 ventas)</div>
+        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:32%"></div></div>
+        <div class="bv-wf-num">30.000 €</div>
+      </div>
+      <div class="bv-wf-row">
+        <div class="bv-wf-lbl"><b>4 en Plata</b> (10–17 ventas)</div>
+        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:38%"></div></div>
+        <div class="bv-wf-num">36.000 €</div>
+      </div>
+      <div class="bv-wf-row">
+        <div class="bv-wf-lbl"><b>1 en Oro</b> (18+ ventas)</div>
+        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:22%"></div></div>
+        <div class="bv-wf-num">21.000 €</div>
+      </div>
+      <div class="bv-wf-row">
+        <div class="bv-wf-lbl"><b>Bonus primer cliente</b> (15 nuevos año 1)</div>
+        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:8%"></div></div>
+        <div class="bv-wf-num">7.500 €</div>
+      </div>
+      <div class="bv-wf-row bv-wf-total">
+        <div class="bv-wf-lbl">Total bonus año 1</div>
+        <div class="bv-wf-bar-tk"><div class="bv-wf-bar-fl" style="width:100%"></div></div>
+        <div class="bv-wf-num">~ 94.500 €</div>
+      </div>
+    </div>
+
+    <div class="bv-ratio-grid">
+      <div class="bv-ratio">
+        <div class="bv-ratio-num">22%</div>
+        <div class="bv-ratio-lbl">Ratio bonus / ingresos · año 1</div>
+        <div class="bv-ratio-sub">Mientras conviven comisión base + bonus</div>
+      </div>
+      <div class="bv-ratio r-gr">
+        <div class="bv-ratio-num">~ 5%</div>
+        <div class="bv-ratio-lbl">Ratio bonus / ingresos · año 2</div>
+        <div class="bv-ratio-sub">Cuando solo queda el bonus, ya no comisión base</div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;padding:12px 14px;background:var(--card);border-radius:8px;font-size:12px;color:var(--ink3);line-height:1.55">
+      Contra ingresos del canal estimados en <strong style="color:var(--ink2)">~432.000 €</strong> año 1 (120 ventas × 300 €/mes × 12). En año 2 baja a ~5% porque solo queda el bonus — patrón esperado de canal indirecto sano.
+    </div>
+  </div>
+
+  <!-- ── Bloque 9 · Benchmarks ─────────────────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">9</div>
+    <div class="bv-block-t">Benchmarks de mercado</div>
+    <div class="bv-block-sub">Referencias del sector telco B2B</div>
+  </div>
+
+  <div class="bv-mini-grid">
+    <div class="bv-mini b-bl">
+      <span class="bv-mini-tag">Vodafone ES</span>
+      <div class="bv-mini-title">Partner Program</div>
+      <div class="bv-mini-body">Acelerador <strong>5–15%</strong> sobre comisión base por superar tramos trimestrales. Rolling 12 meses para status.</div>
+    </div>
+    <div class="bv-mini b-bl">
+      <span class="bv-mini-tag">Movistar Empresas</span>
+      <div class="bv-mini-title">Channel Points</div>
+      <div class="bv-mini-body">Modelo de puntos con conversión a € + <strong>bonus retroactivo</strong> por cruzar umbrales semestrales.</div>
+    </div>
+    <div class="bv-mini b-bl">
+      <span class="bv-mini-tag">Orange Business · FR</span>
+      <div class="bv-mini-title">Four-tier (Bronze → Platinum)</div>
+      <div class="bv-mini-body">Bonus retroactivo en primer tier y marginal en superiores. <strong>Estructura de referencia</strong> para esta propuesta.</div>
+    </div>
+    <div class="bv-mini b-pu">
+      <span class="bv-mini-tag">Regla de oro</span>
+      <div class="bv-mini-title">Calibración del techo</div>
+      <div class="bv-mini-body"><strong>&lt; 15%</strong> partners en tier máximo = bien calibrado. <strong>&gt; 25%</strong> = blando. <strong>&lt; 2%</strong> = inalcanzable.</div>
+    </div>
+  </div>
+
+  <!-- ── Bloque 10 · CTA decisiones ────────────────────────────── -->
+  <div class="bv-block-h">
+    <div class="bv-block-num">10</div>
+    <div class="bv-block-t">Decisiones a cerrar con Javier</div>
+    <div class="bv-block-sub">Próxima reunión de seguimiento</div>
+  </div>
+
+  <div class="bv-cta">
+    <span class="bv-cta-tag">★ 3 decisiones para cerrar</span>
+    <div class="bv-cta-title">Tres puntos a fijar para arrancar el modelo</div>
+    <div class="bv-cta-list">
+      <div class="bv-cta-item">
+        <div class="bv-cta-num">1</div>
+        <div class="bv-cta-txt"><b>Ventana:</b> ¿rolling <strong>6 meses (B)</strong> o rolling 12 meses (C)?</div>
+      </div>
+      <div class="bv-cta-item">
+        <div class="bv-cta-num">2</div>
+        <div class="bv-cta-txt"><b>¿Entra el bonus primer cliente</b> como ignitor (<strong>500 €</strong> / primera venta cualificada)?</div>
+      </div>
+      <div class="bv-cta-item">
+        <div class="bv-cta-num">3</div>
+        <div class="bv-cta-txt"><b>¿Techo anual de bonus</b> por integrador? (recomendado: <strong>25.000 €/año</strong>)</div>
+      </div>
+    </div>
+    <div class="bv-cta-foot">
+      Quedan abiertos para iteración con Estrategia (Natalia): ARPC mínimo exacto y cuantías finales de tramos.
+    </div>
+  </div>
+
+</section>
+
+
 <!-- ════════════════ JS ════════════════ -->
 <script>
 // ── Fecha dinámica (siempre el día actual)
@@ -1982,7 +2650,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 function show(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.tnav').forEach(t=>t.classList.remove('on'));
-  const secs=['s0','s1','s2','s3','s4','s5','s6'];
+  const secs=['s0','s1','s2','s3','s4','s5','s6','s7'];
   document.getElementById(id).classList.add('on');
   document.querySelectorAll('.tnav')[secs.indexOf(id)].classList.add('on');
   startCounters(document.getElementById(id));
