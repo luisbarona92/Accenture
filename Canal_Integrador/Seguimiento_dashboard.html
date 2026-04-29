@@ -2071,7 +2071,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="sh">
     <div>
       <div class="sh-title">Detalle Leads <span id="changesCounter" class="change-badge" style="display:none">0 cambios</span></div>
-      <div class="s5-sensitive" data-cnt="s5-subtitle" style="font-size:12px;color:var(--ink3);margin-top:4px">69 leads potenciales</div>
+      <div class="s5-sensitive" data-cnt="s5-subtitle" style="font-size:12px;color:var(--ink3);margin-top:4px">76 leads potenciales</div>
     </div>
     <div style="display:flex;gap:8px">
       <button class="export-changes-btn" id="btnExportChanges" onclick="exportChanges()" disabled title="Exportar cambios realizados">📋 Exportar cambios</button>
@@ -2083,7 +2083,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="krow s5-sensitive">
     <div class="kcard k-or">
       <div class="k-lbl">Leads potenciales</div>
-      <div class="k-num cnt" data-cnt="s5-total" data-t="69">69</div>
+      <div class="k-num cnt" data-cnt="s5-total" data-t="76">76</div>
       <div class="k-sub">Total identificados</div>
     </div>
     <div class="kcard k-gr">
@@ -2097,17 +2097,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">En curso</div>
-      <div class="k-num cnt" data-cnt="s5-encurso" data-t="33">33</div>
+      <div class="k-num cnt" data-cnt="s5-encurso" data-t="32">32</div>
       <div class="k-sub">Oferta en proceso</div>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">Pendiente</div>
-      <div class="k-num cnt" data-cnt="s5-pendiente" data-t="12">12</div>
+      <div class="k-num cnt" data-cnt="s5-pendiente" data-t="14">14</div>
       <div class="k-sub">Sin oferta activa</div>
     </div>
     <div class="kcard k-rd">
       <div class="k-lbl">KO</div>
-      <div class="k-num cnt" data-cnt="s5-ko" data-t="16">16</div>
+      <div class="k-num cnt" data-cnt="s5-ko" data-t="22">22</div>
       <div class="k-sub">Descartados</div>
     </div>
   </div>
@@ -2120,7 +2120,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <div class="chip ch-bl"             onclick="setEstFilt('En curso',this)">◉ En curso</div>
     <div class="chip ch-am"             onclick="setEstFilt('Pendiente',this)">⏳ Pendiente</div>
     <div class="chip ch-rd"             onclick="setEstFilt('KO',this)">✕ KO</div>
-    <span class="leads-count" id="leadsCount" data-cnt="s5-leads-count">69 leads</span>
+    <span class="leads-count" id="leadsCount" data-cnt="s5-leads-count">76 leads</span>
   </div>
 
   <!-- Filtros por integrador -->
@@ -2946,7 +2946,7 @@ const LEADS = [
     "modelo": "Tier 1",
     "fecGen": 46023,
     "comercial": "Jonathan Macías",
-    "estado": "Pendiente",
+    "estado": "KO",
     "segmento": "Pendiente recibir lead",
     "sigPasoEq": "Pendiente recibir lead",
     "fecSigPasoEq": 46066,
@@ -3116,11 +3116,11 @@ const LEADS = [
     "modelo": "Tier 2",
     "fecGen": 46083,
     "comercial": "Didac",
-    "estado": "Pendiente",
+    "estado": "En curso",
     "segmento": "SoHo",
     "sigPasoEq": "Seguimiento renove",
     "fecSigPasoEq": 46127,
-    "sigPasoComercial": "Pendiente vencimiento permanencia para hacer renove",
+    "sigPasoComercial": "Pendiente OT 05.05",
     "fecSigPasoComercial": 46127,
     "venta": null,
     "productos": ""
@@ -3133,11 +3133,11 @@ const LEADS = [
     "modelo": "Tier 2",
     "fecGen": 46083,
     "comercial": "Didac",
-    "estado": "Pendiente",
+    "estado": "En curso",
     "segmento": "SoHo",
     "sigPasoEq": "Seguimiento renove",
     "fecSigPasoEq": 46127,
-    "sigPasoComercial": "Pendiente vencimiento permanencia para hacer renove",
+    "sigPasoComercial": "Pendiente OT 05.05",
     "fecSigPasoComercial": 46127,
     "venta": null,
     "productos": ""
@@ -3150,11 +3150,11 @@ const LEADS = [
     "modelo": "Tier 2",
     "fecGen": 46083,
     "comercial": "Didac",
-    "estado": "Pendiente",
+    "estado": "En curso",
     "segmento": "SoHo",
     "sigPasoEq": "Seguimiento renove",
     "fecSigPasoEq": 46127,
-    "sigPasoComercial": "Pendiente vencimiento permanencia para hacer renove",
+    "sigPasoComercial": "Pendiente OT 05.05",
     "fecSigPasoComercial": 46127,
     "venta": null,
     "productos": ""
@@ -3348,19 +3348,19 @@ const LEADS = [
   },
   {
     "id": 52,
-    "nombre": "Cliente de Argentona",
-    "cif": "Lisot",
+    "nombre": "Macla",
+    "cif": "A08122574",
     "integrador": "Lisot",
     "modelo": "Tier 1",
     "fecGen": 46099,
     "comercial": "Nazaret González",
     "estado": "En curso",
-    "segmento": "Seguimiento - cliente elaborado la lista de requerimientos.",
+    "segmento": "PYME",
     "sigPasoEq": "Seguimiento - cliente elaborado la lista de requerimientos.",
-    "fecSigPasoEq": 46107,
-    "sigPasoComercial": "Pendiente recibir lead",
-    "fecSigPasoComercial": 46107,
-    "venta": null,
+    "fecSigPasoEq": 46140,
+    "sigPasoComercial": "Oferta presentada",
+    "fecSigPasoComercial": 46140,
+    "venta": 272.25,
     "productos": ""
   },
   {
@@ -3371,7 +3371,7 @@ const LEADS = [
     "modelo": "Tier 1",
     "fecGen": 46105,
     "comercial": "Jonathan Macías",
-    "estado": "Pendiente",
+    "estado": "KO",
     "segmento": "Seguimiento - academia 2 sedes, pendiente confirmar por integrador",
     "sigPasoEq": "Seguimiento - academia 2 sedes, pendiente confirmar por integrador",
     "fecSigPasoEq": 46108,
@@ -3406,11 +3406,11 @@ const LEADS = [
     "fecGen": 46106,
     "comercial": "Jonathan Macías",
     "estado": "Pendiente",
-    "segmento": "Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.",
-    "sigPasoEq": "Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.",
-    "fecSigPasoEq": 46119,
+    "segmento": "Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.de 1000 lineas. Pendiente contratar CIO para que nos pongamos en contacto con él. Hold.",
+    "sigPasoEq": "Seguimiento potencial lead con el que están viendo si trabajan. Lead grande.de 1000 lineas. Pendiente contratar CIO para que nos pongamos en contacto con él. Hold.",
+    "fecSigPasoEq": 46162,
     "sigPasoComercial": "Pendiente recibir lead",
-    "fecSigPasoComercial": 46119,
+    "fecSigPasoComercial": 46162,
     "venta": null,
     "productos": ""
   },
@@ -3477,9 +3477,9 @@ const LEADS = [
     "segmento": "Seguimiento lead grande  - centralita virtual, 30 líneas móviles, control de presencia",
     "sigPasoEq": "Seguimiento lead grande  - centralita virtual, 30 líneas móviles, control de presencia",
     "fecSigPasoEq": 46135,
-    "sigPasoComercial": "Oferta en curso - presentada a cliente",
+    "sigPasoComercial": "Oferta presentada - 30 líneas móviles + 4 fibras (conecta pymes una de ellas con futbol) ha puestos 26 líneas con tarifa 5 y todas sin termianles",
     "fecSigPasoComercial": 46135,
-    "venta": null,
+    "venta": 311,
     "productos": ""
   },
   {
@@ -3506,7 +3506,7 @@ const LEADS = [
     "integrador": "Elpis InformáTica",
     "modelo": "Tier 1",
     "fecGen": 46132,
-    "comercial": "Sergio Mena",
+    "comercial": "Javier Moya",
     "estado": "En curso",
     "segmento": "Seguimiento ",
     "sigPasoEq": "Seguimiento ",
@@ -3650,6 +3650,125 @@ const LEADS = [
     "sigPasoComercial": "Oferta en preparación",
     "fecSigPasoComercial": 46135,
     "venta": 70.9,
+    "productos": ""
+  },
+  {
+    "id": 70,
+    "nombre": "Asociación Empresas Tecnología",
+    "cif": "GNUO",
+    "integrador": "GNUO",
+    "modelo": "Tier 1",
+    "fecGen": 46139,
+    "comercial": "Jonathan Macías",
+    "estado": "Pendiente",
+    "segmento": "Seguimiento",
+    "sigPasoEq": "Seguimiento",
+    "fecSigPasoEq": 46154,
+    "sigPasoComercial": "Pendiente recibir lead",
+    "fecSigPasoComercial": 46154,
+    "venta": null,
+    "productos": ""
+  },
+  {
+    "id": 71,
+    "nombre": "AREXPRESS",
+    "cif": "B86054921",
+    "integrador": "Covernet",
+    "modelo": "Tier 2",
+    "fecGen": 46139,
+    "comercial": "Didac",
+    "estado": "En curso",
+    "segmento": "Seguimiento renove",
+    "sigPasoEq": "Seguimiento renove",
+    "fecSigPasoEq": 46144,
+    "sigPasoComercial": "Pendiente OT 05.05",
+    "fecSigPasoComercial": 46144,
+    "venta": null,
+    "productos": ""
+  },
+  {
+    "id": 72,
+    "nombre": "Sictemas",
+    "cif": "Sictemas",
+    "integrador": "Sictemas",
+    "modelo": "Tier 1",
+    "fecGen": 46139,
+    "comercial": "Sergio Mena",
+    "estado": "En curso",
+    "segmento": "SoHo",
+    "sigPasoEq": "Seguimiento lead (líneas SoHo del CEO)",
+    "fecSigPasoEq": 46141,
+    "sigPasoComercial": "Pendiente preparar oferta por VVDD",
+    "fecSigPasoComercial": 46141,
+    "venta": 64.9,
+    "productos": ""
+  },
+  {
+    "id": 73,
+    "nombre": "Cafes Guilis",
+    "cif": "OX-ONE NETWORKS SL",
+    "integrador": "Ox-One",
+    "modelo": "Tier 1",
+    "fecGen": 46141,
+    "comercial": "Jonathan Macías",
+    "estado": "Pendiente",
+    "segmento": "Seguimiento ",
+    "sigPasoEq": "Seguimiento ",
+    "fecSigPasoEq": 46147,
+    "sigPasoComercial": "Pendiente recibir lead",
+    "fecSigPasoComercial": 46147,
+    "venta": null,
+    "productos": ""
+  },
+  {
+    "id": 74,
+    "nombre": "Valvulas Ros",
+    "cif": "OX-ONE NETWORKS SL",
+    "integrador": "Ox-One",
+    "modelo": "Tier 1",
+    "fecGen": 46141,
+    "comercial": "Jonathan Macías",
+    "estado": "Pendiente",
+    "segmento": "Seguimiento ",
+    "sigPasoEq": "Seguimiento ",
+    "fecSigPasoEq": 46147,
+    "sigPasoComercial": "Pendiente recibir lead",
+    "fecSigPasoComercial": 46147,
+    "venta": null,
+    "productos": ""
+  },
+  {
+    "id": 75,
+    "nombre": "Residencia geriatrica Santa Agueda",
+    "cif": "A19127026",
+    "integrador": "Cobitratel",
+    "modelo": "Tier 1",
+    "fecGen": 46141,
+    "comercial": "Jonathan Macías",
+    "estado": "En curso",
+    "segmento": "Seguimiento - 8/10 lineas",
+    "sigPasoEq": "Seguimiento - 8/10 lineas",
+    "fecSigPasoEq": 46147,
+    "sigPasoComercial": "Pendiente asignar comercial",
+    "fecSigPasoComercial": 46142,
+    "venta": null,
+    "productos": ""
+  },
+  {
+    "id": 76,
+    "nombre": "Salas de eventos",
+    "cif": "Infornet",
+    "integrador": "Infornet",
+    "modelo": "Tier 1",
+    "fecGen": 46141,
+    "comercial": "Jonathan Macías",
+    "estado": "Pendiente",
+    "segmento": "Seguimiento - quieren montar líneas en salas de eventos. Hold.",
+    "sigPasoEq": "Seguimiento - quieren montar líneas en salas de eventos. Hold.",
+    "fecSigPasoEq": 46174,
+    "sigPasoComercial": "Pendiente recibir lead",
+    "fecSigPasoComercial": 46174,
+    "venta": null,
     "productos": ""
   }
 ];
