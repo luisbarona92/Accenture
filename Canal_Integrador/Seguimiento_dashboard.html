@@ -254,6 +254,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 }
 .kcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
 .kcard.k-or{border-top-color:var(--or)}
+.kcard.k-bk{border-top-color:var(--ink2)}.kcard.k-bk .k-num{color:var(--ink)}
 .kcard.k-gr{border-top-color:var(--green)}
 .kcard.k-am{border-top-color:var(--amber)}
 .kcard.k-rd{border-top-color:var(--red)}
@@ -492,7 +493,8 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .vtbl tbody tr:hover td:first-child{border-left:3px solid var(--or)}
 .vtbl td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .n{text-align:center;font-weight:700;font-size:15px}
-.n-or{color:var(--or)}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}.n-bl{color:var(--blue)}.n-am{color:var(--amber)}.n-rd{color:var(--red)}
+.n-or{color:var(--or)}.n-bk{color:var(--ink)}
+.vtbl tbody td:nth-child(3){color:var(--ink)!important}.n-gr{color:var(--green)}.n-gy{color:var(--ink4)}.n-bl{color:var(--blue)}.n-am{color:var(--amber)}.n-rd{color:var(--red)}
 
 /* ── S6 Plan Visitas ── */
 .tl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
@@ -1852,7 +1854,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
   <!-- KPI row -->
   <div class="krow">
-    <div class="kcard k-or">
+    <div class="kcard k-bk">
       <div class="k-lbl">Total oportunidades</div>
       <div class="k-num cnt" data-cnt="s3-total" data-t="76">76</div>
       <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="7">▲ +7 vs sem. anterior</span>
