@@ -1264,7 +1264,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .ft-count{font-size:11.5px;color:var(--ink3);font-weight:600;letter-spacing:.3px;margin-left:auto}
 
 .ft-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;box-shadow:var(--shadow);overflow:hidden;font-family:inherit}
-.ft-table thead th{position:sticky;top:60px;z-index:18;background:var(--card);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);padding:11px 12px;text-align:left;box-shadow:0 1px 0 var(--line2);user-select:none;white-space:nowrap}
+.ft-table thead th{background:var(--card);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);padding:11px 12px;text-align:left;border-bottom:1px solid var(--line2);user-select:none;white-space:nowrap}
 .ft-table thead th[data-filter] .colfilt-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;font-size:10px;color:var(--ink3);cursor:pointer;margin-left:5px;vertical-align:-2px;background:transparent;border:1px solid transparent;transition:all .15s}
 .ft-table thead th[data-filter] .colfilt-btn:hover{background:#fee9d8;color:var(--or);border-color:var(--or)}
 .ft-table thead th[data-filter] .colfilt-btn.on{background:var(--or);color:#fff;border-color:var(--or)}
@@ -1320,30 +1320,70 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .tree-root-node{padding:10px 24px;background:var(--or);color:#fff;border-radius:10px;font-size:13px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 14px rgba(255,102,0,.3)}
 .tree-root-node b{font-size:18px;margin-right:8px}
 .tree-trunk{width:2px;height:18px;background:var(--or);margin:0 auto;opacity:.4}
-.tree-branches{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:6px;position:relative}
+.tree-branches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;position:relative}
 .tree-branches::before{content:'';position:absolute;top:-9px;left:10%;right:10%;height:2px;background:var(--or);opacity:.3}
-.tree-node{display:flex;flex-direction:column;align-items:center;position:relative}
+.tree-node{display:flex;flex-direction:column;align-items:stretch;position:relative}
 .tree-node::before{content:'';position:absolute;top:-10px;left:50%;width:2px;height:10px;background:var(--or);opacity:.4}
-.tn-card{background:var(--card);border-radius:10px;padding:12px 14px;border:1.5px solid var(--line2);box-shadow:var(--shadow);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.tn-card{background:var(--card);border-radius:10px;padding:14px 16px;border:1.5px solid var(--line2);box-shadow:var(--shadow);width:100%;display:flex;flex-direction:column;gap:6px}
 .tn-card.tn-gr{border-color:rgba(5,150,105,.4)}
 .tn-card.tn-am{border-color:rgba(217,119,6,.4)}
 .tn-card.tn-bl{border-color:rgba(29,78,216,.4)}
 .tn-card.tn-rd{border-color:rgba(220,38,38,.35)}
 .tn-card.tn-gy{border-color:rgba(107,114,128,.3)}
-.tn-count{font-size:32px;font-weight:800;line-height:1}
+.tn-count{font-size:32px;font-weight:800;line-height:1;text-align:center}
 .tn-card.tn-gr .tn-count{color:var(--green)}
 .tn-card.tn-am .tn-count{color:var(--amber)}
 .tn-card.tn-bl .tn-count{color:var(--blue)}
 .tn-card.tn-rd .tn-count{color:var(--red)}
 .tn-card.tn-gy .tn-count{color:#6B7280}
-.tn-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2)}
-.tn-sub{font-size:11px;color:var(--ink3);line-height:1.4;margin-top:2px}
-.tn-action{margin-top:8px;padding:8px 10px;border-radius:7px;background:#fffaf5;border:1px dashed var(--or);font-size:11px;color:var(--ink);width:100%;text-align:left;line-height:1.45}
-.tn-action b{color:var(--or);text-transform:uppercase;font-size:9.5px;letter-spacing:.5px;display:block;margin-bottom:3px}
+.tn-label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2);text-align:center}
+.tn-names{font-size:11px;color:var(--ink2);line-height:1.5;margin-top:4px;padding:8px 10px;background:#FAFAFA;border-radius:6px;text-align:left}
+.tn-card.tn-gr .tn-names{background:#ECFDF5}
+.tn-card.tn-am .tn-names{background:#FFFBEB}
+.tn-card.tn-bl .tn-names{background:#EFF6FF}
+.tn-card.tn-rd .tn-names{background:#FEF2F2}
+.tn-action{margin-top:6px;padding:9px 12px;border-radius:7px;background:#fffaf5;border:1px dashed var(--or);font-size:11.5px;color:var(--ink);width:100%;text-align:left;line-height:1.5}
+.tn-action b{color:var(--or);text-transform:uppercase;font-size:9.5px;letter-spacing:.5px;display:block;margin-bottom:6px}
+.tn-action ul{margin:0;padding-left:16px}
+.tn-action li{margin-bottom:3px}
+.tn-action li:last-child{margin-bottom:0}
 @media(max-width:920px){
   .tree-branches{grid-template-columns:repeat(2,1fr)}
   .tree-branches::before{display:none}
   .tree-node::before{display:none}
+}
+@media(max-width:560px){
+  .tree-branches{grid-template-columns:1fr}
+}
+
+/* ═══════════════════ S6 · TIMELINE VISITAS ═══════════════════ */
+.vis-timeline{display:flex;flex-direction:column;gap:18px;margin-top:4px}
+.vis-week{background:var(--card);border-radius:12px;padding:14px 18px 18px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.vis-week-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--line2)}
+.vis-week-tag{display:inline-block;padding:6px 14px;background:var(--or);color:#fff;border-radius:7px;font-size:13px;font-weight:800;letter-spacing:.3px}
+.vis-week-cnt{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px}
+.vis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.vis-card{background:#FAFAFA;border-radius:10px;padding:14px;border-left:4px solid var(--line2);display:flex;flex-direction:column;gap:9px}
+.vis-card.vis-gr{border-left-color:var(--green);background:#F0FDF4}
+.vis-card.vis-bl{border-left-color:var(--blue);background:#EFF6FF}
+.vis-card.vis-am{border-left-color:var(--amber);background:#FFFBEB}
+.vis-card.vis-rd{border-left-color:var(--red);background:#FEF2F2}
+.vis-card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.vis-name{font-size:15px;font-weight:800;color:var(--ink);line-height:1.2}
+.vis-meta{font-size:11.5px;color:var(--ink3);margin-top:3px;font-weight:500}
+.vis-city{font-weight:600;color:var(--ink2)}
+.vis-resp{font-style:italic}
+.vis-body{font-size:12.5px;color:var(--ink);line-height:1.5}
+.vis-body b{font-weight:700;color:var(--or)}
+.vis-metrics{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.vis-m{display:inline-block;padding:2px 8px;border-radius:5px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.vis-m-gr{background:#D1FAE5;color:#065F46}
+.vis-m-bl{background:#DBEAFE;color:#1D4ED8}
+.vis-m-am{background:#FEF3C7;color:#92400E}
+.vis-m-or{background:#FED7AA;color:#9A3412}
+.vis-m-rd{background:#FEE2E2;color:#B91C1C}
+@media(max-width:560px){
+  .vis-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -1572,123 +1612,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
   </div>
 
-  <!-- FUNNEL VISUAL (ancho completo) -->
-  <div>
-    <div class="card">
-      <div class="card-h">
-        <span class="card-title">Funnel de captación</span>
-        <span class="card-sub">De 5.124 → 24 activados</span>
-      </div>
-
-      <div class="funnel-vis">
-
-        <!-- Pool -->
-        <div class="fv-row">
-          <div class="fv-label"><b>Fishing Pool</b>Total BBDD atacable</div>
-          <div class="fv-bar-col">
-            <div class="fv-bar-track">
-              <div class="fv-bar-fill fb-pool" style="width:100%"><span>100%</span></div>
-            </div>
-          </div>
-          <div class="fv-num-col">
-            <div class="fv-num fc-pool cnt" data-t="5124">0</div>
-            <div class="fv-pct fc-pool"></div>
-          </div>
-        </div>
-
-        <div class="fv-arrow">▼</div>
-
-        <!-- H1 -->
-        <div class="fv-row">
-          <div class="fv-label"><b>H1 · Contacto</b>1er contacto exitoso</div>
-          <div class="fv-bar-col">
-            <div class="fv-bar-track">
-              <div class="fv-bar-fill fb-h1" style="width:19%"><span>19%</span></div>
-            </div>
-          </div>
-          <div class="fv-num-col">
-            <div class="fv-num fc-h1 cnt" data-t="960">0</div>
-            <div class="fv-pct fc-h1">19% pool</div>
-          </div>
-        </div>
-
-        <div class="fv-arrow">▼</div>
-
-        <!-- H2 -->
-        <div class="fv-row">
-          <div class="fv-label"><b>H2 · Interés</b>Sesión online 1:1</div>
-          <div class="fv-bar-col">
-            <div class="fv-bar-track">
-              <div class="fv-bar-fill fb-h2" style="width:6%"><span>6%</span></div>
-            </div>
-          </div>
-          <div class="fv-num-col">
-            <div class="fv-num fc-h2 cnt" data-t="90">0</div>
-            <div class="fv-pct fc-h2">6% de H1</div>
-          </div>
-        </div>
-
-        <div class="fv-arrow">▼</div>
-
-        <!-- H3 con desglose -->
-        <div class="fv-row" style="align-items:flex-start">
-          <div class="fv-label" style="padding-top:14px"><b>H3 · Captados</b>KO presencial</div>
-          <div class="fv-bar-col" style="padding-top:14px">
-            <div class="fv-bar-track">
-              <div class="fv-bar-fill fb-h3" style="width:65%"><span>65%</span></div>
-            </div>
-            <!-- desglose de los 60 -->
-            <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">24</span> activados</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--amber)"></div><span class="fvb-n" style="color:var(--amber)">7</span> on hold</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">10</span> pdte. agendar</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--red)"></div><span class="fvb-n" style="color:var(--red)">16</span> churn</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--blue)"></div><span class="fvb-n" style="color:var(--blue)">3</span> ses. negocio agendadas</div>
-            </div>
-          </div>
-          <div class="fv-num-col" style="padding-top:14px">
-            <div class="fv-num fc-h3 cnt" data-t="60">0</div>
-            <div class="fv-pct fc-h3">67% de H2</div>
-          </div>
-        </div>
-
-        <div class="fv-arrow">▼</div>
-
-        <!-- H4 con desglose -->
-        <div class="fv-row" style="align-items:flex-start">
-          <div class="fv-label" style="padding-top:14px"><b>H4 · Activados</b>Contrato + modelo</div>
-          <div class="fv-bar-col" style="padding-top:14px">
-            <div class="fv-bar-track">
-              <div class="fv-bar-fill fb-h4" style="width:40%"><span>40%</span></div>
-            </div>
-            <!-- desglose de los 24 -->
-            <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
-              <div class="fvb-item"><div class="fvb-dot" style="background:var(--green)"></div><span class="fvb-n" style="color:var(--green)">9</span> contratos firmados</div>
-              <div class="fvb-item"><div class="fvb-dot" style="background:#34D399"></div><span class="fvb-n" style="color:#059669">15</span> en proceso de firma</div>
-            </div>
-          </div>
-          <div class="fv-num-col" style="padding-top:14px">
-            <div class="fv-num fc-h4 cnt" data-t="24">0</div>
-            <div class="fv-pct fc-h4">40% de H3</div>
-          </div>
-        </div>
-
-      </div><!-- /funnel-vis -->
-
-      <!-- Alertas churn -->
-      <div style="padding:0 18px 18px;display:flex;gap:10px">
-        <div class="alert al-rd" style="flex:1">
-          <div class="al-title alt-rd">20 rechazos post-sesión online</div>
-          <div class="al-body">Integradores que declinaron continuar tras la sesión 1:1</div>
-        </div>
-        <div class="alert al-am" style="flex:1">
-          <div class="al-title alt-am">16 en churn</div>
-          <div class="al-body">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Services · Tec. Estratégica · ITsoft · Solventus Software · ISP · Ciset · MVP Informática</div>
-        </div>
-      </div>
+  <!-- Alertas churn / rechazos (sin barras de funnel) -->
+  <div style="display:flex;gap:10px;margin-top:14px">
+    <div class="alert al-rd" style="flex:1">
+      <div class="al-title alt-rd">20 rechazos post-sesión online</div>
+      <div class="al-body">Integradores que declinaron continuar tras la sesión 1:1</div>
     </div>
-
-  </div><!-- /funnel wrap -->
+    <div class="alert al-am" style="flex:1">
+      <div class="al-title alt-am">3 ses. negocio agendadas esta semana</div>
+      <div class="al-body">Jelp (06.05) · Procgal (12.05) · Run Software (19.05)</div>
+    </div>
+  </div>
 
   <!-- ÁRBOL DE DECISIÓN · sub-clusters de H3 con acción recomendada -->
   <div class="tree-wrap">
@@ -1699,16 +1633,36 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       <div class="tree-root-node"><b>60</b> H3 · CAPTADOS</div>
     </div>
     <div class="tree-trunk"></div>
-    <div class="tree-branches">
+    <div class="tree-branches tree-6">
 
       <div class="tree-node">
         <div class="tn-card tn-gr">
-          <div class="tn-count">24</div>
-          <div class="tn-label">Activados</div>
-          <div class="tn-sub">9 firmados + 15 en proceso firma</div>
+          <div class="tn-count">9</div>
+          <div class="tn-label">Firmados</div>
+          <div class="tn-names">Cover Net · Maxen · Deiteco · Duo IT · Ox-One · Elpis Informática · Sictemas · Paper Labs · Aideea</div>
           <div class="tn-action">
             <b>Acción recomendada</b>
-            Gestión cercana · Visitas presenciales · Compartir leads · Cerrar firma pendiente
+            <ul>
+              <li>Visitas presenciales 1-2/semana</li>
+              <li>Asegurar flujo de leads activos</li>
+              <li>Cerrar pagos pendientes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-node">
+        <div class="tn-card tn-gr">
+          <div class="tn-count">15</div>
+          <div class="tn-label">En proceso firma</div>
+          <div class="tn-names">DataQu · Ocvistas · Infornet · Micro Sip · Audinfor · Sisytec · Cobitratel · Mariskalnet · Dosys · GNUO · Binfor Sol. · Lisot · Redestic · Provide · Durnia</div>
+          <div class="tn-action">
+            <b>Acción recomendada</b>
+            <ul>
+              <li>Acelerar firma del contrato</li>
+              <li>Empezar a recibir primeros leads</li>
+              <li>Desbloquear contractual (DataQu bidireccional)</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1717,10 +1671,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-bl">
           <div class="tn-count">3</div>
           <div class="tn-label">Ses. negocio agendada</div>
-          <div class="tn-sub">Jelp 06.05 · Procgal 12.05 · Run Software 19.05</div>
+          <div class="tn-names">Jelp (06.05) · Procgal (12.05) · Run Software (19.05)</div>
           <div class="tn-action">
             <b>Acción recomendada</b>
-            Preparar materiales del KO · Confirmar asistencia 48h antes
+            <ul>
+              <li>Preparar materiales del KO</li>
+              <li>Confirmar asistencia 48h antes</li>
+              <li>Cerrar modelo de colaboración tras KO</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1729,10 +1687,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-bl">
           <div class="tn-count">10</div>
           <div class="tn-label">Pdte. agendar KO</div>
-          <div class="tn-sub">NaimiTech · Ache · Omnia · Amiritmo · ISC Tech · G.I. Pensiones · Maicrosoft · Pavon · Ibersya · Fervimax</div>
+          <div class="tn-names">NaimiTech · Ache Informática · Omnia Sol · Amiritmo · ISC Tech · G.I. Pensiones · Maicrosoft · Inform. Pavon · Ibersya · Fervimax</div>
           <div class="tn-action">
             <b>Acción recomendada</b>
-            Bloquear agenda con Negocio esta semana · Forzar fecha de KO en próximas 2 semanas
+            <ul>
+              <li>Bloquear agenda con Negocio esta semana</li>
+              <li>Forzar fecha de KO en próximas 2 semanas</li>
+              <li>Si no responde 2× → mover a churn</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1741,10 +1703,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-am">
           <div class="tn-count">7</div>
           <div class="tn-label">On hold</div>
-          <div class="tn-sub">Fedesoft · Dirbapont · Brain HW · Redem · Digital HM · Sur Comp. · Inforware</div>
+          <div class="tn-names">Fedesoft · Dirbapont · Brain Hardware · Redem · Digital HM · Sur Computers · Inforware</div>
           <div class="tn-action">
             <b>Acción recomendada</b>
-            Recontacto pre-salida del hold · Si no responde 2× → mover a churn
+            <ul>
+              <li>Recontacto pre-salida del hold</li>
+              <li>Confirmar fecha de reactivación</li>
+              <li>Si no responde 2× → mover a churn</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1753,10 +1719,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-rd">
           <div class="tn-count">16</div>
           <div class="tn-label">Churn</div>
-          <div class="tn-sub">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Serv. · Tec. Estr. · ITsoft · Solventus · ISP · Ciset · MVP Inf.</div>
+          <div class="tn-names">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Services · Tec. Estratégica · ITsoft · Solventus Software · ISP · Ciset · MVP Informática</div>
           <div class="tn-action">
             <b>Lecciones aprendidas</b>
-            Analizar motivos de salida → mejorar criterios pre-cualificación en H2
+            <ul>
+              <li>Analizar motivos de salida</li>
+              <li>Mejorar criterios pre-cualificación en H2</li>
+              <li>Cerrar ficha y archivar</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -2148,65 +2118,160 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
   <!-- KPIs -->
   <div class="krow">
-    <div class="kcard k-or">
-      <div class="k-lbl">Visitas programadas</div>
-      <div class="k-num">2</div>
-      <div class="k-sub">esta semana</div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Visitas realizadas</div>
+      <div class="k-num" style="color:var(--green)">5</div>
+      <div class="k-sub">Sictemas · Ox-one · DataQu · Elpis · Audinfor</div>
     </div>
     <div class="kcard k-bl">
+      <div class="k-lbl">Próximas</div>
+      <div class="k-num" style="color:var(--blue)">1</div>
+      <div class="k-sub">DuoIT (sem. 11.05) — Bilbao</div>
+    </div>
+    <div class="kcard k-or">
       <div class="k-lbl">Integradores disponibles</div>
       <div class="k-num">38</div>
-      <div class="k-sub">en la pestaña 02</div>
-    </div>
-    <div class="kcard k-gr">
-      <div class="k-lbl">Pendientes de fecha</div>
-      <div class="k-num" style="color:var(--green)">—</div>
-      <div class="k-sub">añadir manualmente</div>
+      <div class="k-sub">pestaña 02 · click para copiar</div>
     </div>
   </div>
 
-  <!-- Tabla manual de visitas programadas -->
-  <div class="card" style="margin-bottom:18px">
-    <div class="card-h">
-      <span class="card-title">Visitas programadas</span>
-      <span class="card-sub">Edición manual en el HTML · Sin persistencia automática</span>
+  <!-- Timeline de visitas por semana -->
+  <div class="vis-timeline">
+
+    <!-- Semana 20.04 -->
+    <div class="vis-week">
+      <div class="vis-week-h">
+        <span class="vis-week-tag">Semana 20.04</span>
+        <span class="vis-week-cnt">1 visita</span>
+      </div>
+      <div class="vis-grid">
+        <div class="vis-card vis-gr">
+          <div class="vis-card-h">
+            <div>
+              <div class="vis-name">Sictemas</div>
+              <div class="vis-meta"><span class="vis-city">📍 Málaga</span> · <span class="vis-resp">Luis</span></div>
+            </div>
+            <span class="ft-st ft-st-gr">Realizada</span>
+          </div>
+          <div class="vis-body">1 venta y 2 ofertas en curso. El 13.05 damos formación de productos a su equipo comercial para que identifiquen más y mejores leads. <b>Muy positiva participación por su parte.</b></div>
+          <div class="vis-metrics">
+            <span class="vis-m vis-m-gr">1 venta</span>
+            <span class="vis-m vis-m-bl">2 ofertas</span>
+            <span class="vis-m vis-m-am">Formación 13.05</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="overflow-x:auto">
-    <table class="ft-table" style="border-radius:0;box-shadow:none">
-      <thead>
-        <tr>
-          <th style="width:11%">Semana</th>
-          <th style="width:8%">Fecha</th>
-          <th style="width:18%">Integrador</th>
-          <th style="width:13%">Responsable</th>
-          <th style="width:34%">Objetivo de la visita</th>
-          <th style="width:13%">Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="ft-date">Sem. 05.05</span></td>
-          <td>05.05</td>
-          <td><strong>Elpis Informática</strong></td>
-          <td>Victor</td>
-          <td>Visita en oficinas · repasar 2 ofertas en curso y siguientes pasos</td>
-          <td><span class="ft-st ft-st-gr">Realizada</span></td>
-        </tr>
-        <tr>
-          <td><span class="ft-date">Sem. 05.05</span></td>
-          <td>07.05</td>
-          <td><strong>Audinfor</strong></td>
-          <td>Victor</td>
-          <td>Visita Madrid con CEO · centralita en la nube + IA</td>
-          <td><span class="ft-st ft-st-bl">Agendada</span></td>
-        </tr>
-      </tbody>
-    </table>
+
+    <!-- Semana 27.04 -->
+    <div class="vis-week">
+      <div class="vis-week-h">
+        <span class="vis-week-tag">Semana 27.04</span>
+        <span class="vis-week-cnt">1 visita</span>
+      </div>
+      <div class="vis-grid">
+        <div class="vis-card vis-gr">
+          <div class="vis-card-h">
+            <div>
+              <div class="vis-name">Ox-one</div>
+              <div class="vis-meta"><span class="vis-city">📍 Madrid</span> · <span class="vis-resp">Luis</span></div>
+            </div>
+            <span class="ft-st ft-st-gr">Realizada</span>
+          </div>
+          <div class="vis-body">Reactivación del integrador e identificación de <b>3 potenciales leads</b> que tiene que trabajar.</div>
+          <div class="vis-metrics">
+            <span class="vis-m vis-m-bl">3 leads activados</span>
+            <span class="vis-m vis-m-gr">Reactivado</span>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Semana 04.05 -->
+    <div class="vis-week">
+      <div class="vis-week-h">
+        <span class="vis-week-tag">Semana 04.05</span>
+        <span class="vis-week-cnt">3 visitas</span>
+      </div>
+      <div class="vis-grid">
+
+        <div class="vis-card vis-gr">
+          <div class="vis-card-h">
+            <div>
+              <div class="vis-name">DataQu</div>
+              <div class="vis-meta"><span class="vis-city">📍 —</span> · <span class="vis-resp">Victor</span></div>
+            </div>
+            <span class="ft-st ft-st-gr">Realizada</span>
+          </div>
+          <div class="vis-body">Trabajando <b>contrato bidireccional</b> y preparación del webinar con la Asociación Apromar para finales de mayo.</div>
+          <div class="vis-metrics">
+            <span class="vis-m vis-m-am">Bloqueante contractual</span>
+            <span class="vis-m vis-m-bl">Webinar Apromar</span>
+          </div>
+        </div>
+
+        <div class="vis-card vis-gr">
+          <div class="vis-card-h">
+            <div>
+              <div class="vis-name">Elpis Informática</div>
+              <div class="vis-meta"><span class="vis-city">📍 Tarragona</span> · <span class="vis-resp">Victor</span></div>
+            </div>
+            <span class="ft-st ft-st-gr">Realizada</span>
+          </div>
+          <div class="vis-body">1 venta, 1 oferta en curso y <b>4 oportunidades</b> a trabajar estos días.</div>
+          <div class="vis-metrics">
+            <span class="vis-m vis-m-gr">1 venta</span>
+            <span class="vis-m vis-m-bl">1 oferta</span>
+            <span class="vis-m vis-m-or">4 oport.</span>
+          </div>
+        </div>
+
+        <div class="vis-card vis-gr">
+          <div class="vis-card-h">
+            <div>
+              <div class="vis-name">Audinfor</div>
+              <div class="vis-meta"><span class="vis-city">📍 Madrid</span> · <span class="vis-resp">Victor</span></div>
+            </div>
+            <span class="ft-st ft-st-gr">Realizada</span>
+          </div>
+          <div class="vis-body">Reactivación e identificación de necesidad puntual: quieren ir de la mano para llevar producto de <b>centralita en la nube con IA</b>, estamos investigando la capacidad de +O.</div>
+          <div class="vis-metrics">
+            <span class="vis-m vis-m-gr">Reactivado</span>
+            <span class="vis-m vis-m-bl">Centralita IA</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Semana 11.05 -->
+    <div class="vis-week">
+      <div class="vis-week-h">
+        <span class="vis-week-tag">Semana 11.05</span>
+        <span class="vis-week-cnt">1 visita</span>
+      </div>
+      <div class="vis-grid">
+        <div class="vis-card vis-bl">
+          <div class="vis-card-h">
+            <div>
+              <div class="vis-name">DuoIT</div>
+              <div class="vis-meta"><span class="vis-city">📍 Bilbao</span> · <span class="vis-resp">Luis</span></div>
+            </div>
+            <span class="ft-st ft-st-bl">Próxima</span>
+          </div>
+          <div class="vis-body">1 venta cerrada, varios temas pendientes de activar.</div>
+          <div class="vis-metrics">
+            <span class="vis-m vis-m-gr">1 venta</span>
+            <span class="vis-m vis-m-am">Temas pdte. activar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Listado de integradores disponibles desde S2 -->
-  <div class="card">
+  <div class="card" style="margin-top:18px">
     <div class="card-h">
       <span class="card-title">Integradores disponibles para planificar</span>
       <span class="card-sub">Auto-cargado desde pestaña 02 · click para copiar el nombre al portapapeles</span>
