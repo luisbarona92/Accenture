@@ -1254,6 +1254,97 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   .bv-wf-bar-tk{order:3}
   .bv-wf-num{text-align:left}
 }
+
+/* ═══════════════════ FILTERABLE TABLE (S2 + S4) ═══════════════════ */
+.ft-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ft-search{flex:1;min-width:200px;max-width:340px;padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:13px;font-family:inherit;background:var(--card);color:var(--ink)}
+.ft-search:focus{outline:none;border-color:var(--or);box-shadow:0 0 0 3px rgba(255,102,0,.12)}
+.ft-clear{padding:6px 12px;background:var(--card);border:1px solid var(--line2);border-radius:8px;font-size:12px;font-weight:600;color:var(--ink2);cursor:pointer;font-family:inherit}
+.ft-clear:hover{background:#fee9d8;border-color:var(--or);color:var(--or)}
+.ft-count{font-size:11.5px;color:var(--ink3);font-weight:600;letter-spacing:.3px;margin-left:auto}
+
+.ft-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;box-shadow:var(--shadow);overflow:hidden;font-family:inherit}
+.ft-table thead th{position:sticky;top:60px;z-index:18;background:var(--card);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);padding:11px 12px;text-align:left;box-shadow:0 1px 0 var(--line2);user-select:none;white-space:nowrap}
+.ft-table thead th[data-filter] .colfilt-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:4px;font-size:10px;color:var(--ink3);cursor:pointer;margin-left:5px;vertical-align:-2px;background:transparent;border:1px solid transparent;transition:all .15s}
+.ft-table thead th[data-filter] .colfilt-btn:hover{background:#fee9d8;color:var(--or);border-color:var(--or)}
+.ft-table thead th[data-filter] .colfilt-btn.on{background:var(--or);color:#fff;border-color:var(--or)}
+.ft-table thead th[data-filter]{cursor:default}
+.ft-table tbody td{padding:9px 12px;font-size:12.5px;color:var(--ink2);border-top:1px solid var(--line);vertical-align:top;line-height:1.45}
+.ft-table tbody tr:hover td{background:#fff8f3}
+.ft-table tbody td:first-child{color:var(--ink3);font-weight:600;text-align:right;width:34px}
+.ft-table tbody td strong{color:var(--ink);font-weight:700}
+
+.ft-date{display:inline-block;padding:3px 9px;border-radius:5px;font-size:11.5px;font-weight:600;background:#F3F4F6;color:#374151;white-space:nowrap}
+.ft-date.ft-late{background:#FEE2E2;color:#B91C1C}
+.ft-date.ft-noset{background:transparent;color:var(--ink3);padding:0}
+
+.ft-st{display:inline-block;padding:3px 9px;border-radius:5px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.ft-st-rd{background:#FEE2E2;color:#B91C1C}
+.ft-st-bl{background:#DBEAFE;color:#1D4ED8}
+.ft-st-gr{background:#D1FAE5;color:#065F46}
+.ft-st-am{background:#FEF3C7;color:#92400E}
+.ft-st-gy{background:#F3F4F6;color:#4B5563}
+
+.ft-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.ft-tag-in{background:#EEF2FF;color:#4338CA}
+.ft-tag-int{background:#FFF7ED;color:#C2410C}
+
+/* Deltas en celdas (S3) */
+.dlt{display:inline-block;margin-left:4px;padding:1px 5px;border-radius:4px;font-size:9.5px;font-weight:800;vertical-align:2px;letter-spacing:.2px}
+.dlt-up{background:#D1FAE5;color:#065F46}
+.dlt-down{background:#FEE2E2;color:#B91C1C}
+.dlt-neu{background:#F3F4F6;color:#6B7280}
+.s3-chg{font-size:12px;color:var(--ink2);line-height:1.4}
+.s3-chg .s3-chg-up{color:#065F46;font-weight:700}
+.s3-chg .s3-chg-down{color:#B91C1C;font-weight:700}
+.s3-chg .s3-chg-same{color:var(--ink3);font-style:italic}
+
+/* Filter popover (Excel-style) */
+.colfilt-pop{position:fixed;background:var(--card);border:1px solid var(--line2);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:10px;z-index:1000;min-width:220px;max-width:280px;display:flex;flex-direction:column}
+.colfilt-pop-search{padding:6px 10px;border:1px solid var(--line2);border-radius:5px;font-size:12px;font-family:inherit;margin-bottom:8px}
+.colfilt-pop-search:focus{outline:none;border-color:var(--or)}
+.colfilt-pop-list{overflow-y:auto;max-height:240px;border:1px solid var(--line);border-radius:5px;padding:4px 0;background:#fafafa}
+.colfilt-opt{display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:12px;color:var(--ink2);cursor:pointer;border-radius:3px;line-height:1.3}
+.colfilt-opt:hover{background:#fff8f3}
+.colfilt-opt input{cursor:pointer;flex-shrink:0}
+.colfilt-opt-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.colfilt-pop-actions{display:flex;gap:6px;margin-top:8px}
+.colfilt-pop-actions button{flex:1;padding:6px 10px;border:1px solid var(--line2);border-radius:5px;font-size:11.5px;font-weight:600;cursor:pointer;background:var(--card);color:var(--ink2);font-family:inherit}
+.colfilt-pop-actions button:hover{background:#f5f5f5}
+.colfilt-pop-actions .cf-apply{background:var(--or);color:#fff;border-color:var(--or)}
+.colfilt-pop-actions .cf-apply:hover{background:#E55600}
+
+/* ═══════════════════ S1 TREE ═══════════════════ */
+.tree-wrap{margin-top:18px;padding:18px;background:linear-gradient(180deg,#FFFAF5 0%,#fff 100%);border-radius:14px;border:1px solid var(--line)}
+.tree-root{display:flex;justify-content:center;margin-bottom:8px}
+.tree-root-node{padding:10px 24px;background:var(--or);color:#fff;border-radius:10px;font-size:13px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 14px rgba(255,102,0,.3)}
+.tree-root-node b{font-size:18px;margin-right:8px}
+.tree-trunk{width:2px;height:18px;background:var(--or);margin:0 auto;opacity:.4}
+.tree-branches{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:6px;position:relative}
+.tree-branches::before{content:'';position:absolute;top:-9px;left:10%;right:10%;height:2px;background:var(--or);opacity:.3}
+.tree-node{display:flex;flex-direction:column;align-items:center;position:relative}
+.tree-node::before{content:'';position:absolute;top:-10px;left:50%;width:2px;height:10px;background:var(--or);opacity:.4}
+.tn-card{background:var(--card);border-radius:10px;padding:12px 14px;border:1.5px solid var(--line2);box-shadow:var(--shadow);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.tn-card.tn-gr{border-color:rgba(5,150,105,.4)}
+.tn-card.tn-am{border-color:rgba(217,119,6,.4)}
+.tn-card.tn-bl{border-color:rgba(29,78,216,.4)}
+.tn-card.tn-rd{border-color:rgba(220,38,38,.35)}
+.tn-card.tn-gy{border-color:rgba(107,114,128,.3)}
+.tn-count{font-size:32px;font-weight:800;line-height:1}
+.tn-card.tn-gr .tn-count{color:var(--green)}
+.tn-card.tn-am .tn-count{color:var(--amber)}
+.tn-card.tn-bl .tn-count{color:var(--blue)}
+.tn-card.tn-rd .tn-count{color:var(--red)}
+.tn-card.tn-gy .tn-count{color:#6B7280}
+.tn-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2)}
+.tn-sub{font-size:11px;color:var(--ink3);line-height:1.4;margin-top:2px}
+.tn-action{margin-top:8px;padding:8px 10px;border-radius:7px;background:#fffaf5;border:1px dashed var(--or);font-size:11px;color:var(--ink);width:100%;text-align:left;line-height:1.45}
+.tn-action b{color:var(--or);text-transform:uppercase;font-size:9.5px;letter-spacing:.5px;display:block;margin-bottom:3px}
+@media(max-width:920px){
+  .tree-branches{grid-template-columns:repeat(2,1fr)}
+  .tree-branches::before{display:none}
+  .tree-node::before{display:none}
+}
 </style>
 </head>
 <body>
@@ -1309,7 +1400,6 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <button class="tnav"     onclick="show('s4')">04 · Tareas</button>
     <button class="tnav"     onclick="show('s5')">05 · Detalle Leads</button>
     <button class="tnav"     onclick="show('s6')">06 · Plan Visitas</button>
-    <button class="tnav"     onclick="show('s7')">07 · Bonus Volumen</button>
   </nav>
 
   <div class="topbar-right">
@@ -1420,7 +1510,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="hnav-item" onclick="show('s2')">
       <div class="hnav-n">2</div>
-      <div class="hnav-t">Detalle de los 44 integradores captados y activos</div>
+      <div class="hnav-t">Detalle de los 38 integradores captados y activos</div>
       <div class="hnav-arr">›</div>
     </div>
     <div class="hnav-item" onclick="show('s3')">
@@ -1482,9 +1572,8 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
   </div>
 
-  <div class="g60">
-
-    <!-- FUNNEL VISUAL -->
+  <!-- FUNNEL VISUAL (ancho completo) -->
+  <div>
     <div class="card">
       <div class="card-h">
         <span class="card-title">Funnel de captación</span>
@@ -1599,79 +1688,81 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       </div>
     </div>
 
-    <!-- SIDEBAR: grupos -->
-    <div style="display:flex;flex-direction:column;gap:14px">
+  </div><!-- /funnel wrap -->
 
-      <div class="card">
-        <div class="card-h">
-          <span class="card-title" style="color:var(--green)">Contratos firmados</span>
-          <span style="font-size:22px;font-weight:800;color:var(--green)">9</span>
-        </div>
-        <div style="padding:12px 14px">
-          <div class="tags-wrap">
-            <span class="tag tg-gr">Cover Net</span><span class="tag tg-gr">Maxen</span>
-            <span class="tag tg-gr">Deiteco</span><span class="tag tg-gr">Elpis Informática</span>
-            <span class="tag tg-gr">Sictemas</span><span class="tag tg-gr">Paper Labs</span>
-            <span class="tag tg-gr">Aideea</span><span class="tag tg-gr">Duo IT</span>
-            <span class="tag tg-gr">Ox-One</span>
-          </div>
-          <div style="font-size:10.5px;color:var(--ink3);margin-top:6px">&nbsp;</div>
-        </div>
-      </div>
+  <!-- ÁRBOL DE DECISIÓN · sub-clusters de H3 con acción recomendada -->
+  <div class="tree-wrap">
+    <div style="text-align:center;margin-bottom:6px">
+      <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Árbol de decisión · H3 captados</span>
+    </div>
+    <div class="tree-root">
+      <div class="tree-root-node"><b>60</b> H3 · CAPTADOS</div>
+    </div>
+    <div class="tree-trunk"></div>
+    <div class="tree-branches">
 
-      <div class="card">
-        <div class="card-h">
-          <span class="card-title" style="color:var(--green)">En proceso de firma</span>
-          <span style="font-size:22px;font-weight:800;color:var(--green)">15</span>
-        </div>
-        <div style="padding:10px 14px">
-          <div class="tags-wrap">
-            <span class="tag tg-gr">Dataqu</span><span class="tag tg-gr">Ocvistas</span>
-            <span class="tag tg-gr">Infornet</span><span class="tag tg-gr">Micro Sip</span>
-            <span class="tag tg-gr">Audinfor</span><span class="tag tg-gr">Sisytec</span>
-            <span class="tag tg-gr">Cobitratel</span><span class="tag tg-gr">Mariskalnet</span>
-            <span class="tag tg-gr">Dosys</span><span class="tag tg-gr">GNUO</span>
-            <span class="tag tg-gr">Binfor Sol.</span><span class="tag tg-gr">Lisot</span>
-            <span class="tag tg-gr">Redestic</span><span class="tag tg-gr">Provide</span>
-            <span class="tag tg-gr">Durnia</span>
+      <div class="tree-node">
+        <div class="tn-card tn-gr">
+          <div class="tn-count">24</div>
+          <div class="tn-label">Activados</div>
+          <div class="tn-sub">9 firmados + 15 en proceso firma</div>
+          <div class="tn-action">
+            <b>Acción recomendada</b>
+            Gestión cercana · Visitas presenciales · Compartir leads · Cerrar firma pendiente
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-h">
-          <span class="card-title" style="color:var(--amber)">On Hold</span>
-          <span style="font-size:22px;font-weight:800;color:var(--amber)">7</span>
-        </div>
-        <div style="padding:10px 14px">
-          <div class="tags-wrap">
-            <span class="tag tg-am">Fedesoft</span><span class="tag tg-am">Dirbapont</span>
-            <span class="tag tg-am">Brain Hardware</span><span class="tag tg-am">Redem</span>
-            <span class="tag tg-am">Digital HM</span><span class="tag tg-am">Sur Computers</span>
-            <span class="tag tg-am">Inforware</span>
+      <div class="tree-node">
+        <div class="tn-card tn-bl">
+          <div class="tn-count">3</div>
+          <div class="tn-label">Ses. negocio agendada</div>
+          <div class="tn-sub">Jelp 06.05 · Procgal 12.05 · Run Software 19.05</div>
+          <div class="tn-action">
+            <b>Acción recomendada</b>
+            Preparar materiales del KO · Confirmar asistencia 48h antes
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-h">
-          <span class="card-title" style="color:var(--blue)">Pendiente agendar KO</span>
-          <span style="font-size:22px;font-weight:800;color:var(--blue)">10</span>
-        </div>
-        <div style="padding:10px 14px">
-          <div class="tags-wrap">
-            <span class="tag tg-bl">NaimiTech</span><span class="tag tg-bl">Ache Informática</span>
-            <span class="tag tg-bl">Omnia Sol</span><span class="tag tg-bl">Amiritmo</span>
-            <span class="tag tg-bl">ISC Tech</span>
-            <span class="tag tg-bl">Gestión Inf. Pensiones</span>
-            <span class="tag tg-bl">Maicrosoft</span><span class="tag tg-bl">Inform. Pavon</span>
-            <span class="tag tg-bl">Ibersya</span><span class="tag tg-bl">Fervimax</span>
+      <div class="tree-node">
+        <div class="tn-card tn-bl">
+          <div class="tn-count">10</div>
+          <div class="tn-label">Pdte. agendar KO</div>
+          <div class="tn-sub">NaimiTech · Ache · Omnia · Amiritmo · ISC Tech · G.I. Pensiones · Maicrosoft · Pavon · Ibersya · Fervimax</div>
+          <div class="tn-action">
+            <b>Acción recomendada</b>
+            Bloquear agenda con Negocio esta semana · Forzar fecha de KO en próximas 2 semanas
           </div>
         </div>
       </div>
 
-    </div><!-- /sidebar -->
-  </div><!-- /g60 -->
+      <div class="tree-node">
+        <div class="tn-card tn-am">
+          <div class="tn-count">7</div>
+          <div class="tn-label">On hold</div>
+          <div class="tn-sub">Fedesoft · Dirbapont · Brain HW · Redem · Digital HM · Sur Comp. · Inforware</div>
+          <div class="tn-action">
+            <b>Acción recomendada</b>
+            Recontacto pre-salida del hold · Si no responde 2× → mover a churn
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-node">
+        <div class="tn-card tn-rd">
+          <div class="tn-count">16</div>
+          <div class="tn-label">Churn</div>
+          <div class="tn-sub">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Serv. · Tec. Estr. · ITsoft · Solventus · ISP · Ciset · MVP Inf.</div>
+          <div class="tn-action">
+            <b>Lecciones aprendidas</b>
+            Analizar motivos de salida → mejorar criterios pre-cualificación en H2
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- SESIONES -->
   <div class="g2" style="margin-top:18px">
@@ -1736,106 +1827,68 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s2" class="sec">
   <div class="sh">
     <span class="sh-slide">Slide 4</span>
-    <h2 class="sh-title">Detalle de los 44 integradores captados y activos</h2>
+    <h2 class="sh-title">Detalle de los 38 integradores captados y activos</h2>
   </div>
 
-  <!-- Toolbar filtros -->
-  <div class="int-toolbar">
-    <input class="int-search" id="intSearch" type="text" placeholder="Buscar integrador..." oninput="searchInt()">
-    <button class="filt-btn on" onclick="filt('all',this)">Todos <span style="font-weight:400;opacity:.7">(<span data-cnt="s2-total">44</span>)</span></button>
-    <button class="filt-btn"   onclick="filt('verde',this)"><span class="filt-dot fd-gr"></span>Leads compartidos (<span data-cnt="s2-verde">18</span>)</button>
-    <button class="filt-btn"   onclick="filt('posible',this)"><span class="filt-dot fd-am"></span>Posibles leads (<span data-cnt="s2-posible">18</span>)</button>
-    <button class="filt-btn"   onclick="filt('hold',this)"><span class="filt-dot fd-gy"></span>Hold (<span data-cnt="s2-hold">8</span>)</button>
+  <!-- Toolbar filtros (búsqueda + limpiar) -->
+  <div class="ft-toolbar">
+    <input class="ft-search" id="s2-search" type="text" placeholder="Buscar..." oninput="ftSearch('s2-table',this.value)">
+    <button class="ft-clear" onclick="ftClearAll('s2-table')">✕ Limpiar filtros</button>
+    <span class="ft-count" id="s2-table-count">38 de 38</span>
   </div>
 
-  <!-- Tabla desplegada completa, sin scroll interno -->
-  <!-- overflow-x:clip: no crea scroll container (como hace auto), por eso no rompe position:sticky en th -->
-  <div style="overflow-x:clip">
-  <table class="int-table" id="intTable">
+  <div style="overflow-x:auto">
+  <table class="ft-table" id="s2-table">
     <thead>
-      <tr id="int-thead">
-        <th style="width:18%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Integrador</th>
-        <th style="width:10%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Modelo</th>
-        <th style="width:14%;position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Estado</th>
-        <th style="position:sticky;top:60px;z-index:20;background:var(--card);box-shadow:0 1px 0 var(--line2)">Observaciones</th>
+      <tr>
+        <th data-col="0" style="width:3%;text-align:right">#</th>
+        <th data-col="1" data-filter="true" style="width:11%">Integrador</th>
+        <th data-col="2" style="width:55%">Plan</th>
+        <th data-col="3" data-filter="true" style="width:9%">Responsable</th>
+        <th data-col="4" data-filter="true" style="width:9%">Fecha</th>
+        <th data-col="5" data-filter="true" style="width:13%">Estado</th>
       </tr>
     </thead>
     <tbody>
 
-      <!-- ══════ VERDE · Leads compartidos, alta participación (12) ══════ -->
-      <tr class="grp-sep" data-gh="verde">
-        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--green-bg);border-top:2px solid rgba(5,150,105,.2);border-bottom:1px solid rgba(5,150,105,.15);display:flex;align-items:center;gap:8px">
-          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0"></span>
-          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--green)">Leads compartidos · alta participación</span>
-          <span style="font-size:11px;font-weight:600;color:var(--green);opacity:.55;margin-left:auto">18 integradores</span>
-        </div></td>
-      </tr>
-      <tr class="grp-gap" data-gh="verde"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
-      <tr data-g="verde" data-n="maxen">        <td><div class="int-name">Maxen</div></td>        <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">2 ofertas a presentar nuevamente, 1 visita pendiente y nuevos leads.</td></tr>
-      <tr data-g="verde" data-n="covernet">      <td><div class="int-name">Covernet</div></td>      <td><span class="mod-tag mt-e2e">e2e</span></td>    <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Operación con Arexpres realizada, pendiente ampliación SoHo y renoves.</td></tr>
-      <tr data-g="verde" data-n="cobitratel">    <td><div class="int-name">Cobitratel</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada; pendiente firma nuevo contrato para realizar pago.</td></tr>
-      <tr data-g="verde" data-n="ox-one">        <td><div class="int-name">Ox-One</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Visita presencial 29.04. 3 leads activados y en seguimiento.</td></tr>
-      <tr data-g="verde" data-n="duo it">        <td><div class="int-name">Duo IT</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada, 1 oferta presentada pendiente de cliente. Pendiente visita.</td></tr>
-      <tr data-g="verde" data-n="mariskalnet">     <td><div class="int-name">Mariskalnet</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Varios leads sin éxito. Continúa con contactos activamente.</td></tr>
-      <tr data-g="verde" data-n="amiritmo">        <td><div class="int-name">Amiritmo</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Lead grande (1000 líneas), pendiente contratación CTO para avanzar.</td></tr>
-      <tr data-g="verde" data-n="microsip">         <td><div class="int-name">Micro Sip</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Reunión con BD el jueves 30.04, sin noticias.</td></tr>
-      <tr data-g="verde" data-n="elpis informatica"><td><div class="int-name">Elpis Inform.</div></td>  <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 venta cerrada, 2 ofertas en curso. Visita presencial 05.05 en oficinas.</td></tr>
-      <tr data-g="verde" data-n="sisytec">       <td><div class="int-name">Sisytec</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta presentada (servicios propios) y casi cerrada y 1 lead frío.</td></tr>
-      <tr data-g="verde" data-n="audinfor">      <td><div class="int-name">Audinfor</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Reactivado. Visita presencial 07.05 en oficinas de Madrid con CEO.</td></tr>
-      <tr data-g="verde" data-n="binfor soluciones"><td><div class="int-name">Binfor Sol.</div></td>   <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta presentada. Visita planteada y pendiente planificar.</td></tr>
-      <tr data-g="verde" data-n="sictemas">      <td><div class="int-name">Sictemas</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Sesión formación a sus comerciales el 13.05. Varios leads en curso.</td></tr>
-      <tr data-g="verde" data-n="dataqu">           <td><div class="int-name">DataQu</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Preparando webinar para final de mayo. Analizando contrato bidireccional.</td></tr>
-      <tr data-g="verde" data-n="gnuo">             <td><div class="int-name">GNUO</div></td>            <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Mail masivo lanzado a asociados de AExTIC – sesión 18-19.05.</td></tr>
-      <tr data-g="verde" data-n="aideea">           <td><div class="int-name">Aideea</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Contrato firmado compartido y pendiente leads. En contacto activo.</td></tr>
-      <tr data-g="verde" data-n="lisot">            <td><div class="int-name">Lisot</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">1 oferta presentada, pendiente integrador.</td></tr>
-      <tr data-g="verde" data-n="infornet">         <td><div class="int-name">Infornet</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gr">Activo</span></td>    <td style="font-size:12.5px;color:var(--ink2)">Reactivado. Futuros leads de salas de eventos con fibra.</td></tr>
-
-      <!-- ══════ AMARILLO · Posibles leads, aún no recibidos, participación moderada (19) ══════ -->
-      <tr class="grp-sep" data-gh="posible">
-        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:var(--amber-bg);border-top:2px solid rgba(217,119,6,.2);border-bottom:1px solid rgba(217,119,6,.15);display:flex;align-items:center;gap:8px">
-          <span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;flex-shrink:0"></span>
-          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--amber)">Posibles leads · aún no recibidos · participación moderada</span>
-          <span style="font-size:11px;font-weight:600;color:var(--amber);opacity:.55;margin-left:auto">18 integradores</span>
-        </div></td>
-      </tr>
-      <tr class="grp-gap" data-gh="posible"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
-      <tr data-g="posible" data-n="paper labs">      <td><div class="int-name">Paper Labs</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Visita planteada y pendiente planificar.</td></tr>
-      <tr data-g="posible" data-n="ocvistas">          <td><div class="int-name">Ocvistas</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Recontactando para conocer situación y potenciales leads.</td></tr>
-      <tr data-g="posible" data-n="durnia">            <td><div class="int-name">Durnia</div></td>            <td><span class="mod-tag mt-lg">Partner Aut.</span></td><td><span class="sp sp-am">En firma</span></td> <td style="font-size:12.5px;color:var(--ink2)">Analizando el modelo de colaboración.</td></tr>
-      <tr data-g="posible" data-n="dosys">             <td><div class="int-name">Dosys</div></td>             <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Pendiente hacerle llegar precios con descuentos para intentar reactivación.</td></tr>
-      <tr data-g="posible" data-n="naimitech">         <td><div class="int-name">NaimiTech</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de alineación en modelo de colaboración.</td></tr>
-      <tr data-g="posible" data-n="ache informatica">  <td><div class="int-name">Ache Infor.</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
-      <tr data-g="posible" data-n="omnia soluciones">  <td><div class="int-name">Omnia Sol.</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Riesgo churn por falta de respuesta.</td></tr>
-      <tr data-g="posible" data-n="isc tech">          <td><div class="int-name">ISC Tech</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, pendiente sesión con Negocio.</td></tr>
-      <tr data-g="posible" data-n="gi pensiones">      <td><div class="int-name">G.I. Pensiones</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, pendiente sesión con Negocio.</td></tr>
-      <tr data-g="posible" data-n="procgal">           <td><div class="int-name">Procgal</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Sesión con negocio agendada (12.05).</td></tr>
-      <tr data-g="posible" data-n="redestic cloud">    <td><div class="int-name">Redestic Cloud</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Sesión con negocio agendada (30.04).</td></tr>
-      <tr data-g="posible" data-n="maicrosoft">        <td><div class="int-name">Maicrosoft</div></td>        <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, pendiente agendar sesión con Negocio.</td></tr>
-      <tr data-g="posible" data-n="provide">           <td><div class="int-name">Provide</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, en análisis del contrato.</td></tr>
-      <tr data-g="posible" data-n="jelp">              <td><div class="int-name">Jelp</div></td>              <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Sesión con negocio agendada (06.05).</td></tr>
-      <tr data-g="posible" data-n="run software">      <td><div class="int-name">Run Software</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Sesión con negocio agendada (19.05).</td></tr>
-      <tr data-g="posible" data-n="informatica pavon"> <td><div class="int-name">Inform. Pavon</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, pendiente agendar sesión con Negocio.</td></tr>
-      <tr data-g="posible" data-n="ibersya">           <td><div class="int-name">Ibersya</div></td>           <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, pendiente agendar sesión con Negocio.</td></tr>
-      <tr data-g="posible" data-n="fervimax">          <td><div class="int-name">Fervimax</div></td>          <td><span class="mod-tag mt-lg">LeadGen</span></td>   <td><span class="sp sp-am">Posible</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Interesados, pendiente agendar sesión con Negocio.</td></tr>
-
-      <!-- ══════ GRIS · Hold (8) ══════ -->
-      <tr class="grp-sep" data-gh="hold">
-        <td colspan="4" style="padding:0"><div style="padding:9px 16px;background:#F3F4F6;border-top:2px solid rgba(107,114,128,.2);border-bottom:1px solid rgba(107,114,128,.15);display:flex;align-items:center;gap:8px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#9CA3AF;display:inline-block;flex-shrink:0"></span>
-          <span style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#6B7280">Hold</span>
-          <span style="font-size:11px;font-weight:600;color:#6B7280;opacity:.55;margin-left:auto">8 integradores</span>
-        </div></td>
-      </tr>
-      <tr class="grp-gap" data-gh="hold"><td colspan="4" style="padding:0;height:6px;background:var(--card)"></td></tr>
-      <tr data-g="hold" data-n="redem">         <td><div class="int-name">Redem</div></td>         <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta reunión con Negocio.</td></tr>
-      <tr data-g="hold" data-n="sur computers"> <td><div class="int-name">Sur Computers</div></td> <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold. Probabilidad de churn alta.</td></tr>
-      <tr data-g="hold" data-n="inforware">     <td><div class="int-name">Inforware</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta 6 de mayo.</td></tr>
-      <tr data-g="hold" data-n="digital hm">    <td><div class="int-name">Digital HM</div></td>    <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold. Probabilidad de churn alta.</td></tr>
-      <tr data-g="hold" data-n="dirbapont">     <td><div class="int-name">Dirbapont</div></td>     <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo (Kits venciendo este mes).</td></tr>
-      <tr data-g="hold" data-n="fedesoft">      <td><div class="int-name">Fedesoft</div></td>      <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta junio por problemas personales. Pendiente reactivar.</td></tr>
-      <tr data-g="hold" data-n="brain hardware"><td><div class="int-name">Brain Hardware</div></td> <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Hold hasta mayo por carga de trabajo.</td></tr>
-      <tr data-g="hold" data-n="deiteco">       <td><div class="int-name">Deiteco</div></td>       <td><span class="mod-tag mt-lg">LeadGen</span></td>  <td><span class="sp sp-gy">Hold</span></td>  <td style="font-size:12.5px;color:var(--ink2)">Campaña sin resultados esperados.</td></tr>
-
+      <tr><td>1</td><td><strong>Cover Net</strong></td><td>Hablar con Felipe para explicarle situación de ampliaciones y renoves</td><td>Eloy</td><td><span class="ft-date ft-late">7 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>2</td><td><strong>Maxen</strong></td><td>Presentar ofertas a clientes y visitas potenciales</td><td>Didac</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>3</td><td><strong>Deiteco</strong></td><td>Contactar con Deiteco y evaluar churn</td><td>Victor</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>4</td><td><strong>Elpis Informática</strong></td><td>Revisar con Marketing cómo se podría señalizar 'integrador MasOrange'</td><td>Victor</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>5</td><td><strong>Sictemas</strong></td><td>Realizar formación y gestionar leads</td><td>Victor; Jonatan</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>6</td><td><strong>Paper Labs</strong></td><td>Hacer seguimiento de potenciales leads identificados (4-6 llamadas pendientes)</td><td>Luis</td><td><span class="ft-date">14 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>7</td><td><strong>Aideea</strong></td><td>Recontacto con integrador para reactivar · <span style="color:var(--red)">Sin respuesta</span></td><td>Luis</td><td><span class="ft-date ft-late">12 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>8</td><td><strong>Duo IT</strong></td><td>Analizar oportunidades y compartir leads</td><td>Integrador</td><td><span class="ft-date">19 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>9</td><td><strong>Ox-One</strong></td><td>Hacer seguimiento de potenciales leads identificados</td><td>Luis</td><td><span class="ft-date">14 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>10</td><td><strong>Dataqu</strong></td><td>Preparar webinar para finales de mayo con Apromar</td><td>Victor</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>11</td><td><strong>Ocvistas</strong></td><td>Reactivar leads de Sunny. Pendiente respuesta de organización en China</td><td>Jonathan</td><td><span class="ft-date">18 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>12</td><td><strong>Infornet</strong></td><td>Recontactar para estatus, propuesta contrato y nuevos leads</td><td>Luis</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>13</td><td><strong>Micro Sip</strong></td><td>Nos llamará con el potencial cliente (BD)</td><td>Luis</td><td><span class="ft-date ft-late">13 may</span></td><td><span class="ft-st ft-st-rd">Retrasado 2×</span></td></tr>
+      <tr><td>14</td><td><strong>Audinfor</strong></td><td>Preparar información sobre centralita en la nube + IA</td><td>Victor</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>15</td><td><strong>Sisytec</strong></td><td>Seguimiento de integrador para confirmar oferta enviada de servicios propios</td><td>Luis</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>16</td><td><strong>Cobitratel</strong></td><td>Recibir información contractual pendiente</td><td>Luis</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>17</td><td><strong>Mariskalnet</strong></td><td>Enviar ofertas preparadas por Javier Moya a clientes finales</td><td>Integrador</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>18</td><td><strong>Dosys</strong></td><td>Preparar anexo SSDD y compartir con integrador</td><td>Victor</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>19</td><td><strong>GNUO</strong></td><td>Esperar a respuesta sobre evento con AExTIC el 18-19 de mayo</td><td>Luis</td><td><span class="ft-date">15 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>20</td><td><strong>Binfor Sol.</strong></td><td>Pendiente confirmación de ok a oferta y nuevos leads</td><td>Luis</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>21</td><td><strong>Lisot</strong></td><td>Confirmar oferta preparada para Lisot</td><td>Integrador</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>22</td><td><strong>Redestic</strong></td><td>Analizar oportunidades y compartir leads</td><td>Integrador</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>23</td><td><strong>Provide</strong></td><td>Recontactar para conocer si les encaja contrato y accionar</td><td>Luis</td><td><span class="ft-date">12 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>24</td><td><strong>Durnia</strong></td><td>Esperar a análisis de contrato partner autorizado por su lado</td><td>Luis</td><td><span class="ft-date">15 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>25</td><td><strong>Fedesoft</strong></td><td>Hold hasta junio por problemas personales. Pendiente reactivar</td><td>Luis</td><td><span class="ft-date">2 jun</span></td><td><span class="ft-st ft-st-gy">On hold</span></td></tr>
+      <tr><td>26</td><td><strong>Dirbapont</strong></td><td>Hold hasta mayo por carga de trabajo (Kits venciendo este mes)</td><td>Luis</td><td><span class="ft-date">19 may</span></td><td><span class="ft-st ft-st-gy">On hold</span></td></tr>
+      <tr><td>27</td><td><strong>Brain Hardware</strong></td><td>Hold hasta mayo por carga de trabajo</td><td>Luis</td><td><span class="ft-date">15 may</span></td><td><span class="ft-st ft-st-gy">On hold</span></td></tr>
+      <tr><td>28</td><td><strong>Digital HM</strong></td><td>Recontactar para conocer si les encaja el modelo o churn · <span style="color:var(--red)">Sin respuesta</span></td><td>Luis</td><td><span class="ft-date ft-late">8 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>29</td><td><strong>Inforware</strong></td><td>Hold hasta mayo por carga de trabajo · <span style="color:var(--red)">Sin respuesta</span></td><td>Luis</td><td><span class="ft-date ft-late">12 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>30</td><td><strong>NaimiTech</strong></td><td>Analizar modelo de colaboración bidireccional</td><td>Luis</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>31</td><td><strong>Amiritmo</strong></td><td>Conocer estado lead potencial grande y si tiene otros leads pendientes (CTO)</td><td>Luis</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>32</td><td><strong>ISC Tech</strong></td><td>Recibir convocatoria para reunión con Negocio</td><td>Juan</td><td><span class="ft-date ft-late">12 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>33</td><td><strong>Maicrosoft</strong></td><td>Recontactar para sesión con Negocio</td><td>Juan</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>34</td><td><strong>Inform. Pavon</strong></td><td>Recontactar para sesión con Negocio</td><td>Juan</td><td><span class="ft-date ft-late">11 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>35</td><td><strong>Fervimax</strong></td><td>Recontactar para sesión con Negocio</td><td>Juan</td><td><span class="ft-date ft-late">12 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>36</td><td><strong>Jelp</strong></td><td>Recontactar tras sesión negocio para evaluar leads</td><td>Luis</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>37</td><td><strong>Procgal</strong></td><td>Realizar sesión con Negocio</td><td>Luis</td><td><span class="ft-date">14 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>38</td><td><strong>Run Software</strong></td><td>Realizar sesión con Negocio</td><td>Luis</td><td><span class="ft-date">19 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -1887,7 +1940,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="card" style="margin-bottom:18px">
     <div class="card-h">
       <span class="card-title">Estado de leads por integrador</span>
-      <span class="card-sub">18 integradores con oportunidades activas</span>
+      <span class="card-sub">18 integradores con oportunidades activas · deltas vs PMO #20 (29.04)</span>
     </div>
     <div style="overflow-x:auto">
     <table class="vtbl">
@@ -1900,29 +1953,28 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
           <th style="text-align:center">Leads pend.</th>
           <th style="text-align:center">Leads KO</th>
           <th style="text-align:center">Ofertas</th>
-          <th>Estado ofertas en curso</th>
-          <th>Próximo paso</th>
+          <th style="width:22%">Cambios vs sem. anterior</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-gr">1</td><td class="n n-or">12</td><td class="n n-rd">2</td><td class="n n-bl">5</td><td style="font-size:12px;color:var(--ink2)">2 presentadas, 1 pendiente, 2 hold</td><td style="font-size:12px">Confirmar ofertas presentadas</td></tr>
-        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">9</td><td class="n n-gr">4</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">5</td><td style="font-size:12px;color:var(--ink2)">5 presentadas, ampliación PYME</td><td style="font-size:12px">Activación de ampliación por cliente</td></tr>
-        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">11</td><td class="n n-gy">0</td><td class="n n-or">3</td><td class="n n-rd">5</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta fría</td><td style="font-size:12px">Confirmar visita a cliente, parada</td></tr>
-        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta cliente Euskaltel presentada</td><td style="font-size:12px">En revisión con cliente/integrador</td></tr>
-        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-or">4</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta grande en preparación</td><td style="font-size:12px">Webinar con Apromar</td></tr>
-        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 oferta a cliente (8-10 líneas)</td><td style="font-size:12px">Preparar oferta</td></tr>
-        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">4</td><td style="font-size:12px;color:var(--ink2)">4 ofertas en curso</td><td style="font-size:12px">Preparar ofertas</td></tr>
-        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td style="font-size:12px;color:var(--ink2)">2 oferta en curso (1 propios servicios)</td><td style="font-size:12px">Preparar ofertas</td></tr>
-        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-or">2</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Aideea</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 en análisis VVDD</td><td style="font-size:12px">Preparar oferta</td></tr>
-        <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gr">1</td><td class="n n-or">7</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 presentada, 1 en análisis VVDD</td><td style="font-size:12px">Cerrar ventas y seguir trabajando</td></tr>
-        <tr><td><strong>Binfor Sol.</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td style="font-size:12px;color:var(--ink2)">1 presentada</td><td style="font-size:12px">Pendiente cliente</td></tr>
-        <tr><td><strong>Gnuo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
-        <tr><td><strong>Infornet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td style="font-size:12px;color:var(--ink2)">—</td><td style="font-size:12px">—</td></tr>
+        <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-gr">1</td><td class="n n-or">12</td><td class="n n-rd">2</td><td class="n n-bl">5</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">9</td><td class="n n-gr">4</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">5</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">11 <span class="dlt dlt-up">+2</span></td><td class="n n-gy">0</td><td class="n n-or">3</td><td class="n n-rd">5</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-up">+2 oport.</span> tras visita 29.04, 3 leads activados</td></tr>
+        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-or">4 <span class="dlt dlt-up">+1</span></td><td class="n n-rd">1</td><td class="n n-bl">1 <span class="dlt dlt-up">+1</span></td><td class="s3-chg"><span class="s3-chg-up">+1 lead pend, +1 oferta</span> (grande, webinar Apromar)</td></tr>
+        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-gy">0 <span class="dlt dlt-down">−1</span></td><td class="n n-gy">0</td><td class="n n-bl">4 <span class="dlt dlt-up">+1</span></td><td class="s3-chg"><span class="s3-chg-up">−1 lead pend, +1 oferta en curso</span></td></tr>
+        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-or">2</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Aideea</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gr">1</td><td class="n n-or">7</td><td class="n n-rd">1 <span class="dlt dlt-up">+1</span></td><td class="n n-bl">1 <span class="dlt dlt-down">−1</span></td><td class="s3-chg"><span class="s3-chg-down">+1 KO</span>, oferta de 2 → 1 en curso</td></tr>
+        <tr><td><strong>Binfor Sol.</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Gnuo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Infornet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-up">+1 lead pend</span> (salas de eventos con fibra)</td></tr>
       </tbody>
     </table>
     </div>
@@ -1937,140 +1989,73 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s4" class="sec">
   <div class="sh">
     <span class="sh-slide">Slide 6</span>
-    <h2 class="sh-title">Otras tareas en curso · Mantener momentum</h2>
+    <h2 class="sh-title">Otras tareas pendientes · Mantener momentum</h2>
   </div>
 
   <!-- KPI row -->
   <div class="krow">
     <div class="kcard k-or">
       <div class="k-lbl">Total tareas</div>
-      <div class="k-num">10</div>
+      <div class="k-num">14</div>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Implementado</div>
       <div class="k-num" style="color:var(--green)">3</div>
-      <div class="k-sub">Gestión cercana · Ajuste contrato · Monetización</div>
+      <div class="k-sub">Tareas estratégicas 2, 3 y 4</div>
     </div>
     <div class="kcard k-am">
       <div class="k-lbl">En curso</div>
       <div class="k-num">5</div>
-      <div class="k-sub">2 retrasadas</div>
+      <div class="k-sub">2 internas + 3 integradores</div>
+    </div>
+    <div class="kcard k-rd">
+      <div class="k-lbl">Retrasadas</div>
+      <div class="k-num" style="color:var(--red)">5</div>
+      <div class="k-sub">3 comisiones · 1 priorización · 1 DataQu</div>
     </div>
     <div class="kcard k-gy" style="background:#F3F4F6">
       <div class="k-lbl" style="color:#6B7280">On hold</div>
-      <div class="k-num" style="color:#6B7280">2</div>
-      <div class="k-sub" style="color:#9CA3AF">Sin fecha tentativa</div>
+      <div class="k-num" style="color:#6B7280">1</div>
+      <div class="k-sub" style="color:#9CA3AF">Recogida pedido PdV</div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-h">
-      <span class="card-title">Tareas en curso por equipo</span>
-      <div style="display:flex;gap:8px;align-items:center">
-        <span class="dbadge db-red">Retrasado</span>
-        <span class="dbadge db-bl">En curso</span>
-        <span class="dbadge db-gr">Implementado</span>
-        <span class="dbadge db-gy">On hold</span>
-      </div>
-    </div>
-    <table class="ttbl">
-      <thead>
-        <tr>
-          <th style="width:45%">Tarea</th>
-          <th style="width:20%">Equipo</th>
-          <th style="width:15%;text-align:center">Fecha tentativa</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><div class="task-t"><strong>Priorización gestión leads integradores</strong> – Definido el flujo e2e de captación del equipo de hunters VVDD. Pendiente acceso a herramienta de seguimiento para tener trazabilidad.</div></td>
-          <td><div class="task-s">Eloy Perez</div></td>
-          <td style="text-align:center"><span class="dbadge db-bl">Sem. 04.05</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Gestión cercana integradores</strong> – Realizando visitas comerciales a integradores con mayor potencial e interés. 1-2 visitas presenciales semanales.</div></td>
-          <td><div class="task-s">Luis Barona</div></td>
-          <td style="text-align:center"><span class="dbadge db-gr">Sem. 20.04</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Ajuste contractual incentivo primeros clientes</strong> – Ajustado anexo de contrato integradores LeadGen con nuevos incentivos (12 meses hasta 3 clientes las primeras 8 semanas).</div></td>
-          <td><div class="task-s">Equipo Accenture</div></td>
-          <td style="text-align:center"><span class="dbadge db-gr">Sem. 27.04</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Monetización en discurso comercial</strong> – Pitch Comercial en uso, destacando el argumentario de las comisiones por las 3 primeras ventas.</div></td>
-          <td><div class="task-s">Equipo Accenture</div></td>
-          <td style="text-align:center"><span class="dbadge db-gr">Sem. 27.04</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Modelo de incentivos por volumen LeadGen</strong> – Modelo de bonus en 3 ventanas de 3 meses para pago de 1 mes extra de comisión a partir de un mínimo de 5 ventas en el periodo.</div></td>
-          <td><div class="task-s">Eloy Perez + Equipo Accenture</div></td>
-          <td style="text-align:center"><span class="dbadge db-bl">Sem. 04.05</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Evaluar nivel de complejidad en operaciones</strong> impactadas por canal integrador para simplificar la operativa y venta.</div></td>
-          <td><div class="task-s">Eloy Perez + Equipo Accenture</div></td>
-          <td style="text-align:center"><span class="dbadge db-bl">Sem. 04.05</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t">Determinar <strong>comisión por ampliaciones de cartera y renoves</strong> de clientes (robo de cartera)</div></td>
-          <td><div class="task-s">Estrategia (Natalia), Canal Int. y ACN</div></td>
-          <td style="text-align:center"><span class="dbadge db-red">Sem. 20.04 ⚠</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Automatizar el flujo de pagos Leadgen</strong> – Modelo de comisión one-shot definido.<br><span style="color:var(--red);font-size:11.5px">Pendiente: determinar comisión por tipo de terminal para venta aislada de terminales.</span></div></td>
-          <td><div class="task-s">Estrategia (Natalia) y Canal Int.</div></td>
-          <td style="text-align:center"><span class="dbadge db-red">Sem. 16.03 ⚠</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t">Definir autorización para el canal integrador para <strong>recogida de pedido en PdV</strong> en caso de que el integrador lo requiera</div></td>
-          <td><div class="task-s">Canal Int. y Legal</div></td>
-          <td style="text-align:center"><span class="dbadge db-gy">On hold</span></td>
-        </tr>
-        <tr>
-          <td><div class="task-t"><strong>Automatizar flujo e2e</strong></div></td>
-          <td><div class="task-s">IAM</div></td>
-          <td style="text-align:center"><span class="dbadge db-gy">On hold</span></td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Filtros -->
+  <div class="ft-toolbar">
+    <input class="ft-search" id="s4-search" type="text" placeholder="Buscar..." oninput="ftSearch('s4-table',this.value)">
+    <button class="ft-clear" onclick="ftClearAll('s4-table')">✕ Limpiar filtros</button>
+    <span class="ft-count" id="s4-table-count">14 de 14</span>
   </div>
 
-  <!-- Resumen por equipo -->
-  <div class="team-grid">
-    <div class="team-card">
-      <div class="team-h th-or">Eloy Perez <span class="dbadge db-bl" style="font-size:10px">3 en curso</span></div>
-      <div class="team-b">
-        · Priorización gestión leads integradores (sem. 04.05)<br>
-        · Modelo incentivos por volumen LeadGen (sem. 04.05, con Accenture)<br>
-        · Evaluar complejidad en operaciones (sem. 04.05, con Accenture)
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-h th-or">Equipo Accenture <span class="dbadge db-gr" style="font-size:10px">implementado</span></div>
-      <div class="team-b">
-        · <span style="color:var(--green)">✓</span> Gestión cercana integradores (Luis Barona)<br>
-        · <span style="color:var(--green)">✓</span> Ajuste contractual incentivo primeros clientes<br>
-        · <span style="color:var(--green)">✓</span> Monetización en discurso comercial<br>
-        · Modelo incentivos volumen LeadGen (con Eloy, sem. 04.05)<br>
-        · Evaluar complejidad en operaciones (con Eloy, sem. 04.05)
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-h th-rd" style="background:var(--red-bg);color:var(--red)">Estrategia (Natalia) <span class="dbadge db-red" style="font-size:10px">retrasada</span></div>
-      <div class="team-b">
-        · Automatizar pagos LeadGen – comisión one-shot definida<br>
-        · <span style="color:var(--red);font-size:11px">Pendiente: comisión por tipo terminal (sem. 16.03 ⚠)</span><br>
-        · Comisión ampliaciones cartera / renoves (sem. 20.04 ⚠)
-      </div>
-    </div>
-    <div class="team-card">
-      <div class="team-h th-or" style="color:#6B7280;background:#F3F4F6">On hold <span class="dbadge db-gy" style="font-size:10px">2 tareas</span></div>
-      <div class="team-b">
-        · Recogida pedido en PdV — Canal Int. y Legal<br>
-        · Automatizar flujo e2e — IAM
-      </div>
-    </div>
+  <div style="overflow-x:auto">
+  <table class="ft-table" id="s4-table">
+    <thead>
+      <tr>
+        <th data-col="0" style="width:3%;text-align:right">#</th>
+        <th data-col="1" style="width:48%">Tareas pendientes</th>
+        <th data-col="2" data-filter="true" style="width:11%">Interna / Integrador</th>
+        <th data-col="3" data-filter="true" style="width:14%">Responsable</th>
+        <th data-col="4" data-filter="true" style="width:9%">Fecha</th>
+        <th data-col="5" data-filter="true" style="width:13%">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Determinar <strong>comisión por tipo de terminal</strong> para venta aislada de terminales</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Estrategia (Natalia) y Canal</td><td><span class="ft-date ft-late">20 mar</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>2</td><td>Determinar <strong>comisión por ampliaciones de cartera y renoves</strong> de clientes (robo de cartera)</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Estrategia (Natalia) y Canal</td><td><span class="ft-date ft-late">24 abr</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>3</td><td>Determinar y establecer <strong>proceso de pago de comisiones</strong> a integrador LeadGen por venta de Soluciones Digitales</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Estrategia (Natalia) y Canal</td><td><span class="ft-date ft-late">8 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>4</td><td><strong>Tarea estratégica 1 · Priorización gestión leads integradores</strong> – Definido el flujo e2e de captación del equipo de hunters VVDD. Pendiente acceso a herramienta de seguimiento para tener trazabilidad.</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Eloy</td><td><span class="ft-date ft-late">8 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>5</td><td><strong>Tarea estratégica 2 · Gestión cercana integradores</strong> – Realizando visitas comerciales a integradores con mayor potencial e interés. 1-2 visitas presenciales semanales.</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Luis</td><td><span class="ft-date ft-noset">—</span></td><td><span class="ft-st ft-st-gr">Implementado</span></td></tr>
+      <tr><td>6</td><td><strong>Tarea estratégica 3 · Ajuste contractual incentivo primeros clientes</strong> – Ajustado anexo de contrato integradores LeadGen con nuevos incentivos (12 meses hasta 3 clientes las primeras 8 semanas).</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Equipo Accenture</td><td><span class="ft-date ft-noset">—</span></td><td><span class="ft-st ft-st-gr">Implementado</span></td></tr>
+      <tr><td>7</td><td><strong>Tarea estratégica 4 · Monetización en discurso comercial</strong> – Pitch Comercial en uso, destacando el argumentario de las comisiones por las 3 primeras ventas.</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Equipo Accenture</td><td><span class="ft-date ft-noset">—</span></td><td><span class="ft-st ft-st-gr">Implementado</span></td></tr>
+      <tr><td>8</td><td><strong>Tarea estratégica 5 · Modelo de incentivos por volumen LeadGen</strong> – Modelo de bonus en 3 ventanas de 3 meses para pago de 1 mes extra de comisión a partir de un mínimo de 5 ventas en el periodo.</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Eloy + Equipo Accenture</td><td><span class="ft-date">14 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>9</td><td><strong>Evaluar nivel de complejidad en operaciones</strong> impactadas por canal integrador para simplificar la operativa y venta</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Eloy + Equipo Accenture</td><td><span class="ft-date">14 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>10</td><td>Definir autorización para el canal integrador para <strong>recogida de pedido en PdV</strong> en caso de que el integrador lo requiera</td><td><span class="ft-tag ft-tag-in">Interna</span></td><td>Canal integrador y Legal</td><td><span class="ft-date ft-noset">—</span></td><td><span class="ft-st ft-st-gy">On hold</span></td></tr>
+      <tr><td>11</td><td><strong>Preparar formación comercial</strong></td><td><span class="ft-tag ft-tag-int">Sictemas</span></td><td>Victor</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>12</td><td>Dar respuesta a DataQu sobre <strong>bloqueante contractual</strong>: quieren contrato bidireccional</td><td><span class="ft-tag ft-tag-int">DataQu</span></td><td>Victor</td><td><span class="ft-date ft-late">8 may</span></td><td><span class="ft-st ft-st-rd">Retrasado</span></td></tr>
+      <tr><td>13</td><td>Preparar documento de <strong>webinar para la Asociación Apromar</strong></td><td><span class="ft-tag ft-tag-int">DataQu</span></td><td>Victor</td><td><span class="ft-date">14 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+      <tr><td>14</td><td>Responder a pregunta sobre <strong>Centralita Virtual con IA</strong>: reunión interna 13.05 con Laura Carrasco</td><td><span class="ft-tag ft-tag-int">Audinfor</span></td><td>Victor</td><td><span class="ft-date">13 may</span></td><td><span class="ft-st ft-st-bl">En curso</span></td></tr>
+    </tbody>
+  </table>
   </div>
 
 </section>
@@ -2161,231 +2146,78 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     <h2 class="sh-title">Plan de visitas presenciales a integradores</h2>
   </div>
 
-  <!-- KPI row -->
+  <!-- KPIs -->
   <div class="krow">
     <div class="kcard k-or">
-      <div class="k-lbl">A visitar</div>
-      <div class="k-num" id="vp-cnt-total">24</div>
-      <div class="k-sub">integradores, 15 jornadas</div>
+      <div class="k-lbl">Visitas programadas</div>
+      <div class="k-num">2</div>
+      <div class="k-sub">esta semana</div>
     </div>
-    <div class="kcard k-rd">
-      <div class="k-lbl">Prioridad alta</div>
-      <div class="k-num">12</div>
-      <div class="k-sub">Oportunidad + churn</div>
+    <div class="kcard k-bl">
+      <div class="k-lbl">Integradores disponibles</div>
+      <div class="k-num">38</div>
+      <div class="k-sub">en la pestaña 02</div>
     </div>
-    <div class="kcard" style="border-top-color:#059669">
-      <div class="k-lbl">Planificadas</div>
-      <div class="k-num" id="vp-cnt-assigned" style="color:#059669">0</div>
-      <div class="k-sub">con fecha asignada</div>
-    </div>
-    <div class="kcard" style="border-top-color:#757575">
-      <div class="k-lbl">Sin asignar</div>
-      <div class="k-num" id="vp-cnt-pending" style="color:#757575">24</div>
-      <div class="k-sub">pendientes de fecha</div>
+    <div class="kcard k-gr">
+      <div class="k-lbl">Pendientes de fecha</div>
+      <div class="k-num" style="color:var(--green)">—</div>
+      <div class="k-sub">añadir manualmente</div>
     </div>
   </div>
 
-  <!-- Planificador semanal -->
+  <!-- Tabla manual de visitas programadas -->
   <div class="card" style="margin-bottom:18px">
-    <div class="card-h" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="card-title">Planificador semanal</span><span class="card-sub" style="display:block">Asigna integradores a cada semana &middot; Se guarda automáticamente</span></div>
-      <button class="vf-btn" onclick="vpAddWeek()" style="flex-shrink:0;white-space:nowrap">+ Nueva semana</button>
+    <div class="card-h">
+      <span class="card-title">Visitas programadas</span>
+      <span class="card-sub">Edición manual en el HTML · Sin persistencia automática</span>
     </div>
-    <div id="vpPlannerRows" style="padding:4px 0 2px"></div>
-  </div>
-
-  <!-- Filtros + búsqueda -->
-  <div class="card" style="margin-bottom:14px;padding:14px 18px">
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Filtrar:</span>
-      <div class="vf-row" id="vfPri">
-        <button class="vf-btn vf-on" onclick="filtVP('all',this)">Todos</button>
-        <button class="vf-btn" onclick="filtVP('alta',this)">Alta prioridad</button>
-        <button class="vf-btn" onclick="filtVP('media',this)">Media prioridad</button>
-        <button class="vf-btn" onclick="filtVP('sinasignar',this)">Sin asignar</button>
-        <button class="vf-btn" onclick="filtVP('hold',this)">Hold</button>
-        <button class="vf-btn" onclick="filtVP('excl',this)">Excluidos</button>
-      </div>
-    </div>
-    <input class="vf-search" id="vfSearch" type="text" placeholder="Buscar integrador o ciudad..." oninput="filtVS()">
-  </div>
-
-  <!-- Fichas de integradores -->
-  <div class="vcards" id="vcardsGrid"></div>
-
-  <!-- Hold -->
-  <div class="vcoll" id="vcollHold">
-    <div class="vcoll-h" onclick="toggleVcoll('vcollHold')"><span class="vcoll-arr">&#9654;</span> Integradores en hold</div>
-    <div class="vcoll-body">
-      <table class="vhtbl">
-        <thead><tr><th>Integrador</th><th>Ciudad</th><th>Motivo</th><th>Reactivar</th></tr></thead>
-        <tbody id="vholdBody"></tbody>
-      </table>
-    </div>
-  </div>
-  <div class="vcoll" id="vcollExcl">
-    <div class="vcoll-h" onclick="toggleVcoll('vcollExcl')"><span class="vcoll-arr">&#9654;</span> Excluidos de visitas</div>
-    <div class="vcoll-body">
-      <table class="vhtbl">
-        <thead><tr><th>Integrador</th><th>Ciudad</th><th>Motivo</th></tr></thead>
-        <tbody id="vexclBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- KPIs objetivo -->
-  <div class="card" style="margin-top:18px">
-    <div class="card-h"><span class="card-title">KPIs objetivo post-visitas</span><span class="card-sub">Actual vs objetivo</span></div>
-    <div class="vkpi-bar" id="vkpiBar"></div>
-  </div>
-
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════
-     S7 · BONUS POR VOLUMEN — propuesta comercial LeadGen
-══════════════════════════════════════════════════════ -->
-<section id="s7" class="sec">
-
-  <!-- Header -->
-  <div class="sh">
-    <h2 class="sh-title">Modelo de Bonus por Volumen — Integradores LeadGen</h2>
-  </div>
-
-  <!-- ── Bloque 1 · 3 Escenarios (tabla comparativa) ───────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">1</div>
-    <div class="bv-block-t">Los 3 escenarios — comparativa</div>
-    <div class="bv-block-sub">B destacado como recomendado</div>
-  </div>
-
-  <div class="bv-scen-wrap">
-    <table class="bv-scen">
+    <div style="overflow-x:auto">
+    <table class="ft-table" style="border-radius:0;box-shadow:none">
       <thead>
         <tr>
-          <th style="width:24%">Dimensión</th>
-          <th class="bv-sc-head bv-sc-a">A · Conservador</th>
-          <th class="bv-sc-head bv-sc-b">B · Equilibrado <span class="bv-rec-pill">★ Recomendado</span></th>
-          <th class="bv-sc-head bv-sc-c">C · Agresivo</th>
+          <th style="width:11%">Semana</th>
+          <th style="width:8%">Fecha</th>
+          <th style="width:18%">Integrador</th>
+          <th style="width:13%">Responsable</th>
+          <th style="width:34%">Objetivo de la visita</th>
+          <th style="width:13%">Estado</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="bv-sc-dim">Ventana</td>
-          <td>Rolling 6 meses</td>
-          <td class="bv-sc-b-cell">Rolling 6 meses</td>
-          <td>Rolling 12 meses</td>
+          <td><span class="ft-date">Sem. 05.05</span></td>
+          <td>05.05</td>
+          <td><strong>Elpis Informática</strong></td>
+          <td>Victor</td>
+          <td>Visita en oficinas · repasar 2 ofertas en curso y siguientes pasos</td>
+          <td><span class="ft-st ft-st-gr">Realizada</span></td>
         </tr>
         <tr>
-          <td class="bv-sc-dim">Escalón 1 — Bronce</td>
-          <td>3 ventas → <b>1.500 €</b> retroactivo</td>
-          <td class="bv-sc-b-cell">5 ventas → <b>3.000 €</b> retroactivo</td>
-          <td>8 ventas → <b>5.000 €</b> retroactivo</td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">Escalón 2 — Plata</td>
-          <td>6 ventas → <b>+3.000 €</b></td>
-          <td class="bv-sc-b-cell">10 ventas → <b>+6.000 €</b></td>
-          <td>18 ventas → <b>+12.000 €</b></td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">Escalón 3 — Oro</td>
-          <td>10 ventas → <b>+6.000 €</b> + status</td>
-          <td class="bv-sc-b-cell">18 ventas → <b>+12.000 €</b> + status "Top Partner"</td>
-          <td>30 ventas → <b>+25.000 €</b> + co-marketing 5k</td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">Cualificador ARPC mínimo</td>
-          <td>≥ 100 €/mes</td>
-          <td class="bv-sc-b-cell">≥ 150 €/mes</td>
-          <td>≥ 200 €/mes</td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">% LeadGen que alcanza E1 (año 1)</td>
-          <td>30 – 40%</td>
-          <td class="bv-sc-b-cell">15 – 20%</td>
-          <td>5 – 8%</td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">% LeadGen que alcanza E3 (élite)</td>
-          <td>~ 5%</td>
-          <td class="bv-sc-b-cell">2 – 3%</td>
-          <td>&lt; 1%</td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">Bonus máximo total (Oro)</td>
-          <td><b>10.500 €</b></td>
-          <td class="bv-sc-b-cell"><b>21.000 €</b></td>
-          <td><b>42.000 €</b></td>
-        </tr>
-        <tr>
-          <td class="bv-sc-dim">Coste incremental sobre comisión base (en E3)</td>
-          <td>~ 58%</td>
-          <td class="bv-sc-b-cell">~ 65%</td>
-          <td>~ 78%</td>
+          <td><span class="ft-date">Sem. 05.05</span></td>
+          <td>07.05</td>
+          <td><strong>Audinfor</strong></td>
+          <td>Victor</td>
+          <td>Visita Madrid con CEO · centralita en la nube + IA</td>
+          <td><span class="ft-st ft-st-bl">Agendada</span></td>
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <!-- ── Bloque 2 · Justificación por escenario ────────────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">2</div>
-    <div class="bv-block-t">¿Por qué B?</div>
-    <div class="bv-block-sub">Justificación de la recomendación</div>
-  </div>
-
-  <div class="bv-mini-grid" style="margin-top:14px">
-    <div class="bv-mini b-am">
-      <span class="bv-mini-tag">A se queda corto</span>
-      <div class="bv-mini-title">Techo demasiado bajo</div>
-      <div class="bv-mini-body">Un Top Partner que cierra 10 ventas cobra solo <strong>10.500 € extra</strong> — no diferencia al excepcional del bueno.</div>
-    </div>
-    <div class="bv-mini b-am">
-      <span class="bv-mini-tag">C es inalcanzable</span>
-      <div class="bv-mini-title">Funnel actual no lo soporta</div>
-      <div class="bv-mini-body">8 ventas en 6 meses superaría al mejor Partner e2e. Si nadie llega al primer escalón en año 1, <strong>el programa se percibe como humo</strong>.</div>
-    </div>
-    <div class="bv-mini b-or">
-      <span class="bv-mini-tag">B encaja</span>
-      <div class="bv-mini-title">Curva de probabilidad correcta</div>
-      <div class="bv-mini-body">~1 de cada 5 LeadGen llega a Bronce, ~1 de cada 30 llega a Oro. <strong>Patrón saludable</strong> en canal indirecto telco maduro.</div>
     </div>
   </div>
 
-  <!-- ── Bloque 3 · Principios de diseño ───────────────────────── -->
-  <div class="bv-block-h">
-    <div class="bv-block-num">3</div>
-    <div class="bv-block-t">Principios de diseño</div>
-    <div class="bv-block-sub">5 reglas que guían el modelo</div>
+  <!-- Listado de integradores disponibles desde S2 -->
+  <div class="card">
+    <div class="card-h">
+      <span class="card-title">Integradores disponibles para planificar</span>
+      <span class="card-sub">Auto-cargado desde pestaña 02 · click para copiar el nombre al portapapeles</span>
+    </div>
+    <div id="s6-int-list" style="padding:14px 18px;display:flex;flex-wrap:wrap;gap:6px"></div>
   </div>
-
-  <div class="bv-pri-grid">
-    <div class="bv-pri">
-      <div class="bv-pri-n">1</div>
-      <div class="bv-pri-title">Ventana rolling, no fija</div>
-      <div class="bv-pri-body">Una ventana fija crea picos artificiales y deja huérfanos a los que firman tarde. Rolling 6 meses se mide cada mes mirando hacia atrás.</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">3</div>
-      <div class="bv-pri-title">Doble cualificador: ventas + ARPC mínimo</div>
-      <div class="bv-pri-body">Una venta cuenta solo si supera 150 €/mes de facturación. Neutraliza cherry-picking de líneas sueltas.</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">4</div>
-      <div class="bv-pri-title">Bonus en € fijo, no % sobre comisión</div>
-      <div class="bv-pri-body">Los LeadGen necesitan zanahoria comprensible. "Si llegas a 5, cobras 3.000 €" pega más que "+12% sobre acumulado".</div>
-    </div>
-    <div class="bv-pri">
-      <div class="bv-pri-n">5</div>
-      <div class="bv-pri-title">Solo aplica a LeadGen</div>
-      <div class="bv-pri-body">El modelo Partner e2e ya tiene comisión recurrente — no necesita acelerador adicional ahora.</div>
-    </div>
-  </div>
-
 
 </section>
 
+
+<!-- S7 removed (PMO #21) -->
 
 <!-- ════════════════ JS ════════════════ -->
 <script>
@@ -2404,12 +2236,124 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 function show(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.tnav').forEach(t=>t.classList.remove('on'));
-  const secs=['s0','s1','s2','s3','s4','s5','s6','s7'];
+  const secs=['s0','s1','s2','s3','s4','s5','s6'];
   document.getElementById(id).classList.add('on');
   document.querySelectorAll('.tnav')[secs.indexOf(id)].classList.add('on');
   startCounters(document.getElementById(id));
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+// ── Filtros tipo Excel (S2 + S4)
+(function(){
+  const state=new Map();
+  function getSt(id){if(!state.has(id))state.set(id,{filters:{},search:''});return state.get(id)}
+  function uniqVals(table,col){
+    const s=new Set();
+    table.querySelectorAll('tbody tr').forEach(r=>{
+      const c=r.cells[col];
+      if(c){const v=c.textContent.trim();if(v)s.add(v)}
+    });
+    return Array.from(s).sort((a,b)=>a.localeCompare(b,'es'));
+  }
+  function apply(id){
+    const t=document.getElementById(id);if(!t)return;
+    const st=getSt(id);
+    const q=(st.search||'').toLowerCase();
+    let visible=0,total=0;
+    t.querySelectorAll('tbody tr').forEach(r=>{
+      total++;
+      let ok=true;
+      for(const col in st.filters){
+        const sel=st.filters[col];
+        const c=r.cells[parseInt(col)];
+        const v=c?c.textContent.trim():'';
+        if(!sel.has(v)){ok=false;break}
+      }
+      if(ok&&q)ok=r.textContent.toLowerCase().includes(q);
+      r.style.display=ok?'':'none';
+      if(ok)visible++;
+    });
+    const cnt=document.getElementById(id+'-count');
+    if(cnt)cnt.textContent=visible+' de '+total;
+  }
+  function openPop(id,col,anchor){
+    document.querySelectorAll('.colfilt-pop').forEach(p=>p.remove());
+    const t=document.getElementById(id);
+    const st=getSt(id);
+    const sel=st.filters[col]||null;
+    const vals=uniqVals(t,col);
+    const pop=document.createElement('div');
+    pop.className='colfilt-pop';
+    pop.onclick=e=>e.stopPropagation();
+    const search=document.createElement('input');
+    search.type='text';search.className='colfilt-pop-search';search.placeholder='Buscar valor...';
+    pop.appendChild(search);
+    const list=document.createElement('div');list.className='colfilt-pop-list';pop.appendChild(list);
+    const all=document.createElement('label');all.className='colfilt-opt';
+    const allCb=document.createElement('input');allCb.type='checkbox';allCb.checked=!sel;
+    allCb.onchange=function(){const ck=this.checked;list.querySelectorAll('input.cf-v').forEach(cb=>cb.checked=ck)};
+    all.appendChild(allCb);
+    const allT=document.createElement('span');allT.className='colfilt-opt-text';allT.style.fontWeight='700';allT.textContent='(Seleccionar todo)';
+    all.appendChild(allT);list.appendChild(all);
+    vals.forEach(v=>{
+      const o=document.createElement('label');o.className='colfilt-opt';o.dataset.v=v.toLowerCase();
+      const cb=document.createElement('input');cb.type='checkbox';cb.className='cf-v';cb.value=v;cb.checked=!sel||sel.has(v);
+      cb.onchange=function(){
+        const tot=list.querySelectorAll('input.cf-v').length;
+        const ck=list.querySelectorAll('input.cf-v:checked').length;
+        allCb.checked=(ck===tot);allCb.indeterminate=(ck>0&&ck<tot);
+      };
+      o.appendChild(cb);
+      const tx=document.createElement('span');tx.className='colfilt-opt-text';tx.textContent=v;o.appendChild(tx);
+      list.appendChild(o);
+    });
+    search.oninput=function(){
+      const q=this.value.toLowerCase();
+      list.querySelectorAll('.colfilt-opt[data-v]').forEach(o=>{o.style.display=o.dataset.v.includes(q)?'':'none'});
+    };
+    const acts=document.createElement('div');acts.className='colfilt-pop-actions';
+    const clear=document.createElement('button');clear.textContent='Limpiar';
+    clear.onclick=function(){delete st.filters[col];anchor.classList.remove('on');apply(id);pop.remove()};
+    const ap=document.createElement('button');ap.className='cf-apply';ap.textContent='Aplicar';
+    ap.onclick=function(){
+      const ck=Array.from(list.querySelectorAll('input.cf-v:checked')).map(c=>c.value);
+      if(ck.length===0||ck.length===vals.length){delete st.filters[col];anchor.classList.remove('on')}
+      else{st.filters[col]=new Set(ck);anchor.classList.add('on')}
+      apply(id);pop.remove();
+    };
+    acts.appendChild(clear);acts.appendChild(ap);pop.appendChild(acts);
+    document.body.appendChild(pop);
+    const r=anchor.getBoundingClientRect();
+    pop.style.top=(r.bottom+4)+'px';
+    pop.style.left=Math.max(8,Math.min(r.left-10,window.innerWidth-pop.offsetWidth-10))+'px';
+    setTimeout(()=>search.focus(),20);
+  }
+  window.ftInit=function(id){
+    const t=document.getElementById(id);if(!t)return;
+    t.querySelectorAll('thead th[data-filter="true"]').forEach(th=>{
+      if(th.querySelector('.colfilt-btn'))return;
+      const col=parseInt(th.dataset.col);
+      const b=document.createElement('span');b.className='colfilt-btn';b.innerHTML='▾';b.title='Filtrar';
+      b.onclick=function(e){e.stopPropagation();openPop(id,col,b)};
+      th.appendChild(b);
+    });
+  };
+  window.ftSearch=function(id,text){getSt(id).search=text;apply(id)};
+  window.ftClearAll=function(id){
+    const st=getSt(id);Object.keys(st.filters).forEach(k=>delete st.filters[k]);st.search='';
+    const inp=document.getElementById(id.replace('-table','')+'-search');if(inp)inp.value='';
+    const t=document.getElementById(id);if(t)t.querySelectorAll('thead .colfilt-btn').forEach(b=>b.classList.remove('on'));
+    apply(id);
+  };
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.colfilt-pop')&&!e.target.closest('.colfilt-btn')){
+      document.querySelectorAll('.colfilt-pop').forEach(p=>p.remove());
+    }
+  });
+  document.addEventListener('DOMContentLoaded',function(){
+    if(window.ftInit){window.ftInit('s2-table');window.ftInit('s4-table')}
+  });
+})();
 
 // ── Contadores animados
 function fmtES(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
@@ -5048,12 +4992,38 @@ function toggleVcoll(id){
   wrap.querySelector('.vcoll-body').classList.toggle('vcoll-show');
 }
 
-// Init S6 on first show
-const origShow=show;
-show=function(id){
-  origShow(id);
-  if(id==='s6'){vpLoad();buildPlanner();buildVCards();buildHoldExcl();buildKPIs();}
-};
+// Init S6 on first show (legacy planner code disabled — S6 ahora es estático)
+// Cargar nombres de integradores en S6 desde la tabla S2
+document.addEventListener('DOMContentLoaded', function(){
+  const list = document.getElementById('s6-int-list');
+  if(!list) return;
+  function loadNames(){
+    const rows = document.querySelectorAll('#s2-table tbody tr');
+    if(!rows.length){ setTimeout(loadNames, 100); return; }
+    list.innerHTML = '';
+    const names = new Set();
+    rows.forEach(r => {
+      const n = r.cells[1] && r.cells[1].textContent.trim();
+      if(n) names.add(n);
+    });
+    Array.from(names).sort((a,b)=>a.localeCompare(b,'es')).forEach(n => {
+      const tag = document.createElement('span');
+      tag.className = 'tag tg-bl';
+      tag.style.cursor = 'pointer';
+      tag.title = 'Click para copiar';
+      tag.textContent = n;
+      tag.onclick = function(){
+        if(navigator.clipboard) navigator.clipboard.writeText(n);
+        const bg = tag.style.background;
+        tag.style.background = '#FBBF24';
+        tag.style.color = '#fff';
+        setTimeout(()=>{ tag.style.background = bg; tag.style.color = ''; }, 600);
+      };
+      list.appendChild(tag);
+    });
+  }
+  loadNames();
+});
 </script>
 </body>
 </html>
