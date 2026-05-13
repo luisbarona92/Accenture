@@ -1298,6 +1298,8 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .s3-chg .s3-chg-up{color:#065F46;font-weight:700}
 .s3-chg .s3-chg-down{color:#B91C1C;font-weight:700}
 .s3-chg .s3-chg-same{color:var(--ink3);font-style:italic}
+.s3-star{display:inline-block;margin-left:4px;color:#F59E0B;font-size:14px;vertical-align:0;text-shadow:0 1px 2px rgba(245,158,11,.35);cursor:help;animation:starpulse 2.2s ease-in-out infinite}
+@keyframes starpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
 
 /* Filter popover (Excel-style) */
 .colfilt-pop{position:fixed;background:var(--card);border:1px solid var(--line2);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:10px;z-index:1000;min-width:220px;max-width:280px;display:flex;flex-direction:column}
@@ -1522,14 +1524,14 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
       </div>
       <div class="hk-row-cards">
         <div class="hk">
-          <div class="hk-num c-bl cnt" data-cnt="s0-oportunidades" data-t="46">46</div>
+          <div class="hk-num c-bl cnt" data-cnt="s0-oportunidades" data-t="81">81</div>
           <div class="hk-lbl">Oportunidades identificadas</div>
           <div class="hk-sub">en funnel activo de ventas</div>
         </div>
         <div class="hk">
-          <div class="hk-num c-or cnt" data-cnt="s0-ofertas" data-t="38">0</div>
+          <div class="hk-num c-or cnt" data-cnt="s0-ofertas" data-t="29">0</div>
           <div class="hk-lbl">Ofertas presentadas a clientes</div>
-          <div class="hk-sub"><span style="color:var(--green);font-weight:600">8 ventas cerradas</span>, 23 en curso y 7 KO</div>
+          <div class="hk-sub"><span style="color:var(--green);font-weight:600">8 ventas cerradas</span> y 21 en curso · ⭐ 4 a punto de cerrar</div>
         </div>
         <div class="hk">
           <div class="hk-num c-gr cnt" data-cnt="s0-ventas" data-t="2000" data-prefix="+" data-suffix=" €">0</div>
@@ -1555,7 +1557,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="hnav-item" onclick="show('s3')">
       <div class="hnav-n">3</div>
-      <div class="hnav-t">Funnel de ventas · 46 oportunidades</div>
+      <div class="hnav-t">Funnel de ventas · 81 oportunidades</div>
       <div class="hnav-arr">›</div>
     </div>
     <div class="hnav-item" onclick="show('s4')">
@@ -1860,15 +1862,15 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 <section id="s3" class="sec">
   <div class="sh">
     <span class="sh-slide">Slide 5</span>
-    <h2 class="sh-title">Funnel de ventas · 78 oportunidades identificadas</h2>
+    <h2 class="sh-title">Funnel de ventas · 81 oportunidades identificadas</h2>
   </div>
 
   <!-- KPI row -->
   <div class="krow">
     <div class="kcard k-bk">
       <div class="k-lbl">Total oportunidades</div>
-      <div class="k-num cnt" data-cnt="s3-total" data-t="78">78</div>
-      <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="9">▲ +9 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-total" data-t="81">81</div>
+      <span class="k-delta kd-or" data-cnt="s3-total-delta" data-delta="3">▲ +3 vs sem. anterior</span>
     </div>
     <div class="kcard k-gr">
       <div class="k-lbl">Ventas activadas</div>
@@ -1877,21 +1879,21 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
     </div>
     <div class="kcard k-or">
       <div class="k-lbl">Leads pendientes</div>
-      <div class="k-num cnt" data-cnt="s3-leads" data-t="32">0</div>
-      <div class="k-sub">41% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="1">▲ +1 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-leads" data-t="35">0</div>
+      <div class="k-sub">43% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-leads-delta" data-delta="2">▲ +2 vs sem. anterior</span>
     </div>
     <div class="kcard k-rd">
       <div class="k-lbl">Leads KO</div>
-      <div class="k-num cnt" data-cnt="s3-leads-ko" data-t="15">0</div>
-      <div class="k-sub">19% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-leads-ko-delta" data-delta="3">▲ +3 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-leads-ko" data-t="17">0</div>
+      <div class="k-sub">21% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-leads-ko-delta" data-delta="2">▲ +2 vs sem. anterior</span>
     </div>
     <div class="kcard k-bl">
       <div class="k-lbl">Ofertas en curso</div>
-      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="23">0</div>
-      <div class="k-sub">29% de oportunidades</div>
-      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="7">▲ +7 vs sem. anterior</span>
+      <div class="k-num cnt" data-cnt="s3-ofertas" data-t="21">0</div>
+      <div class="k-sub">26% de oportunidades</div>
+      <span class="k-delta kd-or" data-cnt="s3-ofertas-delta" data-delta="3">▲ +3 vs sem. anterior</span>
     </div>
   </div>
 
@@ -1899,7 +1901,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   <div class="card" style="margin-bottom:18px">
     <div class="card-h">
       <span class="card-title">Estado de leads por integrador</span>
-      <span class="card-sub">18 integradores con oportunidades activas · deltas vs PMO #20 (29.04)</span>
+      <span class="card-sub">18 integradores con oportunidades activas · ⭐ = oferta a punto de cerrarse · deltas vs PMO #21 (06.05)</span>
     </div>
     <div style="overflow-x:auto">
     <table class="vtbl">
@@ -1912,28 +1914,28 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
           <th style="text-align:center">Leads pend.</th>
           <th style="text-align:center">Leads KO</th>
           <th style="text-align:center">Ofertas</th>
-          <th style="width:22%">Cambios vs sem. anterior</th>
+          <th style="width:24%">Cambios vs sem. anterior</th>
         </tr>
       </thead>
       <tbody>
         <tr><td><strong>Maxen</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">20</td><td class="n n-gr">1</td><td class="n n-or">12</td><td class="n n-rd">2</td><td class="n n-bl">5</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
         <tr><td><strong>Cover Net</strong></td><td><span class="mod-tag mt-e2e">e2e</span></td><td class="n n-or">9</td><td class="n n-gr">4</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">5</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">11 <span class="dlt dlt-up">+2</span></td><td class="n n-gy">0</td><td class="n n-or">3</td><td class="n n-rd">5</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-up">+2 oport.</span> tras visita 29.04, 3 leads activados</td></tr>
-        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-or">4 <span class="dlt dlt-up">+1</span></td><td class="n n-rd">1</td><td class="n n-bl">1 <span class="dlt dlt-up">+1</span></td><td class="s3-chg"><span class="s3-chg-up">+1 lead pend, +1 oferta</span> (grande, webinar Apromar)</td></tr>
-        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-gy">0 <span class="dlt dlt-down">−1</span></td><td class="n n-gy">0</td><td class="n n-bl">4 <span class="dlt dlt-up">+1</span></td><td class="s3-chg"><span class="s3-chg-up">−1 lead pend, +1 oferta en curso</span></td></tr>
-        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">2</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-or">2</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Ox-one</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">9</td><td class="n n-gy">0</td><td class="n n-or">4</td><td class="n n-rd">5</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Duo IT</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-down">Lead KO por contraoferta</span></td></tr>
+        <tr><td><strong>Dataqu</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">6</td><td class="n n-gy">0</td><td class="n n-or">4</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Cobitratel</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gr">1</td><td class="n n-gy">0</td><td class="n n-rd">2</td><td class="n n-bl">1 <span class="s3-star" title="Oferta a punto de cerrarse">⭐</span></td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Sictemas</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">4</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-rd">1 <span class="dlt dlt-up">+1</span></td><td class="n n-bl">2 <span class="s3-star" title="Oferta a punto de cerrarse">⭐</span></td><td class="s3-chg"><span class="s3-chg-down">Oferta para padres CEO KO</span></td></tr>
+        <tr><td><strong>Sisytec</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-bl">1 <span class="s3-star" title="Oferta a punto de cerrarse">⭐</span></td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Mariskalnet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">3</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">2 <span class="dlt dlt-up">+2</span></td><td class="s3-chg"><span class="s3-chg-up">2 ofertas lanzadas</span> y pendiente respuesta cliente</td></tr>
+        <tr><td><strong>Paperlabs</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-bl">1 <span class="dlt dlt-up">+1</span></td><td class="s3-chg"><span class="s3-chg-up">Nueva operación en curso</span>, primer contacto</td></tr>
         <tr><td><strong>Aideea</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-rd">1</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Lisot</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-or">1 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-up">Nueva oportunidad</span> pendiente de recibir detalle</td></tr>
         <tr><td><strong>Amiritmo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
         <tr><td><strong>Microsip</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gr">1</td><td class="n n-or">7</td><td class="n n-rd">1 <span class="dlt dlt-up">+1</span></td><td class="n n-bl">1 <span class="dlt dlt-down">−1</span></td><td class="s3-chg"><span class="s3-chg-down">+1 KO</span>, oferta de 2 → 1 en curso</td></tr>
-        <tr><td><strong>Binfor Sol.</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Elpis Info</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">10</td><td class="n n-gr">1</td><td class="n n-or">7</td><td class="n n-rd">1</td><td class="n n-bl">1</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
+        <tr><td><strong>Binfor Sol.</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">2 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-or">1 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-bl">1 <span class="s3-star" title="Oferta a punto de cerrarse">⭐</span></td><td class="s3-chg"><span class="s3-chg-up">Nueva oportunidad</span> pendiente de recibir detalle</td></tr>
         <tr><td><strong>Gnuo</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
-        <tr><td><strong>Infornet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1 <span class="dlt dlt-up">+1</span></td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-up">+1 lead pend</span> (salas de eventos con fibra)</td></tr>
+        <tr><td><strong>Infornet</strong></td><td><span class="mod-tag mt-lg">LeadGen</span></td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-or">1</td><td class="n n-gy">0</td><td class="n n-gy">0</td><td class="s3-chg"><span class="s3-chg-same">Sin cambios</span></td></tr>
       </tbody>
     </table>
     </div>
