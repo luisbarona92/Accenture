@@ -778,7 +778,10 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   background:#fff;border-radius:14px;padding:28px 32px;max-width:540px;width:90%;
   box-shadow:0 20px 60px rgba(0,0,0,.3)
 }
-.upd-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.upd-title{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.upd-scope{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#FFF7ED;border:1px solid rgba(255,102,0,.25);border-radius:8px;margin-bottom:14px;font-size:12px;font-weight:600;color:var(--ink2)}
+.upd-scope-tag{display:inline-block;padding:3px 10px;background:#fff;border:1px solid rgba(255,102,0,.35);border-radius:5px;font-size:11.5px;font-weight:700;color:var(--or);letter-spacing:.2px}
+.upd-scope-tag.upd-scope-dst{background:var(--or);color:#fff;border-color:var(--or)}
 .upd-log{
   background:#F9FAFB;border-radius:8px;padding:12px;font-size:12px;
   font-family:monospace;max-height:200px;overflow-y:auto;margin-bottom:16px;
@@ -1449,7 +1452,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
   </nav>
 
   <div class="topbar-right">
-    <button class="btn-update" id="btnUpdate" onclick="openUpdatePanel()" title="Actualizar Detalle Leads desde Excel">
+    <button class="btn-update" id="btnUpdate" onclick="openUpdatePanel()" title="Actualizar SOLO pestaña 05 · Detalle Leads desde Excel (Partners_BBDD_v2.xlsx)">
       🔄
     </button>
     <span class="date-lbl" id="topbarDate"></span>
@@ -1458,11 +1461,17 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
 <div class="upd-overlay" id="updOverlay">
   <div class="upd-box">
-    <div class="upd-title">🔄 Actualizar Detalle Leads <span style="font-size:12px;font-weight:400;color:var(--ink3)">· solo desde Excel</span></div>
+    <div class="upd-title">🔄 Actualizar Detalle Leads</div>
+    <div class="upd-scope">
+      <span class="upd-scope-tag">Excel</span>
+      <span style="color:var(--ink3)">→</span>
+      <span class="upd-scope-tag upd-scope-dst">Pestaña 05 · Detalle Leads</span>
+      <span style="font-size:11px;color:var(--ink3);margin-left:auto">Resto de pestañas no se tocan</span>
+    </div>
     <div id="updLog" class="upd-log"><p class="info">Conectando con servidor local...</p></div>
     <div class="upd-actions">
       <button class="upd-btn-cancel" onclick="closeUpdatePanel()">Cancelar</button>
-      <button class="upd-btn-apply" id="btnApply" onclick="applyUpdate()" disabled>✅ Aplicar y publicar</button>
+      <button class="upd-btn-apply" id="btnApply" onclick="applyUpdate()" disabled>✅ Aplicar solo a S5 y publicar</button>
     </div>
   </div>
 </div>
