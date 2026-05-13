@@ -1301,6 +1301,10 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 .s3-star{display:inline-block;margin-left:4px;color:#F59E0B;font-size:14px;vertical-align:0;text-shadow:0 1px 2px rgba(245,158,11,.35);cursor:help;animation:starpulse 2.2s ease-in-out infinite}
 @keyframes starpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
 
+/* Marca de integrador NUEVO en árbol S1 */
+.tn-new{color:var(--green);font-weight:800;background:rgba(5,150,105,.12);padding:1px 6px;border-radius:4px;border:1px solid rgba(5,150,105,.35);white-space:nowrap;display:inline-block;line-height:1.4}
+.tn-new::after{content:' ●';font-size:8px;vertical-align:2px;color:var(--green)}
+
 /* Filter popover (Excel-style) */
 .colfilt-pop{position:fixed;background:var(--card);border:1px solid var(--line2);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:10px;z-index:1000;min-width:220px;max-width:280px;display:flex;flex-direction:column}
 .colfilt-pop-search{padding:6px 10px;border:1px solid var(--line2);border-radius:5px;font-size:12px;font-family:inherit;margin-bottom:8px}
@@ -1617,8 +1621,9 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
 
   <!-- ÁRBOL DE DECISIÓN · sub-clusters de H3 con acción recomendada -->
   <div class="tree-wrap">
-    <div style="text-align:center;margin-bottom:6px">
+    <div style="text-align:center;margin-bottom:6px;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap">
       <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)">Árbol de decisión · H3 captados</span>
+      <span style="font-size:10.5px;color:var(--ink3)"><span class="tn-new" style="font-size:10.5px">Nuevo</span> = añadido esta semana (PMO #22)</span>
     </div>
     <div class="tree-root">
       <div class="tree-root-node"><b>61</b> H3 · CAPTADOS</div>
@@ -1646,7 +1651,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-gr">
           <div class="tn-count">16</div>
           <div class="tn-label">En proceso firma</div>
-          <div class="tn-names">DataQu · Ocvistas · Infornet · Micro Sip · Audinfor · Sisytec · Cobitratel · Mariskalnet · Dosys · GNUO · Binfor Sol. · Lisot · Redestic · Provide · Jelp · Durnia</div>
+          <div class="tn-names">DataQu · Ocvistas · Infornet · Micro Sip · Audinfor · Sisytec · Cobitratel · Mariskalnet · Dosys · GNUO · Binfor Sol. · Lisot · Redestic · Provide · <span class="tn-new">Jelp</span> · Durnia</div>
           <div class="tn-action">
             <b>Acción recomendada</b>
             <ul>
@@ -1678,7 +1683,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-bl">
           <div class="tn-count">7</div>
           <div class="tn-label">Pdte. agendar KO</div>
-          <div class="tn-names">NaimiTech · Informática Pavón · Amiritmo · Maicrosoft · ISC Tech · Dataway · Fervimax</div>
+          <div class="tn-names">NaimiTech · Informática Pavón · Amiritmo · Maicrosoft · ISC Tech · <span class="tn-new">Dataway</span> · Fervimax</div>
           <div class="tn-action">
             <b>Acción recomendada</b>
             <ul>
@@ -1710,7 +1715,7 @@ td:first-child{border-left:3px solid transparent;transition:border-color .12s}
         <div class="tn-card tn-rd">
           <div class="tn-count">22</div>
           <div class="tn-label">Churn</div>
-          <div class="tn-names">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Services · Tec. Estratégica · Solventus Software · Ache Informática · Omnia · Sur Computers · ISPresencias · Redem · Ciset · Innova · MV Informática · Ibersya · Numeros Imaginarios</div>
+          <div class="tn-names">Landm · Monkinet · Next Mob · A41 · SRG · Twistic · Loomis · Jufima · Q2B · PC Services · Tec. Estratégica · Solventus Software · Ache Informática · Omnia · ISPresencias · Ciset · <span class="tn-new">Sur Computers</span> · <span class="tn-new">Redem</span> · <span class="tn-new">Innova</span> · <span class="tn-new">MV Informática</span> · <span class="tn-new">Ibersya</span> · <span class="tn-new">Numeros Imaginarios</span></div>
           <div class="tn-action">
             <b>Lecciones aprendidas</b>
             <ul>
