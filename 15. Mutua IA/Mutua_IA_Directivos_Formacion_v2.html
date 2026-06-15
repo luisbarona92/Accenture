@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA para Directivos · Mutua Madrileña · v2</title>
+<style>
+:root{
+  --navy:#003579;--blue:#1A5FAD;--blue2:#0055A5;--sky:#E8F1FA;--sky2:#f0f6ff;
+  --green:#00A550;--gdk:#007A3C;--text:#1C2B3A;--muted:#556070;
+  --bdr:#D0DCE8;--bg:#F4F7FA;--w:#fff;--r:10px;
+  --sh:0 2px 12px rgba(0,53,121,.10);--shh:0 6px 28px rgba(0,53,121,.16);
+  --chatgpt:#10A37F;--claude:#CF4500;--gemini:#4285F4;--copilot:#0078D4;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  font-size:15px;line-height:1.65;color:var(--text);background:var(--bg)}
+
+/* ── TOP NAV ── */
+.topnav{
+  position:sticky;top:0;z-index:200;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--blue2) 100%);
+  box-shadow:0 2px 16px rgba(0,0,0,.28);
+}
+.topnav-inner{display:flex;align-items:center;gap:12px;padding:10px 28px;max-width:1400px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.brand-wordmark{height:38px;width:auto;border-radius:6px;flex-shrink:0;display:block}
+.brand-sub{color:rgba(255,255,255,.7);font-size:10px;letter-spacing:.6px;margin-top:2px;display:block;white-space:nowrap}
+.nav-divider{width:1px;height:28px;background:rgba(255,255,255,.2);margin:0 4px}
+.nav-links{display:flex;gap:4px;flex:1}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;font-weight:600;
+  padding:5px 10px;border-radius:6px;white-space:nowrap;transition:.15s}
+.nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.15);color:#fff}
+.tool-nav{display:flex;gap:6px;flex-shrink:0}
+.tool-btn{display:flex;align-items:center;gap:7px;padding:6px 12px;border-radius:8px;
+  border:none;cursor:pointer;font-size:12px;font-weight:700;color:#fff;transition:.15s}
+.tool-btn:hover{opacity:.85;transform:translateY(-1px)}
+.tool-btn svg{width:16px;height:16px;flex-shrink:0}
+.tool-btn.chatgpt{background:var(--chatgpt)}
+.tool-btn.claude{background:var(--claude)}
+.tool-btn.gemini{background:linear-gradient(135deg,#4285F4,#8B5CF6)}
+.tool-btn.copilot{background:var(--copilot)}
+.btn-home{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  color:#fff;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700;
+  cursor:pointer;display:none}
+
+/* ── PAGE ROUTING ── */
+.page{display:none}
+.page.active{display:block}
+
+/* ── MAIN LAYOUT ── */
+.layout{display:flex;max-width:1400px;margin:0 auto}
+.sidebar{width:220px;flex-shrink:0;padding:24px 0 40px;position:sticky;
+  top:58px;height:calc(100vh - 58px);overflow-y:auto;
+  background:var(--w);border-right:1px solid var(--bdr)}
+.sb-label{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--muted);padding:0 20px 8px}
+.sidebar nav ul{list-style:none}
+.sidebar nav ul li a{display:flex;align-items:center;gap:8px;padding:8px 20px;
+  color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;
+  border-left:3px solid transparent;transition:.15s;line-height:1.3}
+.sidebar nav ul li a:hover{color:var(--navy);background:var(--sky);border-left-color:var(--blue)}
+.sidebar nav ul li a.active{color:var(--navy);background:var(--sky);border-left-color:var(--navy);font-weight:700}
+.sb-time{font-size:10px;color:var(--muted);margin-left:auto;font-weight:600;opacity:.8}
+.main{flex:1;padding:36px 44px 80px;min-width:0}
+
+/* ── SECTION ── */
+.section{margin-bottom:60px;scroll-margin-top:70px}
+.sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:20px;
+  padding-bottom:14px;border-bottom:2px solid var(--bdr)}
+.sec-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--navy),var(--blue));
+  border-radius:11px;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:19px;flex-shrink:0}
+.sec-hd h2{font-size:21px;font-weight:800;color:var(--navy);line-height:1.2}
+.sec-hd p{font-size:12px;color:var(--muted);margin-top:2px}
+.time-badge{margin-left:auto;background:var(--sky);color:var(--blue);
+  font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.intro{font-size:15px;color:var(--muted);margin-bottom:24px;max-width:700px;line-height:1.7}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#E8F1FA 0%,#f0f5ff 100%);
+  border-radius:14px;border:1px solid #C8DAEA;padding:32px 36px;margin-bottom:40px}
+.hero h2{font-size:28px;font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:10px}
+.hero p{font-size:15px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:20px}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;color:#fff}
+.chip.navy{background:var(--navy)}.chip.blue{background:var(--blue)}.chip.green{background:var(--green)}
+
+/* ── AGENDA ── */
+.agenda-row{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.ag-item{background:var(--w);border:1px solid var(--bdr);border-radius:8px;
+  padding:10px 14px;flex:1;min-width:110px;box-shadow:var(--sh)}
+.ag-item .ag-time{font-size:17px;font-weight:900;color:var(--navy);line-height:1}
+.ag-item .ag-label{font-size:11px;color:var(--muted);margin-top:4px}
+.ag-arrow{align-self:center;font-size:18px;color:var(--bdr);flex-shrink:0}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding:10px 0 10px 30px;margin-bottom:28px}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;
+  width:3px;background:linear-gradient(to bottom,var(--navy),var(--blue),var(--green))}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-dot{position:absolute;left:-26px;top:4px;width:14px;height:14px;
+  border-radius:50%;background:var(--w);border:3px solid var(--blue);z-index:1}
+.tl-item.milestone .tl-dot{background:var(--navy);border-color:var(--navy);width:16px;height:16px;left:-27px}
+.tl-year{font-size:11px;font-weight:800;color:var(--blue);letter-spacing:.5px;margin-bottom:2px}
+.tl-item.milestone .tl-year{color:var(--navy)}
+.tl-text{font-size:13.5px;color:var(--text);line-height:1.5}
+.tl-text strong{color:var(--navy)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.stat-card{background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:18px 20px;box-shadow:var(--sh);text-align:center}
+.stat-card .stat-n{font-size:32px;font-weight:900;color:var(--navy);line-height:1}
+.stat-card .stat-l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ── TOOL CARDS ── */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
+.tc{background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:22px;box-shadow:var(--sh);border-top:4px solid;transition:.15s}
+.tc:hover{transform:translateY(-2px);box-shadow:var(--shh)}
+.tc.chatgpt{border-top-color:var(--chatgpt)}.tc.claude{border-top-color:var(--claude)}
+.tc.gemini{border-top-color:var(--gemini)}.tc.copilot{border-top-color:var(--copilot)}
+.tc-hd{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.tc-logo{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.tc.chatgpt .tc-logo{background:var(--chatgpt)}.tc.claude .tc-logo{background:var(--claude)}
+.tc.gemini .tc-logo{background:linear-gradient(135deg,#4285F4,#8B5CF6)}
+.tc.copilot .tc-logo{background:var(--copilot)}
+.tc-logo svg{width:24px;height:24px}
+.tc-name{font-size:16px;font-weight:800;color:var(--text)}
+.tc-co{font-size:11px;color:var(--muted)}
+.tc-tag{font-style:italic;font-size:13px;color:var(--muted);margin-bottom:10px}
+.tc ul{list-style:none;margin-bottom:12px}
+.tc ul li{font-size:13px;padding:3px 0 3px 16px;position:relative}
+.tc ul li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.tc-best{display:inline-block;font-size:11px;font-weight:700;padding:4px 10px;
+  border-radius:20px;color:#fff}
+.tc.chatgpt .tc-best{background:var(--chatgpt)}.tc.claude .tc-best{background:var(--claude)}
+.tc.gemini .tc-best{background:var(--gemini)}.tc.copilot .tc-best{background:var(--copilot)}
+.tc-btn{margin-top:12px;display:block;text-align:center;padding:8px;border-radius:7px;
+  font-size:12px;font-weight:700;color:#fff;cursor:pointer;border:none;width:100%;transition:.15s}
+.tc.chatgpt .tc-btn{background:var(--chatgpt)}.tc.claude .tc-btn{background:var(--claude)}
+.tc.gemini .tc-btn{background:var(--gemini)}.tc.copilot .tc-btn{background:var(--copilot)}
+.tc-btn:hover{opacity:.85}
+
+/* ── TABLE ── */
+.tw{overflow-x:auto;margin-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--w);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--sh);font-size:13.5px}
+thead{background:var(--navy);color:#fff}
+thead th{padding:11px 14px;text-align:left;font-size:12px;font-weight:700;letter-spacing:.3px}
+tbody tr{border-bottom:1px solid var(--bdr)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--sky)}
+tbody td{padding:10px 14px;vertical-align:top}
+tbody td:first-child{font-weight:700}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+
+/* ── FORMULA ── */
+.formula{background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:24px;box-shadow:var(--sh);margin-bottom:24px}
+.formula h3{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:16px}
+.fsteps{display:flex;gap:0;margin-bottom:20px}
+.fstep{flex:1;text-align:center;padding:14px 8px;background:var(--sky);position:relative}
+.fstep:not(:last-child)::after{content:'+';position:absolute;right:-10px;top:50%;
+  transform:translateY(-50%);font-size:16px;font-weight:800;color:var(--navy);
+  background:var(--bg);padding:0 2px;z-index:1}
+.fstep:first-child{border-radius:var(--r) 0 0 var(--r)}
+.fstep:last-child{border-radius:0 var(--r) var(--r) 0}
+.fstep .fl{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--navy);margin-bottom:4px}
+.fstep .fd{font-size:11px;color:var(--muted);line-height:1.4}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ba-bad{background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:14px 16px;font-size:13.5px}
+.ba-good{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:14px 16px;font-size:13.5px}
+.ba-lbl{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;display:block;margin-bottom:8px}
+.ba-bad .ba-lbl{color:#DC2626}.ba-good .ba-lbl{color:var(--gdk)}
+
+/* ── PROMPT BOX ── */
+.pw{position:relative;margin-top:12px}
+.pb{background:#1C2B3A;color:#E2EAF0;border-radius:8px;padding:16px 18px;
+  font-family:'Courier New',Consolas,monospace;font-size:13px;line-height:1.7;
+  white-space:pre-wrap;word-break:break-word}
+.cpbtn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);color:#E2EAF0;font-family:inherit;
+  font-size:11px;font-weight:700;padding:4px 10px;border-radius:5px;cursor:pointer;transition:.15s}
+.cpbtn:hover{background:rgba(255,255,255,.22)}.cpbtn.ok{background:var(--green);border-color:var(--green)}
+
+/* ── ACCORDION ── */
+.cases{display:flex;flex-direction:column;gap:10px}
+.ci{background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
+.ct{width:100%;padding:16px 20px;display:flex;align-items:center;gap:12px;
+  cursor:pointer;background:none;border:none;text-align:left;font-family:inherit}
+.ct:hover{background:var(--sky)}
+.cn{width:30px;height:30px;background:var(--navy);color:#fff;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.ctxt{flex:1}.ctxt strong{display:block;font-size:14px;font-weight:700;color:var(--text)}
+.ctxt span{font-size:12px;color:var(--muted)}
+.carr{font-size:18px;color:var(--muted);transition:.2s;flex-shrink:0}
+.ci.open .carr{transform:rotate(90deg)}
+.cb{display:none;padding:0 20px 20px;border-top:1px solid var(--bdr)}
+.ci.open .cb{display:block}
+.cscen{margin:14px 0 10px;font-size:13.5px;color:var(--muted)}
+.ttag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:20px;color:#fff;margin-bottom:10px}
+
+/* ── RULES ── */
+.rules{display:flex;flex-direction:column;gap:12px}
+.rule{background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:16px 20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sh)}
+.rn{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+.rc h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.rc p{font-size:13.5px;color:var(--muted);line-height:1.6}
+
+/* ── TOOL PAGE ── */
+.tp{background:var(--w);min-height:100vh}
+.tp-hero{padding:32px 48px 28px;color:#fff}
+.tp-hero.chatgpt{background:linear-gradient(135deg,#0D7A5E,var(--chatgpt))}
+.tp-hero.claude{background:linear-gradient(135deg,#A83500,var(--claude))}
+.tp-hero.gemini{background:linear-gradient(135deg,#1A56D6,#7C3AED)}
+.tp-hero.copilot{background:linear-gradient(135deg,#005A9E,var(--copilot))}
+.tp-hero-in{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:24px}
+.tp-logo{width:72px;height:72px;background:rgba(255,255,255,.15);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tp-logo svg{width:44px;height:44px}
+.tp-hero h1{font-size:28px;font-weight:900;line-height:1.2;margin-bottom:6px}
+.tp-hero p{font-size:14px;opacity:.85;max-width:520px;line-height:1.6}
+.tp-hero .back-btn{margin-top:16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
+  color:#fff;padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
+.tp-hero .back-btn:hover{background:rgba(255,255,255,.3)}
+.tp-body{max-width:960px;margin:0 auto;padding:40px 48px 80px}
+.step-list{display:flex;flex-direction:column;gap:28px}
+.step{display:flex;gap:20px}
+.step-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0;margin-top:2px}
+.chatgpt .step-num{background:var(--chatgpt)}.claude .step-num{background:var(--claude)}
+.gemini .step-num{background:var(--gemini)}.copilot .step-num{background:var(--copilot)}
+.step-body{flex:1}
+.step-body h3{font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px}
+.step-body p{font-size:14px;color:var(--muted);margin-bottom:10px;line-height:1.65}
+.step-body ul{margin-left:18px;margin-bottom:10px}
+.step-body ul li{font-size:13.5px;color:var(--muted);margin-bottom:4px;line-height:1.5}
+.ui-mock{background:#1e2a35;border-radius:10px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:12px;color:#8BA5BF;line-height:1.6}
+.ui-mock .mock-bar{background:#152330;border-radius:6px;padding:8px 12px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.ui-mock .mock-dot{width:9px;height:9px;border-radius:50%}
+.mock-chat{background:#0f1922;border-radius:6px;padding:10px;margin-bottom:8px}
+.mock-msg{padding:7px 10px;border-radius:6px;margin-bottom:6px;font-size:11.5px}
+.mock-msg.user{background:#1A5FAD22;color:#90b8d8;text-align:right}
+.mock-msg.ai{background:#ffffff0f;color:#c0d4e0}
+.mock-input{background:#152330;border-radius:6px;padding:8px 12px;color:#5a7a90;display:flex;justify-content:space-between}
+.ex-box{background:var(--sky2);border:1px solid var(--bdr);border-radius:var(--r);padding:20px 22px;margin-top:24px}
+.ex-box h3{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;
+  display:flex;align-items:center;gap:8px}
+.ex-box p{font-size:13.5px;color:var(--muted);margin-bottom:10px}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.ex-card{background:var(--w);border:1px solid var(--bdr);border-radius:8px;padding:16px}
+.ex-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.tip-box{background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;
+  border-radius:var(--r);padding:22px 26px;margin-top:28px;display:flex;gap:14px}
+.tip-box .ti{font-size:24px;flex-shrink:0}
+.tip-box h3{font-size:15px;font-weight:800;margin-bottom:6px}
+.tip-box ul{list-style:none;margin:0}
+.tip-box ul li{font-size:13px;opacity:.9;margin-bottom:4px;padding-left:14px;position:relative}
+.tip-box ul li::before{content:'→';position:absolute;left:0;opacity:.7}
+
+@media(max-width:860px){
+  .sidebar{display:none}.main{padding:24px 20px 60px}
+  .tools-grid,.ba,.ex-grid,.fsteps,.stats-row{grid-template-columns:1fr}
+  .fstep::after{display:none!important}.fstep{border-radius:var(--r)!important}
+  .tp-body{padding:28px 20px 60px}.tp-hero{padding:24px 20px 20px}
+  .topnav-inner{gap:8px}.tool-nav .tool-btn span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ TOP NAV ══════════════════════ -->
+<header class="topnav">
+<div class="topnav-inner">
+  <a class="brand" href="#" onclick="showPage('main')">
+    <!-- Logo oficial Mutua Madrileña — fuente: Wikimedia Commons CC BY-SA 3.0 -->
+    <svg class="brand-wordmark" viewBox="0 0 378.86477 132.44916" xmlns="http://www.w3.org/2000/svg">
+      <rect width="378.86477" height="132.44916" rx="6" fill="white"/>
+      <g transform="translate(-178.571487,-1058.66008)">
+        <g transform="matrix(0.12129981,0,0,0.12129981,310.86688,1030.8322)">
+          <path d="m 1635.0164,963.90894 c 2.7054,-16.2551 13.9024,-32.9832 24.8681,-37.1523 4.8737,-1.853 17.068,-1.5799 23.0065,0.5153 2.8067,0.9903 11.1899,5.2091 18.629,9.375 16.6205,9.3075 21.0318,9.833 27.2446,3.2455 2.4773,-2.6267 4.7173,-6.8048 5.6964,-10.625 l 1.6136,-6.296 9.9378,0 9.9379,0 -0.7049,5.9511 c -1.7014,14.3654 -9.6589,28.1217 -19.9469,34.4823 -11.8881,7.3498 -21.7445,5.9479 -43.7145,-6.2177 -8.0536,-4.4596 -16.6254,-8.4301 -19.0482,-8.8233 -3.9072,-0.634 -4.9672,-0.1531 -9.3724,4.2522 -3.2389,3.2388 -5.5086,6.9917 -6.5235,10.7862 l -1.5564,5.8192 -10.4756,0 -10.4756,0 0.8841,-5.3125 z m 333.869,230.89946 c -0.4038,-1.0521 -11.5623,-41.5318 -24.7968,-89.9549 -13.2344,-48.4231 -24.4307,-87.3592 -24.8806,-86.5246 -0.6826,1.2665 -45.4669,164.3586 -48.0418,174.955 l -0.8352,3.4375 49.6442,0 c 44.0523,0 49.5615,-0.2155 48.9102,-1.913 z m -162.0334,119.2883 c 0,-1.2384 26.167,-90.2655 75.2808,-256.1253 9.6699,-32.6563 17.8471,-60.64056 18.1712,-62.18746 0.5792,-2.7639 0.9104,-2.8125 19.1408,-2.8125 l 18.5513,0 2.4999,8.43746 c 13.5286,45.6623 82.7258,279.8621 86.515,292.8125 2.7156,9.2812 5.235,17.8594 5.5985,19.0625 0.605,2.0022 -0.667,2.1875 -15.0134,2.1875 l -15.6742,0 -1.9035,-6.5625 c -1.0469,-3.6094 -6.8948,-24.5625 -12.9953,-46.5625 l -11.0916,-40 -56.2069,-0.3251 -56.2069,-0.3251 -13.012,46.8876 -13.0121,46.8876 -15.3207,0 c -10.3072,0 -15.3209,-0.4499 -15.3209,-1.3747 z m -207.5,-159.907 0,-161.28176 19.6002,0.3443 19.6003,0.3442 9.581,21.87496 c 5.2696,12.0312 26.881,61.25 48.0254,109.375 21.1443,48.125 44.4347,101.2143 51.7562,117.9763 l 13.3119,30.4764 0.3179,-140.1639 0.3179,-140.16376 14.3696,0 14.3696,0 0,161.28166 0,161.2818 -19.5991,-0.3443 -19.5992,-0.3442 -61.3383,-139.8197 -61.3384,-139.8197 -0.3179,140.1322 -0.3179,140.1322 -14.3696,0 -14.3696,0 0,-161.2817 z m -191.25,0.032 0,-161.24996 80,0 80,0 0,12.49996 0,12.5 -65.625,0 -65.625,0 0,58.125 0,58.125 61.25,0 61.25,0 0,12.5 0,12.5 -61.25,0 -61.25,0 0,65.625 0,65.625 67.5,0 67.5,0 0,12.5 0,12.5 -81.875,0 -81.875,0 0,-161.25 z m -182.9166,160.4167 c -0.4584,-0.4584 -0.8334,-73.0209 -0.8334,-161.25 l 0,-160.41666 15,0 15,0 0,148.74996 0,148.75 66.875,0 66.875,0 0,12.5 0,12.5 -81.0416,0 c -44.573,0 -81.4168,-0.375 -81.875,-0.8333 z m -72.0834,-160.4167 0,-161.24996 14.375,0 14.375,0 0,161.24996 0,161.25 -14.375,0 -14.375,0 0,-161.25 z m -115.625,-13.1305 c 19.5683,-4.1084 34.5657,-15.1898 41.9082,-30.9653 5.003,-10.7489 7.0658,-26.9085 5.2403,-41.0507 -2.5276,-19.5803 -8.9821,-31.6107 -21.4628,-40.0036 -13.5187,-9.0912 -25.5662,-11.078 -67.24816,-11.0905 l -31.5625,-0.01 0,62.5 0,62.5 32.1875,-0.022 c 23.44096,-0.016 34.56516,-0.521 40.93746,-1.8588 z m -102.29159,173.5472 c -0.45837,-0.4584 -0.83337,-73.056 -0.83337,-161.3281 l 0,-160.49476 58.4375,0.4596 c 64.65946,0.5086 64.30856,0.47 82.62886,9.11066 18.0927,8.5334 32.6302,27.6448 37.0531,48.7109 2.4333,11.5894 2.3944,35.7013 -0.077,47.8652 -1.0768,5.2991 -4.1415,14.1824 -6.8106,19.7405 -8.4918,17.6829 -20.3244,28.1301 -38.9744,34.4111 l -9.7,3.2668 6.0156,0.7124 c 14.984,1.7747 28.6454,9.5072 35.6522,20.1796 9.5267,14.5108 11.764,26.2577 13.3098,69.886 0.7125,20.1087 1.9794,38.3894 2.9996,43.2826 1.7309,8.3011 6.9202,20.3327 9.4417,21.8911 3.8047,2.3515 -0.24,3.1397 -16.1115,3.1397 l -17.3853,0 -2.6563,-7.8125 c -3.1887,-9.3778 -4.6172,-23.3412 -6.2976,-61.5625 -1.7882,-40.6699 -5.4712,-55.0901 -16.6496,-65.1892 -11.103,-10.0309 -19.7664,-11.7244 -64.3134,-12.5721 l -36.56254,-0.6958 0,73.916 0,73.9161 -14.16662,0 c -7.79175,0 -14.54175,-0.375 -15,-0.8333 z m -125.0065,-28.1278 c 31.61463,-9.6056 47.54075,-33.3514 54.352,-81.0389 1.15888,-8.1135 1.6825,-24.7433 1.653,-52.5 -0.0387,-36.6874 -0.32012,-42.1804 -2.90037,-56.6719 -8.104,-45.5154 -23.592,-66.4278 -55.8065,-75.3517 -5.8385,-1.6173 -15.04588,-2.2062 -41.5625,-2.6582 l -34.0625,-0.5807 0,136.5125 0,136.5125 34.0625,-0.562 c 31.79212,-0.5245 34.7425,-0.7685 44.26437,-3.6616 z m -108.32687,-132.1829 0,-161.35596 45.9375,0.039 c 59.47387,0.05 70.62825,1.4823 92.1875,11.83726 39.7515,19.0929 56.90475,63.9672 56.85962,148.7491 -0.0487,92.7082 -19.74912,138.0384 -67.1405,154.4947 -17.63825,6.1247 -20.79387,6.4175 -75.65662,7.0196 l -52.1875,0.5728 0,-161.356 z m -80.00513,40.8315 c 0,-0.8594 -7.02062,-27.1563 -15.59525,-58.4375 -8.5745,-31.2812 -19.37462,-70.7969 -24.00025,-87.8125 -4.6255,-17.0156 -8.726,-30.9375 -9.11225,-30.9375 -0.62212,0 -47.11675,168.4876 -48.5195,175.8254 l -0.55912,2.9246 48.89575,0 c 38.286,0 48.89462,-0.339 48.89062,-1.5625 z m -161.883,118.7872 c 0.309,-0.8798 5.6875,-19.0372 11.95213,-40.3497 6.26475,-21.3125 19.53875,-66.3125 29.49775,-100 41.85475,-141.5779 52.93825,-179.24646 52.93825,-179.91676 0,-0.3895 8.34025,-0.7082 18.534,-0.7082 l 18.534,0 5.82375,19.68746 c 35.33725,119.459 44.22112,149.5051 48.3245,163.4375 22.32525,75.8025 40.003,135.3782 40.71862,137.2259 0.80338,2.0744 -0.2295,2.2021 -15.16725,1.875 l -16.02925,-0.3509 -4.15962,-15 c -6.92738,-24.9815 -17.947,-64.5909 -19.90913,-71.5625 l -1.847,-6.5625 -56.1375,0 -56.1375,0 -0.71087,2.8125 c -0.391,1.5469 -6.189,22.5 -12.88463,46.5625 l -12.17362,43.75 -15.86425,0.3497 c -12.46225,0.2746 -15.74388,0.01 -15.30238,-1.25 z m -271.86187,-159.7247 0,-161.24996 25.3125,0.01 25.3125,0.01 14.77287,54.67826 c 39.45038,146.0152 62.53488,230.2873 62.9645,229.8576 0.522,-0.522 4.9065,-16.6015 68.38775,-250.8043 l 8.9785,-33.12496 24.01075,-0.3395 24.01063,-0.3395 0,161.27696 0,161.277 -14.375,0 -14.375,0 -0.13838,-144.6875 c -0.0763,-79.5781 -0.0213,-146.0938 0.12125,-147.8125 0.49375,-5.9373 -1.03162,-1.7993 -6.68112,18.125 -3.11913,11 -19.99725,70.625 -37.50688,132.5 -17.50962,61.875 -33.711,119.1085 -36.003,127.1856 l -4.16725,14.6856 -13.80825,0 -13.80825,0 -22.33337,-79.0625 c -12.28325,-43.4844 -26.4005,-93.4063 -31.37163,-110.9375 -4.971,-17.5313 -13.38837,-47.3438 -18.70525,-66.25 -5.31675,-18.9063 -10.14062,-35.2188 -10.71949,-36.25 -0.579,-1.0313 -1.06988,64.3593 -1.09075,145.3125 l -0.0376,147.1872 -14.375,0 -14.375,0 0,-161.25 z m -121.86876,38.4375 c -0.366512,-1.5469 -6.28915,-32.3438 -13.161412,-68.4375 -6.87225,-36.0938 -12.8418,-67.0313 -13.265663,-68.75 -0.674225,-2.734 -26.63985,131.3488 -26.6879,137.8125 -0.015,2.0161 2.091775,2.1875 26.88255,2.1875 l 26.898813,0 -0.666388,-2.8125 z m -154.381237,121.2151 c 0,-0.8786 5.08585,-21.5504 11.301887,-45.9375 6.21605,-24.387 15.8156,-62.0588 21.33235,-83.7151 5.516763,-21.6563 12.484925,-48.9375 15.484838,-60.625 2.9999,-11.6875 11.156062,-43.75 18.124787,-71.25 6.968738,-27.5 13.2176498,-52.1094 13.8864628,-54.68746 l 1.216037,-4.6875 47.7643132,0.031 47.764325,0.031 39.791867,160.28156 c 21.8855,88.1549 39.74488,160.7036 39.6875,161.2192 -0.13737,1.234 -78.854367,1.2216 -78.854367,-0.013 0,-0.9671 -7.6665,-41.776 -10.098625,-53.7555 l -1.336125,-6.5804 -38.267388,0.3304 -38.2674372,0.3304 -2.8395,15.625 c -1.561725,8.5938 -4.065413,22.2344 -5.563775,30.3125 l -2.724275,14.6875 -39.2014378,0 c -30.984587,0 -39.201437,-0.3348 -39.201437,-1.5974 z m -375.000003,-128.4026 0,-130 -33.75,0 -33.75,0 0,-31.25 0,-31.24996 105.625,0 105.625,0 0,31.24996 0,31.25 -33.75,0 -33.75,0 0,130 0,130 -38.125,0 -38.125,0 0,-130 z m -627.50004,-31.2629 0,-161.26276 55.8787,0.3253 55.87874,0.3254 19.68409,104.37496 c 10.82623,57.4062 19.76013,104.6563 19.85312,105 0.30448,1.1256 4.57618,-21.8372 21.16048,-113.75 8.99357,-49.8438 16.63108,-91.89056 16.97225,-93.43746 l 0.62028,-2.8125 54.97619,0 54.97619,0 0,161.24996 0,161.25 -35.625,0 -35.625,0 -0.1361,-123.4375 -0.1361,-123.4375 -12.80519,64.375 c -7.04286,35.4063 -18.01816,90.9531 -24.38957,123.4375 l -11.58438,59.0625 -29.60631,0 -29.6063,0 -25.55555,-123.6903 -25.55554,-123.6903 -0.3186,123.6903 -0.3185,123.6903 -34.369,0 -34.3689,0 0,-161.2629 z m 863.12504,165.7572 c -50.39009,-8.4153 -73.82089,-36.1435 -78.1158,-92.4428 -0.70204,-9.2026 -1.25446,-64.3887 -1.25616,-125.489 l -0.003,-109.06246 38.125,0 38.125,0 0,117.84526 c 0,74.6082 0.48016,121.6746 1.3087,128.2824 2.82548,22.5336 13.20667,32.5562 32.14632,31.0359 10.92534,-0.877 17.08965,-5.128 22.16998,-15.2886 6.44824,-41.1887 3.26587,-17.5981 4.09114,-134.6875 l 0.34115,-127.18746 38.142,0 38.142003,0 -0.37824,124.68746 c 0.01797,117.8434 3.708909,81.6887 -3.78313,137.1875 -5.180053,19.017 -10.882763,29.5508 -22.066473,40.7604 -11.29037,11.3166 -24.60633,18.419 -42.10276,22.4567 -14.4358,3.3314 -50.07214,4.3761 -64.88569,1.9022 z m -448.75,0.027 c -37.09986,-6.1025 -59.71905,-23.1175 -70.63868,-53.1368 -7.98918,-21.9633 -7.94567,-21.1708 -8.43166,-153.572 l -0.44161,-120.31246 38.14275,0 38.14275,0 0.37692,125.31246 c 0.35854,119.193 0.49229,125.6327 2.73898,131.8699 5.22539,14.5066 15.34495,21.1929 30.26259,19.9955 10.9453,-0.8786 17.14123,-5.113 22.33228,-15.2621 6.05245,-40.1124 3.49125,-28.2581 4.10682,-134.6391 l 0.34115,-127.27666 38.09635,0 38.09636,0 -0.008,118.43746 c -0.007,128.5592 -0.18181,132.3833 -6.93158,152.5019 -4.58848,13.6767 -8.79413,20.8999 -17.62656,30.2737 -11.8616,12.5887 -25.99013,19.9478 -47.24485,24.6084 -12.05355,2.643 -48.23623,3.351 -61.31464,1.1998 z" fill="#013893"/>
+          <path d="m 213.93829,885.89134 c -1.04325,-1.0432 -1.1175,-85.7322 -0.0775,-88.4424 0.66188,-1.725 4.48888,-1.9772 30,-1.9772 l 29.24125,0 0.0275,-22.8125 0.0275,-22.8125 7.55063,22.8125 7.55075,22.8125 28.67237,0 c 15.76975,0 29.09425,0.1406 29.60987,0.3125 0.51563,0.1719 4.97488,-11.5 9.9095,-25.9375 l 8.972,-26.25 0.09,25.9221 0.09,25.9222 95.9375,0.3278 c 52.76563,0.1804 96.4245,-0.047 97.01988,-0.5044 0.59525,-0.4578 1.02125,-10.7234 0.94662,-22.8125 -0.075,-12.0891 0.31,-21.9802 0.8545,-21.9802 0.54463,0 4.23538,10.1349 8.20163,22.522 l 7.21137,22.5221 30.09175,-0.3346 30.09175,-0.3345 8.26,-24.6007 c 4.543,-13.5303 8.55013,-24.883 8.90488,-25.2282 0.35462,-0.3451 0.79812,10.7 0.9855,24.5446 0.1875,13.8447 0.4845,25.3159 0.66012,25.4915 0.17575,0.1757 16.8885,0.4822 37.1395,0.6811 l 36.82,0.3617 0,45 0,45 -256.97625,0.3155 c -141.33687,0.1735 -257.3525,-0.061 -257.8125,-0.5209 z" fill="#00a5d2"/>
+          <path d="m 106.85204,764.95434 0,-18.0175 20.37162,-0.42 c 22.18513,-0.4575 25.94688,-1.5247 28.43413,-8.0668 0.727,-1.9122 1.19425,-47.391 1.19425,-116.2467 0,-122.4255 0.23212,-118.1174 -6.5755,-122.007 -1.80225,-1.0298 -9.92412,-1.8222 -22.7995,-2.2246 l -20,-0.625 0,-18.125 0,-18.125 76.46238,-0.3221 76.46237,-0.322 1.272,4.072 c 0.6995,2.2397 6.67962,21.5096 13.28913,42.8221 6.6095,21.3125 15.89137,51.125 20.62625,66.25 4.735,15.125 13.42062,42.9177 19.30162,61.7614 5.88087,18.8438 10.89763,34.4667 11.1485,34.7175 0.25075,0.2508 1.61175,-2.7919 3.0245,-6.7615 3.09275,-8.6903 3.58675,-10.0965 41.1765,-117.2174 l 29.82725,-85 74.1455,0 74.14562,0 32.66063,104.6408 c 18.8685,60.4524 33.05075,103.9436 33.58462,102.9897 1.18625,-2.1197 2.93925,-7.0308 27.93263,-78.2555 11.45937,-32.6562 24.20175,-68.9375 28.3165,-80.625 4.11475,-11.6875 9.6235,-27.4375 12.24162,-35 l 4.76038,-13.75 73.561,0 73.561,0 0,18.125 0,18.125 -21.66813,0.625 -21.66812,0.625 -3.64438,4.0822 -3.64437,4.0822 0,112.7928 c 0,104.9137 0.1545,113.0922 2.1875,117.079 4.36625,8.5627 6.89062,9.4169 29.14737,9.8623 l 19.91313,0.3985 0,18.039 0,18.039 -85,0 -85,0 0,-18.0196 0,-18.0197 20.9375,-0.4178 c 17.96925,-0.3587 21.50025,-0.7584 24.90687,-2.8199 8.34238,-5.0483 7.99375,0.5605 7.619,-122.5515 l -0.33837,-111.2036 -46.25,136.503 -46.25,136.5029 -20.625,0.01 -20.625,0.01 -19.78725,-60.9337 c -10.883,-33.5136 -30.85175,-94.9326 -44.375,-136.4867 l -24.58775,-75.5529 -0.379,107.4279 c -0.2635,74.6624 0.0387,109.3342 0.99237,113.678 2.878,13.1157 8.09263,15.625 32.4715,15.625 l 17.54013,0 0,18.125 0,18.125 -84.375,0 -84.375,0 0,-18.125 0,-18.125 19.0625,-0.027 c 15.91175,-0.023 19.91325,-0.4138 24.20937,-2.3648 9.98475,-4.5342 9.23875,5.2663 9.14,-120.0734 -0.08,-101.659 -0.2625,-111.4514 -1.9925,-106.9094 -1.0475,2.75 -7.1465,20.4688 -13.5535,39.375 -6.407,18.9063 -21.29512,62.7813 -33.08487,97.5 -11.78975,34.7188 -26.38775,77.75 -32.44013,95.625 l -11.00437,32.5 -20.67525,0.3422 -20.67525,0.3422 -2.6895,-8.4672 c -1.47925,-4.657 -7.102,-21.9672 -12.495,-38.4672 -5.39313,-16.5 -16.09588,-49.4062 -23.784,-73.125 -27.41788,-84.5875 -47.38,-145.6731 -48.60988,-148.75 -0.847,-2.1189 -1.27462,32.9785 -1.32837,109.019 l -0.0787,112.144 3.69,4.2027 c 5.101,5.8097 10.76712,7.1343 30.5175,7.1343 l 17.0425,0 0,18.125 0,18.125 -76.25,0 -76.25,0 0,-18.0174 z" fill="#013893"/>
+          <path d="m 223.10204,731.72174 c -2.44263,-2.4426 -2.49775,-4.0986 -2.40138,-72.1875 0.0537,-38.3281 0.33,-69.125 0.6125,-68.4375 0.28263,0.6875 6.18738,18.6875 13.12175,40 6.93438,21.3125 17.065,52.4016 22.5125,69.0869 5.44763,16.6853 9.90463,31.1697 9.90463,32.1875 0,1.5594 -3.24588,1.8506 -20.625,1.8506 -18.95838,0 -20.827,-0.202 -23.125,-2.5 z" fill="#00a5d2"/>
+          <path d="m 369.35204,733.06324 c 0,-0.6371 6.65212,-21.309 14.7825,-45.9375 8.1305,-24.6284 19.23988,-59.0594 24.6875,-76.5131 l 9.905,-31.7342 0.32237,75.3749 c 0.29426,68.8056 0.14113,75.575 -1.75624,77.6716 -1.87338,2.0701 -4.34238,2.2968 -25.00988,2.2968 -13.2465,0 -22.93125,-0.4893 -22.93125,-1.1585 z" fill="#00a5d2"/>
+          <path d="m 511.17879,731.16214 -3.05963,-3.0597 0.12875,-68.303 c 0.0713,-37.5667 0.56725,-67.8305 1.10313,-67.2529 0.536,0.5776 10.96337,31.9877 23.17212,69.8002 12.20863,37.8125 22.45613,69.4531 22.772,70.3125 0.44488,1.2104 -4.11575,1.5625 -20.24125,1.5625 -20.418,0 -20.874,-0.058 -23.87512,-3.0596 z" fill="#00a5d2"/>
+          <path d="m 656.85204,732.85074 c 0,-0.7541 8.12987,-26.2072 18.06637,-56.5625 9.93638,-30.3553 21.13013,-64.754 24.87488,-76.4415 l 6.80862,-21.25 0.12513,75.8666 0.125,75.8666 -2.77813,1.9459 c -2.2615,1.584 -6.91062,1.9459 -25,1.9459 -15.289,0 -22.22187,-0.4277 -22.22187,-1.371 z" fill="#00a5d2"/>
+          <path d="m 299.35416,542.34964 -29.37287,-94.3779 -26.70662,0 -26.7065,0 0.83,-5.5346 c 2.81137,-18.748 13.66875,-51.8157 23.25275,-70.82 20.20787,-40.0706 53.33475,-76.9253 91.20112,-101.4641 59.86738,-38.7962 135.94988,-50.6991 205.72688,-32.1854 45.51237,12.0755 84.37912,34.9591 118.1195,69.5451 27.5715,28.2626 46.36212,58.4838 59.05525,94.98 4.09475,11.7734 10.84837,38.8181 10.84837,43.442 0,1.8088 -2.57525,2.037 -22.99125,2.037 -20.72287,0 -23.07937,0.2158 -23.8845,2.1875 -5.34862,13.0983 -53.181,156.9068 -58.83075,176.875 -1.313,4.6406 -2.72712,8.4375 -3.1425,8.4375 -0.41537,0 -1.45062,-2.3906 -2.3005,-5.3125 -0.84987,-2.9219 -13.3845,-43.2812 -27.85462,-89.6875 -14.47025,-46.4062 -26.829,-86.2071 -27.46388,-88.4463 l -1.15437,-4.0714 -83.34213,0.3214 -83.342,0.3213 -7.18412,20.625 c -10.89588,31.2816 -44.03688,131.1398 -49.15963,148.125 -2.48825,8.25 -4.90675,15.9857 -5.37438,17.1904 -0.53387,1.3751 -11.78237,-32.9353 -30.22325,-92.1875 z" fill="#00a5d2"/>
+        </g>
+      </g>
+    </svg>
+    <span class="brand-sub">FORMACIÓN IA DIRECTIVOS 2026</span>
+  </a>
+  <div class="nav-divider"></div>
+  <div class="nav-links" id="mainNav">
+    <a href="#ia-hoy" onclick="showPage('main')">IA Hoy</a>
+    <a href="#herramientas" onclick="showPage('main')">Herramientas</a>
+    <a href="#prompt" onclick="showPage('main')">El Prompt</a>
+    <a href="#casos" onclick="showPage('main')">Casos</a>
+    <a href="#reglas" onclick="showPage('main')">Reglas</a>
+    <a href="#taller" onclick="showPage('main')">Taller</a>
+  </div>
+  <button class="btn-home" id="btnHome" onclick="showPage('main')">← Inicio</button>
+  <div class="tool-nav">
+    <button class="tool-btn chatgpt" onclick="showPage('chatgpt')">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M22.282 9.821a5.985 5.985 0 00-.516-4.91 6.046 6.046 0 00-6.51-2.9A6.065 6.065 0 004.981 4.18a5.985 5.985 0 00-3.998 2.9 6.046 6.046 0 00.743 7.097 5.98 5.98 0 00.51 4.911 6.051 6.051 0 006.515 2.9A5.985 5.985 0 0013.26 24a6.056 6.056 0 005.772-4.206 5.99 5.99 0 003.997-2.9 6.056 6.056 0 00-.747-7.073zM13.26 22.43a4.476 4.476 0 01-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 00.392-.681v-6.737l2.02 1.168a.071.071 0 01.038.052v5.583a4.504 4.504 0 01-4.494 4.494zM3.6 18.304a4.47 4.47 0 01-.535-3.014l.142.085 4.783 2.759a.771.771 0 00.78 0l5.843-3.369v2.332a.08.08 0 01-.033.062L9.74 19.95a4.5 4.5 0 01-6.14-1.646zM2.34 7.896a4.485 4.485 0 012.366-1.973V11.6a.766.766 0 00.388.676l5.815 3.355-2.02 1.168a.076.076 0 01-.071 0l-4.83-2.786A4.504 4.504 0 012.34 7.896zm16.597 3.855l-5.833-3.387 2.02-1.168a.076.076 0 01.071 0l4.83 2.786a4.494 4.494 0 01-.676 8.105v-5.678a.79.79 0 00-.412-.658zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 00-.785 0L9.409 9.23V6.897a.066.066 0 01.028-.061l4.83-2.787a4.5 4.5 0 016.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 01-.038-.057V6.075a4.5 4.5 0 017.375-3.453l-.142.08L8.704 5.46a.795.795 0 00-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
+      <span>ChatGPT</span>
+    </button>
+    <button class="tool-btn claude" onclick="showPage('claude')">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.304 1.31C13.533.36 9.536 2.594 8.1 6.243L5.52 12.94c-.162.43-.243.881-.243 1.34 0 2.122 1.72 3.843 3.842 3.843.46 0 .91-.08 1.34-.243l3.996-1.498c-.43 1.141-.648 2.35-.648 3.575 0 .466.038.932.113 1.392l.112.674H15.9l-.112-.674a8.618 8.618 0 01-.113-1.392c0-1.576.432-3.117 1.247-4.457l1.93-3.165.002-.004c1.863-3.124 1.37-7.116-1.55-9.022zM8.85 16.505a2.216 2.216 0 01-1.73-3.573l2.578-6.697c1.147-2.98 4.386-4.705 7.513-3.92 2.186.56 3.402 2.782 2.534 4.857l-1.928 3.162c-.628 1.028-.96 2.2-.96 3.4 0 .27.016.54.046.807l-2.01-.001a9.6 9.6 0 00-.033-.806c0-1.574.454-3.113 1.308-4.44l1.93-3.162c.544-1.286-.188-2.744-1.564-3.098-2.44-.624-4.98.783-5.858 3.056L7.1 12.786a.58.58 0 00-.042.215.59.59 0 00.59.59c.074 0 .147-.014.215-.041l4.257-1.596a5.95 5.95 0 012.104-.383c.3 0 .6.023.895.07l.002 1.627a4.385 4.385 0 00-.897-.092 4.325 4.325 0 00-1.528.279L8.44 14.051a2.22 2.22 0 01-.785.143l.003.02a2.22 2.22 0 01-.808-.149v.44z"/></svg>
+      <span>Claude</span>
+    </button>
+    <button class="tool-btn gemini" onclick="showPage('gemini')">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C10.6 6.4 7.6 9.4 2 12c5.6 2.6 8.6 5.6 10 10 1.4-4.4 4.4-7.4 10-10-5.6-2.6-8.6-5.6-10-10z"/></svg>
+      <span>Gemini</span>
+    </button>
+    <button class="tool-btn copilot" onclick="showPage('copilot')">
+      <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="12" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="12" width="10" height="10" fill="#00A4EF"/><rect x="12" y="12" width="10" height="10" fill="#FFB900"/></svg>
+      <span>Copilot</span>
+    </button>
+  </div>
+</div>
+</header>
+
+<!-- ══════════════════════ MAIN PAGE ══════════════════════ -->
+<div id="page-main" class="page active">
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-label">Sesión · 2 horas</div>
+  <nav><ul>
+    <li><a href="#ia-hoy" id="nl-ia">🌍 IA hoy <span class="sb-time">20'</span></a></li>
+    <li><a href="#herramientas" id="nl-h">🛠 Herramientas <span class="sb-time">25'</span></a></li>
+    <li><a href="#prompt" id="nl-p">💬 El Prompt <span class="sb-time">20'</span></a></li>
+    <li><a href="#casos" id="nl-c">📋 Casos prácticos <span class="sb-time">20'</span></a></li>
+    <li><a href="#reglas" id="nl-r">✅ Reglas de oro <span class="sb-time">5'</span></a></li>
+    <li><a href="#taller" id="nl-t">🎯 Taller <span class="sb-time">30'</span></a></li>
+  </ul></nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- HERO -->
+<div class="hero">
+  <h2>La IA ya está aquí.<br>La pregunta es cómo usarla bien.</h2>
+  <p>En estas 2 horas aprenderás qué es la IA generativa, qué puede hacer por ti como directivo hoy mismo, y practicarás con las cuatro herramientas principales. Sin tecnicismos. Con prompts listos para copiar.</p>
+  <div class="chips">
+    <span class="chip navy">⏱ 2 horas de sesión</span>
+    <span class="chip blue">🎯 Nivel ejecutivo · No técnico</span>
+    <span class="chip green">🚀 Práctica inmediata</span>
+  </div>
+</div>
+
+<!-- AGENDA -->
+<div class="agenda-row">
+  <div class="ag-item"><div class="ag-time">20'</div><div class="ag-label">IA Hoy y su evolución</div></div>
+  <div class="ag-arrow">→</div>
+  <div class="ag-item"><div class="ag-time">25'</div><div class="ag-label">Las 4 herramientas</div></div>
+  <div class="ag-arrow">→</div>
+  <div class="ag-item"><div class="ag-time">20'</div><div class="ag-label">El arte del prompt</div></div>
+  <div class="ag-arrow">→</div>
+  <div class="ag-item"><div class="ag-time">20'</div><div class="ag-label">Casos prácticos</div></div>
+  <div class="ag-arrow">→</div>
+  <div class="ag-item"><div class="ag-time">5'</div><div class="ag-label">Reglas de oro</div></div>
+  <div class="ag-arrow">→</div>
+  <div class="ag-item"><div class="ag-time">30'</div><div class="ag-label">Taller por herramienta</div></div>
+</div>
+
+<!-- §1 IA HOY -->
+<section class="section" id="ia-hoy">
+  <div class="sec-hd">
+    <div class="sec-icon">🌍</div>
+    <div><h2>La IA hoy: de dónde venimos y dónde estamos</h2>
+    <p>70 años de historia comprimidos en el contexto que necesitas</p></div>
+    <span class="time-badge">⏱ 20 min</span>
+  </div>
+  <p class="intro">La Inteligencia Artificial no apareció de la noche a la mañana. Lleva décadas en desarrollo, pero algo cambió en noviembre de 2022 que lo aceleró todo. Para entender dónde estamos y adónde vamos, es fundamental conocer ese recorrido.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1950</div>
+      <div class="tl-text">Alan Turing publica <strong>"¿Pueden pensar las máquinas?"</strong> y propone el Test de Turing. El punto de partida intelectual de toda la IA.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">1997</div>
+      <div class="tl-text"><strong>Deep Blue (IBM)</strong> vence al campeón mundial de ajedrez Garry Kasparov. Primera vez que una máquina supera a un humano en una tarea cognitiva compleja.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2012</div>
+      <div class="tl-text"><strong>Breakthrough del Deep Learning:</strong> las redes neuronales profundas revolucionan el reconocimiento de imágenes. El modelo empieza a "ver". Esta arquitectura es el cimiento de todo lo que vino después.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2017</div>
+      <div class="tl-text">Google publica <strong>"Attention is All You Need"</strong>, el paper que inventa la arquitectura Transformer. Es la base técnica de ChatGPT, Claude, Gemini y todos los modelos actuales. El momento más importante en la historia de la IA moderna.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2020</div>
+      <div class="tl-text">OpenAI lanza <strong>GPT-3</strong> con 175.000 millones de parámetros. Por primera vez, una IA escribe textos prácticamente indistinguibles de los humanos. Acceso restringido por su potencia.</div>
+    </div>
+    <div class="tl-item milestone">
+      <div class="tl-dot"></div>
+      <div class="tl-year">NOV 2022 — EL MOMENTO QUE CAMBIA TODO</div>
+      <div class="tl-text"><strong>Lanzamiento de ChatGPT:</strong> 1 millón de usuarios en 5 días · 100 millones en 2 meses. El producto de mayor adopción en la historia de la tecnología. Por primera vez, cualquier persona puede conversar con una IA capaz.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2023</div>
+      <div class="tl-text"><strong>La guerra de los modelos:</strong> GPT-4 (OpenAI) · Google Bard/Gemini · Claude 1 (Anthropic) · Microsoft Copilot integrado en Office. La IA generativa se convierte en producto de consumo masivo.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2024</div>
+      <div class="tl-text"><strong>IA multimodal y agentes:</strong> los modelos ven, escuchan, generan imágenes y vídeo. Aparecen los primeros agentes capaces de realizar tareas autónomas (buscar información, ejecutar código, gestionar calendarios).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2025</div>
+      <div class="tl-text"><strong>IA agentic:</strong> modelos que trabajan durante horas de forma autónoma, delegan subtareas a otros modelos, navegan por internet y ejecutan flujos de trabajo completos sin intervención humana.</div>
+    </div>
+    <div class="tl-item milestone">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2026 — HOY</div>
+      <div class="tl-text"><strong>IA operativa:</strong> el 76% de los grandes ejecutivos del sector asegurador ya tienen IA generativa en producción. La transición es de "prepararse para la IA" a "depender de la IA". El que no se suma, pierde ventaja competitiva mensurable.</div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-n">100M</div>
+      <div class="stat-l">usuarios de ChatGPT en 2 meses.<br>TikTok tardó 9 meses; Instagram, 2,5 años</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">+21%</div>
+      <div class="stat-l">crecimiento de ingresos adicional en empresas que adoptan IA como capacidad central vs. las que no</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">22%</div>
+      <div class="stat-l">de las empresas aseguradoras con IA han llegado a producción real. El 78% restante está aún en piloto</div>
+    </div>
+  </div>
+</section>
+
+<!-- §2 HERRAMIENTAS -->
+<section class="section" id="herramientas">
+  <div class="sec-hd">
+    <div class="sec-icon">🛠</div>
+    <div><h2>Las cuatro herramientas que debes conocer</h2>
+    <p>Cada una con sus puntos fuertes · No es necesario usar todas</p></div>
+    <span class="time-badge">⏱ 25 min</span>
+  </div>
+  <p class="intro">La IA generativa funciona como un asistente inteligente al que le hablas en lenguaje natural y te responde. Existen cuatro herramientas principales. La elección depende de qué tareas quieres acelerar y qué entorno de trabajo ya usas.</p>
+
+  <div class="tools-grid">
+    <div class="tc chatgpt">
+      <div class="tc-hd">
+        <div class="tc-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M22.282 9.821a5.985 5.985 0 00-.516-4.91 6.046 6.046 0 00-6.51-2.9A6.065 6.065 0 004.981 4.18a5.985 5.985 0 00-3.998 2.9 6.046 6.046 0 00.743 7.097 5.98 5.98 0 00.51 4.911 6.051 6.051 0 006.515 2.9A5.985 5.985 0 0013.26 24a6.056 6.056 0 005.772-4.206 5.99 5.99 0 003.997-2.9 6.056 6.056 0 00-.747-7.073zM13.26 22.43a4.476 4.476 0 01-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 00.392-.681v-6.737l2.02 1.168a.071.071 0 01.038.052v5.583a4.504 4.504 0 01-4.494 4.494zM3.6 18.304a4.47 4.47 0 01-.535-3.014l.142.085 4.783 2.759a.771.771 0 00.78 0l5.843-3.369v2.332a.08.08 0 01-.033.062L9.74 19.95a4.5 4.5 0 01-6.14-1.646zM2.34 7.896a4.485 4.485 0 012.366-1.973V11.6a.766.766 0 00.388.676l5.815 3.355-2.02 1.168a.076.076 0 01-.071 0l-4.83-2.786A4.504 4.504 0 012.34 7.896zm16.597 3.855l-5.833-3.387 2.02-1.168a.076.076 0 01.071 0l4.83 2.786a4.494 4.494 0 01-.676 8.105v-5.678a.79.79 0 00-.412-.658zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 00-.785 0L9.409 9.23V6.897a.066.066 0 01.028-.061l4.83-2.787a4.5 4.5 0 016.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 01-.038-.057V6.075a4.5 4.5 0 017.375-3.453l-.142.08L8.704 5.46a.795.795 0 00-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg></div>
+        <div><div class="tc-name">ChatGPT</div><div class="tc-co">OpenAI · GPT-4o</div></div>
+      </div>
+      <p class="tc-tag">"La más versátil. Tu copiloto para el día a día."</p>
+      <ul>
+        <li>Redacción, resúmenes y brainstorming</li>
+        <li>Analiza imágenes, gráficos y documentos</li>
+        <li>Genera código, tablas y presentaciones</li>
+        <li>Enterprise garantiza confidencialidad de datos</li>
+        <li>300M de usuarios activos semanales (2025)</li>
+      </ul>
+      <span class="tc-best">Ideal para: redacción, análisis general, ideas</span>
+      <button class="tc-btn" onclick="showPage('chatgpt')">→ Taller práctico ChatGPT</button>
+    </div>
+
+    <div class="tc claude">
+      <div class="tc-hd">
+        <div class="tc-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-1.6-.097-.628-.17-.243-.37.12-.436.364-.291 1.042-.073 1.067.024.936.072 2.024.121 1.843.17.17-.194-.17-.146-1.14-.776-1.964-1.31-1.432-.996-.692-.558-.424-.606-.073-.667.194-.485.497-.267.546.024.643.364.837.606 1.674 1.261 1.552 1.164.194-.17V9.927l-.097-1.528-.146-2.065-.049-1.916.025-.97.34-.752.606-.291.655.17.461.546.12.776.049.921-.049 1.746-.12 1.867v.364l.218-.146 1.189-1.552 1.286-1.576.946-1.02.788-.727.739-.388.667.097.558.46.073.667-.146.509-.461.558-.894.934-1.164 1.381-1.14 1.6-.17.146.048.073.461-.34 1.698-1.028 1.891-1.02 1.504-.679.897-.243 1.02.146.606.509.243.752-.267.606-.849.388-1.552.655-1.965.825-1.746.763-.17.146.073.17.97.049 1.697.097 1.916.17 1.31.291.897.412.461.606.049.606-.364.461-.824.097-.897-.097-1.746-.388-1.819-.315-.826-.049.073.194 1.165 1.552.533.776.388.849.049.9-.146.63-.461.29-.703-.048-.752-.461-.667-.849-1.02-1.455-.824-1.237-.073.073-.073 1.916-.049 1.843-.146 1.334-.291.849-.509.606-.655.194-.58-.267-.388-.703.024-.897.315-1.164.388-1.649.388-1.649.17-.946-.097-.049-.703.606-.703.606-.679.606-.411.97-.267.994.049.49.267.34.509-.049.655-.388.606-.46.533-.727.727z"/></svg></div>
+        <div><div class="tc-name">Claude</div><div class="tc-co">Anthropic · Claude 4</div></div>
+      </div>
+      <p class="tc-tag">"La analista. Perfecta para documentos extensos."</p>
+      <ul>
+        <li>Analiza documentos de hasta 200.000 palabras</li>
+        <li>Razonamiento riguroso, menos errores factuales</li>
+        <li>Excelente en comparativas de contratos y propuestas</li>
+        <li>Projects: memoria y contexto entre conversaciones</li>
+        <li>Ideal para informes de auditoría y análisis profundo</li>
+      </ul>
+      <span class="tc-best">Ideal para: informes largos, contratos, análisis</span>
+      <button class="tc-btn" onclick="showPage('claude')">→ Taller práctico Claude</button>
+    </div>
+
+    <div class="tc gemini">
+      <div class="tc-hd">
+        <div class="tc-logo"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C10.6 6.4 7.6 9.4 2 12c5.6 2.6 8.6 5.6 10 10 1.4-4.4 4.4-7.4 10-10-5.6-2.6-8.6-5.6-10-10z"/></svg></div>
+        <div><div class="tc-name">Gemini</div><div class="tc-co">Google · Gemini 2.0</div></div>
+      </div>
+      <p class="tc-tag">"Tu IA dentro de Google. Sin cambiar de herramienta."</p>
+      <ul>
+        <li>Integrada en Gmail, Google Docs, Sheets, Meet, Slides</li>
+        <li>Trabaja directamente en Drive sin salir del entorno</li>
+        <li>Acceso a búsqueda web en tiempo real (contexto actualizado)</li>
+        <li>Incluida en Google Workspace Business sin coste extra</li>
+        <li>Menor curva de adopción si ya usas Google</li>
+      </ul>
+      <span class="tc-best">Ideal para: usuarios Google Workspace</span>
+      <button class="tc-btn" onclick="showPage('gemini')">→ Taller práctico Gemini</button>
+    </div>
+
+    <div class="tc copilot">
+      <div class="tc-hd">
+        <div class="tc-logo"><svg viewBox="0 0 23 23" fill="none"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="12" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="12" width="10" height="10" fill="#00A4EF"/><rect x="12" y="12" width="10" height="10" fill="#FFB900"/></svg></div>
+        <div><div class="tc-name">Microsoft Copilot</div><div class="tc-co">Microsoft · M365 Copilot</div></div>
+      </div>
+      <p class="tc-tag">"Dentro de tu Office. IA sin salir de donde ya trabajas."</p>
+      <ul>
+        <li>Integrado en Word, Excel, PowerPoint, Outlook, Teams</li>
+        <li>Resume reuniones de Teams automáticamente al terminar</li>
+        <li>Genera presentaciones PowerPoint desde texto en Word</li>
+        <li>Analiza hojas Excel con preguntas en lenguaje natural</li>
+        <li>Redacta respuestas a emails con contexto del hilo</li>
+      </ul>
+      <span class="tc-best">Ideal para: usuarios Office 365 · máxima integración</span>
+      <button class="tc-btn" onclick="showPage('copilot')">→ Taller práctico Copilot</button>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px">Comparativa rápida</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Herramienta</th><th>Ventana contexto</th><th>Documentos</th><th>Integración</th><th>Coste corp.</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--chatgpt)"></span>ChatGPT</td><td>128K tokens (~300 pág)</td><td>PDF, Word, imágenes</td><td>Web, app móvil, API</td><td>~30 €/usuario/mes</td></tr>
+      <tr><td><span class="dot" style="background:var(--claude)"></span>Claude</td><td>200K tokens (~500 pág)</td><td>PDF, Word, imágenes, código</td><td>Web, app móvil, API</td><td>~25 €/usuario/mes</td></tr>
+      <tr><td><span class="dot" style="background:var(--gemini)"></span>Gemini</td><td>1M tokens (1.500 pág)</td><td>Drive, PDF, vídeo</td><td>Gmail, Docs, Sheets, Meet</td><td>Incluido Workspace Business</td></tr>
+      <tr><td><span class="dot" style="background:var(--copilot)"></span>Copilot</td><td>Según app (32-128K)</td><td>Word, Excel, PPT, email</td><td>Office 365 nativo</td><td>~30 €/usuario/mes</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- §3 PROMPT -->
+<section class="section" id="prompt">
+  <div class="sec-hd">
+    <div class="sec-icon">💬</div>
+    <div><h2>El arte del prompt: hablar con la IA</h2>
+    <p>La calidad de lo que obtienes depende directamente de la calidad de lo que pides</p></div>
+    <span class="time-badge">⏱ 20 min</span>
+  </div>
+  <p class="intro">Un <strong>prompt</strong> es lo que le escribes a la IA. No hay que ser técnico — basta una fórmula sencilla. La diferencia entre un prompt básico y uno bien construido puede ser la diferencia entre un resultado inútil y uno que te ahorra dos horas de trabajo.</p>
+
+  <div class="formula">
+    <h3>La fórmula del buen prompt</h3>
+    <div class="fsteps">
+      <div class="fstep"><div class="fl">🎭 Rol</div><div class="fd">Qué papel debe adoptar la IA</div></div>
+      <div class="fstep"><div class="fl">📋 Contexto</div><div class="fd">La situación de partida</div></div>
+      <div class="fstep"><div class="fl">🎯 Tarea</div><div class="fd">Qué quieres exactamente</div></div>
+      <div class="fstep"><div class="fl">📄 Formato</div><div class="fd">Cómo quieres el output</div></div>
+    </div>
+    <div class="ba">
+      <div class="ba-bad"><span class="ba-lbl">❌ Sin fórmula</span>"Resume este informe."<br><br><em style="font-size:12px;color:#9CA3AF">La IA no sabe qué destacar, para quién, ni qué formato necesitas. Resultado: genérico e inútil.</em></div>
+      <div class="ba-good"><span class="ba-lbl">✅ Con fórmula</span>"Actúa como analista ejecutivo de seguros [ROL]. Te paso el informe de siniestralidad Q1 [CONTEXTO]. Resúmelo en 5 puntos clave para el comité de dirección, indicando tendencia vs. año anterior y si requiere decisión [TAREA]. Formato bullet points, máximo 2 líneas por punto [FORMATO]."</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin:20px 0 12px">Técnicas avanzadas</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;box-shadow:var(--sh)">
+      <strong style="font-size:13px;color:var(--navy)">🔄 Iterar si el resultado no es bueno</strong>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">Añade: "Inténtalo de nuevo, pero más conciso y orientado a la decisión" o "Necesito que sea más ejecutivo, sin tecnicismos"</p>
+    </div>
+    <div style="background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;box-shadow:var(--sh)">
+      <strong style="font-size:13px;color:var(--navy)">📎 Añade el documento directamente</strong>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">En Claude y ChatGPT puedes adjuntar el PDF y preguntar directamente sobre él. No hace falta copiar el texto.</p>
+    </div>
+    <div style="background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;box-shadow:var(--sh)">
+      <strong style="font-size:13px;color:var(--navy)">🎭 Simula un interlocutor</strong>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">"Actúa como el consejero más escéptico. Dame las 5 objeciones más duras que plantearías a este plan."</p>
+    </div>
+    <div style="background:var(--w);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;box-shadow:var(--sh)">
+      <strong style="font-size:13px;color:var(--navy)">✉️ Pide múltiples versiones</strong>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">"Dame 3 versiones de este comunicado: una formal para el consejo, una más cercana para empleados y una breve para redes internas."</p>
+    </div>
+  </div>
+</section>
+
+<!-- §4 CASOS -->
+<section class="section" id="casos">
+  <div class="sec-hd">
+    <div class="sec-icon">📋</div>
+    <div><h2>Cinco casos prácticos · Prompts listos para usar</h2>
+    <p>Copia, adapta los corchetes y usa directamente · Abre el caso para ver el prompt completo</p></div>
+    <span class="time-badge">⏱ 20 min</span>
+  </div>
+  <div class="cases">
+
+    <div class="ci" id="c1">
+      <button class="ct" onclick="tog('c1')">
+        <div class="cn">1</div>
+        <div class="ctxt"><strong>Resumir un informe antes de una reunión</strong><span>Convierte 40 páginas en 5 puntos accionables en menos de 1 minuto</span></div>
+        <span class="carr">›</span>
+      </button>
+      <div class="cb">
+        <p class="cscen">Tienes el informe trimestral de siniestralidad, un estudio de mercado o un informe de auditoría y la reunión empieza en 30 minutos.</p>
+        <span class="ttag" style="background:var(--claude)">Recomendado: Claude (sube el PDF directamente)</span>
+        <div class="pw"><pre class="pb">Actúa como analista ejecutivo experto en el sector asegurador.
+[Adjunta el documento o pega el texto aquí]
+
+Resúmelo en:
+1. Los 3 datos más relevantes con su contexto
+2. Las alertas o riesgos que merecen atención del comité
+3. Las decisiones concretas que este informe implica
+
+Sé conciso. El resultado debe poder leerse en 3 minutos.</pre>
+        <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="ci" id="c2">
+      <button class="ct" onclick="tog('c2')">
+        <div class="cn">2</div>
+        <div class="ctxt"><strong>Preparar la agenda de un comité de dirección</strong><span>De una lista de temas a una agenda estructurada con tiempos y responsables</span></div>
+        <span class="carr">›</span>
+      </button>
+      <div class="cb">
+        <span class="ttag" style="background:var(--chatgpt)">Recomendado: ChatGPT o Claude</span>
+        <div class="pw"><pre class="pb">Prepara la agenda de una reunión de comité de dirección de 2 horas.
+Los temas a tratar son: [lista tus temas].
+
+Para cada punto:
+- Tiempo asignado
+- Tipo: informativo / debate / decisión
+- Quién lidera
+
+Añade 10' de varios al final y un bloque de compromisos de cierre.</pre>
+        <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="ci" id="c3">
+      <button class="ct" onclick="tog('c3')">
+        <div class="cn">3</div>
+        <div class="ctxt"><strong>Redactar un comunicado interno difícil</strong><span>Anticipa preguntas, calibra el tono y genera el borrador en segundos</span></div>
+        <span class="carr">›</span>
+      </button>
+      <div class="cb">
+        <span class="ttag" style="background:var(--copilot)">Recomendado: ChatGPT o Microsoft Copilot (en Outlook/Word)</span>
+        <div class="pw"><pre class="pb">Redacta un comunicado interno para los empleados de una aseguradora española.
+El mensaje principal es: [describe el cambio o noticia].
+Tono: directo, positivo y transparente.
+Anticipa las 3 preguntas más probables y respóndelas en el comunicado.
+Extensión máxima: una página A4.</pre>
+        <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="ci" id="c4">
+      <button class="ct" onclick="tog('c4')">
+        <div class="cn">4</div>
+        <div class="ctxt"><strong>Comparar dos propuestas de proveedor</strong><span>De dos documentos densos a una tabla comparativa con recomendación clara</span></div>
+        <span class="carr">›</span>
+      </button>
+      <div class="cb">
+        <span class="ttag" style="background:var(--claude)">Recomendado: Claude (sube ambos documentos)</span>
+        <div class="pw"><pre class="pb">Tengo dos propuestas para [proyecto]. Adjunto / pego ambas a continuación.
+
+Analízalas y devuélveme una tabla comparativa con:
+coste total · tiempo de implementación · riesgos identificados
+· referencias en seguros · soporte post-venta · flexibilidad contractual
+
+Termina con una recomendación razonada de máximo 4 líneas.</pre>
+        <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+      </div>
+    </div>
+
+    <div class="ci" id="c5">
+      <button class="ct" onclick="tog('c5')">
+        <div class="cn">5</div>
+        <div class="ctxt"><strong>Anticipar objeciones antes de presentar al consejo</strong><span>Prepárate para las preguntas más duras antes de entrar en la sala</span></div>
+        <span class="carr">›</span>
+      </button>
+      <div class="cb">
+        <span class="ttag" style="background:var(--chatgpt)">Recomendado: ChatGPT o Claude</span>
+        <div class="pw"><pre class="pb">Voy a presentar al consejo de administración la siguiente iniciativa:
+[describe la iniciativa en 2-3 párrafos]
+
+Actúa como el consejero más escéptico de la sala.
+Dame las 6 objeciones más probables, ordenadas de mayor a menor criticidad.
+Para cada una: la objeción exacta tal como la plantearía el consejero
++ la respuesta más sólida que yo podría dar.</pre>
+        <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- §5 REGLAS -->
+<section class="section" id="reglas">
+  <div class="sec-hd">
+    <div class="sec-icon">✅</div>
+    <div><h2>Cinco reglas de oro para usar IA con criterio</h2>
+    <p>Lo que separa el buen uso del uso que puede generar problemas</p></div>
+    <span class="time-badge">⏱ 5 min</span>
+  </div>
+  <div class="rules">
+    <div class="rule"><div class="rn">1</div><div class="rc"><h3>Trata el output como un borrador, nunca como el resultado final</h3><p>La IA puede equivocarse — especialmente con datos numéricos, fechas y referencias normativas. Antes de presentarlo o tomar una decisión, revisa siempre. Es un analista junior muy rápido, no un oráculo.</p></div></div>
+    <div class="rule"><div class="rn">2</div><div class="rc"><h3>Nunca metas datos confidenciales en herramientas externas sin licencia corporativa</h3><p>Información de clientes, datos financieros no públicos o estrategias confidenciales no deben entrar en versiones gratuitas. Las versiones Enterprise (ChatGPT Enterprise, Claude for Business, Copilot M365) tienen contrato de confidencialidad y no usan tus datos para entrenar los modelos.</p></div></div>
+    <div class="rule"><div class="rn">3</div><div class="rc"><h3>Da contexto específico para obtener respuestas específicas</h3><p>La IA responde exactamente en función de lo que le dices. Un prompt con Rol + Contexto + Tarea + Formato produce resultados diez veces más útiles que un prompt genérico de dos palabras.</p></div></div>
+    <div class="rule"><div class="rn">4</div><div class="rc"><h3>Si el resultado no es bueno, reformula · No abandones</h3><p>Un mal primer resultado casi siempre se resuelve con un ajuste del prompt: añade contexto, cambia el formato pedido o simplemente escribe "inténtalo de nuevo, pero más conciso y orientado a la decisión ejecutiva".</p></div></div>
+    <div class="rule"><div class="rn">5</div><div class="rc"><h3>La IA acelera tu trabajo · Tú mantienes el criterio y la responsabilidad</h3><p>La IA no decide por ti ni debería hacerlo. El valor directivo no está en procesar información — está en interpretarla, contextualizarla y tomar decisiones. La IA hace lo primero más rápido; lo segundo sigue siendo tuyo.</p></div></div>
+  </div>
+</section>
+
+<!-- §6 TALLER -->
+<section class="section" id="taller">
+  <div class="sec-hd">
+    <div class="sec-icon">🎯</div>
+    <div><h2>Taller práctico por herramienta</h2>
+    <p>Elige la herramienta que quieres explorar primero · Guía paso a paso</p></div>
+    <span class="time-badge">⏱ 30 min</span>
+  </div>
+  <p class="intro">En los próximos 30 minutos, cada uno entra en su herramienta preferida y sigue la guía paso a paso. El objetivo: hacer tu primer prompt real sobre algo de tu trabajo de esta semana.</p>
+  <div class="tools-grid">
+    <div style="background:var(--chatgpt);border-radius:var(--r);padding:22px;color:#fff;cursor:pointer;transition:.15s" onclick="showPage('chatgpt')" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <div style="font-size:28px;margin-bottom:10px">🟢</div>
+      <strong style="font-size:17px;display:block;margin-bottom:6px">ChatGPT</strong>
+      <p style="font-size:13px;opacity:.85;margin-bottom:14px">Para redacción, brainstorming y análisis general. La más fácil para empezar.</p>
+      <span style="background:rgba(255,255,255,.2);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700">Acceder al taller →</span>
+    </div>
+    <div style="background:var(--claude);border-radius:var(--r);padding:22px;color:#fff;cursor:pointer;transition:.15s" onclick="showPage('claude')" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <div style="font-size:28px;margin-bottom:10px">🟠</div>
+      <strong style="font-size:17px;display:block;margin-bottom:6px">Claude</strong>
+      <p style="font-size:13px;opacity:.85;margin-bottom:14px">Para documentos largos, análisis profundo y comparativa de propuestas.</p>
+      <span style="background:rgba(255,255,255,.2);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700">Acceder al taller →</span>
+    </div>
+    <div style="background:linear-gradient(135deg,#4285F4,#7C3AED);border-radius:var(--r);padding:22px;color:#fff;cursor:pointer;transition:.15s" onclick="showPage('gemini')" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <div style="font-size:28px;margin-bottom:10px">🔵</div>
+      <strong style="font-size:17px;display:block;margin-bottom:6px">Gemini</strong>
+      <p style="font-size:13px;opacity:.85;margin-bottom:14px">Para usuarios de Google Workspace: Gmail, Docs, Sheets y Meet.</p>
+      <span style="background:rgba(255,255,255,.2);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700">Acceder al taller →</span>
+    </div>
+    <div style="background:var(--copilot);border-radius:var(--r);padding:22px;color:#fff;cursor:pointer;transition:.15s" onclick="showPage('copilot')" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <div style="font-size:28px;margin-bottom:10px">🔷</div>
+      <strong style="font-size:17px;display:block;margin-bottom:6px">Microsoft Copilot</strong>
+      <p style="font-size:13px;opacity:.85;margin-bottom:14px">Integrado en Teams, Outlook, Word, Excel y PowerPoint.</p>
+      <span style="background:rgba(255,255,255,.2);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700">Acceder al taller →</span>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</div><!-- end page-main -->
+
+<!-- ══════════════════════ PAGE: CHATGPT ══════════════════════ -->
+<div id="page-chatgpt" class="page tp chatgpt">
+  <div class="tp-hero chatgpt">
+    <div class="tp-hero-in">
+      <div class="tp-logo"><svg viewBox="0 0 24 24" fill="white" width="44" height="44"><path d="M22.282 9.821a5.985 5.985 0 00-.516-4.91 6.046 6.046 0 00-6.51-2.9A6.065 6.065 0 004.981 4.18a5.985 5.985 0 00-3.998 2.9 6.046 6.046 0 00.743 7.097 5.98 5.98 0 00.51 4.911 6.051 6.051 0 006.515 2.9A5.985 5.985 0 0013.26 24a6.056 6.056 0 005.772-4.206 5.99 5.99 0 003.997-2.9 6.056 6.056 0 00-.747-7.073zM13.26 22.43a4.476 4.476 0 01-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 00.392-.681v-6.737l2.02 1.168a.071.071 0 01.038.052v5.583a4.504 4.504 0 01-4.494 4.494zM3.6 18.304a4.47 4.47 0 01-.535-3.014l.142.085 4.783 2.759a.771.771 0 00.78 0l5.843-3.369v2.332a.08.08 0 01-.033.062L9.74 19.95a4.5 4.5 0 01-6.14-1.646zM2.34 7.896a4.485 4.485 0 012.366-1.973V11.6a.766.766 0 00.388.676l5.815 3.355-2.02 1.168a.076.076 0 01-.071 0l-4.83-2.786A4.504 4.504 0 012.34 7.896zm16.597 3.855l-5.833-3.387 2.02-1.168a.076.076 0 01.071 0l4.83 2.786a4.494 4.494 0 01-.676 8.105v-5.678a.79.79 0 00-.412-.658zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 00-.785 0L9.409 9.23V6.897a.066.066 0 01.028-.061l4.83-2.787a4.5 4.5 0 016.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 01-.038-.057V6.075a4.5 4.5 0 017.375-3.453l-.142.08L8.704 5.46a.795.795 0 00-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg></div>
+      <div>
+        <h1>ChatGPT · Taller Práctico</h1>
+        <p>El copiloto más versátil · Ideal para redacción, brainstorming y análisis general</p>
+        <button class="back-btn" onclick="showPage('main')">← Volver al inicio</button>
+      </div>
+    </div>
+  </div>
+  <div class="tp-body">
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Acceder a ChatGPT</h3>
+          <p>Abre el navegador y ve a <strong>chatgpt.com</strong>. Si no tienes cuenta, haz clic en "Sign up" y regístrate con tu email o cuenta de Google/Microsoft. Es gratuito para empezar.</p>
+          <div class="ui-mock">
+            <div class="mock-bar"><div class="mock-dot" style="background:#FF5F57"></div><div class="mock-dot" style="background:#FFBD2E;margin-left:4px"></div><div class="mock-dot" style="background:#28CA41;margin-left:4px"></div><span style="margin-left:12px;color:#5A7A90">chatgpt.com</span></div>
+            <div style="display:flex;gap:10px">
+              <div style="width:160px;background:#152330;border-radius:6px;padding:10px;font-size:11px">
+                <div style="color:#4A6A80;margin-bottom:8px;font-size:10px">CHATS RECIENTES</div>
+                <div style="color:#7A9AB0;padding:5px;border-radius:4px;margin-bottom:4px">+ Nuevo chat</div>
+                <div style="color:#4A6A80;padding:5px">Reunión Q3...</div>
+                <div style="color:#4A6A80;padding:5px">Análisis pro...</div>
+              </div>
+              <div style="flex:1;background:#0f1922;border-radius:6px;padding:14px;text-align:center">
+                <div style="color:#5A7A90;font-size:14px;margin-bottom:14px">¿En qué puedo ayudarte hoy?</div>
+                <div style="background:#152330;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+                  <span style="color:#4A6A80;font-size:12px">Escribe un mensaje...</span>
+                  <span style="color:var(--chatgpt)">↑</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--muted)"><strong>Versión de pago (ChatGPT Plus · 20€/mes):</strong> Acceso al modelo GPT-4o completo, sin límites de velocidad y con capacidad de subir archivos más grandes. Para uso corporativo, solicitar licencia Enterprise a IT.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>La interfaz en 60 segundos</h3>
+          <ul>
+            <li><strong>Barra lateral izquierda:</strong> historial de conversaciones anteriores. Puedes retomar cualquier chat.</li>
+            <li><strong>Selector de modelo (arriba):</strong> elige GPT-4o para las tareas más exigentes.</li>
+            <li><strong>Cuadro de texto (abajo):</strong> aquí escribes tu prompt. Pulsa Enter o el botón ↑ para enviar.</li>
+            <li><strong>Clip 📎:</strong> sube un archivo PDF, Word o imagen para que ChatGPT lo analice.</li>
+            <li><strong>Botón de iteración:</strong> si el resultado no es bueno, sigue en el mismo chat y pide ajustes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Ejercicio 1 · Tu primer prompt ejecutivo</h3>
+          <p>Copia este prompt, adapta el texto entre corchetes y pégalo en ChatGPT ahora mismo.</p>
+          <div class="pw"><pre class="pb">Actúa como mi asistente ejecutivo experto en comunicación corporativa.
+Tengo una reunión importante en 2 horas sobre [describe el tema].
+Las personas que asistirán son [tipo de audiencia].
+Prepárame:
+1. Los 3 puntos clave que debo transmitir
+2. Las 3 preguntas difíciles que probablemente me harán
+3. Una propuesta de apertura de 2-3 frases para empezar con impacto</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Ejercicio 2 · Analizar un gráfico o documento</h3>
+          <p>ChatGPT puede ver imágenes. Si tienes un gráfico de resultados o un dashboard, haz una captura de pantalla, súbela con el clip 📎 y usa este prompt:</p>
+          <div class="pw"><pre class="pb">En la imagen adjunta aparece [describe brevemente lo que es].
+Analízala e indícame:
+1. Cuál es la tendencia principal que muestra
+2. Qué dato es más preocupante y por qué
+3. Qué conclusión llevarías a un comité de dirección en una sola frase</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="ti">💡</div>
+      <div>
+        <h3>Tips para directivos en ChatGPT</h3>
+        <ul>
+          <li>Empieza siempre un chat nuevo para cada tema diferente — mantiene el contexto limpio</li>
+          <li>Si la respuesta es demasiado larga: "Hazlo más conciso, máximo 5 bullets"</li>
+          <li>Si es demasiado genérica: "Más específico para el sector asegurador español"</li>
+          <li>Puedes pedirle que te haga preguntas: "¿Qué más necesitas saber para darme una mejor respuesta?"</li>
+          <li>Para uso corporativo confidencial: pide licencia ChatGPT Enterprise a IT — los datos no se usan para entrenar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGE: CLAUDE ══════════════════════ -->
+<div id="page-claude" class="page tp claude">
+  <div class="tp-hero claude">
+    <div class="tp-hero-in">
+      <div class="tp-logo"><svg viewBox="0 0 32 32" fill="white" width="44" height="44"><path d="M9.5 6l-7 18h4l1.5-4h7l1.5 4h4L14 6H9.5zm2 4.5l2.5 6.5h-5l2.5-6.5zM20 6v18h4V6h-4z"/></svg></div>
+      <div>
+        <h1>Claude · Taller Práctico</h1>
+        <p>La analista · Perfecta para documentos extensos y razonamiento profundo</p>
+        <button class="back-btn" onclick="showPage('main')">← Volver al inicio</button>
+      </div>
+    </div>
+  </div>
+  <div class="tp-body">
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Acceder a Claude</h3>
+          <p>Ve a <strong>claude.ai</strong>. Crea una cuenta con tu email o cuenta de Google. El plan gratuito es suficiente para empezar. Claude Pro (18€/mes) ofrece más capacidad y acceso a los modelos más potentes.</p>
+          <div class="ui-mock">
+            <div class="mock-bar"><div class="mock-dot" style="background:#FF5F57"></div><div class="mock-dot" style="background:#FFBD2E;margin-left:4px"></div><div class="mock-dot" style="background:#28CA41;margin-left:4px"></div><span style="margin-left:12px;color:#5A7A90">claude.ai</span></div>
+            <div style="display:flex;gap:10px">
+              <div style="width:160px;background:#2A1A10;border-radius:6px;padding:10px;font-size:11px">
+                <div style="color:#8A5A3A;margin-bottom:8px;font-size:10px">PROJECTS</div>
+                <div style="color:#CF4500;padding:5px;border-radius:4px;margin-bottom:4px">+ Nuevo proyecto</div>
+                <div style="color:#6A4A3A;padding:5px">Informe Q2</div>
+              </div>
+              <div style="flex:1;background:#1A0E08;border-radius:6px;padding:14px;text-align:center">
+                <div style="color:#8A6A5A;font-size:14px;margin-bottom:14px">Hola, soy Claude ¿En qué te ayudo?</div>
+                <div style="background:#2A1A10;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+                  <span style="color:#6A4A3A;font-size:12px">Escribe un mensaje... 📎</span>
+                  <span style="color:#CF4500">↑</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>El superpoder de Claude: subir documentos largos</h3>
+          <p>A diferencia de ChatGPT, Claude está optimizado para leer y analizar documentos muy extensos sin perder contexto. Puedes subir un PDF de 100 páginas y preguntarle sobre cualquier parte.</p>
+          <ul>
+            <li><strong>Clic en el clip 📎</strong> junto al cuadro de texto para subir PDF, Word o texto</li>
+            <li>Sube el documento y luego escribe tu pregunta en el mismo mensaje</li>
+            <li>Claude leerá el documento completo antes de responder</li>
+            <li><strong>Projects:</strong> crea un proyecto para un tema recurrente y Claude recordará el contexto entre sesiones</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Ejercicio 1 · Analizar un informe extenso</h3>
+          <p>Sube un informe real (resultados, auditoría, estudio de mercado) y usa este prompt:</p>
+          <div class="pw"><pre class="pb">[Adjunta el documento PDF]
+
+Actúa como analista senior del sector asegurador.
+He adjuntado [nombre/tipo del informe].
+
+Por favor:
+1. Dame un resumen ejecutivo de máximo 5 puntos
+2. Identifica los 3 indicadores más preocupantes con su contexto
+3. Señala cualquier contradicción o dato incoherente que encuentres
+4. Lista las decisiones que este documento implica para el comité de dirección</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Ejercicio 2 · Comparar dos propuestas de proveedor</h3>
+          <p>Sube ambas propuestas (o pega el texto) y pide una comparativa estructurada:</p>
+          <div class="pw"><pre class="pb">[Adjunta Propuesta A y Propuesta B]
+
+Compara estas dos propuestas para [tipo de proyecto].
+Devuélveme:
+- Una tabla comparativa con: precio total, plazo de entrega,
+  riesgos, referencias en el sector asegurador, y soporte incluido
+- Un análisis de qué propuesta es más fuerte en cada criterio
+- Tu recomendación final en 3-4 líneas, con el principal argumento
+  a favor y el principal riesgo de la opción recomendada</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="ti">💡</div>
+      <div>
+        <h3>Tips para directivos en Claude</h3>
+        <ul>
+          <li>Claude es más honesto cuando no sabe algo — si dice "no encuentro eso en el documento", cree en él</li>
+          <li>Usa Projects para temas recurrentes: crea uno de "Siniestros Q3" y mantén el contexto durante semanas</li>
+          <li>Pide explícitamente "¿Hay algo en este documento que debería preocuparme y que no te he preguntado?"</li>
+          <li>Para contratos: "Identifica las cláusulas que nos ponen en desventaja y explica por qué"</li>
+          <li>Para uso confidencial: Claude for Business garantiza que los datos no se usan para entrenamiento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGE: GEMINI ══════════════════════ -->
+<div id="page-gemini" class="page tp gemini">
+  <div class="tp-hero gemini">
+    <div class="tp-hero-in">
+      <div class="tp-logo"><svg viewBox="0 0 24 24" fill="white" width="44" height="44"><path d="M12 2C10.6 6.4 7.6 9.4 2 12c5.6 2.6 8.6 5.6 10 10 1.4-4.4 4.4-7.4 10-10-5.6-2.6-8.6-5.6-10-10z"/></svg></div>
+      <div>
+        <h1>Gemini · Taller Práctico</h1>
+        <p>Tu IA dentro de Google Workspace · Gmail, Docs, Sheets y Meet</p>
+        <button class="back-btn" onclick="showPage('main')">← Volver al inicio</button>
+      </div>
+    </div>
+  </div>
+  <div class="tp-body">
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Dónde encontrar Gemini (tres formas)</h3>
+          <ul>
+            <li><strong>Acceso directo:</strong> ve a <strong>gemini.google.com</strong> con tu cuenta de Google corporativa. Interfaz similar a ChatGPT.</li>
+            <li><strong>Dentro de Gmail:</strong> busca el icono de estrella ✦ en la esquina superior derecha de cualquier email.</li>
+            <li><strong>Dentro de Google Docs:</strong> en la barra lateral derecha aparece el panel de Gemini. Si no aparece, en el menú: Extensiones → Gemini.</li>
+            <li><strong>En Google Meet:</strong> durante una reunión, busca "Take notes with Gemini" en los controles.</li>
+          </ul>
+          <p style="font-size:13px;color:var(--muted);margin-top:10px"><strong>Nota:</strong> Gemini está disponible en Google Workspace Business Standard y superior. Si no lo ves, consulta con tu administrador de Google Workspace.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Gemini en Gmail · Resumir y responder emails</h3>
+          <p>Este es uno de los usos de mayor impacto inmediato para un directivo. Abre un email largo o un hilo con muchos mensajes:</p>
+          <ul>
+            <li>Haz clic en el icono ✦ Gemini dentro del email</li>
+            <li>Selecciona <strong>"Summarize this email"</strong> para obtener un resumen en 3-4 puntos</li>
+            <li>O selecciona <strong>"Reply to this email"</strong> y escribe instrucciones</li>
+          </ul>
+          <div class="pw"><pre class="pb">Prompt para responder un email difícil:
+"Redacta una respuesta a este email que:
+- Confirme que hemos recibido la solicitud
+- Explique que necesitamos [X tiempo] para dar una respuesta definitiva
+- Pida [información adicional que necesites]
+- Mantenga un tono profesional pero cercano"</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Gemini en Google Docs · Escribir y mejorar documentos</h3>
+          <p>Abre un Google Doc y en la barra lateral de Gemini puedes:</p>
+          <ul>
+            <li><strong>"Help me write":</strong> crea texto nuevo desde cero con tus instrucciones</li>
+            <li><strong>Selecciona texto → clic derecho → "Refine with Gemini":</strong> mejora, expande o abrevia lo seleccionado</li>
+            <li><strong>"Summarize this document":</strong> resumen del documento completo sin salir de Docs</li>
+          </ul>
+          <div class="pw"><pre class="pb">Prompt para crear un documento ejecutivo:
+"Redacta el borrador de una nota ejecutiva de 2 páginas sobre
+[tema]. Estructura: resumen ejecutivo (5 líneas) + 3 secciones
+principales + conclusiones y próximos pasos.
+Tono: formal, directo, orientado a la decisión."</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Gemini en Google Meet · Notas automáticas de reunión</h3>
+          <p>Antes de empezar una reunión, activa "Take notes with Gemini". Al terminar, Gemini genera automáticamente:</p>
+          <ul>
+            <li>Resumen de los temas tratados</li>
+            <li>Decisiones tomadas en la reunión</li>
+            <li>Action items con responsables (si se mencionaron)</li>
+            <li>El documento se guarda en Google Drive y se comparte con los asistentes</li>
+          </ul>
+          <p style="font-size:13px;color:var(--muted);margin-top:6px"><strong>Requiere:</strong> Google Workspace Business Plus o superior con Gemini para Workspace.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="ti">💡</div>
+      <div>
+        <h3>Tips para directivos en Gemini (Google Workspace)</h3>
+        <ul>
+          <li>Gemini puede acceder a tus archivos de Drive si le das permiso — úsalo para analizar documentos sin subirlos manualmente</li>
+          <li>En Gmail, usa Gemini para gestionar el correo antes de empezar el día: "Resúmeme los 5 emails más urgentes de esta mañana"</li>
+          <li>Para Sheets: "Analiza esta hoja y dime qué tendencias son más relevantes para el comité"</li>
+          <li>Gemini tiene acceso a información actualizada de Google — puede buscar y comparar datos del mercado en tiempo real</li>
+          <li>La privacidad de datos en Workspace Business/Enterprise está garantizada por contrato con Google</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGE: COPILOT ══════════════════════ -->
+<div id="page-copilot" class="page tp copilot">
+  <div class="tp-hero copilot">
+    <div class="tp-hero-in">
+      <div class="tp-logo"><svg viewBox="0 0 23 23" fill="none" width="44" height="44"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="12" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="12" width="10" height="10" fill="#00A4EF"/><rect x="12" y="12" width="10" height="10" fill="#FFB900"/></svg></div>
+      <div>
+        <h1>Microsoft Copilot · Taller Práctico</h1>
+        <p>IA dentro de tu Office · Teams, Outlook, Word, Excel y PowerPoint</p>
+        <button class="back-btn" onclick="showPage('main')">← Volver al inicio</button>
+      </div>
+    </div>
+  </div>
+  <div class="tp-body">
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Dónde encontrar Copilot en cada app</h3>
+          <p>Copilot aparece en todas las apps de Microsoft 365 cuando tienes la licencia M365 Copilot activa (solicitar a IT). Así lo encuentras:</p>
+          <ul>
+            <li><strong>Teams:</strong> botón Copilot en la barra lateral izquierda · En cada chat y reunión aparece el icono ✦ arriba a la derecha</li>
+            <li><strong>Outlook:</strong> icono Copilot en la barra de herramientas al componer un email · En la bandeja de entrada, panel "Prioridad" con resúmenes</li>
+            <li><strong>Word:</strong> botón Copilot en la barra lateral derecha · Aparece también en el margen izquierdo al inicio de cada párrafo</li>
+            <li><strong>PowerPoint:</strong> en la pestaña "Inicio" → botón "Copilot"</li>
+            <li><strong>Excel:</strong> en la pestaña "Inicio" → botón "Copilot" o en el panel lateral</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Copilot en Teams · Resumir reuniones automáticamente</h3>
+          <p>Este es el caso de uso de mayor impacto inmediato. Al terminar una reunión de Teams:</p>
+          <ul>
+            <li>Haz clic en el botón Copilot del chat de la reunión</li>
+            <li>Selecciona <strong>"Recap" o "Meeting summary"</strong></li>
+            <li>Copilot genera: resumen de lo tratado, decisiones tomadas y action items con responsables</li>
+            <li>Puedes preguntar: "¿Qué dijo [nombre] sobre el presupuesto?" y Copilot lo busca en la transcripción</li>
+          </ul>
+          <div class="pw"><pre class="pb">Preguntas útiles en Teams Copilot tras una reunión:
+"¿Cuáles fueron los puntos de desacuerdo en la reunión?"
+"¿Qué compromisos quedaron sin asignación de responsable?"
+"Resume la posición de cada persona sobre [tema clave]"
+"¿Qué decisiones tomamos y qué quedó pendiente?"</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Copilot en Outlook · Gestionar el email</h3>
+          <ul>
+            <li><strong>Al leer:</strong> haz clic en Copilot → "Summarize" para obtener los puntos clave del email en 3 bullets</li>
+            <li><strong>Al responder:</strong> haz clic en "Draft with Copilot" y escribe tus instrucciones en lenguaje natural</li>
+            <li><strong>Longitud y tono:</strong> Copilot te pregunta si quieres la respuesta corta, media o larga, y si el tono debe ser formal, neutral o casual</li>
+          </ul>
+          <div class="pw"><pre class="pb">Instrucciones para Copilot al redactar una respuesta:
+"Redacta una respuesta que confirme la reunión para el martes,
+solicite el orden del día con 48h de antelación y pregunte
+si habrá presentación de datos para poder preparar preguntas.
+Tono: profesional y directo. Extensión: breve."</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Copilot en PowerPoint · Generar presentaciones desde texto</h3>
+          <p>Este es uno de los usos más llamativos de Copilot. Puedes generar una presentación completa a partir de:</p>
+          <ul>
+            <li>Un documento Word existente: "Crea una presentación de 8 diapositivas a partir de este documento"</li>
+            <li>Un texto que escribes directamente: describe el tema, el público y el objetivo</li>
+            <li>Copilot genera las diapositivas con estructura, texto y diseño — tú refinas y añades datos propios</li>
+          </ul>
+          <div class="pw"><pre class="pb">Prompt para generar presentación en PowerPoint:
+"Crea una presentación de 10 diapositivas para el consejo de administración
+sobre [tema]. Incluye: slide de resumen ejecutivo, 3 slides de contexto/problema,
+3 slides de propuesta/solución, 1 slide de inversión y ROI esperado,
+1 slide de plan de implementación y 1 slide de próximos pasos.
+Público: consejo directivo, no técnico. Tono: ejecutivo y directo."</pre>
+          <button class="cpbtn" onclick="cp(this)">⎘ Copiar</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="ti">💡</div>
+      <div>
+        <h3>Tips para directivos en Microsoft Copilot</h3>
+        <ul>
+          <li>Copilot tiene acceso a tu email, calendario y documentos de la organización — puede hacer preguntas cruzadas: "¿De qué trató mi reunión con [empresa] el mes pasado?"</li>
+          <li>En Excel: "¿Cuáles son los tres ramos con mayor crecimiento de siniestralidad en los últimos 6 meses?" — sin fórmulas</li>
+          <li>En Word: selecciona un párrafo técnico → "Explica esto para alguien sin conocimientos técnicos"</li>
+          <li>Copilot chat (en Teams o web) puede combinar información de varios documentos de tu organización a la vez</li>
+          <li>Los datos de M365 Copilot están protegidos por las mismas políticas de seguridad y compliance de Microsoft 365 que ya tienes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer style="background:var(--navy);color:rgba(255,255,255,.55);text-align:center;font-size:12px;padding:14px 24px">
+  <strong style="color:rgba(255,255,255,.8)">Mutua Madrileña · Programa de Capacitación Ejecutiva en IA</strong>
+  &nbsp;·&nbsp; Preparado por Accenture &nbsp;·&nbsp; v2.0 · Junio 2026 &nbsp;·&nbsp; Uso interno y confidencial
+</footer>
+
+<!-- ══════════════════════ JS ══════════════════════ -->
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  const home=document.getElementById('btnHome');
+  const mainNav=document.getElementById('mainNav');
+  if(id==='main'){home.style.display='none';mainNav.style.display='flex'}
+  else{home.style.display='block';mainNav.style.display='none'}
+}
+
+function tog(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+}
+document.getElementById('c1').classList.add('open');
+
+function cp(btn){
+  const pre=btn.previousElementSibling;
+  navigator.clipboard.writeText(pre.textContent).then(()=>{
+    const o=btn.innerHTML; btn.innerHTML='✓ Copiado'; btn.classList.add('ok');
+    setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok')},2000);
+  });
+}
+
+// Active nav on scroll (main page only)
+const secs=['ia-hoy','herramientas','prompt','casos','reglas','taller'];
+const nls={
+  'ia-hoy':'nl-ia','herramientas':'nl-h','prompt':'nl-p',
+  'casos':'nl-c','reglas':'nl-r','taller':'nl-t'
+};
+window.addEventListener('scroll',()=>{
+  if(!document.getElementById('page-main').classList.contains('active'))return;
+  let cur=secs[0];
+  secs.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-80)cur=id});
+  secs.forEach(id=>{const nl=document.getElementById(nls[id]);if(nl)nl.classList.toggle('active',id===cur)});
+},{passive:true});
+</script>
+</body>
+</html>
