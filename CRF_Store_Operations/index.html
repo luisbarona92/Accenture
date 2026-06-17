@@ -357,14 +357,18 @@
     .div{height:1px;margin:22px 0;background:linear-gradient(90deg,transparent,rgba(0,61,165,.15),transparent)}
     .fu{animation:fdSlide .55s ease-out both}
     .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
-    .vc-wrapper{display:flex;flex-direction:column;gap:0;border:1px solid rgba(0,61,165,.15);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.5)}
-    .vc-row{display:flex;gap:0;border-bottom:1px solid rgba(0,61,165,.1)}
-    .vc-row:last-child{border-bottom:none}
-    .vc-level{width:60px;flex-shrink:0;border-right:1px solid rgba(0,61,165,.1);background:rgba(0,61,165,.04);display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700;color:var(--c-blue);padding:8px}
-    .vc-cells{display:flex;gap:0;flex:1}
-    .vc-cell{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 6px;border-right:1px solid rgba(0,61,165,.08);text-align:center;word-break:break-word;font-size:.7rem;color:rgba(0,18,40,.65)}
-    .vc-cell:last-child{border-right:none}
-    .vc-hl{color:#001228;font-weight:700;background:rgba(0,61,165,.04)}
+    .vc-wrapper{background:rgba(255,255,255,.82);border:1px solid rgba(0,61,165,.18);border-radius:16px;padding:8px 20px;margin-bottom:10px;backdrop-filter:blur(6px)}
+    .vc-grid{display:flex;flex-direction:column;gap:4px}
+    .vc-row{display:flex;gap:5px;align-items:center}
+    .vc-level-label{width:34px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.6rem;font-weight:700;color:rgba(0,18,40,.38)}
+    .vc-item{flex:1;min-width:0;background:rgba(255,255,255,.88);border:1px solid rgba(0,61,165,.18);border-radius:8px;padding:4px 4px 3px;text-align:center;font-size:.55rem;font-weight:500;color:rgba(0,18,40,.7);display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.2}
+    .vc-item.vc-hl{background:linear-gradient(160deg,rgba(0,85,200,.18),rgba(0,61,165,.1));border-color:rgba(43,127,224,.35);color:#001228;box-shadow:0 0 18px rgba(0,85,200,.18);font-weight:600}
+    .vc-item-ico{font-size:.75rem}
+    .vc-cell{flex:1;height:14px;background:rgba(0,61,165,.03);border:1px solid rgba(0,61,165,.1);border-radius:5px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.18);font-size:.68rem;letter-spacing:1px;position:relative}
+    .vc-cell.vc-hl{background:rgba(0,85,200,.12);border-color:rgba(43,127,224,.3);color:rgba(0,30,100,.55)}
+    .vc-badge-a{width:18px;height:18px;background:var(--c-blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;box-shadow:0 0 8px rgba(0,61,165,.6)}
+    .vc-badge-b{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:18px;height:18px;background:var(--c-blue3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;box-shadow:0 0 8px rgba(43,127,224,.6);z-index:2}
+    .vc-item-focus{background:linear-gradient(160deg,rgba(0,55,180,.28),rgba(0,61,165,.18)) !important;border-color:rgba(0,85,200,.6) !important;box-shadow:0 0 22px rgba(0,85,200,.35) !important}
     @media(max-width:900px){main{padding:16px 24px 120px}.hero-wrap,.g3,.g2{grid-template-columns:1fr}.slide-title{font-size:1.8rem}.approach-ab{grid-template-columns:1fr;gap:8px}.approach-plus{display:none}.ref-grid{grid-template-columns:1fr}.nav-btn span{display:none}.impact-grid{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
@@ -532,7 +536,7 @@
           <div class="vc-item vc-hl"><span class="vc-item-ico">🛍️</span>Buying &amp; Assortment</div>
           <div class="vc-item vc-hl"><span class="vc-item-ico">🔮</span>Planning</div>
           <div class="vc-item vc-hl"><span class="vc-item-ico">🚚</span>Logistics &amp; Supply</div>
-          <div class="vc-item vc-item-focus"><span class="vc-item-ico">🏬</span><strong>Store Operations</strong></div>
+          <div class="vc-item vc-hl vc-item-focus"><span class="vc-item-ico">🏬</span><strong>Store Operations</strong></div>
           <div class="vc-item vc-hl"><span class="vc-item-ico">👤</span>Customer Service</div>
           <div class="vc-item vc-hl"><span class="vc-item-ico">💻</span>Omnichannel</div>
           <div class="vc-item vc-hl"><span class="vc-item-ico">🏢</span>Corporate</div>
