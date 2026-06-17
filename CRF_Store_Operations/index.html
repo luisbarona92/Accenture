@@ -108,6 +108,28 @@
     .sim-result-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:11px;text-align:center}
     .sim-result-item-val{font-size:1.3rem;font-weight:800;color:#7ecfff;line-height:1}
     .sim-result-item-lbl{font-size:.6rem;color:rgba(255,255,255,.45);margin-top:3px;line-height:1.3}
+    /* Value chain */
+    .vchain-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:10px}
+    .vchain-col{display:flex;flex-direction:column;gap:3px}
+    .vchain-l1{background:rgba(0,18,40,.07);border-radius:7px;padding:7px 6px;font-size:.6rem;font-weight:700;color:#001228;display:flex;align-items:center;gap:4px;min-height:38px}
+    .vchain-l1-ico{font-size:.85rem}
+    .vchain-l2{background:rgba(0,18,40,.03);border:1px solid rgba(0,18,40,.07);border-radius:5px;padding:4px 6px;font-size:.57rem;color:rgba(0,18,40,.55)}
+    .vchain-l2.vchain-l2-hl{background:rgba(0,61,165,.06);border-color:rgba(0,61,165,.15);color:rgba(0,18,40,.75)}
+    .vchain-col.vchain-col-hl .vchain-l1{background:linear-gradient(135deg,rgba(0,61,165,.15),rgba(0,61,165,.08));border:1.5px solid rgba(0,61,165,.3);color:var(--c-blue)}
+    .vchain-col.vchain-col-hl .vchain-l2{background:rgba(0,61,165,.05);border-color:rgba(0,61,165,.12)}
+    .vchain-col.vchain-col-corp .vchain-l1{background:rgba(0,18,40,.05);color:rgba(0,18,40,.5)}
+    /* Approach T-shape */
+    .approach-ab{display:grid;grid-template-columns:1fr 36px 1fr;gap:14px;align-items:center}
+    .approach-point{background:#fff;border:1.5px solid rgba(0,61,165,.15);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+    .approach-plus{text-align:center;font-size:1.4rem;font-weight:300;color:rgba(0,18,40,.3)}
+    .ap-badge{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;margin-top:2px}
+    .ap-badge-a{background:var(--c-blue);color:#fff}
+    .ap-badge-b{background:#00d084;color:#fff}
+    .ap-keyword{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:#001228;margin-right:8px}
+    .ap-subtitle{font-size:.62rem;color:rgba(0,18,40,.45);font-style:italic}
+    .ap-header{margin-bottom:6px}
+    .ap-desc{font-size:.72rem;color:rgba(0,18,40,.65);line-height:1.5;margin-bottom:6px}
+    .ap-output{font-size:.68rem;color:var(--c-blue);font-weight:600}
     /* Financials slide */
     .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
     .fin-left{display:flex;flex-direction:column;gap:14px}
@@ -369,10 +391,10 @@
 
   <nav class="nav-bar">
     <button class="nav-btn active" onclick="goSlide(0, this)"><span class="nav-num">0</span><span>Cover</span></button>
-    <button class="nav-btn" onclick="goSlide(1, this)"><span class="nav-num">1</span><span>Understanding</span></button>
-    <button class="nav-btn" onclick="goSlide(2, this)"><span class="nav-num">2</span><span>Impact</span></button>
-    <button class="nav-btn" onclick="goSlide(3, this)"><span class="nav-num">3</span><span>Approach</span></button>
-    <button class="nav-btn" onclick="goSlide(4, this)"><span class="nav-num">4</span><span>Methodology</span></button>
+    <button class="nav-btn" onclick="goSlide(1, this)"><span class="nav-num">1</span><span>Vision</span></button>
+    <button class="nav-btn" onclick="goSlide(2, this)"><span class="nav-num">2</span><span>Approach</span></button>
+    <button class="nav-btn" onclick="goSlide(3, this)"><span class="nav-num">3</span><span>Scope</span></button>
+    <button class="nav-btn" onclick="goSlide(4, this)"><span class="nav-num">4</span><span>Impact</span></button>
     <button class="nav-btn" onclick="goSlide(5, this)"><span class="nav-num">5</span><span>Team</span></button>
     <button class="nav-btn" onclick="goSlide(6, this)"><span class="nav-num">6</span><span>Accenture</span></button>
     <button class="nav-btn" onclick="goSlide(7, this)"><span class="nav-num">7</span><span>Financials</span></button>
@@ -393,74 +415,272 @@
         </div>
         <div class="hero-panel">
           <div class="hp-title">Agenda</div>
-          <div class="part-row">
-            <div class="pr-num">1</div>
-            <div>
-              <div class="pr-title">Understanding</div>
-              <div class="pr-sub">How we read this RFP and the cases that back it up</div>
-            </div>
-          </div>
-          <div class="part-row">
-            <div class="pr-num">2</div>
-            <div>
-              <div class="pr-title">Impact</div>
-              <div class="pr-sub">Quantified levers — efficiency, productivity and growth</div>
-            </div>
-          </div>
-          <div class="part-row">
-            <div class="pr-num">3</div>
-            <div>
-              <div class="pr-title">Approach</div>
-              <div class="pr-sub">🇫🇷 France + 🇪🇸 Spain in parallel — T-shaped coverage</div>
-            </div>
-          </div>
-          <div class="part-row">
-            <div class="pr-num">4</div>
-            <div>
-              <div class="pr-title">Methodology</div>
-              <div class="pr-sub">8-week plan: field observation to audited business case</div>
-            </div>
-          </div>
-          <div class="part-row">
-            <div class="pr-num">5</div>
-            <div>
-              <div class="pr-title">Team</div>
-              <div class="pr-sub">Senior hypermarket specialists — one team per country</div>
-            </div>
-          </div>
-          <div class="part-row">
-            <div class="pr-num">6</div>
-            <div>
-              <div class="pr-title">Why Accenture</div>
-              <div class="pr-sub">What we know about Carrefour and what we bring</div>
-            </div>
-          </div>
-          <div class="part-row">
-            <div class="pr-num">7</div>
-            <div>
-              <div class="pr-title">Financials</div>
-              <div class="pr-sub">Pricing, commercial model and potential return</div>
-            </div>
-          </div>
+          <div class="part-row"><div class="pr-num">1</div><div><div class="pr-title">Vision</div><div class="pr-sub">Our read of the situation and credentials that back it up</div></div></div>
+<div class="part-row"><div class="pr-num">2</div><div><div class="pr-title">Approach</div><div class="pr-sub">Pilot stores, T-shaped methodology, Breadth + Depth</div></div></div>
+<div class="part-row"><div class="pr-num">3</div><div><div class="pr-title">Scope</div><div class="pr-sub">10-week plan — from discovery to audited business case</div></div></div>
+<div class="part-row"><div class="pr-num">4</div><div><div class="pr-title">Impact</div><div class="pr-sub">Quantified levers — efficiency, productivity and growth</div></div></div>
+<div class="part-row"><div class="pr-num">5</div><div><div class="pr-title">Team</div><div class="pr-sub">Senior hypermarket specialists — one team per country</div></div></div>
+<div class="part-row"><div class="pr-num">6</div><div><div class="pr-title">Accenture</div><div class="pr-sub">Our track record and what we know about Carrefour</div></div></div>
+<div class="part-row"><div class="pr-num">7</div><div><div class="pr-title">Financials</div><div class="pr-sub">Pricing, commercial model and potential return</div></div></div>
         </div>
       </div>
     </section>
 
     <!-- SLIDES 1-6 with full content structure -->
-    <section id="slide-1" class="slide"><div class="slide-header"><div class="slide-tag">01 · Understanding</div><h2 class="slide-title">We know this exercise because <span>we've done it</span></h2></div><div class="inner-tabs"><button class="itab active" onclick="switchInner('1-lectura', this)">🎯 Our read</button><button class="itab" onclick="switchInner('1-casos', this)">📋 Reference cases</button><button class="itab" onclick="switchInner('1-diferencia', this)">⚡ What sets us apart</button></div><div id="inner-1-lectura" class="inner-panel active"><div class="ibox ibox-blue" style="margin-bottom:14px"><div class="ibox-title">🎯 Carrefour 2030 — the real frame</div><div class="ibox-body">Store staff costs have plateaued after years of optimization. Carrefour's 2030 target is <strong>€1bn/year of savings</strong>, moving ROC from 3.2% (2028) to 3.5% (2030). Stores must contribute materially. The question is no longer <em>how to optimize a little further</em> — it's <strong>how to leapfrog the ceiling</strong>.</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px"><div style="border:2px solid rgba(0,61,165,.22);border-radius:14px;padding:16px 18px;background:rgba(0,61,165,.04)"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--c-blue2);margin-bottom:8px">Level 1 · Core (priority)</div><div style="font-size:.88rem;font-weight:700;color:#001228;margin-bottom:8px">Reach the benchmark — without technology</div><ul class="blist" style="font-size:.8rem"><li>Execution discipline and process fixes</li><li>Activity management (hours under control)</li><li>Operating model adjustment</li></ul><div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">The foundation. Everything else builds on this.</div></div><div style="border:2px solid rgba(161,0,255,.18);border-radius:14px;padding:16px 18px;background:rgba(161,0,255,.03)"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#A100FF;margin-bottom:8px">Level 2 · Advanced (after Level 1)</div><div style="font-size:.88rem;font-weight:700;color:#001228;margin-bottom:8px">Leapfrog with digital / AI / IoT</div><ul class="blist" style="font-size:.8rem"><li>Intelligent Store (Vusion, AI scheduling)</li><li>E-commerce integration (FR)</li><li>Disruptive models (uberized)</li></ul><div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">CAPEX-dependent. High return ceiling.</div></div></div><div class="g3"><div class="step-card"><div class="step-ico">🔍</div><div class="step-title">The WHATs first</div><div class="step-desc">Map the complete E2E of the store process and identify the domains where real value exists to unlock. Without rushing to the how — and without defaulting to technology before the basics are fixed.</div></div><div class="step-card"><div class="step-ico">🤖</div><div class="step-title">AI where it adds value, not by default</div><div class="step-desc">Agentic AI makes sense in scheduling, inventory and shelf monitoring. Not in organizational decisions, team structure or labor negotiations. Level 1 first, Level 2 on solid ground.</div></div><div class="step-card"><div class="step-ico">📏</div><div class="step-title">Measurement from day 1</div><div class="step-desc">Define the KPI framework before entering. Establish baseline. Measure at midpoint (week 4). Value must be a data point, not a PowerPoint estimate.</div></div></div><div class="div"></div><div class="ibox ibox-blue"><div class="ibox-title">🗺️ The 4 RFP work-streams — our answer</div><div class="ibox-body"><ul class="blist"><li><strong>① Fine understanding of levers</strong> → E2E map of all value pools (in-store + upstream), prioritized by impact and maturity</li><li><strong>② Internal (FR/ES) + external benchmark</strong> → Activity-level benchmark at seconds/box × product family — not ratios, but gestures</li><li><strong>③ Costed recommendations by horizon</strong> → Quick wins (6m) · Operating-model transformation (12m) · Intelligent Store (24m)</li><li><strong>④ Store-segment operationalization plan</strong> → Differentiated by store format, with Carrefour-side accompaniment and implementation support</li></ul></div></div></div><div id="inner-1-casos" class="inner-panel"><p class="slide-sub">Three projects that define our value proposition in store operations. Click to see the impact.</p><div class="ref-grid"><div class="ref-card"><div class="ref-inner"><div class="ref-front"><div><div class="ref-tag">Grocery Retailer · Mexico, Chile &amp; Argentina</div><div class="ref-icon">🛒</div><div class="ref-company">Large-scale grocery retailer</div><div class="ref-headline">Bottom-up workforce dimensioning with task-demand operating model — from sales-history planning to real task-demand modelling, at industrial scale</div></div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">WFM</span><span class="ref-tag-sm">Store ops</span></div><span class="ref-link">See detail →</span></div></div><div class="ref-back"><div class="ref-challenge">Workforce planned from historical sales, not real task volume. No internal benchmark; high variability across stores of the same format.</div><div class="ref-role-label">Our role</div><ul class="ref-bullets"><li>Full L4 process mapping across all store departments (receiving → floor → checkout → back office)</li><li>Task-demand operating model: task volume × time standard = real headcount demand by shift</li><li>Scheduling redesign to align staffing with actual demand curves</li><li>Pilot: 9 express/proximity format (equiv. Carrefour Express) + 9 convenience format (BM / Día type) → rolled out to 104 convenience + 38 express/proximity formats · then Chile &amp; Argentina</li></ul><hr class="ref-divider"><div class="ref-impact-label">Impact</div><div class="ref-impact-big"><div class="ref-impact-num">+20–30%</div><div class="ref-impact-num-sub">Labour productivity improvement</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">10–17%<br>structural efficiency</div><div class="ref-impact-pill">3,000+<br>stores transformed</div></div><div class="ref-back-close">← Close</div></div></div></div><div class="ref-card"><div class="ref-inner"><div class="ref-front"><div><div class="ref-tag">Large retail · Spain</div><div class="ref-icon">🏬</div><div class="ref-company">European multi-format retailer</div><div class="ref-headline">E2E store operations reinvention: ESL, Click &amp; Collect, WFM and omnichannel fulfillment to unlock EBITDA</div></div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">Store ops</span><span class="ref-tag-sm">ESL</span><span class="ref-tag-sm">WFM</span></div><span class="ref-link">See detail →</span></div></div><div class="ref-back"><div class="ref-challenge">Leading European retailer under margin pressure — needed to unlock productivity in execution, e-commerce fulfillment and inventory simultaneously.</div><div class="ref-role-label">Our role</div><ul class="ref-bullets"><li>E2E operational diagnostic: value pool mapping across all store processes</li><li>ESL rollout — 400,000+ labour hours redeployed annually to higher-value tasks</li><li>Click &amp; Collect redesign: smart lockers replacing manual handoff (NPS 47→65)</li><li>Order preparation: process redesign reducing lead time from days to hours</li><li>WFM model aligned with real traffic and demand data</li></ul><hr class="ref-divider"><div class="ref-impact-label">Impact</div><div class="ref-impact-big"><div class="ref-impact-num">&gt;€40M</div><div class="ref-impact-num-sub">Value unlocked across the store network</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">NPS 47→65<br>Click &amp; Collect</div><div class="ref-impact-pill">400k+ hrs<br>redeployed / year</div></div><div class="ref-back-close">← Close</div></div></div></div><div class="ref-card"><div class="ref-inner"><div class="ref-front"><div><div class="ref-tag">Grocery Retailer · Uruguay</div><div class="ref-icon">🏪</div><div class="ref-company">Multi-format grocery chains</div><div class="ref-headline">Efficiency programme based on task-demand operating model — 25-store pilot scaled to full network</div></div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">Store ops</span><span class="ref-tag-sm">WFM</span></div><span class="ref-link">See detail →</span></div></div><div class="ref-back"><div class="ref-challenge">Two grocery chains with labour at 16.9% of sales — pressure to improve efficiency without service cuts or arbitrary headcount reductions.</div><div class="ref-role-label">Our role</div><ul class="ref-bullets"><li>Analysis (6w): full E2E baseline of both chains across all store processes</li><li>Design (8w): task-demand operating model and operating routines adapted to 2 store formats</li><li>Pilot (6w): live deployment in 25 stores with embedded on-site coaching</li><li>Sustainability model handed over to HQ for network-wide scaling</li></ul><hr class="ref-divider"><div class="ref-impact-label">Impact</div><div class="ref-impact-big"><div class="ref-impact-num">11.2%</div><div class="ref-impact-num-sub">Workforce efficiency captured · 459 FTEs</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">338M $UY<br>annual savings</div><div class="ref-impact-pill">Labour cost<br>16.9%→15.4%</div></div><div class="ref-back-close">← Close</div></div></div></div></div></div><div id="inner-1-diferencia" class="inner-panel"><div class="g3"><div class="step-card"><div class="step-ico">🏪</div><div class="step-title">We know the hypermarket inside out</div><div class="step-desc">We don't arrive with a generic framework. We've led transformations in real hypermarkets, with unions (France), with legacy systems and with store teams that keep selling while changing.</div></div><div class="step-card"><div class="step-ico">📊</div><div class="step-title">We measure before, during and after</div><div class="step-desc">KPI framework defined before entry. Baseline in week 1. Midpoint in week 4. Audited result in week 8. Value is not a hypothesis; it's a number.</div></div><div class="step-card"><div class="step-ico">🔄</div><div class="step-title">Back office included</div><div class="step-desc">The analysis is not limited to the sales floor. It includes administration, reporting, HR management, supply processes and coordination with head office. The complete E2E.</div></div></div><div class="div"></div><div class="ibox ibox-dark"><div class="ibox-title">🎯 Our differentiating stance</div><div class="ibox-body">Real benchmarking comes from having been in these stores, not from external databases. Our advantage is not the methodology (everyone has one); it's the real operational knowledge of the hypermarket format in Europe.</div></div></div></section>
-
-    <!-- SLIDE 2: IMPACT -->
-    <section id="slide-2" class="slide">
+    <section id="slide-1" class="slide">
+  <div class="slide-header">
+    <div class="slide-tag">01 · Vision</div>
+    <h2 class="slide-title">A clear vision — and the <span>proof to back it</span></h2>
+  </div>
+  <div class="inner-tabs">
+    <button class="itab active" onclick="switchInner('1-vision', this)">🎯 Our Vision</button>
+    <button class="itab" onclick="switchInner('1-casos', this)">📋 Reference Cases</button>
+  </div>
+  <div id="inner-1-vision" class="inner-panel active">
+    <div class="ibox ibox-blue" style="margin-bottom:16px">
+      <div class="ibox-title">📍 The context</div>
+      <div class="ibox-body">Carrefour faces rising pressure on margins while store staff costs have plateaued after years of optimization. The 2030 ambition — <strong>€1bn/year in savings, ROC from 3.2% to 3.5%</strong> — requires stores to contribute materially. Incremental fixes will not be enough.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div style="border:2px solid rgba(0,61,165,.22);border-radius:14px;padding:18px;background:rgba(0,61,165,.04)">
+        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--c-blue2);margin-bottom:8px">Path 1 · Operating Model</div>
+        <div style="font-size:.92rem;font-weight:700;color:#001228;margin-bottom:8px">Capture efficiency without technology</div>
+        <ul class="blist" style="font-size:.8rem">
+          <li>Process-based operating model — task volume × time standard</li>
+          <li>Execution discipline, activity management, routines</li>
+          <li>Structural efficiency gains from week 1</li>
+        </ul>
+        <div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">Generates impact independently. The foundation everything else builds on.</div>
+      </div>
+      <div style="border:2px solid rgba(161,0,255,.18);border-radius:14px;padding:18px;background:rgba(161,0,255,.03)">
+        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#A100FF;margin-bottom:8px">Path 2 · Technology</div>
+        <div style="font-size:.92rem;font-weight:700;color:#001228;margin-bottom:8px">Amplify impact with AI and digital tools</div>
+        <ul class="blist" style="font-size:.8rem">
+          <li>AI scheduling, ESL, intelligent replenishment</li>
+          <li>Agentic automation of repetitive store processes</li>
+          <li>Unlocks the next level — only once Path 1 is solid</li>
+        </ul>
+        <div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">Amplifies Path 1. Does not replace it.</div>
+      </div>
+    </div>
+    <div class="ibox ibox-dark">
+      <div class="ibox-title">🎯 Our stance</div>
+      <div class="ibox-body">You can capture meaningful efficiency without AI. Technology then lets you go further. This distinction matters: <strong>Carrefour does not need to commit to a technology transformation to start capturing value.</strong> The operating model alone moves the needle — and creates the foundation for what comes next.</div>
+    </div>
+  </div>
+  <div id="inner-1-casos" class="inner-panel">
+    <p class="slide-sub">Three projects that define our value proposition in store operations. Click to see the impact.</p>
+    <div class="ref-grid">
+      <div class="ref-card"><div class="ref-inner"><div class="ref-front"><div><div class="ref-tag">Grocery Retailer · Mexico, Chile &amp; Argentina</div><div class="ref-icon">🛒</div><div class="ref-company">Large-scale grocery retailer</div><div class="ref-headline">Bottom-up workforce dimensioning with task-demand operating model — from sales-history planning to real task-demand modelling, at industrial scale</div></div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">WFM</span><span class="ref-tag-sm">Store ops</span></div><span class="ref-link">See detail →</span></div></div><div class="ref-back"><div class="ref-challenge">Workforce planned from historical sales, not real task volume. No internal benchmark; high variability across stores of the same format.</div><div class="ref-role-label">Our role</div><ul class="ref-bullets"><li>Full L4 process mapping across all store departments (receiving → floor → checkout → back office)</li><li>Task-demand operating model: task volume × time standard = real headcount demand by shift</li><li>Scheduling redesign to align staffing with actual demand curves</li><li>Pilot: 9 express/proximity format (equiv. Carrefour Express) + 9 convenience format (BM / Día type) → rolled out to 104 convenience + 38 express/proximity formats · then Chile &amp; Argentina</li></ul><hr class="ref-divider"><div class="ref-impact-label">Impact</div><div class="ref-impact-big"><div class="ref-impact-num">+20–30%</div><div class="ref-impact-num-sub">Labour productivity improvement</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">10–17%<br>structural efficiency</div><div class="ref-impact-pill">3,000+<br>stores transformed</div></div><div class="ref-back-close">← Close</div></div></div></div>
+      <div class="ref-card"><div class="ref-inner"><div class="ref-front"><div><div class="ref-tag">Large retail · Spain</div><div class="ref-icon">🏬</div><div class="ref-company">European multi-format retailer</div><div class="ref-headline">E2E store operations reinvention: ESL, Click &amp; Collect, WFM and omnichannel fulfillment to unlock EBITDA</div></div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">Store ops</span><span class="ref-tag-sm">ESL</span><span class="ref-tag-sm">WFM</span></div><span class="ref-link">See detail →</span></div></div><div class="ref-back"><div class="ref-challenge">Leading European retailer under margin pressure — needed to unlock productivity in execution, e-commerce fulfillment and inventory simultaneously.</div><div class="ref-role-label">Our role</div><ul class="ref-bullets"><li>E2E operational diagnostic: value pool mapping across all store processes</li><li>ESL rollout — 400,000+ labour hours redeployed annually to higher-value tasks</li><li>Click &amp; Collect redesign: smart lockers replacing manual handoff (NPS 47→65)</li><li>Order preparation: process redesign reducing lead time from days to hours</li><li>WFM model aligned with real traffic and demand data</li></ul><hr class="ref-divider"><div class="ref-impact-label">Impact</div><div class="ref-impact-big"><div class="ref-impact-num">&gt;€40M</div><div class="ref-impact-num-sub">Value unlocked across the store network</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">NPS 47→65<br>Click &amp; Collect</div><div class="ref-impact-pill">400k+ hrs<br>redeployed / year</div></div><div class="ref-back-close">← Close</div></div></div></div>
+      <div class="ref-card"><div class="ref-inner"><div class="ref-front"><div><div class="ref-tag">Grocery Retailer · Uruguay</div><div class="ref-icon">🏪</div><div class="ref-company">Multi-format grocery chains</div><div class="ref-headline">Efficiency programme based on task-demand operating model — 25-store pilot scaled to full network</div></div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">Store ops</span><span class="ref-tag-sm">WFM</span></div><span class="ref-link">See detail →</span></div></div><div class="ref-back"><div class="ref-challenge">Two grocery chains with labour at 16.9% of sales — pressure to improve efficiency without service cuts or arbitrary headcount reductions.</div><div class="ref-role-label">Our role</div><ul class="ref-bullets"><li>Analysis (6w): full E2E baseline of both chains across all store processes</li><li>Design (8w): task-demand operating model and operating routines adapted to 2 store formats</li><li>Pilot (6w): live deployment in 25 stores with embedded on-site coaching</li><li>Sustainability model handed over to HQ for network-wide scaling</li></ul><hr class="ref-divider"><div class="ref-impact-label">Impact</div><div class="ref-impact-big"><div class="ref-impact-num">11.2%</div><div class="ref-impact-num-sub">Workforce efficiency captured · 459 FTEs</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">338M $UY<br>annual savings</div><div class="ref-impact-pill">Labour cost<br>16.9%→15.4%</div></div><div class="ref-back-close">← Close</div></div></div></div>
+    </div>
+  </div>
+</section><section id="slide-2" class="slide">
+  <div class="slide-header">
+    <div class="slide-tag">02 · Approach</div>
+    <h2 class="slide-title">T-shaped coverage — <span>Breadth and Depth</span></h2>
+  </div>
+  <div class="inner-tabs">
+    <button class="itab active" onclick="switchInner('2-approach', this)">🎯 Approach</button>
+    <button class="itab" onclick="switchInner('2-tshape', this)">🔭 T-Shape</button>
+    <button class="itab" onclick="switchInner('2-breadth', this)">🌐 Breadth</button>
+    <button class="itab" onclick="switchInner('2-depth', this)">🏬 Depth</button>
+    <button class="itab" onclick="switchInner('2-engine', this)">⚙️ How we work</button>
+    <button class="itab" onclick="switchInner('2-timeskipper', this)">⏱️ TimeSkipper <span style="font-size:.55rem;background:rgba(255,184,0,.2);border:1px solid rgba(255,184,0,.5);color:#7c5800;border-radius:4px;padding:1px 5px;margin-left:4px">TBC</span></button>
+  </div>
+  <div id="inner-2-approach" class="inner-panel active">
+    <p class="slide-sub" style="margin-bottom:16px">One pilot store per country — full analysis, joint prioritisation, quick wins with a path to scale.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px">
+      <div class="step-card"><div class="step-ico">🏬</div><div class="step-title">One pilot store per country</div><div class="step-desc">We select one hypermarket in France and one in Spain. Full E2E analysis of the entire store operation — every process, every department, every layer from L1 to L4.</div></div>
+      <div class="step-card"><div class="step-ico">🤝</div><div class="step-title">Joint selection in week 1</div><div class="step-desc">We do not pre-define which processes to focus on. In week 1, together with Carrefour, we identify the 2 initiatives with the highest value and implementation feasibility. The choice is yours.</div></div>
+      <div class="step-card"><div class="step-ico">⚡</div><div class="step-title">Quick wins + path to scale</div><div class="step-desc">Implement the 2 selected initiatives with measurable impact. Once validated, the same methodology scales to more stores — with a playbook ready for the full 381 HM network.</div></div>
+    </div>
+    <div class="ibox ibox-blue" style="margin-bottom:14px">
+      <div class="ibox-title">🔭 Why T-shaped coverage</div>
+      <div class="ibox-body"><strong>Breadth:</strong> We map everything that happens <em>before</em> a product reaches the store — supply chain, replenishment decisions, HQ planning. Problems visible in the store often have their root cause upstream. <strong>Depth:</strong> We go into every process <em>inside</em> the store at full L4 detail. The T ensures we see the full picture — and prioritise the right levers.</div>
+    </div>
+    <div class="ibox" style="background:rgba(0,208,132,.06);border:1.5px solid rgba(0,208,132,.25);border-radius:12px;padding:14px 16px">
+      <div class="ibox-title" style="color:#007a4d">📈 If the pilot succeeds — what comes next</div>
+      <div class="ibox-body">Phase 1 produces a validated playbook and a confirmed business case. Phase 2 scales the winning initiatives across the network — country by country, format by format. Accenture's fee in Phase 2 is linked to results.</div>
+    </div>
+  </div>
+  <div id="inner-2-tshape" class="inner-panel">
+    <p class="slide-sub" style="margin-bottom:14px">A global view of the retailer value chain — with full depth inside the store, and breadth across all upstream processes that impact it.</p>
+    <div class="approach-ab" style="margin-bottom:16px">
+      <div class="approach-point">
+        <div class="ap-badge ap-badge-a">A</div>
+        <div>
+          <div class="ap-header"><span class="ap-keyword">BREADTH</span><span class="ap-subtitle">E2E opportunity · Prioritisation · Scalability</span></div>
+          <div class="ap-desc">We evaluate the retailer's full E2E value chain to identify and prioritise the major productivity levers — understanding which upstream decisions (supply, planning, HQ) are creating inefficiencies in the store.</div>
+          <div class="ap-output">→ An E2E opportunity map with estimated impact per area</div>
+        </div>
+      </div>
+      <div class="approach-plus">+</div>
+      <div class="approach-point">
+        <div class="ap-badge ap-badge-b">B</div>
+        <div>
+          <div class="ap-header"><span class="ap-keyword">DEPTH</span><span class="ap-subtitle">Tangibility · Evidence · Confidence</span></div>
+          <div class="ap-desc">We analyse every process inside the store at full L4 detail — from receiving to checkout. From this full picture we jointly select the 2 highest-value initiatives and implement them as quick wins.</div>
+          <div class="ap-output">→ From analysis to validated impact in the pilot store</div>
+        </div>
+      </div>
+    </div>
+    <div class="ibox ibox-blue">
+      <div class="ibox-title">🏬 Carrefour hypermarket scope</div>
+      <div class="ibox-body">With 175 FTEs per hypermarket on average and annual labour costs of ~€5.6M per store (FR) / ~€5.3M (ES), even a 10% productivity improvement translates to material savings at individual store level — and hundreds of millions at network scale across 381 hypermarkets.</div>
+    </div>
+  </div>
+  <div id="inner-2-breadth" class="inner-panel">
+    <p class="slide-sub" style="margin-bottom:14px">Breadth covers everything that happens before the store — because store inefficiencies often have upstream root causes that only a full E2E view can surface.</p>
+    <div style="margin-bottom:10px"><div style="font-size:1rem;font-weight:700;color:#001228;letter-spacing:-.01em">Carrefour Retail Value Chain</div><div style="font-size:.72rem;color:rgba(0,18,40,.45);margin-top:2px;font-weight:500">Productivity Opportunity Map · Breadth coverage</div></div>
+    <div class="vchain-grid">
+      <div class="vchain-col"><div class="vchain-l1"><span class="vchain-l1-ico">🛍️</span>Buying &amp; Assortment</div><div class="vchain-l2">Supplier negotiation</div><div class="vchain-l2 vchain-l2-hl">Assortment management</div><div class="vchain-l2 vchain-l2-hl">Planogram &amp; space</div><div class="vchain-l2 vchain-l2-hl">Pricing &amp; promotions</div><div class="vchain-l2">Brand relations</div></div>
+      <div class="vchain-col"><div class="vchain-l1"><span class="vchain-l1-ico">🔮</span>Planning</div><div class="vchain-l2 vchain-l2-hl">Demand forecast</div><div class="vchain-l2 vchain-l2-hl">Supply planning</div><div class="vchain-l2 vchain-l2-hl">Replenishment</div><div class="vchain-l2 vchain-l2-hl">Workforce planning</div><div class="vchain-l2">Capacity management</div></div>
+      <div class="vchain-col"><div class="vchain-l1"><span class="vchain-l1-ico">🚚</span>Logistics &amp; Supply</div><div class="vchain-l2 vchain-l2-hl">Transport &amp; distribution</div><div class="vchain-l2">Warehouse &amp; DC management</div><div class="vchain-l2">Last mile</div><div class="vchain-l2 vchain-l2-hl">Shrinkage &amp; expiry control</div><div class="vchain-l2">3PL management</div></div>
+      <div class="vchain-col vchain-col-hl"><div class="vchain-l1"><span class="vchain-l1-ico">🏬</span>Store Operations</div><div class="vchain-l2">Operations planning</div><div class="vchain-l2">Replenishment</div><div class="vchain-l2">Inventory management</div><div class="vchain-l2">On-shelf availability</div><div class="vchain-l2">Customer service</div><div class="vchain-l2">Checkout &amp; cash</div><div class="vchain-l2">Performance &amp; CI</div></div>
+      <div class="vchain-col"><div class="vchain-l1"><span class="vchain-l1-ico">👤</span>Customer Service</div><div class="vchain-l2 vchain-l2-hl">Claims management</div><div class="vchain-l2">Loyalty programmes</div><div class="vchain-l2 vchain-l2-hl">Customer returns</div><div class="vchain-l2">CRM &amp; data</div><div class="vchain-l2">Voice of customer &amp; NPS</div></div>
+      <div class="vchain-col"><div class="vchain-l1"><span class="vchain-l1-ico">💻</span>Omnichannel</div><div class="vchain-l2 vchain-l2-hl">Click &amp; Collect</div><div class="vchain-l2">E-commerce &amp; app</div><div class="vchain-l2">Marketplace</div><div class="vchain-l2 vchain-l2-hl">Unified inventory</div><div class="vchain-l2">Digital experience</div></div>
+      <div class="vchain-col vchain-col-corp"><div class="vchain-l1"><span class="vchain-l1-ico">🏢</span>Corporate</div><div class="vchain-l2">HR</div><div class="vchain-l2">Finance</div><div class="vchain-l2">Legal &amp; compliance</div><div class="vchain-l2">IT &amp; infrastructure</div><div class="vchain-l2">Real estate</div></div>
+    </div>
+    <div class="ibox ibox-blue" style="margin-top:12px"><div class="ibox-title">💡 Why Breadth matters</div><div class="ibox-body">If a store is replenishing the same shelf 5 times a day, the problem is not the store team — it is the replenishment order from HQ. Without a Breadth view, recommendations stay incomplete. Breadth is our differentiator: we understand the store as the output of many upstream decisions.</div></div>
+  </div>
+  <div id="inner-2-depth" class="inner-panel">
+    <p class="slide-sub" style="margin-bottom:14px">Depth covers the entire store operation at full detail — every process, every layer. From this complete picture we jointly select the 2 initiatives to implement.</p>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:14px;align-items:start">
+      <div>
+        <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--c-blue2);margin-bottom:8px">Store operation · Analysis levels</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.6rem">
+          <tr style="border-bottom:1px solid rgba(0,18,40,.08)"><td style="padding:4px 6px;font-weight:700;color:rgba(0,18,40,.4)">L1</td><td style="padding:4px 8px;font-weight:600;color:#001228">Store Operations (full scope)</td></tr>
+          <tr style="border-bottom:1px solid rgba(0,18,40,.06)"><td style="padding:3px 6px;font-weight:700;color:rgba(0,18,40,.4)">L2</td><td style="padding:3px 8px;color:rgba(0,18,40,.65)">Process domains: planning, replenishment, inventory, floor, checkout, back office</td></tr>
+          <tr style="border-bottom:1px solid rgba(0,18,40,.06)"><td style="padding:3px 6px;font-weight:700;color:rgba(0,18,40,.4)">L3</td><td style="padding:3px 8px;color:rgba(0,18,40,.55)">Sub-processes and activity flows</td></tr>
+          <tr><td style="padding:3px 6px;font-weight:700;color:var(--c-blue)">L4/5</td><td style="padding:3px 8px;color:var(--c-blue);font-weight:600">Task-level — time standard × volume = labour demand. 2 initiatives selected here for implementation</td></tr>
+        </table>
+      </div>
+      <div style="width:180px">
+        <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--c-blue2);margin-bottom:8px">Processes covered</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>📋</span><div style="font-size:.62rem;font-weight:600;color:#001228">Operations planning</div></div>
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>📦</span><div style="font-size:.62rem;font-weight:600;color:#001228">Replenishment</div></div>
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>🏷️</span><div style="font-size:.62rem;font-weight:600;color:#001228">Inventory management</div></div>
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>🛒</span><div style="font-size:.62rem;font-weight:600;color:#001228">On-shelf availability</div></div>
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>👤</span><div style="font-size:.62rem;font-weight:600;color:#001228">Customer service</div></div>
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>💳</span><div style="font-size:.62rem;font-weight:600;color:#001228">Checkout &amp; cash</div></div>
+          <div style="display:flex;gap:8px;align-items:center;padding:5px 8px;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.15);border-radius:7px"><span>📊</span><div style="font-size:.62rem;font-weight:600;color:#001228">Performance &amp; CI</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ibox ibox-blue"><div class="ibox-title">🎯 The selection logic</div><div class="ibox-body">In week 1, once the L4 baseline is complete, we present Carrefour with a prioritised list of opportunities ranked by impact and implementation feasibility. <strong>Carrefour selects 2 initiatives to implement as quick wins.</strong> No pre-commitment, full transparency, joint ownership.</div></div>
+  </div>
+  <div id="inner-2-engine" class="inner-panel">
+    <p class="slide-sub" style="margin-bottom:14px">Our analysis is powered by a structured knowledge engine — combining field observation, document analysis and external intelligence into a unified baseline that feeds every decision.</p>
+    <div style="background:linear-gradient(135deg,#06091a,#0c1a3a);border-radius:16px;padding:22px;color:#fff;margin-bottom:14px">
+      <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin-bottom:14px">Illustrative · How the analysis works</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:nowrap;overflow-x:auto">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:12px;min-width:110px;flex-shrink:0">
+          <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px">Inputs</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:5px"><span>👁️</span>Field observation</div>
+            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:5px"><span>🗂️</span>Document ingestion</div>
+            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap=5px"><span>🌐</span>External intelligence</div>
+          </div>
+        </div>
+        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
+        <div style="background:rgba(161,0,255,.15);border:1.5px solid rgba(161,0,255,.4);border-radius:12px;padding:14px;text-align:center;min-width:120px;flex-shrink:0">
+          <div style="font-size:.65rem;font-weight:700;color:#cc66ff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Knowledge Motor</div>
+          <div style="font-size:.58rem;color:rgba(255,255,255,.5)">AS-IS Unified Layer</div>
+          <div style="font-size:1.4rem;margin:6px 0">🧠</div>
+          <div style="font-size:.58rem;color:rgba(255,255,255,.45)">Accenture AI + Reinvention Corpus</div>
+        </div>
+        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:12px;min-width:90px;text-align:center;flex-shrink:0">
+          <div style="font-size:.6rem;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:4px">Process &amp; Value Explorer</div>
+          <div style="font-size:.9rem">🔍</div>
+        </div>
+        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
+        <div style="background:rgba(0,208,132,.1);border:1.5px solid rgba(0,208,132,.35);border-radius:10px;padding:12px;min-width:90px;text-align:center;flex-shrink:0">
+          <div style="font-size:.6rem;font-weight:700;color:#00d084;margin-bottom:4px">Opportunity Analyser</div>
+          <div style="font-size:.9rem">📊</div>
+        </div>
+        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
+        <div style="background:rgba(0,61,165,.2);border:1.5px solid rgba(43,127,224,.5);border-radius:10px;padding:12px;min-width:90px;text-align:center;flex-shrink:0">
+          <div style="font-size:.6rem;font-weight:700;color:#7ecfff;margin-bottom:4px">Business Case &amp; Roadmap</div>
+          <div style="font-size:.9rem">🗺️</div>
+        </div>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="step-card"><div class="step-ico">👁️</div><div class="step-title">Field-first observation</div><div class="step-desc">We spend 2 weeks inside the pilot stores — timing tasks, mapping flows, interviewing teams. Everything is structured and ingested into the knowledge engine in real time.</div></div>
+      <div class="step-card"><div class="step-ico">📏</div><div class="step-title">External benchmark</div><div class="step-desc">Seconds per task × product family, not ratios. We bring Accenture's global knowledge corpus plus our direct experience in hypermarket operations to calibrate every finding.</div></div>
+      <div class="step-card"><div class="step-ico">📊</div><div class="step-title">Auditable output</div><div class="step-desc">Every recommendation is traceable to a data point. The business case is not a PowerPoint estimate — it is a number with a baseline, a methodology and a measurement plan.</div></div>
+    </div>
+  </div>
+  <div id="inner-2-timeskipper" class="inner-panel">
+    <div class="ibox" style="background:rgba(255,184,0,.06);border:1.5px solid rgba(255,184,0,.3);border-radius:14px;padding:18px;margin-bottom:16px"><div class="ibox-title" style="color:#7c5800">⚠️ To be confirmed — pending team discussion</div><div class="ibox-body">TimeSkipper's inclusion in this engagement is under discussion. The content below describes its methodology and value proposition for reference.</div></div>
+    <div class="g3">
+      <div class="step-card"><div class="step-ico">📅</div><div class="step-title">Planning</div><div class="step-desc">Activity-based planning at task level. Every hour in the store is planned against real demand — not historical averages.</div></div>
+      <div class="step-card"><div class="step-ico">📍</div><div class="step-title">Tracking</div><div class="step-desc">Real-time tracking of activity execution vs plan. Deviations are visible as they happen — not in the weekly review.</div></div>
+      <div class="step-card"><div class="step-ico">📊</div><div class="step-title">Gap analysis</div><div class="step-desc">Systematic identification of the gap between planned and actual activity. Where are hours going? What is not getting done?</div></div>
+    </div>
+    <div class="ibox ibox-blue" style="margin-top:14px"><div class="ibox-title">🔄 Continuous loop</div><div class="ibox-body">Planning → Tracking → Gap analysis → Loop. TimeSkipper creates a self-reinforcing management discipline that keeps productivity gains from reverting over time. Carrefour France already has an existing relationship with TimeSkipper.</div></div>
+  </div>
+</section>
+<section id="slide-3" class="slide">
+  <div class="slide-header">
+    <div class="slide-tag">03 · Scope</div>
+    <h2 class="slide-title">10 weeks — from <span>first observation to validated business case</span></h2>
+    <p class="slide-sub">Two parallel workstreams — France and Spain — with a common methodology and shared knowledge pool.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:16px;font-size:.6rem">
+    <div style="font-weight:700;color:rgba(0,18,40,.4);display:flex;align-items:flex-end;padding-bottom:6px">Week</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">1</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">2</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">3</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">4</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">5</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">6</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">7</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">8</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">9</div>
+    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">10</div>
+  </div>
+  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:4px;font-size:.6rem">
+    <div style="font-weight:600;color:rgba(0,18,40,.5);display:flex;align-items:center">Phase</div>
+    <div style="grid-column:2/5;background:rgba(0,61,165,.12);border:1.5px solid rgba(0,61,165,.25);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:var(--c-blue)">Discovery &amp; Analysis</div>
+    <div style="background:rgba(255,184,0,.12);border:1.5px solid rgba(255,184,0,.35);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:#7c5800"></div>
+    <div style="grid-column:6/8;background:rgba(255,184,0,.12);border:1.5px solid rgba(255,184,0,.35);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:#7c5800">Prioritisation &amp; Design</div>
+    <div style="grid-column:8/12;background:rgba(0,208,132,.12);border:1.5px solid rgba(0,208,132,.35);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:#007a4d">Implementation &amp; Business Case</div>
+  </div>
+  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:6px;align-items:start">
+    <div style="font-size:.58rem;font-weight:600;color:rgba(0,18,40,.4);padding-top:4px">Field</div>
+    <div style="grid-column:2/4;background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.15);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">🏬 Store observation</div><div style="color:rgba(0,18,40,.6)">In-store field work · Process timing · Interviews</div></div>
+    <div style="grid-column:4/6;background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.15);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">🏢 HQ interviews</div><div style="color:rgba(0,18,40,.6)">Upstream analysis · Supply chain · Planning</div></div>
+    <div style="grid-column:6/8;background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">🤝 Joint selection</div><div style="color:rgba(0,18,40,.6)">With Carrefour: select 2 initiatives</div></div>
+    <div style="grid-column:8/12;background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.2);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">⚡ Quick win implementation</div><div style="color:rgba(0,18,40,.6)">Deploy · Measure · Validate</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:4px;align-items:start">
+    <div style="font-size:.58rem;font-weight:600;color:rgba(0,18,40,.4);padding-top:4px">Analysis</div>
+    <div style="grid-column:2/6;background:rgba(0,61,165,.04);border:1px solid rgba(0,61,165,.1);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">📊 L4 process mapping + benchmark</div><div style="color:rgba(0,18,40,.6)">E2E baseline · Task volume × time standards · External benchmark</div></div>
+    <div style="grid-column:6/9;background:rgba(255,184,0,.04);border:1px solid rgba(255,184,0,.15);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">💡 Opportunity sizing</div><div style="color:rgba(0,18,40,.6)">Value pools · Priority matrix · Business case per lever</div></div>
+    <div style="grid-column:9/12;background:rgba(0,208,132,.04);border:1px solid rgba(0,208,132,.12);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">📋 Playbook</div><div style="color:rgba(0,18,40,.6)">Scaling plan for 381 HM network</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px">
+    <div style="background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.15);border-radius:12px;padding:14px"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--c-blue);margin-bottom:6px">W1 · Kickoff</div><ul class="blist" style="font-size:.72rem"><li>Store selection confirmed</li><li>Baseline KPIs defined</li><li>Joint steering committee set up</li></ul></div>
+    <div style="background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);border-radius:12px;padding:14px"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7c5800;margin-bottom:6px">W5 · Midpoint</div><ul class="blist" style="font-size:.72rem"><li>L4 baseline complete</li><li>2 initiatives selected with Carrefour</li><li>Implementation plan agreed</li></ul></div>
+    <div style="background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.2);border-radius:12px;padding:14px"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#007a4d;margin-bottom:6px">W10 · Delivery</div><ul class="blist" style="font-size:.72rem"><li>Audited business case per lever</li><li>Quick wins validated and measured</li><li>Scaling playbook ready</li></ul></div>
+  </div>
+</section>
+<section id="slide-4" class="slide">
       <div class="slide-header">
-        <div class="slide-tag">02 · Impact</div>
+        <div class="slide-tag">04 · Impact</div>
         <h2 class="slide-title">Measurable impact on <span>costs and growth</span></h2>
       </div>
       <div class="inner-tabs">
-        <button class="itab active" onclick="switchInner('2-costes',this)">📉 Cost efficiency</button>
-        <button class="itab" onclick="switchInner('2-crecimiento',this)">📈 Growth levers</button>
+        <button class="itab active" onclick="switchInner('4-costes',this)">📉 Cost efficiency</button>
+        <button class="itab" onclick="switchInner('4-crecimiento',this)">📈 Growth levers</button>
       </div>
 
-      <div id="inner-2-costes" class="inner-panel active">
+      <div id="inner-4-costes" class="inner-panel active">
         <p class="slide-sub">Agentification generates a direct impact on the cost structure — reducing operational headcount, shrinkage and locked capital across every store process.</p>
         <div class="impact-grid" style="margin-top:14px">
           <div class="impact-card" style="background:linear-gradient(135deg,rgba(0,61,165,.08),rgba(0,61,165,.02));border:1.5px solid rgba(0,61,165,.22)"><div class="ic-ico">📉</div><div class="ic-metric">+16–25%</div><div class="ic-title">Efficiency</div><div class="ic-desc">Reduction in equivalent resources released by improved operating model and AI. Direct impact on operational headcount.</div><div style="margin-top:auto;padding-top:10px;font-size:.62rem;color:rgba(0,61,165,.6);font-weight:600;display:flex;align-items:center;gap:4px">↓ <span>network impact detail below</span></div></div>
@@ -481,8 +701,8 @@
             <div style="background:#fff;border:1px solid rgba(0,61,165,.15);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
               <span class="cflag"><span class="fbar fr"></span></span>
               <div>
-                <div style="font-size:.62rem;color:rgba(0,18,40,.45);font-weight:600;margin-bottom:3px">France · 186 HM</div>
-                <div style="font-size:1.8rem;font-weight:900;color:var(--c-blue);line-height:1">770k – 1.6M€</div>
+                <div style="font-size:.62rem;color:rgba(0,18,40,.45);font-weight:600;margin-bottom:3px">France · TBD HM</div>
+                <div style="font-size:1.8rem;font-weight:900;color:var(--c-blue);line-height:1">TBD</div>
               </div>
             </div>
           </div>
@@ -490,7 +710,7 @@
         </div>
       </div>
 
-      <div id="inner-2-crecimiento" class="inner-panel">
+      <div id="inner-4-crecimiento" class="inner-panel">
         <p class="slide-sub">In-store AI doesn't just cut costs — it creates real growth levers: more available product, better shopping experience and greater omnichannel capacity.</p>
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px">
           <div class="impact-card" style="grid-column:span 2"><div class="ic-ico">📈</div><div class="ic-metric green">+3–10%</div><div class="ic-title">Sales</div><div class="ic-desc">Fewer out-of-stocks, planogram executed. The customer finds what they need — higher basket and recurrence.</div></div>
@@ -505,418 +725,11 @@
     </section>
 
     <!-- SLIDE 3: APPROACH -->
-    <section id="slide-3" class="slide">
-      <div class="slide-header">
-        <div class="slide-tag">03 · Approach</div>
-        <h2 class="slide-title">One store per process. <span>Two countries in parallel.</span></h2>
-      </div>
-      <div class="inner-tabs">
-        <button class="itab active" onclick="switchInner('3-lab',this)">🏬 The store as a lab</button>
-        <button class="itab" onclick="switchInner('3-paralelo',this)"><span class="cflag"><span class="fbar es"></span></span>&thinsp;<span class="cflag"><span class="fbar fr"></span></span>&thinsp;Two pilots in parallel</button>
-        <button class="itab" onclick="switchInner('3-mapa',this)">🗺️ The E2E value map</button>
-      </div>
-
-      <div id="inner-3-lab" class="inner-panel active">
-        <p class="slide-sub" style="margin-bottom:16px">A T-shaped approach: deep on what falls directly under store responsibility, broad on the upstream decisions that drive store costs. Both matter — and most consultants only do one.</p>
-        <div class="approach-ab">
-          <div class="approach-point">
-            <div class="ap-badge ap-badge-a" style="transform:rotate(-90deg)">↓</div>
-            <div>
-              <div class="ap-header"><span class="ap-keyword">OUT-OF-STORE BREADTH</span><span class="ap-subtitle">Promo intensity · Supply chain · Level of service</span></div>
-              <div class="ap-desc">The decisions made outside the store that land on the store as cost: promo complexity (ventes sans suite in FR, permanent discounts in ES), supply chain (case pack sizes, delivery frequency, misalignment between shelf layout and picking routes), and the service level trade-off. These are not visible from the shop floor — you have to look upstream.</div>
-              <div class="ap-output">→ Workload model that links upstream decisions to in-store hours.</div>
-            </div>
-          </div>
-          <div class="approach-plus">+</div>
-          <div class="approach-point">
-            <div class="ap-badge ap-badge-a">↓</div>
-            <div>
-              <div class="ap-header"><span class="ap-keyword">IN-STORE DEPTH</span><span class="ap-subtitle">Productivity · Utilization · Process · Organization</span></div>
-              <div class="ap-desc">What tasks are done, how, with what efficiency. Activity management (planning → task management → KPI loop). Process fixes that eliminate rework and overwork. Operating model and staffing mix (full-time, interim, uberized). We go down to L4/L5 level — seconds per task × product family — not just ratios.</div>
-              <div class="ap-output">→ Benchmark at gesture level. TO-BE model. TimeSkipper-ready.</div>
-            </div>
-          </div>
-        </div>
-        <div class="approach-conclusion">Result: A TO-BE model that captures both what the store can fix and what HQ must fix to stop generating it.</div>
-        <div class="div"></div>
-        <div class="ibox ibox-warn" style="margin-bottom:14px">
-          <div class="ibox-title">⚠️ A real case — what upstream overcost looks like</div>
-          <div class="ibox-body">At a major European hypermarket operator, excess inventory was driving approximately <strong>20% overwork</strong> across the entire store operation — and degrading quality in every downstream process. Root cause: a misalignment between system shelf capacity, actual shelf capacity, and order frequency. The store teams were working harder to compensate for a decision made in the supply chain. This is the kind of "so what" that earns management's attention — and where our benchmark reaches beyond the store floor.</div>
-        </div>
-        <div class="g3">
-          <div class="step-card"><div class="step-ico">📋</div><div class="step-title">Routines and planning</div><div class="step-desc">How the day is organized. Briefings, task assignment, follow-up. What information flows and what gets lost in translation.</div></div>
-          <div class="step-card"><div class="step-ico">📦</div><div class="step-title">E2E physical flows</div><div class="step-desc">From merchandise receipt to shelf. Product traceability, process times and real bottlenecks.</div></div>
-          <div class="step-card"><div class="step-ico">🏢</div><div class="step-title">Back office &amp; administration</div><div class="step-desc">Incident management, reporting, HR, coordination with head office. The processes you don't see but that consume time and capacity.</div></div>
-        </div>
-      </div>
-
-      <div id="inner-3-paralelo" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:16px">Two separate projects, common method — run in parallel. Learnings from each country enrich the other in real time, creating emulation and a shared measurement framework for what follows.</p>
-        <div class="g2">
-          <div class="card" style="border-top:4px solid var(--c-red)">
-            <div class="card-label"><span class="cflag"><span class="fbar es"></span> Spain</span> — 195 HM</div>
-            <ul class="blist">
-              <li>Centralized time data available from day 1 — solid benchmarking foundation</li>
-              <li>Self-checkout rollout in progress: complementary analysis, not competitive</li>
-              <li>Supplier merchandisers on shelf: a unique ES lever with direct productivity impact</li>
-              <li>Lower union complexity: more agility for quick wins in structure and org model</li>
-              <li><strong>Data tools:</strong> Centralized time tracking · Standardized KPI framework</li>
-              <li><strong>Focus:</strong> Activity management + OSA + Merchandiser model optimization</li>
-            </ul>
-          </div>
-          <div class="card" style="border-top:4px solid var(--c-blue)">
-            <div class="card-label"><span class="cflag"><span class="fbar fr"></span> France</span> — 186 HM</div>
-            <ul class="blist">
-              <li>eCommerce ~10% of HM sales: picking and floor analyzed together — folded into polyvalence model</li>
-              <li>Vusion/ESL rolling out: we integrate operationally, not just install</li>
-              <li>Ventes sans suite (VSS): high promo complexity driving overwork — an out-of-store lever unique to FR</li>
-              <li>Unions (CGT, CFDT): process fixes first, structural changes second</li>
-              <li><strong>Data tools:</strong> Excellence Op + Perf Op studies · FP tracking tools</li>
-              <li><strong>Focus:</strong> Online picking + Activity management + VSS workload</li>
-            </ul>
-          </div>
-        </div>
-        <div class="div"></div>
-        <div class="ibox ibox-dark" style="margin-bottom:14px">
-          <div class="ibox-title">🏪 Store selection criteria — how we sample</div>
-          <div class="ibox-body">Not all hypermarkets are equal. Sampling must cover the real variability: <strong>layout</strong> (single-level vs. two-floor), <strong>format and flow</strong> (small urban HM with weekday peaks vs. large peri-urban HM with weekend concentration), <strong>non-food weight</strong> (NAL ratio affects task mix significantly), and <strong>traditional fresh counters</strong> (priority target — staff occupancy vs. customer flow; continuous vs. batch production, which drives waste and quality risk differently). The pilot store is selected to be representative, not convenient.</div>
-        </div>
-        <div class="ibox ibox-green">
-          <div class="ibox-title">🔄 The cross-country feedback engine</div>
-          <div class="ibox-body">Productivity per task is comparable across countries — which creates natural emulation and a common measurement framework. Patterns appearing in both countries are the most robust for network-wide scaling. If daily briefing efficiency lags in ES, we validate the same hypothesis in FR. If VSS overwork appears in FR, we check promo complexity dynamics in ES.</div>
-        </div>
-      </div>
-
-      <div id="inner-3-mapa" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:14px">The process domains we'll cover in each pilot store — from L1 vision to L4/L5 task level.</p>
-        <div class="vc-wrapper">
-          <div class="vc-row">
-            <div class="vc-level">L1</div>
-            <div class="vc-cells">
-              <div class="vc-cell vc-hl">🗓️ Planning &amp; WFM</div>
-              <div class="vc-cell vc-hl">📦 Supply</div>
-              <div class="vc-cell vc-hl">🏷️ Sales Floor Availability</div>
-              <div class="vc-cell vc-hl">🍞 Perishables &amp; Waste</div>
-              <div class="vc-cell vc-hl">🛒 Service &amp; Checkouts</div>
-              <div class="vc-cell vc-hl">📱 Online Picking</div>
-              <div class="vc-cell vc-hl">🏢 Back Office</div>
-            </div>
-          </div>
-          <div class="vc-row">
-            <div class="vc-level">L2</div>
-            <div class="vc-cells">
-              <div class="vc-cell">Scheduling · Briefing · Shifts</div>
-              <div class="vc-cell">Receiving · Disputes · Replenishment</div>
-              <div class="vc-cell">OSA · Phantom · Planogram</div>
-              <div class="vc-cell">Expiries · Waste · Rotation</div>
-              <div class="vc-cell">Queues · SCO · Reallocation</div>
-              <div class="vc-cell">Routes · Inventory · Fulfillment</div>
-              <div class="vc-cell">Incidents · Reporting · HR</div>
-            </div>
-          </div>
-          <div class="vc-row">
-            <div class="vc-level">L3</div>
-            <div class="vc-cells" style="font-size:.6rem">
-              <div class="vc-cell">Forecast · Time studies</div>
-              <div class="vc-cell">3 apps → 1 process</div>
-              <div class="vc-cell">ESL / Vusion</div>
-              <div class="vc-cell">Automatic alerts</div>
-              <div class="vc-cell">Traffic prediction</div>
-              <div class="vc-cell">Floor integration</div>
-              <div class="vc-cell">Head office coordination</div>
-            </div>
-          </div>
-          <div class="vc-row">
-            <div class="vc-level">L4/5</div>
-            <div class="vc-cells" style="font-size:.6rem;background:rgba(0,61,165,.03)">
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">AI Scheduling</div>
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">Receiving agent</div>
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">Inventory agent</div>
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">Predictive expiry</div>
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">Queue management</div>
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">Route optimization</div>
-              <div class="vc-cell" style="color:var(--c-blue2);font-weight:600">Auto-reporting</div>
-            </div>
-          </div>
-        </div>
-        <p style="font-size:.72rem;color:rgba(0,18,40,.45);font-style:italic;margin-top:10px">The depth of analysis varies by process. Domains with highest potential are analyzed down to L4/L5 with real time studies.</p>
-      </div>
-    </section>
-
-    <!-- SLIDE 4: METHODOLOGY -->
-    <section id="slide-4" class="slide">
-      <div class="slide-header">
-        <div class="slide-tag">04 · Methodology</div>
-        <h2 class="slide-title">8 weeks. <span>From analysis to demonstrated impact.</span></h2>
-      </div>
-      <div class="inner-tabs">
-        <button class="itab active" onclick="switchInner('4-metodologia',this)">🧩 Methodology</button>
-        <button class="itab" onclick="switchInner('4-plan',this)">📅 Work Plan</button>
-        <button class="itab" onclick="switchInner('4-agentico',this)">🤖 Agentic Engine</button>
-        <button class="itab" onclick="switchInner('4-conocimiento',this)">💡 Knowledge Engine</button>
-        <button class="itab" onclick="switchInner('4-timeskipper',this)">⏱️ TimeSkipper</button>
-        <button class="itab" onclick="switchInner('4-simulador',this)">🎛️ Lever Simulator</button>
-      </div>
-
-      <div id="inner-4-metodologia" class="inner-panel active">
-        <p class="slide-sub" style="margin-bottom:16px">BREADTH to map the E2E opportunity. DEPTH to reinvent highest-impact processes down to task level.</p>
-        <div class="approach-ab">
-          <div class="approach-point">
-            <div class="ap-badge ap-badge-a">A</div>
-            <div>
-              <div class="ap-header"><span class="ap-keyword">BREADTH</span><span class="ap-subtitle">E2E vision · Prioritization · Scalability</span></div>
-              <div class="ap-desc">We evaluate the store's complete value chain to identify and prioritize large value pools. We understand which processes need redesign before they can be automated or agentized.</div>
-              <div class="ap-output">→ E2E opportunity map with estimated impact per area and country</div>
-            </div>
-          </div>
-          <div class="approach-plus">+</div>
-          <div class="approach-point">
-            <div class="ap-badge ap-badge-b">B</div>
-            <div>
-              <div class="ap-header"><span class="ap-keyword">DEPTH</span><span class="ap-subtitle">Tangibility · Demonstration · Confidence</span></div>
-              <div class="ap-desc">For the 3–4 highest-impact levers, we design the complete TO-BE process down to L4/L5 level: which steps automate, which redesign and which stay the same. With real time studies.</div>
-              <div class="ap-output">→ Reinvented process with tracking KPIs and audited business case</div>
-            </div>
-          </div>
-        </div>
-        <div class="approach-conclusion">The combination of E2E vision (BREADTH) and process depth (DEPTH) is what lets us build a credible business case — not a back-office estimate.</div>
-        <div class="div"></div>
-        <div class="g2">
-          <div class="ibox ibox-blue">
-            <div class="ibox-title">🗂️ Proven analysis pattern — layer-by-layer</div>
-            <div class="ibox-body">The analysis follows the same proven pattern as similar projects: L1→L4 mapping, impact estimation per layer, identification of intervention moments (manual, hybrid, automated). Back office included from the start, not as an afterthought.</div>
-          </div>
-          <div class="ibox ibox-warn">
-            <div class="ibox-title">🔄 Systematic ES–FR feedback</div>
-            <div class="ibox-body">Spain and France teams sync weekly. Patterns found in one store are validated in the other. The result is a more robust, more scalable model than working one country alone.</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="inner-4-plan" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:12px">Eight weeks from first store visit to audited business case — dual track: <strong>BREADTH</strong> maps the full opportunity, <strong>DEPTH</strong> reinvents and proves it.</p>
-        <div style="display:flex;gap:16px;margin-bottom:10px;flex-wrap:wrap">
-          <span style="display:flex;align-items:center;gap:5px;font-size:.67rem;color:rgba(0,18,40,.55)"><span style="width:14px;height:10px;border-radius:3px;background:var(--c-navy);display:inline-block"></span>Track main bar</span>
-          <span style="display:flex;align-items:center;gap:5px;font-size:.67rem;color:rgba(0,18,40,.55)"><span style="width:14px;height:10px;border-radius:3px;background:var(--c-blue2);display:inline-block"></span>Activities</span>
-          <span style="display:flex;align-items:center;gap:5px;font-size:.67rem;color:rgba(0,18,40,.55)">◆ Weekly ES–FR sync</span>
-          <span style="display:flex;align-items:center;gap:5px;font-size:.67rem;color:rgba(0,18,40,.55)">🏛️ SteerCo</span>
-        </div>
-        <div class="gantt-wrap">
-          <div class="gantt">
-            <!-- Header -->
-            <div class="gantt-hdr-lbl">Track / Activity</div>
-            <div class="gantt-hdr-wk">Wk 1</div>
-            <div class="gantt-hdr-wk">Wk 2</div>
-            <div class="gantt-hdr-wk">Wk 3</div>
-            <div class="gantt-hdr-wk">Wk 4</div>
-            <div class="gantt-hdr-wk">Wk 5</div>
-            <div class="gantt-hdr-wk">Wk 6</div>
-            <div class="gantt-hdr-wk">Wk 7</div>
-            <div class="gantt-hdr-wk" style="border-right:none">Wk 8</div>
-
-            <!-- ══ TRACK A: BREADTH ══ -->
-            <div class="gantt-track-lbl"><div class="g-badge">A</div>BREADTH</div>
-            <div class="gantt-bar-cell" style="grid-column:2/6"><div class="gantt-bar navy">E2E opportunity identification &amp; prioritization (both HMs)</div></div>
-            <div class="gantt-empty" style="grid-column:6/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">HM selection + kickoff <span class="cflag"><span class="fbar es"></span></span><span class="cflag"><span class="fbar fr"></span></span></div>
-            <div class="gantt-bar-cell" style="grid-column:2/4"><div class="gantt-bar blue"></div></div>
-            <div class="gantt-empty" style="grid-column:4/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">E2E opportunity mapping (L1 → L4)</div>
-            <div class="gantt-empty" style="grid-column:2/3"></div>
-            <div class="gantt-bar-cell" style="grid-column:3/6"><div class="gantt-bar blue"></div></div>
-            <div class="gantt-empty" style="grid-column:6/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">Benchmarking + lever prioritization</div>
-            <div class="gantt-empty" style="grid-column:2/5"></div>
-            <div class="gantt-bar-cell" style="grid-column:5/6"><div class="gantt-bar blue" style="font-size:.58rem;justify-content:center">Draft BC</div></div>
-            <div class="gantt-empty" style="grid-column:6/10;border-right:none"></div>
-
-            <!-- divider -->
-            <div class="gantt-divider"></div>
-
-            <!-- ══ TRACK B: DEPTH ══ -->
-            <div class="gantt-track-lbl"><div class="g-badge">B</div>DEPTH</div>
-            <div class="gantt-bar-cell" style="grid-column:2/10;border-right:none"><div class="gantt-bar navy">Process-by-process reinvention (1 HM/country) + agentic proof</div></div>
-
-            <div class="gantt-act-lbl">Process-by-process L4 analysis (1 HM/country)</div>
-            <div class="gantt-bar-cell" style="grid-column:2/6"><div class="gantt-bar blue"></div></div>
-            <div class="gantt-empty" style="grid-column:6/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">Time studies + WFM / ERP / shrinkage data</div>
-            <div class="gantt-bar-cell" style="grid-column:2/5"><div class="gantt-bar blue"></div></div>
-            <div class="gantt-empty" style="grid-column:5/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">TO-BE model per process (top 3–4 levers)</div>
-            <div class="gantt-empty" style="grid-column:2/5"></div>
-            <div class="gantt-bar-cell" style="grid-column:5/8"><div class="gantt-bar blue"></div></div>
-            <div class="gantt-empty" style="grid-column:8/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">Agentic design per process (where applicable)</div>
-            <div class="gantt-empty" style="grid-column:2/4"></div>
-            <div class="gantt-bar-cell" style="grid-column:4/7"><div class="gantt-bar blue"></div></div>
-            <div class="gantt-empty" style="grid-column:7/10;border-right:none"></div>
-
-            <div class="gantt-act-lbl">Quick wins + PoV agents (pilot HM)</div>
-            <div class="gantt-empty" style="grid-column:2/7"></div>
-            <div class="gantt-bar-cell" style="grid-column:7/10;border-right:none"><div class="gantt-bar blue"></div></div>
-
-            <div class="gantt-act-lbl">Audited business case + scaling roadmap</div>
-            <div class="gantt-empty" style="grid-column:2/8"></div>
-            <div class="gantt-bar-cell" style="grid-column:8/10;border-right:none"><div class="gantt-bar blue" style="font-size:.58rem;justify-content:center">Final</div></div>
-
-            <!-- divider -->
-            <div class="gantt-divider"></div>
-
-            <!-- Milestones -->
-            <div class="gantt-act-lbl" style="font-weight:700;color:var(--c-blue2);background:rgba(0,61,165,.04)">Milestones</div>
-            <div class="gantt-empty" style="grid-column:2/5"></div>
-            <div class="gantt-milestone-cell" style="grid-column:5/6"><div class="gantt-milestone-ico">🏛️</div><div class="gantt-milestone-txt">SteerCo<br>Wk 4</div></div>
-            <div class="gantt-empty" style="grid-column:6/9"></div>
-            <div class="gantt-milestone-cell" style="grid-column:9/10;border-right:none"><div class="gantt-milestone-ico">🏆</div><div class="gantt-milestone-txt">Final<br>Wk 8</div></div>
-
-            <!-- Weekly sync row -->
-            <div class="gantt-act-lbl" style="font-style:italic;color:rgba(0,18,40,.38);font-size:.62rem">◆ Weekly ES–FR sync</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond">◆</div>
-            <div class="gantt-diamond" style="border-right:none">◆</div>
-          </div>
-        </div>
-        <div class="g2" style="margin-top:14px">
-          <div class="ibox ibox-blue">
-            <div class="ibox-title"><span class="cflag"><span class="fbar es"></span></span>&nbsp;<span class="cflag"><span class="fbar fr"></span></span>&nbsp;Both countries run in parallel</div>
-            <div class="ibox-body">Both pilots run simultaneously across all 8 weeks. Weekly cross-country sync ensures learnings from <span class="cflag"><span class="fbar es"></span> Spain</span> feed <span class="cflag"><span class="fbar fr"></span> France</span> and vice versa.</div>
-          </div>
-          <div class="ibox ibox-green">
-            <div class="ibox-title">📊 Output: auditable business case</div>
-            <div class="ibox-body">Week 8 delivers a business case built on real store data — not desktop estimates. Extrapolated to all 381 hypermarkets. Ready for board presentation.</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="inner-4-agentico" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:16px">Agentic AI makes sense where the process is structured, repetitive and data-driven. Where human judgment is irreplaceable, we don't apply it.</p>
-        <div class="g2">
-          <div class="card">
-            <div class="card-label">✅ AI DOES help</div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">🗓️</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Scheduling &amp; WFM</strong> — Shift optimization based on traffic forecast. Structured data + historical pattern = perfect automation candidate.</div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">📦</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Supply</strong> — Agent that anticipates arrivals, opens disputes automatically and notifies replenishment in real time.</div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">🏷️</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Sales floor availability</strong> — With Vusion + data lake: break alerts, automatic adjustments, optimized replenishment route.</div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">🍞</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Perishables</strong> — Automatic alerts by product/date. Action prioritization without manual intervention.</div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">📱</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Online picking (FR)</strong> — Real-time route optimization. Integration with sales floor availability to reduce collisions.</div></div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-label">❌ AI is NOT the answer</div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">👥</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Organizational design</strong> — Multi-skilling, multi-activity and role structure require operational knowledge and negotiation. Not a data problem.</div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">⚖️</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Labor relations (FR)</strong> — Any change in work organization requires negotiation with CGT, CFDT. AI doesn't negotiate collective agreements.</div></div>
-              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:1.1rem">🎯</span><div style="font-size:.82rem;color:rgba(0,18,40,.7);line-height:1.5"><strong>Service model</strong> — How many service employees vs. self-checkout is a strategic and positioning decision, not an algorithmic optimization.</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="inner-4-conocimiento" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:16px">The project builds a knowledge base that transcends the pilot. Every store learning is structured, documented and made reusable.</p>
-        <div class="g3">
-          <div class="step-card"><div class="step-ico">📚</div><div class="step-title">Structured knowledge base</div><div class="step-desc">Every process analyzed is documented with its AS-IS, TO-BE, tracking KPIs and success factors. Standard format that lets us compare ES with FR and extrapolate to any store.</div></div>
-          <div class="step-card"><div class="step-ico">🔄</div><div class="step-title">Continuous ES–FR feedback</div><div class="step-desc">Spain's learnings inform France's analysis and vice versa. Weekly sync. Patterns appearing in both countries are the most robust for scaling.</div></div>
-          <div class="step-card"><div class="step-ico">🚀</div><div class="step-title">Scaling playbook</div><div class="step-desc">At pilot end, we deliver a playbook: the methodology, KPIs, reinvented processes and business case. Ready to replicate in next stores without starting from scratch.</div></div>
-        </div>
-        <div class="div"></div>
-        <div class="ibox ibox-green">
-          <div class="ibox-title">📊 The asset that remains</div>
-          <div class="ibox-body">At project end, Carrefour has more than a recommendations report. It has a documented operating model, a KPI framework validated in real stores, and a scaling playbook. The pilot investment pays off in every following store that applies it.</div>
-        </div>
-      </div>
-
-      <div id="inner-4-timeskipper" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:16px">TimeSkipper closes the loop between task planning and actual execution — the mechanism that keeps hours under control and makes improvement self-sustaining after the project ends.</p>
-        <div class="ts-loop-wrap">
-          <div class="ts-conn"></div>
-          <div class="g4" style="position:relative;z-index:1">
-            <div class="ts-step"><div class="ts-num" style="background:var(--c-navy)">1</div><div style="font-size:1.4rem;margin-bottom:6px">📋</div><div style="font-size:.82rem;font-weight:700;color:#001228;margin-bottom:5px">Task Planning</div><div style="font-size:.7rem;color:rgba(0,18,40,.55);line-height:1.4">Standard time × expected volume = planned hours. Allocated before the week starts.</div></div>
-            <div class="ts-step"><div class="ts-num" style="background:var(--c-blue)">2</div><div style="font-size:1.4rem;margin-bottom:6px">⏱️</div><div style="font-size:.82rem;font-weight:700;color:#001228;margin-bottom:5px">Actual Tracking</div><div style="font-size:.7rem;color:rgba(0,18,40,.55);line-height:1.4">Real hours per task and team captured daily. Utilization rate visible in real time.</div></div>
-            <div class="ts-step"><div class="ts-num" style="background:var(--c-blue2)">3</div><div style="font-size:1.4rem;margin-bottom:6px">📊</div><div style="font-size:.82rem;font-weight:700;color:#001228;margin-bottom:5px">Gap Analysis</div><div style="font-size:.7rem;color:rgba(0,18,40,.55);line-height:1.4">Planned vs. actual. Which tasks consistently overrun, and why?</div></div>
-            <div class="ts-step ts-step-close"><div class="ts-num" style="background:linear-gradient(135deg,var(--c-blue),var(--c-sky))">4</div><div style="font-size:1.4rem;margin-bottom:6px">🔄</div><div style="font-size:.82rem;font-weight:700;color:var(--c-blue);margin-bottom:5px">Loop Closed</div><div style="font-size:.7rem;color:rgba(0,18,40,.55);line-height:1.4">Actual time feeds back to refine the standard. The model improves with every cycle.</div></div>
-          </div>
-        </div>
-        <div class="g2" style="margin-top:16px">
-          <div class="ibox ibox-blue">
-            <div class="ibox-title">⚙️ Two deployment modes</div>
-            <div class="ibox-body"><div style="display:flex;flex-direction:column;gap:10px">
-              <div style="display:grid;grid-template-columns:140px 1fr;gap:8px;align-items:start"><span style="font-size:.82rem;font-weight:700;color:#001228">Vanilla (observation):</span><span style="font-size:.82rem;color:rgba(0,18,40,.65);line-height:1.5">Use TimeSkipper in read-only mode to measure actual hour utilization across pilot stores — without changing anything yet. Pure diagnostic.</span></div>
-              <div style="display:grid;grid-template-columns:140px 1fr;gap:8px;align-items:start"><span style="font-size:.82rem;font-weight:700;color:#001228">Full deployment:</span><span style="font-size:.82rem;color:rgba(0,18,40,.65);line-height:1.5">Rebuild the full planning → task management → KPI feedback loop across the network.</span></div>
-              <div style="display:grid;grid-template-columns:140px 1fr;gap:8px;align-items:start"><span style="font-size:.82rem;font-weight:700;color:#001228">Mixed field team:</span><span style="font-size:.82rem;color:rgba(0,18,40,.65);line-height:1.5">Accenture + Carrefour + TimeSkipper specialists working together for observations and setup.</span></div>
-            </div></div>
-          </div>
-          <div class="ibox ibox-dark">
-            <div class="ibox-title">📈 Why it matters</div>
-            <div class="ibox-body"><ul class="blist">
-              <li>7–10% productivity from this lever alone — Phase 1 target</li>
-              <li>Hours utilization rate becomes a managed KPI, not a mystery</li>
-              <li>Carrefour owns the loop after project end — sustainable without Accenture</li>
-              <li>Foundation for Intelligent Store features (Phase 2)</li>
-            </ul></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="inner-4-simulador" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:16px">Adjust the intensity of each lever to model the combined productivity impact across your hypermarket network. Based on benchmark from comparable hypermarket transformations — to be confirmed on Carrefour data.</p>
-        <div class="sim-wrap">
-          <div>
-            <div class="sim-params">
-              <div class="sim-param-row"><span class="sim-param-label">Store type</span><div class="sim-toggle" id="sim-type"><button class="sim-tog-btn active" onclick="setSimParam(this)">Urban HM</button><button class="sim-tog-btn" onclick="setSimParam(this)">Peri-urban HM</button></div></div>
-              <div class="sim-param-row"><span class="sim-param-label">Country</span><div class="sim-toggle" id="sim-country"><button class="sim-tog-btn active" onclick="setSimParam(this)">FR + ES</button><button class="sim-tog-btn" onclick="setSimParam(this)">France only</button><button class="sim-tog-btn" onclick="setSimParam(this)">Spain only</button></div></div>
-            </div>
-            <div class="sim-levers">
-              <div class="sim-lever-card">
-                <div class="sim-lever-header"><div class="sim-lever-icon">⚙️</div><div><div class="sim-lever-name">Operating Model & Activity Management</div><div class="sim-lever-sub">Process fixes · TimeSkipper · Execution discipline</div></div><div class="sim-lever-val" id="lv1-val">4%</div></div>
-                <input type="range" class="sim-range" id="lv1" min="0" max="7" value="4" step="0.5" oninput="updateSim()">
-                <div class="sim-range-labels"><span>0%</span><span style="color:var(--c-blue2);font-weight:700">Industry std: 5–7%</span></div>
-              </div>
-              <div class="sim-lever-card">
-                <div class="sim-lever-header"><div class="sim-lever-icon">🤖</div><div><div class="sim-lever-name">Intelligent Store (Automation)</div><div class="sim-lever-sub">Vusion · AI scheduling · eCommerce integration</div></div><div class="sim-lever-val" id="lv2-val">0%</div></div>
-                <input type="range" class="sim-range" id="lv2" min="0" max="20" value="0" step="1" oninput="updateSim()">
-                <div class="sim-range-labels"><span>0%</span><span style="color:var(--c-purple);font-weight:700">Full potential: 15–20%</span></div>
-              </div>
-              <div class="sim-lever-card">
-                <div class="sim-lever-header"><div class="sim-lever-icon">🔗</div><div><div class="sim-lever-name">Supply Chain & Promo Optimization</div><div class="sim-lever-sub">Upstream decisions · VSS complexity · Delivery frequency</div></div><div class="sim-lever-val" id="lv3-val">0%</div></div>
-                <input type="range" class="sim-range" id="lv3" min="0" max="8" value="0" step="0.5" oninput="updateSim()">
-                <div class="sim-range-labels"><span>0%</span><span>Up to 8%</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="sim-result-panel">
-            <div class="sim-result-main">
-              <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.4);margin-bottom:8px">Total productivity improvement</div>
-              <div class="sim-result-num" id="sim-total">4.0%</div>
-            </div>
-            <div class="sim-result-grid">
-              <div class="sim-result-item"><div class="sim-result-item-val" id="sim-ebit">0.5 pt</div><div class="sim-result-item-lbl">EBIT / HM</div></div>
-              <div class="sim-result-item"><div class="sim-result-item-val" id="sim-hours">~320h</div><div class="sim-result-item-lbl">freed / wk · HM</div></div>
-              <div class="sim-result-item"><div class="sim-result-item-val" id="sim-value">€0.3M</div><div class="sim-result-item-lbl">value / HM / yr</div></div>
-              <div class="sim-result-item"><div class="sim-result-item-val" id="sim-network">€107M</div><div class="sim-result-item-lbl">network (381 HM)</div></div>
-            </div>
-            <div style="font-size:.62rem;color:rgba(255,255,255,.3);text-align:center;margin-top:12px;line-height:1.5">Indicative · Based on comparable<br>hypermarket transformations</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 5: TEAM -->
-    <section id="slide-5" class="slide">
+    
+<section id="slide-5" class="slide">
       <div class="slide-header">
         <div class="slide-tag">05 · Team</div>
+        <div style="position:absolute;top:22px;right:60px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7c5800;background:#fff8e1;border:1px solid #f0c83a;border-radius:6px;padding:4px 12px">Tentative</div>
         <h2 class="slide-title">Senior. <span>Hypermarket-tested.</span></h2>
       </div>
       <p class="slide-sub" style="margin-bottom:20px">A lean senior team — one per country, coordinated centrally. Dimensioned to do, not to manage.</p>
@@ -991,11 +804,7 @@
               <div style="font-size:.76rem;font-weight:700;color:var(--c-navy)">WFM Expert</div>
               <div style="font-size:.64rem;color:rgba(0,18,40,.5);margin-top:5px;line-height:1.45">Workforce Management<br>Scheduling &amp; staffing</div>
             </div>
-            <div style="background:linear-gradient(135deg,rgba(0,61,165,.07),rgba(0,61,165,.02));border:1.5px solid rgba(0,61,165,.2);border-radius:14px;padding:16px 12px;text-align:center;box-shadow:0 2px 10px rgba(0,61,165,.06)">
-              <div style="font-size:1.4rem;margin-bottom:8px">⏱️</div>
-              <div style="font-size:.76rem;font-weight:700;color:var(--c-navy)">TimeSkipper</div>
-              <div style="font-size:.64rem;color:rgba(0,18,40,.5);margin-top:5px;line-height:1.45">Activity management<br>Field observations</div>
-            </div>
+
             <div style="background:linear-gradient(135deg,rgba(0,61,165,.07),rgba(0,61,165,.02));border:1.5px solid rgba(0,61,165,.2);border-radius:14px;padding:16px 12px;text-align:center;box-shadow:0 2px 10px rgba(0,61,165,.06)">
               <div style="font-size:1.4rem;margin-bottom:8px">🔢</div>
               <div style="font-size:.76rem;font-weight:700;color:var(--c-navy)">Analytics Lead</div>
@@ -1034,7 +843,7 @@
       <div class="inner-tabs">
         <button class="itab active" onclick="switchInner('6-proof',this)">⚡ Our proof</button>
         <button class="itab" onclick="switchInner('6-carrefour',this)">🏪 Carrefour intel</button>
-        <button class="itab" onclick="switchInner('6-capabilities',this)">🚀 What we bring</button>
+        
       </div>
 
       <!-- Tab 1: Our proof -->
@@ -1081,106 +890,8 @@
       </div>
 
       <!-- Tab 2: Carrefour intel -->
-      <div id="inner-6-carrefour" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:18px">We don't arrive in week 1 to understand the context. We arrive in week 1 to validate hypotheses we already have.</p>
-        <div class="acc-intel-wrap">
-          <div class="acc-intel-item">
-            <div class="acc-intel-bar"></div>
-            <div class="acc-intel-body">
-              <div class="acc-intel-tag">Technology · Vusion / EdgeSense</div>
-              <div class="acc-intel-title">We know your ESL deployment — and what it can actually do</div>
-              <div class="acc-intel-text">Pilot in San Sebastián de los Reyes. The infrastructure is in place. The operational integration isn't. We know which lever is real and which is aspirational.</div>
-            </div>
-          </div>
-          <div class="acc-intel-item">
-            <div class="acc-intel-bar"></div>
-            <div class="acc-intel-body">
-              <div class="acc-intel-tag">Data Infrastructure · Data Lake</div>
-              <div class="acc-intel-title">We understand your data architecture — and where the gaps are</div>
-              <div class="acc-intel-text">What's connected, what doesn't reach the store yet, and where the opportunity is to link data to real-time operational decisions.</div>
-            </div>
-          </div>
-          <div class="acc-intel-item">
-            <div class="acc-intel-bar"></div>
-            <div class="acc-intel-body">
-              <div class="acc-intel-tag">Operations · Receiving process</div>
-              <div class="acc-intel-title">Three apps to receive one delivery — and we've seen it</div>
-              <div class="acc-intel-text">The receiving process runs across three separate applications. That's not a consulting hypothesis. It's a field observation. We know where the friction is.</div>
-            </div>
-          </div>
-          <div class="acc-intel-item">
-            <div class="acc-intel-bar"></div>
-            <div class="acc-intel-body">
-              <div class="acc-intel-tag">Operations · Incidents &amp; paper processes</div>
-              <div class="acc-intel-title">We know where value is hidden — and it's not always in the data</div>
-              <div class="acc-intel-text">Incident patterns, processes still on paper, friction between systems. The value pool often sits in the gap between what the data says and what actually happens on the floor.</div>
-            </div>
-          </div>
-          <div class="acc-intel-item">
-            <div class="acc-intel-bar"></div>
-            <div class="acc-intel-body">
-              <div class="acc-intel-tag">Supply Chain · Upstream overcost</div>
-              <div class="acc-intel-title">We've seen upstream decisions drive ~20% overwork on the store floor</div>
-              <div class="acc-intel-text">At a major European hypermarket operator, over-inventory was driving approximately 20% overwork across the entire store operation — and degrading quality in every downstream process. Root cause: misalignment between system shelf capacity, actual shelf capacity, and order frequency. The store teams were working harder to compensate for a supply chain decision. This is why our analysis doesn't stop at the store door.</div>
-            </div>
-          </div>
-          <div class="acc-intel-item">
-            <div class="acc-intel-bar"></div>
-            <div class="acc-intel-body">
-              <div class="acc-intel-tag">Relationship · Carrefour Spain</div>
-              <div class="acc-intel-title">We have an active conversation with Carrefour Spain on this exact topic</div>
-              <div class="acc-intel-text">Store productivity has been a direct discussion point with the Carrefour Spain leadership team — including a pilot store conversation that has not yet been activated. We arrive in week 1 knowing the context, the blockers, and the people involved. Not starting from zero.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab 3: What we bring -->
-      <div id="inner-6-capabilities" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:18px">Five capabilities that combine to make this proposal different — not in theory, but in delivery.</p>
-        <div class="acc-capability-grid">
-          <div class="acc-cap-card">
-            <div class="acc-cap-ico">🏪</div>
-            <div>
-              <div class="acc-cap-title">Hypermarket operations</div>
-              <div class="acc-cap-text">We've transformed operating models in large-format retail across Europe, North America and Latin America — integrated chains, cooperatives, multi-format operators. We know what works and what doesn't in this format.</div>
-            </div>
-          </div>
-          <div class="acc-cap-card">
-            <div class="acc-cap-ico">👥</div>
-            <div>
-              <div class="acc-cap-title">WFM &amp; workforce planning</div>
-              <div class="acc-cap-text">Workforce Management implementations in retail across Europe and Latin America. We translate analysis into a real staffing model — not a slide about staffing models.</div>
-            </div>
-          </div>
-          <div class="acc-cap-card">
-            <div class="acc-cap-ico">⏱️</div>
-            <div>
-              <div class="acc-cap-title">TimeSkipper · Activity management</div>
-              <div class="acc-cap-text">We deploy TimeSkipper as the activity management engine — closing the planning → tracking → standard refinement loop. The mechanism that delivers 7–10% productivity and makes the improvement sustainable after the project ends.</div>
-            </div>
-          </div>
-          <div class="acc-cap-card">
-            <div class="acc-cap-ico">🤖</div>
-            <div>
-              <div class="acc-cap-title">Applied AI for retail</div>
-              <div class="acc-cap-text">We don't sell generic AI. We design agents for specific store processes: scheduling, inventory, shelf monitoring. With a clear view on where it adds value and where it doesn't.</div>
-            </div>
-          </div>
-          <div class="acc-cap-card">
-            <div class="acc-cap-ico">🇫🇷</div>
-            <div>
-              <div class="acc-cap-title">French retail context</div>
-              <div class="acc-cap-text">Francophone capability and direct knowledge of the French labor context (CGT, CFDT). Our France recommendations are not a translation of Spain's — they're built for France.</div>
-            </div>
-          </div>
-        </div>
-        <div class="acc-closing">
-          <div class="acc-closing-quote">"Give us one store, a clear playing field and measurable objectives.<br>We'll prove it works. Then we'll scale it."</div>
-          <div class="acc-closing-attr">Accenture · Store Operations Productivity · France &amp; Spain · 2026</div>
-        </div>
-      </div>
-    </section>
+      <div id="inner-6-carrefour" class="inner-panel"><div style="display:flex;align-items:center;justify-content:center;height:300px;flex-direction:column;gap:16px;opacity:.7"><div style="font-size:2rem">🇫🇷</div><div style="font-size:.8rem;font-weight:600;color:rgba(0,18,40,.5);text-align:center">Pending input from France team</div><div style="font-size:.7rem;color:rgba(0,18,40,.35);text-align:center;max-width:320px">Specific Carrefour intelligence — touchpoints, existing relationship, operational knowledge — to be added after alignment with the France team.</div></div>
+      </section>
 
     <!-- SLIDE 7: FINANCIALS -->
     <section id="slide-7" class="slide">
