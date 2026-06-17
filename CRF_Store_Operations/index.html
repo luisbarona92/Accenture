@@ -275,7 +275,7 @@
     .ibox-green .ibox-title{color:#007a4d}
     .ibox-warn .ibox-title{color:#8a6000}
     .ibox-red .ibox-title{color:#b00015}
-    .ibox-body{font-size:.85rem;color:rgba(0,18,40,.65);line-height:1.65}
+    .ibox-body{font-size:.8rem;color:rgba(0,18,40,.65);line-height:1.65}
     .stats-row{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}
     .stat-pill{flex:1;min-width:150px;background:#fff;border:1px solid rgba(0,61,165,.12);border-radius:13px;padding:16px 18px;text-align:center;box-shadow:0 2px 8px rgba(0,61,165,.06)}
     .stat-val{font-size:1.9rem;font-weight:700;background:linear-gradient(135deg,var(--c-blue3),var(--c-sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -391,7 +391,7 @@
 
   <nav class="nav-bar">
     <button class="nav-btn active" onclick="goSlide(0, this)"><span class="nav-num">0</span><span>Cover</span></button>
-    <button class="nav-btn" onclick="goSlide(1, this)"><span class="nav-num">1</span><span>Vision</span></button>
+    <button class="nav-btn" onclick="goSlide(1, this)"><span class="nav-num">1</span><span>Understanding</span></button>
     <button class="nav-btn" onclick="goSlide(2, this)"><span class="nav-num">2</span><span>Approach</span></button>
     <button class="nav-btn" onclick="goSlide(3, this)"><span class="nav-num">3</span><span>Scope</span></button>
     <button class="nav-btn" onclick="goSlide(4, this)"><span class="nav-num">4</span><span>Impact</span></button>
@@ -429,43 +429,40 @@
     <!-- SLIDES 1-6 with full content structure -->
     <section id="slide-1" class="slide">
   <div class="slide-header">
-    <div class="slide-tag">01 · Vision</div>
-    <h2 class="slide-title">A clear vision — and the <span>proof to back it</span></h2>
+    <div class="slide-tag">01 · Understanding</div>
+    <h2 class="slide-title">Our read of the situation — and the <span>proof to back our approach</span></h2>
   </div>
   <div class="inner-tabs">
     <button class="itab active" onclick="switchInner('1-vision', this)">🎯 Our Vision</button>
     <button class="itab" onclick="switchInner('1-casos', this)">📋 Reference Cases</button>
   </div>
   <div id="inner-1-vision" class="inner-panel active">
-    <div class="ibox ibox-blue" style="margin-bottom:16px">
-      <div class="ibox-title">📍 The context</div>
-      <div class="ibox-body">Carrefour faces rising pressure on margins while store staff costs have plateaued after years of optimization. The 2030 ambition — <strong>€1bn/year in savings, ROC from 3.2% to 3.5%</strong> — requires stores to contribute materially. Incremental fixes will not be enough.</div>
+    <div style="background:linear-gradient(135deg,rgba(0,61,165,.06),rgba(0,61,165,.02));border:2px solid rgba(0,61,165,.15);border-radius:14px;padding:18px 22px;margin-bottom:20px">
+      <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--c-blue2);margin-bottom:8px">📍 The context</div>
+      <div style="font-size:1rem;font-weight:600;color:#001228;line-height:1.55">Carrefour faces rising pressure on margins while store staff costs have plateaued after years of optimization. The 2030 ambition — <span style="color:var(--c-blue)">€1bn/year in savings, ROC from 3.2% to 3.5%</span> — requires stores to contribute materially. Incremental fixes will not be enough.</div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:1fr 50px 1fr;gap:14px;align-items:center">
       <div style="border:2px solid rgba(0,61,165,.22);border-radius:14px;padding:18px;background:rgba(0,61,165,.04)">
-        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--c-blue2);margin-bottom:8px">Path 1 · Operating Model</div>
+        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--c-blue2);margin-bottom:8px">Operating Model</div>
         <div style="font-size:.92rem;font-weight:700;color:#001228;margin-bottom:8px">Capture efficiency without technology</div>
         <ul class="blist" style="font-size:.8rem">
-          <li>Process-based operating model — task volume × time standard</li>
+          <li>Process-based operating model — task volume x time standard</li>
           <li>Execution discipline, activity management, routines</li>
-          <li>Structural efficiency gains from week 1</li>
+          <li>Structural efficiency gains from the first weeks</li>
         </ul>
         <div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">Generates impact independently. The foundation everything else builds on.</div>
       </div>
+      <div style="text-align:center;font-size:2.2rem;font-weight:300;color:rgba(0,18,40,.15);line-height:1">+</div>
       <div style="border:2px solid rgba(161,0,255,.18);border-radius:14px;padding:18px;background:rgba(161,0,255,.03)">
-        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#A100FF;margin-bottom:8px">Path 2 · Technology</div>
+        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#A100FF;margin-bottom:8px">Technology &amp; AI</div>
         <div style="font-size:.92rem;font-weight:700;color:#001228;margin-bottom:8px">Amplify impact with AI and digital tools</div>
         <ul class="blist" style="font-size:.8rem">
           <li>AI scheduling, ESL, intelligent replenishment</li>
           <li>Agentic automation of repetitive store processes</li>
-          <li>Unlocks the next level — only once Path 1 is solid</li>
+          <li>Unlocks the next level — built on top of the operating model</li>
         </ul>
-        <div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">Amplifies Path 1. Does not replace it.</div>
+        <div style="margin-top:10px;font-size:.7rem;color:rgba(0,18,40,.5);font-style:italic">Amplifies the operating model. Does not replace it.</div>
       </div>
-    </div>
-    <div class="ibox ibox-dark">
-      <div class="ibox-title">🎯 Our stance</div>
-      <div class="ibox-body">You can capture meaningful efficiency without AI. Technology then lets you go further. This distinction matters: <strong>Carrefour does not need to commit to a technology transformation to start capturing value.</strong> The operating model alone moves the needle — and creates the foundation for what comes next.</div>
     </div>
   </div>
   <div id="inner-1-casos" class="inner-panel">
@@ -482,7 +479,7 @@
     <h2 class="slide-title">T-shaped coverage — <span>Breadth and Depth</span></h2>
   </div>
   <div class="inner-tabs">
-    <button class="itab active" onclick="switchInner('2-approach', this)">🎯 Approach</button>
+    <button class="itab active" onclick="switchInner('2-approach', this)">📋 Scope</button>
     <button class="itab" onclick="switchInner('2-tshape', this)">🔭 T-Shape</button>
     <button class="itab" onclick="switchInner('2-breadth', this)">🌐 Breadth</button>
     <button class="itab" onclick="switchInner('2-depth', this)">🏬 Depth</button>
@@ -490,19 +487,32 @@
     <button class="itab" onclick="switchInner('2-timeskipper', this)">⏱️ TimeSkipper <span style="font-size:.55rem;background:rgba(255,184,0,.2);border:1px solid rgba(255,184,0,.5);color:#7c5800;border-radius:4px;padding:1px 5px;margin-left:4px">TBC</span></button>
   </div>
   <div id="inner-2-approach" class="inner-panel active">
-    <p class="slide-sub" style="margin-bottom:16px">One pilot store per country — full analysis, joint prioritisation, quick wins with a path to scale.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px">
-      <div class="step-card"><div class="step-ico">🏬</div><div class="step-title">One pilot store per country</div><div class="step-desc">We select one hypermarket in France and one in Spain. Full E2E analysis of the entire store operation — every process, every department, every layer from L1 to L4.</div></div>
-      <div class="step-card"><div class="step-ico">🤝</div><div class="step-title">Joint selection in week 1</div><div class="step-desc">We do not pre-define which processes to focus on. In week 1, together with Carrefour, we identify the 2 initiatives with the highest value and implementation feasibility. The choice is yours.</div></div>
-      <div class="step-card"><div class="step-ico">⚡</div><div class="step-title">Quick wins + path to scale</div><div class="step-desc">Implement the 2 selected initiatives with measurable impact. Once validated, the same methodology scales to more stores — with a playbook ready for the full 381 HM network.</div></div>
-    </div>
-    <div class="ibox ibox-blue" style="margin-bottom:14px">
-      <div class="ibox-title">🔭 Why T-shaped coverage</div>
-      <div class="ibox-body"><strong>Breadth:</strong> We map everything that happens <em>before</em> a product reaches the store — supply chain, replenishment decisions, HQ planning. Problems visible in the store often have their root cause upstream. <strong>Depth:</strong> We go into every process <em>inside</em> the store at full L4 detail. The T ensures we see the full picture — and prioritise the right levers.</div>
+    <p class="slide-sub" style="margin-bottom:16px">Two pilot hypermarkets — one per country — analysed in full. In the first weeks we jointly select 2 high-value initiatives and implement them as quick wins.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+      <div class="step-card">
+        <div class="step-ico">🏬</div>
+        <div class="step-title">2 pilot stores</div>
+        <div class="step-desc">One hypermarket per country. Full E2E analysis — every process, every department, L1 to L4.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-ico">🔭</div>
+        <div class="step-title">T-shaped coverage</div>
+        <div class="step-desc">Breadth maps everything upstream (supply, planning, HQ). Depth maps every process inside the store. Problems visible on the floor often have root causes above it.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-ico">🤝</div>
+        <div class="step-title">Joint selection</div>
+        <div class="step-desc">In the first weeks, together with Carrefour, we select the 2 initiatives with the highest value and implementation feasibility. The choice is yours.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-ico">⚡</div>
+        <div class="step-title">Quick wins + playbook</div>
+        <div class="step-desc">Implement, measure, validate. Phase 1 ends with a proven result and a scaling playbook ready for the full 381 HM network.</div>
+      </div>
     </div>
     <div class="ibox" style="background:rgba(0,208,132,.06);border:1.5px solid rgba(0,208,132,.25);border-radius:12px;padding:14px 16px">
-      <div class="ibox-title" style="color:#007a4d">📈 If the pilot succeeds — what comes next</div>
-      <div class="ibox-body">Phase 1 produces a validated playbook and a confirmed business case. Phase 2 scales the winning initiatives across the network — country by country, format by format. Accenture's fee in Phase 2 is linked to results.</div>
+      <div class="ibox-title" style="color:#007a4d">📈 What comes next — Phase 2</div>
+      <div class="ibox-body">Phase 1 produces a validated playbook and a confirmed business case. Phase 2 scales the winning initiatives across the network — country by country, format by format. <strong>Accenture's fee in Phase 2 is linked to results.</strong></div>
     </div>
   </div>
   <div id="inner-2-tshape" class="inner-panel">
@@ -526,9 +536,9 @@
         </div>
       </div>
     </div>
-    <div class="ibox ibox-blue">
-      <div class="ibox-title">🏬 Carrefour hypermarket scope</div>
-      <div class="ibox-body">With 175 FTEs per hypermarket on average and annual labour costs of ~€5.6M per store (FR) / ~€5.3M (ES), even a 10% productivity improvement translates to material savings at individual store level — and hundreds of millions at network scale across 381 hypermarkets.</div>
+    <div style="background:rgba(0,61,165,.04);border:1.5px solid rgba(0,61,165,.15);border-radius:10px;padding:12px 16px;font-size:.75rem;color:rgba(0,18,40,.65);margin-top:12px">
+      <span style="font-weight:700;color:#001228">📊 Spain — illustrative impact estimate: </span>~175 FTEs per hypermarket × €30,000/year = ~<strong style="color:var(--c-blue)">€5.25M labour cost per store</strong>. A 10% productivity improvement ≈ <strong style="color:var(--c-blue)">€525k/store/year</strong>. Across the full Spanish hypermarket network, the potential is material.
+      <div style="margin-top:6px;font-size:.65rem;color:rgba(0,18,40,.4)">* Estimated figure. France figures will be confirmed during Phase 1 fieldwork.</div>
     </div>
   </div>
   <div id="inner-2-breadth" class="inner-panel">
@@ -570,49 +580,59 @@
         </div>
       </div>
     </div>
-    <div class="ibox ibox-blue"><div class="ibox-title">🎯 The selection logic</div><div class="ibox-body">In week 1, once the L4 baseline is complete, we present Carrefour with a prioritised list of opportunities ranked by impact and implementation feasibility. <strong>Carrefour selects 2 initiatives to implement as quick wins.</strong> No pre-commitment, full transparency, joint ownership.</div></div>
+    <div class="ibox ibox-blue"><div class="ibox-title">🎯 The selection logic</div><div class="ibox-body">In the first weeks, once the L4 baseline is complete, we present Carrefour with a prioritised list of opportunities ranked by impact and implementation feasibility. <strong>Carrefour selects 2 initiatives to implement as quick wins.</strong> No pre-commitment, full transparency, joint ownership.</div></div>
   </div>
   <div id="inner-2-engine" class="inner-panel">
-    <p class="slide-sub" style="margin-bottom:14px">Our analysis is powered by a structured knowledge engine — combining field observation, document analysis and external intelligence into a unified baseline that feeds every decision.</p>
-    <div style="background:linear-gradient(135deg,#06091a,#0c1a3a);border-radius:16px;padding:22px;color:#fff;margin-bottom:14px">
-      <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin-bottom:14px">Illustrative · How the analysis works</div>
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:nowrap;overflow-x:auto">
-        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:12px;min-width:110px;flex-shrink:0">
-          <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px">Inputs</div>
+    <p class="slide-sub" style="margin-bottom:16px">Our analysis pipeline — from first field visit to audited business case. Both country teams feed a shared knowledge engine that makes every finding stronger.</p>
+    <div style="border-radius:14px;padding:20px 24px;background:linear-gradient(135deg,#06091a 0%,#0c1a3a 100%);color:#fff;margin-bottom:16px">
+      <div style="display:grid;grid-template-columns:1.2fr 28px 1.5fr 28px 1fr 28px 1fr 28px 1.2fr;align-items:center;gap:0">
+        <!-- Block 1: Inputs -->
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px">
+          <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px">Data Ingestion</div>
           <div style="display:flex;flex-direction:column;gap:5px">
-            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:5px"><span>👁️</span>Field observation</div>
-            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:5px"><span>🗂️</span>Document ingestion</div>
-            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap=5px"><span>🌐</span>External intelligence</div>
+            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:6px"><span style="font-size:.85rem">👁️</span>Field observation</div>
+            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:6px"><span style="font-size:.85rem">🗂️</span>Document ingestion</div>
+            <div style="font-size:.62rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:6px"><span style="font-size:.85rem">🌐</span>External intel</div>
           </div>
         </div>
-        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
-        <div style="background:rgba(161,0,255,.15);border:1.5px solid rgba(161,0,255,.4);border-radius:12px;padding:14px;text-align:center;min-width:120px;flex-shrink:0">
-          <div style="font-size:.65rem;font-weight:700;color:#cc66ff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Knowledge Motor</div>
-          <div style="font-size:.58rem;color:rgba(255,255,255,.5)">AS-IS Unified Layer</div>
-          <div style="font-size:1.4rem;margin:6px 0">🧠</div>
-          <div style="font-size:.58rem;color:rgba(255,255,255,.45)">Accenture AI + Reinvention Corpus</div>
+        <!-- Arrow -->
+        <div style="text-align:center;color:rgba(255,255,255,.25);font-size:1rem">▶</div>
+        <!-- Block 2: Knowledge Motor -->
+        <div style="background:rgba(161,0,255,.18);border:1.5px solid rgba(161,0,255,.45);border-radius:12px;padding:14px 16px;text-align:center">
+          <div style="font-size:.62rem;font-weight:800;color:#cc66ff;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">🧠 Knowledge Motor</div>
+          <div style="font-size:.58rem;color:rgba(255,255,255,.5);margin-bottom:8px">AS-IS Unified Layer</div>
+          <div style="font-size:.58rem;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.1);padding-top:7px">Accenture AI + Reinvention Corpus + field data from both countries</div>
         </div>
-        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
-        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:12px;min-width:90px;text-align:center;flex-shrink:0">
-          <div style="font-size:.6rem;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:4px">Process &amp; Value Explorer</div>
-          <div style="font-size:.9rem">🔍</div>
+        <!-- Arrow -->
+        <div style="text-align:center;color:rgba(255,255,255,.25);font-size:1rem">▶</div>
+        <!-- Block 3: Process Explorer -->
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;text-align:center">
+          <div style="font-size:.85rem;margin-bottom:6px">🔍</div>
+          <div style="font-size:.62rem;font-weight:700;color:rgba(255,255,255,.7)">Process Value Explorer</div>
+          <div style="font-size:.57rem;color:rgba(255,255,255,.35);margin-top:4px">L4 activity maps · benchmarks</div>
         </div>
-        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
-        <div style="background:rgba(0,208,132,.1);border:1.5px solid rgba(0,208,132,.35);border-radius:10px;padding:12px;min-width:90px;text-align:center;flex-shrink:0">
-          <div style="font-size:.6rem;font-weight:700;color:#00d084;margin-bottom:4px">Opportunity Analyser</div>
-          <div style="font-size:.9rem">📊</div>
+        <!-- Arrow -->
+        <div style="text-align:center;color:rgba(255,255,255,.25);font-size:1rem">▶</div>
+        <!-- Block 4: OPP Analyser -->
+        <div style="background:rgba(0,208,132,.1);border:1.5px solid rgba(0,208,132,.35);border-radius:10px;padding:12px 14px;text-align:center">
+          <div style="font-size:.85rem;margin-bottom:6px">📊</div>
+          <div style="font-size:.62rem;font-weight:700;color:#00d084">Opp. Analyser</div>
+          <div style="font-size:.57rem;color:rgba(255,255,255,.35);margin-top:4px">Impact sizing · priority matrix</div>
         </div>
-        <div style="font-size:1.1rem;color:rgba(255,255,255,.3);flex-shrink:0">▶</div>
-        <div style="background:rgba(0,61,165,.2);border:1.5px solid rgba(43,127,224,.5);border-radius:10px;padding:12px;min-width:90px;text-align:center;flex-shrink:0">
-          <div style="font-size:.6rem;font-weight:700;color:#7ecfff;margin-bottom:4px">Business Case &amp; Roadmap</div>
-          <div style="font-size:.9rem">🗺️</div>
+        <!-- Arrow -->
+        <div style="text-align:center;color:rgba(255,255,255,.25);font-size:1rem">▶</div>
+        <!-- Block 5: Business Case -->
+        <div style="background:rgba(0,61,165,.2);border:1.5px solid rgba(43,127,224,.45);border-radius:10px;padding:12px 14px;text-align:center">
+          <div style="font-size:.85rem;margin-bottom:6px">📋</div>
+          <div style="font-size:.62rem;font-weight:700;color:#7ecfff">Business Case</div>
+          <div style="font-size:.57rem;color:rgba(255,255,255,.35);margin-top:4px">Audited · traceable · with measurement plan</div>
         </div>
       </div>
     </div>
     <div class="g3">
-      <div class="step-card"><div class="step-ico">👁️</div><div class="step-title">Field-first observation</div><div class="step-desc">We spend 2 weeks inside the pilot stores — timing tasks, mapping flows, interviewing teams. Everything is structured and ingested into the knowledge engine in real time.</div></div>
-      <div class="step-card"><div class="step-ico">📏</div><div class="step-title">External benchmark</div><div class="step-desc">Seconds per task × product family, not ratios. We bring Accenture's global knowledge corpus plus our direct experience in hypermarket operations to calibrate every finding.</div></div>
-      <div class="step-card"><div class="step-ico">📊</div><div class="step-title">Auditable output</div><div class="step-desc">Every recommendation is traceable to a data point. The business case is not a PowerPoint estimate — it is a number with a baseline, a methodology and a measurement plan.</div></div>
+      <div class="step-card"><div class="step-ico">👁️</div><div class="step-title">Field-first observation</div><div class="step-desc">2 weeks inside the pilot stores — timing tasks, mapping flows, interviewing teams. Everything structured and ingested in real time.</div></div>
+      <div class="step-card"><div class="step-ico">📏</div><div class="step-title">External benchmark</div><div class="step-desc">Seconds per task × product family. Accenture global knowledge corpus + direct hypermarket experience calibrates every finding.</div></div>
+      <div class="step-card"><div class="step-ico">📋</div><div class="step-title">Auditable output</div><div class="step-desc">Every recommendation is traceable to a data point. The business case has a baseline, a methodology and a measurement plan.</div></div>
     </div>
   </div>
   <div id="inner-2-timeskipper" class="inner-panel">
@@ -628,46 +648,121 @@
 <section id="slide-3" class="slide">
   <div class="slide-header">
     <div class="slide-tag">03 · Scope</div>
-    <h2 class="slide-title">10 weeks — from <span>first observation to validated business case</span></h2>
-    <p class="slide-sub">Two parallel workstreams — France and Spain — with a common methodology and shared knowledge pool.</p>
+    <h2 class="slide-title">10-week engagement — <span>France and Spain in parallel</span></h2>
+    <p class="slide-sub">Both countries run the same methodology simultaneously. Findings flow to a shared knowledge engine — what we learn in one country strengthens the analysis in the other.</p>
   </div>
-  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:16px;font-size:.6rem">
-    <div style="font-weight:700;color:rgba(0,18,40,.4);display:flex;align-items:flex-end;padding-bottom:6px">Week</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">1</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">2</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">3</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">4</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">5</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">6</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">7</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">8</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">9</div>
-    <div style="text-align:center;font-weight:700;color:var(--c-blue);background:rgba(0,61,165,.08);border-radius:6px;padding:6px 2px">10</div>
+
+  <!-- Week header -->
+  <div style="display:grid;grid-template-columns:72px repeat(10,1fr);gap:4px;margin-top:14px;font-size:.6rem;align-items:center">
+    <div style="font-weight:700;color:rgba(0,18,40,.35);font-size:.58rem;text-transform:uppercase;letter-spacing:.08em">Week</div>
+    <div style="text-align:center;font-weight:800;color:var(--c-blue);background:rgba(0,61,165,.1);border-radius:5px;padding:5px 2px">1</div>
+    <div style="text-align:center;font-weight:800;color:var(--c-blue);background:rgba(0,61,165,.1);border-radius:5px;padding:5px 2px">2</div>
+    <div style="text-align:center;font-weight:800;color:var(--c-blue);background:rgba(0,61,165,.1);border-radius:5px;padding:5px 2px">3</div>
+    <div style="text-align:center;font-weight:800;color:var(--c-blue);background:rgba(0,61,165,.1);border-radius:5px;padding:5px 2px">4</div>
+    <div style="text-align:center;font-weight:800;color:#7c5800;background:rgba(255,184,0,.1);border-radius:5px;padding:5px 2px">5</div>
+    <div style="text-align:center;font-weight:800;color:#7c5800;background:rgba(255,184,0,.1);border-radius:5px;padding:5px 2px">6</div>
+    <div style="text-align:center;font-weight:800;color:#7c5800;background:rgba(255,184,0,.1);border-radius:5px;padding:5px 2px">7</div>
+    <div style="text-align:center;font-weight:800;color:#007a4d;background:rgba(0,208,132,.1);border-radius:5px;padding:5px 2px">8</div>
+    <div style="text-align:center;font-weight:800;color:#007a4d;background:rgba(0,208,132,.1);border-radius:5px;padding:5px 2px">9</div>
+    <div style="text-align:center;font-weight:800;color:#007a4d;background:rgba(0,208,132,.1);border-radius:5px;padding:5px 2px">10</div>
   </div>
-  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:4px;font-size:.6rem">
-    <div style="font-weight:600;color:rgba(0,18,40,.5);display:flex;align-items:center">Phase</div>
-    <div style="grid-column:2/5;background:rgba(0,61,165,.12);border:1.5px solid rgba(0,61,165,.25);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:var(--c-blue)">Discovery &amp; Analysis</div>
-    <div style="background:rgba(255,184,0,.12);border:1.5px solid rgba(255,184,0,.35);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:#7c5800"></div>
-    <div style="grid-column:6/8;background:rgba(255,184,0,.12);border:1.5px solid rgba(255,184,0,.35);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:#7c5800">Prioritisation &amp; Design</div>
-    <div style="grid-column:8/12;background:rgba(0,208,132,.12);border:1.5px solid rgba(0,208,132,.35);border-radius:8px;padding:8px;text-align:center;font-weight:700;color:#007a4d">Implementation &amp; Business Case</div>
+
+  <!-- Phase labels -->
+  <div style="display:grid;grid-template-columns:72px repeat(10,1fr);gap:4px;margin-top:3px;font-size:.58rem">
+    <div></div>
+    <div style="grid-column:2/6;background:rgba(0,61,165,.08);border:1px solid rgba(0,61,165,.2);border-radius:5px;padding:4px 8px;font-weight:700;color:var(--c-blue);text-align:center">Phase 1 · Discovery &amp; Analysis</div>
+    <div style="grid-column:6/8;background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.25);border-radius:5px;padding:4px 8px;font-weight:700;color:#7c5800;text-align:center">Prioritisation</div>
+    <div style="grid-column:8/12;background:rgba(0,208,132,.08);border:1px solid rgba(0,208,132,.25);border-radius:5px;padding:4px 8px;font-weight:700;color:#007a4d;text-align:center">Phase 2 · Quick wins</div>
   </div>
-  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:6px;align-items:start">
-    <div style="font-size:.58rem;font-weight:600;color:rgba(0,18,40,.4);padding-top:4px">Field</div>
-    <div style="grid-column:2/4;background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.15);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">🏬 Store observation</div><div style="color:rgba(0,18,40,.6)">In-store field work · Process timing · Interviews</div></div>
-    <div style="grid-column:4/6;background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.15);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">🏢 HQ interviews</div><div style="color:rgba(0,18,40,.6)">Upstream analysis · Supply chain · Planning</div></div>
-    <div style="grid-column:6/8;background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">🤝 Joint selection</div><div style="color:rgba(0,18,40,.6)">With Carrefour: select 2 initiatives</div></div>
-    <div style="grid-column:8/12;background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.2);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">⚡ Quick win implementation</div><div style="color:rgba(0,18,40,.6)">Deploy · Measure · Validate</div></div>
+
+  <!-- France row -->
+  <div style="display:grid;grid-template-columns:72px repeat(10,1fr);gap:4px;margin-top:8px;align-items:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+      <span style="font-size:1.2rem">🇫🇷</span>
+      <span style="font-size:.56rem;font-weight:700;color:#001228">France</span>
+    </div>
+    <div style="grid-column:2/5;background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.18);border-radius:7px;padding:8px 10px;font-size:.6rem">
+      <div style="font-weight:700;color:#001228;margin-bottom:2px">🏬 Store fieldwork</div>
+      <div style="color:rgba(0,18,40,.5)">Observation · process timing · interviews</div>
+    </div>
+    <div style="grid-column:5/7;background:rgba(0,61,165,.04);border:1px solid rgba(0,61,165,.12);border-radius:7px;padding:8px 10px;font-size:.6rem">
+      <div style="font-weight:700;color:#001228;margin-bottom:2px">🏢 HQ analysis</div>
+      <div style="color:rgba(0,18,40,.5)">Supply · planning · upstream</div>
+    </div>
+    <div style="grid-column:7/8;background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);border-radius:7px;padding:8px 6px;font-size:.57rem;text-align:center">
+      <div style="font-weight:700;color:#7c5800">🤝 Joint</div>
+      <div style="color:rgba(0,18,40,.5)">select 2</div>
+    </div>
+    <div style="grid-column:8/12;background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.2);border-radius:7px;padding:8px 10px;font-size:.6rem">
+      <div style="font-weight:700;color:#007a4d;margin-bottom:2px">⚡ Implementation + validation FR</div>
+      <div style="color:rgba(0,18,40,.5)">Deploy · measure · audit business case</div>
+    </div>
   </div>
-  <div style="display:grid;grid-template-columns:80px repeat(10,1fr);gap:4px;margin-top:4px;align-items:start">
-    <div style="font-size:.58rem;font-weight:600;color:rgba(0,18,40,.4);padding-top:4px">Analysis</div>
-    <div style="grid-column:2/6;background:rgba(0,61,165,.04);border:1px solid rgba(0,61,165,.1);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">📊 L4 process mapping + benchmark</div><div style="color:rgba(0,18,40,.6)">E2E baseline · Task volume × time standards · External benchmark</div></div>
-    <div style="grid-column:6/9;background:rgba(255,184,0,.04);border:1px solid rgba(255,184,0,.15);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">💡 Opportunity sizing</div><div style="color:rgba(0,18,40,.6)">Value pools · Priority matrix · Business case per lever</div></div>
-    <div style="grid-column:9/12;background:rgba(0,208,132,.04);border:1px solid rgba(0,208,132,.12);border-radius:7px;padding:8px;font-size:.6rem"><div style="font-weight:700;color:#001228;margin-bottom:3px">📋 Playbook</div><div style="color:rgba(0,18,40,.6)">Scaling plan for 381 HM network</div></div>
+
+  <!-- Shared knowledge band -->
+  <div style="display:grid;grid-template-columns:72px 1fr;gap:4px;margin-top:4px">
+    <div style="display:flex;align-items:center;justify-content:center">
+      <div style="width:1px;height:100%;background:rgba(161,0,255,.2)"></div>
+    </div>
+    <div style="background:linear-gradient(90deg,rgba(161,0,255,.05),rgba(0,61,165,.05),rgba(161,0,255,.05));border:1px dashed rgba(0,61,165,.2);border-radius:8px;padding:6px 14px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:1rem">🧠</span>
+      <div style="font-size:.6rem">
+        <span style="font-weight:700;color:rgba(0,18,40,.6)">Shared Knowledge Engine</span>
+        <span style="color:rgba(0,18,40,.4);margin-left:6px">— Benchmarks, process times and patterns flow continuously between both workstreams, enriching analysis in both countries</span>
+      </div>
+    </div>
   </div>
+
+  <!-- Spain row -->
+  <div style="display:grid;grid-template-columns:72px repeat(10,1fr);gap:4px;margin-top:4px;align-items:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+      <span style="font-size:1.2rem">🇪🇸</span>
+      <span style="font-size:.56rem;font-weight:700;color:#001228">Spain</span>
+    </div>
+    <div style="grid-column:2/5;background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.18);border-radius:7px;padding:8px 10px;font-size:.6rem">
+      <div style="font-weight:700;color:#001228;margin-bottom:2px">🏬 Store fieldwork</div>
+      <div style="color:rgba(0,18,40,.5)">Observation · process timing · interviews</div>
+    </div>
+    <div style="grid-column:5/7;background:rgba(0,61,165,.04);border:1px solid rgba(0,61,165,.12);border-radius:7px;padding:8px 10px;font-size:.6rem">
+      <div style="font-weight:700;color:#001228;margin-bottom:2px">🏢 HQ analysis</div>
+      <div style="color:rgba(0,18,40,.5)">Supply · planning · upstream</div>
+    </div>
+    <div style="grid-column:7/8;background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);border-radius:7px;padding:8px 6px;font-size:.57rem;text-align:center">
+      <div style="font-weight:700;color:#7c5800">🤝 Joint</div>
+      <div style="color:rgba(0,18,40,.5)">select 2</div>
+    </div>
+    <div style="grid-column:8/12;background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.2);border-radius:7px;padding:8px 10px;font-size:.6rem">
+      <div style="font-weight:700;color:#007a4d;margin-bottom:2px">⚡ Implementation + validation ES</div>
+      <div style="color:rgba(0,18,40,.5)">Deploy · measure · audit business case</div>
+    </div>
+  </div>
+
+  <!-- Milestone cards -->
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px">
-    <div style="background:rgba(0,61,165,.06);border:1px solid rgba(0,61,165,.15);border-radius:12px;padding:14px"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--c-blue);margin-bottom:6px">W1 · Kickoff</div><ul class="blist" style="font-size:.72rem"><li>Store selection confirmed</li><li>Baseline KPIs defined</li><li>Joint steering committee set up</li></ul></div>
-    <div style="background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.2);border-radius:12px;padding:14px"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7c5800;margin-bottom:6px">W5 · Midpoint</div><ul class="blist" style="font-size:.72rem"><li>L4 baseline complete</li><li>2 initiatives selected with Carrefour</li><li>Implementation plan agreed</li></ul></div>
-    <div style="background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.2);border-radius:12px;padding:14px"><div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#007a4d;margin-bottom:6px">W10 · Delivery</div><ul class="blist" style="font-size:.72rem"><li>Audited business case per lever</li><li>Quick wins validated and measured</li><li>Scaling playbook ready</li></ul></div>
+    <div style="background:rgba(0,61,165,.05);border:1px solid rgba(0,61,165,.15);border-radius:12px;padding:14px">
+      <div style="font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--c-blue);margin-bottom:6px">W1 · Kickoff</div>
+      <ul class="blist" style="font-size:.7rem">
+        <li>Store selection confirmed (ES + FR)</li>
+        <li>Baseline KPIs defined</li>
+        <li>Steering committee set up</li>
+      </ul>
+    </div>
+    <div style="background:rgba(255,184,0,.05);border:1px solid rgba(255,184,0,.2);border-radius:12px;padding:14px">
+      <div style="font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7c5800;margin-bottom:6px">W5 · Midpoint</div>
+      <ul class="blist" style="font-size:.7rem">
+        <li>L4 baseline complete in both stores</li>
+        <li>2 initiatives selected per country</li>
+        <li>Implementation plan agreed</li>
+      </ul>
+    </div>
+    <div style="background:rgba(0,208,132,.05);border:1px solid rgba(0,208,132,.2);border-radius:12px;padding:14px">
+      <div style="font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#007a4d;margin-bottom:6px">W10 · Delivery</div>
+      <ul class="blist" style="font-size:.7rem">
+        <li>Audited business case per lever</li>
+        <li>Quick wins validated + measured</li>
+        <li>Scaling playbook ready</li>
+      </ul>
+    </div>
   </div>
 </section>
 <section id="slide-4" class="slide">
@@ -798,7 +893,7 @@
         <!-- Transversal Experts -->
         <div style="width:100%;margin-top:18px">
           <div style="text-align:center;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(0,18,40,.35);margin-bottom:10px">Transversal Experts · shared across ES + FR</div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto">
             <div style="background:linear-gradient(135deg,rgba(0,61,165,.07),rgba(0,61,165,.02));border:1.5px solid rgba(0,61,165,.2);border-radius:14px;padding:16px 12px;text-align:center;box-shadow:0 2px 10px rgba(0,61,165,.06)">
               <div style="font-size:1.4rem;margin-bottom:8px">📊</div>
               <div style="font-size:.76rem;font-weight:700;color:var(--c-navy)">WFM Expert</div>
