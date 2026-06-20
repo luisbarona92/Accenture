@@ -214,6 +214,18 @@
     .pcrf-t{font-size:.6rem;color:rgba(0,18,40,.5)}
     .gov-photo-note{font-size:.68rem;color:rgba(0,18,40,.4);margin-top:12px;padding:8px 12px;background:rgba(0,61,165,.04);border-radius:8px;border:1px dashed rgba(0,61,165,.15)}
     .gov-photo-note code{font-family:monospace;background:rgba(0,61,165,.07);padding:1px 5px;border-radius:3px}
+    .reinv-grid{display:grid;grid-template-columns:1fr 210px 1fr;grid-template-rows:auto auto auto;grid-template-areas:'. c1 .''c2 circ c4''c3 circ c5';gap:14px;align-items:center;margin:16px 0 14px}
+    .reinv-card{background:#fff;border:1px solid rgba(0,0,0,.09);border-left:4px solid #7c3aed;border-radius:0 10px 10px 0;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+    .reinv-num{width:24px;height:24px;border-radius:50%;background:#7c3aed;color:#fff;font-size:.7rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-bottom:6px}
+    .reinv-label{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#7c3aed;margin-bottom:5px}
+    .reinv-title{font-size:.82rem;font-weight:700;color:#001228;margin-bottom:5px;line-height:1.3}
+    .reinv-desc{font-size:.73rem;color:rgba(0,18,40,.55);line-height:1.5}
+    .reinv-circle-wrap{grid-area:circ;display:flex;align-items:center;justify-content:center;padding:8px 0}
+    .reinv-circle{width:190px;height:190px;border-radius:50%;background:linear-gradient(135deg,#6d28d9,#7c3aed);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;box-shadow:0 8px 32px rgba(109,40,217,.35)}
+    .reinv-circle-text{font-size:.65rem;font-weight:800;letter-spacing:.1em;line-height:1.5;margin-top:10px;opacity:.9}
+    .reinv-banner{background:linear-gradient(135deg,#6d28d9,#7c3aed);border-radius:10px;padding:16px 24px;color:#fff;text-align:center}
+    .reinv-banner strong{font-size:.88rem;font-weight:700;display:block;margin-bottom:5px}
+    .reinv-banner p{font-size:.75rem;opacity:.75;margin:0;line-height:1.5}
   </style>
 </head>
 <body>
@@ -252,7 +264,7 @@
     <button class="nav-btn" onclick="showSlide(1)"><span class="nav-num">01</span><span>Summary</span></button>
     <button class="nav-btn" onclick="showSlide(2)"><span class="nav-num">02</span><span>Why Accenture</span></button>
     <button class="nav-btn" onclick="showSlide(3)"><span class="nav-num">03</span><span>Approach</span></button>
-    <button class="nav-btn" onclick="showSlide(4)"><span class="nav-num">04</span><span>Team</span></button>
+    <button class="nav-btn" onclick="showSlide(4)"><span class="nav-num">04</span><span>Team 🇫🇷🇪🇸</span></button>
     <button class="nav-btn" onclick="showSlide(5)"><span class="nav-num">✓</span><span>Thank You</span></button>
   </nav>
 
@@ -473,6 +485,11 @@
         <div class="slide-tag">04 · Proposed Team & Governance</div>
         <h2 class="slide-title">Senior. Hypermarket-tested. <span>Fully committed.</span></h2>
       </div>
+      <div class="inner-tabs">
+        <button class="itab active" onclick="switchInner('inner-4-org', this)">🏢 Org Structure</button>
+        <button class="itab" onclick="switchInner('inner-4-reinvention', this)">✨ Reinvention Success</button>
+      </div>
+      <div id="inner-4-org" class="inner-panel active">
       <!-- TO ADD PHOTOS: Create a folder "photos/" next to this HTML file and add images named:
            France: BN.jpg  AG.jpg  JD.jpg  CT.jpg  ZRC.jpg  ADV.jpg
            Spain:  MC.jpg  JOH.jpg  PC.jpg  RA.jpg  AS.jpg  MB.jpg  FM.jpg  CD.jpg  PYB.jpg
@@ -553,6 +570,53 @@
         </div>
       </div>
       <p class="gov-photo-note">📸 Para añadir fotos: crea una carpeta <code>photos/</code> junto a este archivo HTML y añade imágenes con estos nombres — Francia: <code>BN.jpg</code> <code>AG.jpg</code> <code>JD.jpg</code> <code>CT.jpg</code> <code>ZRC.jpg</code> <code>ADV.jpg</code> &nbsp;·&nbsp; España: <code>MC.jpg</code> <code>JOH.jpg</code> <code>PC.jpg</code> <code>RA.jpg</code> <code>AS.jpg</code> <code>MB.jpg</code> <code>FM.jpg</code> <code>CD.jpg</code> <code>PYB.jpg</code></p>
+      </div><!-- end inner-4-org -->
+
+      <div id="inner-4-reinvention" class="inner-panel">
+        <h3 style="font-size:1.1rem;font-weight:700;color:#001228;margin-bottom:16px;line-height:1.3">Carrefour can lean on Accenture to <span style="color:#7c3aed">make store reinvention a success</span></h3>
+        <div class="reinv-grid">
+          <div class="reinv-card" style="grid-area:c1">
+            <div class="reinv-num">1</div>
+            <div class="reinv-label">Retailer Reach</div>
+            <div class="reinv-title">Unmatched reach + Carrefour knowledge</div>
+            <div class="reinv-desc">Live store work in France, Spain &amp; worldwide from integrated chains to cooperatives.</div>
+          </div>
+          <div class="reinv-card" style="grid-area:c2">
+            <div class="reinv-num">2</div>
+            <div class="reinv-label">Benchmark Depth · TimeSkipper</div>
+            <div class="reinv-title">Gesture-level benchmarks, with TimeSkipper</div>
+            <div class="reinv-desc">Time-per-task by gesture × product family × store archetype, not generic ratios.</div>
+          </div>
+          <div class="reinv-circle-wrap">
+            <div class="reinv-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.88)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+              <div class="reinv-circle-text">RETAIL-BUILT<br>STORE-PROVEN</div>
+            </div>
+          </div>
+          <div class="reinv-card" style="grid-area:c3">
+            <div class="reinv-num">3</div>
+            <div class="reinv-label">Blended Teams</div>
+            <div class="reinv-title">Teams that blend both worlds</div>
+            <div class="reinv-desc">Senior people pairing strategy with hands-on store operations consulting + retail.</div>
+          </div>
+          <div class="reinv-card" style="grid-area:c4">
+            <div class="reinv-num">4</div>
+            <div class="reinv-label">Method: The How</div>
+            <div class="reinv-title">Model &amp; simulate the operating model</div>
+            <div class="reinv-desc">We model store reality, derive levers from detailed benchmarks and best practices, then rebuild by simulation.</div>
+          </div>
+          <div class="reinv-card" style="grid-area:c5">
+            <div class="reinv-num">5</div>
+            <div class="reinv-label">France &amp; Spain</div>
+            <div class="reinv-title">One method, tuned to each country</div>
+            <div class="reinv-desc">Same approach, local specifics built in: ES merchandizers &amp; shelving &gt;1.80m; FR "ventes sans suite".</div>
+          </div>
+        </div>
+        <div class="reinv-banner">
+          <strong>One method, two countries, every store modelled, simulated, rebuilt.</strong>
+          <p>Gesture-level benchmarks and teams that have actually run stores — we compress your journey, we don't replace your teams.</p>
+        </div>
+      </div><!-- end inner-4-reinvention -->
     </section>
 
     <section id="slide-5" class="slide">
