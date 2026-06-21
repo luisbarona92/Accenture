@@ -473,7 +473,7 @@
     /* ── Simulator panel ── */
     .sim-layout{display:grid;grid-template-columns:1fr 0.75fr;gap:14px;align-items:start}
     .sim-left-title{color:#6d28d9;font-size:.74rem;font-weight:800;text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:.6px}
-    .sim-funnel{display:flex;flex-direction:column}
+    .sim-funnel{display:flex;flex-direction:column;gap:3px}
     .sim-dots{display:flex;justify-content:center;gap:5px;padding:4px 8px}
     .sim-dot{width:7px;height:7px;border-radius:50%;background:rgba(109,40,217,.22)}
     .sim-block{border-radius:8px;padding:16px 18px}
@@ -490,6 +490,8 @@
     .sim-b4{background:#2e0987;border:1px solid #1e0660}
     .sim-b4-title{font-size:.72rem;font-weight:800;color:#fff;text-align:center}
     .sim-b4-sub{font-size:.63rem;color:rgba(255,255,255,.65);text-align:center;margin-top:4px}
+    .sim-studs{display:flex;gap:7px;margin-bottom:10px}
+    .sim-stud{width:13px;height:13px;border-radius:50%;flex-shrink:0;box-shadow:0 2px 3px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.25)}
     .sim-right{border:2px dashed rgba(109,40,217,.4);border-radius:10px;overflow:hidden}
     .sim-right img{width:100%;display:block;object-fit:contain}
 
@@ -1303,6 +1305,15 @@
 
               <!-- Block 1: Raw material -->
               <div class="sim-block sim-b1">
+                <div class="sim-studs">
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                  <div class="sim-stud" style="background:#c4b5fd"></div>
+                </div>
                 <div class="sim-b1-title">Raw material: the plastic</div>
                 <div class="sim-b1-cards">
                   <div class="sim-b1-card">Store observation</div>
@@ -1311,50 +1322,47 @@
                 </div>
               </div>
 
-              <div class="sim-dots">
-                <div class="sim-dot"></div><div class="sim-dot"></div><div class="sim-dot"></div>
-                <div class="sim-dot"></div><div class="sim-dot"></div><div class="sim-dot"></div>
-                <div class="sim-dot"></div><div class="sim-dot"></div><div class="sim-dot"></div>
-              </div>
-
               <!-- Block 2: Operating-model twin -->
               <div class="sim-block sim-b2">
+                <div class="sim-studs">
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                  <div class="sim-stud" style="background:#a78bfa"></div>
+                </div>
                 <div class="sim-b2-title">Operating-model twin</div>
                 <div class="sim-b2-sub">= the lego bricks</div>
               </div>
 
-              <div class="sim-dots">
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-                <div class="sim-dot" style="background:rgba(109,40,217,.35)"></div>
-              </div>
-
               <!-- Block 3: Target scenario -->
               <div class="sim-block sim-b3">
+                <div class="sim-studs">
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                  <div class="sim-stud" style="background:#7c3aed"></div>
+                </div>
                 <div class="sim-b3-title">Target op. model scenario w. management</div>
                 <div class="sim-b3-sub">= the store, built from bricks</div>
               </div>
 
-              <div class="sim-dots">
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-                <div class="sim-dot" style="background:rgba(255,255,255,.3)"></div>
-              </div>
-
               <!-- Block 4: Simulated impact -->
               <div class="sim-block sim-b4">
+                <div class="sim-studs">
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                  <div class="sim-stud" style="background:#4c1d95"></div>
+                </div>
                 <div class="sim-b4-title">Simulated impact</div>
                 <div class="sim-b4-sub">Cost &amp; FTE, by department</div>
               </div>
