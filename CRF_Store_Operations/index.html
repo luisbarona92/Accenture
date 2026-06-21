@@ -281,6 +281,29 @@
     .bm-chart-val{font-size:.62rem;font-weight:700;color:#001228;width:28px;text-align:right;flex-shrink:0}
     .bm-enables{background:rgba(109,40,217,.05);border:1px solid rgba(109,40,217,.12);border-radius:10px;padding:14px;font-size:.7rem;color:rgba(0,18,40,.7);line-height:1.6}
     .bm-enables li{margin-bottom:4px}
+    .val-grid{display:grid;grid-template-columns:110px 1fr 260px 28px;gap:0;border:1px solid rgba(109,40,217,.15);border-radius:12px;overflow:hidden}
+    .val-hdr{background:#7c3aed;color:#fff;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:7px 12px}
+    .val-hdr-span{grid-column:span 1}
+    .val-row{display:contents}
+    .val-axis-cell{background:rgba(109,40,217,.07);padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-top:1px solid rgba(109,40,217,.12)}
+    .val-axis-icon{font-size:1.6rem;margin-bottom:8px}
+    .val-axis-title{font-size:.7rem;font-weight:800;color:#7c3aed;line-height:1.3}
+    .val-axis-sub{font-size:.6rem;color:rgba(109,40,217,.6);font-style:italic;margin-top:4px;line-height:1.3}
+    .val-levers-cell{padding:14px 16px;border-top:1px solid rgba(0,0,0,.07);border-left:1px solid rgba(0,0,0,.07)}
+    .val-levers-cell ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:5px}
+    .val-levers-cell li{font-size:.7rem;color:rgba(0,18,40,.7);line-height:1.4}
+    .val-levers-cell li strong{color:#001228}
+    .val-impact-cell{padding:14px 16px;border-top:1px solid rgba(0,0,0,.07);border-left:1px solid rgba(109,40,217,.15);background:rgba(109,40,217,.03)}
+    .val-bench-cell{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);background:#7c3aed;color:#fff;font-size:.55rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-align:center;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.2)}
+    .val-flags-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center;margin-bottom:8px}
+    .val-flag-fr{width:38px;height:38px;border-radius:50%;background:linear-gradient(90deg,#002395 33%,#fff 33% 67%,#ED2939 67%);box-shadow:0 2px 6px rgba(0,0,0,.2);margin:0 auto 6px}
+    .val-flag-es{width:38px;height:38px;border-radius:50%;background:linear-gradient(0deg,#c60b1e 25%,#f1bf00 25% 75%,#c60b1e 75%);box-shadow:0 2px 6px rgba(0,0,0,.2);margin:0 auto 4px}
+    .val-num{font-size:1.3rem;font-weight:900;color:#7c3aed;line-height:1}
+    .val-metric{font-size:.72rem;font-weight:700;color:#001228}
+    .val-sub2{font-size:.6rem;color:rgba(0,18,40,.5);line-height:1.2}
+    .val-kpi-big{font-size:1.8rem;font-weight:900;color:#7c3aed;line-height:1;text-align:center}
+    .val-kpi-lbl{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(0,18,40,.45);text-align:center;margin-bottom:10px}
+    .val-kpi-div{width:30px;height:1px;background:rgba(109,40,217,.2);margin:8px auto}
   </style>
 </head>
 <body>
@@ -443,30 +466,54 @@
         </div>
       </div>
 
-      <div id="inner-2-value" class="inner-panel">
-        <div style="text-align:center;margin-bottom:18px"><div class="val-impact-title"><em><u>Impact</u></em> <span style="font-size:.78rem;font-style:italic;color:rgba(0,18,40,.4)">(avg. of Accenture experience)</span></div></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start">
-          <!-- France -->
-          <div style="text-align:center">
-            <div class="val-flag-fr"></div>
-            <div class="val-num">7%</div><div class="val-metric">productivity</div><div class="val-sub">for Process Opt.</div>
-            <div class="val-num" style="margin-top:14px">10%</div><div class="val-metric">staff cost</div><div class="val-sub">Operating Model &amp; E2E optimization</div>
+            <div id="inner-2-value" class="inner-panel">
+        <div class="val-grid">
+          <!-- Headers -->
+          <div class="val-hdr">Axis</div>
+          <div class="val-hdr">Levers</div>
+          <div class="val-hdr">Impact <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0">(avg. of Accenture experience)</span></div>
+          <div class="val-hdr" style="writing-mode:vertical-rl"></div>
+          <!-- Row 1: Process & Operating Model -->
+          <div class="val-axis-cell">
+            <div class="val-axis-icon">&#9881;&#65039;</div>
+            <div class="val-axis-title">Process &amp; Operating Model Optimization</div>
+            <div class="val-axis-sub">(zoom: next pages)</div>
           </div>
-          <!-- Spain -->
-          <div style="text-align:center">
-            <div class="val-flag-es"></div>
-            <div style="font-size:.58rem;color:rgba(0,18,40,.4);font-style:italic;margin:5px 0 8px;line-height:1.4">greater scheduling flexibility + supplier-merchandiser leverage</div>
-            <div class="val-num">10%</div><div class="val-metric">productivity</div><div class="val-sub">for Process Opt.</div>
-            <div class="val-num" style="margin-top:14px">17%</div><div class="val-metric">staff cost</div><div class="val-sub">Operating Model &amp; E2E optimization</div>
+          <div class="val-levers-cell"><ul>
+            <li><strong>End-to-end process redesign</strong>: cut rework and double-handling, receiving &#8594; shelf &#8594; checkout</li>
+            <li><strong>Right-sized organisation</strong>: spans, layers and roles tuned to each store format</li>
+            <li><strong>Management on routines</strong>: daily activity steering and a clear leadership rhythm</li>
+            <li><strong>Workload-driven planning enforced</strong>: staffing matched to real task volume and traffic</li>
+            <li><strong>Performance visibility</strong>: daily KPIs and dashboards by role</li>
+          </ul></div>
+          <div class="val-impact-cell">
+            <div class="val-flags-row">
+              <div><div class="val-flag-fr"></div><div class="val-num">7%</div><div class="val-metric">productivity</div><div class="val-sub2">for Process Opt.</div><div class="val-num" style="margin-top:10px">10%</div><div class="val-metric">staff cost</div><div class="val-sub2">Operating Model &amp; E2E optimization</div></div>
+              <div><div class="val-flag-es"></div><div style="font-size:.56rem;color:rgba(0,18,40,.4);font-style:italic;margin-bottom:4px;line-height:1.3">greater scheduling flexibility + supplier-merchandiser leverage</div><div class="val-num">10%</div><div class="val-metric">productivity</div><div class="val-sub2">for Process Opt.</div><div class="val-num" style="margin-top:10px">17%</div><div class="val-metric">staff cost</div><div class="val-sub2">Operating Model &amp; E2E optimization</div></div>
+            </div>
           </div>
-          <!-- 3 big impacts -->
-          <div style="background:rgba(109,40,217,.05);border-radius:14px;padding:22px 18px;text-align:center;border:1px solid rgba(109,40,217,.12)">
-            <div class="val-impact-big">+1-2%</div><div class="val-impact-lbl">EBIT</div>
-            <div class="val-impact-div"></div>
-            <div class="val-impact-big">60</div><div class="val-impact-lbl">NPS (Preference)</div>
-            <div class="val-impact-div"></div>
-            <div class="val-impact-big">20%</div><div class="val-impact-lbl">Ecommerce share enabled</div>
+          <div class="val-bench-cell">Benchmark</div>
+          <!-- Row 2: Reinvention -->
+          <div class="val-axis-cell">
+            <div class="val-axis-icon">&#129302;</div>
+            <div class="val-axis-title">Reinvention with Intelligent Store</div>
           </div>
+          <div class="val-levers-cell"><div style="font-size:.68rem;font-weight:700;color:rgba(0,18,40,.5);margin-bottom:6px">Sample:</div><ul>
+            <li><strong>Electronic shelf labels</strong> &#8211; automated pricing, and control</li>
+            <li><strong>Computer-vision shelf intelligence</strong> &#8211; real-time on-shelf availability, automated shelf-capacity &amp; planogram</li>
+            <li><strong>AI-driven replenishment &amp; inventory</strong> &#8211; demand-based ordering, less backroom overstock, auto-adjusted parameters</li>
+            <li><strong>Guided e-commerce picking</strong> &#8211; geolocated pick-to-light &amp; mass picking for in-store order prep</li>
+            <li><strong>Loss &amp; freshness intelligence</strong> &#8211; vision-based shrink reduction, fresh waste &amp; markdown optimization</li>
+            <li><strong>Store orchestration</strong> &#8211; real-time sensing-to-action across pricing, shelf, stock and picking</li>
+          </ul></div>
+          <div class="val-impact-cell" style="display:flex;flex-direction:column;justify-content:center">
+            <div class="val-kpi-big">+1-2%</div><div class="val-kpi-lbl">EBIT</div>
+            <div class="val-kpi-div"></div>
+            <div class="val-kpi-big">60</div><div class="val-kpi-lbl">NPS (Preference)</div>
+            <div class="val-kpi-div"></div>
+            <div class="val-kpi-big">20%</div><div class="val-kpi-lbl">Ecommerce share enabled</div>
+          </div>
+          <div class="val-bench-cell" style="background:#4c1d95">Beyond Benchmark</div>
         </div>
       </div>
 
