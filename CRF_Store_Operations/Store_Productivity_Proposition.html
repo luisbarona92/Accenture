@@ -250,6 +250,37 @@
     .val-impact-big{font-size:2.2rem;font-weight:900;color:#7c3aed;line-height:1}
     .val-impact-lbl{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(0,18,40,.45);margin:2px 0 10px}
     .val-impact-div{width:36px;height:1px;background:rgba(109,40,217,.2);margin:8px auto 10px}
+    .act-row{display:grid;grid-template-columns:148px 90px 46px 1fr;gap:10px;align-items:center;padding:9px 14px;border-radius:8px;margin-bottom:3px}
+    .act-top{background:rgba(109,40,217,.07);border:1px solid rgba(109,40,217,.14)}
+    .act-name{font-size:.78rem;font-weight:700;color:#001228}
+    .act-top .act-name{color:#7c3aed;text-decoration:underline}
+    .act-bar-bg{background:rgba(0,0,0,.1);border-radius:99px;height:9px;overflow:hidden}
+    .act-bar-fill{height:100%;border-radius:99px;background:#7c3aed}
+    .act-top .act-bar-fill{background:#7c3aed}
+    .act-bar-fill.light{background:#9b9bc8}
+    .act-pct{font-size:.78rem;font-weight:800;color:#7c3aed;text-align:right}
+    .act-desc{font-size:.67rem;color:rgba(0,18,40,.55);line-height:1.4}
+    .act-top .act-desc{color:rgba(0,18,40,.62)}
+    .bm-wrap{display:grid;grid-template-columns:1fr 260px;gap:16px;align-items:start}
+    .bm-table{width:100%;border-collapse:collapse;font-size:.72rem}
+    .bm-table th{background:#7c3aed;color:#fff;padding:7px 10px;text-align:center;font-size:.68rem;font-weight:700}
+    .bm-table th:first-child,.bm-table th:nth-child(2){text-align:left}
+    .bm-table td{padding:6px 10px;border-bottom:1px solid rgba(0,0,0,.07);vertical-align:middle}
+    .bm-section td{background:#7c3aed;color:#fff;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:5px 10px;font-style:italic}
+    .bm-avg{font-weight:700;font-size:.75rem;color:#001228}
+    .bm-bic{font-weight:600;color:rgba(0,18,40,.55)}
+    .bm-gap{font-weight:800;color:#c0392b;text-align:center}
+    .bm-area{color:rgba(0,18,40,.5);font-size:.68rem}
+    .bm-task{font-style:italic;font-weight:500}
+    .bm-unit{color:rgba(0,18,40,.45);font-size:.68rem;text-align:center}
+    .bm-chart-row{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+    .bm-chart-label{font-size:.62rem;color:rgba(0,18,40,.6);width:80px;line-height:1.2;flex-shrink:0;text-align:right}
+    .bm-bar-stack{flex:1;display:flex;flex-direction:column;gap:2px}
+    .bm-bar-cur{height:8px;border-radius:2px;background:#7c3aed}
+    .bm-bar-bic{height:8px;border-radius:2px;background:rgba(109,40,217,.2);border:1px solid rgba(109,40,217,.3)}
+    .bm-chart-val{font-size:.62rem;font-weight:700;color:#001228;width:28px;text-align:right;flex-shrink:0}
+    .bm-enables{background:rgba(109,40,217,.05);border:1px solid rgba(109,40,217,.12);border-radius:10px;padding:14px;font-size:.7rem;color:rgba(0,18,40,.7);line-height:1.6}
+    .bm-enables li{margin-bottom:4px}
   </style>
 </head>
 <body>
@@ -440,13 +471,53 @@
       </div>
 
       <div id="inner-2-activities" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:20px">Breakdown of productive hours by department. Source: Accenture analysis and benchmarks.</p>
-        <div style="background:#fff;border:1px solid rgba(0,61,165,.12);border-radius:14px;padding:20px;overflow-x:auto"><table class="cmp-table" style="font-size:.78rem"><thead><tr><th style="width:35%">Activity</th><th style="width:8%">%</th><th>Key Levers</th></tr></thead><tbody><tr><td style="font-weight:600">Shelf stocking</td><td style="font-weight:700;color:var(--c-blue)">40.2%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Shelf Ready Packaging, On-demand pallet</td></tr><tr><td style="font-weight:600">Routing</td><td style="font-weight:700;color:var(--c-blue)">18.4%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Mutualize pallet routing</td></tr><tr><td style="font-weight:600">Facing</td><td style="font-weight:700;color:var(--c-blue)">10.8%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Auto-facing integration</td></tr><tr><td style="font-weight:600">Shelf management</td><td style="font-weight:700;color:var(--c-blue)">10.8%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Capacity optimization</td></tr><tr><td style="font-weight:600">Backstock</td><td style="font-weight:700;color:var(--c-blue)">8.0%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Inventory monitoring</td></tr><tr><td style="font-weight:600">Promo management</td><td style="font-weight:700;color:var(--c-blue)">4.3%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Alerts & stock-aware activation</td></tr><tr><td style="font-weight:600">Other</td><td style="font-weight:700;color:var(--c-blue)">4.3%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Support tasks</td></tr><tr><td style="font-weight:600">Unloading</td><td style="font-weight:700;color:var(--c-blue)">3.2%</td><td style="font-size:.72rem;color:rgba(0,18,40,.6)">Auto detection, compliance</td></tr></tbody></table></div>
+        <p class="slide-sub" style="margin-bottom:12px">Breakdown of productive hours by department. Source: Accenture analysis &amp; benchmarks.</p>
+        <div class="act-row act-top"><span class="act-name">Shelf stocking</span><div class="act-bar-bg"><div class="act-bar-fill" style="width:100%"></div></div><span class="act-pct">40,2 %</span><span class="act-desc">Alignment of shelf capacity with replenishment and logistic schedules &#8211; Shelf Ready Packaging &#8211; Put-to-light to guide new and polyvalent staff &#8211; On-demand pallet delivery to shop floor by logistics team</span></div>
+        <div class="act-row act-top"><span class="act-name">Routing</span><div class="act-bar-bg"><div class="act-bar-fill" style="width:46%"></div></div><span class="act-pct">18,4 %</span><span class="act-desc">Mutualize pallet routing &#8211; On-demand pallet call to shop floor (limit back-and-forth trips)</span></div>
+        <div class="act-row act-top"><span class="act-name">Facing</span><div class="act-bar-bg"><div class="act-bar-fill" style="width:27%"></div></div><span class="act-pct">10,8 %</span><span class="act-desc">Integrate facing into shelf filling &#8211; treat adjacent products while replenishing &#8211; auto-facing</span></div>
+        <div class="act-row act-top"><span class="act-name">Shelf management</span><div class="act-bar-bg"><div class="act-bar-fill" style="width:27%"></div></div><span class="act-pct">10,8 %</span><span class="act-desc">Automatic stockout detection &#215; multiple times/day &#8211; Automatic price label compliance control &#8211; Auto capacity calculation &amp; order parameter adjustment</span></div>
+        <div class="act-row"><span class="act-name">Backstock</span><div class="act-bar-bg"><div class="act-bar-fill light" style="width:20%"></div></div><span class="act-pct" style="color:rgba(0,18,40,.55)">8,0 %</span><span class="act-desc">Alerts on abnormally high orders &#8211; Backroom inventory monitoring and synchronization</span></div>
+        <div class="act-row"><span class="act-name">Promo management</span><div class="act-bar-bg"><div class="act-bar-fill light" style="width:11%"></div></div><span class="act-pct" style="color:rgba(0,18,40,.55)">4,3 %</span><span class="act-desc">Shelf promos before standard arrivals &#8211; Alerts on promo ordering errors (PCB vs UVC) &#8211; Stock-aware promotion activation</span></div>
+        <div class="act-row"><span class="act-name">Other</span><div class="act-bar-bg"><div class="act-bar-fill light" style="width:11%"></div></div><span class="act-pct" style="color:rgba(0,18,40,.55)">4,3 %</span><span class="act-desc">Support tasks &amp; administrative activities</span></div>
+        <div class="act-row"><span class="act-name">Unloading</span><div class="act-bar-bg"><div class="act-bar-fill light" style="width:8%"></div></div><span class="act-pct" style="color:rgba(0,18,40,.55)">3,2 %</span><span class="act-desc">Auto detection, unloading compliance checks</span></div>
       </div>
 
       <div id="inner-2-benchmark" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:20px">Targeted improvement levers at task level. Comparison vs best-in-class across FR & SP.</p>
-        <div style="background:#fff;border:1px solid rgba(0,61,165,.12);border-radius:14px;padding:20px;overflow-x:auto"><table class="cmp-table" style="font-size:.75rem"><thead><tr><th style="width:25%">Task</th><th style="width:15%">Unit</th><th style="width:12%">Avg</th><th style="width:15%">Best-in-class</th><th style="width:15%">Gap</th></tr></thead><tbody><tr style="background:rgba(0,61,165,.02)"><td colspan="5" style="font-weight:700;color:var(--c-blue2);padding:8px 15px;font-size:.7rem">GROCERY & AMBIENT</td></tr><tr><td>Shelf replenishment</td><td style="text-align:center">sec/case</td><td style="text-align:center;font-weight:600">69s</td><td style="text-align:center;font-weight:600;color:var(--c-green)">45s</td><td style="text-align:center;font-weight:700;color:var(--c-red)">-35%</td></tr><tr><td>Facing & straightening</td><td style="text-align:center">sec/m</td><td style="text-align:center;font-weight:600">12s</td><td style="text-align:center;font-weight:600;color:var(--c-green)">9s</td><td style="text-align:center;font-weight:700;color:var(--c-red)">-21%</td></tr><tr style="background:rgba(0,61,165,.02)"><td colspan="5" style="font-weight:700;color:var(--c-blue2);padding:8px 15px;font-size:.7rem">FRESH, CHILLED & FROZEN</td></tr><tr><td>Fresh dairy replenishment</td><td style="text-align:center">sec/case</td><td style="text-align:center;font-weight:600">55s</td><td style="text-align:center;font-weight:600;color:var(--c-green)">38s</td><td style="text-align:center;font-weight:700;color:var(--c-red)">-31%</td></tr><tr><td>Frozen replenishment</td><td style="text-align:center">sec/case</td><td style="text-align:center;font-weight:600">80s</td><td style="text-align:center;font-weight:600;color:var(--c-green)">55s</td><td style="text-align:center;font-weight:700;color:var(--c-red)">-31%</td></tr><tr style="background:rgba(0,61,165,.02)"><td colspan="5" style="font-weight:700;color:var(--c-blue2);padding:8px 15px;font-size:.7rem">ALL AREAS</td></tr><tr><td>Order picking (online)</td><td style="text-align:center">sec/line</td><td style="text-align:center;font-weight:600">35s</td><td style="text-align:center;font-weight:600;color:var(--c-green)">28s</td><td style="text-align:center;font-weight:700;color:var(--c-red)">-20%</td></tr><tr><td>Pallet receiving</td><td style="text-align:center">sec/pallet</td><td style="text-align:center;font-weight:600">420s</td><td style="text-align:center;font-weight:600;color:var(--c-green)">310s</td><td style="text-align:center;font-weight:700;color:var(--c-red)">-26%</td></tr></tbody></table></div>
+        <p class="slide-sub" style="margin-bottom:12px">We benchmark store operations at a highly granular level, enabling fact-based identification of productivity gaps &amp; levers.</p>
+        <div class="bm-wrap">
+          <!-- Left: full table -->
+          <div style="overflow-x:auto"><table class="bm-table"><thead><tr><th>Area</th><th>Task</th><th>Unit</th><th>Avg benchmark</th><th>Best-in-class</th><th>Gap vs. best-in-class</th></tr></thead><tbody>
+            <tr class="bm-section"><td colspan="6">Grocery &amp; Ambient</td></tr>
+            <tr><td class="bm-area">Grocery</td><td class="bm-task"><strong>Shelf replenishment</strong></td><td class="bm-unit">sec / case</td><td class="bm-avg" style="text-align:center">69 s</td><td class="bm-bic" style="text-align:center">45 s</td><td class="bm-gap">-35%</td></tr>
+            <tr><td class="bm-area">Grocery</td><td class="bm-task">Facing &amp; straightening</td><td class="bm-unit">sec / m</td><td class="bm-avg" style="text-align:center">12 s</td><td class="bm-bic" style="text-align:center">9 s</td><td class="bm-gap">-21%</td></tr>
+            <tr><td class="bm-area">Grocery</td><td class="bm-task">End-cap restocking</td><td class="bm-unit">sec / case</td><td class="bm-avg" style="text-align:center">90 s</td><td class="bm-bic" style="text-align:center">60 s</td><td class="bm-gap">-33%</td></tr>
+            <tr class="bm-section"><td colspan="6">Fresh, Chilled &amp; Frozen</td></tr>
+            <tr><td class="bm-area">Fresh dairy</td><td class="bm-task">Shelf replenishment</td><td class="bm-unit">sec / case</td><td class="bm-avg" style="text-align:center">55 s</td><td class="bm-bic" style="text-align:center">38 s</td><td class="bm-gap">-31%</td></tr>
+            <tr><td class="bm-area">Frozen</td><td class="bm-task">Shelf replenishment</td><td class="bm-unit">sec / case</td><td class="bm-avg" style="text-align:center">80 s</td><td class="bm-bic" style="text-align:center">55 s</td><td class="bm-gap">-31%</td></tr>
+            <tr><td class="bm-area">Produce</td><td class="bm-task">Loose weighing &amp; display</td><td class="bm-unit">sec / unit</td><td class="bm-avg" style="text-align:center">11 s</td><td class="bm-bic" style="text-align:center">8 s</td><td class="bm-gap">-24%</td></tr>
+            <tr class="bm-section"><td colspan="6">Customer-Facing Operations</td></tr>
+            <tr><td class="bm-area">All areas</td><td class="bm-task">Order picking (online)</td><td class="bm-unit">sec / line</td><td class="bm-avg" style="text-align:center">35 s</td><td class="bm-bic" style="text-align:center">28 s</td><td class="bm-gap">-20%</td></tr>
+            <tr><td class="bm-area">Checkout</td><td class="bm-task">Item scanning</td><td class="bm-unit">sec / item</td><td class="bm-avg" style="text-align:center">5 s</td><td class="bm-bic" style="text-align:center">4 s</td><td class="bm-gap">-22%</td></tr>
+            <tr class="bm-section"><td colspan="6">Receiving &amp; Backroom</td></tr>
+            <tr><td class="bm-area">All areas</td><td class="bm-task">Pallet receiving (DC)</td><td class="bm-unit">sec / pallet</td><td class="bm-avg" style="text-align:center">420 s</td><td class="bm-bic" style="text-align:center">310 s</td><td class="bm-gap">-26%</td></tr>
+            <tr><td class="bm-area">All areas</td><td class="bm-task">Backroom put-away</td><td class="bm-unit">sec / pallet</td><td class="bm-avg" style="text-align:center">115 s</td><td class="bm-bic" style="text-align:center">88 s</td><td class="bm-gap">-23%</td></tr>
+          </tbody></table></div>
+          <!-- Right: chart + enables -->
+          <div>
+            <div style="background:#fff;border:1px solid rgba(109,40,217,.12);border-radius:10px;padding:14px;margin-bottom:10px">
+              <div style="font-size:.7rem;font-weight:700;color:#001228;margin-bottom:2px">Illustrative <em>Shelf Replenishment</em> analysis</div>
+              <div style="font-size:.6rem;color:rgba(0,18,40,.45);margin-bottom:10px">Seconds per case &#8211; by product family</div>
+              <div class="bm-chart-row"><span class="bm-chart-label">Coffee &amp; chicory</span><div class="bm-bar-stack"><div class="bm-bar-cur" style="width:100%"></div><div class="bm-bar-bic" style="width:60%"></div></div><div style="font-size:.6rem;color:#7c3aed;font-weight:700;width:34px;text-align:right">60s<br><span style="color:rgba(0,18,40,.4)">36s</span></div></div>
+              <div class="bm-chart-row"><span class="bm-chart-label">Biscuits</span><div class="bm-bar-stack"><div class="bm-bar-cur" style="width:100%"></div><div class="bm-bar-bic" style="width:63%"></div></div><div style="font-size:.6rem;color:#7c3aed;font-weight:700;width:34px;text-align:right">89s<br><span style="color:rgba(0,18,40,.4)">56s</span></div></div>
+              <div class="bm-chart-row"><span class="bm-chart-label">Breakfast cereals &amp; bars</span><div class="bm-bar-stack"><div class="bm-bar-cur" style="width:99%"></div><div class="bm-bar-bic" style="width:61%"></div></div><div style="font-size:.6rem;color:#7c3aed;font-weight:700;width:34px;text-align:right">88s<br><span style="color:rgba(0,18,40,.4)">54s</span></div></div>
+              <div class="bm-chart-row"><span class="bm-chart-label">Breakfast, cocoa &amp; choc.</span><div class="bm-bar-stack"><div class="bm-bar-cur" style="width:53%"></div><div class="bm-bar-bic" style="width:34%"></div></div><div style="font-size:.6rem;color:#7c3aed;font-weight:700;width:34px;text-align:right">47s<br><span style="color:rgba(0,18,40,.4)">30s</span></div></div>
+              <div class="bm-chart-row"><span class="bm-chart-label">Tea &amp; infusions</span><div class="bm-bar-stack"><div class="bm-bar-cur" style="width:71%"></div><div class="bm-bar-bic" style="width:40%"></div></div><div style="font-size:.6rem;color:#7c3aed;font-weight:700;width:34px;text-align:right">63s<br><span style="color:rgba(0,18,40,.4)">36s</span></div></div>
+              <div class="bm-chart-row"><span class="bm-chart-label">Rusks &amp; crispbreads</span><div class="bm-bar-stack"><div class="bm-bar-cur" style="width:78%"></div><div class="bm-bar-bic" style="width:67%"></div></div><div style="font-size:.6rem;color:#7c3aed;font-weight:700;width:34px;text-align:right">69s<br><span style="color:rgba(0,18,40,.4)">60s</span></div></div>
+              <div style="display:flex;gap:12px;margin-top:8px;font-size:.58rem;color:rgba(0,18,40,.5)"><span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#7c3aed;border-radius:2px;display:inline-block"></span>Current</span><span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border:1px solid rgba(109,40,217,.4);border-radius:2px;display:inline-block"></span>Best-in-class</span></div>
+            </div>
+            <div class="bm-enables"><div style="font-size:.7rem;font-weight:800;color:#001228;margin-bottom:8px">What this enables</div><ul style="padding-left:14px;margin:0"><li>Targeted improvement levers identified at <strong>task level</strong></li><li>Quantification of <strong>productivity potential</strong> per activity</li><li>Prioritization based on <strong>impact vs effort</strong></li><li>Comparison vs <strong>best-in-class</strong> retailers across FR &amp; SP</li></ul></div>
+          </div>
+        </div>
       </div>
 
       <div id="inner-2-cases" class="inner-panel">
