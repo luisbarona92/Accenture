@@ -371,35 +371,34 @@
     .con-flag{display:inline-block;width:22px;height:15px;border-radius:2px;vertical-align:middle;box-shadow:0 0 0 .5px rgba(0,0,0,.15);flex-shrink:0}
     .con-flag.fr{background:linear-gradient(90deg,#002395 33%,#fff 33% 67%,#ED2939 67%)}
     .con-flag.es{background:linear-gradient(0deg,#c60b1e 28%,#f1bf00 28% 72%,#c60b1e 72%)}
-    /* Roadmap grid */
-    .rm-grid{display:grid;grid-template-columns:52px repeat(10,1fr);gap:0;border:1.5px solid rgba(0,0,0,.15);border-radius:12px;overflow:hidden;font-size:.59rem;box-shadow:0 4px 24px rgba(0,0,0,.12)}
-    .rm-corner{background:#0d1a2d;padding:5px;display:flex;align-items:center;justify-content:center}
-    .rm-corner-lbl{font-size:.44rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.55);line-height:1.4;text-align:center}
-    .rm-week-hdr{background:#0d1a2d;color:#fff;font-weight:900;text-align:center;padding:9px 2px;border-left:1px solid rgba(255,255,255,.1);font-size:.78rem;letter-spacing:.3px}
-    .rm-wp-lbl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.44rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.6);background:#0d1a2d;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
-    .rm-goal{padding:11px 11px;border-top:1px solid rgba(255,255,255,.15);border-left:1px solid rgba(255,255,255,.15);display:flex;flex-direction:column;justify-content:center;line-height:1.35}
-    .rm-g1{background:#003DA5;color:#fff}
-    .rm-g2{background:#008B6A;color:#fff}
-    .rm-g3{background:#7c3aed;color:#fff;align-items:center;text-align:center}
-    .rm-g4{background:#1a3a6b;color:#fff}
-    .rm-g1 strong,.rm-g2 strong,.rm-g3 strong,.rm-g4 strong{color:#fff}
-    .rm-goal strong{font-size:.64rem;font-weight:800;line-height:1.3}
-    .rm-goal span{font-size:.56rem;font-weight:400;margin-top:3px;color:rgba(255,255,255,.78)}
-    .rm-flag-cell{background:#0d1a2d;padding:8px 3px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07)}
-    .rm-act{padding:8px 9px;border-top:1px solid rgba(0,0,0,.06);border-left:1px solid rgba(0,0,0,.06);color:rgba(0,18,40,.72);line-height:1.5;font-size:.6rem}
-    .rm-act em{display:block;font-style:italic;color:rgba(0,18,40,.38);margin-top:3px;font-size:.55rem}
-    .rm-act-g1{background:#EBF1FC;border-left:3px solid #003DA5}
-    .rm-act-g2{background:#E8F6F0;border-left:3px solid #008B6A}
-    .rm-act-g3{background:#F0EAFF;color:#5b21b6;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;border-left:3px solid #7c3aed}
-    .rm-act-g4{background:#EEE9FA;border-left:3px solid #6d28d9}
-    .rm-shared{background:linear-gradient(90deg,rgba(109,40,217,.04),rgba(109,40,217,.13),rgba(109,40,217,.04));border-top:2px solid rgba(109,40,217,.35);border-bottom:2px solid rgba(109,40,217,.35);padding:7px 14px;text-align:center;font-size:.62rem;font-style:italic;color:#6d28d9;font-weight:700;letter-spacing:.3px}
-    .rm-ms-blank{background:#0d1a2d;border-top:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07)}
-    .rm-ms{padding:6px 3px;border-top:1px solid rgba(0,0,0,.06);border-left:1px solid rgba(0,0,0,.06);text-align:center;font-size:.54rem;color:rgba(0,18,40,.6);line-height:1.4;background:#fff}
-    .rm-ms-sc{color:#003DA5;font-size:.95rem;line-height:1.1;display:block}
-    .rm-ms-ws{color:rgba(0,18,40,.4);font-size:.8rem;line-height:1.1;display:block}
-    .rm-ms-wk{color:#7c3aed;font-size:.95rem;line-height:1.1;display:block}
-    .rm-legend{padding:8px 14px;background:#f8f9fb;font-size:.6rem;color:rgba(0,18,40,.55);border-top:1px solid rgba(0,0,0,.08);display:flex;gap:22px;align-items:center;flex-wrap:wrap}
-    .rm-legend-item{display:flex;align-items:center;gap:5px;font-weight:600}
+    /* ── Roadmap grid v2 ── */
+    .rm2{display:grid;grid-template-columns:58px repeat(10,1fr);border:1.5px solid rgba(0,0,0,.15);border-radius:12px;overflow:hidden;font-size:.57rem;box-shadow:0 4px 24px rgba(0,0,0,.11)}
+    .rm2-ch{background:#1a2a4a;color:rgba(255,255,255,.65);font-size:.43rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;padding:10px 4px;text-align:center;line-height:1.4}
+    .rm2-wk{background:#1a2a4a;color:#fff;font-weight:900;font-size:.82rem;text-align:center;padding:10px 2px;border-left:1px solid rgba(255,255,255,.1)}
+    .rm2-wph{background:#1a2a4a;color:rgba(255,255,255,.6);font-size:.42rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 4px;line-height:1.6;border-top:1px solid rgba(255,255,255,.1)}
+    .rm2-g{padding:10px 10px;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(255,255,255,.12);border-left:1px solid rgba(255,255,255,.12);line-height:1.3;color:#fff}
+    .rm2-g1{background:#003DA5}
+    .rm2-g2{background:#007A5E}
+    .rm2-g3{background:#7c3aed;align-items:center;text-align:center}
+    .rm2-g4{background:#1e3558}
+    .rm2-g strong{font-size:.63rem;font-weight:800;color:#fff;line-height:1.3}
+    .rm2-g span{font-size:.53rem;margin-top:3px;color:rgba(255,255,255,.78)}
+    .rm2-flag{background:#1a2a4a;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.08);padding:6px 3px}
+    .rm2-a{padding:7px 8px;border-top:1px solid rgba(0,0,0,.07);border-left:1px solid rgba(0,0,0,.07);color:rgba(0,18,40,.72);line-height:1.5;font-size:.57rem}
+    .rm2-a em{display:block;font-style:italic;color:rgba(0,18,40,.42);font-size:.52rem;margin-top:2px}
+    .rm2-a1{background:#EBF1FC;border-left:2px solid rgba(0,61,165,.5)}
+    .rm2-a2{background:#E4F5EE;border-left:2px solid rgba(0,122,94,.5)}
+    .rm2-a3{background:#EDE8FF;color:#4c1d95;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 6px;border-left:2px solid rgba(124,58,237,.6);line-height:1.4;font-size:.56rem}
+    .rm2-a4{background:#EEE9FA;border-left:2px solid rgba(109,40,217,.4)}
+    .rm2-banner{background:linear-gradient(90deg,rgba(109,40,217,.04),rgba(109,40,217,.14),rgba(109,40,217,.04));border-top:2px solid rgba(109,40,217,.3);border-bottom:2px solid rgba(109,40,217,.3);padding:6px 14px;text-align:center;font-size:.6rem;font-style:italic;color:#6d28d9;font-weight:700;letter-spacing:.3px}
+    .rm2-mslbl{background:#1a2a4a;border-top:1px solid rgba(255,255,255,.1)}
+    .rm2-ms{padding:5px 3px;border-top:1px solid rgba(0,0,0,.07);border-left:1px solid rgba(0,0,0,.07);text-align:center;font-size:.51rem;color:rgba(0,18,40,.6);line-height:1.4;background:#fafbfc}
+    .rm2-sc{color:#003DA5;font-size:.88rem;display:block;line-height:1.1}
+    .rm2-ws{color:rgba(0,18,40,.32);font-size:.78rem;display:block;line-height:1.1}
+    .rm2-wk{color:#d97706;font-size:.72rem;display:block;line-height:1.2;letter-spacing:3px}
+    .rm2-mstxt{display:block;font-style:italic;font-size:.48rem;color:rgba(0,18,40,.5);margin-top:2px;line-height:1.3}
+    .rm2-leg{padding:7px 14px;background:#f6f7f9;font-size:.59rem;color:rgba(0,18,40,.6);border-top:1px solid rgba(0,0,0,.08);display:flex;gap:20px;align-items:center}
+    .rm2-legi{display:flex;align-items:center;gap:5px;font-weight:600}
     .exp-crf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .exp-crf-col{border:1px solid rgba(109,40,217,.18);border-radius:10px;overflow:hidden}
     .exp-crf-hdr{background:rgba(109,40,217,.13);color:#001228;font-size:.68rem;font-weight:800;padding:9px 13px;text-align:center;line-height:1.35;border-bottom:1px solid rgba(109,40,217,.18)}
@@ -917,60 +916,60 @@
       </div>
 
       <div id="inner-3-methodology" class="inner-panel active">
-        <p style="font-size:.92rem;font-weight:500;color:#001228;margin-bottom:14px;line-height:1.2;white-space:nowrap">France and Spain will run the same methodology simultaneously, align with the project objectives and a sharing knowledge</p>
-        <div class="rm-grid">
-          <!-- Week header -->
-          <div class="rm-corner"><span class="rm-corner-lbl">WEEK</span></div>
-          <div class="rm-week-hdr">W1</div><div class="rm-week-hdr">W2</div><div class="rm-week-hdr">W3</div><div class="rm-week-hdr">W4</div><div class="rm-week-hdr">W5</div><div class="rm-week-hdr">W6</div><div class="rm-week-hdr">W7</div><div class="rm-week-hdr">W8</div><div class="rm-week-hdr">W9</div><div class="rm-week-hdr">W10</div>
-          <!-- Goals row -->
-          <div class="rm-wp-lbl">Work Package</div>
-          <div class="rm-goal rm-g1" style="grid-column:span 3"><strong>Goal 1 – Store productivity understanding</strong><span>Field analysis – Store + HQ</span></div>
-          <div class="rm-goal rm-g2" style="grid-column:span 2"><strong>Goal 2 – Benchmarking</strong><span>Benchmark + modelling</span></div>
-          <div class="rm-goal rm-g3"><strong>Goal 3 –<br>Quantified<br>recom.</strong></div>
-          <div class="rm-goal rm-g4" style="grid-column:span 4"><strong>Goal 4 – Transformation &amp; scaling plan</strong><span>Quick win implementation</span></div>
-          <!-- France – 2 sub-rows -->
-          <div class="rm-flag-cell" style="grid-row:span 2"><span class="con-flag fr" style="width:26px;height:18px"></span></div>
-          <div class="rm-act rm-act-g1" style="grid-column:2/span 2">In-store observation · Initial operational interviews</div>
-          <div class="rm-act rm-act-g1" style="grid-column:4"></div>
-          <div class="rm-act rm-act-g2" style="grid-column:5/span 2">Benchmarking · Modeling · Quantification of scenarios</div>
-          <div class="rm-act rm-act-g3" style="grid-row:span 2">Define target model · Priorities</div>
-          <div class="rm-act rm-act-g4" style="grid-column:8/span 2">Quick wins · Initial testing</div>
-          <div class="rm-act rm-act-g4" style="grid-column:10/span 2"></div>
-          <div class="rm-act rm-act-g1" style="grid-column:2"></div>
-          <div class="rm-act rm-act-g1" style="grid-column:3/span 2">HQ interviews · Upstream process analysis</div>
-          <div class="rm-act rm-act-g2" style="grid-column:5/span 2"><em>TimeSkipper data (FR)</em></div>
-          <div class="rm-act rm-act-g4" style="grid-column:8/span 4">Design of the transformation program</div>
-          <!-- Shared knowledge banner -->
-          <div class="rm-shared" style="grid-column:1/-1">✦ &nbsp;Shared Knowledge Engine — Benchmarks, process times and patterns flow continuously between France and Spain&nbsp; ✦</div>
-          <!-- Spain – 2 sub-rows -->
-          <div class="rm-flag-cell" style="grid-row:span 2"><span class="con-flag es" style="width:26px;height:18px"></span></div>
-          <div class="rm-act rm-act-g1" style="grid-column:2/span 2">In-store observation · Initial operational interviews</div>
-          <div class="rm-act rm-act-g1" style="grid-column:4"></div>
-          <div class="rm-act rm-act-g2" style="grid-column:5/span 2">Benchmarking · Modeling · Quantification of scenarios</div>
-          <div class="rm-act rm-act-g3" style="grid-row:span 2">Define target model · Priorities</div>
-          <div class="rm-act rm-act-g4" style="grid-column:8/span 2">Quick wins · Initial testing</div>
-          <div class="rm-act rm-act-g4" style="grid-column:10/span 2"></div>
-          <div class="rm-act rm-act-g1" style="grid-column:2"></div>
-          <div class="rm-act rm-act-g1" style="grid-column:3/span 2">HQ interviews · Upstream process analysis</div>
-          <div class="rm-act rm-act-g2" style="grid-column:5/span 2"><em>TimeSkipper data (SP)</em></div>
-          <div class="rm-act rm-act-g4" style="grid-column:8/span 4">Design of the transformation program</div>
-          <!-- Milestones -->
-          <div class="rm-ms-blank"></div>
-          <div class="rm-ms"><span class="rm-ms-sc">◆</span>Kickoff &amp; store selection set up</div>
-          <div class="rm-ms"></div>
-          <div class="rm-ms"><span class="rm-ms-ws">▲</span></div>
-          <div class="rm-ms"><span class="rm-ms-sc">◆</span><span class="rm-ms-ws">▲</span>Field analysis SteerCo</div>
-          <div class="rm-ms"><span class="rm-ms-ws">▲</span></div>
-          <div class="rm-ms"><span class="rm-ms-wk">★ ★ ★</span>Workshop sessions with management</div>
-          <div class="rm-ms"><span class="rm-ms-ws">▲</span></div>
-          <div class="rm-ms"><span class="rm-ms-ws">▲</span></div>
-          <div class="rm-ms"><span class="rm-ms-ws">▲</span></div>
-          <div class="rm-ms"><span class="rm-ms-sc">◆</span>Final SteerCo</div>
-          <!-- Legend -->
-          <div class="rm-legend" style="grid-column:1/-1">
-            <span class="rm-legend-item"><span style="color:#003DA5;font-size:1.1rem">◆</span> Steering Committee</span>
-            <span class="rm-legend-item"><span style="color:rgba(0,18,40,.45);font-size:.85rem">▲</span> Weekly Status</span>
-            <span class="rm-legend-item"><span style="color:#7c3aed;font-size:1.1rem">★</span> Workshop</span>
+        <p class="slide-sub" style="margin-bottom:12px">France and Spain will run the same methodology simultaneously, aligned with the project objectives and sharing knowledge.</p>
+        <div class="rm2">
+          <!-- ROW 1: WEEK HEADERS -->
+          <div class="rm2-ch">WEEK</div>
+          <div class="rm2-wk">1</div><div class="rm2-wk">2</div><div class="rm2-wk">3</div><div class="rm2-wk">4</div><div class="rm2-wk">5</div><div class="rm2-wk">6</div><div class="rm2-wk">7</div><div class="rm2-wk">8</div><div class="rm2-wk">9</div><div class="rm2-wk">10</div>
+          <!-- ROW 2: GOALS (WORK PACKAGE) -->
+          <div class="rm2-wph">WORK<br>PACKAGE</div>
+          <div class="rm2-g rm2-g1" style="grid-column:span 3"><strong>Goal 1 – Store productivity understanding</strong><span>Field analysis – Store + HQ</span></div>
+          <div class="rm2-g rm2-g2" style="grid-column:span 2"><strong>Goal 2 – Benchmarking</strong><span>Benchmark + modelling</span></div>
+          <div class="rm2-g rm2-g3"><strong>Goal 3 –<br>Quantified<br>recom.</strong></div>
+          <div class="rm2-g rm2-g4" style="grid-column:span 4"><strong>Goal 4 – Transformation &amp; scaling plan</strong><span>Quick win implementation</span></div>
+          <!-- FRANCE: 2 sub-rows -->
+          <div class="rm2-flag" style="grid-row:span 2"><span class="con-flag fr" style="width:28px;height:19px"></span></div>
+          <div class="rm2-a rm2-a1" style="grid-column:2/span 2">In-store observation · Initial operational interviews</div>
+          <div class="rm2-a rm2-a1" style="grid-column:4"></div>
+          <div class="rm2-a rm2-a2" style="grid-column:5/span 2">Benchmarking · Modeling · Quantification of scenarios</div>
+          <div class="rm2-a rm2-a3" style="grid-row:span 2">Define target model · Priorities</div>
+          <div class="rm2-a rm2-a4" style="grid-column:8/span 2">Quick wins · Initial testing</div>
+          <div class="rm2-a rm2-a4" style="grid-column:10/span 2"></div>
+          <div class="rm2-a rm2-a1" style="grid-column:2"></div>
+          <div class="rm2-a rm2-a1" style="grid-column:3/span 2">HQ interviews · Upstream process analysis</div>
+          <div class="rm2-a rm2-a2" style="grid-column:5/span 2"><em>TimeSkipper data (FR)</em></div>
+          <div class="rm2-a rm2-a4" style="grid-column:8/span 4">Design of the transformation program</div>
+          <!-- SHARED KNOWLEDGE BANNER -->
+          <div class="rm2-banner" style="grid-column:1/-1">✦ &nbsp;Shared Knowledge Engine — Benchmarks, process times and patterns flow continuously between France and Spain&nbsp; ✦</div>
+          <!-- SPAIN: 2 sub-rows -->
+          <div class="rm2-flag" style="grid-row:span 2"><span class="con-flag es" style="width:28px;height:19px"></span></div>
+          <div class="rm2-a rm2-a1" style="grid-column:2/span 2">In-store observation · Initial operational interviews</div>
+          <div class="rm2-a rm2-a1" style="grid-column:4"></div>
+          <div class="rm2-a rm2-a2" style="grid-column:5/span 2">Benchmarking · Modeling · Quantification of scenarios</div>
+          <div class="rm2-a rm2-a3" style="grid-row:span 2">Define target model · Priorities</div>
+          <div class="rm2-a rm2-a4" style="grid-column:8/span 2">Quick wins · Initial testing</div>
+          <div class="rm2-a rm2-a4" style="grid-column:10/span 2"></div>
+          <div class="rm2-a rm2-a1" style="grid-column:2"></div>
+          <div class="rm2-a rm2-a1" style="grid-column:3/span 2">HQ interviews · Upstream process analysis</div>
+          <div class="rm2-a rm2-a2" style="grid-column:5/span 2"><em>TimeSkipper data (SP)</em></div>
+          <div class="rm2-a rm2-a4" style="grid-column:8/span 4">Design of the transformation program</div>
+          <!-- MILESTONES -->
+          <div class="rm2-mslbl"></div>
+          <div class="rm2-ms"><span class="rm2-sc">◆</span><span class="rm2-mstxt">Kickoff meeting to confirm store selection and set up</span></div>
+          <div class="rm2-ms"></div>
+          <div class="rm2-ms"><span class="rm2-ws">▲</span></div>
+          <div class="rm2-ms"><span class="rm2-ws">▲</span><span class="rm2-sc">◆</span><span class="rm2-mstxt">Field analysis SteerCo</span></div>
+          <div class="rm2-ms"><span class="rm2-ws">▲</span></div>
+          <div class="rm2-ms"><span class="rm2-wk">◆ ◆ ◆</span><span class="rm2-mstxt">Workshop sessions with management</span></div>
+          <div class="rm2-ms"><span class="rm2-ws">▲</span></div>
+          <div class="rm2-ms"><span class="rm2-ws">▲</span></div>
+          <div class="rm2-ms"><span class="rm2-ws">▲</span></div>
+          <div class="rm2-ms"><span class="rm2-sc">◆</span><span class="rm2-mstxt">Final SteerCo</span></div>
+          <!-- LEGEND -->
+          <div class="rm2-leg" style="grid-column:1/-1">
+            <span class="rm2-legi"><span style="color:#003DA5;font-size:.9rem">◆</span> Steering Co.</span>
+            <span class="rm2-legi"><span style="color:rgba(0,18,40,.35);font-size:.82rem">▲</span> Weekly Status</span>
+            <span class="rm2-legi"><span style="color:#d97706;font-size:.9rem">◆</span> Workshop</span>
           </div>
         </div>
       </div>
