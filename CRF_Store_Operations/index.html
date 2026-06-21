@@ -651,7 +651,7 @@
       if(imgs.length<2)return;
       var crfSrc=imgs[0].src, accSrc=imgs[imgs.length-1].src;
       function mkImg(src,h){var i=document.createElement('img');i.src=src;i.style.cssText='height:'+h+'px;max-width:92%;object-fit:contain;display:block;margin:0 auto';return i;}
-      document.querySelectorAll('.gov-hdr-acc-fr,.gov-hdr-acc-es').forEach(function(el){el.textContent='';el.appendChild(mkImg(accSrc,14));});
+      document.querySelectorAll('.gov-hdr-acc-fr,.gov-hdr-acc-es').forEach(function(el){el.textContent='';el.appendChild(mkImg(accSrc,20));});
       document.querySelectorAll('.gov-hdr-crf').forEach(function(el){el.textContent='';el.appendChild(mkImg(crfSrc,16));});
     })();
   </script>
