@@ -493,6 +493,58 @@
     .sim-right{border:2px dashed rgba(109,40,217,.4);border-radius:10px;overflow:hidden}
     .sim-right img{width:100%;display:block;object-fit:contain}
 
+    /* ── Transformation roadmap ── */
+    .trm-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:16px;align-items:start}
+    .trm-slbl{font-size:.52rem;font-weight:800;color:#6d28d9;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:7px;display:flex;align-items:center;gap:4px}
+    .trm-row{display:grid;grid-template-columns:72px 1fr;align-items:stretch;gap:4px;margin-bottom:3px}
+    .trm-lbl{font-size:.57rem;font-weight:700;color:#001228;line-height:1.3;align-self:center;padding-right:2px}
+    .trm-ph-inner,.trm-mo-inner,.trm-bars-inner,.trm-ms-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+    .trm-ph-inner,.trm-mo-inner{align-items:center}
+    .trm-bars-inner{align-items:stretch}
+    .trm-ph{border-radius:5px;padding:5px 6px;font-size:.52rem;font-weight:800;text-align:center;color:#fff;line-height:1.3;display:flex;align-items:center;justify-content:center}
+    .trm-ph-1{background:#9d4edd}.trm-ph-2{background:#6d28d9}.trm-ph-3{background:#a78bfa;color:#2e0987}
+    .trm-mo{font-size:.47rem;color:rgba(0,18,40,.4);text-align:center;font-weight:600;padding:3px 0}
+    .trm-bar{border-radius:6px;padding:7px 8px;font-size:.52rem;font-weight:700;line-height:1.3;display:flex;align-items:center;min-height:32px;box-sizing:border-box}
+    .trm-bar-qw{background:#e9d5ff;color:#4c1d95}
+    .trm-bar-pilot{background:#d8b4fe;color:#3d0d9a}
+    .trm-bar-om{background:#6d28d9;color:#fff}
+    .trm-bar-is1{background:#5b21b6;color:#fff}
+    .trm-bar-is2{background:#a78bfa;color:#2e0987}
+    .trm-bar-pc{background:#ede9fe;color:#4c1d95;border:1px solid rgba(109,40,217,.2)}
+    .trm-ms-inner{margin-top:5px;align-items:start}
+    .trm-ms-cell{display:flex;flex-direction:column;align-items:center}
+    .trm-ms-diamond{color:#6d28d9;font-size:.95rem;line-height:1}
+    .trm-ms-tag{font-size:.47rem;font-weight:800;color:#6d28d9}
+    .trm-ms-desc{font-size:.42rem;color:rgba(0,18,40,.5);text-align:center;line-height:1.3;margin-top:1px}
+    .trm-arch-title{font-size:.62rem;font-weight:800;color:#001228;margin-bottom:6px}
+    .trm-arch-table{width:100%;border-collapse:collapse;margin-bottom:11px}
+    .trm-arch-table tr:nth-child(odd) td{background:rgba(109,40,217,.04)}
+    .trm-arch-table td{padding:5px 8px;font-size:.56rem;vertical-align:top;line-height:1.4;border-bottom:1px solid rgba(0,0,0,.07)}
+    .trm-arch-table td:first-child{font-weight:800;color:#001228;width:36%}
+    .trm-arch-table td:last-child{color:rgba(0,18,40,.65)}
+    .trm-nw-title{font-size:.62rem;font-weight:800;color:#001228;margin-bottom:7px}
+    .trm-principles{display:flex;flex-direction:column;gap:7px}
+    .trm-principle{display:flex;align-items:flex-start;gap:8px;font-size:.57rem;color:rgba(0,18,40,.7);line-height:1.45}
+    .trm-p-num{width:19px;height:19px;border-radius:50%;background:#6d28d9;color:#fff;font-size:.49rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .trm-p-text strong{color:#001228;font-weight:800}
+
+    /* ── Quick Wins (fee) panel ── */
+    .qw-intro{font-size:.66rem;color:rgba(0,18,40,.7);line-height:1.65;margin-bottom:16px}
+    .qw-intro strong{color:#6d28d9;font-weight:800}
+    .qw-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:start;margin-bottom:16px}
+    .qw-step{border:1px solid rgba(0,0,0,.1);border-radius:10px;padding:14px 15px;background:#fff}
+    .qw-step-hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+    .qw-step-num{width:28px;height:28px;border-radius:50%;background:#6d28d9;color:#fff;font-size:.68rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .qw-step-title{font-size:.66rem;font-weight:800;color:#6d28d9;line-height:1.35;padding-top:3px}
+    .qw-step-body{font-size:.58rem;color:rgba(0,18,40,.65);line-height:1.55}
+    .qw-chevron{display:flex;align-items:center;justify-content:center;color:#6d28d9;font-size:1.5rem;font-weight:900;padding:0 4px;margin-top:36px}
+    .qw-guard{border:1px solid rgba(0,0,0,.1);border-radius:10px;padding:14px 18px;background:#fff;max-width:520px;margin:0 auto}
+    .qw-guard-title{font-size:.66rem;font-weight:800;color:#001228;margin-bottom:10px}
+    .qw-guard-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
+    .qw-guard-list li{display:flex;align-items:flex-start;gap:9px;font-size:.58rem;color:rgba(0,18,40,.7);line-height:1.5}
+    .qw-guard-dot{width:11px;height:11px;border-radius:50%;background:#6d28d9;flex-shrink:0;margin-top:3px}
+    .qw-guard-list li strong{color:#001228;font-weight:800}
+
     .exp-crf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .exp-crf-col{border:1px solid rgba(109,40,217,.18);border-radius:10px;overflow:hidden}
     .exp-crf-hdr{background:rgba(109,40,217,.13);color:#001228;font-size:.68rem;font-weight:800;padding:9px 13px;text-align:center;line-height:1.35;border-bottom:1px solid rgba(109,40,217,.18)}
@@ -1006,7 +1058,7 @@
         <button class="itab" onclick="switchInner('inner-3-workload', this)">⚖️ Workload</button>
         <button class="itab" onclick="switchInner('inner-3-simulator', this)">🎮 Simulator</button>
         <button class="itab" onclick="switchInner('inner-3-roadmap', this)">🗺️ Transformation plan</button>
-        <button class="itab" onclick="switchInner('inner-3-fee', this)">💰 Fee Model</button>
+        <button class="itab" onclick="switchInner('inner-3-fee', this)">⚡ Quick Wins</button>
       </div>
 
       <div id="inner-3-methodology" class="inner-panel active">
@@ -1349,27 +1401,131 @@
       </div>
 
       <div id="inner-3-roadmap" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:20px">~30 months · Three phases · Four tracks</p>
-        <div class="g2" style="margin-bottom:20px">
-          <div class="phase-card"><div class="phase-card-hdr"><span class="pc-badge">M0-6</span><span class="pc-name">Pilot & Social Dialogue</span></div><p style="font-size:.8rem;color:rgba(0,18,40,.6);line-height:1.6">Quick wins implementation, process fixes, activity management. Years 1-2 social dialogue and change readiness.</p></div>
-          <div class="phase-card"><div class="phase-card-hdr"><span class="pc-badge">M6-18</span><span class="pc-name">Roll-out to Benchmark</span></div><p style="font-size:.8rem;color:rgba(0,18,40,.6);line-height:1.6">Operating-model roll-out by archetype, wave by wave. Reference stores per format. Lessons compound.</p></div>
-          <div class="phase-card"><div class="phase-card-hdr"><span class="pc-badge">M18-30</span><span class="pc-name">Beyond Benchmark</span></div><p style="font-size:.8rem;color:rgba(0,18,40,.6);line-height:1.6">Next-gen Intelligent Store maturity. Full network roll-out. Capability transferred to Carrefour.</p></div>
-          <div class="phase-card"><div class="phase-card-hdr"><span class="pc-badge">M0-30</span><span class="pc-name">People & Change</span></div><p style="font-size:.8rem;color:rgba(0,18,40,.6);line-height:1.6">Capability building, store management ownership, cockpit design. Continuous throughout.</p></div>
+        <p class="slide-sub" style="margin-bottom:12px">Transformation roadmap: a bottom-up roll-out, sequenced by store archetype</p>
+        <div class="trm-layout">
+
+          <!-- LEFT: Gantt -->
+          <div>
+            <div class="trm-slbl">› Transformation Plan — ~30 months</div>
+
+            <!-- Phase headers -->
+            <div class="trm-row">
+              <div></div>
+              <div class="trm-ph-inner">
+                <div class="trm-ph trm-ph-1" style="grid-column:1">Pilot &amp; social dialogue</div>
+                <div class="trm-ph trm-ph-2" style="grid-column:2/span 2">Roll-out to benchmark</div>
+                <div class="trm-ph trm-ph-3" style="grid-column:4/span 2">Beyond benchmark</div>
+              </div>
+            </div>
+
+            <!-- Month labels -->
+            <div class="trm-row">
+              <div></div>
+              <div class="trm-mo-inner">
+                <div class="trm-mo">M0–6</div><div class="trm-mo">M6–12</div><div class="trm-mo">M12–18</div><div class="trm-mo">M18–24</div><div class="trm-mo">M24–30</div>
+              </div>
+            </div>
+
+            <!-- Track: Quick wins -->
+            <div class="trm-row">
+              <div class="trm-lbl">Quick wins</div>
+              <div class="trm-bars-inner">
+                <div class="trm-bar trm-bar-qw" style="grid-column:1">Process fixes + activity management</div>
+              </div>
+            </div>
+
+            <!-- Track: Operating model -->
+            <div class="trm-row">
+              <div class="trm-lbl">Operating model</div>
+              <div class="trm-bars-inner">
+                <div class="trm-bar trm-bar-pilot" style="grid-column:1">Pilot + IRP*</div>
+                <div class="trm-bar trm-bar-om" style="grid-column:2/span 3">Operating-model roll-out · by archetype, wave by wave</div>
+              </div>
+            </div>
+
+            <!-- Track: Intelligent Store -->
+            <div class="trm-row">
+              <div class="trm-lbl">Intelligent Store</div>
+              <div class="trm-bars-inner">
+                <div class="trm-bar trm-bar-is1" style="grid-column:2/span 2">Leading IS maturity (wave 1)</div>
+                <div class="trm-bar trm-bar-is2" style="grid-column:4/span 2">Next-gen IS full roll-out</div>
+              </div>
+            </div>
+
+            <!-- Track: People & change -->
+            <div class="trm-row">
+              <div class="trm-lbl">People &amp; change</div>
+              <div class="trm-bars-inner">
+                <div class="trm-bar trm-bar-pc" style="grid-column:1/span 5">Capability · store management ownership · cockpit</div>
+              </div>
+            </div>
+
+            <!-- Milestones -->
+            <div class="trm-row">
+              <div></div>
+              <div class="trm-ms-inner">
+                <div></div>
+                <div class="trm-ms-cell"><div class="trm-ms-diamond">◆</div><div class="trm-ms-tag">M6</div><div class="trm-ms-desc">Pilot validated · IRP cleared</div></div>
+                <div></div>
+                <div class="trm-ms-cell"><div class="trm-ms-diamond">◆</div><div class="trm-ms-tag">M18</div><div class="trm-ms-desc">At benchmark</div></div>
+                <div class="trm-ms-cell"><div class="trm-ms-diamond">◆</div><div class="trm-ms-tag">M30</div><div class="trm-ms-desc">Next-gen</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Key principles -->
+          <div>
+            <div class="trm-slbl">› Key Principles</div>
+            <div class="trm-arch-title">Specifics by store archetype — lever impact</div>
+            <table class="trm-arch-table">
+              <tr><td>Large peri-urban hyper</td><td>Shelf replenishment + supply-chain alignment + Vusion</td></tr>
+              <tr><td>Two-floor / high-flow</td><td>Routing, vertical handling, staffing-to-traffic</td></tr>
+              <tr><td>Urban compact</td><td>Front-end / self-checkout + opening amplitude</td></tr>
+              <tr><td>High non-food (NAL)</td><td>Assortment &amp; planogram + seasonal staffing</td></tr>
+              <tr><td>E-commerce-heavy</td><td>In-store picking (pick-to-light, batching)</td></tr>
+            </table>
+            <div class="trm-nw-title">The "new way" to roll out across the network</div>
+            <div class="trm-principles">
+              <div class="trm-principle"><div class="trm-p-num">1</div><div class="trm-p-text"><strong>Prove, then scale.</strong> A reference store per archetype validates levers before any wave.</div></div>
+              <div class="trm-principle"><div class="trm-p-num">2</div><div class="trm-p-text"><strong>Store managers own it.</strong> Targets co-set; the hours budget becomes their daily tool; incentives on value captured.</div></div>
+              <div class="trm-principle"><div class="trm-p-num">3</div><div class="trm-p-text"><strong>Lessons compound.</strong> A shared playbook travels store to store; each wave builds on the last.</div></div>
+              <div class="trm-principle"><div class="trm-p-num">4</div><div class="trm-p-text"><strong>Capability transferred.</strong> Train-the-trainer + a simple cockpit; Carrefour sustains it after we leave.</div></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div id="inner-3-fee" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:24px">We put part of our fees at risk against validated productivity gain. For example: 4% of validated Year 1 run-rate saving across 10 pilot stores.</p>
-        <div class="g3">
-          <div class="step-card"><div class="step-ico">🔒</div><div class="step-title">Lock a fair baseline</div><div class="step-desc">Diagnostics set the productivity baseline per pilot store, frozen and signed off before implementation.</div></div>
-          <div class="step-card"><div class="step-ico">⚡</div><div class="step-title">Implement & measure</div><div class="step-desc">Deploy agreed quick wins in 10 pilot stores. Measure steady-state gain in worked hours at constant service.</div></div>
-          <div class="step-card"><div class="step-ico">💰</div><div class="step-title">Fee follows result</div><div class="step-desc">Validated run-rate saving confirmed jointly at Final SteerCo. Variable fee indexed on it.</div></div>
+        <p class="qw-intro">We put part of our fees <strong>at risk against the validated productivity gain</strong> of the Goal 4 quick wins. For example <strong>4%</strong> of the validated Year 1 run-rate saving across the 10 pilot stores.</p>
+
+        <!-- 3 steps -->
+        <div class="qw-steps">
+          <div class="qw-step">
+            <div class="qw-step-hdr"><div class="qw-step-num">1</div><div class="qw-step-title">Lock a fair baseline</div></div>
+            <div class="qw-step-body">The Goal 1–3 diagnostics sets the productivity baseline per pilot store, frozen and signed off before implementation, adjusted for volume, traffic and seasonality.</div>
+          </div>
+          <div class="qw-chevron">›</div>
+          <div class="qw-step">
+            <div class="qw-step-hdr"><div class="qw-step-num">2</div><div class="qw-step-title">Implement &amp; measure quick wins</div></div>
+            <div class="qw-step-body">We deploy the agreed quick wins in the 10 pilot stores and measure the steady-state gain in worked hours at constant service, not a raw headcount cut.</div>
+          </div>
+          <div class="qw-chevron">›</div>
+          <div class="qw-step">
+            <div class="qw-step-hdr"><div class="qw-step-num">3</div><div class="qw-step-title">Fee follows the result</div></div>
+            <div class="qw-step-body">The validated run-rate saving is confirmed jointly at the Final SteerCo. The variable fee is indexed on it.</div>
+          </div>
         </div>
-        <div class="g2" style="margin-top:20px">
-          <div class="ibox ibox-green"><div class="ibox-title">✓ Service held or improved</div><div class="ibox-body">Gain voided if NPS, on-shelf availability or checkout wait time degrade.</div></div>
-          <div class="ibox ibox-blue"><div class="ibox-title">✓ Sustained, not a spike</div><div class="ibox-body">Measured over 8 weeks of steady state before counted.</div></div>
-          <div class="ibox ibox-dark"><div class="ibox-title">✓ Jointly validated</div><div class="ibox-body">Baseline and gain signed off with Carrefour at Final SteerCo.</div></div>
-          <div class="ibox ibox-warn"><div class="ibox-title">✓ Scoped & extendable</div><div class="ibox-body">Limited to agreed quick-win list; extendable to network waves 2–3.</div></div>
+
+        <!-- Only real gains count -->
+        <div class="qw-guard">
+          <div class="qw-guard-title">Only real, sustained gains count</div>
+          <ul class="qw-guard-list">
+            <li><div class="qw-guard-dot"></div><div><strong>Service held or improved:</strong> gain voided if NPS, on-shelf availability or checkout wait time degrade.</div></li>
+            <li><div class="qw-guard-dot"></div><div><strong>Sustained, not a spike:</strong> measured over 8 weeks of steady state before it is counted.</div></li>
+            <li><div class="qw-guard-dot"></div><div><strong>Jointly validated:</strong> baseline and gain signed off with Carrefour at the Final SteerCo.</div></li>
+            <li><div class="qw-guard-dot"></div><div><strong>Scoped &amp; extendable:</strong> limited to the agreed quick-win list; extendable to the network roll-out (waves 2–3).</div></li>
+          </ul>
         </div>
       </div>
     </section>
