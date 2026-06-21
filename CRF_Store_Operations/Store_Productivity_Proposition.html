@@ -439,6 +439,37 @@
     .diag-crit-title{font-size:.52rem;font-weight:800;color:rgba(0,18,40,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
     .diag-crit{list-style:disc;padding-left:12px;margin:0;display:flex;flex-direction:column;gap:2px}
     .diag-crit li{font-size:.54rem;color:rgba(0,18,40,.6);line-height:1.4}
+
+    /* ── Workload panel ── */
+    .wl-intro{font-size:.68rem;font-weight:700;color:#3d0d9a;line-height:1.6;margin-bottom:14px;background:rgba(109,40,217,.05);border-left:3px solid #7c3aed;padding:10px 14px;border-radius:0 8px 8px 0}
+    .wl-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+    .wl-kpi{border:1px solid rgba(109,40,217,.2);border-left:3px solid #7c3aed;border-radius:8px;padding:12px 14px;background:#faf8ff;display:flex;flex-direction:column;gap:6px}
+    .wl-kpi-top{display:flex;align-items:center;gap:9px}
+    .wl-kpi-num{width:22px;height:22px;border-radius:50%;background:#3d0d9a;color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .wl-kpi-title{font-size:.64rem;font-weight:800;color:#001228;line-height:1.35}
+    .wl-kpi-q{font-size:.58rem;font-style:italic;color:rgba(0,18,40,.5);line-height:1.45;margin-top:2px}
+    .wl-how-title{font-size:.64rem;font-weight:800;color:#3d0d9a;margin-bottom:10px;text-transform:uppercase;letter-spacing:.6px}
+    .wl-flow{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:0;align-items:stretch}
+    .wl-arrow{display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#6d28d9;font-weight:900}
+    .wl-fc{border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+    .wl-fc-hdr{padding:9px 13px;font-size:.64rem;font-weight:800;text-align:center;line-height:1.3}
+    .wl-fc-hdr-dark{background:#3d0d9a;color:#fff}
+    .wl-fc-hdr-mid{background:#6d28d9;color:#fff}
+    .wl-fc-hdr-out{background:#ede9fe;color:#3d0d9a;border:1px solid rgba(109,40,217,.3);border-bottom:none}
+    .wl-fc-body{flex:1;padding:10px 11px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(109,40,217,.2);border-top:none;border-radius:0 0 10px 10px;background:#fff}
+    .wl-fc-body-out{border-color:rgba(109,40,217,.25)}
+    .wl-data-item{border:1px solid rgba(0,18,40,.15);border-radius:6px;padding:7px 10px;background:#fafbfc}
+    .wl-data-item strong{font-size:.6rem;font-weight:800;color:#001228;display:block;line-height:1.3}
+    .wl-data-item span{font-size:.53rem;color:rgba(0,18,40,.45);line-height:1.3}
+    .wl-ts-row{text-align:center;padding:6px 4px;font-size:.62rem;font-weight:700;color:#3d0d9a;line-height:1.4;border-bottom:1px solid rgba(109,40,217,.1)}
+    .wl-ts-row:last-of-type{border-bottom:none}
+    .wl-ts-logo{text-align:center;padding:8px 4px}
+    .wl-kpi-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+    .wl-kpi-list li{display:flex;align-items:flex-start;gap:6px;font-size:.6rem;color:rgba(0,18,40,.75);line-height:1.4}
+    .wl-kpi-list li::before{content:"■";color:#6d28d9;font-size:.45rem;margin-top:2px;flex-shrink:0}
+    .wl-scope{font-size:.54rem;font-style:italic;color:rgba(0,18,40,.45);margin-top:12px;display:flex;align-items:center;gap:6px}
+    .wl-scope-arrow{color:#6d28d9;font-size:.8rem;font-weight:900}
+
     .exp-crf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .exp-crf-col{border:1px solid rgba(109,40,217,.18);border-radius:10px;overflow:hidden}
     .exp-crf-hdr{background:rgba(109,40,217,.13);color:#001228;font-size:.68rem;font-weight:800;padding:9px 13px;text-align:center;line-height:1.35;border-bottom:1px solid rgba(109,40,217,.18)}
@@ -1167,13 +1198,84 @@
       </div>
 
       <div id="inner-3-workload" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:20px">Most data show hours spent per department, not whether productive. The gap between hours spent and hours needed is invisible — and that's where part of the productivity pool hides.</p>
-        <div class="stats-row">
-          <div class="stat-pill"><div class="stat-val">?</div><div class="stat-lbl">Hours planned vs required</div></div>
-          <div class="stat-pill"><div class="stat-val">?</div><div class="stat-lbl">Where hours actually go</div></div>
-          <div class="stat-pill"><div class="stat-val">?</div><div class="stat-lbl">Productivity vs others</div></div>
+
+        <p class="wl-intro">Why this matters — most Carrefour data show the hours spent per department, not whether they were productive or what they were actually used for. Team sizing rests on hours consumed, not on the workload genuinely required. The gap between the two is invisible today — and that's where part of the productivity pool hides.</p>
+
+        <!-- 3 KPI question cards -->
+        <div class="wl-kpis">
+          <div class="wl-kpi">
+            <div class="wl-kpi-top"><div class="wl-kpi-num">1</div><div class="wl-kpi-title">Hours planned vs required workload</div></div>
+            <div class="wl-kpi-q">"Are my teams correctly sized?"</div>
+          </div>
+          <div class="wl-kpi">
+            <div class="wl-kpi-top"><div class="wl-kpi-num">2</div><div class="wl-kpi-title">Where the hours actually go</div></div>
+            <div class="wl-kpi-q">"Am I investing enough in customer-facing work? (OOS, bb Dates Ctrl, Label Ctrl, cleaning, …)"</div>
+          </div>
+          <div class="wl-kpi">
+            <div class="wl-kpi-top"><div class="wl-kpi-num">3</div><div class="wl-kpi-title">Parcels-per-hour indicator and % of utilization of hours</div></div>
+            <div class="wl-kpi-q">"How productive are my teams vs other retailers?"</div>
+          </div>
         </div>
-        <div class="ibox ibox-dark"><div class="ibox-title">Flow: Replenishment Data → TimeSkipper → Activity Plan → KPIs</div><div class="ibox-body">Workload calculation engine translates teams' planned schedules + replenishment volumes into activity plans and productivity KPIs (Parcels/hour, Utilization %).</div></div>
+
+        <!-- How it works flow -->
+        <div class="wl-how-title">How it works — from your existing data to a utilization rate</div>
+
+        <div class="wl-flow">
+
+          <!-- Col 1: Carrefour's own data -->
+          <div class="wl-fc">
+            <div class="wl-fc-hdr wl-fc-hdr-dark">Carrefour's own data</div>
+            <div class="wl-fc-body">
+              <div class="wl-data-item"><strong>Teams' plannings</strong></div>
+              <div class="wl-data-item"><strong>Replenishment data</strong><span># parcels / category / day</span></div>
+              <div class="wl-data-item"><strong>E-commerce data</strong><span># orders / items per order</span></div>
+            </div>
+          </div>
+
+          <div class="wl-arrow">→</div>
+
+          <!-- Col 2: TimeSkipper engine -->
+          <div class="wl-fc">
+            <div class="wl-fc-hdr wl-fc-hdr-mid">Calculation engine · TimeSkipper</div>
+            <div class="wl-fc-body">
+              <div class="wl-ts-row">Specific set-up per store</div>
+              <div class="wl-ts-row">Standards TS data repository</div>
+              <div class="wl-ts-row">Activity plan calculation</div>
+              <div class="wl-ts-logo">
+                <svg viewBox="0 0 160 44" width="130" height="36" xmlns="http://www.w3.org/2000/svg">
+                  <!-- S shield icon -->
+                  <circle cx="20" cy="22" r="16" fill="#6d28d9" opacity=".15"/>
+                  <text x="13" y="27" font-size="16" font-weight="900" fill="#6d28d9" font-family="Arial">S</text>
+                  <!-- TIME SKIPPER text -->
+                  <text x="42" y="19" font-size="10" font-weight="900" fill="#3d0d9a" font-family="Arial" letter-spacing="1">TIME</text>
+                  <text x="42" y="32" font-size="10" font-weight="900" fill="#6d28d9" font-family="Arial" letter-spacing="1">SKIPPER</text>
+                  <text x="42" y="40" font-size="6" fill="rgba(0,18,40,.4)" font-family="Arial">Team, time and management</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="wl-arrow">→</div>
+
+          <!-- Col 3: KPIs -->
+          <div class="wl-fc">
+            <div class="wl-fc-hdr wl-fc-hdr-out">KPIs — Utilization rate of hours &amp; productivity</div>
+            <div class="wl-fc-body wl-fc-body-out">
+              <ul class="wl-kpi-list">
+                <li>Workload (per store / team / day)</li>
+                <li>Available hours</li>
+                <li>Oversized hours</li>
+                <li>Time split (shelving / non-shelving)</li>
+                <li>Parcels per hour</li>
+                <li>Shelving end time (average)</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="wl-scope"><span class="wl-scope-arrow">▶</span><em>Scope: Food self-service departments · one month</em></div>
+
       </div>
 
       <div id="inner-3-simulator" class="inner-panel">
