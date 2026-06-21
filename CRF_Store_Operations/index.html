@@ -372,37 +372,33 @@
     .con-flag.fr{background:linear-gradient(90deg,#002395 33%,#fff 33% 67%,#ED2939 67%)}
     .con-flag.es{background:linear-gradient(0deg,#c60b1e 28%,#f1bf00 28% 72%,#c60b1e 72%)}
     /* Roadmap grid */
-    .rm-grid{display:grid;grid-template-columns:52px repeat(10,1fr);gap:0;border:1.5px solid rgba(0,0,0,.12);border-radius:12px;overflow:hidden;font-size:.59rem;box-shadow:0 3px 18px rgba(0,0,0,.08)}
+    .rm-grid{display:grid;grid-template-columns:52px repeat(10,1fr);gap:0;border:1.5px solid rgba(0,0,0,.15);border-radius:12px;overflow:hidden;font-size:.59rem;box-shadow:0 4px 24px rgba(0,0,0,.12)}
     .rm-corner{background:#0d1a2d;padding:5px;display:flex;align-items:center;justify-content:center}
-    .rm-corner-lbl{font-size:.42rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.42);line-height:1.4;text-align:center}
-    .rm-week-hdr{background:#0d1a2d;color:rgba(255,255,255,.75);font-weight:700;text-align:center;padding:7px 2px;border-left:1px solid rgba(255,255,255,.07);font-size:.64rem;letter-spacing:.3px}
-    .rm-week-hdr.g3col{background:#7c3aed;color:#fff;font-weight:900;letter-spacing:.5px}
-    .rm-wp-lbl{font-size:.46rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#001228;background:rgba(0,0,0,.04);padding:10px 4px;border-top:1px solid rgba(0,0,0,.1);border-right:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}
-    .rm-goal{padding:11px 11px;border-top:1px solid rgba(0,0,0,.1);border-left:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:center;line-height:1.35}
-    .rm-g1{background:rgba(0,61,165,.22);box-shadow:inset 0 5px 0 #003DA5}
-    .rm-g2{background:rgba(0,150,100,.2);box-shadow:inset 0 5px 0 #009970}
-    .rm-g3{background:#7c3aed;color:#fff;align-items:center;text-align:center;box-shadow:inset 0 5px 0 rgba(255,255,255,.22)}
-    .rm-g4{background:rgba(109,40,217,.18);box-shadow:inset 0 5px 0 #6d28d9}
-    .rm-g1 strong{color:#003DA5}
-    .rm-g2 strong{color:#00654a}
-    .rm-g3 strong{color:#fff}
-    .rm-g4 strong{color:#5b21b6}
+    .rm-corner-lbl{font-size:.44rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.55);line-height:1.4;text-align:center}
+    .rm-week-hdr{background:#0d1a2d;color:#fff;font-weight:900;text-align:center;padding:9px 2px;border-left:1px solid rgba(255,255,255,.1);font-size:.78rem;letter-spacing:.3px}
+    .rm-wp-lbl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.44rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.6);background:#0d1a2d;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+    .rm-goal{padding:11px 11px;border-top:1px solid rgba(255,255,255,.15);border-left:1px solid rgba(255,255,255,.15);display:flex;flex-direction:column;justify-content:center;line-height:1.35}
+    .rm-g1{background:#003DA5;color:#fff}
+    .rm-g2{background:#008B6A;color:#fff}
+    .rm-g3{background:#7c3aed;color:#fff;align-items:center;text-align:center}
+    .rm-g4{background:#1a3a6b;color:#fff}
+    .rm-g1 strong,.rm-g2 strong,.rm-g3 strong,.rm-g4 strong{color:#fff}
     .rm-goal strong{font-size:.64rem;font-weight:800;line-height:1.3}
-    .rm-goal span{font-size:.56rem;font-weight:400;margin-top:3px;opacity:.72}
-    .rm-flag-cell{background:rgba(0,0,0,.03);padding:8px 3px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(0,0,0,.07);border-right:1px solid rgba(0,0,0,.07)}
+    .rm-goal span{font-size:.56rem;font-weight:400;margin-top:3px;color:rgba(255,255,255,.78)}
+    .rm-flag-cell{background:#0d1a2d;padding:8px 3px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07)}
     .rm-act{padding:8px 9px;border-top:1px solid rgba(0,0,0,.06);border-left:1px solid rgba(0,0,0,.06);color:rgba(0,18,40,.72);line-height:1.5;font-size:.6rem}
     .rm-act em{display:block;font-style:italic;color:rgba(0,18,40,.38);margin-top:3px;font-size:.55rem}
-    .rm-act-g1{background:rgba(0,61,165,.07);border-left:3px solid rgba(0,61,165,.4)}
-    .rm-act-g2{background:rgba(0,150,100,.07);border-left:3px solid rgba(0,150,100,.45)}
-    .rm-act-g3{background:rgba(109,40,217,.12);color:#5b21b6;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;border-left:3px solid rgba(109,40,217,.5)}
-    .rm-act-g4{background:rgba(109,40,217,.06);border-left:3px solid rgba(109,40,217,.3)}
-    .rm-shared{background:linear-gradient(90deg,rgba(109,40,217,.03),rgba(109,40,217,.1),rgba(109,40,217,.03));border-top:2px solid rgba(109,40,217,.32);border-bottom:2px solid rgba(109,40,217,.32);padding:7px 14px;text-align:center;font-size:.62rem;font-style:italic;color:#6d28d9;font-weight:700;letter-spacing:.3px}
-    .rm-ms-blank{background:rgba(0,0,0,.02);border-top:1px solid rgba(0,0,0,.07);border-right:1px solid rgba(0,0,0,.07)}
-    .rm-ms{padding:6px 3px;border-top:1px solid rgba(0,0,0,.06);border-left:1px solid rgba(0,0,0,.06);text-align:center;font-size:.54rem;color:rgba(0,18,40,.6);line-height:1.4}
+    .rm-act-g1{background:#EBF1FC;border-left:3px solid #003DA5}
+    .rm-act-g2{background:#E8F6F0;border-left:3px solid #008B6A}
+    .rm-act-g3{background:#F0EAFF;color:#5b21b6;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;border-left:3px solid #7c3aed}
+    .rm-act-g4{background:#EEE9FA;border-left:3px solid #6d28d9}
+    .rm-shared{background:linear-gradient(90deg,rgba(109,40,217,.04),rgba(109,40,217,.13),rgba(109,40,217,.04));border-top:2px solid rgba(109,40,217,.35);border-bottom:2px solid rgba(109,40,217,.35);padding:7px 14px;text-align:center;font-size:.62rem;font-style:italic;color:#6d28d9;font-weight:700;letter-spacing:.3px}
+    .rm-ms-blank{background:#0d1a2d;border-top:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07)}
+    .rm-ms{padding:6px 3px;border-top:1px solid rgba(0,0,0,.06);border-left:1px solid rgba(0,0,0,.06);text-align:center;font-size:.54rem;color:rgba(0,18,40,.6);line-height:1.4;background:#fff}
     .rm-ms-sc{color:#003DA5;font-size:.95rem;line-height:1.1;display:block}
     .rm-ms-ws{color:rgba(0,18,40,.4);font-size:.8rem;line-height:1.1;display:block}
-    .rm-ms-wk{color:#7c3aed;font-size:.88rem;line-height:1.1;display:block}
-    .rm-legend{padding:8px 14px;background:rgba(0,0,0,.02);font-size:.6rem;color:rgba(0,18,40,.55);border-top:1px solid rgba(0,0,0,.08);display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+    .rm-ms-wk{color:#7c3aed;font-size:.95rem;line-height:1.1;display:block}
+    .rm-legend{padding:8px 14px;background:#f8f9fb;font-size:.6rem;color:rgba(0,18,40,.55);border-top:1px solid rgba(0,0,0,.08);display:flex;gap:22px;align-items:center;flex-wrap:wrap}
     .rm-legend-item{display:flex;align-items:center;gap:5px;font-weight:600}
     .exp-crf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .exp-crf-col{border:1px solid rgba(109,40,217,.18);border-radius:10px;overflow:hidden}
@@ -927,7 +923,7 @@
           <div class="rm-corner"><span class="rm-corner-lbl">WEEK</span></div>
           <div class="rm-week-hdr">W1</div><div class="rm-week-hdr">W2</div><div class="rm-week-hdr">W3</div><div class="rm-week-hdr">W4</div><div class="rm-week-hdr">W5</div><div class="rm-week-hdr">W6</div><div class="rm-week-hdr">W7</div><div class="rm-week-hdr">W8</div><div class="rm-week-hdr">W9</div><div class="rm-week-hdr">W10</div>
           <!-- Goals row -->
-          <div style="background:rgba(0,0,0,.03);border-top:1px solid rgba(0,0,0,.08)"></div>
+          <div class="rm-wp-lbl">Work Package</div>
           <div class="rm-goal rm-g1" style="grid-column:span 3"><strong>Goal 1 – Store productivity understanding</strong><span>Field analysis – Store + HQ</span></div>
           <div class="rm-goal rm-g2" style="grid-column:span 2"><strong>Goal 2 – Benchmarking</strong><span>Benchmark + modelling</span></div>
           <div class="rm-goal rm-g3"><strong>Goal 3 –<br>Quantified<br>recom.</strong></div>
