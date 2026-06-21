@@ -304,6 +304,26 @@
     .val-kpi-big{font-size:1.8rem;font-weight:900;color:#7c3aed;line-height:1;text-align:center}
     .val-kpi-lbl{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(0,18,40,.45);text-align:center;margin-bottom:10px}
     .val-kpi-div{width:30px;height:1px;background:rgba(109,40,217,.2);margin:8px auto}
+    .case-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+    .case-tab{padding:6px 14px;border-radius:100px;border:1.5px solid rgba(109,40,217,.3);font-size:.65rem;font-weight:700;color:#7c3aed;background:#fff;cursor:pointer;white-space:nowrap;transition:all .2s}
+    .case-tab.active,.case-tab:hover{background:#7c3aed;color:#fff;border-color:#7c3aed}
+    .case-panel{display:none}
+    .case-panel.active{display:block}
+    .case-hdr{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid #7c3aed;padding-bottom:8px;margin-bottom:12px}
+    .case-client{font-size:.8rem;font-weight:800;color:#7c3aed}
+    .case-geo{font-size:.72rem;color:rgba(0,18,40,.45)}
+    .case-body{display:grid;grid-template-columns:200px 1fr 210px;gap:14px;align-items:start}
+    .case-sec-lbl{font-size:.54rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#7c3aed;border-bottom:1px solid rgba(109,40,217,.2);padding-bottom:4px;margin-bottom:8px}
+    .case-bold{font-size:.7rem;font-weight:800;color:#001228;line-height:1.4;margin-bottom:8px}
+    .case-ul{list-style:disc;padding-left:14px;margin:0;display:flex;flex-direction:column;gap:3px}
+    .case-ul li{font-size:.67rem;color:rgba(0,18,40,.65);line-height:1.4}
+    .case-imgs{display:flex;flex-direction:column;gap:8px}
+    .case-img-row{display:flex;gap:8px}
+    .case-img-ph{flex:1;min-height:72px;background:rgba(109,40,217,.05);border:1px dashed rgba(109,40,217,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:rgba(109,40,217,.4);font-style:italic;text-align:center;padding:6px;line-height:1.3}
+    .case-impact-box{background:rgba(109,40,217,.07);border-radius:10px;padding:12px;text-align:center}
+    .case-impact-num{font-size:1.7rem;font-weight:900;color:#7c3aed;line-height:1}
+    .case-impact-sub{font-size:.6rem;color:rgba(0,18,40,.45);margin:3px 0 8px}
+    .case-arrow{font-size:.67rem;font-weight:700;color:#001228;text-align:left;line-height:1.5;padding-left:2px}
   </style>
 </head>
 <body>
@@ -568,11 +588,52 @@
       </div>
 
       <div id="inner-2-cases" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:24px">Proven impact across major retailers globally.</p>
-        <div class="ref-grid" style="margin-bottom:20px">
-          <div class="ref-card" onclick="this.classList.toggle('flipped')"><div class="ref-inner"><div class="ref-front"><span class="ref-tag">Grocery · Mexico</span><div style="margin:12px 0"><span style="font-size:1.6rem">🌎</span></div><div class="ref-company">Large-scale retailer</div><div class="ref-headline">Workforce planned from sales, not real task volume. No internal benchmark.</div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">Operating model</span><span class="ref-tag-sm">Productivity</span></div><div style="font-size:.88rem;font-weight:700;color:var(--c-blue)">+20-30%</div></div></div><div class="ref-back"><div class="ref-challenge">Workforce planned from sales, not real task volume. No benchmark, high variability across stores.</div><hr class="ref-divider"><div class="ref-role-label">SOLUTION</div><div class="ref-role-text">Full L4 process mapping. Task-demand operating model. Pilot: 9 express + 9 conv → rollout 104 conv + 38 express. Scaled to Chile & Argentina.</div><div class="ref-impact-big"><div class="ref-impact-num">+20–30%</div><div class="ref-impact-num-sub">Labour productivity</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">10–17% efficiency</div><div class="ref-impact-pill">3,000+ stores</div></div><div class="ref-back-close">click to close</div></div></div></div>
-          <div class="ref-card" onclick="this.classList.toggle('flipped')"><div class="ref-inner"><div class="ref-front"><span class="ref-tag">Retail · Spain</span><div style="margin:12px 0"><span style="font-size:1.6rem">🏪</span></div><div class="ref-company">Multi-format retailer</div><div class="ref-headline">Labour in low-value tasks. Click & Collect manual (NPS 47). Order prep: days to fulfil.</div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">ESL rollout</span><span class="ref-tag-sm">C&C</span></div><div style="font-size:.88rem;font-weight:700;color:var(--c-blue)">>€40M</div></div></div><div class="ref-back"><div class="ref-challenge">Labour hours in low-value manual tasks. NPS 47. WFM not aligned to real traffic.</div><hr class="ref-divider"><div class="ref-role-label">SOLUTION</div><div class="ref-role-text">E2E diagnostic. ESL: 400k+ labour hours redeployed. Smart lockers (NPS 47→65). Order prep: days→hours. WFM aligned.</div><div class="ref-impact-big"><div class="ref-impact-num">>€40M</div><div class="ref-impact-num-sub">Value unlocked</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">NPS 47→65</div><div class="ref-impact-pill">400k+ hrs/yr</div></div><div class="ref-back-close">click to close</div></div></div></div>
-          <div class="ref-card" onclick="this.classList.toggle('flipped')"><div class="ref-inner"><div class="ref-front"><span class="ref-tag">Grocery · Uruguay</span><div style="margin:12px 0"><span style="font-size:1.6rem">🛒</span></div><div class="ref-company">Multi-format chains</div><div class="ref-headline">Labour at 16.9% of sales. Two chains, two formats. No task-demand model.</div><div class="ref-front-bottom"><div class="ref-tags"><span class="ref-tag-sm">Efficiency</span><span class="ref-tag-sm">Cost</span></div><div style="font-size:.88rem;font-weight:700;color:var(--c-blue)">11.2%</div></div></div><div class="ref-back"><div class="ref-challenge">Labour cost at 16.9% of sales — above sustainable threshold. No task-demand model.</div><hr class="ref-divider"><div class="ref-role-label">SOLUTION</div><div class="ref-role-text">Analysis (6w) + Design (8w) + Pilot (6w) 25 stores with on-site coaching. Sustainability model handed to HQ.</div><div class="ref-impact-big"><div class="ref-impact-num">11.2%</div><div class="ref-impact-num-sub">Workforce efficiency · 459 FTEs</div></div><div class="ref-impact-pills"><div class="ref-impact-pill">338M $UY saved</div><div class="ref-impact-pill">16.9%→15.4%</div></div><div class="ref-back-close">click to close</div></div></div></div>
+        <div class="case-tabs">
+          <button class="case-tab active" onclick="showCase(0,this)">🌎 Mexico / Chile / Argentina</button>
+          <button class="case-tab" onclick="showCase(1,this)">🏪 Spain · Retail</button>
+          <button class="case-tab" onclick="showCase(2,this)">🛒 Uruguay · Grocery</button>
+          <button class="case-tab" onclick="showCase(3,this)">🇫🇷 France · Hypermarket</button>
+          <button class="case-tab" onclick="showCase(4,this)">🇫🇷 France · Multi-format</button>
+        </div>
+        <div id="case-0" class="case-panel active">
+          <div class="case-hdr"><span class="case-client">Grocery Retailer · Mexico, Chile &amp; Argentina</span><span class="case-geo">Large-scale grocery retailer · 3,000+ stores</span></div>
+          <div class="case-body">
+            <div><div class="case-sec-lbl">Diagnostic</div><div class="case-bold">Workforce planned from historical sales, not real task volume. No internal benchmark; high variability across stores of the same format.</div><ul class="case-ul"><li>Planning disconnected from actual workload</li><li>No internal benchmark to identify inefficiencies</li><li>High variability across stores within same format</li><li>Scheduling misaligned with real demand curves</li></ul></div>
+            <div class="case-imgs"><div class="case-img-row"><div class="case-img-ph">Backroom overstock /<br>chaotic pallets</div><div class="case-img-ph">Shelf replenishment<br>observation</div></div><div class="case-img-row"><div class="case-img-ph">Store aisle<br>before pilot</div><div class="case-img-ph">Backroom<br>after reorganization</div></div></div>
+            <div><div class="case-sec-lbl">Solution</div><ul class="case-ul"><li>Full L4 process mapping across all departments</li><li>Task-demand model: task volume × time standard = real headcount demand by shift</li><li>Scheduling redesign aligned to real demand curves</li><li>Pilot: 9 express + 9 conv. → rollout to 104 conv. + 38 express formats</li><li>Scaled to Chile &amp; Argentina</li></ul><div class="case-sec-lbl" style="margin-top:10px">Impact</div><div class="case-impact-box"><div class="case-impact-num">+20–30%</div><div class="case-impact-sub">Labour productivity improvement</div><div class="case-arrow">→ 10–17% structural efficiency</div><div class="case-arrow">→ 3,000+ stores transformed</div></div></div>
+          </div>
+        </div>
+        <div id="case-1" class="case-panel">
+          <div class="case-hdr"><span class="case-client">Large retail · Spain</span><span class="case-geo">European multi-format retailer</span></div>
+          <div class="case-body">
+            <div><div class="case-sec-lbl">Diagnostic</div><div class="case-bold">Leading European retailer under margin pressure — labour absorbed in low-value tasks, Click &amp; Collect manual, order prep days to fulfil.</div><ul class="case-ul"><li>Labour hours in low-value manual tasks (price labelling, handoffs)</li><li>Click &amp; Collect: manual process, poor experience (NPS 47)</li><li>Order preparation: long lead times, days to fulfil</li><li>WFM not aligned to real traffic or demand data</li></ul></div>
+            <div class="case-imgs"><div class="case-img-row"><div class="case-img-ph">Empty shelves /<br>replenishment backlog</div><div class="case-img-ph">Click &amp; Collect<br>smart locker install</div></div><div class="case-img-row"><div class="case-img-ph">ESL electronic<br>shelf label rollout</div><div class="case-img-ph">Store aisle<br>reorganization</div></div></div>
+            <div><div class="case-sec-lbl">Solution</div><ul class="case-ul"><li>E2E diagnostic: value pool mapping across all store processes</li><li>ESL rollout: 400,000+ hrs/year redeployed to higher-value tasks</li><li>Click &amp; Collect redesign: smart lockers replacing manual handoff</li><li>Order prep: process redesign from days → hours</li><li>WFM aligned with real traffic and demand data</li></ul><div class="case-sec-lbl" style="margin-top:10px">Impact</div><div class="case-impact-box"><div class="case-impact-num">&gt;€40M</div><div class="case-impact-sub">Value unlocked across the network</div><div class="case-arrow">→ NPS 47 → 65 (Click &amp; Collect)</div><div class="case-arrow">→ 400k+ hrs redeployed / year</div></div></div>
+          </div>
+        </div>
+        <div id="case-2" class="case-panel">
+          <div class="case-hdr"><span class="case-client">Grocery Retailer · Uruguay</span><span class="case-geo">Multi-format grocery chains · 25 stores piloted</span></div>
+          <div class="case-body">
+            <div><div class="case-sec-lbl">Diagnostic</div><div class="case-bold">Two grocery chains with labour at 16.9% of sales — pressure to improve efficiency without service cuts or arbitrary headcount reductions.</div><ul class="case-ul"><li>Labour cost at 16.9% of sales — above sustainable threshold</li><li>Two chains, two formats: different baseline, same pressure</li><li>Efficiency needed without service degradation</li><li>No task-demand model: workload managed empirically</li></ul></div>
+            <div class="case-imgs"><div class="case-img-row"><div class="case-img-ph">Supermarket aisle<br>observation audit</div><div class="case-img-ph">Fresh produce<br>section</div></div><div class="case-img-row"><div class="case-img-ph">Backroom<br>reorganization</div><div class="case-img-ph">On-site coaching<br>in pilot store</div></div></div>
+            <div><div class="case-sec-lbl">Solution</div><ul class="case-ul"><li>Analysis (6w): full E2E baseline of both chains</li><li>Design (8w): task-demand operating model adapted to 2 formats</li><li>Pilot (6w): live deployment in 25 stores with on-site coaching</li><li>Sustainability model handed to HQ for network scaling</li></ul><div class="case-sec-lbl" style="margin-top:10px">Impact</div><div class="case-impact-box"><div class="case-impact-num">11.2%</div><div class="case-impact-sub">Workforce efficiency · 459 FTEs</div><div class="case-arrow">→ 338M $UY annual savings</div><div class="case-arrow">→ Labour cost: 16.9% → 15.4%</div></div></div>
+          </div>
+        </div>
+        <div id="case-3" class="case-panel">
+          <div class="case-hdr"><span class="case-client">Grocery Retailer · France</span><span class="case-geo">Hypermarket</span></div>
+          <div class="case-body">
+            <div><div class="case-sec-lbl">Diagnostic</div><div class="case-bold">Shelf replenishment backlogs consuming 15% of working time. Fresh aisle productivity below benchmark; no structured task-demand model.</div><ul class="case-ul"><li>Backlogs at 15% of shelf time (benchmark: 6%)</li><li>Fresh aisle productivity: 23 cases/man-hour vs. 32 benchmark</li><li>50 min/day of stockroom back-and-forth per aisle</li><li>Workload distributed empirically, siloed teams</li></ul></div>
+            <div class="case-imgs"><div class="case-img-row"><div class="case-img-ph">Shelf replenishment<br>backlog observation</div><div class="case-img-ph">Stockroom<br>congestion</div></div><div class="case-img-row"><div class="case-img-ph">In-store navigation<br>app screens</div><div class="case-img-ph">Fresh section<br>productivity audit</div></div></div>
+            <div><div class="case-sec-lbl">Solution</div><ul class="case-ul"><li>Field observation: full E2E diagnostic across all store processes</li><li>Target design: Store Digital Brain operating model</li><li>3 levers: Simplicity, Adaptability, Engagement</li><li>Structured activity planning replacing empirical distribution</li></ul><div class="case-sec-lbl" style="margin-top:10px">Impact</div><div class="case-impact-box"><div class="case-impact-num" style="font-size:1.35rem">10% capacity freed</div><div class="case-impact-sub">&nbsp;</div><div class="case-arrow">→ NPS 2025: 49 → 60 (vs. 40 national avg)</div><div class="case-arrow">→ Backlogs: 15% → 6%</div></div></div>
+          </div>
+        </div>
+        <div id="case-4" class="case-panel">
+          <div class="case-hdr"><span class="case-client">Grocery Retailer · France</span><span class="case-geo">Multi-format network · 646 stores</span></div>
+          <div class="case-body">
+            <div><div class="case-sec-lbl">Diagnostic</div><div class="case-bold">Multi-format grocery network with labour costs above discounter benchmarks — productivity gaps across checkout, drive and shelf replenishment.</div><ul class="case-ul"><li>Labour costs above discounter benchmark of 7.5% of sales</li><li>Fresh aisle: 25 cases/man-hour vs. 32 benchmark</li><li>Drive picking: 128 articles/hr vs. 140 benchmark</li><li>No structured activity management: planning done monthly</li></ul></div>
+            <div class="case-imgs"><div class="case-img-row"><div class="case-img-ph">Optimized equipment<br>cart for drive picking</div><div class="case-img-ph">In-store handheld<br>device</div></div><div class="case-img-row"><div class="case-img-ph">Self-checkout<br>terminal</div><div class="case-img-ph">Drive picking<br>station</div></div></div>
+            <div><div class="case-sec-lbl">Solution</div><ul class="case-ul"><li>23 productivity levers across 4 families: automation, simplification, planning, checkout</li><li>Checkout: SLS + CLS + optimized staffing model</li><li>Roll-out: 646 stores for LS, 411 large stores cross-functional</li></ul><div class="case-sec-lbl" style="margin-top:10px">Impact</div><div class="case-impact-box"><div class="case-impact-num">200 M€</div><div class="case-impact-sub">net annual savings · 23 levers</div><div class="case-arrow">→ Drive: +34.5% productivity · 53.4 M€/year</div><div class="case-arrow">→ LS: +11% productivity · 53.1 M€/year</div><div class="case-arrow">→ Checkout: 24.5 M€ net annual savings</div></div></div>
+          </div>
         </div>
       </div>
 
@@ -722,8 +783,8 @@
             <div class="pcrf"><div class="pcrf-t">Transformation Director</div></div>
           </div>
           <div class="gov-cell">
-            <div class="pacc"><div class="pav es">RA<img src="photos/RA.jpg" style="object-position:center top;transform:scale(1.8);transform-origin:50% 10%" onload="this.style.display='block'"></div><div><div class="pn">RA</div><div class="pr">Store Ops Lead</div></div></div>
-            <div class="pacc"><div class="pav es">AS<img src="photos/AS.jpg" style="object-position:center top;transform:scale(1.8);transform-origin:50% 10%" onload="this.style.display='block'"></div><div><div class="pn">AS</div><div class="pr">Sr. Store Ops Expert</div></div></div>
+            <div class="pacc"><div class="pav es">RA<img src="photos/RA.jpg" style="transform:scale(2.1);transform-origin:50% 0%" onload="this.style.display='block'"></div><div><div class="pn">RA</div><div class="pr">Store Ops Lead</div></div></div>
+            <div class="pacc"><div class="pav es">AS<img src="photos/AS.jpg" style="transform:scale(2.1);transform-origin:50% 0%" onload="this.style.display='block'"></div><div><div class="pn">AS</div><div class="pr">Sr. Store Ops Expert</div></div></div>
           </div>
           <!-- ── TEAM ROW ── -->
           <div class="gov-cell">
@@ -741,9 +802,9 @@
             <div class="pcrf"><div class="pcrf-t">Hypermarket Operations Lead</div></div>
           </div>
           <div class="gov-cell">
-            <div class="pacc"><div class="pav es">MB<img src="photos/MB.jpg" style="object-position:center top;transform:scale(1.8);transform-origin:50% 10%" onload="this.style.display='block'"></div><div><div class="pn">MB</div><div class="pr">Store Ops Expert</div></div></div>
+            <div class="pacc"><div class="pav es">MB<img src="photos/MB.jpg" style="transform:scale(1.8);transform-origin:50% 16%" onload="this.style.display='block'"></div><div><div class="pn">MB</div><div class="pr">Store Ops Expert</div></div></div>
             <div class="pacc"><div class="pav es">FM<img src="photos/FM.jpg" onload="this.style.display='block'"></div><div><div class="pn">FM</div><div class="pr">Sr. Retail Expert</div></div></div>
-            <div class="pacc"><div class="pav es">CD<img src="photos/CD.jpg" style="object-position:center top;transform:scale(1.8);transform-origin:50% 10%" onload="this.style.display='block'"></div><div><div class="pn">CD</div><div class="pr">Retail Expert</div></div></div>
+            <div class="pacc"><div class="pav es">CD<img src="photos/CD.jpg" style="transform:scale(2.1);transform-origin:50% 0%" onload="this.style.display='block'"></div><div><div class="pn">CD</div><div class="pr">Retail Expert</div></div></div>
             <div class="pacc"><div class="pav es">PYB<img src="photos/PYB.jpg" onload="this.style.display='block'"></div><div><div class="pn">PYB</div><div class="pr">TimeSkipper Expert</div></div></div>
           </div>
         </div>
@@ -835,6 +896,7 @@
     let current=0;
     function showSlide(n){document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));document.getElementById('slide-'+n).classList.add('active');document.querySelectorAll('.nav-btn').forEach((b,i)=>b.classList.toggle('active',i===n));current=n;const pct=(n/(SLIDES.length-1))*100;document.getElementById('progressBar').style.width=pct+'%';window.scrollTo(0,0);}
     function switchInner(id,btn){const slide=btn.closest('.slide');slide.querySelectorAll('.inner-panel').forEach(p=>p.classList.remove('active'));slide.querySelectorAll('.itab').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+    function showCase(n,btn){document.querySelectorAll('.case-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.case-tab').forEach(b=>b.classList.remove('active'));document.getElementById('case-'+n).classList.add('active');btn.classList.add('active');}
     showSlide(0);
     // Inject real logos into org-chart column headers
     (function(){
