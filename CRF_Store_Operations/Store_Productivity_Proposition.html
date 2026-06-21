@@ -325,6 +325,20 @@
     .case-impact-num{font-size:1.7rem;font-weight:900;color:#7c3aed;line-height:1}
     .case-impact-sub{font-size:.6rem;color:rgba(0,18,40,.45);margin:3px 0 8px}
     .case-arrow{font-size:.67rem;font-weight:700;color:#001228;text-align:left;line-height:1.5;padding-left:2px}
+    .ups-grid{display:grid;grid-template-columns:20px 1fr 1fr;gap:6px 10px;margin:10px 0 12px;align-items:stretch}
+    .ups-case-hdr{background:#7c3aed;color:#fff;font-size:.57rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:5px 10px;border-radius:5px;text-align:center}
+    .ups-lbl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.44rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#fff;background:#7c3aed;border-radius:4px;display:flex;align-items:center;justify-content:center}
+    .ups-row{display:flex;align-items:stretch;gap:6px}
+    .ups-box{flex:1;background:rgba(109,40,217,.06);border:1px solid rgba(109,40,217,.12);border-radius:7px;padding:7px 9px}
+    .ups-box-hi{background:rgba(220,38,38,.05);border-color:rgba(220,38,38,.22)}
+    .ups-title{font-size:.61rem;font-weight:800;color:#7c3aed;margin-bottom:4px}
+    .ups-title-hi{font-size:.61rem;font-weight:800;color:#dc2626;margin-bottom:4px}
+    .ups-body{font-size:.57rem;color:rgba(0,18,40,.6);line-height:1.35}
+    .ups-body-hi{font-size:.57rem;color:rgba(180,30,30,.8);line-height:1.35}
+    .ups-harrow{display:flex;align-items:center;color:#7c3aed;font-size:.85rem;font-weight:900;flex-shrink:0}
+    .ups-darrow-row{text-align:center;color:#7c3aed;font-size:1rem;font-weight:900;padding:2px 0}
+    .ups-footer{background:rgba(109,40,217,.07);border-radius:8px;padding:9px 14px;font-size:.63rem;color:rgba(0,18,40,.65);line-height:1.45;text-align:center}
+    .ups-footer strong{color:#7c3aed}
     .case-flag{display:inline-block;width:16px;height:11px;border-radius:2px;vertical-align:middle;margin-right:5px;flex-shrink:0;box-shadow:0 0 0 .5px rgba(0,0,0,.2)}
     .case-flag.fr{background:linear-gradient(90deg,#002395 33%,#fff 33% 67%,#ED2939 67%)}
     .case-flag.es{background:linear-gradient(0deg,#c60b1e 28%,#f1bf00 28% 72%,#c60b1e 72%)}
@@ -646,11 +660,41 @@
       </div>
 
       <div id="inner-2-upstream" class="inner-panel">
-        <p class="slide-sub" style="margin-bottom:24px">BREAD traces the full chain — not just the floor, but upstream decisions that create the problem.</p>
-        <div class="g2">
-          <div><h3 style="font-size:.95rem;margin-bottom:14px;color:#001228;font-weight:700">Corporate Layer</h3><div class="step-card" style="margin-bottom:12px;padding:16px"><div style="font-weight:700;color:#001228;margin-bottom:6px;font-size:.88rem">Buying</div><div style="font-size:.78rem;color:rgba(0,18,40,.6);line-height:1.5">Order sized without shelf-capacity data or per-format traffic patterns.</div></div><div class="step-card" style="margin-bottom:12px;padding:16px"><div style="font-weight:700;color:#001228;margin-bottom:6px;font-size:.88rem">Supply Chain</div><div style="font-size:.78rem;color:rgba(0,18,40,.6);line-height:1.5">Wrong volumes shipped, pallets unsequenced, not aligned with shelf layout.</div></div></div>
-          <div><h3 style="font-size:.95rem;margin-bottom:14px;color:#001228;font-weight:700">Store Impact</h3><div class="ibox ibox-red"><div class="ibox-title">📦 Backroom</div><div class="ibox-body">Staff must fully re-sort misaligned pallets. Hours of unplanned double-handling masked as 'slow replenishment.'</div></div><div class="ibox ibox-red" style="margin-top:12px"><div class="ibox-title">🛒 Store Floor</div><div class="ibox-body">Empty shelves — OOS despite stock in backroom. Root cause invisible. Fixing replenishment won't solve it.</div></div></div>
+        <p class="slide-sub" style="margin-bottom:10px">Store productivity issues often originate <strong style="color:#7c3aed">above the store</strong> — understanding decision ownership, process maturity and standardisation opportunities across Corporate &#8594; Supply Chain &#8594; Store floor.</p>
+        <div class="ups-grid">
+          <div></div>
+          <div class="ups-case-hdr">Case 1 &middot; Fulfillment</div>
+          <div class="ups-case-hdr">Case 2 &middot; Assortment</div>
+
+          <div class="ups-lbl">Corporate</div>
+          <div class="ups-row">
+            <div class="ups-box"><div class="ups-title">Buying</div><div class="ups-body">Order sized at HQ without shelf-capacity data or per-format traffic patterns. References decided centrally.</div></div>
+            <div class="ups-harrow">&#8594;</div>
+            <div class="ups-box"><div class="ups-title">Supply Chain</div><div class="ups-body">Wrong volumes shipped; pallets unsequenced, not aligned with shelf layout — requiring full manual re-sort on arrival.</div></div>
+          </div>
+          <div class="ups-row">
+            <div class="ups-box"><div class="ups-title">Category Management</div><div class="ups-body">New SKUs listed centrally without validating shelf space, planogram viability, or sales velocity per format.</div></div>
+            <div class="ups-harrow">&#8594;</div>
+            <div class="ups-box"><div class="ups-title">Planogram</div><div class="ups-body">Sent to stores physically impossible to execute: more references than available linear metres.</div></div>
+          </div>
+
+          <div></div>
+          <div class="ups-darrow-row">&#8595;</div>
+          <div class="ups-darrow-row">&#8595;</div>
+
+          <div class="ups-lbl">Store</div>
+          <div class="ups-row">
+            <div class="ups-box"><div class="ups-title">Backroom</div><div class="ups-body">Staff must fully re-sort misaligned pallets before replenishment. Double-handling masked as 'slow replenishment.'</div></div>
+            <div class="ups-harrow">&#8594;</div>
+            <div class="ups-box ups-box-hi"><div class="ups-title-hi">&#9888; Store Floor</div><div class="ups-body-hi"><strong>Empty shelves: OOS despite stock in backroom.</strong><br><em>Root cause invisible to the store manager. Fixing replenishment won't solve it.</em></div></div>
+          </div>
+          <div class="ups-row">
+            <div class="ups-box ups-box-hi"><div class="ups-title-hi">&#9888; Store Floor</div><div class="ups-body-hi"><strong>Permanent shelf gaps: hours lost weekly on manual workarounds.</strong><br><em>Optimising replenishment won't fix this — problem starts at category management.</em></div></div>
+            <div class="ups-harrow">&#8592;</div>
+            <div class="ups-box"><div class="ups-title">Section Manager</div><div class="ups-body">Manually rebuilds planogram each week. Costs several hours; invisible to any in-store productivity analysis.</div></div>
+          </div>
         </div>
+        <div class="ups-footer"><strong>BREAD traces the full chain</strong> — not just what happens on the floor, but the upstream decisions that create the problem. Optimising in-store processes alone won't fix what starts at Corporate or Supply Chain.</div>
       </div>
     </section>
 
