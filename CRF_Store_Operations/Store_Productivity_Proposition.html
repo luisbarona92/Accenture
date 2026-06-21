@@ -352,6 +352,25 @@
     .exp-crfknow ul li{font-size:.62rem;color:rgba(0,18,40,.65);padding-left:10px;position:relative;line-height:1.4}
     .exp-crfknow ul li::before{content:'–';position:absolute;left:0;color:rgba(0,61,165,.45)}
     .exp-crf-title{font-size:.78rem;font-weight:800;color:#001228;margin:44px 0 10px;display:flex;align-items:center;gap:8px}
+    /* Constraints tab */
+    .con-title{font-size:.82rem;font-weight:800;color:#001228;margin-bottom:16px;line-height:1.4}
+    .con-layout{display:grid;grid-template-columns:168px 1fr 168px;gap:14px;align-items:start}
+    .con-side{display:flex;flex-direction:column;gap:10px}
+    .con-callout{background:#fff;border:1px solid rgba(109,40,217,.2);border-left:3px solid #7c3aed;border-radius:8px;padding:10px 12px;font-size:.63rem;color:rgba(0,18,40,.65);line-height:1.55}
+    .con-callout strong{color:#001228}
+    .con-callout-warn{background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.3);border-left:3px solid #dc2626;border-radius:8px;padding:9px 12px;font-size:.63rem;color:rgba(180,20,20,.85);font-weight:700;line-height:1.4}
+    .con-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .con-chip{font-size:.6rem;font-weight:700;background:rgba(109,40,217,.08);border:1px solid rgba(109,40,217,.18);color:#7c3aed;border-radius:100px;padding:2px 9px}
+    .con-table{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.08)}
+    .con-table th{background:#7c3aed;color:#fff;padding:10px 14px;font-size:.72rem;font-weight:800;text-align:center;width:50%}
+    .con-table th .con-th-inner{display:flex;align-items:center;justify-content:center;gap:8px}
+    .con-table td{padding:9px 13px;border-bottom:1px solid rgba(0,0,0,.07);font-size:.67rem;color:rgba(0,18,40,.72);line-height:1.45;vertical-align:top;width:50%}
+    .con-table td:first-child{border-right:1px solid rgba(0,0,0,.08)}
+    .con-table tr:last-child td{border-bottom:none}
+    .con-table tr:hover td{background:rgba(109,40,217,.025)}
+    .con-flag{display:inline-block;width:22px;height:15px;border-radius:2px;vertical-align:middle;box-shadow:0 0 0 .5px rgba(0,0,0,.15);flex-shrink:0}
+    .con-flag.fr{background:linear-gradient(90deg,#002395 33%,#fff 33% 67%,#ED2939 67%)}
+    .con-flag.es{background:linear-gradient(0deg,#c60b1e 28%,#f1bf00 28% 72%,#c60b1e 72%)}
     .exp-crf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .exp-crf-col{border:1px solid rgba(109,40,217,.18);border-radius:10px;overflow:hidden}
     .exp-crf-hdr{background:rgba(109,40,217,.13);color:#001228;font-size:.68rem;font-weight:800;padding:9px 13px;text-align:center;line-height:1.35;border-bottom:1px solid rgba(109,40,217,.18)}
@@ -398,7 +417,7 @@
     <button class="nav-btn active" onclick="showSlide(0)"><span class="nav-num">00</span><span>Cover</span></button>
     <button class="nav-btn" onclick="showSlide(1)"><span class="nav-num">01</span><span>Summary</span></button>
     <button class="nav-btn" onclick="showSlide(2)"><span class="nav-num">02</span><span>Why Accenture</span></button>
-    <button class="nav-btn" onclick="showSlide(3)"><span class="nav-num">03</span><span>Approach</span></button>
+    <button class="nav-btn" onclick="showSlide(3)"><span class="nav-num">03</span><span>Value proposition</span></button>
     <button class="nav-btn" onclick="showSlide(4)"><span class="nav-num">04</span><span>Team &amp; gov.</span></button>
     <button class="nav-btn" onclick="showSlide(5)"><span class="nav-num">✓</span><span>Thank You</span></button>
   </nav>
@@ -497,6 +516,7 @@
         <button class="itab" onclick="switchInner('inner-2-cases', this)">📋 Cases</button>
         <button class="itab" onclick="switchInner('inner-2-upstream', this)">🔗 Upstream</button>
         <button class="itab" onclick="switchInner('inner-2-experience', this)">🏆 Experience</button>
+        <button class="itab" onclick="switchInner('inner-2-constraints', this)">⚖️ Constraints</button>
       </div>
 
       <div id="inner-2-approach" class="inner-panel active">
@@ -799,6 +819,56 @@
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div id="inner-2-constraints" class="inner-panel">
+        <p class="con-title">We understand the specific constraints &amp; opportunities of <strong style="color:#7c3aed">France vs Spain</strong> and will leverage them in the target op models</p>
+        <div class="con-layout">
+
+          <!-- Left callouts -->
+          <div class="con-side">
+            <div class="con-callout">
+              Variabilise peaks within FR law: annualisation/modulation + multi-store labour pooling; gig/partner models (WM Spark Shopper, Onestaff-type)
+              <div class="con-chips"><span class="con-chip">Onestaff</span><span class="con-chip">Scan &amp; Go</span><span class="con-chip">Spark Shopper</span></div>
+            </div>
+            <div class="con-callout">
+              Per-store fulfilment archetype = drive volume &times; picking productivity: in-store (pick-to-light + batching) &rarr; hybrid &rarr; MFC. Move volume out only where in-store can&rsquo;t be made productive.
+            </div>
+          </div>
+
+          <!-- FR vs ES table -->
+          <div>
+            <table class="con-table">
+              <thead>
+                <tr>
+                  <th><div class="con-th-inner"><span class="con-flag fr"></span> France</div></th>
+                  <th><div class="con-th-inner"><span class="con-flag es"></span> Spain</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Labour-law rigidity — 35h, CDD, unions cap flex</td><td>Supplier merchandizers — shelving off the store P&amp;L</td></tr>
+                <tr><td>Higher cost/hour — faster automation payback</td><td>High racking &gt;1.80m</td></tr>
+                <tr><td>Ventes sans suite — heavy promo handling</td><td>Flexible labour — staffing flexes faster</td></tr>
+                <tr><td>In-store e-com picking &gt;10% of sales</td><td>Temporary/agency mix — lower hours cost</td></tr>
+                <tr><td>Vusion ESL roll-out (and selected intelligence cases already in roadmap)</td><td>Wider opening hours — longer amplitude</td></tr>
+                <tr><td></td><td>Later peaks + tourism — distinct staffing curves</td></tr>
+                <tr><td></td><td>Self-checkout rollout — front-end labour shift</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Right callouts -->
+          <div class="con-side">
+            <div class="con-callout">
+              Codify supplier-vs-internal shelving by category (make-or-buy), keep supplier hours visible (no black box); test selective supplier merchandising in FR high-rotation aisles.
+            </div>
+            <div class="con-callout">
+              Flex ring around a stable core: students/short contracts + a named seasonal (&lsquo;tourist/summer&rsquo;) module sized to traffic curves; test transferable elements in FR.
+            </div>
+            <div class="con-callout-warn">⚠ Fraud risk on SCO in Spain</div>
+          </div>
+
         </div>
       </div>
     </section>
