@@ -473,24 +473,21 @@
     /* ── Simulator panel ── */
     .sim-layout{display:grid;grid-template-columns:1fr 0.75fr;gap:14px;align-items:start}
     .sim-left-title{color:#6d28d9;font-size:.74rem;font-weight:800;text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:.6px}
-    .sim-funnel{display:flex;flex-direction:column;gap:0}
-    .sim-block{padding:12px 16px}
-    .sim-block:first-child{border-radius:10px 10px 0 0}
-    .sim-block:last-child{border-radius:0 0 10px 10px}
-    /* stud rows — top and bottom of each brick */
-    .sim-sr{display:flex;justify-content:space-between;width:100%}
+    .sim-funnel{display:flex;flex-direction:column;gap:0;border-radius:10px;overflow:hidden}
+    .sim-block{padding:14px 16px}
+    /* stud band — CSS radial-gradient dots, top and bottom of each brick */
+    .sim-sr{height:16px;width:100%}
     .sim-sr-t{margin-bottom:10px}
     .sim-sr-b{margin-top:10px}
-    .sim-stud{width:11px;height:11px;border-radius:50%;flex-shrink:0;box-shadow:0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.18)}
-    /* block colors */
+    /* block colors + stud pattern per block */
     .sim-b1{background:#ddd6fe}
-    .sim-b1 .sim-stud{background:#b9a8f7}
+    .sim-b1 .sim-sr{background-image:radial-gradient(circle,#b9a8f7 4px,transparent 4px);background-size:18px 16px;background-position:5px center}
     .sim-b2{background:#a78bfa}
-    .sim-b2 .sim-stud{background:#7c5ce0}
+    .sim-b2 .sim-sr{background-image:radial-gradient(circle,#7c5ce0 4px,transparent 4px);background-size:18px 16px;background-position:5px center}
     .sim-b3{background:#6d28d9}
-    .sim-b3 .sim-stud{background:#5b21b6}
+    .sim-b3 .sim-sr{background-image:radial-gradient(circle,#5b21b6 4px,transparent 4px);background-size:18px 16px;background-position:5px center}
     .sim-b4{background:#2e0987}
-    .sim-b4 .sim-stud{background:#1e066a}
+    .sim-b4 .sim-sr{background-image:radial-gradient(circle,#1e066a 4px,transparent 4px);background-size:18px 16px;background-position:5px center}
     /* block content */
     .sim-b1-title{font-size:.7rem;font-weight:800;color:#4c1d95;text-align:center;margin-bottom:8px}
     .sim-b1-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
@@ -1314,38 +1311,38 @@
 
               <!-- Block 1: Raw material -->
               <div class="sim-block sim-b1">
-                <div class="sim-sr sim-sr-t"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-t"></div>
                 <div class="sim-b1-title">Raw material: the plastic</div>
                 <div class="sim-b1-cards">
                   <div class="sim-b1-card">Store observation</div>
                   <div class="sim-b1-card">Productivity data</div>
                   <div class="sim-b1-card">Benchmarks</div>
                 </div>
-                <div class="sim-sr sim-sr-b"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-b"></div>
               </div>
 
               <!-- Block 2: Operating-model twin -->
               <div class="sim-block sim-b2">
-                <div class="sim-sr sim-sr-t"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-t"></div>
                 <div class="sim-b2-title">Operating-model twin</div>
                 <div class="sim-b2-sub">= the lego bricks</div>
-                <div class="sim-sr sim-sr-b"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-b"></div>
               </div>
 
               <!-- Block 3: Target scenario -->
               <div class="sim-block sim-b3">
-                <div class="sim-sr sim-sr-t"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-t"></div>
                 <div class="sim-b3-title">Target op. model scenario w. management</div>
                 <div class="sim-b3-sub">= the store, built from bricks</div>
-                <div class="sim-sr sim-sr-b"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-b"></div>
               </div>
 
               <!-- Block 4: Simulated impact -->
               <div class="sim-block sim-b4">
-                <div class="sim-sr sim-sr-t"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-t"></div>
                 <div class="sim-b4-title">Simulated impact</div>
                 <div class="sim-b4-sub">Cost &amp; FTE, by department</div>
-                <div class="sim-sr sim-sr-b"><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div><div class="sim-stud"></div></div>
+                <div class="sim-sr sim-sr-b"></div>
               </div>
 
             </div>
