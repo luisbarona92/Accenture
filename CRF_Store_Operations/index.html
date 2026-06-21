@@ -471,11 +471,12 @@
     .wl-scope-arrow{color:#6d28d9;font-size:.8rem;font-weight:900}
 
     /* ── Simulator panel ── */
-    .sim-layout{display:grid;grid-template-columns:1fr 0.75fr;gap:14px;align-items:start}
+    .sim-layout{display:grid;grid-template-columns:0.85fr 1.15fr;gap:14px;align-items:start}
     .sim-left-title{color:#6d28d9;font-size:.74rem;font-weight:800;text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:.6px}
     .sim-funnel{display:flex;flex-direction:column;gap:0}
-    .sim-block{padding:16px 20px;border-radius:10px}
+    .sim-block{padding:11px 16px;border-radius:10px}
     .sim-arrow{text-align:center;font-size:1.1rem;color:#6d28d9;line-height:1;padding:3px 0}
+    .sim-right-title{font-size:.72rem;font-weight:800;color:#6d28d9;text-align:center;padding:10px 12px 8px;border-bottom:1px solid rgba(109,40,217,.2)}
     .sim-b1{background:#ddd6fe}
     .sim-b2{background:#a78bfa}
     .sim-b3{background:#6d28d9}
@@ -1293,6 +1294,7 @@
       </div>
 
       <div id="inner-3-simulator" class="inner-panel">
+        <p class="slide-sub" style="margin-bottom:14px">Our approach: building a simulated store operating model</p>
         <div class="sim-layout">
 
           <!-- LEFT: funnel -->
@@ -1326,7 +1328,7 @@
                 <div class="sim-b3-sub">= the store, built from bricks</div>
               </div>
 
-              <div class="sim-arrow" style="color:#fff">▼</div>
+              <div class="sim-arrow">▼</div>
 
               <!-- Block 4: Simulated impact -->
               <div class="sim-block sim-b4">
@@ -1339,6 +1341,7 @@
 
           <!-- RIGHT: levers image -->
           <div class="sim-right">
+            <div class="sim-right-title">Operational Levers Simulator by Department</div>
             <img src="photos/levers.jpg" alt="Operational Levers Simulator by Department">
           </div>
 
