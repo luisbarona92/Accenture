@@ -389,12 +389,15 @@
     .rm3-act strong{font-size:.62rem;font-weight:700;color:#001228;display:block;margin-bottom:2px}
     .rm3-act em{font-style:normal;font-size:.52rem;color:rgba(0,18,40,.5)}
     .rm3-ac1{background:#EBF3FF;border:1px solid rgba(0,80,200,.15)}
+    .rm3-ac1b{background:#E2F4EF;border:1px solid rgba(0,120,85,.18)}
+    .rm3-ac1b strong{color:#065040}
     .rm3-ac2{background:#FFF7E6;border:1px solid rgba(200,140,0,.22);align-items:center;text-align:center}
     .rm3-ac2 strong{color:#92600a}
     .rm3-ac3{background:#E8F9F0;border:1px solid rgba(0,140,80,.18)}
     .rm3-ac3 strong{color:#065f3e}
     .rm3-banner{border-radius:9px;padding:6px 14px;font-size:.59rem;font-style:italic;color:#6d28d9;background:rgba(109,40,217,.05);border:1px dashed rgba(109,40,217,.28);display:flex;align-items:center;justify-content:center;gap:6px}
-    .rm3-ms{background:#f4f5f7;border-radius:8px;padding:5px 3px;text-align:center;font-size:.5rem;color:rgba(0,18,40,.6);line-height:1.4;border:1px solid rgba(0,0,0,.06)}
+    .rm3-ph1b{background:#E2F4EF;border:1px solid rgba(0,120,85,.22)}
+    .rm3-ms{background:#f4f5f7;border-radius:8px;padding:5px 4px;text-align:center;font-size:.5rem;color:rgba(0,18,40,.6);line-height:1.4;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;min-height:56px}
     .rm3-ms.empty{background:transparent;border:none}
     .rm3-isc{color:#003DA5;font-size:.88rem;display:block;line-height:1.1}
     .rm3-iws{color:rgba(0,18,40,.3);font-size:.78rem;display:block;line-height:1.1}
@@ -919,7 +922,7 @@
       </div>
 
       <div id="inner-3-methodology" class="inner-panel active">
-        <p class="slide-sub" style="margin-bottom:12px">France and Spain will run the same methodology simultaneously, aligned with the project objectives and sharing knowledge.</p>
+        <p class="slide-sub" style="margin-bottom:12px;white-space:nowrap">France and Spain will run the same methodology simultaneously, aligned with the project objectives and sharing knowledge.</p>
         <div class="rm3">
 
           <!-- WEEK NUMBERS -->
@@ -933,10 +936,10 @@
 
           <!-- WORK PACKAGE / GOALS -->
           <div class="rm3-row">
-            <div class="rm3-lbl">Work Package</div>
+            <div class="rm3-lbl"></div>
             <div class="rm3-track">
               <div class="rm3-phase rm3-ph1" style="grid-column:span 3"><strong>Goal 1 – Store productivity understanding</strong><span>Field analysis – Store + HQ</span></div>
-              <div class="rm3-phase rm3-ph1" style="grid-column:span 2"><strong>Goal 2 – Benchmarking</strong><span>Benchmark + modelling</span></div>
+              <div class="rm3-phase rm3-ph1b" style="grid-column:span 2"><strong>Goal 2 – Benchmarking</strong><span>Benchmark + modelling</span></div>
               <div class="rm3-phase rm3-ph2"><strong>Goal 3</strong><span>Quantified recom.</span></div>
               <div class="rm3-phase rm3-ph3" style="grid-column:span 4"><strong>Goal 4 – Transformation &amp; scaling plan</strong><span>Quick win implementation</span></div>
             </div>
@@ -949,10 +952,16 @@
               <span class="rm3-cname">France</span>
             </div>
             <div class="rm3-track">
-              <div class="rm3-act rm3-ac1" style="grid-column:span 3"><strong>📋 Field analysis — store + HQ</strong><em>In-store observation · HQ interviews · upstream process analysis</em></div>
-              <div class="rm3-act rm3-ac1" style="grid-column:span 2"><strong>📊 Benchmarking &amp; modelling</strong><em>Quantification of scenarios · TimeSkipper (FR)</em></div>
+              <div style="grid-column:span 3;display:flex;flex-direction:column;gap:4px">
+                <div class="rm3-act rm3-ac1"><strong>📋 In-store observation · Initial interviews</strong><em>Activity mapping · process timing · 5 hypermarkets</em></div>
+                <div class="rm3-act rm3-ac1"><strong>🏢 HQ interviews · Upstream analysis</strong><em>Operational interviews · supplier &amp; upstream flow</em></div>
+              </div>
+              <div class="rm3-act rm3-ac1b" style="grid-column:span 2"><strong>📊 Benchmarking &amp; modelling</strong><em>Quantification of scenarios · TimeSkipper (FR)</em></div>
               <div class="rm3-act rm3-ac2"><strong>🎯 Select</strong><em>Define target model · Priorities</em></div>
-              <div class="rm3-act rm3-ac3" style="grid-column:span 4"><strong>⚡ Quick win implementation FR</strong><em>Deploy · measure · design transformation program</em></div>
+              <div style="grid-column:span 4;display:flex;flex-direction:column;gap:4px">
+                <div class="rm3-act rm3-ac3"><strong>⚡ Quick wins · Initial testing FR</strong><em>Deploy initiatives · measure productivity gains</em></div>
+                <div class="rm3-act rm3-ac3"><strong>🗺️ Transformation program design</strong><em>Define scaling plan · rollout roadmap</em></div>
+              </div>
             </div>
           </div>
 
@@ -969,10 +978,16 @@
               <span class="rm3-cname">Spain</span>
             </div>
             <div class="rm3-track">
-              <div class="rm3-act rm3-ac1" style="grid-column:span 3"><strong>📋 Field analysis — store + HQ</strong><em>In-store observation · HQ interviews · upstream process analysis</em></div>
-              <div class="rm3-act rm3-ac1" style="grid-column:span 2"><strong>📊 Benchmarking &amp; modelling</strong><em>Quantification of scenarios · TimeSkipper (SP)</em></div>
+              <div style="grid-column:span 3;display:flex;flex-direction:column;gap:4px">
+                <div class="rm3-act rm3-ac1"><strong>📋 In-store observation · Initial interviews</strong><em>Activity mapping · process timing · 5 hypermarkets</em></div>
+                <div class="rm3-act rm3-ac1"><strong>🏢 HQ interviews · Upstream analysis</strong><em>Operational interviews · supplier &amp; upstream flow</em></div>
+              </div>
+              <div class="rm3-act rm3-ac1b" style="grid-column:span 2"><strong>📊 Benchmarking &amp; modelling</strong><em>Quantification of scenarios · TimeSkipper (SP)</em></div>
               <div class="rm3-act rm3-ac2"><strong>🎯 Select</strong><em>Define target model · Priorities</em></div>
-              <div class="rm3-act rm3-ac3" style="grid-column:span 4"><strong>⚡ Quick win implementation ES</strong><em>Deploy · measure · design transformation program</em></div>
+              <div style="grid-column:span 4;display:flex;flex-direction:column;gap:4px">
+                <div class="rm3-act rm3-ac3"><strong>⚡ Quick wins · Initial testing ES</strong><em>Deploy initiatives · measure productivity gains</em></div>
+                <div class="rm3-act rm3-ac3"><strong>🗺️ Transformation program design</strong><em>Define scaling plan · rollout roadmap</em></div>
+              </div>
             </div>
           </div>
 
@@ -980,16 +995,32 @@
           <div class="rm3-row">
             <div class="rm3-lbl">Milestones</div>
             <div class="rm3-track">
-              <div class="rm3-ms"><span class="rm3-isc">◆</span><span class="rm3-mstxt">Kickoff &amp; store selection</span></div>
-              <div class="rm3-ms empty"></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span><span class="rm3-isc">◆</span><span class="rm3-mstxt">Field analysis SteerCo</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
+              <!-- W1: Kickoff at top, Weekly at bottom -->
+              <div class="rm3-ms" style="justify-content:space-between">
+                <div><span class="rm3-isc">◆</span><span class="rm3-mstxt">Kickoff &amp; store selection</span></div>
+                <span class="rm3-iws">▲</span>
+              </div>
+              <!-- W2: Weekly at bottom -->
+              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-iws">▲</span></div>
+              <!-- W3: Weekly at bottom -->
+              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-iws">▲</span></div>
+              <!-- W4: SteerCo at top, Weekly at bottom -->
+              <div class="rm3-ms" style="justify-content:space-between">
+                <div><span class="rm3-isc">◆</span><span class="rm3-mstxt">Field analysis SteerCo</span></div>
+                <span class="rm3-iws">▲</span>
+              </div>
+              <!-- W5: Weekly at bottom -->
+              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-iws">▲</span></div>
+              <!-- W6: Workshop centered -->
               <div class="rm3-ms"><span class="rm3-iwk">◆ ◆ ◆</span><span class="rm3-mstxt">Workshop sessions</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-isc">◆</span><span class="rm3-mstxt">Final SteerCo</span></div>
+              <!-- W7-W9: Weekly at bottom -->
+              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-iws">▲</span></div>
+              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-iws">▲</span></div>
+              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-iws">▲</span></div>
+              <!-- W10: Final SteerCo at bottom -->
+              <div class="rm3-ms" style="justify-content:flex-end">
+                <span class="rm3-isc">◆</span><span class="rm3-mstxt">Final SteerCo</span>
+              </div>
             </div>
           </div>
 
