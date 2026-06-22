@@ -545,6 +545,17 @@
     .qw-guard-dot{width:11px;height:11px;border-radius:50%;background:#6d28d9;flex-shrink:0;margin-top:3px}
     .qw-guard-list li strong{color:#001228;font-weight:800}
 
+    /* Presentation tab */
+    .pres-section{margin-bottom:14px}
+    .pres-country{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(0,18,40,.35);margin-bottom:8px}
+    .pres-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+    .pres-card{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:12px;padding:14px 10px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .pres-photo{width:68px;height:68px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--c-blue),var(--c-navy));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:#fff;position:relative;flex-shrink:0}
+    .pres-photo.es{background:linear-gradient(135deg,#7c3aed,#a100ff)}
+    .pres-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:none}
+    .pres-name{font-size:.72rem;font-weight:700;color:#001228;line-height:1.3}
+    .pres-role{font-size:.62rem;color:rgba(0,18,40,.5);line-height:1.3}
+
     .exp-crf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .exp-crf-col{border:1px solid rgba(109,40,217,.18);border-radius:10px;overflow:hidden}
     .exp-crf-hdr{background:rgba(109,40,217,.13);color:#001228;font-size:.68rem;font-weight:800;padding:9px 13px;text-align:center;line-height:1.35;border-bottom:1px solid rgba(109,40,217,.18)}
@@ -615,12 +626,43 @@
     </section>
 
     <section id="slide-1" class="slide">
-      <div class="slide-header">
-        <div class="slide-tag">01 · Executive Summary</div>
-        <h2 class="slide-title">The question is not to optimize a little more — it is to <span>leapfrog the ceiling</span></h2>
-        <p class="slide-sub" style="white-space:nowrap">Store staff costs have plateaued after years of optimization. The point now is to make stores a real contributor to Carrefour's 2030 cost ambition.</p>
+      <div class="slide-header" style="margin-bottom:8px">
+        <div class="slide-tag">01 · Summary</div>
       </div>
-      <h3 style="font-size:1rem;margin:32px 0 20px;color:#001228;font-weight:700">Our recipe — from work with dozens of retailers</h3>
+      <div class="inner-tabs">
+        <button class="itab active" onclick="switchInner('inner-1-presentation', this)">👋 Presentation</button>
+        <button class="itab" onclick="switchInner('inner-1-exec', this)">📋 Executive Summary</button>
+      </div>
+      <div id="inner-1-presentation" class="inner-panel active">
+        <p class="slide-sub" style="margin-bottom:14px">Accenture team presenting today</p>
+        <div class="pres-section">
+          <div class="pres-country">🇫🇷 France</div>
+          <div class="pres-grid">
+            <div class="pres-card"><div class="pres-photo">BN<img src="photos/BN.jpg" onload="this.style.display='block'"></div><div class="pres-name">Benjamin Noudelberg</div><div class="pres-role">Engagement Lead</div></div>
+            <div class="pres-card"><div class="pres-photo">AG<img src="photos/AG.jpg" onload="this.style.display='block'"></div><div class="pres-name">AG</div><div class="pres-role">Cost Reduction Expert</div></div>
+            <div class="pres-card"><div class="pres-photo">JD<img src="photos/JD.jpg" onload="this.style.display='block'"></div><div class="pres-name">JD</div><div class="pres-role">Store Ops Lead</div></div>
+            <div class="pres-card"><div class="pres-photo">CT<img src="photos/CT.jpg" onload="this.style.display='block'"></div><div class="pres-name">CT</div><div class="pres-role">Store Ops Expert</div></div>
+            <div class="pres-card"><div class="pres-photo">ZRC<img src="photos/ZRC.jpg" onload="this.style.display='block'"></div><div class="pres-name">ZRC</div><div class="pres-role">Retail Expert</div></div>
+            <div class="pres-card"><div class="pres-photo">ADV<img src="photos/ADV.jpg" onload="this.style.display='block'"></div><div class="pres-name">ADV</div><div class="pres-role">TimeSkipper Expert</div></div>
+          </div>
+        </div>
+        <div class="pres-section">
+          <div class="pres-country">🇪🇸 Spain</div>
+          <div class="pres-grid">
+            <div class="pres-card"><div class="pres-photo es">JH<img src="photos/JOH.jpg" onload="this.style.display='block'"></div><div class="pres-name">José O. Humet</div><div class="pres-role">Practice Lead</div></div>
+            <div class="pres-card"><div class="pres-photo es">RA<img src="photos/RA.jpg" style="transform:scale(2.1);transform-origin:50% 0%" onload="this.style.display='block'"></div><div class="pres-name">RA</div><div class="pres-role">Store Ops Lead</div></div>
+            <div class="pres-card"><div class="pres-photo es">AS<img src="photos/AS.jpg" style="transform:scale(2.1);transform-origin:50% 0%" onload="this.style.display='block'"></div><div class="pres-name">AS</div><div class="pres-role">Sr. Store Ops Expert</div></div>
+            <div class="pres-card"><div class="pres-photo es">MB<img src="photos/MB.jpg" style="transform:scale(1.1);transform-origin:50% 35%;filter:grayscale(100%)" onload="this.style.display='block'"></div><div class="pres-name">MB</div><div class="pres-role">Store Ops Expert</div></div>
+            <div class="pres-card"><div class="pres-photo es">FM<img src="photos/FM.jpg" onload="this.style.display='block'"></div><div class="pres-name">FM</div><div class="pres-role">Sr. Retail Expert</div></div>
+            <div class="pres-card"><div class="pres-photo es">CD<img src="photos/CD.jpg" style="transform:scale(2.1);transform-origin:50% 0%" onload="this.style.display='block'"></div><div class="pres-name">CD</div><div class="pres-role">Retail Expert</div></div>
+            <div class="pres-card"><div class="pres-photo es">PYB<img src="photos/PYB.jpg" onload="this.style.display='block'"></div><div class="pres-name">PYB</div><div class="pres-role">TimeSkipper Expert</div></div>
+          </div>
+        </div>
+      </div>
+      <div id="inner-1-exec" class="inner-panel">
+        <h2 class="slide-title">The question is not to optimize a little more — it is to <span>leapfrog the ceiling</span></h2>
+        <p class="slide-sub" style="white-space:nowrap;margin-bottom:24px">Store staff costs have plateaued after years of optimization. The point now is to make stores a real contributor to Carrefour's 2030 cost ambition.</p>
+        <h3 style="font-size:1rem;margin:0 0 20px;color:#001228;font-weight:700">Our recipe — from work with dozens of retailers</h3>
       <div class="g3">
         <div class="step-card"><div class="step-ico">🎯</div><div class="step-title">Put execution under control first</div><div class="step-desc">The biggest gains come from controlling how hours are actually spent. Make the hours budget a daily management tool.</div></div>
         <div class="step-card"><div class="step-ico">🔧</div><div class="step-title">Fix what quietly creates overwork</div><div class="step-desc">The biggest overcost is upstream: shelf-capacity data, planograms, promo case-ordering that piles up backroom stock.</div></div>
@@ -675,6 +717,7 @@
           </ul>
         </div>
       </div>
+      </div><!-- end inner-1-exec -->
     </section>
 
     <section id="slide-2" class="slide">
