@@ -551,7 +551,8 @@
     .pres-cflag{display:inline-block;width:22px;height:15px;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.18);flex-shrink:0}
     .pres-cflag.fr{background:linear-gradient(90deg,#002395 33%,#fff 33% 67%,#ED2939 67%)}
     .pres-cflag.es{background:linear-gradient(0deg,#c60b1e 28%,#f1bf00 28% 72%,#c60b1e 72%)}
-    .pres-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .pres-countries{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .pres-grid{display:grid;grid-template-columns:1fr;gap:10px}
     .pres-card{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:12px;padding:14px 16px;display:flex;flex-direction:row;align-items:center;gap:14px}
     .pres-photo{width:76px;height:76px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--c-blue),var(--c-navy));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:#fff;position:relative;flex-shrink:0}
     .pres-photo.es{background:linear-gradient(135deg,#7c3aed,#a100ff)}
@@ -639,6 +640,7 @@
         <button class="itab" onclick="switchInner('inner-1-exec', this)">📋 Executive Summary</button>
       </div>
       <div id="inner-1-presentation" class="inner-panel active">
+        <div class="pres-countries">
         <div class="pres-section">
           <div class="pres-country"><span class="pres-cflag fr"></span>France</div>
           <div class="pres-grid">
@@ -655,6 +657,7 @@
             <div class="pres-card"><div class="pres-photo es">AR<img src="photos/AR2.jpg" onload="this.style.display='block'"></div><div class="pres-info"><div class="pres-name">Alejandro Ruales</div><div class="pres-role">Retail Strategy Senior Manager</div></div></div>
           </div>
         </div>
+        </div><!-- end pres-countries -->
       </div>
       <div id="inner-1-exec" class="inner-panel">
         <h2 class="slide-title">The question is not to optimize a little more — it is to <span>leapfrog the ceiling</span></h2>
