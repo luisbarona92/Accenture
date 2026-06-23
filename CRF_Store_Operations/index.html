@@ -325,20 +325,19 @@
     .case-impact-num{font-size:1.7rem;font-weight:900;color:#7c3aed;line-height:1}
     .case-impact-sub{font-size:.6rem;color:rgba(0,18,40,.45);margin:3px 0 8px}
     .case-arrow{font-size:.67rem;font-weight:700;color:#001228;text-align:left;line-height:1.5;padding-left:2px}
-    .ups-grid{display:grid;grid-template-columns:20px 1fr 1fr;gap:6px 10px;margin:10px 0 12px;align-items:stretch}
-    .ups-case-hdr{background:#7c3aed;color:#fff;font-size:.57rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:5px 10px;border-radius:5px;text-align:center}
-    .ups-lbl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.44rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#fff;background:#7c3aed;border-radius:4px;display:flex;align-items:center;justify-content:center}
-    .ups-row{display:flex;align-items:stretch;gap:6px}
-    .ups-box{flex:1;background:rgba(109,40,217,.06);border:1px solid rgba(109,40,217,.12);border-radius:7px;padding:7px 9px}
-    .ups-box-hi{background:rgba(220,38,38,.05);border-color:rgba(220,38,38,.22)}
-    .ups-title{font-size:.61rem;font-weight:800;color:#7c3aed;margin-bottom:4px}
-    .ups-title-hi{font-size:.61rem;font-weight:800;color:#dc2626;margin-bottom:4px}
-    .ups-body{font-size:.57rem;color:rgba(0,18,40,.6);line-height:1.35}
-    .ups-body-hi{font-size:.57rem;color:rgba(180,30,30,.8);line-height:1.35}
-    .ups-harrow{display:flex;align-items:center;color:#7c3aed;font-size:.85rem;font-weight:900;flex-shrink:0}
-    .ups-darrow-row{text-align:center;color:#7c3aed;font-size:1rem;font-weight:900;padding:2px 0}
-    .ups-footer{background:rgba(109,40,217,.07);border-radius:8px;padding:9px 14px;font-size:.63rem;color:rgba(0,18,40,.65);line-height:1.45;text-align:center}
-    .ups-footer strong{color:#7c3aed}
+    .ups-grid{display:grid;grid-template-columns:24px 1fr 1fr;gap:10px 14px;margin:10px 0 4px;align-items:stretch}
+    .ups-case-hdr{background:#7c3aed;color:#fff;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:8px 14px;border-radius:7px;text-align:center}
+    .ups-lbl{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#fff;background:#7c3aed;border-radius:5px;display:flex;align-items:center;justify-content:center}
+    .ups-row{display:flex;align-items:stretch;gap:8px}
+    .ups-box{flex:1;background:rgba(109,40,217,.06);border:1px solid rgba(109,40,217,.12);border-radius:9px;padding:11px 14px}
+    .ups-box-hi{background:rgba(220,38,38,.05);border-color:rgba(220,38,38,.25)}
+    .ups-title{font-size:.78rem;font-weight:800;color:#7c3aed;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+    .ups-title-hi{font-size:.78rem;font-weight:800;color:#dc2626;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+    .ups-ico{font-size:1.05rem;line-height:1;flex-shrink:0}
+    .ups-body{font-size:.68rem;color:rgba(0,18,40,.62);line-height:1.5}
+    .ups-body-hi{font-size:.68rem;color:rgba(180,30,30,.85);line-height:1.5}
+    .ups-harrow{display:flex;align-items:center;color:#7c3aed;font-size:1.2rem;font-weight:900;flex-shrink:0}
+    .ups-darrow-row{text-align:center;color:#7c3aed;font-size:1.4rem;font-weight:900;padding:2px 0}
     /* Experience tab */
     .exp-reach-table{display:grid;grid-template-columns:76px 1fr 360px;border:1px solid rgba(0,61,165,.15);border-radius:10px;overflow:hidden;margin-bottom:14px;font-size:.72rem}
     .exp-rt-hdr-empty{background:#7c3aed;padding:7px 8px}
@@ -932,14 +931,14 @@
 
           <div class="ups-lbl">Corporate</div>
           <div class="ups-row">
-            <div class="ups-box"><div class="ups-title">Buying</div><div class="ups-body">Order sized at HQ without shelf-capacity data or per-format traffic patterns. References decided centrally.</div></div>
+            <div class="ups-box"><div class="ups-title"><span class="ups-ico">📋</span>Buying</div><div class="ups-body">Order sized at HQ without shelf-capacity data or per-format traffic patterns. References decided centrally.</div></div>
             <div class="ups-harrow">&#8594;</div>
-            <div class="ups-box"><div class="ups-title">Supply Chain</div><div class="ups-body">Wrong volumes shipped; pallets unsequenced, not aligned with shelf layout — requiring full manual re-sort on arrival.</div></div>
+            <div class="ups-box"><div class="ups-title"><span class="ups-ico">🚚</span>Supply Chain</div><div class="ups-body">Wrong volumes shipped; pallets unsequenced, not aligned with shelf layout — requiring full manual re-sort on arrival.</div></div>
           </div>
           <div class="ups-row">
-            <div class="ups-box"><div class="ups-title">Category Management</div><div class="ups-body">New SKUs listed centrally without validating shelf space, planogram viability, or sales velocity per format.</div></div>
+            <div class="ups-box"><div class="ups-title"><span class="ups-ico">📊</span>Category Management</div><div class="ups-body">New SKUs listed centrally without validating shelf space, planogram viability, or sales velocity per format.</div></div>
             <div class="ups-harrow">&#8594;</div>
-            <div class="ups-box"><div class="ups-title">Planogram</div><div class="ups-body">Sent to stores physically impossible to execute: more references than available linear metres.</div></div>
+            <div class="ups-box"><div class="ups-title"><span class="ups-ico">📁</span>Planogram</div><div class="ups-body">Sent to stores physically impossible to execute: more references than available linear metres.</div></div>
           </div>
 
           <div></div>
@@ -948,17 +947,16 @@
 
           <div class="ups-lbl">Store</div>
           <div class="ups-row">
-            <div class="ups-box"><div class="ups-title">Backroom</div><div class="ups-body">Staff must fully re-sort misaligned pallets before replenishment. Double-handling masked as 'slow replenishment.'</div></div>
+            <div class="ups-box"><div class="ups-title"><span class="ups-ico">📦</span>Backroom</div><div class="ups-body">Staff must fully re-sort misaligned pallets before replenishment. Double-handling masked as 'slow replenishment.'</div></div>
             <div class="ups-harrow">&#8594;</div>
-            <div class="ups-box ups-box-hi"><div class="ups-title-hi">&#9888; Store Floor</div><div class="ups-body-hi"><strong>Empty shelves: OOS despite stock in backroom.</strong><br><em>Root cause invisible to the store manager. Fixing replenishment won't solve it.</em></div></div>
+            <div class="ups-box ups-box-hi"><div class="ups-title-hi"><span class="ups-ico">⚠️</span>Store Floor</div><div class="ups-body-hi"><strong>Empty shelves: OOS despite stock in backroom.</strong><br><em>Root cause invisible to the store manager. Fixing replenishment won't solve it.</em></div></div>
           </div>
           <div class="ups-row">
-            <div class="ups-box ups-box-hi"><div class="ups-title-hi">&#9888; Store Floor</div><div class="ups-body-hi"><strong>Permanent shelf gaps: hours lost weekly on manual workarounds.</strong><br><em>Optimising replenishment won't fix this — problem starts at category management.</em></div></div>
+            <div class="ups-box ups-box-hi"><div class="ups-title-hi"><span class="ups-ico">⚠️</span>Store Floor</div><div class="ups-body-hi"><strong>Permanent shelf gaps: hours lost weekly on manual workarounds.</strong><br><em>Optimising replenishment won't fix this — problem starts at category management.</em></div></div>
             <div class="ups-harrow">&#8592;</div>
-            <div class="ups-box"><div class="ups-title">Section Manager</div><div class="ups-body">Manually rebuilds planogram each week. Costs several hours; invisible to any in-store productivity analysis.</div></div>
+            <div class="ups-box"><div class="ups-title"><span class="ups-ico">👤</span>Section Manager</div><div class="ups-body">Manually rebuilds planogram each week. Costs several hours; invisible to any in-store productivity analysis.</div></div>
           </div>
         </div>
-        <div class="ups-footer"><strong>BREAD traces the full chain</strong> — not just what happens on the floor, but the upstream decisions that create the problem. Optimising in-store processes alone won't fix what starts at Corporate or Supply Chain.</div>
       </div>
 
       <div id="inner-2-experience" class="inner-panel">
