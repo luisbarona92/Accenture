@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nexus — Commercial Model Framework (DRAFT)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sbg:#AB2328;--sbg-d:#7A0A10;--sbg-l:#F9EBEB;
+  --delta:#1A5C2A;--delta-d:#0F3A1A;--delta-l:#EAF4ED;
+  --sumol:#D85000;--sumol-l:#FDF1EA;
+  --ink:#1C1614;--body:#4A423E;--muted:#6B6460;
+  --bg:#F6F1EA;--paper:#fff;--cream:#FAF6F0;--line:#E8E0D7;
+  --acn:#7A14C4;
+  --m-fixed:#6E6E7C;--m-unit:#1A5C2A;--m-risk:#B58000;--m-lic:#D85000;
+}
+body{font-family:'Hanken Grotesk',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:14px;min-height:100vh}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:400;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:9px 28px;display:flex;align-items:center;gap:12px;height:50px}
+header img{height:22px}
+.hsep{width:1px;height:19px;background:var(--line);flex-shrink:0}
+.htitle{font-family:'Archivo',sans-serif;font-weight:700;font-size:12.5px;color:var(--sbg-d)}
+.hright{margin-left:auto;display:flex;gap:7px;align-items:center}
+.hchip{font-size:10.5px;font-weight:700;padding:2px 10px;border-radius:20px;border:1.5px solid var(--line);color:var(--muted)}
+.hchip.sbg{background:var(--sbg-l);border-color:var(--sbg);color:var(--sbg-d)}
+.hchip.delta{background:var(--delta-l);border-color:var(--delta);color:var(--delta-d)}
+.hchip.sumol{background:var(--sumol-l);border-color:var(--sumol);color:var(--sumol)}
+.hchip.draft{background:#FFF4CC;border-color:#D4A900;color:#7A5F00}
+.hbtn{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;border:none;background:var(--sbg);color:#fff;cursor:pointer}
+
+/* ── TAB NAV ── */
+.tabnav{position:sticky;top:50px;z-index:300;background:var(--paper);border-bottom:2px solid var(--line);display:flex;padding:0 28px}
+.tn{padding:13px 22px 11px;border-bottom:3px solid transparent;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:var(--muted);white-space:nowrap;transition:all .15s;user-select:none;display:flex;align-items:center;gap:8px}
+.tn:hover{color:var(--sbg)}
+.tn.on{color:var(--sbg);border-bottom-color:var(--sbg)}
+.tn .tnum{font-size:10px;font-weight:700;letter-spacing:.8px;opacity:.55}
+.tn .tname{font-size:13px}
+
+/* ── TABS ── */
+.tab{display:none}.tab.on{display:block}
+main{max-width:1180px;margin:0 auto;padding:28px 28px 90px}
+
+/* ── COVER (TAB 00) ── */
+.cover{min-height:calc(100vh - 108px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#1A0806,#3A1010 50%,#5A1A10);border-radius:16px;padding:80px 72px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:44px 44px;border-radius:16px}
+.cov{position:relative;z-index:1;max-width:860px}
+.cov-eye{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.cov-eye::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.12)}
+.cov h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,4vw,48px);line-height:1.08;color:#fff;letter-spacing:-.4px;margin-bottom:18px}
+.cov h1 em{color:#F0A0A4;font-style:normal}
+.cov-lead{font-size:16px;color:rgba(255,255,255,.65);line-height:1.7;max-width:680px;margin-bottom:40px}
+.cov-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px}
+.cov-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:18px 20px}
+.cov-card .cn{font-family:'Archivo',sans-serif;font-weight:900;font-size:14.5px;margin-bottom:4px}
+.cov-card.sbg .cn{color:#F0A0A4}.cov-card.delta .cn{color:#A0D4A8}.cov-card.sumol .cn{color:#FFBB80}
+.cov-card p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.55}
+.cov-qs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cov-q{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:10px;padding:16px 18px}
+.cov-q .qn{font-family:'Archivo',sans-serif;font-weight:900;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;margin-bottom:6px}
+.cov-q .qt{font-size:13.5px;color:#fff;font-weight:600;line-height:1.4}
+
+/* ── SHARED SECTION HEADERS ── */
+.sh{margin:30px 0 14px}
+.sh .tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sbg);display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.sh .tag::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sh h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(17px,2.3vw,22px);letter-spacing:-.2px}
+.sh p{font-size:13px;color:var(--muted);margin-top:5px;max-width:820px}
+
+/* ── BRIDGE BOX ── */
+.bridge{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--sbg);border-radius:0 12px 12px 0;padding:16px 20px;margin:12px 0 20px}
+.bridge h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--sbg);margin-bottom:5px}
+.bridge p{font-size:13px;color:var(--body);line-height:1.6}
+.bridge b{color:var(--ink)}
+.bridge .flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:11px;font-size:12px;font-weight:700}
+.pill{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:4px 12px}
+.pill.no{background:var(--sbg-l);border-color:var(--sbg);color:var(--sbg-d);text-decoration:line-through}
+.pill.yes{background:var(--delta-l);border-color:var(--delta);color:var(--delta-d)}
+.arr{color:var(--muted)}
+
+/* ── PHASE BLOCKS (TAB 01) ── */
+.phase-block{margin-bottom:24px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper)}
+.phase-hd{padding:16px 22px;display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line)}
+.phase-hd.d{background:linear-gradient(135deg,#3A1010,var(--sbg-d))}
+.phase-hd.b{background:linear-gradient(135deg,var(--delta-d),var(--delta))}
+.phase-hd.r{background:linear-gradient(135deg,#4A1A00,var(--sumol))}
+.ph-num{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);flex-shrink:0}
+.ph-name{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;color:#fff}
+.ph-info{font-size:11px;color:rgba(255,255,255,.45);margin-left:auto}
+.ph-desc{padding:12px 22px;background:#FDFAF5;border-bottom:1px solid var(--line);font-size:13px;color:var(--body);line-height:1.6}
+
+/* activity list */
+.act-section{padding:16px 22px}
+.act-section-label{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.act-section-label::after{content:'';flex:1;height:1px;background:var(--line)}
+.act-section-label.acn-lbl{color:var(--sbg)}
+
+/* Accenture activities grid */
+.acn-acts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:820px){.acn-acts{grid-template-columns:1fr}}
+.acn-act{border:1px solid var(--line);border-left:3px solid;border-radius:8px;padding:12px 15px;background:#fff}
+.acn-act.d{border-left-color:var(--sbg)}.acn-act.b{border-left-color:var(--delta)}.acn-act.r{border-left-color:var(--sumol)}
+.aa-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:5px}
+.aa-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:var(--ink)}
+.aa-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:7px}
+.aa-del{font-size:11.5px;color:var(--body);line-height:1.5}
+.aa-del strong{color:var(--ink);font-weight:600}
+.fp{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.3px;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-left:6px;flex-shrink:0}
+.fp-fixed{background:#EDECF0;color:var(--m-fixed)}
+.fp-unit{background:var(--delta-l);color:var(--delta-d)}
+.fp-cap{background:#E8F0FF;color:#1A3A80}
+.fp-lic{background:var(--sumol-l);color:var(--sumol)}
+.src{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.3px;border-radius:4px;padding:1px 6px;margin-right:3px}
+.src-gro{background:rgba(30,158,90,.1);color:#0F6030}
+.src-rfq{background:rgba(171,35,40,.08);color:var(--sbg-d)}
+.src-new{background:var(--sumol-l);color:var(--sumol)}
+
+/* Other activities (consortium/client) */
+.others-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:820px){.others-grid{grid-template-columns:1fr}}
+.other-col{background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.oc-who{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.oc-items{list-style:none}
+.oc-items li{font-size:12px;color:var(--body);line-height:1.55;padding:3px 0 3px 12px;position:relative;border-bottom:1px solid rgba(0,0,0,.05)}
+.oc-items li:last-child{border-bottom:none}
+.oc-items li::before{content:'›';position:absolute;left:0;color:var(--muted);font-weight:700}
+
+/* ── METRICS TAB (TAB 02) ── */
+/* Fixed cost summary */
+.fixed-summary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+@media(max-width:760px){.fixed-summary{grid-template-columns:1fr}}
+.fs-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fs-head{padding:10px 16px;display:flex;justify-content:space-between;align-items:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:#fff}
+.fs-head.d{background:var(--sbg-d)}.fs-head.b{background:var(--delta)}
+.fs-head span{font-size:18px;font-weight:900;letter-spacing:-.3px}
+.fs-rows{}
+.fs-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 16px;border-bottom:1px solid var(--line)}
+.fs-row:last-child{border-bottom:none}
+.fs-label{font-size:13px;font-weight:600;color:var(--ink)}
+.fs-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.fs-val{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--sbg);white-space:nowrap}
+
+/* Driver calculator */
+.calc-intro{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--m-unit);border-radius:0 12px 12px 0;padding:14px 18px;margin-bottom:18px}
+.calc-intro p{font-size:13px;color:var(--body);line-height:1.6}
+.calc-intro p b{color:var(--ink)}
+.calc-intro .inputs-leg{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;color:var(--muted);font-weight:600}
+.calc-intro .inputs-leg span{display:flex;align-items:center;gap:5px}
+.leg-sq{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+.hub-section{margin-bottom:22px}
+.hub-label{font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:.6px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.hub-label.cx{color:var(--sbg)}.hub-label.pt{color:var(--delta)}.hub-label.da{color:var(--sumol)}
+.hub-label .hc{font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted)}
+
+.calc-wrap{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:4px}
+table.calctbl{width:100%;border-collapse:collapse}
+table.calctbl thead th{text-align:left;font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);padding:8px 12px;border-bottom:2px solid var(--ink);background:#fbf7f1}
+table.calctbl tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:12.5px}
+table.calctbl tbody tr:last-child td{border-bottom:none}
+table.calctbl tbody tr:hover td{background:#fdf9f5}
+.act-n{font-weight:700;color:var(--ink);font-size:13px;display:block}
+.act-drv{font-size:11px;color:var(--muted);margin-top:2px;display:block}
+.calc-input{font-family:'Hanken Grotesk',sans-serif;font-size:12px;border:1.4px solid var(--line);border-radius:6px;padding:4px 7px;width:90px;color:var(--ink);background:#fff}
+.calc-input:focus{outline:none;border-color:var(--sbg)}
+.calc-out{font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:var(--ink)}
+.calc-out.core-col{color:var(--m-fixed)}.calc-out.flex-col{color:var(--m-unit)}.calc-out.total-col{color:var(--sbg)}
+
+/* totals bar */
+.calc-totals{background:linear-gradient(135deg,var(--sbg-d),var(--sbg));border-radius:12px;padding:20px 24px;display:flex;gap:0;margin-bottom:6px}
+.ct-item{flex:1;padding:0 20px;border-right:1px solid rgba(255,255,255,.15)}
+.ct-item:first-child{padding-left:0}.ct-item:last-child{border-right:none}
+.ct-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.ct-val{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;color:#fff;line-height:1}
+.ct-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:3px}
+
+/* ── DEAL STRUCTURE TAB (TAB 03) ── */
+.cost-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:760px){.cost-grid{grid-template-columns:1fr}}
+.cost-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cost-hd{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;color:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px}
+.cost-hd.capex{background:var(--sbg-d)}.cost-hd.opex{background:var(--delta)}
+.cost-hd span.amt{font-size:19px;font-weight:900;letter-spacing:-.3px}
+.cost-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:11px 16px;border-bottom:1px solid var(--line)}
+.cost-row:last-child{border-bottom:none}
+.cost-row .cn{font-weight:700;font-size:13px;color:var(--ink);margin-bottom:2px}
+.cost-row .cd{font-size:11.5px;color:var(--muted);line-height:1.45}
+.cost-row .cv{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--sbg);white-space:nowrap;text-align:right}
+.cost-note{background:var(--cream);border:1px solid var(--line);border-left:4px solid var(--delta);border-radius:0 10px 10px 0;padding:11px 16px;font-size:12.5px;color:var(--body);line-height:1.55;margin-bottom:22px}
+.cost-note b{color:var(--delta-d)}
+
+/* CEO bullets */
+.ceo-head{font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;color:var(--ink);margin-bottom:6px}
+.ceo-sub{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.55}
+.ceo-bullets{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+@media(max-width:760px){.ceo-bullets{grid-template-columns:1fr}}
+.cb{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;gap:14px}
+.cb-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:32px;color:var(--line);line-height:1;flex-shrink:0}
+.cb-body{}
+.cb-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:14.5px;color:var(--ink);margin-bottom:5px}
+.cb-text{font-size:13px;color:var(--body);line-height:1.6}
+
+/* BOT summary */
+.bot{background:linear-gradient(135deg,#180808,#3D1010);border-radius:14px;padding:26px 30px}
+.bot-head{font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;color:#fff;margin-bottom:4px}
+.bot-sub{font-size:12.5px;color:rgba(255,255,255,.45);margin-bottom:20px;line-height:1.6;max-width:680px}
+.bot-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+@media(max-width:820px){.bot-steps{grid-template-columns:1fr 1fr}}
+.bs{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px}
+.bs-n{font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;color:#F0A0A4;line-height:1;margin-bottom:7px}
+.bs-t{font-weight:700;font-size:12.5px;color:#fff;margin-bottom:4px}
+.bs-d{font-size:11.5px;color:rgba(255,255,255,.48);line-height:1.55}
+
+/* footer */
+.foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.6}
+
+/* ── PHASE SUB-TABS ── */
+.phtabs{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+.phtab{padding:12px 20px;border-radius:12px;border:2px solid var(--line);background:var(--paper);font-family:'Archivo',sans-serif;font-weight:800;color:var(--muted);cursor:pointer;transition:all .15s;user-select:none;min-width:200px;flex:1}
+.phtab:hover{border-color:var(--ink);color:var(--ink)}
+.phtab.on.d{background:var(--sbg-d);border-color:var(--sbg-d);color:#fff}
+.phtab.on.b{background:var(--delta);border-color:var(--delta);color:#fff}
+.phtab.on.r{background:var(--sumol);border-color:var(--sumol);color:#fff}
+.phtab .pt-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.phtab .pt-num{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.55}
+.phtab .pt-name{font-size:14px;font-weight:900}
+.phtab .pt-stats{display:flex;gap:16px}
+.phtab .pt-stat{display:flex;flex-direction:column;gap:1px}
+.phtab .pt-stat-val{font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;line-height:1}
+.phtab .pt-stat-lbl{font-size:10px;font-weight:600;opacity:.6;text-transform:uppercase;letter-spacing:.5px}
+.phtab.on .pt-stat-lbl{opacity:.6}
+.phblock{display:none}.phblock.on{display:block}
+
+/* ── GATE ── */
+#gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(145deg,#1A0806,#3A1010 55%,#5A1A10);display:flex;align-items:center;justify-content:center}
+#gate::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.gi{position:relative;text-align:center;width:380px;padding:48px 36px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;backdrop-filter:blur(8px)}
+.gi-logo{height:24px;margin-bottom:32px;filter:brightness(0) invert(1);opacity:.9}
+.gi-proj{font-size:9.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px}
+.gi-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;color:#fff;line-height:1.15;margin-bottom:6px}
+.gi-sub{font-size:12.5px;color:rgba(255,255,255,.38);margin-bottom:36px;line-height:1.5}
+.gi-input{display:block;width:100%;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff;font-family:'Hanken Grotesk',sans-serif;font-size:16px;text-align:center;letter-spacing:4px;margin-bottom:12px;outline:none;transition:border-color .2s}
+.gi-input::placeholder{letter-spacing:1px;font-size:13px;color:rgba(255,255,255,.3)}
+.gi-input:focus{border-color:rgba(255,255,255,.45)}
+.gi-input.err{border-color:#E74C3C;animation:gshake .32s}
+.gi-btn{display:block;width:100%;padding:13px 16px;border-radius:10px;border:none;background:#AB2328;color:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;cursor:pointer;letter-spacing:.3px;transition:background .15s;margin-bottom:10px}
+.gi-btn:hover{background:#7A0A10}
+.gi-err{font-size:11.5px;color:#E87777;min-height:16px}
+@keyframes gshake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+
+@media print{
+  @page{margin:10mm}
+  header,.tabnav,.hbtn{position:static}
+  .hbtn{display:none}
+  .tab{display:block!important}
+  .phblock{display:block!important}
+  body{background:#fff}
+  main{max-width:none;padding:0}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gi">
+    <img class="gi-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4KCjxzdmcKICAgdmVyc2lvbj0iMS4xIgogICBpZD0iTGF5ZXJfMSIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjAgMCAxNjMuNCA0MyIKICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgd2lkdGg9IjE2My4zOTk5OSIKICAgaGVpZ2h0PSI0MyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcwogICBpZD0iZGVmczEiIC8+CjxzdHlsZQogICB0eXBlPSJ0ZXh0L2NzcyIKICAgaWQ9InN0eWxlMSI+Cgkuc3Qwe2ZpbGw6I0ExMDBGRjt9Cjwvc3R5bGU+CjxnCiAgIGlkPSJnMSI+Cgk8cG9seWdvbgogICBjbGFzcz0ic3QwIgogICBwb2ludHM9Ijk1LjEsNC45IDk1LjEsMCAxMTEuMiw2LjUgMTExLjIsMTAuNSA5NS4xLDE3IDk1LjEsMTIgMTA0LjUsOC41ICIKICAgaWQ9InBvbHlnb24xIiAvPgoJPHBhdGgKICAgZD0iTSA2LjIsNDMgQyAyLjgsNDMgMCw0MS4zIDAsMzcuNSB2IC0wLjIgYyAwLC00LjYgNCwtNi4yIDguOSwtNi4yIGggMi4zIHYgLTAuOSBjIDAsLTEuOSAtMC44LC0zIC0yLjgsLTMgLTEuOCwwIC0yLjcsMSAtMi44LDIuNCBoIC01IGMgMC40LC00LjIgMy43LC02LjIgOC4xLC02LjIgNC41LDAgNy44LDEuOSA3LjgsNi42IFYgNDIuNiBIIDExLjQgViA0MC40IEMgMTAuNCw0MS44IDguNyw0MyA2LjIsNDMgWiBtIDUsLTYuNiBWIDM0LjYgSCA5LjEgYyAtMi42LDAgLTMuOSwwLjcgLTMuOSwyLjQgdiAwLjIgYyAwLDEuMyAwLjgsMi4yIDIuNiwyLjIgMS44LC0wLjEgMy40LC0xLjEgMy40LC0zIHogTSAyOC40LDQzIGMgLTUuMiwwIC05LC0zLjIgLTksLTkuNiB2IC0wLjMgYyAwLC02LjQgNCwtOS44IDksLTkuOCA0LjMsMCA3LjgsMi4yIDguMiw3LjEgaCAtNSBjIC0wLjMsLTEuOCAtMS4zLC0zIC0zLjEsLTMgLTIuMiwwIC0zLjgsMS44IC0zLjgsNS41IHYgMC42IGMgMCwzLjggMS40LDUuNSAzLjgsNS41IDEuOCwwIDMuMSwtMS4zIDMuNCwtMy40IGggNC44IEMgMzYuNCw0MCAzMy41LDQzIDI4LjQsNDMgWiBNIDQ4LDQzIGMgLTUuMiwwIC05LC0zLjIgLTksLTkuNiB2IC0wLjMgYyAwLC02LjQgNCwtOS44IDksLTkuOCA0LjMsMCA3LjgsMi4yIDguMiw3LjEgaCAtNSBjIC0wLjMsLTEuOCAtMS4zLC0zIC0zLjEsLTMgLTIuMiwwIC0zLjgsMS44IC0zLjgsNS41IHYgMC42IGMgMCwzLjggMS40LDUuNSAzLjgsNS41IDEuOCwwIDMuMSwtMS4zIDMuNCwtMy40IGggNC44IEMgNTYsNDAgNTMuMSw0MyA0OCw0MyBaIG0gMTkuNywwIGMgLTUuNCwwIC05LjEsLTMuMiAtOS4xLC05LjUgdiAtMC40IGMgMCwtNi4zIDMuOSwtOS44IDksLTkuOCA0LjcsMCA4LjYsMi42IDguNiw4LjkgdiAyLjMgSCA2My45IGMgMC4yLDMuNCAxLjcsNC43IDMuOSw0LjcgMiwwIDMuMSwtMS4xIDMuNSwtMi40IGggNC45IEMgNzUuNiw0MC4zIDcyLjYsNDMgNjcuNyw0MyBaIE0gNjQsMzEgaCA3IGMgLTAuMSwtMi44IC0xLjQsLTQgLTMuNSwtNCAtMS42LDAuMSAtMy4xLDEgLTMuNSw0IHogbSAxNS40LC03LjIgaCA1LjMgdiAyLjggYyAwLjksLTEuOCAyLjgsLTMuMiA1LjcsLTMuMiAzLjQsMCA1LjcsMi4xIDUuNyw2LjYgViA0Mi42IEggOTAuOCBWIDMwLjggYyAwLC0yLjIgLTAuOSwtMy4yIC0yLjgsLTMuMiAtMS44LDAgLTMuMywxLjEgLTMuMywzLjUgdiAxMS41IGggLTUuMyB6IG0gMjYuNCwtNS43IHYgNS43IGggMy42IHYgMy45IGggLTMuNiB2IDguOSBjIDAsMS40IDAuNiwyLjEgMS45LDIuMSAwLjgsMCAxLjMsLTAuMSAxLjgsLTAuMyB2IDQuMSBjIC0wLjYsMC4yIC0xLjcsMC40IC0zLDAuNCAtNC4xLDAgLTYsLTEuOSAtNiwtNS43IHYgLTkuNSBoIC0yLjIgdiAtMy45IGggMi4yIHYgLTMuNSB6IG0gMjMuNCwyNC41IEggMTI0IHYgLTIuOCBjIC0wLjksMS44IC0yLjcsMy4yIC01LjUsMy4yIC0zLjQsMCAtNS45LC0yLjEgLTUuOSwtNi41IFYgMjMuOCBoIDUuMyB2IDEyIGMgMCwyLjIgMC45LDMuMiAyLjcsMy4yIDEuOCwwIDMuMywtMS4yIDMuMywtMy41IFYgMjMuOCBoIDUuMyB6IG0gMy45LC0xOC44IGggNS4zIHYgMy41IGMgMS4xLC0yLjUgMi45LC0zLjcgNS43LC0zLjcgdiA1LjIgYyAtMy42LDAgLTUuNywxLjEgLTUuNyw0LjIgdiA5LjcgaCAtNS4zIHogTSAxNTQuOCw0MyBjIC01LjQsMCAtOS4xLC0zLjIgLTkuMSwtOS41IHYgLTAuNCBjIDAsLTYuMyAzLjksLTkuOCA5LC05LjggNC43LDAgOC42LDIuNiA4LjYsOC45IHYgMi4zIGggLTEyLjIgYyAwLjIsMy40IDEuNyw0LjcgMy45LDQuNyAyLDAgMy4xLC0xLjEgMy41LC0yLjQgaCA0LjkgYyAtMC44LDMuNSAtMy43LDYuMiAtOC42LDYuMiB6IE0gMTUxLDMxIGggNy4xIGMgLTAuMSwtMi44IC0xLjQsLTQgLTMuNSwtNCAtMS42LDAuMSAtMy4xLDEgLTMuNiw0IHoiCiAgIGlkPSJwYXRoMSIgLz4KPC9nPgo8L3N2Zz4K" alt="Accenture"/>
+    <div class="gi-proj">Nexus B2B Marketplace</div>
+    <div class="gi-title">Commercial Model<br>Framework</div>
+    <div class="gi-sub">Internal working document.<br>Enter your access code to continue.</div>
+    <input class="gi-input" id="gpwd" type="password" placeholder="Access code" autocomplete="off" onkeydown="if(event.key==='Enter')gateCheck()"/>
+    <button class="gi-btn" onclick="gateCheck()">Access document &rarr;</button>
+    <div class="gi-err" id="gerr"></div>
+  </div>
+</div>
+
+<header>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4KCjxzdmcKICAgdmVyc2lvbj0iMS4xIgogICBpZD0iTGF5ZXJfMSIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjAgMCAxNjMuNCA0MyIKICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgd2lkdGg9IjE2My4zOTk5OSIKICAgaGVpZ2h0PSI0MyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcwogICBpZD0iZGVmczEiIC8+CjxzdHlsZQogICB0eXBlPSJ0ZXh0L2NzcyIKICAgaWQ9InN0eWxlMSI+Cgkuc3Qwe2ZpbGw6I0ExMDBGRjt9Cjwvc3R5bGU+CjxnCiAgIGlkPSJnMSI+Cgk8cG9seWdvbgogICBjbGFzcz0ic3QwIgogICBwb2ludHM9Ijk1LjEsNC45IDk1LjEsMCAxMTEuMiw2LjUgMTExLjIsMTAuNSA5NS4xLDE3IDk1LjEsMTIgMTA0LjUsOC41ICIKICAgaWQ9InBvbHlnb24xIiAvPgoJPHBhdGgKICAgZD0iTSA2LjIsNDMgQyAyLjgsNDMgMCw0MS4zIDAsMzcuNSB2IC0wLjIgYyAwLC00LjYgNCwtNi4yIDguOSwtNi4yIGggMi4zIHYgLTAuOSBjIDAsLTEuOSAtMC44LC0zIC0yLjgsLTMgLTEuOCwwIC0yLjcsMSAtMi44LDIuNCBoIC01IGMgMC40LC00LjIgMy43LC02LjIgOC4xLC02LjIgNC41LDAgNy44LDEuOSA3LjgsNi42IFYgNDIuNiBIIDExLjQgViA0MC40IEMgMTAuNCw0MS44IDguNyw0MyA2LjIsNDMgWiBtIDUsLTYuNiBWIDM0LjYgSCA5LjEgYyAtMi42LDAgLTMuOSwwLjcgLTMuOSwyLjQgdiAwLjIgYyAwLDEuMyAwLjgsMi4yIDIuNiwyLjIgMS44LC0wLjEgMy40LC0xLjEgMy40LC0zIHogTSAyOC40LDQzIGMgLTUuMiwwIC05LC0zLjIgLTksLTkuNiB2IC0wLjMgYyAwLC02LjQgNCwtOS44IDksLTkuOCA0LjMsMCA3LjgsMi4yIDguMiw3LjEgaCAtNSBjIC0wLjMsLTEuOCAtMS4zLC0zIC0zLjEsLTMgLTIuMiwwIC0zLjgsMS44IC0zLjgsNS41IHYgMC42IGMgMCwzLjggMS40LDUuNSAzLjgsNS41IDEuOCwwIDMuMSwtMS4zIDMuNCwtMy40IGggNC44IEMgMzYuNCw0MCAzMy41LDQzIDI4LjQsNDMgWiBNIDQ4LDQzIGMgLTUuMiwwIC05LC0zLjIgLTksLTkuNiB2IC0wLjMgYyAwLC02LjQgNCwtOS44IDksLTkuOCA0LjMsMCA3LjgsMi4yIDguMiw3LjEgaCAtNSBjIC0wLjMsLTEuOCAtMS4zLC0zIC0zLjEsLTMgLTIuMiwwIC0zLjgsMS44IC0zLjgsNS41IHYgMC42IGMgMCwzLjggMS40LDUuNSAzLjgsNS41IDEuOCwwIDMuMSwtMS4zIDMuNCwtMy40IGggNC44IEMgNTYsNDAgNTMuMSw0MyA0OCw0MyBaIG0gMTkuNywwIGMgLTUuNCwwIC05LjEsLTMuMiAtOS4xLC05LjUgdiAtMC40IGMgMCwtNi4zIDMuOSwtOS44IDksLTkuOCA0LjcsMCA4LjYsMi42IDguNiw4LjkgdiAyLjMgSCA2My45IGMgMC4yLDMuNCAxLjcsNC43IDMuOSw0LjcgMiwwIDMuMSwtMS4xIDMuNSwtMi40IGggNC45IEMgNzUuNiw0MC4zIDcyLjYsNDMgNjcuNyw0MyBaIE0gNjQsMzEgaCA3IGMgLTAuMSwtMi44IC0xLjQsLTQgLTMuNSwtNCAtMS42LDAuMSAtMy4xLDEgLTMuNSw0IHogbSAxNS40LC03LjIgaCA1LjMgdiAyLjggYyAwLjksLTEuOCAyLjgsLTMuMiA1LjcsLTMuMiAzLjQsMCA1LjcsMi4xIDUuNyw2LjYgViA0Mi42IEggOTAuOCBWIDMwLjggYyAwLC0yLjIgLTAuOSwtMy4yIC0yLjgsLTMuMiAtMS44LDAgLTMuMywxLjEgLTMuMywzLjUgdiAxMS41IGggLTUuMyB6IG0gMjYuNCwtNS43IHYgNS43IGggMy42IHYgMy45IGggLTMuNiB2IDguOSBjIDAsMS40IDAuNiwyLjEgMS45LDIuMSAwLjgsMCAxLjMsLTAuMSAxLjgsLTAuMyB2IDQuMSBjIC0wLjYsMC4yIC0xLjcsMC40IC0zLDAuNCAtNC4xLDAgLTYsLTEuOSAtNiwtNS43IHYgLTkuNSBoIC0yLjIgdiAtMy45IGggMi4yIHYgLTMuNSB6IG0gMjMuNCwyNC41IEggMTI0IHYgLTIuOCBjIC0wLjksMS44IC0yLjcsMy4yIC01LjUsMy4yIC0zLjQsMCAtNS45LC0yLjEgLTUuOSwtNi41IFYgMjMuOCBoIDUuMyB2IDEyIGMgMCwyLjIgMC45LDMuMiAyLjcsMy4yIDEuOCwwIDMuMywtMS4yIDMuMywtMy41IFYgMjMuOCBoIDUuMyB6IG0gMy45LC0xOC44IGggNS4zIHYgMy41IGMgMS4xLC0yLjUgMi45LC0zLjcgNS43LC0zLjcgdiA1LjIgYyAtMy42LDAgLTUuNywxLjEgLTUuNyw0LjIgdiA5LjcgaCAtNS4zIHogTSAxNTQuOCw0MyBjIC01LjQsMCAtOS4xLC0zLjIgLTkuMSwtOS41IHYgLTAuNCBjIDAsLTYuMyAzLjksLTkuOCA5LC05LjggNC43LDAgOC42LDIuNiA4LjYsOC45IHYgMi4zIGggLTEyLjIgYyAwLjIsMy40IDEuNyw0LjcgMy45LDQuNyAyLDAgMy4xLC0xLjEgMy41LC0yLjQgaCA0LjkgYyAtMC44LDMuNSAtMy43LDYuMiAtOC42LDYuMiB6IE0gMTUxLDMxIGggNy4xIGMgLTAuMSwtMi44IC0xLjQsLTQgLTMuNSwtNCAtMS42LDAuMSAtMy4xLDEgLTMuNiw0IHoiCiAgIGlkPSJwYXRoMSIgLz4KPC9nPgo8L3N2Zz4K" alt="Accenture"/>
+  <div class="hsep"></div>
+  <div class="htitle">Nexus — Commercial Model Framework</div>
+  <div class="hright">
+    <button class="hbtn" onclick="window.print()">&#128424; PDF</button>
+    <span class="hchip sbg">Super Bock Group</span>
+    <span class="hchip delta">Delta Cafés</span>
+    <span class="hchip sumol">Sumol+Compal</span>
+    <span class="hchip draft">&#9998; DRAFT</span>
+  </div>
+</header>
+
+<div class="tabnav">
+  <div class="tn on" onclick="goTab(0)"><span class="tnum">00</span><span class="tname">Cover</span></div>
+  <div class="tn" onclick="goTab(1)"><span class="tnum">01</span><span class="tname">Accenture's Role by Phase</span></div>
+  <div class="tn" onclick="goTab(2)"><span class="tnum">02</span><span class="tname">Fee Drivers &amp; Metrics</span></div>
+  <div class="tn" onclick="goTab(3)"><span class="tnum">03</span><span class="tname">Deal Structure</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 00 — COVER
+══════════════════════════════════════ -->
+<div id="tab0" class="tab on">
+<main>
+  <div class="cover">
+    <div class="cov">
+      <div class="cov-eye">Internal working document · For Friday session with Gavin</div>
+      <h1>What Accenture does in Nexus —<br>and <em>how we get paid</em></h1>
+      <p class="cov-lead">A three-part framework: the role Accenture plays across Design, Build and Run; the specific, countable fee driver for each activity; and how the commercial structure answers the board's question on value and partnership.</p>
+      <div class="cov-cards">
+        <div class="cov-card sbg">
+          <div class="cn">Super Bock Group</div>
+          <p>Beer, water, soft drinks — SBG leads the consortium. Super Bock, Carlsberg, Somersby, Pedras, Vitalis.</p>
+        </div>
+        <div class="cov-card delta">
+          <div class="cn">Delta Cafés / Grupo Nabeiro</div>
+          <p>Coffee + mais HoReCa distribution. Delta is the anchor in the café segment of Portuguese HoReCa.</p>
+        </div>
+        <div class="cov-card sumol">
+          <div class="cn">Sumol+Compal</div>
+          <p>Juices and soft drinks. Confirmed third party at the July board table — now a founding member of Nexus.</p>
+        </div>
+      </div>
+      <div style="margin-bottom:12px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35)">Questions this document is designed to answer</div>
+      <div class="cov-qs">
+        <div class="cov-q">
+          <div class="qn">01</div>
+          <div class="qt">Accenture cannot tie its fees to marketplace GMV. So what exactly does the consortium pay for — and how does it scale as the platform grows?</div>
+        </div>
+        <div class="cov-q">
+          <div class="qn">02</div>
+          <div class="qt">The MVP can be built for less. Why does a long-term Accenture partnership — Design, Build, and Run together — justify the difference in price?</div>
+        </div>
+        <div class="cov-q">
+          <div class="qn">03</div>
+          <div class="qt">Who controls what at each stage? And what happens when the consortium decides to bring operations in-house?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 01 — ACCENTURE'S ROLE BY PHASE
+══════════════════════════════════════ -->
+<div id="tab1" class="tab">
+<main>
+  <div class="sh">
+    <div class="tag">01 · Accenture's Role by Phase</div>
+    <h2>Who does what — across all three phases</h2>
+    <p>For each phase: what happens, Accenture's specific activities and deliverables, and what the consortium members and other parties contribute. Accenture's activities are the ones with defined fee drivers (see Tab 02).</p>
+  </div>
+
+  <div class="phtabs">
+    <div class="phtab on d" onclick="goPhase(0)">
+      <div class="pt-top"><span class="pt-num">Phase 0</span><span class="pt-name">Design</span></div>
+      <div class="pt-stats">
+        <div class="pt-stat"><span class="pt-stat-val">~12 wks</span><span class="pt-stat-lbl">Duration</span></div>
+        <div class="pt-stat"><span class="pt-stat-val">~&euro;0.3M</span><span class="pt-stat-lbl">Cost · Binding</span></div>
+      </div>
+    </div>
+    <div class="phtab b" onclick="goPhase(1)">
+      <div class="pt-top"><span class="pt-num">Phase 1</span><span class="pt-name">Build / MVP</span></div>
+      <div class="pt-stats">
+        <div class="pt-stat"><span class="pt-stat-val">~30 wks</span><span class="pt-stat-lbl">Duration</span></div>
+        <div class="pt-stat"><span class="pt-stat-val">&euro;2.1–2.2M</span><span class="pt-stat-lbl">Cost · ROM</span></div>
+      </div>
+    </div>
+    <div class="phtab r" onclick="goPhase(2)">
+      <div class="pt-top"><span class="pt-num">Phase 2–3</span><span class="pt-name">Run / Operate</span></div>
+      <div class="pt-stats">
+        <div class="pt-stat"><span class="pt-stat-val">5-yr term</span><span class="pt-stat-lbl">Duration · BOT</span></div>
+        <div class="pt-stat"><span class="pt-stat-val">&euro;1.2–1.7M</span><span class="pt-stat-lbl">Per year · OPEX</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div id="ph0" class="phblock on phase-block">
+    <div class="phase-hd d">
+      <span class="ph-num">Phase 0</span>
+      <span class="ph-name">Design</span>
+      <span class="ph-info">~12 weeks &middot; Binding contract &middot; ~&euro;0.3M fixed</span>
+    </div>
+    <div class="ph-desc">
+      Validate and detail the marketplace strategy before any build investment is committed. Closes with 5 deliverable sign-offs that trigger payment milestones. The Go/No-Go decision point: both sides must agree before Phase 1 begins. Every deliverable is an explicit requirement of the client RFQ.
+    </div>
+    <div class="act-section">
+      <div class="act-section-label acn-lbl">Accenture's activities</div>
+      <div class="acn-acts">
+        <div class="acn-act d">
+          <div class="aa-head">
+            <span class="aa-name">Strategy &amp; Business Model</span>
+            <span class="fp fp-fixed">Fixed</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Validate marketplace strategy, confirm consortium commercial structure, define the NewCo legal model options.</div>
+          <div class="aa-del"><strong>Milestone 1:</strong> Partnership Agreement signed by all 3 founders.</div>
+        </div>
+        <div class="acn-act d">
+          <div class="aa-head">
+            <span class="aa-name">Architecture &amp; Platform Selection</span>
+            <span class="fp fp-fixed">Fixed</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Headless API-first blueprint, platform selection (Adobe Commerce / Mirakl / MuleSoft), data governance and GDPR framework.</div>
+          <div class="aa-del"><strong>Milestone 2:</strong> Architecture blueprint signed.</div>
+        </div>
+        <div class="acn-act d">
+          <div class="aa-head">
+            <span class="aa-name">Functional Design &amp; UX/UI</span>
+            <span class="fp fp-fixed">Fixed</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Full feature map (MVP vs final), business rules, acceptance criteria. Mobile-first buyer &amp; seller journeys, WCAG 2.1 AA.</div>
+          <div class="aa-del"><strong>Milestones 3–4:</strong> Feature map + UX blueprint signed.</div>
+        </div>
+        <div class="acn-act d">
+          <div class="aa-head">
+            <span class="aa-name">Implementation Roadmap</span>
+            <span class="fp fp-fixed">Fixed</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> 30–35 week MVP roadmap, team structure, testing plan, detailed CAPEX/OPEX cost breakdown — closes Phase 0 and unlocks Phase 1.</div>
+          <div class="aa-del"><strong>Milestone 5:</strong> Roadmap &amp; cost plan signed — formal project go-ahead.</div>
+        </div>
+      </div>
+
+      <div class="act-section-label">Also happening in this phase — consortium &amp; others</div>
+      <div class="others-grid">
+        <div class="other-col">
+          <div class="oc-who">SBG + Delta + Sumol+Compal</div>
+          <ul class="oc-items">
+            <li>Provide business requirements and strategic input to all 5 design workstreams</li>
+            <li>Decide on scope, category priorities and seller admission rules</li>
+            <li>Sign off each milestone (all 3 founders required)</li>
+            <li>Align on governance preferences and neutrality framework</li>
+          </ul>
+        </div>
+        <div class="other-col">
+          <div class="oc-who">External legal counsel</div>
+          <ul class="oc-items">
+            <li>Formalize the NewCo legal entity (Accenture advises on options; lawyers execute — Accenture does not provide legal/tax advice)</li>
+            <li>Draft the Partnership Agreement and shareholders' agreement</li>
+            <li>Review seller contract templates and liability framework</li>
+          </ul>
+        </div>
+        <div class="other-col">
+          <div class="oc-who">Platform vendors (Adobe, Mirakl, MuleSoft)</div>
+          <ul class="oc-items">
+            <li>Initial vendor engagement, licensing terms discussion</li>
+            <li>Technical alignment on integration architecture</li>
+            <li>Demo environments for validation during design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div id="ph1" class="phblock phase-block">
+    <div class="phase-hd b">
+      <span class="ph-num">Phase 1</span>
+      <span class="ph-name">Build / MVP</span>
+      <span class="ph-info">~30 weeks &middot; ROM, non-binding &middot; ~&euro;2.1–2.2M</span>
+    </div>
+    <div class="ph-desc">
+      Build the minimum viable marketplace: platform, integrations, data infrastructure, and operating model. Starting with 3–4 strategic sellers (founders only), beverages only, Portugal + EN/PT. The RFQ requires each seller integration to be priced separately. Build is capacity-based — the value-capture mechanism is the BOT model, not GMV attribution.
+    </div>
+    <div class="act-section">
+      <div class="act-section-label acn-lbl">Accenture's activities</div>
+      <div class="acn-acts">
+        <div class="acn-act b">
+          <div class="aa-head">
+            <span class="aa-name">Platform &amp; Marketplace Development</span>
+            <span class="fp fp-cap">Capacity</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Adobe Commerce frontend/backend, multi-seller marketplace layer, mobile-first (&lt;2s loads). Core integrations via MuleSoft. 30–35 fixed-price sprints.</div>
+          <div class="aa-del"><strong>Fee:</strong> Fixed-price sprints + go-live milestone. Capacity-based — no GMV attribution possible during build.</div>
+        </div>
+        <div class="acn-act b">
+          <div class="aa-head">
+            <span class="aa-name">Integrations — API layer + per seller</span>
+            <span class="fp fp-cap">Per seller</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Core API/MuleSoft layer (fixed) + individual seller integrations: ERP feeds, catalogue, order routing, e-invoicing. MVP: 3–4 sellers; Phase 2 adds 3P sellers.</div>
+          <div class="aa-del"><strong>Fee:</strong> Fixed (API layer) + unit fee per seller integrated. Each onboarding invoiced separately — scales as the marketplace grows.</div>
+        </div>
+        <div class="acn-act b">
+          <div class="aa-head">
+            <span class="aa-name">Data Hub</span>
+            <span class="fp fp-fixed">Fixed</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Clean-room data architecture, analytics infrastructure, governance framework. Anonymised/clustered data ready for Phase 3 monetisation to non-consortium sellers.</div>
+          <div class="aa-del"><strong>Milestone:</strong> Data hub go-live + governance model signed — binary deliverable.</div>
+        </div>
+        <div class="acn-act b">
+          <div class="aa-head">
+            <span class="aa-name">NewCo Operating Model</span>
+            <span class="fp fp-fixed">Fixed</span>
+          </div>
+          <div class="aa-desc"><span class="src src-rfq">RFQ</span> Consortium governance for SBG + Delta + Sumol+Compal. Roles, reserved matters, seller fairness charter, independent chair structure, operating processes.</div>
+          <div class="aa-del"><strong>Milestone:</strong> Operating model signed by all 3 founders — all must approve.</div>
+        </div>
+      </div>
+
+      <div class="act-section-label">Also happening in this phase — consortium &amp; others</div>
+      <div class="others-grid">
+        <div class="other-col">
+          <div class="oc-who">SBG + Delta + Sumol+Compal</div>
+          <ul class="oc-items">
+            <li>Participate in UAT — business teams validate flows against real scenarios</li>
+            <li>Prepare internal systems for Accenture integration (ERP/OMS readiness per seller)</li>
+            <li>NewCo formation: appoint governance roles, fund working capital</li>
+            <li>Approve and sign all build milestones and scope changes</li>
+          </ul>
+        </div>
+        <div class="other-col">
+          <div class="oc-who">Platform vendors (Adobe, Mirakl, MuleSoft)</div>
+          <ul class="oc-items">
+            <li>License deployment and vendor support during implementation</li>
+            <li>Provide technical documentation and integration APIs</li>
+            <li>Adobe Commerce funding or co-investment (potential commercial lever)</li>
+          </ul>
+        </div>
+        <div class="other-col">
+          <div class="oc-who">Cloud / infrastructure providers</div>
+          <ul class="oc-items">
+            <li>Cloud hosting environment (client-contracted or Accenture-managed TBD)</li>
+            <li>Security, disaster recovery, and monitoring infrastructure</li>
+            <li>CDN and performance infrastructure for &lt;2s load requirement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2-3 -->
+  <div id="ph2" class="phblock phase-block">
+    <div class="phase-hd r">
+      <span class="ph-num">Phase 2–3</span>
+      <span class="ph-name">Run / Operate</span>
+      <span class="ph-info">Ongoing &middot; BOT model &middot; 5-year term &middot; ~&euro;1.2–1.7M/yr</span>
+    </div>
+    <div class="ph-desc">
+      Ongoing operation of the marketplace across three service hubs. The fee model shifts from fixed to driver-based: Accenture is paid per countable unit of work it operates. Two new levers (AI Products, SC Control Tower) complement the Gro24/7 standard menu. Hubs transfer to the consortium NewCo on agreed timelines.
+    </div>
+    <div class="act-section">
+      <div class="act-section-label acn-lbl">Accenture's activities — 3 service hubs (see Tab 02 for detailed drivers)</div>
+      <div class="acn-acts">
+        <div class="acn-act r">
+          <div class="aa-head"><span class="aa-name">CX / Commerce Hub</span><span class="fp fp-unit">Core + Flex</span></div>
+          <div class="aa-desc"><span class="src src-gro">gro24/7</span><span class="src src-rfq">RFQ</span></div>
+          <div class="aa-del">Catalogue &amp; SKU Operations · Marketing &amp; Campaigns · Customer Service · Seller Onboarding &amp; Management. <strong>4 activities, 4 business drivers.</strong></div>
+        </div>
+        <div class="acn-act r">
+          <div class="aa-head"><span class="aa-name">Platform &amp; Tech Hub</span><span class="fp fp-unit">Core + Flex</span></div>
+          <div class="aa-desc"><span class="src src-gro">gro24/7</span><span class="src src-rfq">RFQ</span><span class="src src-new">&#9733; New</span></div>
+          <div class="aa-del">Platform &amp; Tech Support · Supply Chain Control Tower (new vs Gro24/7 — orchestrates 3 separate logistics networks). <strong>2 activities, 2 business drivers.</strong></div>
+        </div>
+        <div class="acn-act r">
+          <div class="aa-head"><span class="aa-name">D&amp;A &amp; AI Hub</span><span class="fp fp-unit">Core + Flex</span></div>
+          <div class="aa-desc"><span class="src src-gro">gro24/7</span><span class="src src-rfq">RFQ</span><span class="src src-new">&#9733; New</span></div>
+          <div class="aa-del">Data &amp; Analytics Insights (incl. Phase 3 data monetisation) · AI Products Suite (new — assortment, pricing, promo AI sold as licences). <strong>2 activities, 2 drivers.</strong></div>
+        </div>
+        <div class="acn-act r" style="border-left-color:var(--delta)">
+          <div class="aa-head"><span class="aa-name">BOT Transfer (ongoing)</span><span class="fp fp-fixed" style="background:var(--delta-l);color:var(--delta-d)">Transfer timeline</span></div>
+          <div class="aa-desc">Each hub has a contractual handover date to the NewCo — Accenture transfers people, processes and IP in waves as the consortium builds capability.</div>
+          <div class="aa-del"><strong>Timeline:</strong> Platform Tech hub ~Year 3 · CX hub ~Year 4 · SC Control Tower and AI Products last (most complex).</div>
+        </div>
+      </div>
+
+      <div class="act-section-label">Also happening in this phase — consortium &amp; others</div>
+      <div class="others-grid">
+        <div class="other-col">
+          <div class="oc-who">Consortium NewCo (SBG + Delta + Sumol+Compal)</div>
+          <ul class="oc-items">
+            <li>Set marketplace strategy: seller admission, category expansion, pricing policy</li>
+            <li>Own key account relationships with the largest HoReCa buyers</li>
+            <li>Approve Accenture's Quarterly Work Packages and scope changes</li>
+            <li>Govern the platform through the NewCo board (reserved matters)</li>
+            <li>Absorb service hubs as they are transferred from Accenture</li>
+          </ul>
+        </div>
+        <div class="other-col">
+          <div class="oc-who">Individual brands (SBG / Delta / Sumol+Compal)</div>
+          <ul class="oc-items">
+            <li>Own brand budgets and promotional investment decisions</li>
+            <li>Manage their own product and SKU roadmaps</li>
+            <li>National key account management for their respective portfolios</li>
+            <li>Provide sales data and forecasts to feed the SC Control Tower</li>
+          </ul>
+        </div>
+        <div class="other-col">
+          <div class="oc-who">Sellers (3P in Phase 2)</div>
+          <ul class="oc-items">
+            <li>Manage their own fulfilment and inventory (Accenture routes orders, sellers fulfil)</li>
+            <li>Maintain their own ERP/OMS systems and catalogue feeds</li>
+            <li>Pay per-seller integration fee and ongoing FEE model to the consortium</li>
+            <li>In Phase 3: optionally subscribe to anonymised data packs from the D&amp;A hub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 02 — FEE DRIVERS & METRICS
+══════════════════════════════════════ -->
+<div id="tab2" class="tab">
+<main>
+  <div class="sh">
+    <div class="tag">02 · Fee Drivers &amp; Metrics</div>
+    <h2>For each Accenture activity: the driver and what it could be worth</h2>
+    <p>Design and Build use fixed milestones (shown below as context). The Run phase uses business drivers — adjust the volumes and unit rates to explore different scenarios. All figures are illustrative starting points.</p>
+  </div>
+
+  <div class="bridge">
+    <h3>The driver logic</h3>
+    <p>A <b>business driver</b> is a specific, countable unit of work that Accenture directly operates and can independently audit. <b>No driver is a percentage of marketplace GMV or consortium revenue</b> — each is a discrete operational event (a SKU updated, a campaign executed, a ticket resolved, an order routed, a licence activated). The Gro24/7 contract with Unilever operates on exactly this basis. Accenture's incentive is to drive more volume of each driver — which is also what generates value for the consortium.</p>
+    <div class="flow">
+      <span class="pill no">% of GMV — not allowed</span>
+      <span class="arr">&rarr; instead:</span>
+      <span class="pill yes"># SKUs updated</span>
+      <span class="pill yes"># Campaigns executed</span>
+      <span class="pill yes"># Tickets resolved</span>
+      <span class="pill yes"># Licences active</span>
+      <span class="pill yes"># Orders routed</span>
+    </div>
+  </div>
+
+  <!-- Fixed cost summary -->
+  <div class="sh">
+    <div class="tag">Design &amp; Build — fixed and milestone-based</div>
+    <h2>Phases 0 &amp; 1: not driver-based — fixed deliverables</h2>
+  </div>
+  <div class="fixed-summary">
+    <div class="fs-box">
+      <div class="fs-head d">CAPEX &mdash; Phase 0 + Phase 1 (one-off)<span>~&euro;2–3M</span></div>
+      <div class="fs-rows">
+        <div class="fs-row">
+          <div><div class="fs-label">Strategy &amp; Design</div><div class="fs-sub">5 milestone payments across 4 activities · all binding</div></div>
+          <div class="fs-val">~&euro;0.3M</div>
+        </div>
+        <div class="fs-row">
+          <div><div class="fs-label">MVP Build — ECI offshore base</div><div class="fs-sub">4,500–4,800 PD &middot; 39 of 59 MVP features reused from Unilever Brazil / C3 assets &middot; 30-week plan</div></div>
+          <div class="fs-val">&euro;1.4–1.7M</div>
+        </div>
+        <div class="fs-row">
+          <div><div class="fs-label">+ Onsite Portugal team</div><div class="fs-sub">PMO, VRO, governance oversight, client coordination (~4–5 roles) · development stays offshore · excluded from ECI estimate</div></div>
+          <div class="fs-val">~&euro;0.3–0.5M</div>
+        </div>
+        <div class="fs-row">
+          <div><div class="fs-label">Seller Integration</div><div class="fs-sub">Per seller, priced separately · 3–4 at MVP · Phase 2 scales</div></div>
+          <div class="fs-val">TBD/seller</div>
+        </div>
+      </div>
+    </div>
+    <div class="fs-box">
+      <div class="fs-head b">OPEX — Run phase (per year, ongoing)<span>~&euro;1.2–1.7M/yr</span></div>
+      <div class="fs-rows">
+        <div class="fs-row">
+          <div><div class="fs-label">Technology &amp; platform licences</div><div class="fs-sub">Adobe Commerce, Mirakl (at scale), MuleSoft · flows to vendors</div></div>
+          <div class="fs-val">&euro;0.2–0.3M</div>
+        </div>
+        <div class="fs-row">
+          <div><div class="fs-label">Accenture service hub fees</div><div class="fs-sub">Core + Flex driver fees across 3 hubs · see calculator below</div></div>
+          <div class="fs-val">&euro;0.4–0.6M</div>
+        </div>
+        <div class="fs-row">
+          <div><div class="fs-label">NewCo team</div><div class="fs-sub">8–12 FTEs at launch · initially Accenture-staffed, transfers to NewCo over time</div></div>
+          <div class="fs-val">&euro;0.6–0.8M</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Driver calculator -->
+  <div class="sh">
+    <div class="tag">Run phase — interactive driver calculator</div>
+    <h2>Adjust volumes and unit rates to explore fee scenarios</h2>
+    <p>Core fee = agreed fixed baseline per quarter. Flex fee = actual volume above the Core threshold &times; unit price. Edit any field — totals update automatically.</p>
+  </div>
+
+  <div class="calc-intro">
+    <p>Defaults are <b>illustrative starting points</b> — to be refined against the Gro24/7 rate card and the Nexus business plan. Core fees represent the baseline team capacity agreed quarterly. Flex fees activate above the threshold volume. For AI Products there is no Core (pure per-licence).</p>
+    <div class="inputs-leg">
+      <span><span class="leg-sq" style="background:var(--m-fixed)"></span> Core fee/month (fixed baseline)</span>
+      <span><span class="leg-sq" style="background:var(--m-unit)"></span> Flex volume &times; unit rate</span>
+      <span><span class="leg-sq" style="background:var(--sbg)"></span> Total monthly &amp; annual</span>
+    </div>
+  </div>
+
+  <!-- CX Hub -->
+  <div class="hub-section">
+    <div class="hub-label cx">CX / Commerce Hub <span class="hc">— catalogue, campaigns, support, seller management</span></div>
+    <div class="calc-wrap">
+      <table class="calctbl">
+        <thead>
+          <tr>
+            <th style="width:22%">Activity &amp; driver</th>
+            <th style="width:13%">Core fee/month (&euro;)</th>
+            <th style="width:13%">Core threshold</th>
+            <th style="width:13%">Unit price (&euro;)</th>
+            <th style="width:13%">Est. flex volume/mo</th>
+            <th style="width:11%">Flex/month</th>
+            <th style="width:8%">Total/mo</th>
+            <th style="width:7%">Total/yr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="act-n">Catalogue &amp; SKU Operations</span><span class="act-drv">driver: # SKU updates/month</span></td>
+            <td><input class="calc-input" type="number" value="7500" oninput="calc()"/></td>
+            <td><span class="act-drv">2,000 SKUs/mo</span></td>
+            <td><input class="calc-input" type="number" value="4" step="0.5" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="500" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f1"></span></td>
+            <td><span class="calc-out total-col" id="t1"></span></td>
+            <td><span class="calc-out" id="y1"></span></td>
+          </tr>
+          <tr>
+            <td><span class="act-n">Marketing &amp; Campaigns</span><span class="act-drv">driver: # campaigns/month</span></td>
+            <td><input class="calc-input" type="number" value="5000" oninput="calc()"/></td>
+            <td><span class="act-drv">4 campaigns/mo</span></td>
+            <td><input class="calc-input" type="number" value="1200" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="2" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f2"></span></td>
+            <td><span class="calc-out total-col" id="t2"></span></td>
+            <td><span class="calc-out" id="y2"></span></td>
+          </tr>
+          <tr>
+            <td><span class="act-n">Customer Service</span><span class="act-drv">driver: # SR tickets resolved/month</span></td>
+            <td><input class="calc-input" type="number" value="6500" oninput="calc()"/></td>
+            <td><span class="act-drv">400 tickets/mo</span></td>
+            <td><input class="calc-input" type="number" value="14" step="0.5" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="150" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f3"></span></td>
+            <td><span class="calc-out total-col" id="t3"></span></td>
+            <td><span class="calc-out" id="y3"></span></td>
+          </tr>
+          <tr>
+            <td><span class="act-n">Seller Onboarding &amp; Management</span><span class="act-drv">driver: # new sellers + seller points</span></td>
+            <td><input class="calc-input" type="number" value="3500" oninput="calc()"/></td>
+            <td><span class="act-drv">3 active sellers</span></td>
+            <td><input class="calc-input" type="number" value="2000" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="1" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f4"></span></td>
+            <td><span class="calc-out total-col" id="t4"></span></td>
+            <td><span class="calc-out" id="y4"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Platform Hub -->
+  <div class="hub-section">
+    <div class="hub-label pt">Platform &amp; Tech Hub <span class="hc">— platform support + supply chain control tower</span></div>
+    <div class="calc-wrap">
+      <table class="calctbl">
+        <thead>
+          <tr>
+            <th style="width:22%">Activity &amp; driver</th>
+            <th style="width:13%">Core fee/month (&euro;)</th>
+            <th style="width:13%">Core threshold</th>
+            <th style="width:13%">Unit price (&euro;)</th>
+            <th style="width:13%">Est. flex volume/mo</th>
+            <th style="width:11%">Flex/month</th>
+            <th style="width:8%">Total/mo</th>
+            <th style="width:7%">Total/yr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="act-n">Platform &amp; Tech Support</span><span class="act-drv">driver: # change requests/month</span></td>
+            <td><input class="calc-input" type="number" value="10000" oninput="calc()"/></td>
+            <td><span class="act-drv">30 CRs/mo</span></td>
+            <td><input class="calc-input" type="number" value="280" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="10" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f5"></span></td>
+            <td><span class="calc-out total-col" id="t5"></span></td>
+            <td><span class="calc-out" id="y5"></span></td>
+          </tr>
+          <tr style="background:#fdf8f2">
+            <td><span class="act-n">Supply Chain Control Tower &#9733;</span><span class="act-drv">driver: # orders routed/month</span></td>
+            <td><input class="calc-input" type="number" value="7000" oninput="calc()"/></td>
+            <td><span class="act-drv">8,000 orders/mo</span></td>
+            <td><input class="calc-input" type="number" value="0.75" step="0.05" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="3000" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f6"></span></td>
+            <td><span class="calc-out total-col" id="t6"></span></td>
+            <td><span class="calc-out" id="y6"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- D&A Hub -->
+  <div class="hub-section">
+    <div class="hub-label da">D&amp;A &amp; AI Hub <span class="hc">— analytics insights + AI product suite</span></div>
+    <div class="calc-wrap">
+      <table class="calctbl">
+        <thead>
+          <tr>
+            <th style="width:22%">Activity &amp; driver</th>
+            <th style="width:13%">Core fee/month (&euro;)</th>
+            <th style="width:13%">Core threshold</th>
+            <th style="width:13%">Unit price (&euro;)</th>
+            <th style="width:13%">Est. flex volume/mo</th>
+            <th style="width:11%">Flex/month</th>
+            <th style="width:8%">Total/mo</th>
+            <th style="width:7%">Total/yr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="act-n">Data &amp; Analytics Insights</span><span class="act-drv">driver: # insight packs (A-Tickets)/month</span></td>
+            <td><input class="calc-input" type="number" value="4500" oninput="calc()"/></td>
+            <td><span class="act-drv">4 packs/mo</span></td>
+            <td><input class="calc-input" type="number" value="900" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="2" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f7"></span></td>
+            <td><span class="calc-out total-col" id="t7"></span></td>
+            <td><span class="calc-out" id="y7"></span></td>
+          </tr>
+          <tr style="background:#fdf8f2">
+            <td><span class="act-n">AI Products Suite &#9733;</span><span class="act-drv">driver: # active licences/month</span></td>
+            <td><input class="calc-input" type="number" value="0" oninput="calc()" placeholder="No core"/></td>
+            <td><span class="act-drv">Pure per-licence</span></td>
+            <td><input class="calc-input" type="number" value="20" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="120" oninput="calc()"/></td>
+            <td><span class="calc-out flex-col" id="f8"></span></td>
+            <td><span class="calc-out total-col" id="t8"></span></td>
+            <td><span class="calc-out" id="y8"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Totals -->
+  <div class="calc-totals" id="totalBar">
+    <div class="ct-item"><div class="ct-lbl">Total core/month</div><div class="ct-val" id="tot-core">–</div><div class="ct-sub">Fixed baseline capacity</div></div>
+    <div class="ct-item"><div class="ct-lbl">Total flex/month</div><div class="ct-val" id="tot-flex">–</div><div class="ct-sub">Variable above thresholds</div></div>
+    <div class="ct-item"><div class="ct-lbl">Total Accenture fees/month</div><div class="ct-val" id="tot-mo">–</div><div class="ct-sub">Core + Flex combined</div></div>
+    <div class="ct-item"><div class="ct-lbl">Total Accenture fees/year</div><div class="ct-val" id="tot-yr">–</div><div class="ct-sub">Run-phase service hub fees</div></div>
+  </div>
+  <div style="font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5">&#9888; These are Accenture's service hub fees only — separate from platform licence costs (&euro;0.2–0.3M/yr) and NewCo team costs (&euro;0.6–0.8M/yr). 2.5% of each activity's Core fee is held at risk against SLA performance (not shown above). &#9733; = new lever not present in Gro24/7.</div>
+
+  <div class="foot">
+    <strong>Sources.</strong> Activity list and hub structure from <em>Acn_gro24/7 Partnership Final Proposal v15</em> (Gavin Pape, slide 20 — Flex driver table). OPEX figures from Accenture proposal submitted 03/04/2026. AI Products and SC Control Tower per João Santos, 24 Jun 2026. Unit prices are illustrative — to be calibrated against Gro24/7 rate card and Nexus volume assumptions.
+  </div>
+
+</main>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TAB 03 — DEAL STRUCTURE
+══════════════════════════════════════ -->
+<div id="tab3" class="tab">
+<main>
+  <div class="sh">
+    <div class="tag">03 · Deal Structure</div>
+    <h2>The cost structure and why a partnership with Accenture creates more value</h2>
+    <p>A complete view of CAPEX and OPEX — what each line covers, who it flows to, and when. Followed by the four points that matter to the consortium CEOs.</p>
+  </div>
+
+  <!-- Costs -->
+  <div class="cost-grid">
+    <div class="cost-box">
+      <div class="cost-hd capex">CAPEX — one-off investment (Phases 0 + 1)<span class="amt">~&euro;2–3M</span></div>
+      <div class="cost-row">
+        <div><div class="cn">Strategy &amp; Design (Phase 0)</div><div class="cd">5 milestone payments · 4 workstreams · 12 weeks · binding · closes with full Go/No-Go decision</div></div>
+        <div class="cv">~&euro;0.3M</div>
+      </div>
+      <div class="cost-row">
+        <div>
+          <div class="cn">MVP Build — ECI offshore delivery (Phase 1)</div>
+          <div class="cd">4,500–4,800 PD at €325–350/day ADR · 30-week plan · Adobe Commerce + MuleSoft + PWA. <strong>39 of 59 MVP features reused</strong> from Unilever Brazil project and C3 asset library — directly reduces net-new build effort.</div>
+        </div>
+        <div class="cv">&euro;1.4–1.7M</div>
+      </div>
+      <div class="cost-row">
+        <div>
+          <div class="cn">+ Onsite Portugal team</div>
+          <div class="cd">~4–5 local roles not included in offshore estimate: PMO, VRO, governance oversight, client-side coordination. Development stays offshore. Adds Portugal presence for UAT, governance, and regulatory compliance.</div>
+        </div>
+        <div class="cv">~&euro;0.3–0.5M</div>
+      </div>
+      <div class="cost-row">
+        <div><div class="cn">Seller Integration</div><div class="cd">Each seller's ERP/OMS/CRM connection to the marketplace API — priced per seller, invoiced separately. 3–4 at MVP launch; each Phase 2 seller is additional.</div></div>
+        <div class="cv">TBD/seller</div>
+      </div>
+    </div>
+    <div class="cost-box">
+      <div class="cost-hd opex">OPEX — ongoing run cost (per year, from go-live)<span class="amt">~&euro;1.2–1.7M/yr</span></div>
+      <div class="cost-row">
+        <div><div class="cn">Platform licence &amp; technology</div><div class="cd">Adobe Commerce licence, Mirakl (at scale), MuleSoft API management, cloud hosting &amp; CDN. Contracts held by the NewCo or Accenture-managed.</div></div>
+        <div class="cv">&euro;0.2–0.3M/yr</div>
+      </div>
+      <div class="cost-row">
+        <div><div class="cn">Accenture service hub fees</div><div class="cd">Core + Flex driver fees across 3 hubs (CX, Platform, D&amp;A) — calculated in Tab 02. 2.5% of fees at risk against SLAs.</div></div>
+        <div class="cv">&euro;0.4–0.6M/yr</div>
+      </div>
+      <div class="cost-row">
+        <div><div class="cn">NewCo team</div><div class="cd">8–12 FTEs at launch (Product Owner, Tech Lead, Operations, D&amp;A, Commercial). Initially Accenture-staffed under the BOT model — team transfers to the NewCo payroll progressively as each hub matures.</div></div>
+        <div class="cv">&euro;0.6–0.8M/yr</div>
+      </div>
+    </div>
+  </div>
+  <div class="cost-note">
+    <b>Two levers can reduce the consortium's net cash outlay further.</b> (1) <b>BOT co-investment:</b> Accenture converts part of the build fee into a co-investment, amortised over the operating contract — the consortium pays less upfront and Accenture recovers over time. (2) <b>Adobe ecosystem funding:</b> under discussion — Adobe may co-fund part of the build in exchange for licensing revenue, reducing net CAPEX to the consortium closer to the ECI offshore base of €1.4–1.7M. Neither is a discount; both are structured risk-sharing arrangements still being scoped (as of 24 Jun 2026).
+  </div>
+
+  <!-- CEO Bullets -->
+  <div class="ceo-head">Four reasons the long-term Accenture partnership is the right choice</div>
+  <div class="ceo-sub">Designed for the consortium CEOs — direct, no jargon. What does signing with Accenture mean for each company?</div>
+
+  <div class="ceo-bullets">
+    <div class="cb">
+      <div class="cb-num">01</div>
+      <div class="cb-body">
+        <div class="cb-title">You pay for specific operations — not for our time</div>
+        <div class="cb-text">Every Accenture fee is tied to a countable event you can audit: SKUs updated, campaigns run, orders routed, licences active. If we don't operate it, you don't pay for it.</div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-num">02</div>
+      <div class="cb-body">
+        <div class="cb-title">We co-invest and share the downside</div>
+        <div class="cb-text">Accenture reduces your upfront CAPEX by co-investing in the build. If adoption is slow, our recovery adjusts proportionally. If the platform grows, our fees scale with it.</div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-num">03</div>
+      <div class="cb-body">
+        <div class="cb-title">One platform for three separate networks</div>
+        <div class="cb-text">SBG, Delta, and Sumol+Compal each run different ERPs, logistics, and commercial teams. The SC Control Tower and integration layer handle this complexity. A build-only contractor doesn't price this in.</div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-num">04</div>
+      <div class="cb-body">
+        <div class="cb-title">You own it on your own timeline</div>
+        <div class="cb-text">Each hub has a contractual transfer date — people, processes, and IP move to the NewCo in waves. Gavin ran this exact model with Unilever across 12 markets. It is not theoretical.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOT -->
+  <div class="sh" style="margin-top:8px">
+    <div class="tag">The BOT structure</div>
+    <h2>Build — Operate — Transfer: the four mechanics</h2>
+  </div>
+  <div class="bot">
+    <div class="bot-head">From Gro24/7 to Nexus — the same mechanics, scaled to the right size</div>
+    <div class="bot-sub">Gro24/7 (Gavin Pape, Unilever): &euro;20M co-investment, &euro;366M over 5 years, 7 hubs, 12 markets — Build-Operate-Transfer across all of them. The contract mechanics below are not invented for Nexus. They are active, proven, and reusable.</div>
+    <div class="bot-steps">
+      <div class="bs">
+        <div class="bs-n">Co-invest</div>
+        <div class="bs-t">Accenture invests upfront</div>
+        <div class="bs-d">Part of the Build fee becomes Accenture's co-investment — reducing the consortium's CAPEX requirement. Recovered as a fee discount amortised over the operating contract term.</div>
+      </div>
+      <div class="bs">
+        <div class="bs-n">Rollback</div>
+        <div class="bs-t">Shared downside protection</div>
+        <div class="bs-d">If billing volume doesn't reach agreed thresholds at each annual checkpoint, Accenture's investment recovery adjusts proportionally. Protects the consortium if adoption is slower than forecast.</div>
+      </div>
+      <div class="bs">
+        <div class="bs-n">Scale bonus</div>
+        <div class="bs-t">Upside tied to platform milestones</div>
+        <div class="bs-d">Accenture earns a defined milestone bonus when the platform reaches agreed scale checkpoints (e.g. 10,000 active HoReCa PoS, Phase 2 open to 3P sellers). Countable, binary — not GMV percentages.</div>
+      </div>
+      <div class="bs">
+        <div class="bs-n">Transfer</div>
+        <div class="bs-t">Contractual hub handover dates</div>
+        <div class="bs-d">Each service hub has a defined transfer date to the consortium NewCo. Accenture's team and IP migrate in waves. Platform Tech hub ~Year 3; CX and SC hubs last. The consortium builds capability progressively.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <strong>Sources.</strong> Cost figures from Accenture proposal submitted 03/04/2026 (CAPEX &euro;2.8–3.8M, OPEX &euro;1.2–1.7M/yr breakdown per the implementation costs slide). BOT mechanics and co-investment structure from <em>Acn_gro24/7 Partnership Final Proposal v15</em> (Gavin Pape — slides 40+). Scale milestone and rollback structure adapted from gro24/7 contractual terms (&euro;20M investment, &euro;200M billing threshold in 4 years). All figures are illustrative and Phase-0 estimates — not a binding offer.
+  </div>
+
+</main>
+</div>
+
+
+<script>
+/* ── TAB NAVIGATION ── */
+const tabs = document.querySelectorAll('.tab');
+const tns = document.querySelectorAll('.tn');
+function goTab(i) {
+  tabs.forEach((t, j) => { t.classList.toggle('on', j === i); });
+  tns.forEach((t, j) => { t.classList.toggle('on', j === i); });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.addEventListener('keydown', e => {
+  const cur = [...tabs].findIndex(t => t.classList.contains('on'));
+  if (e.key === 'ArrowRight' && cur < tabs.length - 1) goTab(cur + 1);
+  if (e.key === 'ArrowLeft' && cur > 0) goTab(cur - 1);
+});
+
+/* ── PHASE SUB-TABS ── */
+const phblocks = document.querySelectorAll('.phblock');
+const phtabs = document.querySelectorAll('.phtab');
+function goPhase(i) {
+  phblocks.forEach((b, j) => b.classList.toggle('on', j === i));
+  phtabs.forEach((t, j) => t.classList.toggle('on', j === i));
+  window.scrollTo({ top: 100, behavior: 'smooth' });
+}
+
+/* ── DRIVER CALCULATOR ── */
+function fmt(n) {
+  if (n === 0) return '–';
+  return '€' + Math.round(n).toLocaleString('de-DE');
+}
+
+function getRowInputs(row) {
+  const inputs = document.querySelectorAll('#tab2 .calctbl')[row < 4 ? 0 : row < 6 ? 1 : 2].querySelectorAll('tr')[row < 4 ? row : row < 6 ? row - 4 : row - 6].querySelectorAll('input');
+  return {
+    core: parseFloat(inputs[0].value) || 0,
+    price: parseFloat(inputs[1].value) || 0,
+    flex: parseFloat(inputs[2].value) || 0
+  };
+}
+
+function calc() {
+  // Gather all rows from all tables
+  const allInputs = document.querySelectorAll('#tab2 .calctbl input');
+  // 3 inputs per row, 8 rows = 24 inputs
+  let totCore = 0, totFlex = 0;
+  for (let i = 0; i < 8; i++) {
+    const core = parseFloat(allInputs[i * 3].value) || 0;
+    const price = parseFloat(allInputs[i * 3 + 1].value) || 0;
+    const flexVol = parseFloat(allInputs[i * 3 + 2].value) || 0;
+    const flex = price * flexVol;
+    const total = core + flex;
+    const yr = total * 12;
+    document.getElementById('f' + (i + 1)).textContent = fmt(flex);
+    document.getElementById('t' + (i + 1)).textContent = fmt(total);
+    document.getElementById('y' + (i + 1)).textContent = fmt(yr);
+    totCore += core;
+    totFlex += flex;
+  }
+  const totMo = totCore + totFlex;
+  document.getElementById('tot-core').textContent = fmt(totCore);
+  document.getElementById('tot-flex').textContent = fmt(totFlex);
+  document.getElementById('tot-mo').textContent = fmt(totMo);
+  document.getElementById('tot-yr').textContent = fmt(totMo * 12);
+}
+
+/* ── GATE CHECK ── */
+function gateCheck() {
+  const input = document.getElementById('gpwd');
+  const err = document.getElementById('gerr');
+  if (btoa(input.value) === 'U0JHLjI2') {
+    const gate = document.getElementById('gate');
+    gate.style.transition = 'opacity .45s';
+    gate.style.opacity = '0';
+    setTimeout(() => { gate.style.display = 'none'; }, 460);
+  } else {
+    input.classList.add('err');
+    err.textContent = 'Incorrect access code — try again';
+    setTimeout(() => { input.classList.remove('err'); err.textContent = ''; }, 1400);
+    input.value = '';
+    input.focus();
+  }
+}
+
+// Run on load
+window.addEventListener('DOMContentLoaded', calc);
+</script>
+</body>
+</html>
