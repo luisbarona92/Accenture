@@ -306,7 +306,7 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
 <main>
   <div class="cover">
     <div class="cov">
-      <div class="cov-eye">Internal working document · For Friday session with Gavin</div>
+      <div class="cov-eye">Internal working document · Commercial model framework</div>
       <h1>What Accenture does in Nexus —<br>and <em>how we get paid</em></h1>
       <p class="cov-lead">A three-part framework: the role Accenture plays across Design, Build and Run; the specific, countable fee driver for each activity; and how the commercial structure answers the board's question on value and partnership.</p>
       <div class="cov-cards">
@@ -693,7 +693,7 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
   <div class="calc-intro">
     <p style="margin-bottom:10px">Same hybrid methodology as Gro24/7. Each hub uses the fee type that fits its work:</p>
     <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
-      <li style="font-size:13px;color:var(--body);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--sbg);font-weight:800">·</span><b>CX Hub — per-unit drivers</b> (SKU updates, campaigns, SR tickets, seller points): exact terminology from Gavin's Gro24/7 contract, Slide 20.</li>
+      <li style="font-size:13px;color:var(--body);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--sbg);font-weight:800">·</span><b>CX Hub — per-unit drivers</b> (SKU updates, campaigns, SR tickets, seller points): exact terminology from the Gro24/7 contract, Slide 20.</li>
       <li style="font-size:13px;color:var(--body);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--sbg);font-weight:800">·</span><b>Platform &amp; Tech — FTE rate card</b>: core team (2 FTEs × 160 h × €50/h = €16k/mo included) + flex hours above that at the same rate. Same as Gro24/7 Platform hub.</li>
       <li style="font-size:13px;color:var(--body);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--sbg);font-weight:800">·</span><b>D&amp;A Insights — A-Tickets</b>: an A-Ticket is an analytics insight request submitted to the hub. Per-ticket fee above a baseline pack. From Gro24/7 D&A Insighting hub.</li>
       <li style="font-size:13px;color:var(--body);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--sumol);font-weight:800">·</span><b>SC Control Tower — per order routed</b> ★: new lever (João Santos, 24 Jun). Accenture orchestrates orders across 3 consortium logistics networks.</li>
@@ -863,10 +863,31 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
     <div class="ct-item"><div class="ct-lbl">Total Accenture fees/month</div><div class="ct-val" id="tot-mo">–</div><div class="ct-sub">Core + Flex combined</div></div>
     <div class="ct-item"><div class="ct-lbl">Total Accenture fees/year</div><div class="ct-val" id="tot-yr">–</div><div class="ct-sub">Run-phase service hub fees</div></div>
   </div>
-  <div style="font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5">&#9888; These are Accenture's service hub fees only — separate from platform licence costs (&euro;0.2–0.3M/yr) and NewCo team costs (&euro;0.6–0.8M/yr). 2.5% of each activity's Core fee is held at risk against SLA performance (not shown above). &#9733; = new lever not present in Gro24/7.</div>
+  <!-- OPEX Total breakdown -->
+  <div style="margin-top:18px;border:1px solid var(--line);border-radius:10px;overflow:hidden">
+    <div style="background:var(--cream);padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase">Total consortium OPEX/year — all-in</div>
+    <div style="display:grid;grid-template-columns:1fr auto auto;gap:0">
+      <div style="padding:10px 16px;font-size:13px;color:var(--body);border-bottom:1px solid var(--line)">Accenture service hub fees <span style="font-size:11px;color:var(--muted)">(Core + Flex · from calculator above)</span></div>
+      <div style="padding:10px 16px;font-size:13px;color:var(--acn);font-weight:700;text-align:right;border-bottom:1px solid var(--line)" id="opex-acn">–</div>
+      <div style="padding:10px 16px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--line)">variable</div>
+
+      <div style="padding:10px 16px;font-size:13px;color:var(--body);border-bottom:1px solid var(--line)">NewCo team <span style="font-size:11px;color:var(--muted)">(8–12 FTEs, consortium's own staff — not Accenture)</span></div>
+      <div style="padding:10px 16px;font-size:13px;color:var(--body);font-weight:600;text-align:right;border-bottom:1px solid var(--line)">~€0.7M</div>
+      <div style="padding:10px 16px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--line)">€0.6–0.8M range</div>
+
+      <div style="padding:10px 16px;font-size:13px;color:var(--body);border-bottom:1px solid var(--line)">Technology licensing <span style="font-size:11px;color:var(--muted)">(Salesforce, Mirakl, cloud infra)</span></div>
+      <div style="padding:10px 16px;font-size:13px;color:var(--body);font-weight:600;text-align:right;border-bottom:1px solid var(--line)">~€0.25M</div>
+      <div style="padding:10px 16px;font-size:11px;color:var(--muted);text-align:right;border-bottom:1px solid var(--line)">€0.2–0.3M range</div>
+
+      <div style="padding:11px 16px;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:var(--ink);background:var(--sbg-l)">Total consortium OPEX/year</div>
+      <div style="padding:11px 16px;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--sbg);text-align:right;background:var(--sbg-l)" id="opex-total">–</div>
+      <div style="padding:11px 16px;font-size:11px;color:var(--muted);text-align:right;background:var(--sbg-l)">incl. €0.95M fixed costs</div>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5">&#9888; 2.5% of each activity's Core fee is held at risk against SLA performance (not shown above). &#9733; = new lever not present in Gro24/7. NewCo team cost reduces as BOT transfers complete and consortium internalises capacity.</div>
 
   <div class="foot">
-    <strong>Sources.</strong> CX drivers (SKU updates, campaigns, SR tickets, seller points) and A-Tickets: <em>Acn_gro24/7 Partnership Final Proposal v15</em>, Gavin Pape, Slide 20 — exact terminology from the Unilever contract. Platform &amp; Tech: same document, Slide 20 ("Platform inc. Tech &amp; D&A → #FTEs flex hours") — unit rate adapted to Iberia market. SC Control Tower (# orders routed) and AI Products (# licences): new levers per João Santos, 24 Jun 2026. OPEX envelope from Accenture proposal submitted 03/04/2026. All unit rates are illustrative — to be calibrated against Gro24/7 rate card applied to Portugal/Iberia rates.
+    <strong>Sources.</strong> CX drivers (SKU updates, campaigns, SR tickets, seller points) and A-Tickets: <em>Acn_gro24/7 Partnership Final Proposal v15</em>, Slide 20 — exact terminology from the Unilever contract. Platform &amp; Tech: same document, Slide 20 ("Platform inc. Tech &amp; D&A → #FTEs flex hours") — unit rate adapted to Iberia market. SC Control Tower (# orders routed) and AI Products (# licences): new levers per João Santos, 24 Jun 2026. OPEX envelope from Accenture proposal submitted 03/04/2026. All unit rates are illustrative — to be calibrated against Gro24/7 rate card applied to Portugal/Iberia rates.
   </div>
 
 </main>
@@ -961,7 +982,7 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
       <div class="cb-num">04</div>
       <div class="cb-body">
         <div class="cb-title">You own it on your own timeline</div>
-        <div class="cb-text">Each hub has a contractual transfer date — people, processes, and IP move to the NewCo in waves. Gavin ran this exact model with Unilever across 12 markets. It is not theoretical.</div>
+        <div class="cb-text">Each hub has a contractual transfer date — people, processes, and IP move to the NewCo in waves. Accenture ran this exact model with Unilever across 12 markets. It is not theoretical.</div>
       </div>
     </div>
   </div>
@@ -973,7 +994,7 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
   </div>
   <div class="bot">
     <div class="bot-head">From Gro24/7 to Nexus — the same mechanics, scaled to the right size</div>
-    <div class="bot-sub">Gro24/7 (Gavin Pape, Unilever): &euro;20M co-investment, &euro;366M over 5 years, 7 hubs, 12 markets — Build-Operate-Transfer across all of them. The contract mechanics below are not invented for Nexus. They are active, proven, and reusable.</div>
+    <div class="bot-sub">Gro24/7 (Accenture × Unilever): &euro;20M co-investment, &euro;366M over 5 years, 7 hubs, 12 markets — Build-Operate-Transfer across all of them. The contract mechanics below are not invented for Nexus. They are active, proven, and reusable.</div>
     <div class="bot-steps">
       <div class="bs">
         <div class="bs-n">Co-invest</div>
@@ -1068,6 +1089,11 @@ function calc() {
   document.getElementById('tot-flex').textContent = fmt(totFlex);
   document.getElementById('tot-mo').textContent = fmt(totMo);
   document.getElementById('tot-yr').textContent = fmt(totMo * 12);
+  // OPEX summary
+  const acnYr = totMo * 12;
+  const fixedCosts = 950000; // NewCo team ~€700k + Technology ~€250k midpoint
+  document.getElementById('opex-acn').textContent = fmt(acnYr);
+  document.getElementById('opex-total').textContent = fmt(acnYr + fixedCosts);
 }
 
 /* ── GATE CHECK ── */
