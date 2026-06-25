@@ -687,7 +687,7 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
   </div>
 
   <div class="calc-intro">
-    <p>Defaults are <b>illustrative starting points</b> — to be refined against the Gro24/7 rate card and the Nexus business plan. Core fees represent the baseline team capacity agreed quarterly. Flex fees activate above the threshold volume. For AI Products there is no Core (pure per-licence).</p>
+    <p>The model follows the <b>same hybrid methodology as Gro24/7</b>: <b>per-unit drivers</b> for CX activities (SKU updates, campaigns, SR tickets, seller points — exactly as in Gavin's contract); <b>FTE rate card</b> for Platform &amp; Tech (team composition × Iberia day rate, with flex hours above core capacity); <b>A-Tickets</b> for D&A insighting; <b>per-order</b> and <b>per-licence</b> for the two new levers. All values are illustrative — unit rates to be calibrated against the Gro24/7 rate card applied to Portugal/Iberia market rates.</p>
     <div class="inputs-leg">
       <span><span class="leg-sq" style="background:var(--m-fixed)"></span> Core fee/month (fixed baseline)</span>
       <span><span class="leg-sq" style="background:var(--m-unit)"></span> Flex volume &times; unit rate</span>
@@ -744,11 +744,11 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
             <td><span class="calc-out" id="y3"></span></td>
           </tr>
           <tr>
-            <td><span class="act-n">Seller Onboarding &amp; Management</span><span class="act-drv">driver: # new sellers + seller points</span></td>
-            <td><input class="calc-input" type="number" value="3500" oninput="calc()"/></td>
-            <td><span class="act-drv">3 active sellers</span></td>
-            <td><input class="calc-input" type="number" value="2000" oninput="calc()"/></td>
-            <td><input class="calc-input" type="number" value="1" oninput="calc()"/></td>
+            <td><span class="act-n">Seller Onboarding &amp; Management</span><span class="act-drv">driver: seller points (complexity-weighted seller activity)</span></td>
+            <td><input class="calc-input" type="number" value="4000" oninput="calc()"/></td>
+            <td><span class="act-drv">baseline portfolio (3–4 sellers)</span></td>
+            <td><input class="calc-input" type="number" value="80" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="50" oninput="calc()"/></td>
             <td><span class="calc-out flex-col" id="f4"></span></td>
             <td><span class="calc-out total-col" id="t4"></span></td>
             <td><span class="calc-out" id="y4"></span></td>
@@ -777,11 +777,11 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
         </thead>
         <tbody>
           <tr>
-            <td><span class="act-n">Platform &amp; Tech Support</span><span class="act-drv">driver: # change requests/month</span></td>
-            <td><input class="calc-input" type="number" value="10000" oninput="calc()"/></td>
-            <td><span class="act-drv">30 CRs/mo</span></td>
-            <td><input class="calc-input" type="number" value="280" oninput="calc()"/></td>
-            <td><input class="calc-input" type="number" value="10" oninput="calc()"/></td>
+            <td><span class="act-n">Platform &amp; Tech Support</span><span class="act-drv">FTE rate card · driver: # flex-hours above core team capacity</span></td>
+            <td><input class="calc-input" type="number" value="15000" oninput="calc()"/></td>
+            <td><span class="act-drv">core team: 2 FTEs (Iberia rates)</span></td>
+            <td><input class="calc-input" type="number" value="90" oninput="calc()"/></td>
+            <td><input class="calc-input" type="number" value="40" oninput="calc()"/></td>
             <td><span class="calc-out flex-col" id="f5"></span></td>
             <td><span class="calc-out total-col" id="t5"></span></td>
             <td><span class="calc-out" id="y5"></span></td>
@@ -854,7 +854,7 @@ table.calctbl tbody tr:hover td{background:#fdf9f5}
   <div style="font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5">&#9888; These are Accenture's service hub fees only — separate from platform licence costs (&euro;0.2–0.3M/yr) and NewCo team costs (&euro;0.6–0.8M/yr). 2.5% of each activity's Core fee is held at risk against SLA performance (not shown above). &#9733; = new lever not present in Gro24/7.</div>
 
   <div class="foot">
-    <strong>Sources.</strong> Activity list and hub structure from <em>Acn_gro24/7 Partnership Final Proposal v15</em> (Gavin Pape, slide 20 — Flex driver table). OPEX figures from Accenture proposal submitted 03/04/2026. AI Products and SC Control Tower per João Santos, 24 Jun 2026. Unit prices are illustrative — to be calibrated against Gro24/7 rate card and Nexus volume assumptions.
+    <strong>Sources.</strong> CX drivers (SKU updates, campaigns, SR tickets, seller points) and A-Tickets: <em>Acn_gro24/7 Partnership Final Proposal v15</em>, Gavin Pape, Slide 20 — exact terminology from the Unilever contract. Platform &amp; Tech: same document, Slide 20 ("Platform inc. Tech &amp; D&A → #FTEs flex hours") — unit rate adapted to Iberia market. SC Control Tower (# orders routed) and AI Products (# licences): new levers per João Santos, 24 Jun 2026. OPEX envelope from Accenture proposal submitted 03/04/2026. All unit rates are illustrative — to be calibrated against Gro24/7 rate card applied to Portugal/Iberia rates.
   </div>
 
 </main>
