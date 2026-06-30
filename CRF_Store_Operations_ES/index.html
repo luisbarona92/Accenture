@@ -198,17 +198,18 @@
     .gov-hdr-crf{color:rgba(0,18,40,.45);border-color:rgba(0,18,40,.15)}
     .gov-hdr-mid{border-color:transparent}
     .gov-hdr-acc-es{color:rgba(161,0,255,.8);border-color:rgba(161,0,255,.35)}
-    .gov-cell{padding:10px 5px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;gap:5px;justify-content:center}
+    .gov-cell{padding:10px 5px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;align-items:flex-start}
     .gov-center-cell{padding:10px 8px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center}
-    .gov-box{width:100%;border-radius:10px;padding:12px 8px;text-align:center;font-weight:700;font-size:.78rem;color:#fff;background:linear-gradient(135deg,#6d28d9,#7c3aed)}
+    .gov-box{width:100%;border-radius:10px;padding:20px 10px;text-align:center;font-weight:700;font-size:.82rem;color:#fff;background:linear-gradient(135deg,#6d28d9,#7c3aed)}
     .gov-box span{display:block;font-size:.6rem;opacity:.7;font-weight:400;margin-top:3px}
-    .pacc{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:5px 7px}
+    .pacc{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:8px 5px;width:82px;text-align:center}
+    .pacc>div:last-child{width:100%}
     .pav{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--c-blue),var(--c-navy))}
     .pav.es{background:linear-gradient(135deg,#7c3aed,#a100ff)}
     .pav img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:none}
     .pn{font-size:.71rem;font-weight:600;color:#001228;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
     .pr{font-size:.6rem;color:rgba(0,18,40,.5);line-height:1.2}
-    .pcrf{background:rgba(0,18,40,.03);border:1px solid rgba(0,18,40,.1);border-radius:7px;padding:5px 8px}
+    .pcrf{background:rgba(0,18,40,.03);border:1px solid rgba(0,18,40,.1);border-radius:7px;padding:5px 8px;width:100%}
     .pcrf-n{font-size:.71rem;font-weight:600;color:#001228;line-height:1.3}
     .pcrf-t{font-size:.6rem;color:rgba(0,18,40,.5)}
     .gov-photo-note{font-size:.68rem;color:rgba(0,18,40,.4);margin-top:12px;padding:8px 12px;background:rgba(0,61,165,.04);border-radius:8px;border:1px dashed rgba(0,61,165,.15)}
@@ -419,7 +420,7 @@
     .diag-col-pre{background:rgba(200,140,0,.04);border-color:rgba(180,120,0,.2)}
     .diag-col-title{display:flex;align-items:center;gap:6px;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(0,0,0,.08)}
     .diag-blist2{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
-    .diag-blist2 li{font-size:.58rem;color:rgba(0,18,40,.7);line-height:1.45;padding-left:9px;position:relative}
+    .diag-blist2 li{font-size:.72rem;color:rgba(0,18,40,.7);line-height:1.5;padding-left:9px;position:relative}
     .diag-blist2 li::before{content:"•";position:absolute;left:0;font-weight:700}
     .diag-blist2 li strong{color:#001228;font-weight:700}
     .diag-countries{display:flex;justify-content:center}
@@ -1020,7 +1021,7 @@
     <section id="slide-3" class="slide">
       <div class="slide-header">
         <div class="slide-tag">03 · Propuesta de Valor y Enfoque</div>
-        <h2 class="slide-title">Una metodología contrastada — <span>rigurosa y adaptada a Carrefour España</span></h2>
+        <h2 class="slide-title">Una metodología contrastada — <span>rigurosa y adaptada a Carrefour</span></h2>
       </div>
       <div class="inner-tabs">
         <button class="itab active" onclick="switchInner('inner-3-methodology', this)">📅 Hoja de ruta</button>
@@ -1119,40 +1120,40 @@
           <div class="diag-col diag-col-act">
             <div class="diag-col-title" style="color:#003DA5">👥 Actividades</div>
             <ul class="diag-blist2">
-              <li><strong>Inmersión en tienda y observación directa</strong> — recepción, almacén, sala de ventas, caja, mostradores frescos, comercio electrónico/Drive y oficina trasera</li>
-              <li><strong>Mapeo de procesos y actividades</strong> — desde proceso L1 hasta tareas L4/L5 seleccionadas, con timing específico de actividades de alto impacto</li>
-              <li><strong>Entrevistas estructuradas</strong> — con directores de tienda, jefes de sección y equipos operacionales para identificar inductores de carga de trabajo e irritantes</li>
-              <li><strong>Línea base de productividad basada en datos</strong> — utilizando datos de Carrefour: horas, FTEs, horarios, ventas/tráfico, absentismo, merma y datos de WFM</li>
-              <li><strong>Análisis operacionales profundos</strong> — en reabastecimiento, enrutamiento, facing, promociones, trastienda, picking de comercio electrónico y gestión de incidentes</li>
-              <li><strong>Análisis de benchmarks</strong> — contra referencias sectoriales para identificar palancas de productividad y restricciones específicas del negocio español</li>
-              <li><strong>Cobertura de tiendas piloto</strong> — 5 hipermercados representativos por país, seleccionados entre diferentes arquetipos de tienda y niveles de complejidad operacional</li>
+              <li><strong>Inmersión en tienda y observación directa</strong></li>
+              <li><strong>Mapeo de procesos y actividades</strong></li>
+              <li><strong>Entrevistas estructuradas</strong></li>
+              <li><strong>Línea base de productividad basada en datos</strong></li>
+              <li><strong>Análisis operacionales profundos</strong></li>
+              <li><strong>Análisis de benchmarks</strong></li>
+              <li><strong>Cobertura de tiendas piloto</strong></li>
             </ul>
           </div>
 
           <div class="diag-col diag-col-del">
             <div class="diag-col-title" style="color:#6d28d9">📦 Entregables</div>
             <ul class="diag-blist2">
-              <li><strong>Informe de diagnóstico de tienda</strong> — por país, abarcando los principales déficit de productividad, causas raíz y restricciones operacionales</li>
-              <li><strong>Mapa de oportunidades E2E</strong> — por proceso, rol y arquetipo de tienda, identificando palancas de productividad y lógica de sizing inicial</li>
-              <li><strong>Benchmark interno y externo</strong> — comparando líneas base de productividad por proceso, departamento y rol contra referencias sectoriales</li>
-              <li><strong>Aporte de benchmark externo</strong> — sobre prácticas minoristas relevantes y estándares de proceso, calibrado al contexto operativo de Carrefour</li>
-              <li><strong>Inventario de estándares de actividad y tiempo</strong> — para tareas seleccionadas de alto impacto, utilizando datos de Carrefour, observaciones de campo y benchmarks de TimeSkipper donde sean relevantes</li>
-              <li><strong>Mapa de déficit organizacional</strong> — identificando propiedad poco clara, tareas reactivas, déficit de planificación e inductores de sobrecarga</li>
-              <li><strong>Iniciativas de rápidas victorias 2</strong> — seleccionadas conjuntamente con Carrefour para pilotar en <strong>semana 5–8</strong></li>
+              <li><strong>Informe de diagnóstico de tienda</strong></li>
+              <li><strong>Mapa de oportunidades E2E</strong></li>
+              <li><strong>Benchmark interno y externo</strong></li>
+              <li><strong>Aporte de benchmark externo</strong></li>
+              <li><strong>Inventario de estándares de actividad y tiempo</strong></li>
+              <li><strong>Mapa de déficit organizacional</strong></li>
+              <li><strong>Iniciativas de rápidas victorias · semana 5–8</strong></li>
             </ul>
           </div>
 
           <div class="diag-col diag-col-pre">
             <div class="diag-col-title" style="color:#8a5200">✅ Requisitos previos (Carrefour)</div>
             <ul class="diag-blist2">
-              <li><strong>Desglose de FTE y horas</strong> por tienda, departamento, rol, zona y turno, incl. recursos fijos vs estacionales donde esté disponible</li>
-              <li><strong>Horarios de turno y datos de WFM:</strong> horas planeadas vs reales, personal por franja horaria, reglas de planificación y acceso a herramientas relevantes de WFM</li>
-              <li><strong>Diseños de tienda y mapas de flujo:</strong> sala de ventas, almacén, muelles, áreas de preparación de comercio electrónico/Drive y configuración de trastienda</li>
-              <li><strong>Indicadores de ventas, tráfico y carga de trabajo</strong> por día/hora, incl. tickets, volúmenes, carga de reabastecimiento y actividad de comercio electrónico</li>
-              <li><strong>Datos de recepción y suministro:</strong> frecuencia de entrega, camiones/palés por categoría, flujos de almacén y registros de incidentes donde estén disponibles</li>
-              <li><strong>Indicadores de personas y rendimiento:</strong> absentismo, rotación, merma y uso de recursos de terceros/comerciantes</li>
-              <li><strong>POE, estudios de productividad e iniciativas en curso existentes</strong> en España, incl. Vusion, iniciativas de caja/autocaja y comercio electrónico</li>
-              <li><strong>Acceso a stakeholders de tienda y Sede</strong> para entrevistas, recorridos y talleres de validación</li>
+              <li><strong>Desglose de FTE y horas</strong></li>
+              <li><strong>Horarios de turno y datos de WFM</strong></li>
+              <li><strong>Diseños de tienda y mapas de flujo</strong></li>
+              <li><strong>Indicadores de ventas, tráfico y carga de trabajo</strong></li>
+              <li><strong>Datos de recepción y suministro</strong></li>
+              <li><strong>Indicadores de personas y rendimiento</strong></li>
+              <li><strong>POE, estudios de productividad e iniciativas en curso</strong></li>
+              <li><strong>Acceso a stakeholders de tienda y Sede</strong></li>
             </ul>
           </div>
 
@@ -1467,7 +1468,6 @@
       <div class="gov-wrap">
         <div class="gov-chart">
           <!-- Flags -->
-          <div class="gov-flag-es"><span class="fbar es" style="width:36px;height:24px;display:inline-block;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.18)"></span></div>
           <!-- Col headers -->
           <div class="gov-hdr gov-hdr-mid"></div>
           <div class="gov-hdr gov-hdr-crf">Carrefour</div>
@@ -1475,6 +1475,7 @@
           <!-- ── STEERING COMMITTEE ROW ── -->
           <div class="gov-center-cell"><div class="gov-box">Comité de dirección<span>Mensualmente</span></div></div>
           <div class="gov-cell">
+            <div class="pcrf"><div class="pcrf-n">Elodie Perthuisot</div><div class="pcrf-t">CEO Carrefour España</div></div>
             <div class="pcrf"><div class="pcrf-n">Francisco Domínguez</div><div class="pcrf-t">Director de hipermercados</div></div>
           </div>
           <div class="gov-cell">
