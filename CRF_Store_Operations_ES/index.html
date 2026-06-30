@@ -430,15 +430,15 @@
     .diag-country-name{font-size:.74rem;font-weight:800;color:#001228;text-transform:uppercase;letter-spacing:.8px}
     .diag-inner{display:grid;grid-template-columns:115px 1fr;gap:10px;align-items:start}
     .diag-map{width:100%;border-radius:8px;object-fit:cover;display:block}
-    .diag-stores-title{font-size:.52rem;font-weight:800;color:#003DA5;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
-    .diag-stores{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
-    .diag-store-item{display:flex;align-items:flex-start;gap:5px;font-size:.57rem;line-height:1.35}
-    .diag-store-num{width:15px;height:15px;border-radius:50%;background:#003DA5;color:#fff;font-size:.42rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .diag-stores-title{font-size:.65rem;font-weight:800;color:#003DA5;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+    .diag-stores{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+    .diag-store-item{display:flex;align-items:flex-start;gap:6px;font-size:.72rem;line-height:1.35}
+    .diag-store-num{width:18px;height:18px;border-radius:50%;background:#003DA5;color:#fff;font-size:.52rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
     .diag-store-name{font-weight:700;color:#001228;display:block}
-    .diag-store-loc{color:rgba(0,18,40,.48);font-size:.51rem}
-    .diag-crit-title{font-size:.52rem;font-weight:800;color:rgba(0,18,40,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-    .diag-crit{list-style:disc;padding-left:12px;margin:0;display:flex;flex-direction:column;gap:2px}
-    .diag-crit li{font-size:.54rem;color:rgba(0,18,40,.6);line-height:1.4}
+    .diag-store-loc{color:rgba(0,18,40,.48);font-size:.63rem}
+    .diag-crit-title{font-size:.65rem;font-weight:800;color:rgba(0,18,40,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+    .diag-crit{list-style:disc;padding-left:14px;margin:0;display:flex;flex-direction:column;gap:3px}
+    .diag-crit li{font-size:.67rem;color:rgba(0,18,40,.6);line-height:1.4}
 
     /* ── Workload panel ── */
     .wl-intro{font-size:.68rem;font-weight:700;color:#3d0d9a;line-height:1.6;margin-bottom:14px;background:rgba(109,40,217,.05);border-left:3px solid #7c3aed;padding:10px 14px;border-radius:0 8px 8px 0}
@@ -1169,23 +1169,27 @@
             </div>
             <div class="diag-inner">
               <img src="photos/sp1.jpg" class="diag-map" alt="Mapa de tiendas piloto en España">
-              <div>
-                <div class="diag-stores-title">Tiendas piloto</div>
-                <div class="diag-stores">
-                  <div class="diag-store-item"><div class="diag-store-num">1</div><div><span class="diag-store-name">Carrefour S.Sebastián Reyes</span><span class="diag-store-loc">Madrid · Suburbana grande</span></div></div>
-                  <div class="diag-store-item"><div class="diag-store-num">2</div><div><span class="diag-store-name">Carrefour Gran Vía de Bilbao</span><span class="diag-store-loc">Bilbao · Urbana grande</span></div></div>
-                  <div class="diag-store-item"><div class="diag-store-num">3</div><div><span class="diag-store-name">Carrefour Gran Vía 2</span><span class="diag-store-loc">Barcelona · Urbana compacta</span></div></div>
-                  <div class="diag-store-item"><div class="diag-store-num">4</div><div><span class="diag-store-name">Carrefour Los Arcos</span><span class="diag-store-loc">Sevilla · Suburbana grande</span></div></div>
-                  <div class="diag-store-item"><div class="diag-store-num">5</div><div><span class="diag-store-name">Carrefour Ademuz</span><span class="diag-store-loc">Valencia · Estándar</span></div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start">
+                <div>
+                  <div class="diag-stores-title">Tiendas piloto</div>
+                  <div class="diag-stores">
+                    <div class="diag-store-item"><div class="diag-store-num">1</div><div><span class="diag-store-name">Carrefour S.Sebastián Reyes</span><span class="diag-store-loc">Madrid · Suburbana grande</span></div></div>
+                    <div class="diag-store-item"><div class="diag-store-num">2</div><div><span class="diag-store-name">Carrefour Gran Vía de Bilbao</span><span class="diag-store-loc">Bilbao · Urbana grande</span></div></div>
+                    <div class="diag-store-item"><div class="diag-store-num">3</div><div><span class="diag-store-name">Carrefour Gran Vía 2</span><span class="diag-store-loc">Barcelona · Urbana compacta</span></div></div>
+                    <div class="diag-store-item"><div class="diag-store-num">4</div><div><span class="diag-store-name">Carrefour Los Arcos</span><span class="diag-store-loc">Sevilla · Suburbana grande</span></div></div>
+                    <div class="diag-store-item"><div class="diag-store-num">5</div><div><span class="diag-store-name">Carrefour Ademuz</span><span class="diag-store-loc">Valencia · Estándar</span></div></div>
+                  </div>
                 </div>
-                <div class="diag-crit-title">Criterios de selección</div>
-                <ul class="diag-crit">
-                  <li>Distribución geográfica en Norte / Centro / Este / Sur</li>
-                  <li>Mezcla de formatos urbanos, suburbanos y de retail park</li>
-                  <li>Rango de superficie de ~5.000–14.000 m²</li>
-                  <li>Inclusión de SSRR como tienda de referencia visitada anteriormente</li>
-                  <li>Diversidad de niveles de penetración del comercio electrónico</li>
-                </ul>
+                <div>
+                  <div class="diag-crit-title">Criterios de selección</div>
+                  <ul class="diag-crit">
+                    <li>Distribución geográfica en Norte / Centro / Este / Sur</li>
+                    <li>Mezcla de formatos urbanos, suburbanos y de retail park</li>
+                    <li>Rango de superficie de ~5.000–14.000 m²</li>
+                    <li>Inclusión de SSRR como tienda de referencia visitada anteriormente</li>
+                    <li>Diversidad de niveles de penetración del comercio electrónico</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
