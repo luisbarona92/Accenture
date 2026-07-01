@@ -527,6 +527,48 @@
     .trm-p-num{width:19px;height:19px;border-radius:50%;background:#6d28d9;color:#fff;font-size:.49rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
     .trm-p-text strong{color:#001228;font-weight:800}
 
+    /* ── 16-week roadmap ── */
+    .rm16-wrap{display:flex;flex-direction:column;gap:0}
+    .rm16-wrow{display:grid;grid-template-columns:60px 1fr;gap:6px;margin-bottom:5px;align-items:start}
+    .rm16-lbl{font-size:.62rem;font-weight:700;color:rgba(0,18,40,.45);text-transform:uppercase;letter-spacing:1px;padding-top:4px;line-height:1.2}
+    .rm16-wnums{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+    .rm16-10col{grid-template-columns:repeat(10,1fr)}
+    .rm16-w{text-align:center;font-size:.62rem;font-weight:700;color:rgba(0,18,40,.45);padding:2px 0}
+    .rm16-w-key{color:#d97706;font-weight:900}
+    .rm16-phase{border-radius:6px;padding:5px 9px;font-size:.7rem;display:flex;flex-direction:column;gap:2px}
+    .rm16-phase strong{font-size:.72rem;font-weight:800}
+    .rm16-phase span{opacity:.7;font-size:.63rem}
+    .rm16-diag{background:rgba(0,61,165,.1);border-left:3px solid #003DA5;color:#001228}
+    .rm16-design{background:rgba(109,40,217,.1);border-left:3px solid #6d28d9;color:#001228}
+    .rm16-impl{background:rgba(217,119,6,.12);border-left:3px solid #d97706;color:#001228}
+    .rm16-close{background:rgba(5,150,105,.1);border-left:3px solid #059669;color:#001228}
+    .rm16-act{border-radius:5px;padding:5px 8px;font-size:.65rem;display:flex;flex-direction:column;gap:2px}
+    .rm16-act strong{font-size:.67rem;font-weight:800;display:block}
+    .rm16-act em{opacity:.7;font-style:normal;font-size:.62rem}
+    .rm16-a1{background:rgba(0,61,165,.07)}
+    .rm16-a1b{background:rgba(0,61,165,.13)}
+    .rm16-a2{background:rgba(0,61,165,.2)}
+    .rm16-a3{background:rgba(109,40,217,.1)}
+    .rm16-a4{background:rgba(217,119,6,.1)}
+    .rm16-a5{background:rgba(5,150,105,.1)}
+    .rm16-ms-row{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+    .rm16-ms-row-10{grid-template-columns:repeat(10,1fr)}
+    .rm16-ms{display:flex;align-items:flex-start;gap:2px;font-size:.58rem;color:#003DA5;font-weight:700;padding-top:2px;line-height:1.2}
+    .rm16-ms-amber{color:#d97706!important;font-weight:900}
+    .rm16-ms-green{color:#059669!important}
+    .rm16-ms-purple{color:#6d28d9!important}
+    .rm16-ws{color:rgba(0,18,40,.28);font-size:.72rem}
+    .rm16-connector{display:flex;align-items:center;gap:12px;padding:10px 0 8px 66px;border-top:1px dashed rgba(0,18,40,.1);margin-top:4px}
+    .rm16-badge{background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;border-radius:8px;padding:7px 13px;display:flex;flex-direction:column;gap:1px;min-width:110px}
+    .rm16-badge-sup{font-size:.55rem;font-weight:600;opacity:.85;text-transform:uppercase;letter-spacing:1px}
+    .rm16-badge-lbl{font-size:.88rem;font-weight:900;letter-spacing:.5px}
+    .rm16-badge-sub{font-size:.57rem;opacity:.82}
+    .rm16-gobtn{border:2px solid #003DA5;background:#fff;color:#003DA5;border-radius:20px;padding:7px 18px;font-size:.74rem;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.3px}
+    .rm16-gobtn:hover,.rm16-gobtn.on{background:#003DA5;color:#fff}
+    .rm16-ext{animation:rm16In .3s ease}
+    @keyframes rm16In{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+    .rm16-msg{padding:8px 0 2px 66px;font-size:.76rem;color:rgba(0,61,165,.65);font-style:italic}
+
     /* ── Quick Wins (fee) panel ── */
     .qw-intro{font-size:.66rem;color:rgba(0,18,40,.7);line-height:1.65;margin-bottom:16px}
     .qw-intro strong{color:#6d28d9;font-weight:800}
@@ -1054,82 +1096,169 @@
       </div>
 
       <div id="inner-3-methodology" class="inner-panel active">
-        <p class="slide-sub" style="margin-bottom:12px;white-space:nowrap">Carrefour España ejecutará una metodología probada y contrastada, adaptada a su realidad específica y anclada en el conocimiento previo de Accenture con el negocio español.</p>
-        <div class="rm3">
+        <p class="slide-sub" style="margin-bottom:10px">16 semanas · decisión explícita de continuación en la semana 6 (go / no-go)</p>
+        <div class="rm16-wrap">
 
-          <!-- WEEK NUMBERS -->
-          <div class="rm3-row">
-            <div class="rm3-lbl">Semana</div>
-            <div class="rm3-track">
-              <div class="rm3-wnum">1</div><div class="rm3-wnum">2</div><div class="rm3-wnum">3</div><div class="rm3-wnum">4</div><div class="rm3-wnum">5</div>
-              <div class="rm3-wnum">6</div><div class="rm3-wnum">7</div><div class="rm3-wnum">8</div><div class="rm3-wnum">9</div><div class="rm3-wnum">10</div>
-            </div>
-          </div>
+          <!-- ─── PART 1: Semanas 1–6 (siempre visible) ─── -->
+          <div class="rm16-part1">
 
-          <!-- WORK PACKAGE / GOALS -->
-          <div class="rm3-row">
-            <div class="rm3-lbl"></div>
-            <div class="rm3-track">
-              <div class="rm3-phase rm3-ph1" style="grid-column:span 3"><strong>Objetivo 1 – Comprensión de la productividad en tienda</strong><span>Análisis de campo – Tienda + Sede</span></div>
-              <div class="rm3-phase rm3-ph1b" style="grid-column:span 2"><strong>Objetivo 2 – Benchmarking</strong><span>Benchmark + modelización</span></div>
-              <div class="rm3-phase rm3-ph2"><strong>Objetivo 3</strong><span>Recomendaciones cuantificadas</span></div>
-              <div class="rm3-phase rm3-ph4" style="grid-column:span 4"><strong>Objetivo 4 – Plan de transformación y escalado</strong><span>Implementación de rápidas victorias</span></div>
-            </div>
-          </div>
-          </div>
-
-          <!-- SPAIN -->
-          <div class="rm3-row">
-            <div class="rm3-flag-lbl">
-              <span class="con-flag es" style="width:30px;height:20px"></span>
-              <span class="rm3-cname">España</span>
-            </div>
-            <div class="rm3-track">
-              <div style="grid-column:span 3;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:4px">
-                <div class="rm3-act rm3-ac1" style="grid-column:1/span 2;grid-row:1"><strong>📋 Observación en tienda · Entrevistas iniciales</strong><em>Mapeo de actividades · timing de procesos · 5 hipermercados</em></div>
-                <div class="rm3-act rm3-ac1" style="grid-column:2/span 2;grid-row:2"><strong>🏢 Entrevistas en Sede · Análisis ascendente</strong><em>Entrevistas operacionales · flujo de proveedores y ascendente</em></div>
-              </div>
-              <div class="rm3-act rm3-ac1b" style="grid-column:span 2"><strong>📊 Benchmarking y modelización</strong><em>Cuantificación de escenarios · TimeSkipper (SP)</em></div>
-              <div class="rm3-act rm3-ac2"><strong>🎯 Seleccionar</strong><em>Definir modelo objetivo · Prioridades</em></div>
-              <div style="grid-column:span 4;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:4px">
-                <div class="rm3-act rm3-ac4" style="grid-column:1/span 3;grid-row:1"><strong>⚡ Rápidas victorias · Pruebas iniciales ES</strong><em>Desplegar iniciativas · medir ganancias de productividad</em></div>
-                <div class="rm3-act rm3-ac4" style="grid-column:2/span 3;grid-row:2"><strong>🗺️ Diseño del programa de transformación</strong><em>Definir plan de escalado · hoja de ruta de despliegue</em></div>
+            <!-- Números de semana -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl">Semana</div>
+              <div class="rm16-wnums">
+                <div class="rm16-w">1</div>
+                <div class="rm16-w">2</div>
+                <div class="rm16-w">3</div>
+                <div class="rm16-w">4</div>
+                <div class="rm16-w">5</div>
+                <div class="rm16-w rm16-w-key">6</div>
               </div>
             </div>
-          </div>
 
-          <!-- MILESTONES -->
-          <div class="rm3-row">
-            <div class="rm3-lbl">Hitos</div>
-            <div class="rm3-track">
-              <!-- W1: Kickoff arriba, sin weekly -->
-              <div class="rm3-ms" style="justify-content:flex-start"><span class="rm3-isc">◆</span><span class="rm3-mstxt">Inicio y selección de tiendas</span></div>
-              <!-- W2-W3: ▲ bottom-right -->
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <!-- W4: SteerCo arriba, ▲ bottom-right -->
-              <div class="rm3-ms" style="justify-content:flex-start"><span class="rm3-isc">◆</span><span class="rm3-mstxt">SteerCo de análisis de campo</span><span class="rm3-iws">▲</span></div>
-              <!-- W5: ▲ bottom-right -->
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <!-- W6: Workshop centrado -->
-              <div class="rm3-ms"><span class="rm3-iwk">◆ ◆ ◆</span><span class="rm3-mstxt">Sesiones de taller</span></div>
-              <!-- W7-W9: ▲ bottom-right -->
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <div class="rm3-ms"><span class="rm3-iws">▲</span></div>
-              <!-- W10: Final SteerCo abajo -->
-              <div class="rm3-ms" style="justify-content:flex-end"><span class="rm3-isc">◆</span><span class="rm3-mstxt">SteerCo final</span></div>
+            <!-- Fase -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl"></div>
+              <div class="rm16-wnums">
+                <div class="rm16-phase rm16-diag" style="grid-column:span 6">
+                  <strong>Fase 1 — Diagnóstico</strong>
+                  <span>Observación · entrevistas · benchmarking · primeras recomendaciones</span>
+                </div>
+              </div>
             </div>
+
+            <!-- Actividades -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl"></div>
+              <div class="rm16-wnums">
+                <div class="rm16-act rm16-a1" style="grid-column:1/span 3">
+                  <strong>📋 Observación en tienda · entrevistas</strong>
+                  <em>5 hipermercados · mapeo de actividades · timing de procesos</em>
+                </div>
+                <div class="rm16-act rm16-a1b" style="grid-column:4/span 2">
+                  <strong>📊 Benchmarking + IA diagnóstico</strong>
+                  <em>Digital Brain · detección de oportunidades</em>
+                </div>
+                <div class="rm16-act rm16-a2" style="grid-column:6/span 1">
+                  <strong>🎯 Recomen­daciones</strong>
+                  <em>Business case preliminar</em>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hitos -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl">Hitos</div>
+              <div class="rm16-ms-row">
+                <div class="rm16-ms"><span style="color:#003DA5">◆</span>&nbsp;<span>Kickoff</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms"><span style="color:#003DA5">◆</span>&nbsp;<span>SteerCo</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms rm16-ms-amber"><span>◆</span>&nbsp;<span>GO / NO-GO</span></div>
+              </div>
+            </div>
+
+          </div><!-- /part1 -->
+
+          <!-- ─── CONECTOR go/no-go ─── -->
+          <div class="rm16-connector">
+            <div class="rm16-badge">
+              <div class="rm16-badge-sup">Semana 6</div>
+              <div class="rm16-badge-lbl">GO / NO-GO</div>
+              <div class="rm16-badge-sub">Carrefour decide si continúa</div>
+            </div>
+            <button class="rm16-gobtn" id="rm16-gobtn" onclick="toggleRM16()">▶&nbsp; Ver plan completo · semanas 7–16</button>
           </div>
 
-          <!-- LEGEND -->
-          <div class="rm3-legend">
-            <span class="rm3-legi"><span style="color:#003DA5;font-size:.9rem">◆</span> Comité de dirección</span>
-            <span class="rm3-legi"><span style="color:rgba(0,18,40,.35);font-size:.82rem">▲</span> Estado semanal</span>
-            <span class="rm3-legi"><span style="color:#d97706;font-size:.9rem">◆</span> Taller</span>
-          </div>
+          <!-- ─── PART 2: Semanas 7–16 (toggle) ─── -->
+          <div class="rm16-ext" id="rm16-ext" style="display:none">
 
+            <!-- Números de semana -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl">Semana</div>
+              <div class="rm16-wnums rm16-10col">
+                <div class="rm16-w">7</div>
+                <div class="rm16-w">8</div>
+                <div class="rm16-w">9</div>
+                <div class="rm16-w">10</div>
+                <div class="rm16-w">11</div>
+                <div class="rm16-w">12</div>
+                <div class="rm16-w">13</div>
+                <div class="rm16-w">14</div>
+                <div class="rm16-w">15</div>
+                <div class="rm16-w rm16-w-key">16</div>
+              </div>
+            </div>
+
+            <!-- Fases -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl"></div>
+              <div class="rm16-wnums rm16-10col">
+                <div class="rm16-phase rm16-design" style="grid-column:span 2">
+                  <strong>Fase 2 — Diseño</strong>
+                  <span>Programa de transformación + quick wins</span>
+                </div>
+                <div class="rm16-phase rm16-impl" style="grid-column:span 4">
+                  <strong>Fase 3 — Quick Wins</strong>
+                  <span>Piloto en 1 tienda</span>
+                </div>
+                <div class="rm16-phase rm16-close" style="grid-column:span 4">
+                  <strong>Fase 4 — Cierre</strong>
+                  <span>Resultados · preparación escalado</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actividades -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl"></div>
+              <div class="rm16-wnums rm16-10col">
+                <div class="rm16-act rm16-a3" style="grid-column:1/span 2">
+                  <strong>🗺️ Diseño programa transformación</strong>
+                  <em>Modelo operativo objetivo · diseño de quick wins</em>
+                </div>
+                <div class="rm16-act rm16-a4" style="grid-column:3/span 4">
+                  <strong>⚡ Implantación quick wins (piloto 1 tienda)</strong>
+                  <em>Deploy iniciativas · medir productividad en tiempo real</em>
+                </div>
+                <div class="rm16-act rm16-a5" style="grid-column:7/span 4">
+                  <strong>📈 Cierre · preparación escalado</strong>
+                  <em>Resultados validados · business case · plan rollout</em>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hitos -->
+            <div class="rm16-wrow">
+              <div class="rm16-lbl">Hitos</div>
+              <div class="rm16-ms-row rm16-ms-row-10">
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms rm16-ms-purple"><span>◆</span>&nbsp;<span>SteerCo diseño</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms rm16-ms-amber"><span>◆</span>&nbsp;<span>SteerCo QW</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms"><span class="rm16-ws">▲</span></div>
+                <div class="rm16-ms rm16-ms-green"><span>◆</span>&nbsp;<span>SteerCo final</span></div>
+              </div>
+            </div>
+
+          </div><!-- /part2 -->
+
+          <!-- Mensaje comercial -->
+          <div class="rm16-msg">"Os contratamos por 16 semanas, pero en la semana 6 ya decidís si seguimos."</div>
+
+        </div><!-- /rm16-wrap -->
+
+        <!-- Leyenda -->
+        <div class="rm3-legend" style="margin-top:8px">
+          <span class="rm3-legi"><span style="color:#003DA5;font-size:.9rem">◆</span> Comité de dirección</span>
+          <span class="rm3-legi"><span style="color:rgba(0,18,40,.35);font-size:.82rem">▲</span> Estado semanal</span>
+          <span class="rm3-legi"><span style="color:#d97706;font-size:.9rem">◆</span> Go / No-Go</span>
         </div>
+
       </div>
 
       <div id="inner-3-diagnostic" class="inner-panel">
@@ -1548,6 +1677,7 @@
     function showSlide(n){document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));document.getElementById('slide-'+n).classList.add('active');document.querySelectorAll('.nav-btn').forEach((b,i)=>b.classList.toggle('active',i===n));current=n;const pct=(n/(SLIDES.length-1))*100;document.getElementById('progressBar').style.width=pct+'%';window.scrollTo(0,0);}
     function switchInner(id,btn){const slide=btn.closest('.slide');slide.querySelectorAll('.inner-panel').forEach(p=>p.classList.remove('active'));slide.querySelectorAll('.itab').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
     function showCase(n,btn){document.querySelectorAll('.case-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.case-tab').forEach(b=>b.classList.remove('active'));document.getElementById('case-'+n).classList.add('active');btn.classList.add('active');}
+    function toggleRM16(){var e=document.getElementById('rm16-ext'),b=document.getElementById('rm16-gobtn');if(e.style.display==='none'){e.style.display='block';b.textContent='◀  Ocultar semanas 7–16';b.classList.add('on');}else{e.style.display='none';b.innerHTML='▶&nbsp; Ver plan completo · semanas 7–16';b.classList.remove('on');}}
     showSlide(0);
     // Inject real logos into org-chart column headers
     (function(){
