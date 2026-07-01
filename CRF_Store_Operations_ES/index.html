@@ -1474,8 +1474,7 @@
       </div>
       <div id="inner-4-org" class="inner-panel active">
       <!-- TO ADD PHOTOS: Create a folder "photos/" next to this HTML file and add images named:
-           France: BN.jpg  AG.jpg  JD.jpg  CT.jpg  ZRC.jpg  ADV.jpg
-           Spain:  MC.jpg  JOH.jpg  PC.jpg  RA.jpg  AS.jpg  MB.jpg  FM.jpg  CD.jpg  PYB.jpg
+           MC.jpg  JOH.jpg  PC.jpg  RA.jpg  AS.jpg  MB.jpg  FM.jpg  CD.jpg  PYB.jpg
            Photos appear automatically when found; initials show if not. -->
       <div class="gov-wrap">
         <div class="gov-chart">
@@ -1583,7 +1582,7 @@
             <div class="reinv-num">5</div>
             <div class="reinv-label">España</div>
             <div class="reinv-title">Un método, ajustado a cada país</div>
-            <div class="reinv-desc">El mismo enfoque, con detalles locales incorporados: comerciantes de ES y reabastecimiento >1,80m; "ventes sans suite" FR.</div>
+            <div class="reinv-desc">El mismo enfoque, con detalles locales incorporados: comerciantes de hipermercado, reabastecimiento y mix de temporada adaptados a la realidad de Carrefour España.</div>
           </div>
         </div></div>
         </div>
@@ -1610,7 +1609,7 @@
       if(imgs.length<2)return;
       var crfSrc=imgs[0].src, accSrc=imgs[imgs.length-1].src;
       function mkImg(src,h){var i=document.createElement('img');i.src=src;i.style.cssText='height:'+h+'px;max-width:92%;object-fit:contain;display:block;margin:0 auto';return i;}
-      document.querySelectorAll('.gov-hdr-acc-fr,.gov-hdr-acc-es').forEach(function(el){el.textContent='';el.appendChild(mkImg(accSrc,38));});
+      document.querySelectorAll('.gov-hdr-acc-es').forEach(function(el){el.textContent='';el.appendChild(mkImg(accSrc,38));});
       document.querySelectorAll('.gov-hdr-crf').forEach(function(el){el.textContent='';el.appendChild(mkImg(crfSrc,24));});
     })();
   </script>
