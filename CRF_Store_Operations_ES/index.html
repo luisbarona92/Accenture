@@ -1040,7 +1040,7 @@
                 <div class="rm3-phase rm3-ph1b" style="grid-column:span 2"><strong>Objetivo 2 – Benchmarking</strong><span>Benchmarking sectorial</span></div>
                 <div class="rm3-phase rm3-ph2"><strong>Objetivo 3</strong><span>Recomendaciones cuantificadas</span></div>
               </div>
-              <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;flex:1">
+              <div id="rm16-acts13" style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;flex:1">
                 <div style="grid-column:1/span 3;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr 1fr;gap:4px">
                   <div class="rm3-act rm3-ac1" style="grid-column:1;grid-row:1"><strong>🧠 Digital Brain</strong><em>Desarrollo inicial</em></div>
                   <div class="rm3-act rm3-ac1" style="grid-column:1/span 2;grid-row:2"><strong>📋 Observación en tienda · Entrevistas</strong><em>Mapeo de actividades de hipermercados · 🤖 Diagnóstico con IA</em></div>
@@ -1188,7 +1188,7 @@
     function showSlide(n){document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));document.getElementById('slide-'+n).classList.add('active');document.querySelectorAll('.nav-btn').forEach((b,i)=>b.classList.toggle('active',i===n));current=n;const pct=(n/(SLIDES.length-1))*100;document.getElementById('progressBar').style.width=pct+'%';window.scrollTo(0,0);}
     function switchInner(id,btn){const slide=btn.closest('.slide');slide.querySelectorAll('.inner-panel').forEach(p=>p.classList.remove('active'));slide.querySelectorAll('.itab').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
     function showCase(n,btn){document.querySelectorAll('.case-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.case-tab').forEach(b=>b.classList.remove('active'));document.getElementById('case-'+n).classList.add('active');btn.classList.add('active');}
-    function toggleRM16(){var e=document.getElementById('rm16-ext'),b=document.getElementById('rm16-gobtn');if(e.style.display==='none'){e.style.display='flex';b.innerHTML='◀&nbsp; Ocultar';b.classList.add('on');}else{e.style.display='none';b.innerHTML='▶&nbsp; Sem. 7–16';b.classList.remove('on');}}
+    function toggleRM16(){var e=document.getElementById('rm16-ext'),b=document.getElementById('rm16-gobtn'),a=document.getElementById('rm16-acts13');if(e.style.display==='none'){e.style.display='flex';a.style.display='none';b.innerHTML='◀&nbsp; Ocultar';b.classList.add('on');}else{e.style.display='none';a.style.display='grid';b.innerHTML='▶&nbsp; Sem. 7–16';b.classList.remove('on');}}
     showSlide(0);
     // Inject real logos into org-chart column headers
     (function(){
